@@ -1,0 +1,73 @@
+/* Copyright 2006-2014 Yann LEYDIER, INSA-Lyon
+ * 
+ * This file is part of libcrn.
+ * 
+ * libcrn is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * 
+ * libcrn is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser General Public License for more details.
+ * 
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with libcrn.  If not, see <http://www.gnu.org/licenses/>.
+ * 
+ * file: CRN.h
+ * \author Yann LEYDIER
+ */
+
+/*! \mainpage
+ * libcrn is an image manipulation toolkit under LGPL.
+ *
+ * http://sourceforge.net/projects/libcrn/
+ *
+ * TinyXml2 is a ZLIB/LIBPNG licenced library by Lee Thomason: http://www.grinninglizard.com/tinyxml2/index.html
+ *
+ */
+
+#ifndef CRN_MAIN_HEADER
+#define CRN_MAIN_HEADER
+
+// Version
+#define CRN_PACKAGE_VERSION_MAJOR "@CRN_PACKAGE_VERSION_MAJOR@"
+#define CRN_PACKAGE_VERSION_MINOR "@CRN_PACKAGE_VERSION_MINOR@"
+#define CRN_PACKAGE_VERSION_PATCH "@CRN_PACKAGE_VERSION_PATCH@"
+#define CRN_PACKAGE_VERSION "@CRN_PACKAGE_VERSION@"
+
+// Platform
+#cmakedefine CRN_PF_WIN32
+#cmakedefine CRN_PF_UNIX
+#cmakedefine CRN_PF_APPLE
+#cmakedefine CRN_PF_ANDROID
+
+// Dependencies
+#cmakedefine CRN_USING_GDKPB
+#cmakedefine CRN_USING_GTKMM
+#cmakedefine CRN_USING_LIBPNG
+#cmakedefine CRN_USING_LIBJPEG
+#cmakedefine CRN_USING_LIBINTL
+#cmakedefine CRN_USING_LIBZIP
+#cmakedefine CRN_USING_HARU
+
+// Options
+#cmakedefine CRN_ENABLE_OPENMP
+#cmakedefine CRN_UTF_CONVERSION_THROWS
+
+// Paths
+#define CRN_CONFIG_FULL_PATH "@CRN_CONFIG_FULL_PATH@"
+#define CRN_DATA_FULL_PATH "@CRN_DATA_FULL_PATH@"
+#define CRN_PROJECT_FULL_PATH "@CRN_PROJECT_FULL_PATH@"
+#define CRN_LOCALE_FULL_PATH "@CRN_LOCALE_FULL_PATH@"
+
+// i18n
+#ifdef BUILDING_CRN
+#	define GETTEXT_PACKAGE	"libcrn"
+#endif
+
+// Include useful types
+#include <CRNType.h>
+
+#endif
