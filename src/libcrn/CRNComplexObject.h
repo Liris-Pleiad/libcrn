@@ -72,7 +72,7 @@ namespace crn
 			ComplexObject& operator=(const ComplexObject&) = delete;
 
 			ComplexObject(ComplexObject&&) noexcept;
-			ComplexObject& operator=(ComplexObject&&c) noexcept;
+			ComplexObject& operator=(ComplexObject&&c); // XXX YANN ce serait bien de l'implémenter à la main pour le rendre noexcept
 
 			/*! \brief Returns the name of the object */
 			const String& GetName() const { return name; }

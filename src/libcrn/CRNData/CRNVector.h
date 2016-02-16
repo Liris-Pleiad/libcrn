@@ -148,6 +148,18 @@ namespace crn
 			const_iterator Begin() const { return data.begin(); }
 			/*! \brief Returns a const iterator to the end of the list */
 			const_iterator End() const { return data.end(); }
+			/*! \brief Returns an iterator to the first element */
+			iterator begin() { return data.begin(); } // XXX Yann
+			/*! \brief Returns a iterator to the end of the list */
+			iterator end() { return data.end(); }
+			/*! \brief Returns a const iterator to the first element */
+			const_iterator begin() const { return data.begin(); }
+			/*! \brief Returns a const iterator to the end of the list */
+			const_iterator end() const { return data.end(); }
+			/*! \brief Returns a const iterator to the first element */
+			const_iterator cbegin() const { return data.begin(); }
+			/*! \brief Returns a const iterator to the end of the list */
+			const_iterator cend() const { return data.end(); }
 
 			/*! \brief Removes element */
 			void Remove(iterator it);
@@ -217,6 +229,6 @@ CRN_ADD_RANGED_FOR_CONST_END(crn::Vector, End)
 
 namespace std
 {
-	template<> inline void swap<crn::Vector>(crn::Vector &v1, crn::Vector &v2) noexcept { v1.Swap(v2); }
+	inline void swap(crn::Vector &v1, crn::Vector &v2) noexcept { v1.Swap(v2); }
 }
 #endif

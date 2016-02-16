@@ -474,7 +474,7 @@ Histogram crn::VerticalSlantedProjection(const ImageBW &img, const Angle<Radian>
 
 	for (size_t l = 0; l < img.GetHeight(); l++)
 	{
-		auto previous_pixel = img.At(0, l);
+		auto previous_pixel = bool(img.At(0, l));
 
 		if (!previous_pixel)
 		{

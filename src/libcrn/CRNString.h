@@ -332,7 +332,7 @@ long long ToLongLong() const { return convertTo<long long>(); }
 namespace std
 {
 	/*! \brief Swaps two strings */
-	template<> inline void swap<crn::String>(crn::String &s1, crn::String &s2) noexcept { s1.Swap(s2); }
+	inline void swap(crn::String &s1, crn::String &s2) noexcept { s1.Swap(s2); }
 
 	template<> struct hash<crn::String>
 	{

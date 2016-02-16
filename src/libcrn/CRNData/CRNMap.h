@@ -163,6 +163,6 @@ CRN_ADD_RANGED_FOR_CONST_END(crn::Map, End)
 
 namespace std
 {
-	template<> inline void swap<crn::Map>(crn::Map &m1, crn::Map &m2) noexcept { m1.Swap(m2); }
+	inline void swap(crn::Map &m1, crn::Map &m2) noexcept { m1.Swap(m2); }
 }
 #endif

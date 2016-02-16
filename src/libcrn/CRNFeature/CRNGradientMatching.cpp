@@ -99,7 +99,7 @@ static int diffgrad(const GradientModel &c1, const GradientModel &c2, int win) n
 	return mindiff;
 }
 
-double crn::Distance(const GradientModel &img1, const GradientModel &img2, size_t window) noexcept
+double GradientModel::Distance(const GradientModel &img1, const GradientModel &img2, size_t window) noexcept
 {
 	auto npix1 = 0;
 	for (auto p : img1.mask)

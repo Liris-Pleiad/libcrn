@@ -28,6 +28,7 @@
 #include <CRNMath/CRNProp3.h>
 #include <CRNData/CRNDataFactory.h>
 #include <CRNUtils/CRNXml.h>
+#include <algorithm> // for min & max
 
 using namespace crn;
 

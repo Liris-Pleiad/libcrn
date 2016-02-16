@@ -82,7 +82,7 @@ namespace crn
 		using RGB8 = RGB<uint8_t>;
 	} // namespace pixel
 
-	template<> template<typename I> struct TypeInfo<pixel::RGB<I>>
+	template<typename I> struct TypeInfo<pixel::RGB<I>>
 	{
 		using SumType = pixel::RGB<typename TypeInfo<I>::SumType>;
 		using DiffType = pixel::RGB<typename TypeInfo<I>::DiffType>;
@@ -119,7 +119,7 @@ namespace crn
 
 namespace std
 {
-	template<> template<typename T> class numeric_limits<crn::pixel::RGB<T>>
+	template<typename T> class numeric_limits<crn::pixel::RGB<T>>
 	{
 		public:
 			static constexpr bool is_specialized = true;
@@ -339,7 +339,7 @@ namespace crn
 		};
 	} // namespace pixel
 
-	template<> template<typename I> struct TypeInfo<pixel::Cart2D<I>>
+	template<typename I> struct TypeInfo<pixel::Cart2D<I>>
 	{
 		using SumType = pixel::Cart2D<typename TypeInfo<I>::SumType>;
 		using DiffType = pixel::Cart2D<typename TypeInfo<I>::DiffType>;
@@ -413,7 +413,7 @@ namespace crn
 
 	} // namespace pixel
 
-	template<> template<typename I, typename J> struct TypeInfo<pixel::Polar2D<I, J>>
+	template<typename I, typename J> struct TypeInfo<pixel::Polar2D<I, J>>
 	{
 		using SumType = pixel::Polar2D<typename TypeInfo<I>::SumType, J>;
 		using DiffType = pixel::Polar2D<typename TypeInfo<I>::DiffType, J>;
@@ -584,10 +584,31 @@ namespace crn
 			Lab(const XYZ &p);
 			operator RGB<uint8_t>() const { return RGB<uint8_t>(XYZ(*this)); }
 
+			Lab& operator+=(const Lab &p)
+			{
+				return *this; // XXX YANN faux ! à refaire !
+			}
+
 			double l = 0.0, a = 0.0, b = 0.0;
 		};
 	}
 	/*@}*/
+	inline crn::pixel::Lab operator+(const crn::pixel::Lab &p1, const crn::pixel::Lab &p2)
+	{
+		return pixel::Lab{ p1.l + p2.l, p1.a + p2.a, p1.b + p2.b }; // XXX YANN faux ! à refaire !
+	}
+	inline crn::pixel::Lab operator-(const crn::pixel::Lab &p1, const crn::pixel::Lab &p2)
+	{
+		return pixel::Lab{p1.l - p2.l, p1.a - p2.a, p1.b - p2.b}; // XXX YANN faux ! à refaire !
+	}
+	inline crn::pixel::Lab operator*(double d, const crn::pixel::Lab &p)
+	{
+		return pixel::Lab{ p.l * d, p.a, p.b };
+	}
+	inline crn::pixel::Lab operator/(const crn::pixel::Lab &p, double d)
+	{
+		return pixel::Lab{ p.l / d, p.a, p.b };
+	}
 } // namespace crn
 
 /*************************************************************
@@ -606,10 +627,31 @@ namespace crn
 			Luv(const XYZ &p);
 			operator RGB<uint8_t>() const { return RGB<uint8_t>(XYZ(*this)); }
 
+			Luv& operator+=(const Luv &p)
+			{
+				return *this; // XXX YANN faux ! à refaire !
+			}
+
 			double l = 0.0, u = 0.0, v = 0.0;
 		};
 	}
 	/*@}*/
+	inline crn::pixel::Luv operator+(const crn::pixel::Luv &p1, const crn::pixel::Luv &p2)
+	{
+		return pixel::Luv{ p1.l + p2.l, p1.u + p2.u, p1.v + p2.v }; // XXX YANN faux ! à refaire !
+	}
+	inline crn::pixel::Luv operator-(const crn::pixel::Luv &p1, const crn::pixel::Luv &p2)
+	{
+		return pixel::Luv{ p1.l - p2.l, p1.u - p2.u, p1.v - p2.v }; // XXX YANN faux ! à refaire !
+	}
+	inline crn::pixel::Luv operator*(double d, const crn::pixel::Luv &p)
+	{
+		return pixel::Luv{ p.l * d, p.u, p.v };
+	}
+	inline crn::pixel::Luv operator/(const crn::pixel::Luv &p, double d)
+	{
+		return pixel::Luv{ p.l / d, p.u, p.v };
+	}
 } // namespace crn
 
 #endif

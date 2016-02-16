@@ -28,11 +28,14 @@
 #include <CRNException.h>
 #include <CRNIO/CRNFileShield.h>
 #include <CRNUtils/CRNAtScopeExit.h>
-//#ifdef CRN_PF_WIN32
-#include <dirent.h>
+#ifdef _MSC_VER
+#	include "./3rdParty/_msvc_only_/dirent.hh"
+#	include <direct.h> // for mkdir & rmdir
+#else
+#	include <dirent.h>
+#	include <unistd.h>
+#endif
 #include <string.h>
-#include <unistd.h>
-//#endif // CRN_PF_WIN32
 #include <CRNi18n.h>
 
 using namespace crn;
@@ -207,7 +210,7 @@ void IO::Rmdir(const Path &name)
 	{
 		throw ExceptionIO(_("Cannot open directory: ") + StringUTF8(lname));
 	}
-	AtScopeExit(std::bind(closedir, d));
+	AtScopeExit([d](){ closedir(d); });
 	struct dirent* diren=readdir(d);
 	while(diren)
 	{

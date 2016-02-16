@@ -1217,7 +1217,11 @@ SImageGradient Block::GetGradient(bool create, double sigma, size_t diffusemaxit
 	if (get_srcGradient())
 	{
 		// warning all arguments are ignored!
+#ifdef _MSC_VER
+		//buffGradient = std::make_shared<ImageGradient>(*get_srcGradient(), bbox); // XXX fait planter VS2015up1 - TODO test with VS2015 CTP2
+#else
 		buffGradient = std::make_shared<ImageGradient>(*get_srcGradient(), bbox);
+#endif
 		buffGradient->SetMinModule(get_srcGradient()->GetMinModule());
 		return buffGradient;
 	}
@@ -1260,7 +1264,11 @@ SImageGradient Block::GetGradient(bool create, double sigma, size_t diffusemaxit
 		b.Translate(-gpar.lock()->GetAbsoluteBBox().GetLeft(),
 				-gpar.lock()->GetAbsoluteBBox().GetTop());
 		SImageGradient topgrad(gpar.lock()->GetGradient(true, sigma, diffusemaxiter, diffusemaxdiv));
+#ifdef _MSC_VER
+		//buffGradient = std::make_shared<ImageGradient>(*topgrad, b); // XXX fait planter VS2015up1 - TODO test with VS2015 CTP2
+#else
 		buffGradient = std::make_shared<ImageGradient>(*topgrad, b);
+#endif
 		buffGradient->SetMinModule(topgrad->GetMinModule());
 
 		return buffGradient;
@@ -1286,7 +1294,11 @@ SImageGradient Block::GetGradient(bool create, double sigma, size_t diffusemaxit
 		r.SetTop((int)offsety);
 		r.SetRight((int)(offsetx + bbox.GetWidth() - 1));
 		r.SetBottom((int)(offsety + bbox.GetHeight() - 1));
+#ifdef _MSC_VER
+		//buffGradient = std::make_shared<ImageGradient>(tmpGradient, r); // XXX fait planter VS2015up1 - TODO test with VS2015 CTP2
+#else
 		buffGradient = std::make_shared<ImageGradient>(tmpGradient, r);
+#endif
 		buffGradient->SetMinModule(tmpGradient.GetMinModule());
 
 		return buffGradient;

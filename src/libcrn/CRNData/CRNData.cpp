@@ -21,6 +21,7 @@
 
 #include <CRNData/CRNData.h>
 #include <CRNi18n.h>
+#include <array>
 
 using namespace crn;
 

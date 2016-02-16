@@ -192,7 +192,7 @@ namespace crn
 namespace std
 {
 	/*! \brief Swaps two strings */
-	template<> inline void swap<crn::Path>(crn::Path &p1, crn::Path &p2) noexcept { p1.Swap(p2); }
+	inline void swap(crn::Path &p1, crn::Path &p2) noexcept { p1.Swap(p2); }
 
 	template<> struct hash<crn::Path>
 	{

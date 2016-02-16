@@ -26,8 +26,11 @@
 #include <CRNException.h>
 #include <CRNIO/CRNIO.h>
 #include <CRNi18n.h>
-
-#include <unistd.h>
+#ifdef _MSC_VER
+#	include <direct.h> // for getcwd
+#else
+#	include <unistd.h>
+#endif
 
 using namespace crn;
 

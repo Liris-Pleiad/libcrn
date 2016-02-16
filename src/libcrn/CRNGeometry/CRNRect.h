@@ -754,6 +754,14 @@ namespace crn
 		inline iterator Begin() const { return iterator(*this); } 
 		/*! \brief Returns an iterator after the last point of the rectangle */
 		inline iterator End() const { return iterator(); } 
+		/*! \brief Returns an iterator to the first point of the rectangle */
+		inline iterator begin() const { return iterator(*this); } // XXX Yann
+		/*! \brief Returns an iterator after the last point of the rectangle */
+		inline iterator end() const { return iterator(); } 
+		/*! \brief Returns an iterator to the first point of the rectangle */
+		inline iterator cbegin() const { return iterator(*this); } 
+		/*! \brief Returns an iterator after the last point of the rectangle */
+		inline iterator cend() const { return iterator(); } 
 
 			/*! \brief Spiral iterator for a Rect
 			 *
@@ -815,10 +823,10 @@ namespace crn
 
 }
 
-CRN_ADD_RANGED_FOR_BEGIN(crn::Rect, Begin)
-CRN_ADD_RANGED_FOR_END(crn::Rect, End)
-CRN_ADD_RANGED_FOR_CONST_BEGIN(crn::Rect, Begin)
-CRN_ADD_RANGED_FOR_CONST_END(crn::Rect, End)
+//CRN_ADD_RANGED_FOR_BEGIN(crn::Rect, Begin)
+//CRN_ADD_RANGED_FOR_END(crn::Rect, End)
+//CRN_ADD_RANGED_FOR_CONST_BEGIN(crn::Rect, Begin)
+//CRN_ADD_RANGED_FOR_CONST_END(crn::Rect, End)
 
 #endif
 

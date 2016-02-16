@@ -49,7 +49,7 @@ ComplexObject::~ComplexObject()
 }
 
 ComplexObject::ComplexObject(ComplexObject&&) noexcept = default;
-ComplexObject& ComplexObject::operator=(ComplexObject&&c) noexcept = default;
+ComplexObject& ComplexObject::operator=(ComplexObject&&c) = default;
 
 /*****************************************************************************/
 /*!

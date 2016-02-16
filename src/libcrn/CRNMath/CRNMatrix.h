@@ -836,7 +836,7 @@ namespace crn
 	template<typename T> Matrix<T> operator*(Matrix<T> &&m1, const Matrix<T> &m2)
 	{ return std::move(m1 *= m2); }
 
-	template<> template<typename I> struct TypeInfo<Matrix<I>>
+	template<typename I> struct TypeInfo<Matrix<I>>
 	{
 		using SumType = Matrix<typename TypeInfo<I>::SumType>;
 		using DiffType = Matrix<typename TypeInfo<I>::DiffType>;

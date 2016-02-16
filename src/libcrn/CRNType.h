@@ -25,6 +25,12 @@
 #include <iterator>
 #include <type_traits>
 
+#if __APPLE__
+#	if	defined(__clang__) && (__clang_major__ < 7)
+#		define int64_t __int64_t
+#	endif
+#endif
+
 namespace crn
 {
 	/*! \addtogroup base */
@@ -94,13 +100,12 @@ namespace crn
 	/*! \brief Creates a range ]]cont.size(), 0]]
 	 * \param[in]	cont	a container that define a method size()
 	 */
-	template<typename T> inline ScalarRange<int64_t> ReverseRange(const T &cont)
+	template<typename T> inline ScalarRange<int64_t> ReverseRange(const T &cont) // MT : Apple LLVM version 6.0 (clang-600.0.56)
 	{ return ScalarRange<int64_t>(int64_t(Size(cont)) - 1, int64_t(-1)); }
 
 	/*@}*/
 }
 
-#include <type_traits>
 #define CRN_DECLARE_ENUM_OPERATORS(Type) \
 	constexpr Type operator|(Type e1, Type e2) noexcept\
 	{\

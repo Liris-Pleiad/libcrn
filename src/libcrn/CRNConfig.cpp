@@ -64,17 +64,17 @@ Config::Config():
 	else
 		CRNdout << "libcrn locale = " << loc << std::endl;
 	
-	loc = bindtextdomain(GETTEXT_PACKAGE, conf.GetPath(localeDirKey()).CStr());
+	loc = CRNbindtextdomain(GETTEXT_PACKAGE, conf.GetPath(localeDirKey()).CStr());
 	if (!loc)
 		CRNdout << "libcrn: no bound path. should be " << conf.GetPath(localeDirKey()).CStr() << std::endl;
 	else
 		CRNdout << "libcrn: path set to " << loc << std::endl;
-	loc = bind_textdomain_codeset(GETTEXT_PACKAGE, "UTF-8");
+	loc = CRNbind_textdomain_codeset(GETTEXT_PACKAGE, "UTF-8");
 	if (!loc)
 		CRNdout << "libcrn: no bound codeset. should be UTF-8" << std::endl;
 	else
 		CRNdout << "libcrn: Codeset = " << loc << std::endl;
-	loc = textdomain(GETTEXT_PACKAGE);
+	loc = CRNtextdomain(GETTEXT_PACKAGE);
 	if (!loc)
 		CRNdout << "libcrn textdomain failed" << std::endl;
 	else

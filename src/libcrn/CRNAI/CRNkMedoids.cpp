@@ -22,6 +22,7 @@
 #include <CRNAI/CRNkMedoids.h>
 #include <CRNMath/CRNMath.h>
 #include <algorithm>
+#include <numeric> // for accumulate
 
 using namespace crn;
 using namespace kmedoids;

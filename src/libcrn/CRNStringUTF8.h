@@ -291,7 +291,7 @@ namespace crn
 namespace std
 {
 	/*! \brief Swaps two strings */
-	template<> inline void swap<crn::StringUTF8>(crn::StringUTF8 &s1, crn::StringUTF8 &s2) noexcept { s1.Swap(s2); }
+	inline void swap(crn::StringUTF8 &s1, crn::StringUTF8 &s2) noexcept { s1.Swap(s2); }
 
 	template<> struct hash<crn::StringUTF8>
 	{

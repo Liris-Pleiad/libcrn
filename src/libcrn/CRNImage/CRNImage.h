@@ -179,6 +179,12 @@ namespace crn
 			typename std::vector<pixel_type>::const_iterator Begin() const { return pixels.begin(); }
 			typename std::vector<pixel_type>::iterator End() { return pixels.end(); }
 			typename std::vector<pixel_type>::const_iterator End() const { return pixels.end(); }
+			typename std::vector<pixel_type>::iterator begin() { return pixels.begin(); } // XXX Yann
+			typename std::vector<pixel_type>::const_iterator begin() const { return pixels.begin(); }
+			typename std::vector<pixel_type>::iterator end() { return pixels.end(); }
+			typename std::vector<pixel_type>::const_iterator end() const { return pixels.end(); }
+			typename std::vector<pixel_type>::const_iterator cbegin() const { return pixels.begin(); }
+			typename std::vector<pixel_type>::const_iterator cend() const { return pixels.end(); }
 
 			/*! \brief Gets a pointer to the pixels */
 			inline typename std::vector<pixel_type>::pointer GetPixels() noexcept { return pixels.data(); }
@@ -268,7 +274,7 @@ namespace crn
 	template<typename T> bool IsBitonal(const Image<T> &img);
 
 	/*! \brief Returns min and max pixel values */
-	template<typename T, typename CMP = std::less<T>> std::pair<T, T> MinMax(const Image<T> &img, CMP cmp = std::less<T>{});
+	template<typename T, typename CMP = std::less<T>> std::pair<T, T> MinMax(const Image<T> &img, CMP cmp = CMP{});
 
 	/*! \brief Estimates the ideal crop for the image */
 	template<typename T> Rect AutoCrop(const Image<T> &img, const T &bgval);
@@ -307,7 +313,7 @@ namespace crn
 	/*@}*/
 
 } // namespace crn
-
+/*
 namespace std
 {
 	template<typename T> inline auto begin(crn::Image<T> &img) -> decltype (img.Begin()) { return img.Begin(); }
@@ -316,7 +322,7 @@ namespace std
 	template<typename T> inline auto end(const crn::Image<T> &img) -> decltype (img.End()) { return img.End(); }
 	template<typename T> inline void swap(crn::Image<T> &i1, crn::Image<T> &i2) { i1.Swap(i2); }
 }
-
+*/
 #include <CRNImage/CRNImageFormats.h>
 
 namespace crn

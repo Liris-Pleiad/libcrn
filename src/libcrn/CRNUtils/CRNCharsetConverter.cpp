@@ -127,7 +127,11 @@ std::string CharsetConverter::fromUTF8(const StringUTF8 &str, size_t buff, Statu
 	size_t outs = buff;
 	std::vector<char> ret(outs, '\0');
 	char *out = &ret.front();
+#ifdef _MSC_VER
+	size_t ans = iconv(fromutf, (const char**)&in, &ins, &out, &outs);
+#else
 	size_t ans = iconv(fromutf, (char**)&in, &ins, &out, &outs);
+#endif
 	if (outs == 0)
 		return fromUTF8(str, buff * 2, stat);
 	if (ans == (size_t)(-1))
@@ -188,7 +192,11 @@ StringUTF8 CharsetConverter::toUTF8(const std::string &str, size_t buff, Status 
 	size_t outs = buff;
 	std::vector<char> ret(outs, '\0');
 	char *out = &ret.front();
+#ifdef _MSC_VER
+	size_t ans = iconv(toutf, (const char**)&in, &ins, &out, &outs);
+#else
 	size_t ans = iconv(toutf, (char**)&in, &ins, &out, &outs);
+#endif
 	if (outs == 0)
 		return toUTF8(str, buff * 2, stat);
 	if (ans == (size_t)(-1))

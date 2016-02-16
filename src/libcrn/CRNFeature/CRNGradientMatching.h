@@ -46,9 +46,9 @@ namespace crn
 		ImageBW mask;
 		ImageBW dmask;
 		int xbar, ybar;
-	};
 
-	double Distance(const GradientModel &img1, const GradientModel &img2, size_t window) noexcept;
+		static double Distance(const GradientModel &img1, const GradientModel &img2, size_t window) noexcept;
+	};
 }
 
 #endif

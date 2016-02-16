@@ -23,6 +23,7 @@
 #include <CRNMath/CRNSquareMatrixDouble.h>
 #include <CRNStringUTF8.h>
 #include <CRNi18n.h>
+#include <numeric> // for accumulate
 
 using namespace crn;
 

@@ -25,6 +25,7 @@
 #include <CRN.h>
 #include <CRNException.h>
 #include <cmath>
+#include <vector>
 
 /*! \defgroup math Maths */
 namespace crn

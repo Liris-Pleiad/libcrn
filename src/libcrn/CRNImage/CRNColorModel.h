@@ -23,6 +23,7 @@
 #define CRNCOLORMODEL_HEADER
 
 #include <CRNImage/CRNImageFormats.h>
+#include <vector>
 
 namespace crn
 {
