@@ -1265,7 +1265,7 @@ SImageGradient Block::GetGradient(bool create, double sigma, size_t diffusemaxit
 				-gpar.lock()->GetAbsoluteBBox().GetTop());
 		SImageGradient topgrad(gpar.lock()->GetGradient(true, sigma, diffusemaxiter, diffusemaxdiv));
 #ifdef _MSC_VER
-		//buffGradient = std::make_shared<ImageGradient>(*topgrad, b); // XXX fait planter VS2015up1 - TODO test with VS2015 CTP2
+		buffGradient = std::make_shared<ImageGradient>(*topgrad, b); // XXX fait planter VS2015up1 - TODO test with VS2015 CTP2
 #else
 		buffGradient = std::make_shared<ImageGradient>(*topgrad, b);
 #endif

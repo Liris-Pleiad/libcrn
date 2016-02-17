@@ -28,6 +28,7 @@
 #include <CRNi18n.h>
 #ifdef _MSC_VER
 #	include <direct.h> // for getcwd
+#	define getcwd _getcwd
 #else
 #	include <unistd.h>
 #endif
