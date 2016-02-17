@@ -6,7 +6,6 @@ os:
 
 sudo: required # need by trusty
 dist: trusty
-osx_image: xcode7.2 # if commented we have 'only' Apple LLVM version 6.0
 
 compiler:
   - gcc
@@ -18,15 +17,14 @@ env:
   - BTYPE="-DCMAKE_BUILD_TYPE=Debug"
   - BTYPE="-DCMAKE_BUILD_TYPE=Release"
 
-#---------------------------------------------------------------
-# matrix details:
+#-------------------------------------------------------------------
+# matrix details :
 #
-#   - 2x gcc    under Linux trusty          (debug and release)
-#   - 2x clang  under Linux trusty          (debug and release)
+#   - 2x gcc    under Linux trusty 14.04 LTS    (debug and release)
+#   - 2x clang  under Linux trusty 14.04 LTS    (debug and release)
 #
-#   - 2x clang  under OS X with Apple LLVM  (debug and release)
-#
-#---------------------------------------------------------------
+#   - 2x clang  under OS X with Apple LLVM      (debug and release)
+#-------------------------------------------------------------------
 matrix:
   fast_finish: true
   exclude:
@@ -36,11 +34,12 @@ matrix:
 addons:
   apt:
     packages:
+      - doxygen
       - graphviz
 
 before install:
-  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew update          ; fi
-  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install graphviz; fi
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew update; fi
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install doxygen graphviz; fi
   - cmake --version
 
 script:
