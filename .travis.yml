@@ -4,9 +4,27 @@ os:
   - linux
   - osx
 
+sudo: required
+dist: trusty
+
 compiler:
   - gcc
   - clang
+
+cache: apt # this feature is available only for private repositories
+
+env:
+  - BTYPE="-DCMAKE_BUILD_TYPE=Debug"
+  - BTYPE="-DCMAKE_BUILD_TYPE=Release"
+
+matrix:
+  fast_finish: true
+  include:
+    - os: osx
+      osx_image: xcode7.2
+  exclude:
+    - os: osx
+      compiler: gcc
 
 addons:
   apt:
@@ -16,8 +34,9 @@ addons:
 before install:
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew update          ; fi
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install graphviz; fi
+  - cmake --version
 
 script:
-  - mkdir build && cd build && cmake ..
+  - mkdir build && cd build && cmake .. $BTYPE
   - make
 #  - make test

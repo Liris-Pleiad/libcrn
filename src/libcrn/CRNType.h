@@ -27,7 +27,7 @@
 
 #if __APPLE__
 #	if	defined(__clang__) && (__clang_major__ < 7)
-#		define int64_t __int64_t
+#		define int64_t __int64_t // MT : for Apple LLVM version 6.0 (clang-600.0.56)
 #	endif
 #endif
 
@@ -100,7 +100,7 @@ namespace crn
 	/*! \brief Creates a range ]]cont.size(), 0]]
 	 * \param[in]	cont	a container that define a method size()
 	 */
-	template<typename T> inline ScalarRange<int64_t> ReverseRange(const T &cont) // MT : Apple LLVM version 6.0 (clang-600.0.56)
+	template<typename T> inline ScalarRange<int64_t> ReverseRange(const T &cont)
 	{ return ScalarRange<int64_t>(int64_t(Size(cont)) - 1, int64_t(-1)); }
 
 	/*@}*/
