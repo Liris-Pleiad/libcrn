@@ -39,12 +39,32 @@ namespace crn
 	class ImageGradient : public Image<pixel::Polar2D<unsigned int, Angle<ByteAngle>>>
 	{
 		public:
+#ifdef _MSC_VER
+			/*! \brief Default constructor */
+			ImageGradient(): Image<pixel::Polar2D<unsigned int, Angle<ByteAngle>>>() {}
+			/*! \brief Constructor */
+			ImageGradient(size_t w, size_t h, pixel_type val = pixel_type(0)) :
+				Image<pixel::Polar2D<unsigned int, Angle<ByteAngle>>>(w, h, val) {}
+			/*! \brief Constructor from data */
+			ImageGradient(size_t w, size_t h, const pixel_type *data):
+				Image<pixel::Polar2D<unsigned int, Angle<ByteAngle>>>(w, h, data) {}
+			/*! \brief Copy constructor */
+			template<typename Y> explicit ImageGradient(const Image<Y> &img) :
+				Image<pixel::Polar2D<unsigned int, Angle<ByteAngle>>>(img) {}
+			/*! \brief Crop constructor */
+			template<typename Y> ImageGradient(const Image<Y> &img, const Rect &bbox) :
+				Image<pixel::Polar2D<unsigned int, Angle<ByteAngle>>>(img, bbox) {}
+#else
 			using Image<pixel::Polar2D<unsigned int, Angle<ByteAngle>>>::Image;
+#endif
+
 			ImageGradient(const ImageGradient&) = default;
 			ImageGradient(ImageGradient&&) = default;
 
 			ImageGradient& operator=(const ImageGradient&) = default;
 			ImageGradient& operator=(ImageGradient&&) = default;
+
+			virtual ~ImageGradient() override {}
 
 			virtual UObject Clone() const override { return std::make_unique<ImageGradient>(*this); }
 
