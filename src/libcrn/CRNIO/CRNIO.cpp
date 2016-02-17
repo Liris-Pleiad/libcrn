@@ -31,6 +31,7 @@
 #ifdef _MSC_VER
 #	include "./3rdParty/_msvc_only_/dirent.hh"
 #	include <direct.h> // for mkdir & rmdir
+#	define access _access
 #else
 #	include <dirent.h>
 #	include <unistd.h>
@@ -139,7 +140,7 @@ void IO::Mkdir(const Path &name)
 #if defined(CRN_PF_WIN32)
 	Path winname(name);
 	winname.ToWindows();
-	res = mkdir(winname.CStr());
+	res = _mkdir(winname.CStr());
 #else
 	Path unixname(name);
 	unixname.ToUnix();
@@ -241,7 +242,7 @@ void IO::Rmdir(const Path &name)
 	}
 	int ret;
 #ifdef CRN_PF_WIN32
-	ret = rmdir(lname.CStr());
+	ret = _rmdir(lname.CStr());
 #else
 	ret = remove(lname.CStr());
 #endif

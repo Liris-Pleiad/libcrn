@@ -4,8 +4,9 @@ os:
   - linux
   - osx
 
-sudo: required
+sudo: required # need by trusty
 dist: trusty
+osx_image: xcode7.2 # if commented we have 'only' Apple LLVM version 6.0
 
 compiler:
   - gcc
@@ -17,11 +18,17 @@ env:
   - BTYPE="-DCMAKE_BUILD_TYPE=Debug"
   - BTYPE="-DCMAKE_BUILD_TYPE=Release"
 
+#---------------------------------------------------------------
+# matrix details:
+#
+#   - 2x gcc    under Linux trusty          (debug and release)
+#   - 2x clang  under Linux trusty          (debug and release)
+#
+#   - 2x clang  under OS X with Apple LLVM  (debug and release)
+#
+#---------------------------------------------------------------
 matrix:
   fast_finish: true
-  include:
-    - os: osx
-      osx_image: xcode7.2
   exclude:
     - os: osx
       compiler: gcc

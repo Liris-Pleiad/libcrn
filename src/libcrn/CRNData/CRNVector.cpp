@@ -353,13 +353,10 @@ void Vector::deserialize(xml::Element &el)
 		{
 			d = DataFactory::CreateData(te);
 		}
-		catch (crn::Exception &ex)
-		{
-			//CRNVerbose(ex.GetMessage());
-			//CRNVerbose(ex.GetContext());
-			// XXX throw?
+		catch (crn::Exception &)
+		{	// XXX throw?
 			CRNWarning(String(U"bool Vector::deserialize"
-						U"(xml::Element éel): ") + String(_("Unknown XML element: ")) +
+						U"(xml::Element &el): ") + String(_("Unknown XML element: ")) +
 					te.GetValue());
 		}
 		if (!d)
