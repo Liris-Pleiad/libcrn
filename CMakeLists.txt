@@ -4,6 +4,12 @@
 cmake_minimum_required(VERSION 2.8.9)
 set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake")
 
+if (COMMAND cmake_policy)
+	if(POLICY CMP0042)
+		cmake_policy(SET CMP0042 NEW) # https://cmake.org/cmake/help/v3.0/policy/CMP0042.html
+	endif(POLICY CMP0042)
+endif (COMMAND cmake_policy)
+
 set(DOC_DIR ${CMAKE_CURRENT_BINARY_DIR}/doc)
 
 # project configuration
@@ -88,6 +94,12 @@ if(MSVC)
 	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /MP")
 endif()
 #------------------------------------------------------------------------------
+# APPLE OS X
+#------------------------------------------------------------------------------
+if(APPLE)
+	set(CMAKE_MACOSX_RPATH ON) # see cmake POLICY CMP0042
+endif(APPLE)
+#------------------------------------------------------------------------------
 
 # Find Iconv
 find_package(Iconv)
@@ -132,4 +144,3 @@ if(ANDROID)
 	include("cmake/Apk.cmake" REQUIRED)
 	android_create_apk(${PRJ_NAME} "${CMAKE_BINARY_DIR}/apk" "${APP_SHARED_LIBRARIES}" "" "Data")
 endif(ANDROID)
-

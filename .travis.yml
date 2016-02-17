@@ -8,16 +8,36 @@ compiler:
   - gcc
   - clang
 
+cache: apt # this feature is available only for private repositories
+
+env:
+  - BTYPE="-DCMAKE_BUILD_TYPE=Debug"
+  - BTYPE="-DCMAKE_BUILD_TYPE=Release"
+
+matrix:
+  fast_finish: true 
+#  exclude:
+#    - os: osx
+#      compiler: gcc
+
 addons:
   apt:
+    sources:
+#      - ubuntu-toolchain-r-test # to get gcc-4.8
+      - george-edison55-precise-backports # to get cmake 3.x
     packages:
+      - cmake-data
+      - cmake
+#      - gcc-4.8
+#      - g++-4.8
       - graphviz
 
 before install:
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew update          ; fi
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install graphviz; fi
+  - cmake --version
 
 script:
-  - mkdir build && cd build && cmake ..
+  - mkdir build && cd build && cmake .. -DCMAKE_CXX_COMPILER=$(which $CXX) $BTYPE
   - make
 #  - make test
