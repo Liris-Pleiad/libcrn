@@ -16,18 +16,18 @@ env:
 
 matrix:
   fast_finish: true 
-#  exclude:
-#    - os: osx
-#      compiler: gcc
+  exclude:
+    - os: osx
+      compiler: gcc
 
 addons:
   apt:
     sources:
 #      - ubuntu-toolchain-r-test # to get gcc-4.8
-      - george-edison55-precise-backports # to get cmake 3.x
+#      - george-edison55-precise-backports # to get cmake 3.x
     packages:
-      - cmake-data
-      - cmake
+#      - cmake-data
+#      - cmake
 #      - gcc-4.8
 #      - g++-4.8
       - graphviz
@@ -38,6 +38,6 @@ before install:
   - cmake --version
 
 script:
-  - mkdir build && cd build && cmake .. -DCMAKE_CXX_COMPILER=$(which $CXX) $BTYPE
+  - mkdir build && cd build && cmake .. $BTYPE
   - make
 #  - make test
