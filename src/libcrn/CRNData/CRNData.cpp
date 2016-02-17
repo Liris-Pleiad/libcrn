@@ -180,7 +180,7 @@ std::vector<uint8_t> crn::Data::ASCII85Decode(const StringUTF8 &s)
 			if (count == 5)
 			{
 				for (auto i : crn::Range(block))
-					block[i] = uint8_t(_tuple >> 24 - (int(i) * 8));
+					block[i] = uint8_t(_tuple >> (24 - (int(i) * 8))); // TODO Check if it is uint8_t((_tuple >> 24) - (int(i) * 8));
 				data.insert(data.end(), block.begin(), block.end());
 				_tuple = 0;
 				count = 0;
@@ -195,7 +195,7 @@ std::vector<uint8_t> crn::Data::ASCII85Decode(const StringUTF8 &s)
 		count -= 1;
 		_tuple += pow85[count];
 		for (auto i = 0; i < count; ++i)
-			block[i] = uint8_t(_tuple >> 24 - (i * 8));
+			block[i] = uint8_t(_tuple >> (24 - (i * 8))); // TODO Check if it is uint8_t((_tuple >> 24) - (int(i) * 8));
 		data.insert(data.end(), block.begin(), block.begin() + count);
 	}
 	return data;

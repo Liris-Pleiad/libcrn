@@ -2603,7 +2603,7 @@ Block::masked_pixel_iterator Block::MaskedPixelBegin(const String &tree, size_t 
 		throw ExceptionInvalidArgument(StringUTF8("Block::masked_pixel_iterator Block::MaskedPixelBegin(const String &tree, size_t num, pixel::BW mask_value): ") +
 				_("tree not found."));
 	SVector v = std::static_pointer_cast<Vector>(child->Get(tree));
-	if ((num < 0) || (num >= v->Size()))
+	if (num >= v->Size())
 		throw ExceptionDomain(StringUTF8("Block::masked_pixel_iterator Block::MaskedPixelBegin(const String &tree, size_t num, pixel::BW mask_value): ") +
 				_("index out of bounds."));
 	SBlock b(std::static_pointer_cast<Block>(v->At(num)));

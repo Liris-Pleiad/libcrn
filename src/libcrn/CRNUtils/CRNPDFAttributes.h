@@ -62,8 +62,8 @@ namespace crn
 				bool copyable; /*!< Can the document be copy-pasted? (needs owner_password to be set) */
 
 			private:
-				void deserialize(xml::Element &el);
-				xml::Element serialize(xml::Element &parent) const;
+				void deserialize(xml::Element &el) override;
+				xml::Element serialize(xml::Element &parent) const override;
 			
 			CRN_DECLARE_CLASS_CONSTRUCTOR(Attributes)
 			CRN_SERIALIZATION_CONSTRUCTOR(Attributes)

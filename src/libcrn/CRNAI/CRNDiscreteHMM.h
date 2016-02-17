@@ -99,7 +99,7 @@ namespace crn
 
 		private:
 			/*! \brief Tests the equality of two models */
-			bool equals(const Object &obj) const;
+			bool equals(const Object &obj) const override;
 			
 			/*! \brief Internal */
 			UMatrixDouble alpha(const MatrixInt& observed) const;

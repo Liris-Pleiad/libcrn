@@ -24,7 +24,7 @@
 
 #include <CRNString.h>
 #include <CRNIO/CRNPath.h>
-#ifdef CRN_PF_WIN32
+#ifdef _MSC_VER
 #	include <io.h>
 #endif
 #include <CRNIO/CRNMessenger.h>
