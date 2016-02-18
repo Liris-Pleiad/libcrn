@@ -1,4 +1,4 @@
-/* Copyright 2006-2015 Yann LEYDIER, CoReNum, INSA-Lyon, Université Paris Descartes
+/* Copyright 2006-2016 Yann LEYDIER, CoReNum, INSA-Lyon, Université Paris Descartes
  * 
  * This file is part of libcrn.
  * 
@@ -87,7 +87,7 @@ namespace crn
 			/*! \brief Removes an element (safe) */
 			void Remove(iterator it);
 			/*! \brief Removes an element (safe) */
-			void Remove(iterator first, iterator end);
+			void Remove(iterator first, iterator end_);
 			/*! \brief Empties the map */
 			void Clear() noexcept { data.clear(); }
 
@@ -95,34 +95,38 @@ namespace crn
 			virtual String ToString() const override;
 
 			/*! \brief Returns an iterator to the first element */
-			iterator Begin() { return data.begin(); }
+			iterator begin() { return data.begin(); }
 			/*! \brief Returns an iterator after the last element */
-			iterator End() { return data.end(); }
+			iterator end() { return data.end(); }
 			/*! \brief Returns an iterator to a specific key */
 			iterator Find(const String &key) { return data.find(key); }
 
 			/*! \brief const_iterator on the contents of the container */
 			using const_iterator = std::map<String, SObject>::const_iterator;
 			/*! \brief Returns a const iterator to the first element */
-			const_iterator Begin() const { return data.begin(); }
+			const_iterator begin() const { return data.begin(); }
 			/*! \brief Returns a const iterator after the last element */
-			const_iterator End() const { return data.end(); }
+			const_iterator end() const { return data.end(); }
+			/*! \brief Returns a const iterator to the first element */
+			const_iterator cbegin() const { return data.cbegin(); }
+			/*! \brief Returns a const iterator after the last element */
+			const_iterator cend() const { return data.cend(); }
 			/*! \brief Returns a const_iterator to a specific key */
 			const_iterator Find(const String &key) const { return data.find(key); }
 
 			/*! \brief reverse_iterator on the contents of the container */
 			using reverse_iterator = std::map<String, SObject>::reverse_iterator;
 			/*! \brief Returns a reverse iterator to the last element */
-			reverse_iterator RBegin() { return data.rbegin(); }
+			reverse_iterator rbegin() { return data.rbegin(); }
 			/*! \brief Returns a reverse iterator before the first element */
-			reverse_iterator REnd() { return data.rend(); }
+			reverse_iterator rend() { return data.rend(); }
 
 			/*! \brief const_reverse_iterator on the contents of the container */
 			using const_reverse_iterator = std::map<String, SObject>::const_reverse_iterator;
 			/*! \brief Returns a const reverse iterator to the last element */
-			const_reverse_iterator RBegin() const { return data.rbegin(); }
+			const_reverse_iterator rbegin() const { return data.rbegin(); }
 			/*! \brief Returns a const reverse iterator before the first element */
-			const_reverse_iterator REnd() const { return data.rend(); }
+			const_reverse_iterator rend() const { return data.rend(); }
 
 			/*! \brief A (key, value) pair */
 			using pair = std::pair<const crn::String, SObject>;
@@ -156,10 +160,8 @@ namespace crn
 
 	inline void swap(Map &m1, Map &m2) noexcept { m1.Swap(m2); }
 }
-CRN_ADD_RANGED_FOR_BEGIN(crn::Map, Begin)
-CRN_ADD_RANGED_FOR_END(crn::Map, End)
-CRN_ADD_RANGED_FOR_CONST_BEGIN(crn::Map, Begin)
-CRN_ADD_RANGED_FOR_CONST_END(crn::Map, End)
+CRN_ADD_RANGED_FOR_TO_POINTERS(crn::Map)
+CRN_ADD_RANGED_FOR_TO_CONST_POINTERS(crn::Map)
 
 namespace std
 {

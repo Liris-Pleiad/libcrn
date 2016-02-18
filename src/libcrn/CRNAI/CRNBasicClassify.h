@@ -1,4 +1,4 @@
-/* Copyright 2008-2014 INSA Lyon, CoReNum
+/* Copyright 2008-2016 INSA Lyon, CoReNum
  * 
  * This file is part of libcrn.
  * 
@@ -113,8 +113,8 @@ namespace crn
 				std::set<ClassifResult> knn;
 				std::set<ClassifResult>::iterator maxneighbor;
 				int classid = 0;
-				for (Map::const_iterator dataclass = database.Begin(); 
-						dataclass != database.End(); ++dataclass)
+				for (Map::const_iterator dataclass = database.begin(); 
+						dataclass != database.end(); ++dataclass)
 				{
 					String label = dataclass->first;
 					SVector samples = std::dynamic_pointer_cast<Vector>(dataclass->second);
@@ -122,8 +122,8 @@ namespace crn
 						throw ExceptionInvalidArgument("ClassifResult BasicClassify::"
 								"kNearestNeighbors(const Object &obj, const Map &database, "
 								"int k): invalid database.");
-					for (Vector::const_iterator sample = samples->Begin();
-							sample != samples->End(); ++sample)
+					for (Vector::const_iterator sample = samples->begin();
+							sample != samples->end(); ++sample)
 					{
 						if (sample->GetClassName() != cid)
 							throw ExceptionRuntime(StringUTF8("ClassifResult BasicClassify::"
@@ -171,8 +171,8 @@ namespace crn
 
 				std::set<ClassifResult> en;
 				int classid = 0;
-				for (Map::const_iterator dataclass = database.Begin(); 
-						dataclass != database.End(); ++dataclass)
+				for (Map::const_iterator dataclass = database.begin(); 
+						dataclass != database.end(); ++dataclass)
 				{
 					String label = dataclass->first;
 					SVector samples = std::dynamic_pointer_cast<Vector>(dataclass->second);
@@ -180,8 +180,8 @@ namespace crn
 						throw ExceptionInvalidArgument("ClassifResult BasicClassify::"
 									"EpsilonNeighbors(const Object &obj, const Map &database, "
 									"double epsilon): invalid database.");
-					for (Vector::const_iterator sample = samples->Begin();
-							sample != samples->End(); ++sample)
+					for (Vector::const_iterator sample = samples->begin();
+							sample != samples->end(); ++sample)
 					{
 						if (sample->GetClassName() != cid)
 							throw ExceptionRuntime(StringUTF8("ClassifResult BasicClassify::"

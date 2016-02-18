@@ -121,7 +121,7 @@ SObject& ConfigurationFile::operator[](const String &key)
 SObject ConfigurationFile::GetData(const String &key)
 {
 	auto it(data->Find(key));
-	if (it != data->End())
+	if (it != data->end())
 		return it->second;
 	else
 		return nullptr;
@@ -134,7 +134,7 @@ SObject ConfigurationFile::GetData(const String &key)
 SCObject ConfigurationFile::GetData(const String &key) const
 {
 	Map::const_iterator it(data->Find(key));
-	if (it != data->End())
+	if (it != data->end())
 		return it->second;
 	else
 		return nullptr;

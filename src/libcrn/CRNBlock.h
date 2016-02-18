@@ -216,13 +216,13 @@ namespace crn
 			/*! \brief Returns a list of children. Can be used with CRN_FOREACH. */
 			SVector GetTree(const String &name)
 			{
-				if (child->Find(name) == child->End()) return nullptr; 
+				if (child->Find(name) == child->end()) return nullptr; 
 				else return std::static_pointer_cast<Vector>(child->Get(name));
 			}
 			/*! \brief Returns a list of children. Can be used with CRN_FOREACH. */
 			SCVector GetTree(const String &name) const
 			{
-				if (child->Find(name) == child->End()) return nullptr; 
+				if (child->Find(name) == child->end()) return nullptr; 
 				else return std::static_pointer_cast<const Vector>(child->Get(name));
 			}
 

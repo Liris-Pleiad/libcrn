@@ -1,4 +1,4 @@
-/* Copyright 2008-2014 INSA Lyon, CoReNum
+/* Copyright 2008-2016 INSA Lyon, CoReNum
  * 
  * This file is part of libcrn.
  * 
@@ -104,7 +104,7 @@ xml::Element Stroke::serialize(xml::Element &parent) const
 {
 	xml::Element el(parent.PushBackElement(GetClassName().CStr()));
 	StringUTF8 pts;
-	for (Vector::const_iterator it = points->Begin(); it != points->End(); ++it)
+	for (Vector::const_iterator it = points->begin(); it != points->end(); ++it)
 	{
 		SCPoint2DInt p(std::static_pointer_cast<const Point2DInt>(*it));
 		pts += p->X;
@@ -271,7 +271,7 @@ SPoint2DInt Stroke::GetPoint(size_t index) const
  */
 double Stroke::GetFirstYAtX(double x) const
 {
-	for (const_iterator it = Begin(); it != End(); ++it)
+	for (const_iterator it = begin(); it != end(); ++it)
 		if (it->X == x)
 			return it->Y;
 	throw ExceptionDomain(StringUTF8("Double Stroke::GetFirstYAtX(double x) const:") + 
@@ -316,7 +316,7 @@ Rect Stroke::GetBBox() const
 UStroke Stroke::MakeIntersection(const Rect &rect) const
 {
 	UStroke s = std::make_unique<Stroke>();
-	for (const_iterator it = Begin(); it != End(); ++it)
+	for (const_iterator it = begin(); it != end(); ++it)
 	{
 		if (rect.Contains((int)it->X, (int)it->Y))
 		{
@@ -337,7 +337,7 @@ UStroke Stroke::MakeFirstIntersection(const Rect &rect) const
 {
 	UStroke s = std::make_unique<Stroke>();
 	bool filling = false;
-	for (const_iterator it = Begin(); it != End(); ++it)
+	for (const_iterator it = begin(); it != end(); ++it)
 	{
 		if (rect.Contains((int)it->X, (int)it->Y))
 		{

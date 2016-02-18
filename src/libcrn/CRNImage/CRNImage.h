@@ -167,7 +167,7 @@ namespace crn
 			template<typename MAT> MAT ToMatrix() const
 			{
 				auto mat = MAT{GetHeight(), GetWidth()};
-				std::copy(Begin(), End(), mat[0]);
+				std::copy(begin(), end(), mat[0]);
 				return mat;
 			}
 
@@ -175,11 +175,7 @@ namespace crn
 			 * Accessors
 			 *************************************************************************************/
 
-			typename std::vector<pixel_type>::iterator Begin() { return pixels.begin(); }
-			typename std::vector<pixel_type>::const_iterator Begin() const { return pixels.begin(); }
-			typename std::vector<pixel_type>::iterator End() { return pixels.end(); }
-			typename std::vector<pixel_type>::const_iterator End() const { return pixels.end(); }
-			typename std::vector<pixel_type>::iterator begin() { return pixels.begin(); } // XXX Yann
+			typename std::vector<pixel_type>::iterator begin() { return pixels.begin(); }
 			typename std::vector<pixel_type>::const_iterator begin() const { return pixels.begin(); }
 			typename std::vector<pixel_type>::iterator end() { return pixels.end(); }
 			typename std::vector<pixel_type>::const_iterator end() const { return pixels.end(); }
@@ -313,16 +309,6 @@ namespace crn
 	/*@}*/
 
 } // namespace crn
-/*
-namespace std
-{
-	template<typename T> inline auto begin(crn::Image<T> &img) -> decltype (img.Begin()) { return img.Begin(); }
-	template<typename T> inline auto end(crn::Image<T> &img) -> decltype (img.End()) { return img.End(); }
-	template<typename T> inline auto begin(const crn::Image<T> &img) -> decltype (img.Begin()) { return img.Begin(); }
-	template<typename T> inline auto end(const crn::Image<T> &img) -> decltype (img.End()) { return img.End(); }
-	template<typename T> inline void swap(crn::Image<T> &i1, crn::Image<T> &i2) { i1.Swap(i2); }
-}
-*/
 #include <CRNImage/CRNImageFormats.h>
 
 namespace crn

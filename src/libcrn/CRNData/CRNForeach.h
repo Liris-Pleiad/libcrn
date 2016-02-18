@@ -1,4 +1,4 @@
-/* Copyright 2009-2015 INSA Lyon, CoReNum
+/* Copyright 2009-2016 INSA Lyon, CoReNum
  * 
  * This file is part of libcrn.
  * 
@@ -28,60 +28,32 @@
  * \ingroup data */
 /*@{*/
 
-/*! \brief Registers a container's "begin" method
+/*! \brief	Enables ranged for for smart pointers on a type
  * 
- * Registers a container's "begin" method. Must be call out all of namespaces.
+ * Enables ranged for for smart pointers on a type. Must be call out all of namespaces.
  * 
  * \param[in]	TYPE	the container's type with full namespace scope
- * \param[in]	METHOD	the name of the "begin" method, without parenthesis.
  */
-#define CRN_ADD_RANGED_FOR_BEGIN(TYPE, METHOD) \
+#define CRN_ADD_RANGED_FOR_TO_POINTERS(TYPE) \
 	namespace std { \
-		inline auto begin(TYPE& v) -> decltype (v.METHOD()) { return v.METHOD(); } \
-		inline auto begin(const std::unique_ptr<TYPE> &v) -> decltype (v->METHOD()) { return v->METHOD(); } \
-		inline auto begin(const std::shared_ptr<TYPE> &v) -> decltype (v->METHOD()) { return v->METHOD(); } \
+		inline auto begin(const std::unique_ptr<TYPE> &v) -> decltype (v->begin()) { return v->begin(); } \
+		inline auto begin(const std::shared_ptr<TYPE> &v) -> decltype (v->begin()) { return v->begin(); } \
+		inline auto end(const std::unique_ptr<TYPE> &v) -> decltype (v->end()) { return v->end(); } \
+		inline auto end(const std::shared_ptr<TYPE> &v) -> decltype (v->end()) { return v->end(); } \
 		}
 
-/*! \brief Registers a container's "end" method
+/*! \brief	Enables ranged for for smart pointers on a type
  * 
- * Registers a container's "end" method. Must be call out all of namespaces.
- * 
- * \param[in]	TYPE	the container's type with full namespace scope
- * \param[in]	METHOD	the name of the "end" method, without parenthesis.
- */
-#define CRN_ADD_RANGED_FOR_END(TYPE, METHOD) \
-	namespace std { \
-		inline auto end(TYPE& v) -> decltype (v.METHOD()) { return v.METHOD(); } \
-		inline auto end(const std::unique_ptr<TYPE> &v) -> decltype (v->METHOD()) { return v->METHOD(); } \
-		inline auto end(const std::shared_ptr<TYPE> &v) -> decltype (v->METHOD()) { return v->METHOD(); } \
-		}
-
-/*! \brief Registers a container's const "begin" method
- * 
- * Registers a container's const "begin" method. Must be call out all of namespaces.
+ * Enables ranged for for smart pointers on a type. Must be call out all of namespaces.
  * 
  * \param[in]	TYPE	the container's type with full namespace scope
- * \param[in]	METHOD	the name of the "begin" method, without parenthesis.
  */
-#define CRN_ADD_RANGED_FOR_CONST_BEGIN(TYPE, METHOD) \
+#define CRN_ADD_RANGED_FOR_TO_CONST_POINTERS(TYPE) \
 	namespace std { \
-		inline auto begin(const TYPE& v) -> decltype (v.METHOD()) { return v.METHOD(); } \
-		inline auto begin(const std::unique_ptr<const TYPE> &v) -> decltype (v->METHOD()) { return v->METHOD(); } \
-		inline auto begin(const std::shared_ptr<const TYPE> &v) -> decltype (v->METHOD()) { return v->METHOD(); } \
-		}
-
-/*! \brief Registers a container's const "end" method
- * 
- * Registers a container's const "end" method. Must be call out all of namespaces.
- * 
- * \param[in]	TYPE	the container's type with full namespace scope
- * \param[in]	METHOD	the name of the "end" method, without parenthesis.
- */
-#define CRN_ADD_RANGED_FOR_CONST_END(TYPE, METHOD) \
-	namespace std { \
-		inline auto end(const TYPE& v) -> decltype (v.METHOD()) { return v.METHOD(); } \
-		inline auto end(const std::unique_ptr<const TYPE> &v) -> decltype (v->METHOD()) { return v->METHOD(); } \
-		inline auto end(const std::shared_ptr<const TYPE> &v) -> decltype (v->METHOD()) { return v->METHOD(); } \
+		inline auto begin(const std::unique_ptr<const TYPE> &v) -> decltype (v->cbegin()) { return v->cbegin(); } \
+		inline auto begin(const std::shared_ptr<const TYPE> &v) -> decltype (v->cbegin()) { return v->cbegin(); } \
+		inline auto end(const std::unique_ptr<const TYPE> &v) -> decltype (v->cend()) { return v->cend(); } \
+		inline auto end(const std::shared_ptr<const TYPE> &v) -> decltype (v->cend()) { return v->cend(); } \
 		}
 
 /*@}*/

@@ -1,4 +1,4 @@
-/* Copyright 2008-2014 INSA Lyon, CoReNum, INSA-Lyon
+/* Copyright 2008-2016 INSA Lyon, CoReNum, INSA-Lyon
  * 
  * This file is part of libcrn.
  * 
@@ -56,7 +56,7 @@ void kMeansClassifier::SetModel(const SCVector &newmodel)
 	if (newmodel->GetClassName() == U"Vector")
 	{
 		SCVector model(std::static_pointer_cast<const Vector>(newmodel));
-		if (classifier.AddPrototypes(model->Begin(), model->End()) != model->Size())
+		if (classifier.AddPrototypes(model->begin(), model->end()) != model->Size())
 			throw ExceptionDomain(_("Some samples were not added."));
 	}
 	else
@@ -76,7 +76,7 @@ void kMeansClassifier::UpdateModel(const SCVector &data)
 {
 	classifier.ClearSamples();
 	SCVector neighbors(std::static_pointer_cast<const Vector>(data));
-	if (classifier.AddSamples(neighbors->Begin(), neighbors->End()) != neighbors->Size())
+	if (classifier.AddSamples(neighbors->begin(), neighbors->end()) != neighbors->Size())
 		throw ExceptionDomain(_("Some samples were not added."));
 
 	classifier.Run();

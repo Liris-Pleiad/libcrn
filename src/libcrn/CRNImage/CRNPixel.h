@@ -1,4 +1,4 @@
-/* Copyright 2015 INSA-Lyon
+/* Copyright 2015-2016 INSA-Lyon
  * 
  * This file is part of libcrn.
  * 
@@ -50,6 +50,8 @@ namespace crn
 		struct HSV;
 		struct XYZ;
 		struct YUV;
+		struct Lab;
+		struct Luv;
 		template<typename T> struct RGB
 		{
 			using type = T;
@@ -59,6 +61,9 @@ namespace crn
 			template<typename Y> constexpr RGB(const RGB<Y> &p) noexcept: r(T(p.r)), g(T(p.g)), b(T(p.b)) {}
 			RGB(const HSV &val) noexcept;
 			RGB(const XYZ &p) noexcept;
+			RGB(const YUV &p) noexcept;
+			RGB(const Lab &p) noexcept;
+			RGB(const Luv &p) noexcept;
 
 			// bitwise sort
 			inline bool operator<(const RGB &other) const noexcept
@@ -463,37 +468,36 @@ namespace crn
 			XYZ(const Lab &p);
 			XYZ(const Luv &p);
 
-			operator RGB<uint8_t>() const
-			{
-				auto var_X = x / 100;
-				auto var_Y = y / 100;
-				auto var_Z = z / 100;
-
-				auto var_R = var_X *  3.2406 + var_Y * -1.5372 + var_Z * -0.4986;
-				auto var_G = var_X * -0.9689 + var_Y *  1.8758 + var_Z *  0.0415;
-				auto var_B = var_X *  0.0557 + var_Y * -0.2040 + var_Z *  1.0570;
-
-				if (var_R > 0.0031308) 
-					var_R = 1.055 * pow(var_R, 1 / 2.4) - 0.055;
-				else
-					var_R *= 12.92;
-				if (var_G > 0.0031308) 
-					var_G = 1.055 * pow(var_G, 1 / 2.4) - 0.055;
-				else
-					var_G *= 12.92;
-				if (var_B > 0.0031308) 
-					var_B = 1.055 * pow(var_B, 1 / 2.4) - 0.055;
-				else
-					var_B *= 12.92;
-
-				return RGB<uint8_t>(uint8_t(Cap((int)(var_R * 255), 0, 255)),
-						uint8_t(Cap((int)(var_G * 255), 0, 255)),
-						uint8_t(Cap((int)(var_B * 255), 0, 255)));
-			}
-
 			double x = 0.0, y = 0.0, z = 0.0;
 		};
 
+		template<typename T> RGB<T>::RGB(const XYZ &val) noexcept
+		{
+			auto var_X = val.x / 100;
+			auto var_Y = val.y / 100;
+			auto var_Z = val.z / 100;
+
+			auto var_R = var_X *  3.2406 + var_Y * -1.5372 + var_Z * -0.4986;
+			auto var_G = var_X * -0.9689 + var_Y *  1.8758 + var_Z *  0.0415;
+			auto var_B = var_X *  0.0557 + var_Y * -0.2040 + var_Z *  1.0570;
+
+			if (var_R > 0.0031308) 
+				var_R = 1.055 * pow(var_R, 1 / 2.4) - 0.055;
+			else
+				var_R *= 12.92;
+			if (var_G > 0.0031308) 
+				var_G = 1.055 * pow(var_G, 1 / 2.4) - 0.055;
+			else
+				var_G *= 12.92;
+			if (var_B > 0.0031308) 
+				var_B = 1.055 * pow(var_B, 1 / 2.4) - 0.055;
+			else
+				var_B *= 12.92;
+
+			r = T(Cap((int)(var_R * 255), 0, 255));
+			g = T(Cap((int)(var_G * 255), 0, 255));
+			b = T(Cap((int)(var_B * 255), 0, 255));
+		}
 	}
 	/*@}*/
 	
@@ -515,25 +519,24 @@ namespace crn
 			constexpr YUV(double y_, double u_ = 0.0, double v_ = 0.0): y(y_), u(u_), v(v_) {}
 			YUV(const RGB<uint8_t> &p);
 			
-			operator RGB<uint8_t>() const
-			{
-				auto var_R = y + 1.13983 * v;
-				auto var_G = y - 0.39465 * u - 0.58060 * v;
-				auto var_B = y + 2.03211 * u;
-				
-				return RGB<uint8_t>(uint8_t(Cap((int)(var_R * 255), 0, 255)),
-						uint8_t(Cap((int)(var_G * 255), 0, 255)),
-						uint8_t(Cap((int)(var_B * 255), 0, 255)));
-			}
-			
 			constexpr bool operator==(const YUV &other) const noexcept { return (y == other.y) && (u == other.u) && (v == other.v); }
 			constexpr bool operator!=(const YUV &other) const noexcept { return !(*this == other); }
 			YUV& operator+=(const YUV &other) { y += other.y; u += other.u; v += other.v; return *this; }
 			YUV& operator-=(const YUV &other) { y -= other.y; u -= other.u; v -= other.v; return *this; }
 			
-			
 			double y = 0.0, u = 0.0, v = 0.0;
 		};
+
+		template<typename T> RGB<T>::RGB(const YUV &val) noexcept
+		{
+			auto var_R = val.y + 1.13983 * val.v;
+			auto var_G = val.y - 0.39465 * val.u - 0.58060 * val.v;
+			auto var_B = val.y + 2.03211 * val.u;
+			
+			r = T(Cap((int)(var_R * 255), 0, 255));
+			g = T(Cap((int)(var_G * 255), 0, 255));
+			b = T(Cap((int)(var_B * 255), 0, 255));
+		}
 	}
 	/*@}*/
 	
@@ -582,24 +585,29 @@ namespace crn
 			constexpr Lab() {}
 			constexpr Lab(double l_, double a_ = 0.0, double b_ = 0.0): l(l_), a(a_), b(b_) {}
 			Lab(const XYZ &p);
-			operator RGB<uint8_t>() const { return RGB<uint8_t>(XYZ(*this)); }
 
 			Lab& operator+=(const Lab &p)
 			{
-				return *this; // XXX YANN faux ! à refaire !
+				*this = XYZ{RGB8{RGB8(*this) + RGB8(p)}};
+				return *this;
 			}
 
 			double l = 0.0, a = 0.0, b = 0.0;
 		};
+
+		template<typename T> RGB<T>::RGB(const Lab &val) noexcept
+		{
+			*this = XYZ(val);
+		}
 	}
 	/*@}*/
 	inline crn::pixel::Lab operator+(const crn::pixel::Lab &p1, const crn::pixel::Lab &p2)
 	{
-		return pixel::Lab{ p1.l + p2.l, p1.a + p2.a, p1.b + p2.b }; // XXX YANN faux ! à refaire !
+		return pixel::Lab{ pixel::RGB8{pixel::RGB8(p1) + pixel::RGB8(p2)} };
 	}
 	inline crn::pixel::Lab operator-(const crn::pixel::Lab &p1, const crn::pixel::Lab &p2)
 	{
-		return pixel::Lab{p1.l - p2.l, p1.a - p2.a, p1.b - p2.b}; // XXX YANN faux ! à refaire !
+		return pixel::Lab{ pixel::RGB8{pixel::RGB8(p1) - pixel::RGB8(p2)} };
 	}
 	inline crn::pixel::Lab operator*(double d, const crn::pixel::Lab &p)
 	{
@@ -625,24 +633,28 @@ namespace crn
 			constexpr Luv() {}
 			constexpr Luv(double l_, double u_ = 0.0, double v_ = 0.0): l(l_), u(u_), v(v_) {}
 			Luv(const XYZ &p);
-			operator RGB<uint8_t>() const { return RGB<uint8_t>(XYZ(*this)); }
 
 			Luv& operator+=(const Luv &p)
 			{
-				return *this; // XXX YANN faux ! à refaire !
+				*this = XYZ{RGB8{RGB8(*this) + RGB8(p)}};
+				return *this;
 			}
 
 			double l = 0.0, u = 0.0, v = 0.0;
 		};
+		template<typename T> RGB<T>::RGB(const Luv &val) noexcept
+		{
+			*this = XYZ(val);
+		}
 	}
 	/*@}*/
 	inline crn::pixel::Luv operator+(const crn::pixel::Luv &p1, const crn::pixel::Luv &p2)
 	{
-		return pixel::Luv{ p1.l + p2.l, p1.u + p2.u, p1.v + p2.v }; // XXX YANN faux ! à refaire !
+		return pixel::Luv{ pixel::RGB8{pixel::RGB8(p1) + pixel::RGB8(p2)} };
 	}
 	inline crn::pixel::Luv operator-(const crn::pixel::Luv &p1, const crn::pixel::Luv &p2)
 	{
-		return pixel::Luv{ p1.l - p2.l, p1.u - p2.u, p1.v - p2.v }; // XXX YANN faux ! à refaire !
+		return pixel::Luv{ pixel::RGB8{pixel::RGB8(p1) - pixel::RGB8(p2)} };
 	}
 	inline crn::pixel::Luv operator*(double d, const crn::pixel::Luv &p)
 	{

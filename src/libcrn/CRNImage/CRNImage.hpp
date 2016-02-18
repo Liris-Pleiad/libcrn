@@ -74,7 +74,7 @@ namespace crn
 	 */
 	template<typename T> template<typename Y> Image<T>::Image(const Image<Y> &img):
 		ImageBase(img.GetWidth(), img.GetHeight()),
-		pixels(img.Begin(), img.End())
+		pixels(img.begin(), img.end())
 	{ }
 
 	/*! Crop constructor
@@ -86,7 +86,7 @@ namespace crn
 		pixels(bbox.GetWidth() * bbox.GetHeight())
 	{
 		for (int y = 0; y < height; ++y)
-			std::copy_n(img.Begin() + bbox.GetLeft() + (y + bbox.GetTop()) * img.GetWidth(), width, pixels.begin() + y * width);
+			std::copy_n(img.begin() + bbox.GetLeft() + (y + bbox.GetTop()) * img.GetWidth(), width, pixels.begin() + y * width);
 	}
 
 	/*! Copy operator: pixel values are not cast
@@ -98,7 +98,7 @@ namespace crn
 		width = img.GetWidth();
 		height = img.GetHeight();
 		pixels.resize(width * height);
-		std::copy(img.Begin(), img.End(), pixels.begin());
+		std::copy(img.begin(), img.end(), pixels.begin());
 	}
 
 	/*! Force copy operator: pixel values are cast
@@ -139,7 +139,7 @@ namespace crn
 	{
 		if ((GetWidth() != other.GetWidth()) || (GetHeight() != other.GetHeight()))
 			return false;
-		return std::equal(Begin(), End(), other.Begin());
+		return std::equal(begin(), end(), other.begin());
 	}
 
 	/**************************************************************************************
@@ -252,7 +252,7 @@ namespace crn
 			bbox.SetWidth(int(height) - int(dy));
 		// copy
 		for (int y = 0; y < bbox.GetHeight(); ++y)
-			std::copy_n(src.Begin() + bbox.GetLeft() + y * src.GetWidth(), bbox.GetWidth(), pixels.begin() + dx + (dy + y) * width);
+			std::copy_n(src.begin() + bbox.GetLeft() + y * src.GetWidth(), bbox.GetWidth(), pixels.begin() + dx + (dy + y) * width);
 	}
 
 	/****************************************************************************/
@@ -1389,7 +1389,7 @@ namespace crn
 	 */
 	template<typename T, typename CMP> std::pair<T, T> MinMax(const Image<T> &img, CMP cmp)
 	{
-		auto mM = std::minmax_element(img.Begin(), img.End(), cmp);
+		auto mM = std::minmax_element(img.begin(), img.end(), cmp);
 		return std::make_pair(*mM.first, *mM.second);
 	}
 

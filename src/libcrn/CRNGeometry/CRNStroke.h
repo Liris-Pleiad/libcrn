@@ -1,4 +1,4 @@
-/* Copyright 2008-2015 INSA Lyon, CoReNum
+/* Copyright 2008-2016 INSA Lyon, CoReNum
  * 
  * This file is part of libcrn.
  * 
@@ -138,13 +138,17 @@ namespace crn
 			};
 
 			/*! \brief Returns a new iterator on the first point of the stroke. */
-			iterator Begin() { return iterator(points->Begin()); } 
+			iterator begin() { return iterator(points->begin()); } 
 			/*! \brief Returns a new iterator after the last point of the stroke. */
-			iterator End() { return iterator(points->End()); } 
+			iterator end() { return iterator(points->end()); } 
 			/*! \brief Returns a new const_iterator on the first point of the stroke. */
-			const_iterator Begin() const { return const_iterator(points->Begin()); } 
+			const_iterator begin() const { return const_iterator(points->begin()); } 
 			/*! \brief Returns a new const_iterator after the last point of the stroke. */
-			const_iterator End() const { return const_iterator(points->End()); } 
+			const_iterator end() const { return const_iterator(points->end()); } 
+			/*! \brief Returns a new const_iterator on the first point of the stroke. */
+			const_iterator cbegin() const { return const_iterator(points->cbegin()); } 
+			/*! \brief Returns a new const_iterator after the last point of the stroke. */
+			const_iterator cend() const { return const_iterator(points->cend()); } 
 			
 		private:
 			/*! \brief Initializes the object from an XML element. Unsafe. */
@@ -162,9 +166,7 @@ namespace crn
 	/*! \brief Size of a stroke */
 	inline size_t Size(const Stroke &s) noexcept { return s.GetNbPoints(); }
 }
-CRN_ADD_RANGED_FOR_BEGIN(crn::Stroke, Begin)
-CRN_ADD_RANGED_FOR_END(crn::Stroke, End)
-CRN_ADD_RANGED_FOR_CONST_BEGIN(crn::Stroke, Begin)
-CRN_ADD_RANGED_FOR_CONST_END(crn::Stroke, End)
+CRN_ADD_RANGED_FOR_TO_POINTERS(crn::Stroke)
+CRN_ADD_RANGED_FOR_TO_CONST_POINTERS(crn::Stroke)
 
 #endif

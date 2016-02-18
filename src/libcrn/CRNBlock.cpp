@@ -266,7 +266,7 @@ void Block::SetAbsoluteBBox(const Rect &newbox)
 				_("bounding box out of parent's bounding box."));
 
 	if ((nr & bbox).GetArea() < bbox.GetArea())
-		for (auto i = child->Begin() ; i != child->End() ; ++i)
+		for (auto i = child->begin() ; i != child->end() ; ++i)
 		{
 			SVector v(std::static_pointer_cast<Vector>(i->second));
 			for (long j = long(v->Size()) - 1 ; j >= 0 ; --j)
@@ -333,9 +333,9 @@ Rect Block::GetRelativeBBox() const
  */
 Block::block_iterator Block::BlockBegin(const String &tree)
 {
-	if (child->Find(tree) != child->End())
+	if (child->Find(tree) != child->end())
 	{
-		return block_iterator(getChildList(tree)->Begin());
+		return block_iterator(getChildList(tree)->begin());
 	}
 	else
 		throw ExceptionInvalidArgument(StringUTF8("Block::block_iterator Block::BlockBegin(const String &tree): ") +
@@ -353,8 +353,8 @@ Block::block_iterator Block::BlockBegin(const String &tree)
  */
 Block::block_iterator Block::BlockEnd(const String &tree)
 {
-	if (child->Find(tree) != child->End())
-		return block_iterator(getChildList(tree)->End());
+	if (child->Find(tree) != child->end())
+		return block_iterator(getChildList(tree)->end());
 	else
 		throw ExceptionInvalidArgument(StringUTF8("Block::block_iterator Block::BlockEnd(const String &tree): ") +
 				_("tree not found."));
@@ -371,10 +371,10 @@ Block::block_iterator Block::BlockEnd(const String &tree)
  */
 Block::const_block_iterator Block::BlockBegin(const String &tree) const
 {
-	if (child->Find(tree) != child->End())
+	if (child->Find(tree) != child->end())
 	{
 		SCVector v = std::static_pointer_cast<const Vector>(child->Get(tree));
-		return const_block_iterator(v->Begin());
+		return const_block_iterator(v->begin());
 	}
 	else
 		throw ExceptionInvalidArgument(StringUTF8("Block::const_block_iterator Block::BlockBegin(const String &tree) const: ") +
@@ -392,10 +392,10 @@ Block::const_block_iterator Block::BlockBegin(const String &tree) const
  */
 Block::const_block_iterator Block::BlockEnd(const String &tree) const
 {
-	if (child->Find(tree) != child->End())
+	if (child->Find(tree) != child->end())
 	{
 		SCVector v = std::static_pointer_cast<const Vector>(child->Get(tree));
-		return const_block_iterator(v->End());
+		return const_block_iterator(v->end());
 	}
 	else
 		throw ExceptionInvalidArgument(StringUTF8("Block::const_block_iterator Block::BlockEnd(const String &tree) const: ") +
@@ -529,7 +529,7 @@ Block::~Block()
  */
 SVector Block::getChildList(const String &name)
 {
-	if (child->Find(name) == child->End())
+	if (child->Find(name) == child->end())
 		child->Set(name, std::make_shared<Vector>());
 	return std::static_pointer_cast<Vector>(child->Get(name));
 }
@@ -604,7 +604,7 @@ SBlock Block::AddChildAbsoluteAt(const String &tree, Rect clip, size_t pos)
 	if (!clip.IsValid())
 		throw ExceptionInvalidArgument(StringUTF8("SBlock Block::AddChildAbsoluteAt(const String &tree, Rect clip, size_t pos): ") +
 				_("Uninitialized clipping rectangle."));
-	if (child->Find(tree) == child->End())
+	if (child->Find(tree) == child->end())
 		return AddChildAbsolute(tree, clip);
 	else if (pos >= getChildList(tree)->Size())
 		return AddChildAbsolute(tree, clip);
@@ -639,7 +639,7 @@ SBlock Block::AddChildAbsoluteAt(const String &tree, Rect clip, const String &na
 	if (!clip.IsValid())
 		throw ExceptionInvalidArgument(StringUTF8("SBlock Block::AddChildAbsoluteAt(const String &tree, Rect clip, const String &name, size_t pos): ") +
 				_("Uninitialized clipping rectangle."));
-	if (child->Find(tree) == child->End())
+	if (child->Find(tree) == child->end())
 		return AddChildAbsolute(tree, clip, name);
 	else if (pos >= getChildList(tree)->Size())
 		return AddChildAbsolute(tree, clip, name);
@@ -728,7 +728,7 @@ SBlock Block::AddChildRelativeAt(const String &tree, Rect clip, size_t pos)
 	if (!clip.IsValid())
 		throw ExceptionInvalidArgument(StringUTF8("SBlock Block::AddChildRelativeAt(const String &tree, Rect clip, size_t pos): ") +
 				_("Uninitialized clipping rectangle."));
-	if (child->Find(tree) == child->End())
+	if (child->Find(tree) == child->end())
 		return AddChildRelative(tree, clip);
 	else if (pos >= getChildList(tree)->Size())
 		return AddChildRelative(tree, clip);
@@ -764,7 +764,7 @@ SBlock Block::AddChildRelativeAt(const String &tree, Rect clip, const String &na
 	if (!clip.IsValid())
 		throw ExceptionInvalidArgument(StringUTF8("SBlock Block::AddChildRelativeAt(const String &tree, Rect clip, const String &name, size_t pos): ") +
 				_("Uninitialized clipping rectangle."));
-	if (child->Find(tree) == child->End())
+	if (child->Find(tree) == child->end())
 		return AddChildRelative(tree, clip, name);
 	else if (pos >= getChildList(tree)->Size())
 		return AddChildRelative(tree, clip, name);
@@ -986,7 +986,7 @@ SImageBW Block::GetBW(bool create)
 std::vector<String> Block::GetTreeNames() const
 {
 	std::vector<String> list;
-	for (Map::const_iterator it = child->Begin(); it != child->End(); ++it)
+	for (Map::const_iterator it = child->begin(); it != child->end(); ++it)
 	{
 		list.push_back(it->first);
 	}
@@ -1027,7 +1027,7 @@ void Block::addToXml(xml::Document &parent)
 	eb.SetAttribute("top", bbox.GetTop());
 	eb.SetAttribute("right", bbox.GetRight());
 	eb.SetAttribute("bottom", bbox.GetBottom());
-	for (Map::const_iterator it = child->Begin(); it != child->End(); ++it)
+	for (Map::const_iterator it = child->begin(); it != child->end(); ++it)
 	{
 		xml::Element el(eb.PushBackElement("BlockTree"));
 		el.SetAttribute("treename", it->first.CStr());
@@ -1052,7 +1052,7 @@ void Block::addToXml(xml::Element &parent)
 	eb.SetAttribute("top", bbox.GetTop());
 	eb.SetAttribute("right", bbox.GetRight());
 	eb.SetAttribute("bottom", bbox.GetBottom());
-	for (Map::const_iterator it = child->Begin(); it != child->End(); ++it)
+	for (Map::const_iterator it = child->begin(); it != child->end(); ++it)
 	{
 		xml::Element el(eb.PushBackElement("BlockTree"));
 		el.SetAttribute("treename", it->first.CStr());
@@ -1171,7 +1171,7 @@ void Block::addTreeFromXml(xml::Element &bnode)
  */
 bool Block::HasTree(const String &tname) const
 {
-	if (child->Find(tname) == child->End())
+	if (child->Find(tname) == child->end())
 		return false;
 	else
 		return GetNbChildren(tname) != 0;
@@ -1876,7 +1876,7 @@ void Block::GetTreeMeans(const String &tree, double *mwidth, double *mheight, do
  */
 size_t Block::GetNbChildren(const String &tree) const
 {
-	if (child->Find(tree) == child->End())
+	if (child->Find(tree) == child->end())
 		throw ExceptionInvalidArgument(StringUTF8("size_t Block::GetNbChildren(const String &tree) const: ") + _("tree not found."));
 	const SVector v = std::static_pointer_cast<Vector>(child->Get(tree));
 	return v->Size();
@@ -1896,7 +1896,7 @@ size_t Block::GetNbChildren(const String &tree) const
  */
 SBlock Block::GetChild(const String &tree, size_t num)
 {
-	if (child->Find(tree) == child->End())
+	if (child->Find(tree) == child->end())
 		throw ExceptionNotFound(StringUTF8("SBlock Block::GetChild(const String &tree, size_t num): ") + _("tree not found."));
 	else if (num >= getChildList(tree)->Size())
 		throw ExceptionDomain(StringUTF8("SBlock Block::GetChild(const String &tree, size_t num): ") + _("index out of bounds."));
@@ -1918,7 +1918,7 @@ SBlock Block::GetChild(const String &tree, size_t num)
  */
 SCBlock Block::GetChild(const String &tree, size_t num) const
 {
-	if (child->Find(tree) == child->End())
+	if (child->Find(tree) == child->end())
 		throw ExceptionNotFound(StringUTF8("SCBlock Block::GetChild(const String &tree, size_t num) const: ") + _("tree not found."));
 	else
 	{
@@ -1943,7 +1943,7 @@ SCBlock Block::GetChild(const String &tree, size_t num) const
  */
 SBlock Block::GetChild(const String &tree, const String &name)
 {
-	if (child->Find(tree) == child->End())
+	if (child->Find(tree) == child->end())
 		throw ExceptionNotFound(StringUTF8("SBlock Block::GetChild(const String &tree, const String &name): ") + _("tree not found."));
 	SVector v = std::static_pointer_cast<Vector>(child->Get(tree));
 	for (SObject ob : v)
@@ -1968,7 +1968,7 @@ SBlock Block::GetChild(const String &tree, const String &name)
  */
 SCBlock Block::GetChild(const String &tree, const String &name) const
 {
-	if (child->Find(tree) == child->End())
+	if (child->Find(tree) == child->end())
 		throw ExceptionNotFound(StringUTF8("SCBlock Block::GetChild(const String &tree, const String &name) const: ") + _("tree not found."));
 	SCVector v = std::static_pointer_cast<const Vector>(child->Get(tree));
 	for (SCObject ob : v)
@@ -1994,7 +1994,7 @@ SCBlock Block::GetChild(const String &tree, const String &name) const
  */
 void Block::RemoveChild(const String &tree, size_t num)
 {
-	if (child->Find(tree) == child->End())
+	if (child->Find(tree) == child->end())
 		throw ExceptionNotFound(StringUTF8("void Block::RemoveChild(const String &tree, size_t num): ") +
 				_("tree not found."));
 
@@ -2033,7 +2033,7 @@ void Block::RemoveChild(const String &tree, const String &name)
  */
 void Block::RemoveChild(const String &tree, SBlock b)
 {
-	if (child->Find(tree) == child->End())
+	if (child->Find(tree) == child->end())
 		throw ExceptionNotFound(StringUTF8("void Block::RemoveChild(const String &tree, SBlock b): ") +
 				_("tree not found."));
 
@@ -2057,7 +2057,7 @@ void Block::RemoveChild(const String &tree, SBlock b)
  */
 void Block::RemoveChildren(const String &tree, const std::set<SBlock> &toremove)
 {
-	if (child->Find(tree) == child->End())
+	if (child->Find(tree) == child->end())
 		throw ExceptionNotFound(StringUTF8("void Block::RemoveChildren(const String &tree, const std::set<SBlock> &toremove): ") +
 				_("tree not found."));
 	SVector lst(getChildList(tree));
@@ -2079,7 +2079,7 @@ void Block::RemoveChildren(const String &tree, const std::set<SBlock> &toremove)
  */
 void Block::FilterMinAnd(const String &tree, size_t minw, size_t minh)
 {
-	if (child->Find(tree) == child->End())
+	if (child->Find(tree) == child->end())
 	{
 		throw ExceptionNotFound(StringUTF8("void Block::FilterMinAnd(const String &tree, size_t minw, size_t minh): ") +
 				_("tree not found."));
@@ -2087,7 +2087,7 @@ void Block::FilterMinAnd(const String &tree, size_t minw, size_t minh)
 
 	// Blocks to be removed are copied in a list first...
 	std::set<SBlock> v;
-	for (Vector::iterator it = getChildList(tree)->Begin(); it != getChildList(tree)->End(); ++it)
+	for (Vector::iterator it = getChildList(tree)->begin(); it != getChildList(tree)->end(); ++it)
 	{
 		SBlock b(std::static_pointer_cast<Block>(*it));
 		if ((b->GetAbsoluteBBox().GetWidth() < int(minw)) && (b->GetAbsoluteBBox().GetHeight() < int(minh)))
@@ -2112,11 +2112,11 @@ void Block::FilterMinAnd(const String &tree, size_t minw, size_t minh)
  */
 void Block::FilterMinOr(const String &tree, size_t minw, size_t minh)
 {
-	if (child->Find(tree) == child->End())
+	if (child->Find(tree) == child->end())
 		throw ExceptionNotFound(StringUTF8("void Block::FilterMinOr(const String &tree, size_t minw, size_t minh): ") +
 				_("tree not found."));
 	std::set<SBlock> v;
-	for (Vector::iterator it = getChildList(tree)->Begin(); it != getChildList(tree)->End(); ++it)
+	for (Vector::iterator it = getChildList(tree)->begin(); it != getChildList(tree)->end(); ++it)
 	{
 		SBlock b(std::static_pointer_cast<Block>(*it));
 		if ((b->GetAbsoluteBBox().GetWidth() < int(minw)) || (b->GetAbsoluteBBox().GetHeight() < int(minh)))
@@ -2137,11 +2137,11 @@ void Block::FilterMinOr(const String &tree, size_t minw, size_t minh)
  */
 void Block::FilterMaxAnd(const String &tree, size_t maxw, size_t maxh)
 {
-	if (child->Find(tree) == child->End())
+	if (child->Find(tree) == child->end())
 		throw ExceptionNotFound(StringUTF8("void Block::FilterMaxAnd(const String &tree, size_t maxw, size_t maxh): ") +
 				_("tree not found."));
 	std::set<SBlock> v;
-	for (Vector::iterator it = getChildList(tree)->Begin(); it != getChildList(tree)->End(); ++it)
+	for (Vector::iterator it = getChildList(tree)->begin(); it != getChildList(tree)->end(); ++it)
 	{
 		SBlock b(std::static_pointer_cast<Block>(*it));
 		if ((b->GetAbsoluteBBox().GetWidth() > int(maxw)) && (b->GetAbsoluteBBox().GetHeight() > int(maxh)))
@@ -2162,11 +2162,11 @@ void Block::FilterMaxAnd(const String &tree, size_t maxw, size_t maxh)
  */
 void Block::FilterMaxOr(const String &tree, size_t maxw, size_t maxh)
 {
-	if (child->Find(tree) == child->End())
+	if (child->Find(tree) == child->end())
 		throw ExceptionNotFound(StringUTF8("void Block::FilterMaxOr(const String &tree, size_t maxw, size_t maxh): ") +
 				_("tree not found."));
 	std::set<SBlock> v;
-	for (Vector::iterator it = getChildList(tree)->Begin(); it != getChildList(tree)->End(); ++it)
+	for (Vector::iterator it = getChildList(tree)->begin(); it != getChildList(tree)->end(); ++it)
 	{
 		SBlock b(std::static_pointer_cast<Block>(*it));
 		if ((b->GetAbsoluteBBox().GetWidth() > int(maxw)) || (b->GetAbsoluteBBox().GetHeight() > int(maxh)))
@@ -2186,11 +2186,11 @@ void Block::FilterMaxOr(const String &tree, size_t maxw, size_t maxh)
  */
 void Block::FilterBorders(const String &tree, size_t margin)
 {
-	if (child->Find(tree) == child->End())
+	if (child->Find(tree) == child->end())
 		throw ExceptionNotFound(StringUTF8("void Block::FilterBorders(const String &tree, size_t margin): ") +
 				_("tree not found."));
 	std::set<SBlock> v;
-	for (Vector::iterator it = getChildList(tree)->Begin(); it != getChildList(tree)->End(); ++it)
+	for (Vector::iterator it = getChildList(tree)->begin(); it != getChildList(tree)->end(); ++it)
 	{
 		SBlock b(std::static_pointer_cast<Block>(*it));
 		if ((b->GetAbsoluteBBox().GetLeft() < int(GetAbsoluteBBox().GetLeft() + margin)) ||
@@ -2214,7 +2214,7 @@ void Block::FilterBorders(const String &tree, size_t margin)
  */
 void Block::FilterWidthRatio(const String &tree, double ratio)
 {
-	if (child->Find(tree) == child->End())
+	if (child->Find(tree) == child->end())
 		throw ExceptionNotFound(StringUTF8("void Block::FilterWidthRatio(const String &tree, double ratio): ") +
 				_("tree not found."));
 	if (ratio <= 0)
@@ -2243,7 +2243,7 @@ void Block::FilterWidthRatio(const String &tree, double ratio)
  */
 void Block::FilterHeightRatio(const String &tree, double ratio)
 {
-	if (child->Find(tree) == child->End())
+	if (child->Find(tree) == child->end())
 		throw ExceptionNotFound(StringUTF8("void Block::FilterHeightRatio(const String &tree, double ratio): ") +
 				_("tree not found."));
 	if (ratio <= 0)
@@ -2278,7 +2278,7 @@ void Block::FilterHeightRatio(const String &tree, double ratio)
  */
 bool Block::MergeChildren(const String &tree, double overlap, ImageIntGray *imap)
 {
-	if (child->Find(tree) == child->End())
+	if (child->Find(tree) == child->end())
 		throw ExceptionNotFound(StringUTF8("void Block::MergeChildren(const String &tree, double overlap, ImageIntGray *imap): ") +
 				_("tree not found."));
 	if (overlap < 0)
@@ -2408,8 +2408,8 @@ void Block::MergeSiblings(const String &tree, size_t index1, size_t index2, Imag
 		int v1, v2;
 		v1 = (int)GetChild(tree, index1)->GetName().ToInt();
 		v2 = (int)GetChild(tree, index2)->GetName().ToInt();
-		for (Rect::iterator it = GetChild(tree, index2)->GetAbsoluteBBox().Begin();
-				it != GetChild(tree, index2)->GetAbsoluteBBox().End(); ++it)
+		for (Rect::iterator it = GetChild(tree, index2)->GetAbsoluteBBox().begin();
+				it != GetChild(tree, index2)->GetAbsoluteBBox().end(); ++it)
 		{
 			if (imap->At(it->X, it->Y) == v2)
 				imap->At(it->X, it->Y) = v1;
@@ -2514,7 +2514,7 @@ bool Block::IsParent(const Block &b) const
  */
 Block::pixel_iterator Block::PixelBegin(const String &tree, size_t num) const
 {
-	if (child->Find(tree) == child->End())
+	if (child->Find(tree) == child->end())
 		throw ExceptionInvalidArgument(StringUTF8("Block::pixel_iterator Block::PixelBegin(const String &tree, size_t num) const: ") +
 				_("tree not found."));
 	const SVector v = std::static_pointer_cast<Vector>(child->Get(tree));
@@ -2524,7 +2524,7 @@ Block::pixel_iterator Block::PixelBegin(const String &tree, size_t num) const
 	const SBlock b(std::static_pointer_cast<Block>(v->At(num)));
 	Rect r = b->GetAbsoluteBBox();
 	r.Translate(-bbox.GetLeft(), -bbox.GetTop());
-	return r.Begin();
+	return r.begin();
 }
 /*!
  * Returns an iterator on the first pixel of the block
@@ -2542,7 +2542,7 @@ Block::pixel_iterator Block::PixelBegin(const SBlock &b) const
 				_("null block or block is not a child."));
 	Rect r = b->GetAbsoluteBBox();
 	r.Translate(-bbox.GetLeft(), -bbox.GetTop());
-	return r.Begin();
+	return r.begin();
 }
 /*!
  * Returns an iterator after the last pixel of the block
@@ -2557,7 +2557,7 @@ Block::pixel_iterator Block::PixelBegin(const SBlock &b) const
  */
 Block::pixel_iterator Block::PixelEnd(const String &tree, size_t num) const
 {
-	if (child->Find(tree) == child->End())
+	if (child->Find(tree) == child->end())
 		throw ExceptionInvalidArgument(StringUTF8("Block::pixel_iterator Block::PixelEnd(const String &tree, size_t num) const: ") +
 				_("tree not found."));
 	const SVector v = std::static_pointer_cast<Vector>(child->Get(tree));
@@ -2599,7 +2599,7 @@ Block::pixel_iterator Block::PixelEnd(const SBlock &b) const
  */
 Block::masked_pixel_iterator Block::MaskedPixelBegin(const String &tree, size_t num, pixel::BW mask_value)
 {
-	if (child->Find(tree) == child->End())
+	if (child->Find(tree) == child->end())
 		throw ExceptionInvalidArgument(StringUTF8("Block::masked_pixel_iterator Block::MaskedPixelBegin(const String &tree, size_t num, pixel::BW mask_value): ") +
 				_("tree not found."));
 	SVector v = std::static_pointer_cast<Vector>(child->Get(tree));
@@ -2648,7 +2648,7 @@ Block::masked_pixel_iterator Block::MaskedPixelBegin(const SBlock &b, pixel::BW 
  */
 Block::masked_pixel_iterator Block::MaskedPixelEnd(const String &tree, size_t num, pixel::BW mask_value)
 {
-	if (child->Find(tree) == child->End())
+	if (child->Find(tree) == child->end())
 		throw ExceptionInvalidArgument(StringUTF8("Block::masked_pixel_iterator Block::MaskedPixelEnd(const String &tree, size_t num, pixel::BW mask_value): ") +
 				_("tree not found."));
 	SCVector v = std::static_pointer_cast<Vector>(child->Get(tree));

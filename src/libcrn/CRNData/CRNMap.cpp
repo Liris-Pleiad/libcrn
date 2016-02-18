@@ -62,7 +62,7 @@ Protocol Map::GetClassProtocols() const noexcept
 SObject Map::Get(const String &s)
 {
 	auto it = Find(s);
-	if (it == End())
+	if (it == end())
 		return nullptr;
 	else
 		return it->second;
@@ -77,7 +77,7 @@ SObject Map::Get(const String &s)
 SCObject Map::Get(const String &s) const
 {
 	auto it = Find(s);
-	if (it == End())
+	if (it == end())
 		return nullptr;
 	else
 		return it->second;
@@ -124,7 +124,7 @@ void Map::Remove(const String &key)
  */
 void Map::Remove(const SObject &obj)
 {
-	for (auto it = Begin(); it != End(); ++it)
+	for (auto it = begin(); it != end(); ++it)
 		if (it->second == obj)
 		{
 			Remove(it->first);
@@ -142,7 +142,7 @@ void Map::Remove(const SObject &obj)
  */
 void Map::Remove(iterator it)
 {
-	if (it == End())
+	if (it == end())
 		throw ExceptionDomain(_("Invalid iterator."));
 	data.erase(it);
 }
@@ -154,28 +154,28 @@ void Map::Remove(iterator it)
  * \throws	ExceptionInvalidArgument	invalid range
  *
  * \param[in]	first	the first element to remove
- * \param[in]	end	the element after the last element to remove
+ * \param[in]	end_	the element after the last element to remove
  * \return	true if success, false else
  */
-void Map::Remove(iterator first, iterator end)
+void Map::Remove(iterator first, iterator end_)
 {
-	// cannot begin with End()
-	if (first == End())
+	// cannot begin with end()
+	if (first == end())
 		throw ExceptionDomain(_("First iterator is end()."));
 	// null range
-	if (first == end)
+	if (first == end_)
 		throw ExceptionInvalidArgument(_("First and end iterators are equal."));
-	// if end is End()
-	if (end == End())
+	// if end is end()
+	if (end_ == end())
 	{
-		data.erase(first, end);
+		data.erase(first, end_);
 	}
-	// if end is not the End() of the map, check that it is really after first
-	for (auto tmp = first; tmp != End(); ++tmp)
+	// if end is not the end() of the map, check that it is really after first
+	for (auto tmp = first; tmp != end(); ++tmp)
 	{
-		if (tmp == end)
+		if (tmp == end_)
 		{
-			data.erase(first, end);
+			data.erase(first, end_);
 			return;
 		}
 	}
@@ -190,13 +190,13 @@ String Map::ToString() const
 {
 	String s = GetClassName();
 	s += " { ";
-	for (auto it = Begin(); it != End(); ++it)
+	for (auto it = begin(); it != end(); ++it)
 	{
 		s += String(U"[") + it->first + U"]";
 		s += it->second->ToString();
 		auto nit(it);
 		++nit;
-		if (nit != End())
+		if (nit != end())
 			s += ", ";
 	}
 	s += " }";
@@ -216,7 +216,7 @@ UObject Map::Clone() const
 
 	UMap m = std::make_unique<Map>(protocols);
 	m->SetName(GetName());
-	for (auto it = Begin(); it != End(); ++it)
+	for (auto it = begin(); it != end(); ++it)
 		m->Set(it->first, it->second->Clone());
 	return std::forward<UMap>(m);
 }
@@ -273,7 +273,7 @@ xml::Element Map::serialize(xml::Element &parent) const
 		throw ExceptionProtocol(_("This map does not contain serializable objects."));
 	xml::Element el(parent.PushBackElement(GetClassName().CStr()));
 	el.SetAttribute("protocols", int(protocols));
-	for (auto tmp = Begin(); tmp != End(); ++tmp)
+	for (auto tmp = begin(); tmp != end(); ++tmp)
 	{
 		xml::Element te = (*tmp).second->Serialize(el);
 		te.SetAttribute("key", (*tmp).first.CStr());
@@ -289,7 +289,7 @@ xml::Element Map::serialize(xml::Element &parent) const
 std::set<String> Map::GetKeys() const
 {
 	std::set<String> keys;
-	for (auto tmp = Begin(); tmp != End(); ++tmp)
+	for (auto tmp = begin(); tmp != end(); ++tmp)
 	{
 		keys.insert(tmp->first);
 	}

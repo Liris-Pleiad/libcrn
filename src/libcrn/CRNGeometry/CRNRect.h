@@ -1,4 +1,4 @@
-/* Copyright 2006-2015 Yann LEYDIER, Asma OUJI, CoReNum, INSA-Lyon, Université Paris Descartes
+/* Copyright 2006-2016 Yann LEYDIER, Asma OUJI, CoReNum, INSA-Lyon, Université Paris Descartes
  * 
  * This file is part of libcrn.
  * 
@@ -751,11 +751,7 @@ namespace crn
 					bool valid;
 			};
 		/*! \brief Returns an iterator to the first point of the rectangle */
-		inline iterator Begin() const { return iterator(*this); } 
-		/*! \brief Returns an iterator after the last point of the rectangle */
-		inline iterator End() const { return iterator(); } 
-		/*! \brief Returns an iterator to the first point of the rectangle */
-		inline iterator begin() const { return iterator(*this); } // XXX Yann
+		inline iterator begin() const { return iterator(*this); }
 		/*! \brief Returns an iterator after the last point of the rectangle */
 		inline iterator end() const { return iterator(); } 
 		/*! \brief Returns an iterator to the first point of the rectangle */
@@ -823,10 +819,8 @@ namespace crn
 
 }
 
-//CRN_ADD_RANGED_FOR_BEGIN(crn::Rect, Begin)
-//CRN_ADD_RANGED_FOR_END(crn::Rect, End)
-//CRN_ADD_RANGED_FOR_CONST_BEGIN(crn::Rect, Begin)
-//CRN_ADD_RANGED_FOR_CONST_END(crn::Rect, End)
+CRN_ADD_RANGED_FOR_TO_POINTERS(crn::Rect)
+CRN_ADD_RANGED_FOR_TO_CONST_POINTERS(crn::Rect)
 
 #endif
 

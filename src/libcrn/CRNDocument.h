@@ -1,4 +1,4 @@
-/* Copyright 2006-2015 Yann LEYDIER, CoReNum, INSA-Lyon
+/* Copyright 2006-2016 Yann LEYDIER, CoReNum, INSA-Lyon
  * 
  * This file is part of libcrn.
  * 
@@ -158,9 +158,9 @@ namespace crn
 					size_t num;
 			};
 			/*! \brief Returns an iterator to the first block */
-			iterator Begin() const { return iterator(this, 0); }
+			iterator begin() const { return iterator(this, 0); }
 			/*! \brief Returns an iterator after the last block */
-			iterator End() const { return iterator(this, views.size()); }
+			iterator end() const { return iterator(this, views.size()); }
 
 			/*! \brief Returns the default directory where the documents are saved */
 			static Path GetDefaultDirName();
@@ -215,6 +215,5 @@ namespace crn
 	/*! \brief Number of views in a document */
 	inline size_t Size(const Document &doc) noexcept { return doc.GetNbViews(); }
 }
-CRN_ADD_RANGED_FOR_BEGIN(crn::Document, Begin)
-CRN_ADD_RANGED_FOR_END(crn::Document, End)
+CRN_ADD_RANGED_FOR_TO_POINTERS(crn::Document)
 #endif

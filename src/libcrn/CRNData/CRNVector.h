@@ -1,4 +1,4 @@
-/* Copyright 2006-2015 Yann LEYDIER, INSA-Lyon, CoReNum, Université Paris Descartes
+/* Copyright 2006-2016 Yann LEYDIER, INSA-Lyon, CoReNum, Université Paris Descartes
  * 
  * This file is part of libcrn.
  * 
@@ -141,15 +141,7 @@ namespace crn
 
 #include <CRNData/CRNVectorIterator.h>
 			/*! \brief Returns an iterator to the first element */
-			iterator Begin() { return data.begin(); }
-			/*! \brief Returns a iterator to the end of the list */
-			iterator End() { return data.end(); }
-			/*! \brief Returns a const iterator to the first element */
-			const_iterator Begin() const { return data.begin(); }
-			/*! \brief Returns a const iterator to the end of the list */
-			const_iterator End() const { return data.end(); }
-			/*! \brief Returns an iterator to the first element */
-			iterator begin() { return data.begin(); } // XXX Yann
+			iterator begin() { return data.begin(); }
 			/*! \brief Returns a iterator to the end of the list */
 			iterator end() { return data.end(); }
 			/*! \brief Returns a const iterator to the first element */
@@ -166,7 +158,7 @@ namespace crn
 			/*! \brief Removes elements */
 			void Remove(iterator begin, iterator end);
 			/*! \brief Removes elements if predicate is true */
-			template<class Predicate> void RemoveIf(Predicate pred) { Remove(std::remove_if(Begin(), End(), pred), End()); }
+			template<class Predicate> void RemoveIf(Predicate pred) { Remove(std::remove_if(begin(), end(), pred), end()); }
 
 			/*! \brief Finds an object in the container */
 			const_iterator Find(const SCObject &o) const;
@@ -177,7 +169,7 @@ namespace crn
 			template<typename T> std::vector<std::shared_ptr<T>> ToStd()
 			{
 				std::vector<std::shared_ptr<T>> v;
-				for (iterator it = Begin(); it != End(); ++it)
+				for (iterator it = begin(); it != end(); ++it)
 					v.push_back(std::dynamic_pointer_cast<T>(*it));
 				return v;
 			}
@@ -185,7 +177,7 @@ namespace crn
 			template<typename T> std::vector<std::shared_ptr<const T>> ToStd() const
 			{
 				std::vector<std::shared_ptr<const T>> v;
-				for (const_iterator it = Begin(); it != End(); ++it)
+				for (const_iterator it = begin(); it != end(); ++it)
 					v.push_back(std::dynamic_pointer_cast<const T>(*it));
 				return v;
 			}
@@ -222,10 +214,8 @@ namespace crn
 	/*! \brief Swaps two vectors */
 	inline void swap(Vector &v1, Vector &v2) noexcept { v1.Swap(v2); }
 }
-CRN_ADD_RANGED_FOR_BEGIN(crn::Vector, Begin)
-CRN_ADD_RANGED_FOR_END(crn::Vector, End)
-CRN_ADD_RANGED_FOR_CONST_BEGIN(crn::Vector, Begin)
-CRN_ADD_RANGED_FOR_CONST_END(crn::Vector, End)
+CRN_ADD_RANGED_FOR_TO_POINTERS(crn::Vector)
+CRN_ADD_RANGED_FOR_TO_CONST_POINTERS(crn::Vector)
 
 namespace std
 {

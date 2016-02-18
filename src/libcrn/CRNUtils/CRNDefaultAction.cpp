@@ -53,7 +53,7 @@ SAction DefaultAction::GetAction(const String &name)
 {
 	Map &act(getInstance().actions);
 	auto it = act.Find(name);
-	if (it != act.End())
+	if (it != act.end())
 		return std::static_pointer_cast<Action>(it->second);
 	else
 		return nullptr;
@@ -105,7 +105,7 @@ std::vector<String> DefaultAction::GetActionList()
 {
 	std::vector<String> lst;
 	Map &act(getInstance().actions);
-	for (auto it = act.Begin(); it != act.End(); ++it)
+	for (auto it = act.begin(); it != act.end(); ++it)
 	{
 		lst.push_back(it->first);
 	}

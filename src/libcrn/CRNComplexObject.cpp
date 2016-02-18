@@ -73,7 +73,7 @@ bool ComplexObject::IsUserData(const String &key) const
 {
 	if (!user_data) 
 		return false;
-	if (user_data->Find(key) != user_data->End())
+	if (user_data->Find(key) != user_data->end())
 		return true;
 	else
 		return false;
@@ -107,7 +107,7 @@ String ComplexObject::GetUserDataKey(const SObject &value) const
 {
 	if (!user_data)
 		return U"";
-	for (Map::const_iterator it = user_data->Begin(); it != user_data->End(); ++it)
+	for (Map::const_iterator it = user_data->begin(); it != user_data->end(); ++it)
 	{
 		if (it->second == value)
 			return it->first;

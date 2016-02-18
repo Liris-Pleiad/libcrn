@@ -24,7 +24,7 @@
 using namespace crn;
 using namespace crn::pixel;
 
-XYZ::XYZ(const RGB<uint8_t> &p)
+XYZ::XYZ(const RGB8 &p)
 {
 	static const auto xr = 0.4124;
 	static const auto xg = 0.3576;
@@ -66,7 +66,7 @@ XYZ::XYZ(const RGB<uint8_t> &p)
 	z = var_R * zr + var_G * zg + var_B * zb;
 }
 
-YUV::YUV(const RGB<uint8_t> &p)
+YUV::YUV(const RGB8 &p)
 {
     y = 0.299 * p.r + 0.587 * p.g + 0.114 * p.b;
     u = 0.492 * (p.b - y);

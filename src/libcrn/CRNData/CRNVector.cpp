@@ -63,12 +63,12 @@ String Vector::ToString() const
 {
 	String s = GetClassName();
 	s += " { ";
-	for (const_iterator it = Begin(); it != End(); ++it)
+	for (const_iterator it = begin(); it != end(); ++it)
 	{
 		s += (*it)->ToString();
 		const_iterator nit(it);
 		++nit;
-		if (nit != End())
+		if (nit != end())
 			s += ", ";
 	}
 	s += " }";
@@ -102,7 +102,7 @@ void Vector::PushBack(SObject d)
  */
 bool Vector::Contains(const SCObject &o) const
 {
-	for (const_iterator it = Begin(); it != End(); ++it)
+	for (const_iterator it = begin(); it != end(); ++it)
 		if (*it == o)
 			return true;
 	return false;
@@ -112,28 +112,28 @@ bool Vector::Contains(const SCObject &o) const
  * Finds an object in the container
  *
  * \param[in]	o	the object to find
- * \return a const_iterator on the object or on End() if not found
+ * \return a const_iterator on the object or on end() if not found
  */
 Vector::const_iterator Vector::Find(const SCObject &o) const
 {
-	for (const_iterator it = Begin(); it != End(); ++it)
+	for (const_iterator it = begin(); it != end(); ++it)
 		if (*it == o)
 			return it;
-	return End();
+	return end();
 }
 
 /*! 
  * Finds an object in the container
  *
  * \param[in]	o	the object to find
- * \return an iterator on the object or on End() if not found
+ * \return an iterator on the object or on end() if not found
  */
 Vector::iterator Vector::Find(const SCObject &o)
 {
-	for (iterator it = Begin(); it != End(); ++it)
+	for (iterator it = begin(); it != end(); ++it)
 		if (*it == o)
 			return it;
-	return End();
+	return end();
 }
 
 /*! 
@@ -303,7 +303,7 @@ UObject Vector::Clone() const
 
 	UVector v = std::make_unique<Vector>(protocols);
 	v->SetName(GetName());
-	for (const_iterator it = Begin(); it != End(); ++it)
+	for (const_iterator it = begin(); it != end(); ++it)
 		v->PushBack((*it)->Clone());
 	return std::forward<UVector>(v);
 }
@@ -317,7 +317,7 @@ void Vector::Sort()
 	if (!(protocols & crn::Protocol::POSet))
 		throw ExceptionProtocol(_("This vector does not contain poset objects."));
 
-	std::sort(Begin(), End(), [](const SCObject &o1, const SCObject &o2)
+	std::sort(begin(), end(), [](const SCObject &o1, const SCObject &o2)
 				{
 					return (o1->LT(*o2)).IsTrue();
 				}
