@@ -649,7 +649,7 @@ char* XMLDocument::Identify( char* p, XMLNode** node )
     }
     else if ( XMLUtil::StringEqual( p, cdataHeader, cdataHeaderLen ) ) {
         TIXMLASSERT( sizeof( XMLText ) == _textPool.ItemSize() );
-        auto  text = new (_textPool.Alloc()) XMLText( this );
+        auto   text = new (_textPool.Alloc()) XMLText( this );
         returnNode = text;
         returnNode->_memPool = &_textPool;
         p += cdataHeaderLen;
@@ -1603,7 +1603,7 @@ char* XMLElement::ParseAttributes( char* p )
         // attribute.
         if (XMLUtil::IsNameStartChar( *p ) ) {
             TIXMLASSERT( sizeof( XMLAttribute ) == _document->_attributePool.ItemSize() );
-            auto  attrib = new (_document->_attributePool.Alloc() ) XMLAttribute();
+            auto   attrib = new (_document->_attributePool.Alloc() ) XMLAttribute();
             attrib->_memPool = &_document->_attributePool;
 			attrib->_memPool->SetTracked();
 
@@ -1823,7 +1823,7 @@ void XMLDocument::Clear()
 XMLElement* XMLDocument::NewElement( const char* name )
 {
     TIXMLASSERT( sizeof( XMLElement ) == _elementPool.ItemSize() );
-    auto  ele = new (_elementPool.Alloc()) XMLElement( this );
+    auto   ele = new (_elementPool.Alloc()) XMLElement( this );
     ele->_memPool = &_elementPool;
     ele->SetName( name );
     return ele;
@@ -1833,7 +1833,7 @@ XMLElement* XMLDocument::NewElement( const char* name )
 XMLComment* XMLDocument::NewComment( const char* str )
 {
     TIXMLASSERT( sizeof( XMLComment ) == _commentPool.ItemSize() );
-    auto  comment = new (_commentPool.Alloc()) XMLComment( this );
+    auto   comment = new (_commentPool.Alloc()) XMLComment( this );
     comment->_memPool = &_commentPool;
     comment->SetValue( str );
     return comment;
@@ -1843,7 +1843,7 @@ XMLComment* XMLDocument::NewComment( const char* str )
 XMLText* XMLDocument::NewText( const char* str )
 {
     TIXMLASSERT( sizeof( XMLText ) == _textPool.ItemSize() );
-    auto  text = new (_textPool.Alloc()) XMLText( this );
+    auto   text = new (_textPool.Alloc()) XMLText( this );
     text->_memPool = &_textPool;
     text->SetValue( str );
     return text;
@@ -1853,7 +1853,7 @@ XMLText* XMLDocument::NewText( const char* str )
 XMLDeclaration* XMLDocument::NewDeclaration( const char* str )
 {
     TIXMLASSERT( sizeof( XMLDeclaration ) == _commentPool.ItemSize() );
-    auto  dec = new (_commentPool.Alloc()) XMLDeclaration( this );
+    auto   dec = new (_commentPool.Alloc()) XMLDeclaration( this );
     dec->_memPool = &_commentPool;
     dec->SetValue( str ? str : "xml version=\"1.0\" encoding=\"UTF-8\"" );
     return dec;
@@ -1863,7 +1863,7 @@ XMLDeclaration* XMLDocument::NewDeclaration( const char* str )
 XMLUnknown* XMLDocument::NewUnknown( const char* str )
 {
     TIXMLASSERT( sizeof( XMLUnknown ) == _commentPool.ItemSize() );
-    auto  unk = new (_commentPool.Alloc()) XMLUnknown( this );
+    auto   unk = new (_commentPool.Alloc()) XMLUnknown( this );
     unk->_memPool = &_commentPool;
     unk->SetValue( str );
     return unk;

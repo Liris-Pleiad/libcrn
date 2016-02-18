@@ -266,9 +266,9 @@ void Block::SetAbsoluteBBox(const Rect &newbox)
 				_("bounding box out of parent's bounding box."));
 
 	if ((nr & bbox).GetArea() < bbox.GetArea())
-		for (auto i = child->begin() ; i != child->end() ; ++i)
+		for (auto & elem : *child)
 		{
-			SVector v(std::static_pointer_cast<Vector>(i->second));
+			SVector v(std::static_pointer_cast<Vector>(elem.second));
 			for (long j = long(v->Size()) - 1 ; j >= 0 ; --j)
 			{
 				SBlock b(std::static_pointer_cast<Block>((*v)[size_t(j)]));

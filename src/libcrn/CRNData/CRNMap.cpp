@@ -216,8 +216,8 @@ UObject Map::Clone() const
 
 	UMap m = std::make_unique<Map>(protocols);
 	m->SetName(GetName());
-	for (auto it = begin(); it != end(); ++it)
-		m->Set(it->first, it->second->Clone());
+	for (const auto & elem : *this)
+		m->Set(elem.first, elem.second->Clone());
 	return std::forward<UMap>(m);
 }
 
@@ -273,10 +273,10 @@ xml::Element Map::serialize(xml::Element &parent) const
 		throw ExceptionProtocol(_("This map does not contain serializable objects."));
 	xml::Element el(parent.PushBackElement(GetClassName().CStr()));
 	el.SetAttribute("protocols", int(protocols));
-	for (auto tmp = begin(); tmp != end(); ++tmp)
+	for (const auto & elem : *this)
 	{
-		xml::Element te = (*tmp).second->Serialize(el);
-		te.SetAttribute("key", (*tmp).first.CStr());
+		xml::Element te = elem.second->Serialize(el);
+		te.SetAttribute("key", elem.first.CStr());
 	}
 
 	return el;
@@ -289,9 +289,9 @@ xml::Element Map::serialize(xml::Element &parent) const
 std::set<String> Map::GetKeys() const
 {
 	std::set<String> keys;
-	for (auto tmp = begin(); tmp != end(); ++tmp)
+	for (const auto & elem : *this)
 	{
-		keys.insert(tmp->first);
+		keys.insert(elem.first);
 	}
 	return keys;
 }

@@ -105,9 +105,9 @@ std::vector<String> DefaultAction::GetActionList()
 {
 	std::vector<String> lst;
 	Map &act(getInstance().actions);
-	for (auto it = act.begin(); it != act.end(); ++it)
+	for (auto & elem : act)
 	{
-		lst.push_back(it->first);
+		lst.push_back(elem.first);
 	}
 	return lst;
 }
