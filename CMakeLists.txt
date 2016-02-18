@@ -50,7 +50,6 @@ if(ANDROID)
 		message(FATAL_ERROR "Android API level must be >=9.")
 	endif (ANDROID_NATIVE_API_LEVEL LESS 9)
 	set(CRN_PF_ANDROID ON)
-	set(ICONV_INCLUDE_DIR "${ANDROID_NDK}/sources/android/support/include")
 endif(ANDROID)
 #############################
 
@@ -141,7 +140,8 @@ set(LIBCRN_LIB
 add_library(${PRJ_NAME} SHARED ${LIBCRN_SRC} ${LIBCRN_HEADER_CFG} ${LIBCRN_HEADER})
 target_link_libraries(${PRJ_NAME} ${LIBCRN_LIB})
 
-if(ANDROID)
-	include("cmake/android/Apk.cmake" REQUIRED)
-	android_create_apk(${PRJ_NAME} "${CMAKE_BINARY_DIR}/apk" "${APP_SHARED_LIBRARIES}" "" "Data")
-endif(ANDROID)
+# Create Android package
+#if(ANDROID)
+	#include("cmake/android/Apk.cmake" REQUIRED)
+	#android_create_apk(${PRJ_NAME} "${CMAKE_BINARY_DIR}/apk" "${APP_SHARED_LIBRARIES}" "" "Data")
+#endif(ANDROID)
