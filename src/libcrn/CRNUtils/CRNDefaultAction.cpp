@@ -1,4 +1,4 @@
-/* Copyright 2010-2014 CoReNum, INSA-Lyon
+/* Copyright 2010-2016 CoReNum, INSA-Lyon
  * 
  * This file is part of libcrn.
  * 
@@ -52,7 +52,7 @@ DefaultAction& DefaultAction::getInstance()
 SAction DefaultAction::GetAction(const String &name)
 {
 	Map &act(getInstance().actions);
-	Map::iterator it = act.Find(name);
+	auto it = act.Find(name);
 	if (it != act.End())
 		return std::static_pointer_cast<Action>(it->second);
 	else
@@ -105,7 +105,7 @@ std::vector<String> DefaultAction::GetActionList()
 {
 	std::vector<String> lst;
 	Map &act(getInstance().actions);
-	for (Map::iterator it = act.Begin(); it != act.End(); ++it)
+	for (auto it = act.Begin(); it != act.End(); ++it)
 	{
 		lst.push_back(it->first);
 	}

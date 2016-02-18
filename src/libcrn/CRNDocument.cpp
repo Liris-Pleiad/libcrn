@@ -1,4 +1,4 @@
-/* Copyright 2006-2015 Yann LEYDIER, INSA-Lyon
+/* Copyright 2006-2016 Yann LEYDIER, INSA-Lyon
  * 
  * This file is part of libcrn.
  * 
@@ -129,7 +129,7 @@ String Document::InsertView(const Path &fname, size_t pos)
 void Document::RemoveView(const Path &fname)
 {
 	view v(fname);
-	std::vector<view>::iterator it(std::find(views.begin(), views.end(), v));
+	auto it(std::find(views.begin(), views.end(), v));
 	if (it == views.end())
 		throw ExceptionNotFound(StringUTF8("void Document::RemoveView(const Path &fname): ") + _("filename not found."));
 	RemoveView(it - views.begin());
@@ -306,10 +306,10 @@ String Document::GetViewId(size_t num) const
  */
 String Document::GetViewId(const Path &fname) const
 {
-	for (size_t tmp = 0; tmp < views.size(); ++tmp)
+	for (auto & elem : views)
 	{
-		if (views[tmp].filename == fname)
-			return views[tmp].id;
+		if (elem.filename == fname)
+			return elem.id;
 	}
 	throw ExceptionNotFound(StringUTF8("const String Document::GetViewId(const Path &fname) const: ") + _("filename not found."));
 }
@@ -485,9 +485,9 @@ void Document::load(const Path &fname)
 		date = bn;
 
 	views.clear();
-	for (std::multimap<int, std::pair<Path, String> >::iterator it = xmlviews.begin(); it != xmlviews.end(); ++it)
+	for (auto & xmlview : xmlviews)
 	{
-		addView(it->second.first, it->second.second);
+		addView(xmlview.second.first, xmlview.second.second);
 	}
 	/*
 	xml::Element vi(root.GetFirstChildElement("View"));

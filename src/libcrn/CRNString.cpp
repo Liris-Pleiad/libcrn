@@ -1,4 +1,4 @@
-/* Copyright 2008-2015 INSA Lyon, CoReNum
+/* Copyright 2008-2016 INSA Lyon, CoReNum
  *
  * This file is part of libcrn.
  *
@@ -431,9 +431,9 @@ std::vector<String> String::WhichSubstrings(const std::vector<String> &substring
 {
 	std::vector<String> found;
 
-	for (size_t k = 0; k < substrings.size(); k++)
+	for (auto str : substrings)
 	{
-		String str = substrings[k];
+		
 
 		if (Find(str) != String::NPos())
 		{
@@ -455,9 +455,9 @@ std::vector<String> String::WhichSubstrings(const std::vector<String> &substring
  */
 String& String::Replace(char32_t from, char32_t to)
 {
-	for (size_t tmp = 0; tmp < data.size(); tmp++)
-		if (data[tmp] == from)
-			data[tmp] = to;
+	for (auto & elem : data)
+		if (elem == from)
+			elem = to;
 	return *this;
 }
 
@@ -468,8 +468,8 @@ String& String::Replace(char32_t from, char32_t to)
  */
 String& String::ToUpper()
 {
-	for (size_t tmp = 0; tmp < data.size(); tmp++)
-		data[tmp] = char32_t(ToWUpper(wint_t(data[tmp])));
+	for (auto & elem : data)
+		elem = char32_t(ToWUpper(wint_t(elem)));
 	return *this;
 }
 
@@ -492,8 +492,8 @@ String& String::FirstCharacterToUpper()
  */
 String& String::ToLower()
 {
-	for (size_t tmp = 0; tmp < data.size(); tmp++)
-		data[tmp] = char32_t(ToWLower(wint_t(data[tmp])));
+	for (auto & elem : data)
+		elem = char32_t(ToWLower(wint_t(elem)));
 	return *this;
 }
 

@@ -1,4 +1,4 @@
-/* Copyright 2006-2014 Yann LEYDIER, CoReNum, INSA-Lyon
+/* Copyright 2006-2016 Yann LEYDIER, CoReNum, INSA-Lyon
  * 
  * This file is part of libcrn.
  * 
@@ -94,8 +94,8 @@ xml::Element Real::serialize(xml::Element &parent) const
 UObject Real::sum(const std::vector<std::pair<const Object*, double> > &plist) const 
 { 
 	double acc = 0;
-	for (size_t tmp = 0; tmp < plist.size(); tmp++)
-		acc += plist[tmp].second * ((const Real*)plist[tmp].first)->GetValue();
+	for (auto & elem : plist)
+		acc += elem.second * ((const Real*)elem.first)->GetValue();
 	return std::make_unique<Real>(acc); 
 }
 
@@ -109,8 +109,8 @@ UObject Real::mean(const std::vector<std::pair<const Object*, double> > &plist) 
 {
 	UReal ans(static_cast<Real*>(sum(plist).release()));
 	double coeffs = 0;
-	for (size_t tmp = 0; tmp < plist.size(); tmp++)
-		coeffs += plist[tmp].second;
+	for (auto & elem : plist)
+		coeffs += elem.second;
 	ans->Mult(1.0 / coeffs);
 	return std::forward<UReal>(ans);
 }

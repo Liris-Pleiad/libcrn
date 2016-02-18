@@ -1,4 +1,4 @@
-/* Copyright 2012-2014 INSA-Lyon
+/* Copyright 2012-2016 INSA-Lyon
  * 
  * This file is part of libcrn.
  * 
@@ -53,7 +53,7 @@ SpectralClustering SpectralClustering::CreateLocalScaleFromNN(const SquareMatrix
 		for (size_t c = 0; c < nelem; ++c)
 			if (c != r)
 				dist.insert(distance_matrix[r][c]);
-		std::set<double>::iterator it = dist.begin();
+		auto it = dist.begin();
 		std::advance(it, sigma_neighborhood - 1);
 		if (it != dist.end())
 			sigmas[r] = *it;
@@ -95,7 +95,7 @@ SpectralClustering SpectralClustering::CreateGlobalScaleFromNN(const SquareMatri
 		for (size_t c = 0; c < nelem; ++c)
 			if (c != r)
 				dist.insert(distance_matrix[r][c]);
-		std::set<double>::iterator it = dist.begin();
+		auto it = dist.begin();
 		std::advance(it, sigma_neighborhood - 1);
 		if (it != dist.end())
 			sigma += *it;
@@ -192,8 +192,8 @@ SpectralClustering::SpectralClustering(const SquareMatrixDouble &w)
 std::vector<double> SpectralClustering::GetEigenvalues() const
 {
 	std::vector<double> vals(eigenpairs.size());
-	std::vector<double>::iterator vit = vals.begin();
-	for (std::multimap<double, MatrixDouble>::const_reverse_iterator eit = eigenpairs.rbegin(); eit != eigenpairs.rend(); ++eit)
+	auto vit = vals.begin();
+	for (auto eit = eigenpairs.rbegin(); eit != eigenpairs.rend(); ++eit)
 		*vit++ = eit->first;
 	return vals;
 }
@@ -208,7 +208,7 @@ size_t SpectralClustering::EstimateClusterNumber(double limit) const
 	if ((limit < 0.0) || (limit > 1.0))
 		throw ExceptionDomain(_("Eigenvalues should be in [0, 1]."));
 	size_t n = 1;
-	for (std::multimap<double, MatrixDouble>::const_reverse_iterator eit = eigenpairs.rbegin(); eit != eigenpairs.rend(); ++eit)
+	for (auto eit = eigenpairs.rbegin(); eit != eigenpairs.rend(); ++eit)
 	{
 		if (eit->first < limit)
 			break;
@@ -238,7 +238,7 @@ std::vector<std::vector<double>> SpectralClustering::ProjectData(size_t ncoordin
 		std::advance(stopit, ncoordinates);
 	}
 	size_t coord = 0;
-	for (std::multimap<double, MatrixDouble>::const_reverse_iterator eit = eigenpairs.rbegin(); eit != stopit; ++eit)
+	for (auto eit = eigenpairs.rbegin(); eit != stopit; ++eit)
 	{
 		for (size_t tmp = 0; tmp < nelem; ++tmp)
 			data[tmp][coord] = eit->second[tmp][0];
@@ -246,14 +246,14 @@ std::vector<std::vector<double>> SpectralClustering::ProjectData(size_t ncoordin
 	}
 	if (normalize)
 	{
-		for (size_t tmp = 0; tmp < data.size(); ++tmp)
+		for (auto & elem : data)
 		{
 			double s = 0;
 			for (size_t i = 0; i < ncoordinates; ++i)
-				s += Sqr(data[tmp][i]);
+				s += Sqr(elem[i]);
 			s = sqrt(s);
 			for (size_t i = 0; i < ncoordinates; ++i)
-				data[tmp][i] /= s;
+				elem[i] /= s;
 		}
 	}
 	return data;

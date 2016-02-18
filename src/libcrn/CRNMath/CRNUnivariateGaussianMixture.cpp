@@ -1,4 +1,4 @@
-/* Copyright 2008-2015 INSA Lyon, CoReNum
+/* Copyright 2008-2016 INSA Lyon, CoReNum
  * 
  * This file is part of libcrn.
  * 
@@ -234,8 +234,8 @@ double UnivariateGaussianMixture::ValueAt(const double x) const
 {
 	double d = 0.0;
 	
-	for (size_t k = 0; k < members.size(); ++k)
-		d += members[k].second * members[k].first.ValueAt(x);
+	for (auto & elem : members)
+		d += elem.second * elem.first.ValueAt(x);
 	
 	return d;
 }
@@ -772,10 +772,10 @@ xml::Element UnivariateGaussianMixture::serialize(xml::Element &parent) const
 {
 	xml::Element el(parent.PushBackElement(GetClassName().CStr()));
 	
-	for (size_t k = 0; k < members.size(); ++k)
+	for (auto & elem : members)
 	{
-		xml::Element sub_el(members[k].first.Serialize(el));
-		sub_el.SetAttribute("weight", members[k].second);
+		xml::Element sub_el(elem.first.Serialize(el));
+		sub_el.SetAttribute("weight", elem.second);
 	}
 	
 	return el;

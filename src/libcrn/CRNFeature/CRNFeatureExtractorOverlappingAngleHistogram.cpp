@@ -1,4 +1,4 @@
-/* Copyright 2012-2015 CoReNum, INSA-Lyon
+/* Copyright 2012-2016 CoReNum, INSA-Lyon
  *
  * This file is part of libcrn.
  *
@@ -121,8 +121,8 @@ SObject FeatureExtractorOverlappingAngleHistogram::Extract(Block &b)
 		}
 	}
 	if (cnt != 0)
-		for (size_t tmp = 0; tmp < feats.size(); ++tmp)
-			feats[tmp] /= cnt;
+		for (auto & feat : feats)
+			feat /= cnt;
 
 	return std::make_shared<MatrixDouble>(feats);
 }
@@ -218,8 +218,8 @@ SObject FeatureExtractorOverlappingAngleHistogram::ExtractWithMask(Block &b, Ima
 		}
 	}
 	if (cnt != 0)
-		for (size_t tmp = 0; tmp < feats.size(); ++tmp)
-			feats[tmp] /= cnt;
+		for (auto & feat : feats)
+			feat /= cnt;
 
 	return std::make_shared<MatrixDouble>(feats);
 }

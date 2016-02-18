@@ -1,4 +1,4 @@
-/* Copyright 2006-2015 INSA Lyon
+/* Copyright 2006-2016 INSA Lyon
  *
  * This file is part of libcrn.
  *
@@ -43,9 +43,9 @@ using namespace crn;
  * \param[in] 	src The source image of the top block
  * \param[in]	nam	the name of the new block
  */
-SBlock Block::New(SImage src, String nam)
+SBlock Block::New(const SImage &src, const String &nam)
 {
-	SBlock b(new Block(src, nam));
+	auto b = SBlock(new Block(src, nam));
 	b->self = b;
 	return b;
 }
@@ -58,7 +58,7 @@ SBlock Block::New(SImage src, String nam)
  * \param[in] 	src The source image of the top block
  * \param[in]	nam	the name of the new block
  */
-Block::Block(SImage src, String nam):
+Block::Block(const SImage &src, const String &nam):
 	ComplexObject(nam),
 	child(std::make_shared<Map>()),
 	srcRGB(nullptr),
@@ -111,19 +111,19 @@ Block::Block(SImage src, String nam):
  * \param[in]	nam	the name of the new block
  *
  */
-SBlock Block::New(const Path &ifname, const Path &xfname, String nam)
+SBlock Block::New(const Path &ifname, const Path &xfname, const String &nam)
 {
-	SBlock b(new Block(ifname, xfname, nam));
+	auto b = SBlock(new Block(ifname, xfname, nam));
 	b->self = b;
 	if (xfname.IsNotEmpty())
 		b->Append(xfname);
 	if ((!b->bbox.IsValid()) || (b->bbox.GetWidth() == 0) || (b->bbox.GetHeight() == 0))
 	{
-		SImageRGB irgb = b->GetRGB();
+		auto irgb = b->GetRGB();
 		b->bbox.SetLeft(0);
 		b->bbox.SetTop(0);
-		b->bbox.SetWidth((int)irgb->GetWidth());
-		b->bbox.SetHeight((int)irgb->GetHeight());
+		b->bbox.SetWidth(int(irgb->GetWidth()));
+		b->bbox.SetHeight(int(irgb->GetHeight()));
 	}
 	return b;
 }
@@ -142,7 +142,7 @@ SBlock Block::New(const Path &ifname, const Path &xfname, String nam)
  * \param[in]	nam	the name of the new block
  *
  */
-Block::Block(const Path &ifname, const Path &xfname, String nam):
+Block::Block(const Path &ifname, const Path &xfname, const String &nam):
 	ComplexObject(nam),
 	child(std::make_shared<Map>()),
 	srcRGB(nullptr),
@@ -174,9 +174,9 @@ Block::Block(const Path &ifname, const Path &xfname, String nam):
  * \param[in]		clip The bounding box of the new block, given in absolute coordinates
  * \param[in]	nam	the name of the new block
  */
-SBlock Block::create(WBlock par, const String &tree, Rect clip, String nam)
+SBlock Block::create(const WBlock &par, const String &tree, const Rect &clip, const String &nam)
 {
-	SBlock b(new Block(par, tree, clip, nam));
+	auto b = SBlock(new Block(par, tree, clip, nam));
 	b->self = b;
 	return b;
 }
@@ -192,7 +192,7 @@ SBlock Block::create(WBlock par, const String &tree, Rect clip, String nam)
  * \param[in]		clip The bounding box of the new block, given in absolute coordinates
  * \param[in]	nam	the name of the new block
  */
-Block::Block(WBlock par, const String &tree, Rect clip, String nam):
+Block::Block(const WBlock &par, const String &tree, const Rect &clip, const String &nam):
 	ComplexObject(nam),
 	child(std::make_shared<Map>()),
 	parent(par),
@@ -251,22 +251,22 @@ Block::Block(WBlock par, const String &tree, Rect clip, String nam):
  *
  * \param[in]	newbox	the new absolute bounding box
  */
-void Block::SetAbsoluteBBox(Rect newbox)
+void Block::SetAbsoluteBBox(const Rect &newbox)
 {
 	if (parent.expired())
-		throw ExceptionLogic(StringUTF8("void Block::SetAbsoluteBBox(Rect newbox): ") +
+		throw ExceptionLogic(StringUTF8("Block::SetAbsoluteBBox(): ") +
 				_("this is a topmost block. Its bounding box cannot be changed."));
 	if (!newbox.IsValid())
-		throw ExceptionInvalidArgument(StringUTF8("void Block::SetAbsoluteBBox(Rect newbox): ") +
+		throw ExceptionInvalidArgument(StringUTF8("Block::SetAbsoluteBBox(): ") +
 				_("Uninitialized bounding box."));
 	Rect nr = parent.lock()->GetAbsoluteBBox();
 	nr &= newbox;
 	if (!nr.IsValid())
-		throw ExceptionDimension(StringUTF8("void Block::SetAbsoluteBBox(Rect newbox): ") +
+		throw ExceptionDimension(StringUTF8("Block::SetAbsoluteBBox(): ") +
 				_("bounding box out of parent's bounding box."));
 
 	if ((nr & bbox).GetArea() < bbox.GetArea())
-		for (Map::iterator i = child->Begin() ; i != child->End() ; ++i)
+		for (auto i = child->Begin() ; i != child->End() ; ++i)
 		{
 			SVector v(std::static_pointer_cast<Vector>(i->second));
 			for (long j = long(v->Size()) - 1 ; j >= 0 ; --j)
@@ -300,10 +300,10 @@ void Block::SetAbsoluteBBox(Rect newbox)
 void Block::SetRelativeBBox(Rect newbox)
 {
 	if (parent.expired())
-		throw ExceptionLogic(StringUTF8("void Block::SetRelativeBBox(Rect newbox): ") +
+		throw ExceptionLogic(StringUTF8("Block::SetRelativeBBox(): ") +
 				_("this is a topmost block. Its bounding box cannot be changed."));
 	if (!newbox.IsValid())
-		throw ExceptionInvalidArgument(StringUTF8("void Block::SetRelativeBBox(Rect newbox): ") +
+		throw ExceptionInvalidArgument(StringUTF8("Block::SetRelativeBBox(): ") +
 				_("Uninitialized bounding box."));
 	newbox.Translate(parent.lock()->GetAbsoluteBBox().GetLeft(), parent.lock()->GetAbsoluteBBox().GetTop());
 	SetAbsoluteBBox(newbox);
@@ -1611,7 +1611,7 @@ struct interResolv
 		corresp.clear();
 		for (std::set<int> &s : inter)
 		{
-			std::set<int>::iterator it = s.begin();
+			auto it = s.begin();
 			int rep = *it;
 			++it;
 			for (; it != s.end(); ++it)
@@ -1791,7 +1791,7 @@ UImageIntGray Block::ExtractCC(const String &tree)
 		int v = imap->At(x, y);
 		if (v != 0)
 		{
-			std::map<int, int>::iterator it = ir.corresp.find(v);
+			auto it = ir.corresp.find(v);
 			if (it != ir.corresp.end())
 			{ // has to be changed
 				v = it->second;
@@ -2331,11 +2331,11 @@ bool Block::MergeChildren(const String &tree, double overlap, ImageIntGray *imap
 
 	// propagate
 	std::map<size_t, size_t> change;
-	for (std::map<size_t, std::map<size_t, size_t> >::iterator it = overlaps.begin(); it != overlaps.end(); ++it)
+	for (auto it = overlaps.begin(); it != overlaps.end(); ++it)
 	{
 		size_t from = it->first;
 		size_t to = it->second.begin()->second;
-		std::map<size_t, std::map<size_t, size_t> >::iterator next = overlaps.find(to);
+		auto next = overlaps.find(to);
 		while (next != overlaps.end())
 		{
 			to = next->second.begin()->second;
@@ -2346,14 +2346,14 @@ bool Block::MergeChildren(const String &tree, double overlap, ImageIntGray *imap
 	// merge
 	std::set<SBlock> toremove;
 	SVector lst(getChildList(tree));
-	for (std::map<size_t, size_t>::iterator it = change.begin(); it != change.end(); ++it)
+	for (auto & elem : change)
 	{
-		SBlock bfrom(std::static_pointer_cast<Block>((*vtree)[it->first]));
-		SBlock bto(std::static_pointer_cast<Block>((*vtree)[it->second]));
+		SBlock bfrom(std::static_pointer_cast<Block>((*vtree)[elem.first]));
+		SBlock bto(std::static_pointer_cast<Block>((*vtree)[elem.second]));
 		int f = bfrom->GetName().ToInt();
 		int t = bto->GetName().ToInt();
 		//toremove.insert(it->first);
-		toremove.insert(std::static_pointer_cast<Block>((*lst)[it->first]));
+		toremove.insert(std::static_pointer_cast<Block>((*lst)[elem.first]));
 		bto->SetAbsoluteBBox(bto->GetAbsoluteBBox() | bfrom->GetAbsoluteBBox());
 		if (imap)
 		{
@@ -2419,12 +2419,12 @@ void Block::MergeSiblings(const String &tree, size_t index1, size_t index2, Imag
 	GetChild(tree, index1)->bbox |= GetChild(tree, index2)->GetAbsoluteBBox();
 	// copy childrens from child2 into child1
 	const std::vector<String> child2TreeNames = GetChild(tree, index2)->GetTreeNames();
-	for (std::vector<String>::const_iterator treeName = child2TreeNames.begin() ; treeName != child2TreeNames.end() ; ++treeName)
-		for (size_t i = 0 ; i < GetChild(tree, index2)->GetNbChildren(*treeName) ; ++i)
+	for (const auto & child2TreeName : child2TreeNames)
+		for (size_t i = 0 ; i < GetChild(tree, index2)->GetNbChildren(child2TreeName) ; ++i)
 		{
-			SBlock child = GetChild(tree, index2)->GetChild(*treeName, i);
+			SBlock child = GetChild(tree, index2)->GetChild(child2TreeName, i);
 			child->parent = GetChild(tree, index1);
-			GetChild(tree, index1)->getChildList(*treeName)->PushBack(child);
+			GetChild(tree, index1)->getChildList(child2TreeName)->PushBack(child);
 		}
 	// remove child 2
 	RemoveChild(tree, index2);
@@ -2624,10 +2624,10 @@ Block::masked_pixel_iterator Block::MaskedPixelBegin(const String &tree, size_t 
  *
  * \return	an iterator, invalid if the block is not a descendant
  */
-Block::masked_pixel_iterator Block::MaskedPixelBegin(SBlock b, pixel::BW mask_value)
+Block::masked_pixel_iterator Block::MaskedPixelBegin(const SBlock &b, pixel::BW mask_value)
 {
 	if (!b || !b->IsParent(*this))
-		throw ExceptionInvalidArgument(StringUTF8("Block::masked_pixel_iterator Block::MaskedPixelBegin(SBlock b, pixel::BW mask_value): ") +
+		throw ExceptionInvalidArgument(StringUTF8("Block::masked_pixel_iterator Block::MaskedPixelBegin(const SBlock &b, pixel::BW mask_value): ") +
 				_("tree not found."));
 	Rect r = b->GetAbsoluteBBox();
 	r.Translate(-bbox.GetLeft(), -bbox.GetTop());
@@ -2668,10 +2668,10 @@ Block::masked_pixel_iterator Block::MaskedPixelEnd(const String &tree, size_t nu
  *
  * \return	an iterator, invalid if the block is not a descendant
  */
-Block::masked_pixel_iterator Block::MaskedPixelEnd(SBlock b, pixel::BW mask_value)
+Block::masked_pixel_iterator Block::MaskedPixelEnd(const SBlock &b, pixel::BW mask_value)
 {
 	if (!b || !b->IsParent(*this))
-		throw ExceptionInvalidArgument(StringUTF8("Block::masked_pixel_iterator Block::MaskedPixelEnd(SBlock b, pixel::BW mask_value): ") +
+		throw ExceptionInvalidArgument(StringUTF8("Block::masked_pixel_iterator Block::MaskedPixelEnd(const SBlock &b, pixel::BW mask_value): ") +
 				_("null block or block is not a child."));
 	return Block::masked_pixel_iterator();
 }

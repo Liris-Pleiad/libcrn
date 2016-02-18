@@ -1,4 +1,4 @@
-/* Copyright 2006-2015 Yann LEYDIER, INSA-Lyon, CoReNum, Université Paris Descartes
+/* Copyright 2006-2016 Yann LEYDIER, INSA-Lyon, CoReNum, Université Paris Descartes
  *
  * This file is part of libcrn.
  *
@@ -186,9 +186,9 @@ unsigned int Histogram::CumulateBins() const
 {
 	unsigned int Cumul = 0;
 
-	for (size_t k = 0; k < bins.size(); k++)
+	for (auto & elem : bins)
 	{
-		Cumul += bins[k];
+		Cumul += elem;
 	}
 
 	return Cumul;
@@ -285,9 +285,9 @@ unsigned int Histogram::Max() const
 {
 	unsigned int m = 0;
 
-	for (size_t k = 0; k < bins.size(); k++)
+	for (auto & elem : bins)
 	{
-		m = crn::Max(m, bins[k]);
+		m = crn::Max(m, elem);
 	}
 
 	return m;
@@ -305,9 +305,9 @@ unsigned int Histogram::Min() const
 {
 	unsigned int m = bins[0];
 
-	for (size_t k = 0; k < bins.size(); k++)
+	for (auto & elem : bins)
 	{
-		m = crn::Min(m, bins[k]);
+		m = crn::Min(m, elem);
 	}
 
 	return m;
@@ -377,9 +377,9 @@ size_t Histogram::Argmin() const
  */
 void Histogram::SetCeiling(unsigned int m)
 {
-	for (size_t k = 0; k < bins.size(); k++)
+	for (auto & elem : bins)
 	{
-		bins[k] = crn::Min(m,bins[k]);
+		elem = crn::Min(m,elem);
 
 	}
 }
@@ -405,11 +405,11 @@ void Histogram::ScaleMaxTo(unsigned int m)
 
 	double s = (double) m / (double) c; /* Scale factor */
 
-	for (size_t k = 0; k < bins.size(); k++)
+	for (auto & elem : bins)
 	{
-		unsigned int v = (unsigned int)(bins[k] * s);
+		unsigned int v = (unsigned int)(elem * s);
 
-		bins[k] = v;
+		elem = v;
 	}
 }
 
@@ -570,11 +570,11 @@ std::vector<size_t> Histogram::StableModes() const
 	size_t niter = 0;
 	while (nmodes > 1)
 	{
-		std::map<size_t, size_t>::iterator cit = mcount.find(nmodes);
+		auto cit = mcount.find(nmodes);
 		if (cit != mcount.end())
 		{ // update
 			cit->second += 1;
-			std::map<size_t, std::vector<size_t> >::iterator sit = msum.find(nmodes);
+			auto sit = msum.find(nmodes);
 			std::transform(sit->second.begin(), sit->second.end(), modes.begin(), sit->second.begin(), std::plus<size_t>());
 		}
 		else
@@ -598,12 +598,12 @@ std::vector<size_t> Histogram::StableModes() const
 	// look for most stable mode number
 	nmodes = 0;
 	size_t maxpop = 0;
-	for (std::map<size_t, size_t>::iterator cit = mcount.begin(); cit != mcount.end(); ++cit)
+	for (auto & elem : mcount)
 	{
-		if (cit->second > maxpop)
+		if (elem.second > maxpop)
 		{
-			maxpop = cit->second;
-			nmodes = cit->first;
+			maxpop = elem.second;
+			nmodes = elem.first;
 		}
 	}
 
@@ -1108,9 +1108,9 @@ String Histogram::ToString() const
 {
 	String s(GetClassName());
 	s += U": ";
-	for (size_t tmp = 0; tmp < bins.size(); tmp++)
+	for (auto & elem : bins)
 	{
-		s += bins[tmp];
+		s += elem;
 		s += U" ";
 	}
 	return s;
@@ -1311,9 +1311,9 @@ double Histogram::Entropy() const
 	auto e = 0.0;
 	auto c = double(CumulateBins());
 
-	for (size_t k = 0; k < bins.size(); k++)
+	for (auto & elem : bins)
 	{
-		auto b_k = double(bins[k]);
+		auto b_k = double(elem);
 
 		if (b_k != 0)
 		{
@@ -1361,9 +1361,9 @@ size_t Histogram::MedianValue() const
 Histogram Histogram::MakePopulationHistogram() const
 {
 	Histogram poph(Max() + 1);
-	for (size_t index = 0; index < bins.size(); index++)
+	for (auto & elem : bins)
 	{
-		poph.IncBin(bins[index]);
+		poph.IncBin(elem);
 	}
 	return poph;
 }

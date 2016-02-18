@@ -1,4 +1,4 @@
-/* Copyright 2009-2015 Jean DUONG, INSA-Lyon, CoReNum
+/* Copyright 2009-2016 Jean DUONG, INSA-Lyon, CoReNum
  * 
  * This file is part of libcrn.
  * 
@@ -669,7 +669,7 @@ std::vector<std::vector<double>> PCA::ReverseTransform(const std::vector< std::v
 	
 	size_t j = 0;
 	
-	for (std::multimap<double, MatrixDouble>::const_reverse_iterator rev_iter = eigensystem.rbegin(); rev_iter != eigensystem.rend(); ++rev_iter)
+	for (auto rev_iter = eigensystem.rbegin(); rev_iter != eigensystem.rend(); ++rev_iter)
 	{
 		MatrixDouble vect = rev_iter->second;
 		

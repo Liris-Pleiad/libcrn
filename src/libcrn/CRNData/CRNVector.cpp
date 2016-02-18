@@ -1,4 +1,4 @@
-/* Copyright 2006-2014 Yann LEYDIER, INSA-Lyon, CoReNum
+/* Copyright 2006-2016 Yann LEYDIER, INSA-Lyon, CoReNum
  * 
  * This file is part of libcrn.
  * 
@@ -261,7 +261,7 @@ void Vector::Remove(size_t index)
  */
 void Vector::Remove(const SCObject &obj)
 {
-	for (std::vector<SObject>::iterator it = data.begin(); it != data.end(); ++it)
+	for (auto it = data.begin(); it != data.end(); ++it)
 		if (*it == obj)
 		{
 			data.erase(it);
@@ -366,8 +366,8 @@ void Vector::deserialize(xml::Element &el)
 		xmllist.insert(std::make_pair(index, d));
 	}
 	Clear();
-	for (std::multimap<int, SObject>::iterator it = xmllist.begin(); it != xmllist.end(); ++it)
-		data.push_back(it->second);
+	for (auto & elem : xmllist)
+		data.push_back(elem.second);
 	ShrinkToFit();
 }
 

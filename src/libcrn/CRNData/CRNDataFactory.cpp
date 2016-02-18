@@ -1,4 +1,4 @@
-/* Copyright 2008-2015 INSA Lyon, CoReNum
+/* Copyright 2008-2016 INSA Lyon, CoReNum
  * 
  * This file is part of libcrn.
  * 
@@ -85,9 +85,9 @@ String DataFactory::GetKnownTypes()
 {
 	String s;
 	
-	for (auto it = getInstance().data.begin(); it != getInstance().data.end(); ++it)
+	for (auto & elem : getInstance().data)
 	{
-		s += (*it).first + U"\n";
+		s += (elem).first + U"\n";
 	}
 	return s;
 }

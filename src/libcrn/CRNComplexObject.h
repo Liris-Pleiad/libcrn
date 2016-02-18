@@ -62,7 +62,7 @@ namespace crn
 		/**************************************************************************/
 		public:
 			/*! \brief Default constructor */
-			ComplexObject(String s = U"");
+			ComplexObject(const String &s = U"");
 			/*! \brief Destructor */
 			virtual ~ComplexObject() override;
 
@@ -88,7 +88,7 @@ namespace crn
 			/*! \brief Gets a user data by key */
 			SObject GetUserData(const String &key);
 			/*! \brief Gets a user data key by value */
-			String GetUserDataKey(SObject value) const;
+			String GetUserDataKey(const SObject &value) const;
 			/*! \brief Gets a user data by key */
 			const SObject GetUserData(const String &key) const;
 			/*! \brief Deletes a user data entry and frees the value */

@@ -1,4 +1,4 @@
-/* Copyright 2006-2015 Yann LEYDIER, INSA-Lyon
+/* Copyright 2006-2016 Yann LEYDIER, INSA-Lyon
  * 
  * This file is part of libcrn.
  * 
@@ -386,12 +386,12 @@ double ImageGradient::GetHRun() const noexcept
 		}
 	}
 	auto suml = 0.0, sumr = 0.0;
-	for (size_t tmp = 0; tmp < leftlist.size(); tmp++)
-		suml += double(leftlist[tmp]);
+	for (auto & elem : leftlist)
+		suml += double(elem);
 	if (!leftlist.empty())
 		suml /= double(leftlist.size());
-	for (size_t tmp = 0; tmp < rightlist.size(); tmp++)
-		sumr += double(rightlist[tmp]);
+	for (auto & elem : rightlist)
+		sumr += double(elem);
 	if (!rightlist.empty())
 		sumr /= double(rightlist.size());
 	return (sumr + suml);
@@ -528,12 +528,12 @@ const auto GR_BOTTOM = 5;
 		}
 	}
 	auto sumt = 0.0, sumb = 0.0;
-	for (size_t tmp = 0; tmp < toplist.size(); tmp++)
-		sumt += double(toplist[tmp]);
+	for (auto & elem : toplist)
+		sumt += double(elem);
 	if (!toplist.empty())
 		sumt /= double(toplist.size());
-	for (size_t tmp = 0; tmp < bottomlist.size(); tmp++)
-		sumb += double(bottomlist[tmp]);
+	for (auto & elem : bottomlist)
+		sumb += double(elem);
 	if (!bottomlist.empty())
 		sumb /= double(bottomlist.size());
 	return (sumt + sumb);

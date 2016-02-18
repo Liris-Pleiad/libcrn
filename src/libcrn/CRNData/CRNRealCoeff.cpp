@@ -1,4 +1,4 @@
-/* Copyright 2007-2014 Yann LEYDIER, CoReNum, INSA-Lyon
+/* Copyright 2007-2016 Yann LEYDIER, CoReNum, INSA-Lyon
  * 
  * This file is part of libcrn.
  * 
@@ -114,10 +114,10 @@ UObject RealCoeff::sum(const std::vector<std::pair<const Object*, double> > &pli
 		if (plist[tmp].first->GetClassProtocols() != id)
 			return nullptr;
 	double s = 0;
-	for (size_t tmp = 0; tmp < plist.size(); tmp++)
+	for (auto & elem : plist)
 	{
-		const RealCoeff *tv = static_cast<const RealCoeff*>(plist[tmp].first);
-		s += tv->GetValue() * tv->GetCoeff() * plist[tmp].second;
+		const RealCoeff *tv = static_cast<const RealCoeff*>(elem.first);
+		s += tv->GetValue() * tv->GetCoeff() * elem.second;
 	}
 	return std::make_unique<RealCoeff>(s, 1);
 }
@@ -138,11 +138,11 @@ UObject RealCoeff::mean(const std::vector<std::pair<const Object*, double> > &pl
 			return nullptr;
 	double s = 0;
 	double c = 0;
-	for (size_t tmp = 0; tmp < plist.size(); tmp++)
+	for (auto & elem : plist)
 	{
-		const RealCoeff *tv = static_cast<const RealCoeff*>(plist[tmp].first);
-		s += tv->GetValue() * tv->GetCoeff() * plist[tmp].second;
-		c += tv->GetCoeff() * plist[tmp].second;
+		const RealCoeff *tv = static_cast<const RealCoeff*>(elem.first);
+		s += tv->GetValue() * tv->GetCoeff() * elem.second;
+		c += tv->GetCoeff() * elem.second;
 	}
 	s /= c;
 	return std::make_unique<RealCoeff>(s, 1);

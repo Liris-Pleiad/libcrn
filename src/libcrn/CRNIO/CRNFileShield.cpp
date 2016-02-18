@@ -1,4 +1,4 @@
-/* Copyright 2011 CoReNum
+/* Copyright 2011-2016 CoReNum, INSA-Lyon
  * 
  * This file is part of libcrn.
  * 
@@ -44,7 +44,7 @@ FileShield& FileShield::getInstance()
 std::mutex& FileShield::GetMutex(const Path &fname)
 {
 	FileShield &fs(getInstance());
-	std::map<Path, std::unique_ptr<std::mutex> >::iterator it = fs.shields.find(fname);
+	auto it = fs.shields.find(fname);
 	if (it == fs.shields.end())
 	{
 		

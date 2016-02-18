@@ -1,4 +1,4 @@
-/* Copyright 2006-2014 Yann LEYDIER, CoReNum, INSA-Lyon
+/* Copyright 2006-2016 Yann LEYDIER, CoReNum, INSA-Lyon
  * 
  * This file is part of libcrn.
  * 
@@ -61,7 +61,7 @@ Protocol Map::GetClassProtocols() const noexcept
  */
 SObject Map::Get(const String &s)
 {
-	iterator it = Find(s);
+	auto it = Find(s);
 	if (it == End())
 		return nullptr;
 	else
@@ -76,7 +76,7 @@ SObject Map::Get(const String &s)
  */
 SCObject Map::Get(const String &s) const
 {
-	const_iterator it = Find(s);
+	auto it = Find(s);
 	if (it == End())
 		return nullptr;
 	else
@@ -124,7 +124,7 @@ void Map::Remove(const String &key)
  */
 void Map::Remove(const SObject &obj)
 {
-	for (iterator it = Begin(); it != End(); ++it)
+	for (auto it = Begin(); it != End(); ++it)
 		if (it->second == obj)
 		{
 			Remove(it->first);
@@ -171,7 +171,7 @@ void Map::Remove(iterator first, iterator end)
 		data.erase(first, end);
 	}
 	// if end is not the End() of the map, check that it is really after first
-	for (iterator tmp = first; tmp != End(); ++tmp)
+	for (auto tmp = first; tmp != End(); ++tmp)
 	{
 		if (tmp == end)
 		{
@@ -190,11 +190,11 @@ String Map::ToString() const
 {
 	String s = GetClassName();
 	s += " { ";
-	for (const_iterator it = Begin(); it != End(); ++it)
+	for (auto it = Begin(); it != End(); ++it)
 	{
 		s += String(U"[") + it->first + U"]";
 		s += it->second->ToString();
-		const_iterator nit(it);
+		auto nit(it);
 		++nit;
 		if (nit != End())
 			s += ", ";
@@ -216,7 +216,7 @@ UObject Map::Clone() const
 
 	UMap m = std::make_unique<Map>(protocols);
 	m->SetName(GetName());
-	for (const_iterator it = Begin(); it != End(); ++it)
+	for (auto it = Begin(); it != End(); ++it)
 		m->Set(it->first, it->second->Clone());
 	return std::forward<UMap>(m);
 }
@@ -273,7 +273,7 @@ xml::Element Map::serialize(xml::Element &parent) const
 		throw ExceptionProtocol(_("This map does not contain serializable objects."));
 	xml::Element el(parent.PushBackElement(GetClassName().CStr()));
 	el.SetAttribute("protocols", int(protocols));
-	for (const_iterator tmp = Begin(); tmp != End(); ++tmp)
+	for (auto tmp = Begin(); tmp != End(); ++tmp)
 	{
 		xml::Element te = (*tmp).second->Serialize(el);
 		te.SetAttribute("key", (*tmp).first.CStr());
@@ -289,7 +289,7 @@ xml::Element Map::serialize(xml::Element &parent) const
 std::set<String> Map::GetKeys() const
 {
 	std::set<String> keys;
-	for (const_iterator tmp = Begin(); tmp != End(); ++tmp)
+	for (auto tmp = Begin(); tmp != End(); ++tmp)
 	{
 		keys.insert(tmp->first);
 	}

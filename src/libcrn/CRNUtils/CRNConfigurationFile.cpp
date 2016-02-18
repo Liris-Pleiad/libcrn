@@ -1,4 +1,4 @@
-/* Copyright 2010-2014 CoReNum, INSA-Lyon
+/* Copyright 2010-2016 CoReNum, INSA-Lyon
  *
  * This file is part of libcrn.
  *
@@ -67,9 +67,9 @@ Path ConfigurationFile::Load()
 	files.push_back("." + filename + ".xml");
 
 	data->Clear();
-	for (std::vector<Path>::iterator idir = dirs.begin(); (idir != dirs.end()); ++idir)
+	for (auto idir = dirs.begin(); (idir != dirs.end()); ++idir)
 	{
-		for (std::vector<Path>::iterator ifn = files.begin(); (ifn != files.end()); ++ifn)
+		for (auto ifn = files.begin(); (ifn != files.end()); ++ifn)
 		{
 			Path confname(*idir);
 			confname += Path::Separator();
@@ -120,7 +120,7 @@ SObject& ConfigurationFile::operator[](const String &key)
  */
 SObject ConfigurationFile::GetData(const String &key)
 {
-	Map::iterator it(data->Find(key));
+	auto it(data->Find(key));
 	if (it != data->End())
 		return it->second;
 	else

@@ -1,4 +1,4 @@
-/* Copyright 2006-2015 INSA Lyon, CoReNum
+/* Copyright 2006-2016 INSA Lyon, CoReNum
  * 
  * This file is part of libcrn.
  * 
@@ -53,9 +53,9 @@ namespace crn
 	{
 		public:
 			/*! \brief Top block creator */
-			static SBlock New(SImage src, String nam = U"");
+			static SBlock New(const SImage &src, const String &nam = U"");
 			/*! \brief Constructor from filenames */
-			static SBlock New(const Path &ifname, const Path &xfname, String nam = U"");
+			static SBlock New(const Path &ifname, const Path &xfname, const String &nam = U"");
 			/*! \brief Destructor */
 			virtual ~Block() override;
 
@@ -77,7 +77,7 @@ namespace crn
 			/*! \brief Gets the relative bounding box of the block */
 			Rect GetRelativeBBox() const;
 			/*! \brief Sets the absolute bounding box of the block */
-			void SetAbsoluteBBox(Rect newbox);
+			void SetAbsoluteBBox(const Rect &newbox);
 			/*! \brief Sets the absolute bounding box of the block */
 			void SetRelativeBBox(Rect newbox);
 
@@ -295,19 +295,19 @@ namespace crn
 			/*! \brief Returns a masked iterator on the first pixel of the block */
 			masked_pixel_iterator MaskedPixelEnd(const String &tree, size_t num, pixel::BW mask_value = pixel::BWBlack);
 			/*! \brief Returns a masked iterator after the last pixel of the block */
-			masked_pixel_iterator MaskedPixelBegin(SBlock b, pixel::BW mask_value = pixel::BWBlack);
+			masked_pixel_iterator MaskedPixelBegin(const SBlock &b, pixel::BW mask_value = pixel::BWBlack);
 			/*! \brief Returns a masked iterator after the last pixel of the block */
-			masked_pixel_iterator MaskedPixelEnd(SBlock b, pixel::BW mask_value = pixel::BWBlack);
+			masked_pixel_iterator MaskedPixelEnd(const SBlock &b, pixel::BW mask_value = pixel::BWBlack);
 
 		private:
 			/*! \brief Top block creator */
-			Block(SImage src, String nam = U"");
+			Block(const SImage &src, const String &nam = U"");
 			/*! \brief Constructor from filenames */
-			Block(const Path &ifname, const Path &xfname, String nam = U"");
+			Block(const Path &ifname, const Path &xfname, const String &nam = U"");
 			/*! \brief Internal. Child block creator */
-			static SBlock create(WBlock par, const String &tree, Rect clip, String nam = U""); 
+			static SBlock create(const WBlock &par, const String &tree, const Rect &clip, const String &nam = U""); 
 			/*! \brief Internal. Child block creator */
-			Block(WBlock par, const String &tree, Rect clip, String nam = U""); 
+			Block(const WBlock &par, const String &tree, const Rect &clip, const String &nam = U""); 
 
 			/*! \brief Internal. */
 			void addToXml(xml::Document &parent); 

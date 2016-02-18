@@ -33,7 +33,7 @@ const StringUTF8 USERDATA_NAME("userdata");
  * Default constructor
  * \param[in]	s	the name of the object
  */
-ComplexObject::ComplexObject(String s):
+ComplexObject::ComplexObject(const String &s):
 	name(s),
 	user_data(nullptr),
 	filelock(std::make_unique<std::mutex>()),
@@ -103,7 +103,7 @@ SObject ComplexObject::GetUserData(const String &key)
  * \param[in]	value	The value to search
  * \return	The key corresponding to the value, or "" if not found
  */
-String ComplexObject::GetUserDataKey(SObject value) const
+String ComplexObject::GetUserDataKey(const SObject &value) const
 {
 	if (!user_data)
 		return U"";

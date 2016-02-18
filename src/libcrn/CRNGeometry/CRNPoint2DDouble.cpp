@@ -1,4 +1,4 @@
-/* Copyright 2008-2014 INSA Lyon, CoReNum
+/* Copyright 2008-2016 INSA Lyon, CoReNum
  * 
  * This file is part of libcrn.
  * 
@@ -99,9 +99,9 @@ std::vector<Point2DDouble> Point2DDouble::MakeRotation(std::vector<Point2DDouble
 	if (!P.empty())
 	{
 		
-		for (size_t k = 0; k < P.size(); k++)
+		for (auto pt : P)
 		{
-			Point2DDouble pt = P[k];
+			
 			double x = pt.X;
 			double y = pt.Y;
 			

@@ -1,4 +1,4 @@
-/* Copyright 2006-2015 Yann LEYDIER, CoReNum, INSA-Lyon
+/* Copyright 2006-2016 Yann LEYDIER, CoReNum, INSA-Lyon
  * 
  * This file is part of libcrn.
  * 
@@ -262,9 +262,9 @@ StringUTF8& StringUTF8::Replace(const StringUTF8 &s, size_t pos, size_t n)
  */
 StringUTF8& StringUTF8::Replace(char from, char to)
 {
-	for (size_t tmp = 0; tmp < data.size(); tmp++)
-		if (data[tmp] == from)
-			data[tmp] = to;
+	for (auto & elem : data)
+		if (elem == from)
+			elem = to;
 	return *this;
 }
 
@@ -275,8 +275,8 @@ StringUTF8& StringUTF8::Replace(char from, char to)
  */
 StringUTF8& StringUTF8::ToUpper()
 {
-	for (size_t tmp = 0; tmp < data.size(); tmp++)
-		data[tmp] = (char)toupper(data[tmp]);
+	for (auto & elem : data)
+		elem = (char)toupper(elem);
 	return *this;
 }
 
@@ -298,8 +298,8 @@ StringUTF8& StringUTF8::FirstCharacterToUpper()
  */
 StringUTF8& StringUTF8::ToLower()
 {
-	for (size_t tmp = 0; tmp < data.size(); tmp++)
-		data[tmp] = (char)tolower(data[tmp]);
+	for (auto & elem : data)
+		elem = (char)tolower(elem);
 	return *this;
 }
 

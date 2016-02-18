@@ -1,4 +1,4 @@
-/* Copyright 2007-2014 Yann LEYDIER, CoReNum, INSA-Lyon
+/* Copyright 2007-2016 Yann LEYDIER, CoReNum, INSA-Lyon
  * 
  * This file is part of libcrn.
  * 
@@ -190,17 +190,17 @@ int kMeans::Run(int maxcnt)
 		for (std::vector<SCObject> &c : classes)
 			c.clear();
 		// for each sample
-		for (size_t tmp = 0; tmp < data.size(); tmp++)
+		for (auto & elem : data)
 		{
 			// classify
-			int c = Classify(*data[tmp]);
+			int c = Classify(*elem);
 			if (c == -1)
 			{
 				CRNWarning(String(U"int kMeans::Run(): ") + 
 						_("Error classifying a sample!"));
 			}
 			else
-				classes[c].push_back(data[tmp]);
+				classes[c].push_back(elem);
 		}
 		finished = true;
 		// for each class
@@ -208,8 +208,8 @@ int kMeans::Run(int maxcnt)
 		{
 			// compute mean
 			std::vector<std::pair<const Object*, double> > tomean;
-			for (size_t tmp = 0; tmp < classes[p].size(); tmp++)
-				tomean.push_back(std::make_pair(classes[p][tmp].get(), 1));
+			for (auto & elem : classes[p])
+				tomean.push_back(std::make_pair(elem.get(), 1));
 			try
 			{
 				SObject td = data.front()->Mean(tomean);

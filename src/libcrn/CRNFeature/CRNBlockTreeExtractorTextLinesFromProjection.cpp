@@ -1,4 +1,4 @@
-/* Copyright 2009-2014 CoReNum, INSA-Lyon
+/* Copyright 2009-2016 CoReNum, INSA-Lyon
  * 
  * This file is part of libcrn.
  * 
@@ -214,9 +214,9 @@ void BlockTreeExtractorTextLinesFromProjection::Extract(Block &b)
 		size_t argmax_main = 0;
 		size_t argmax_secundary = 0;
 		
-		for (size_t k = 0; k < modes.size(); k++)
+		for (auto & mode : modes)
 		{
-			unsigned int value = r_hProj->GetBin(modes[k]);
+			unsigned int value = r_hProj->GetBin(mode);
 						
 			if (value > max_secundary)
 			{
@@ -225,12 +225,12 @@ void BlockTreeExtractorTextLinesFromProjection::Extract(Block &b)
 					max_secundary = max_main;
 					argmax_secundary = argmax_main;
 					max_main = value;
-					argmax_main = modes[k];
+					argmax_main = mode;
 				}
 				else
 				{
 					max_secundary = value;
-					argmax_secundary = modes[k];
+					argmax_secundary = mode;
 				}
 			}
 		}

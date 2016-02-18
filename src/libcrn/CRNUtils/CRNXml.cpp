@@ -1,4 +1,4 @@
-/* Copyright 2012-2014 CoReNum
+/* Copyright 2012-2016 CoReNum, INSA-Lyon
  * 
  * This file is part of libcrn.
  * 
@@ -271,9 +271,9 @@ void Element::count_subnondes()
 	nb_subelems = 0;
 	if (element)
 	{
-		for (tinyxml2::XMLNode *sn = element->FirstChild(); sn != NULL; sn = sn->NextSibling())
+		for (tinyxml2::XMLNode *sn = element->FirstChild(); sn != nullptr; sn = sn->NextSibling())
 			nb_subnodes += 1;
-		for (tinyxml2::XMLElement *se = element->FirstChildElement(); se != NULL; se = se->NextSiblingElement())
+		for (tinyxml2::XMLElement *se = element->FirstChildElement(); se != nullptr; se = se->NextSiblingElement())
 			nb_subelems += 1;
 	}
 }
@@ -805,7 +805,7 @@ void Element::Attribute::queryValue(StringUTF8 &value) const
 void Element::Attribute::queryValue(int &value) const
 {
 	int res = attr->QueryIntValue(&value);
-	xmlerror(res, NULL, NULL);
+	xmlerror(res, nullptr, nullptr);
 }
 
 /*! Gets unsigned int value
@@ -815,7 +815,7 @@ void Element::Attribute::queryValue(int &value) const
 void Element::Attribute::queryValue(unsigned int &value) const
 {
 	int res = attr->QueryUnsignedValue(&value);
-	xmlerror(res, NULL, NULL);
+	xmlerror(res, nullptr, nullptr);
 }
 
 /*! Gets boolean value
@@ -825,7 +825,7 @@ void Element::Attribute::queryValue(unsigned int &value) const
 void Element::Attribute::queryValue(bool &value) const
 {
 	int res = attr->QueryBoolValue(&value);
-	xmlerror(res, NULL, NULL);
+	xmlerror(res, nullptr, nullptr);
 }
 
 /*! Gets double value
@@ -835,7 +835,7 @@ void Element::Attribute::queryValue(bool &value) const
 void Element::Attribute::queryValue(double &value) const
 {
 	int res = attr->QueryDoubleValue(&value);
-	xmlerror(res, NULL, NULL);
+	xmlerror(res, nullptr, nullptr);
 }
 
 /*! Gets float value
@@ -845,7 +845,7 @@ void Element::Attribute::queryValue(double &value) const
 void Element::Attribute::queryValue(float &value) const
 {
 	int res = attr->QueryFloatValue(&value);
-	xmlerror(res, NULL, NULL);
+	xmlerror(res, nullptr, nullptr);
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -934,7 +934,7 @@ Document::Document(const Path &fname, bool char_conversion_throws):
 		if (doc->GetErrorStr2())
 			s2 = doc->GetErrorStr2();
 		doc.reset();
-		xmlerror(res, s1.IsEmpty() ? NULL : s1.CStr(), s2.IsEmpty() ? NULL : s2.CStr());
+		xmlerror(res, s1.IsEmpty() ? nullptr : s1.CStr(), s2.IsEmpty() ? nullptr : s2.CStr());
 	}
 	tinyxml2::XMLNode *node = doc->FirstChild();
 	while (node)

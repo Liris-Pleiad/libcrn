@@ -1,4 +1,4 @@
-/* Copyright 2008-2015 INSA Lyon, CoReNum
+/* Copyright 2008-2016 INSA Lyon, CoReNum
  * 
  * This file is part of libcrn.
  * 
@@ -200,8 +200,8 @@ double MultivariateGaussianMixture::ValueAt(const MatrixDouble& X) const
 {
 	double d = 0.0;
 
-	for (size_t k = 0; k < members.size(); ++k)
-		d += members[k].second * members[k].first.ValueAt(X);
+	for (auto & elem : members)
+		d += elem.second * elem.first.ValueAt(X);
 
 	return d;
 }
@@ -304,8 +304,8 @@ double MultivariateGaussianMixture::MLLE(const std::vector< std::vector<double> 
 {
     double E = 0.0;
     
-    for (size_t k = 0; k < data.size(); ++k)
-        E += log(ValueAt(data[k]));
+    for (auto & elem : data)
+        E += log(ValueAt(elem));
     
     return E;
 }
