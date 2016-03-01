@@ -1,4 +1,4 @@
-/* Copyright 2012-2015 CoReNum, INSA-Lyon, Université Paris Descartes
+/* Copyright 2012-2016 CoReNum, INSA-Lyon, Université Paris Descartes, ENS-Lyon
  * 
  * This file is part of libcrn.
  * 
@@ -132,7 +132,7 @@ namespace crn
 				} // for each neighbor
 			} // not end node
 		} // while there are candidate nodes left
-		return std::vector<Node>{};
+		throw ExceptionNotFound{"AStar(): No path found."};
 	}
 
 }
