@@ -23,7 +23,7 @@ matrix:
 
 # build cache to preserve files/folders between builds
 cache:
- - %KIT_ROOT%\libiconv-1.14
+  - %KIT_ROOT%\libiconv-1.14
 
 # scripts that are called at very beginning, before repo cloning
 init:
@@ -46,4 +46,4 @@ before_build:
 
 # to run your custom scripts instead of automatic MSBuild
 build_script:
- - msbuild /m libcrn.sln
+  - msbuild /m libcrn.sln
