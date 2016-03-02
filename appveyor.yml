@@ -1,0 +1,49 @@
+#---------------------------------#
+#      general configuration      #
+#---------------------------------#
+
+# Skipping commits with particular message or from user
+#skip_commits:
+
+#---------------------------------#
+#    environment configuration    #
+#---------------------------------#
+
+# Operating system (build VM template)
+os: Visual Studio 2015
+
+# environment variables
+environment:
+  KIT_ROOT: C:\local_vs2015_64
+
+# this is how to allow failing jobs in the matrix
+matrix:
+  fast_finish: true # set this flag to immediately finish build once one of the jobs fails.
+#  allow_failures:
+
+# build cache to preserve files/folders between builds
+cache:
+ - %KIT_ROOT%\libiconv-1.14
+
+# scripts that are called at very beginning, before repo cloning
+init:
+  - set
+  - msbuild /version
+  - cmake --version
+
+#---------------------------------#
+#       build configuration       #
+#---------------------------------#
+
+# scripts to run before build
+before_build:
+  - mkdir %KIT_ROOT%
+  - cd %KIT_ROOT%
+  - curl -O https://download.gforge.liris.cnrs.fr/meppbin/windows/vs2015/PLEIAD/libiconv-1.14.rar
+  - 7z e libiconv-1.14.rar
+  - cd %APPVEYOR_BUILD_FOLDER%
+  - cmake -DICONV_INCLUDE_DIR=%KIT_ROOT%\libiconv-1.14\include -DICONV_LIBRARIES=%KIT_ROOT%\libiconv-1.14\lib\libiconv.lib .
+
+# to run your custom scripts instead of automatic MSBuild
+build_script:
+ - msbuild /m libcrn.sln
