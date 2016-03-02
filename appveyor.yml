@@ -22,8 +22,8 @@ matrix:
 #  allow_failures:
 
 # build cache to preserve files/folders between builds
-cache:
-  - %KIT_ROOT%\libiconv-1.14
+#cache:
+#  - %KIT_ROOT%\libiconv-1.14
 
 # scripts that are called at very beginning, before repo cloning
 init:
