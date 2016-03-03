@@ -14,8 +14,8 @@ os: Visual Studio 2015
 
 # environment variables
 environment:
-  CONFIG: Release
-  PLATFORM: Win64
+#  CONFIG: Release
+#  PLATFORM: Win64
 #
   QTDIR: C:\Qt\5.4\msvc2013_64_opengl
 #  QTDIR: C:\Qt\5.5\msvc2013_64
@@ -78,4 +78,5 @@ before_build:
 # to run your custom scripts instead of automatic MSBuild
 build_script:
 #  - msbuild /m libcrn.sln
-  - msbuild libcrn.sln /p:Configuration=%CONFIG% /p:Platform=%PLATFORM%
+  - msbuild libcrn.sln
+#  - msbuild libcrn.sln /p:Configuration=%CONFIG% /p:Platform=%PLATFORM%
