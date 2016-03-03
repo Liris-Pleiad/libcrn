@@ -73,7 +73,7 @@ before_build:
   - IF %CACHE%==FALSE 7z x libiconv-1.14.rar > nul
 #
   - cd %APPVEYOR_BUILD_FOLDER%
-  - cmake -DICONV_INCLUDE_DIR=%KIT_ROOT%\libiconv-1.14\include -DICONV_LIBRARIES=%KIT_ROOT%\libiconv-1.14\lib\libiconv.lib .
+  - cmake . -G"Visual Studio 14 2015 Win64" -DICONV_INCLUDE_DIR=%KIT_ROOT%\libiconv-1.14\include -DICONV_LIBRARIES=%KIT_ROOT%\libiconv-1.14\lib\libiconv.lib
 
 # to run your custom scripts instead of automatic MSBuild
 build_script:
