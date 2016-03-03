@@ -18,7 +18,7 @@ environment:
 
 # this is how to allow failing jobs in the matrix
 matrix:
-  fast_finish: true # set this flag to immediately finish build once one of the jobs fails.
+  fast_finish: true # set this flag to immediately finish build once one of the jobs fails
 #  allow_failures:
 
 # build cache to preserve files/folders between builds
@@ -27,9 +27,12 @@ matrix:
 
 # scripts that are called at very beginning, before repo cloning
 init:
-  - set
-  - msbuild /version
-  - cmake --version
+#  - set
+#  - msbuild /version
+#  - cmake --version
+#  - set PATH=%QTDIR%\bin;%PATH%
+  - set CACHE=FALSE
+  - dir C:\Libraries
 
 #---------------------------------#
 #       build configuration       #
@@ -37,10 +40,13 @@ init:
 
 # scripts to run before build
 before_build:
-  - mkdir %KIT_ROOT%
-  - cd %KIT_ROOT%
-  - curl -O https://download.gforge.liris.cnrs.fr/meppbin/windows/vs2015/PLEIAD/libiconv-1.14.rar
-  - 7z e libiconv-1.14.rar
+#  - IF EXIST %KIT_ROOT% SET CACHE=TRUE # comment before add a new lib
+  - IF %CACHE%==FALSE mkdir %KIT_ROOT%
+  - IF %CACHE%==FALSE cd %KIT_ROOT%
+# libiconv
+  - IF %CACHE%==FALSE curl -O https://download.gforge.liris.cnrs.fr/meppbin/windows/vs2015/PLEIAD/libiconv-1.14.rar
+  - IF %CACHE%==FALSE 7z x libiconv-1.14.rar -o %KIT_ROOT% > nul
+#
   - cd %APPVEYOR_BUILD_FOLDER%
   - cmake -DICONV_INCLUDE_DIR=%KIT_ROOT%\libiconv-1.14\include -DICONV_LIBRARIES=%KIT_ROOT%\libiconv-1.14\lib\libiconv.lib .
 
