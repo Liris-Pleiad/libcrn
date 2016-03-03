@@ -14,6 +14,9 @@ os: Visual Studio 2015
 
 # environment variables
 environment:
+  QTDIR: C:\Qt\5.4\msvc2013_64_opengl
+#  QTDIR: C:\Qt\5.5\msvc2013_64
+  BOOST_ROOT: C:\Libraries\
   KIT_ROOT: C:\local_vs2015_64
 
 # this is how to allow failing jobs in the matrix
@@ -30,10 +33,9 @@ init:
 #  - set
 #  - msbuild /version
 #  - cmake --version
-#  - dir C:\Libraries
+  - dir C:\Libraries
 #  - dir C:\Qt
-  - dir C:\Qt\5.4
-  - dir C:\Qt\5.5
+#  - dir C:\Qt\5.5
 #  - set PATH=%QTDIR%\bin;%PATH%
   - set CACHE=FALSE
 
@@ -42,12 +44,18 @@ init:
 #---------------------------------#
 
 # build platform, i.e. x86, x64, Any CPU
-platform: x64
+#platform: x64
 
 # build Configuration, i.e. Debug, Release, etc
-configuration:
-  - Release
-  - Debug
+#configuration:
+#  - Release
+#  - Debug
+
+build:
+  parallel: true
+
+  # MSBuild verbosity level
+#  verbosity: quiet|minimal|normal|detailed
 
 # scripts to run before build
 before_build:
@@ -63,4 +71,5 @@ before_build:
 
 # to run your custom scripts instead of automatic MSBuild
 build_script:
-  - msbuild /m libcrn.sln
+#  - msbuild /m libcrn.sln
+  - msbuild /p:Configuration=Release /p:Platform="x64" libcrn.sln
