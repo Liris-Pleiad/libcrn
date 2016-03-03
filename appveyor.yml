@@ -30,9 +30,10 @@ init:
 #  - set
 #  - msbuild /version
 #  - cmake --version
+  - dir C:\Libraries
+  - dir C:\Qt
 #  - set PATH=%QTDIR%\bin;%PATH%
   - set CACHE=FALSE
-  - dir C:\Libraries
 
 #---------------------------------#
 #       build configuration       #
@@ -40,12 +41,12 @@ init:
 
 # scripts to run before build
 before_build:
-#  - IF EXIST %KIT_ROOT% SET CACHE=TRUE # comment before add a new lib
+#  - IF EXIST %KIT_ROOT% SET CACHE=TRUE # comment before add a new lib !
   - IF %CACHE%==FALSE mkdir %KIT_ROOT%
   - IF %CACHE%==FALSE cd %KIT_ROOT%
 # libiconv
   - IF %CACHE%==FALSE curl -O https://download.gforge.liris.cnrs.fr/meppbin/windows/vs2015/PLEIAD/libiconv-1.14.rar
-  - IF %CACHE%==FALSE 7z x libiconv-1.14.rar -o %KIT_ROOT% > nul
+  - IF %CACHE%==FALSE 7z x libiconv-1.14.rar > nul
 #
   - cd %APPVEYOR_BUILD_FOLDER%
   - cmake -DICONV_INCLUDE_DIR=%KIT_ROOT%\libiconv-1.14\include -DICONV_LIBRARIES=%KIT_ROOT%\libiconv-1.14\lib\libiconv.lib .
