@@ -30,8 +30,10 @@ init:
 #  - set
 #  - msbuild /version
 #  - cmake --version
-  - dir C:\Libraries
-  - dir C:\Qt
+#  - dir C:\Libraries
+#  - dir C:\Qt
+  - dir C:\Qt\5.4
+  - dir C:\Qt\5.5
 #  - set PATH=%QTDIR%\bin;%PATH%
   - set CACHE=FALSE
 
@@ -39,9 +41,17 @@ init:
 #       build configuration       #
 #---------------------------------#
 
+# build platform, i.e. x86, x64, Any CPU
+platform: x64
+
+# build Configuration, i.e. Debug, Release, etc
+configuration:
+  - Release
+  - Debug
+
 # scripts to run before build
 before_build:
-#  - IF EXIST %KIT_ROOT% SET CACHE=TRUE # comment before add a new lib !
+  - IF EXIST %KIT_ROOT% SET CACHE=TRUE # comment before add a new lib !
   - IF %CACHE%==FALSE mkdir %KIT_ROOT%
   - IF %CACHE%==FALSE cd %KIT_ROOT%
 # libiconv
