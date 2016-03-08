@@ -29,7 +29,8 @@ matrix:
 # build cache to preserve files/folders between builds
 cache:
 # - %KIT_ROOT% # don't work !?
-  - C:\local_vs2015_64
+# - C:\local_vs2015_64
+  - %KIT_ROOT%
 
 # scripts that are called at very beginning, before repo cloning
 init:
@@ -59,8 +60,8 @@ configuration:
 
 # scripts to run before build
 before_build:
-#  - IF EXIST %KIT_ROOT% SET CACHE=TRUE # comment before add a new lib !
-  - IF EXIST C:\local_vs2015_64 SET CACHE=TRUE # comment before add a new lib !
+  - IF EXIST %KIT_ROOT% SET CACHE=TRUE # comment before add a new lib !
+#  - IF EXIST C:\local_vs2015_64 SET CACHE=TRUE # comment before add a new lib !
 #
   - echo %CACHE%
   - IF %CACHE%==FALSE echo CACHE_IS_FALSE
