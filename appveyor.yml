@@ -2,8 +2,7 @@
 #      general configuration      #
 #---------------------------------#
 
-# Skipping commits with particular message or from user
-#skip_commits:
+#
 
 #---------------------------------#
 #    environment configuration    #
@@ -29,7 +28,7 @@ matrix:
 
 # build cache to preserve files/folders between builds
 cache:
-# - %KIT_ROOT% # don't work !
+# - %KIT_ROOT% # don't work !?
   - C:\local_vs2015_64
 
 # scripts that are called at very beginning, before repo cloning
@@ -60,7 +59,13 @@ configuration:
 
 # scripts to run before build
 before_build:
-  - IF EXIST %KIT_ROOT% SET CACHE=TRUE # comment before add a new lib !
+#  - IF EXIST %KIT_ROOT% SET CACHE=TRUE # comment before add a new lib !
+  - IF EXIST C:\local_vs2015_64 SET CACHE=TRUE # comment before add a new lib !
+#
+  - echo %CACHE%
+  - IF %CACHE%==FALSE echo CACHE_IS_FALSE
+  - IF %CACHE%==TRUE echo CACHE_IS_TRUE
+#
   - IF %CACHE%==FALSE mkdir %KIT_ROOT%
   - IF %CACHE%==FALSE cd %KIT_ROOT%
 # libiconv
