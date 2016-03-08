@@ -13,11 +13,11 @@ os: Visual Studio 2015
 
 # environment variables
 environment:
-  QTDIR: C:\Qt\5.4\msvc2013_64_opengl
-#  QTDIR: C:\Qt\5.5\msvc2013_64
-  BOOST_ROOT: C:\Libraries\boost_1_59_0
+#  QT5_DIR: C:\Qt\5.4\msvc2013_64_opengl
+#  QT5_DIR: C:\Qt\5.5\msvc2013_64
+#  BOOST_ROOT: C:\Libraries\boost_1_59_0
 #
-  CONFIG_QGL: Release
+#  CONFIG_QGL: Release
 #
   KIT_ROOT: C:\local_vs2015_64
 
@@ -39,7 +39,7 @@ init:
 #  - dir C:\Libraries
 #  - dir C:\Qt
 #  - dir C:\Qt\5.5
-#  - set PATH=%QTDIR%\bin;%PATH%
+#  - set PATH=%QT5_DIR%\bin;%PATH%
   - set CACHE=FALSE
 
 #---------------------------------#
@@ -56,7 +56,7 @@ configuration:
 
 # scripts to run before build
 before_build:
-  - IF EXIST %KIT_ROOT% SET CACHE=TRUE # comment before add a new lib (the first time only) !
+  - IF EXIST %KIT_ROOT% SET CACHE=TRUE
 #
   - echo %CACHE%
   - IF %CACHE%==FALSE echo CACHE_IS_FALSE
