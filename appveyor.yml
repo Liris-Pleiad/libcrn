@@ -29,8 +29,8 @@ matrix:
 # build cache to preserve files/folders between builds
 cache:
 # - %KIT_ROOT% # don't work !?
-# - C:\local_vs2015_64
-  - %KIT_ROOT%
+ - C:\local_vs2015_64
+#  - %KIT_ROOT%
 
 # scripts that are called at very beginning, before repo cloning
 init:
