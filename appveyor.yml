@@ -1,0 +1,76 @@
+#---------------------------------#
+#      general configuration      #
+#---------------------------------#
+
+#
+
+#---------------------------------#
+#    environment configuration    #
+#---------------------------------#
+
+# Operating system (build VM template)
+os: Visual Studio 2015
+
+# environment variables
+environment:
+#  QT5_DIR: C:\Qt\5.4\msvc2013_64_opengl
+#  QT5_DIR: C:\Qt\5.5\msvc2013_64
+#  BOOST_ROOT: C:\Libraries\boost_1_59_0
+#
+#  CONFIG_QGL: Release
+#
+  KIT_ROOT: C:\local_vs2015_64
+
+# this is how to allow failing jobs in the matrix
+matrix:
+  fast_finish: true # set this flag to immediately finish build once one of the jobs fails
+#  allow_failures:
+
+# build cache to preserve files/folders between builds
+cache:
+# - %KIT_ROOT% # don't work !?
+  - C:\local_vs2015_64
+
+# scripts that are called at very beginning, before repo cloning
+init:
+#  - set
+#  - msbuild /version
+#  - cmake --version
+#  - dir C:\Libraries
+#  - dir C:\Qt
+#  - dir C:\Qt\5.5
+#  - set PATH=%QT5_DIR%\bin;%PATH%
+  - set CACHE=FALSE
+
+#---------------------------------#
+#       build configuration       #
+#---------------------------------#
+
+# build Configuration, i.e. Debug, Release, etc
+configuration:
+  - Release
+  - Debug
+
+# MSBuild verbosity level
+#  verbosity: quiet|minimal|normal|detailed
+
+# scripts to run before build
+before_build:
+  - IF EXIST %KIT_ROOT% SET CACHE=TRUE
+#
+  - echo %CACHE%
+  - IF %CACHE%==FALSE echo CACHE_IS_FALSE
+  - IF %CACHE%==TRUE echo CACHE_IS_TRUE
+#
+  - IF %CACHE%==FALSE mkdir %KIT_ROOT%
+  - IF %CACHE%==FALSE cd %KIT_ROOT%
+# libiconv
+  - IF %CACHE%==FALSE curl -O https://download.gforge.liris.cnrs.fr/meppbin/windows/vs2015/PLEIAD/libiconv-1.14.rar
+  - IF %CACHE%==FALSE 7z x libiconv-1.14.rar > nul
+#
+  - cd %APPVEYOR_BUILD_FOLDER%
+  - cmake . -G"Visual Studio 14 2015 Win64" -DICONV_INCLUDE_DIR=%KIT_ROOT%\libiconv-1.14\include -DICONV_LIBRARIES=%KIT_ROOT%\libiconv-1.14\lib\libiconv.lib
+
+# to run your custom scripts instead of automatic MSBuild
+build_script:
+  - msbuild /m libcrn.sln # /m is ignored ? (but not really important because the VM has only one processor !)

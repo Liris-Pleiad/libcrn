@@ -39,7 +39,7 @@ void Progress::Advance()
 	switch (type)
 	{
 		case Type::ABSOLUTE:
-			snprintf(buff, 1024, " %li / %li", Min(current + 1, end), end);
+			snprintf(buff, 1024, " %zi / %zi", Min(current + 1, end), end);
 			break;
 		case Type::PERCENT:
 		default:

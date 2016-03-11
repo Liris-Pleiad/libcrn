@@ -31,6 +31,10 @@
 #include <CRNMath/CRNMatrixComplex.h>
 #include <set>
 
+#ifdef _MSC_VER // remove annoying warnings in Microsoft Visual C++
+#	pragma warning(disable:4800)
+#endif
+
 namespace crn
 {
 	/**************************************************************************************
