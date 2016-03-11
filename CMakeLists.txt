@@ -50,7 +50,7 @@ if(ANDROID)
 		message(FATAL_ERROR "Android API level must be >=9.")
 	endif (ANDROID_NATIVE_API_LEVEL LESS 9)
 	set(CRN_PF_ANDROID ON)
-	set(ICONV_INCLUDE_DIR "${ANDROID_NDK}/sources/android/support/include")
+	#set(ICONV_INCLUDE_DIR "${ANDROID_NDK}/sources/android/support/include") # need to include a homebuilt version of iconv
 endif(ANDROID)
 #############################
 
@@ -113,6 +113,18 @@ else(ICONV_FOUND)
 	message(FATAL_ERROR "Iconv not found. Please set ICONV_INCLUDE_DIR and ICONV_LIBRARIES.")
 endif(ICONV_FOUND)
 
+
+# Find GDIPLUS
+if(MSVC)
+	OPTION(CRN_USING_GDIPLUS "Use Gdi+ to load and save images." on)
+	if (CRN_USING_GDIPLUS)
+		set(GDIPLUS_LIBRARIES "gdiplus.lib")
+	else (CRN_USING_GDIPLUS)
+		set(GDIPLUS_LIBRARIES "")
+	endif (CRN_USING_GDIPLUS)
+endif(MSVC)
+
+# sources
 configure_file(src/libcrn/CRN.h.in ${CMAKE_CURRENT_BINARY_DIR}${CMAKE_FILES_DIRECTORY}/include/CRN.h)
 
 include_directories(${CMAKE_CURRENT_BINARY_DIR}${CMAKE_FILES_DIRECTORY}/include)
@@ -156,6 +168,7 @@ endif(MSVC)
 
 set(LIBCRN_LIB
 	${ICONV_LIBRARIES}
+	${GDIPLUS_LIBRARIES}
 )
 
 add_library(${PRJ_NAME} SHARED ${LIBCRN_SRC} ${LIBCRN_HEADER_CFG} ${LIBCRN_HEADER})

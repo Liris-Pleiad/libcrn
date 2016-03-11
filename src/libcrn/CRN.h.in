@@ -48,6 +48,7 @@
 #cmakedefine CRN_USING_GTKMM
 #cmakedefine CRN_USING_LIBPNG
 #cmakedefine CRN_USING_LIBJPEG
+#cmakedefine CRN_USING_GDIPLUS
 #cmakedefine CRN_USING_LIBINTL
 #cmakedefine CRN_USING_LIBZIP
 #cmakedefine CRN_USING_HARU

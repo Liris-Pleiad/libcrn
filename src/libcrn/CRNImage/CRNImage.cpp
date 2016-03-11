@@ -40,6 +40,12 @@
 #  include <setjmp.h>
 #endif
 
+#ifdef CRN_USING_GDIPLUS
+#	include <windows.h>
+#	include <objidl.h>
+#	include <gdiplus.h>
+#endif
+
 using namespace crn;
 
 /*! \returns the bounding box of the image */
@@ -432,6 +438,141 @@ static std::pair<UImage, String> load_gdkpixbuf(const Path &fname)
 }
 #endif
 
+#ifdef CRN_USING_GDIPLUS
+static std::pair<UImage, String> load_gdiplus(const Path &filename)
+{
+	// gdiplus does not support URIs
+	Path winname(filename);
+	winname.ToWindows();
+	const auto newsize = winname.Size() + 1;
+	auto wcstring = std::vector<wchar_t>(newsize);
+	auto convertedChars = size_t(0);
+	mbstowcs_s(&convertedChars, wcstring.data(), newsize, winname.CStr(), _TRUNCATE);
+	Gdiplus::Bitmap *img = Gdiplus::Bitmap::FromFile(wcstring.data(), FALSE);
+	Gdiplus::ColorPalette *pal = NULL;
+	if (!img)
+	{
+		return std::make_pair(UImage{}, String(_("No image loaded.")));
+	}
+	Gdiplus::Status stat = img->GetLastStatus();
+	if (stat != Gdiplus::Ok)
+	{
+		delete img;
+		return std::make_pair(UImage{}, String(_("Image could not be loaded. Error number ") + int(stat)));
+	}
+	int w = img->GetWidth();
+	int h = img->GetHeight();
+	Gdiplus::PixelFormat fmt = img->GetPixelFormat();
+	bool isrgb = false;
+	UImage ret;
+	if (fmt == PixelFormat1bppIndexed)
+	{ // BW
+		auto rret = std::make_unique<ImageBW>(w, h);
+		Gdiplus::BitmapData bitmapData;
+		auto clip = Gdiplus::Rect(0, 0, img->GetWidth(), img->GetHeight());
+		Gdiplus::Status res = img->LockBits(&clip, Gdiplus::ImageLockModeRead, PixelFormat24bppRGB, &bitmapData);
+		if (res != Gdiplus::Ok)
+		{
+			delete img;
+			return std::make_pair(UImage{}, String(_("Could not lock pixels. Error number ") + int(res)));
+		}
+		auto *pixels = (uint8_t*)bitmapData.Scan0;
+#pragma omp parallel for
+		FOREACHPIXEL(x, y, *rret)
+		{
+			rret->At(x, y) = pixels[3 * x + y * bitmapData.Stride] ? true : false;
+		}
+		img->UnlockBits(&bitmapData);
+		ret = std::move(rret);
+	}
+	else if (fmt = PixelFormat8bppIndexed)
+	{ // possibly Gray
+		auto psize = img->GetPaletteSize();
+		pal = (Gdiplus::ColorPalette*)malloc(psize);
+		img->GetPalette(pal, psize);
+		if (pal->Count == 0) // WTF!!!
+			isrgb = true;
+		else if ((pal->Flags & Gdiplus::PaletteFlagsGrayScale) == 0)
+		{ // check all colors -_-
+			for (size_t tmp = 0; tmp < pal->Count; ++tmp)
+			{
+				unsigned int col = pal->Entries[tmp];
+				auto b = uint8_t(col & 0xFF);
+				col >>= 8;
+				auto g = uint8_t(col & 0xFF);
+				col >>= 8;
+				auto r = uint8_t(col & 0xFF);
+				/*
+				crn::String s(tmp);
+				s += L": r=";
+				s += int(r);
+				s += L": g=";
+				s += int(g);
+				s += L": b=";
+				s += int(b);
+				CRNVerbose(s);
+				*/
+				if ((r != g) || (r != b))
+				{
+					isrgb = true;
+					break;
+				}
+			}
+		}
+		if (!isrgb)
+		{ // grayscale image
+			auto rret = std::make_unique<ImageGray>(w, h);
+			Gdiplus::BitmapData bitmapData;
+			auto clip = Gdiplus::Rect(0, 0, img->GetWidth(), img->GetHeight());
+			Gdiplus::Status res = img->LockBits(&clip, Gdiplus::ImageLockModeRead, PixelFormat24bppRGB, &bitmapData);
+			if (res != Gdiplus::Ok)
+			{
+				delete img;
+				return std::make_pair(UImage{}, String(_("Could not lock pixels. Error number ") + int(res)));
+			}
+			auto *pixels = (uint8_t*)bitmapData.Scan0;
+//#pragma omp parallel for
+			FOREACHPIXEL(x, y, *rret)
+			{
+				rret->At(x, y) = pixels[3 * x + y * bitmapData.Stride];
+			}
+			img->UnlockBits(&bitmapData);
+			ret = std::move(rret);
+		}
+	}
+	else
+	{
+		isrgb = true;
+	}
+	if (isrgb)
+	{
+		auto rret = std::make_unique<ImageRGB>(w, h);
+		Gdiplus::BitmapData bitmapData;
+		auto clip = Gdiplus::Rect(0, 0, img->GetWidth(), img->GetHeight());
+		Gdiplus::Status res = img->LockBits(&clip, Gdiplus::ImageLockModeRead, PixelFormat24bppRGB, &bitmapData);
+		if (res != Gdiplus::Ok)
+		{
+			delete img;
+			return std::make_pair(UImage{}, String(_("Could not lock pixels. Error number ") + int(res)));
+		}
+		auto *pixels = (uint8_t*)bitmapData.Scan0;
+#pragma omp parallel for
+		FOREACHPIXEL(x, y, *rret)
+		{
+			size_t offset = x * 3 + y * bitmapData.Stride;
+			rret->At(x, y) = { pixels[offset + 2], pixels[offset + 1], pixels[offset] };
+		}
+		img->UnlockBits(&bitmapData);
+		ret = std::move(rret);
+	}
+	delete img;
+	free(pal);
+	return std::make_pair(std::move(ret), String{});
+}
+#endif
+
+
+
 /*! \brief Loads an image from a file
  * \throws	ExceptionInvalidArgument	null file name
  * \throws	ExceptionIO	no decoder found
@@ -472,9 +613,16 @@ UImage crn::NewImageFromFile(const Path &fname)
 		errors += U" " + res.second;
 	}
 #endif // CRN_USING_GDKPB
+#ifdef CRN_USING_GDIPLUS
+	if (res.first == NULL)
+	{
+		res = load_gdiplus(fname);
+		errors += U" " + res.second;
+	}
+#endif // CRN_USING_GDIPLUS
+
 	if (res.first.get() == nullptr)
 		throw ExceptionIO(StringUTF8("UImage NewImageFromFile(const Path &fname): ") +
 				_("No decoder could open the file.") + errors.CStr());
 	return std::move(res.first);
 }
-
