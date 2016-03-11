@@ -910,7 +910,7 @@ double Histogram::EMD(const Histogram &h) const
 	h2.Cumulate();
 	auto dist = 0.0;
 	for (auto tmp : crn::Range(h1))
-		dist += double(Abs(h1[tmp] - h2[tmp]));
+		dist += double(Abs(int(h1[tmp]) - int(h2[tmp])));
 	return dist / double(h1.Size());
 }
 
@@ -964,7 +964,7 @@ double Histogram::CEMD(const Histogram &h) const
 		// compute EMPD
 		auto d = 0.0;
 		for (auto tmp : crn::Range(h1))
-			d += double(Abs(h1[tmp] - h2[tmp]));
+			d += double(Abs(int(h1[tmp]) - int(h2[tmp])));
 		// keep min
 		if (d < dist)
 			dist = d;

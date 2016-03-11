@@ -174,7 +174,8 @@ set(LIBCRN_LIB
 add_library(${PRJ_NAME} SHARED ${LIBCRN_SRC} ${LIBCRN_HEADER_CFG} ${LIBCRN_HEADER})
 target_link_libraries(${PRJ_NAME} ${LIBCRN_LIB})
 
-if(ANDROID)
-	include("cmake/android/Apk.cmake" REQUIRED)
-	android_create_apk(${PRJ_NAME} "${CMAKE_BINARY_DIR}/apk" "${APP_SHARED_LIBRARIES}" "" "Data")
-endif(ANDROID)
+# Create Android package
+#if(ANDROID)
+	#include("cmake/android/Apk.cmake" REQUIRED)
+	#android_create_apk(${PRJ_NAME} "${CMAKE_BINARY_DIR}/apk" "${APP_SHARED_LIBRARIES}" "" "Data")
+#endif(ANDROID)

@@ -606,13 +606,6 @@ UImage crn::NewImageFromFile(const Path &fname)
 		errors += U" " + res.second;
 	}
 #endif // CRN_USING_LIBJPEG
-#ifdef CRN_USING_GDKPB
-	if (res.first.get() == nullptr)
-	{
-		res = load_gdkpixbuf(fname);
-		errors += U" " + res.second;
-	}
-#endif // CRN_USING_GDKPB
 #ifdef CRN_USING_GDIPLUS
 	if (res.first == NULL)
 	{
@@ -620,7 +613,13 @@ UImage crn::NewImageFromFile(const Path &fname)
 		errors += U" " + res.second;
 	}
 #endif // CRN_USING_GDIPLUS
-
+#ifdef CRN_USING_GDKPB
+	if (res.first.get() == nullptr)
+	{
+		res = load_gdkpixbuf(fname);
+		errors += U" " + res.second;
+	}
+#endif // CRN_USING_GDKPB
 	if (res.first.get() == nullptr)
 		throw ExceptionIO(StringUTF8("UImage NewImageFromFile(const Path &fname): ") +
 				_("No decoder could open the file.") + errors.CStr());

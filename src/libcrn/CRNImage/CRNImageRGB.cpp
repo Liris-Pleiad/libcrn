@@ -45,6 +45,13 @@ typedef struct crn_jpeg_error_mgr * crn_jpeg_error_ptr;
 void crn_jpeg_error_exit(j_common_ptr cinfo);
 #endif
 
+#ifdef CRN_USING_GDIPLUS
+#	include <windows.h>
+#	include <objidl.h>
+#	include <gdiplus.h>
+#	undef RegisterClass
+#endif
+
 void fclose_if_not_null(FILE *f);
 
 using namespace crn;
@@ -191,6 +198,77 @@ static std::pair<bool, String> save_png_gdkpixbuf(const Path &fname, const Image
 }
 #endif
 
+#ifdef CRN_USING_GDIPLUS
+static int GetEncoderClsid(const WCHAR* format, CLSID* pClsid)
+{
+	UINT  num = 0;          // number of image encoders
+	UINT  size = 0;         // size of the image encoder array in bytes
+
+	Gdiplus::ImageCodecInfo* pImageCodecInfo = NULL;
+
+	Gdiplus::GetImageEncodersSize(&num, &size);
+	if (size == 0)
+		return -1;  // Failure
+
+	pImageCodecInfo = (Gdiplus::ImageCodecInfo*)(malloc(size));
+	if (pImageCodecInfo == nullptr)
+		return -1;  // Failure
+
+	Gdiplus::GetImageEncoders(num, size, pImageCodecInfo);
+
+	for (UINT j = 0; j < num; ++j)
+	{
+		if (wcscmp(pImageCodecInfo[j].MimeType, format) == 0)
+		{
+			*pClsid = pImageCodecInfo[j].Clsid;
+			free(pImageCodecInfo);
+			return j;  // Success
+		}
+	}
+
+	free(pImageCodecInfo);
+	return -1;  // Failure
+}
+
+static std::pair<bool, String> save_png_gdiplus(const Path &filename, const ImageRGB &img)
+{
+	// gdi+ does not support URIs
+	Path winname(filename);
+	winname.ToWindows();
+	const auto newsize = winname.Size() + 1;
+	auto wcstring = std::vector<wchar_t>(newsize);
+	auto convertedChars = size_t(0);
+	mbstowcs_s(&convertedChars, wcstring.data(), newsize, winname.CStr(), _TRUNCATE);
+
+	Gdiplus::Bitmap *outbm = new Gdiplus::Bitmap(INT(img.GetWidth()), INT(img.GetHeight()), PixelFormat24bppRGB);
+	if (!outbm)
+	{
+		return std::make_pair(false, String(_("Cannot create bitmap")));
+	}
+	Gdiplus::BitmapData bitmapData;
+	auto clip = Gdiplus::Rect(0, 0, outbm->GetWidth(), outbm->GetHeight());
+	outbm->LockBits(&clip, Gdiplus::ImageLockModeWrite, PixelFormat24bppRGB, &bitmapData);
+	auto *pixels = (uint8_t*)bitmapData.Scan0;
+//#pragma omp parallel for
+	FOREACHPIXEL(x, y, img)
+	{
+		size_t poffset = 3 * x + y * bitmapData.Stride;
+		const auto &pix = img.At(x, y);
+		pixels[poffset + 2] = pix.r;
+		pixels[poffset + 1] = pix.g;
+		pixels[poffset] = pix.b;
+	}
+	outbm->UnlockBits(&bitmapData);
+	
+	CLSID pngClsid;
+	GetEncoderClsid(L"image/png", &pngClsid);
+	Gdiplus::Status stat = outbm->Save(wcstring.data(), &pngClsid, nullptr);
+	delete outbm;
+	return std::make_pair(stat == Gdiplus::Ok, String{});
+}
+
+#endif
+
 /*! Saves as PNG file
  * \throws ExceptionInvalidArgument fname is empty
  * \throws	ExceptionRuntime	no way to save png
@@ -210,6 +288,13 @@ void crn::impl::SavePNG(const ImageRGB &img, const Path &fname)
 	if (res.first == false)
 	{
 		res = save_png_libpng(fname, img);
+		error += U" " + res.second;
+	}
+#endif
+#ifdef CRN_USING_GDIPLUS
+	if (res.first == false)
+	{
+		res = save_png_gdiplus(fname, img);
 		error += U" " + res.second;
 	}
 #endif
@@ -332,6 +417,51 @@ static std::pair<bool, String> save_jpeg_gdkpixbuf(const Path &fname, const Imag
 }
 #endif
 
+#ifdef CRN_USING_GDIPLUS
+static std::pair<bool, String> save_jpeg_gdiplus(const Path &filename, const ImageRGB &img, int qual)
+{
+	// gdi+ does not support URIs
+	Path winname(filename);
+	winname.ToWindows();
+	const auto newsize = winname.Size() + 1;
+	auto wcstring = std::vector<wchar_t>(newsize);
+	auto convertedChars = size_t(0);
+	mbstowcs_s(&convertedChars, wcstring.data(), newsize, winname.CStr(), _TRUNCATE);
+
+	Gdiplus::Bitmap *outbm = new Gdiplus::Bitmap(INT(img.GetWidth()), INT(img.GetHeight()), PixelFormat24bppRGB);
+	if (!outbm)
+	{
+		return std::make_pair(false, String(_("Cannot create bitmap")));
+	}
+	Gdiplus::BitmapData bitmapData;
+	auto clip = Gdiplus::Rect(0, 0, outbm->GetWidth(), outbm->GetHeight());
+	outbm->LockBits(&clip, Gdiplus::ImageLockModeWrite, PixelFormat24bppRGB, &bitmapData);
+	auto *pixels = (uint8_t*)bitmapData.Scan0;
+//#pragma omp parallel for
+	FOREACHPIXEL(x, y, img)
+	{
+		size_t poffset = 3 * x + y * bitmapData.Stride;
+		const auto &pix = img.At(x, y);
+		pixels[poffset + 2] = pix.r;
+		pixels[poffset + 1] = pix.g;
+		pixels[poffset] = pix.b;
+	}
+	outbm->UnlockBits(&bitmapData);
+	CLSID jpegClsid;
+	GetEncoderClsid(L"image/jpeg", &jpegClsid);
+	Gdiplus::EncoderParameters encoderParameters;
+	encoderParameters.Count = 1;
+	encoderParameters.Parameter[0].Guid = Gdiplus::EncoderQuality;
+	encoderParameters.Parameter[0].Type = Gdiplus::EncoderParameterValueTypeLong;
+	encoderParameters.Parameter[0].NumberOfValues = 1;
+	ULONG quality = qual;
+	encoderParameters.Parameter[0].Value = &quality;
+	outbm->Save(wcstring.data(), &jpegClsid, &encoderParameters);
+	delete outbm;
+	return std::make_pair(true, String{});
+}
+#endif
+
 /*! Saves as JPEG file
  * \throws	ExceptionInvalidArgument fname is empty
  * \throws	ExceptionRuntime	no way to save jpeg
@@ -353,6 +483,13 @@ void crn::impl::SaveJPEG(const ImageRGB &img, const Path &fname, unsigned int qu
 	if (res.first == false)
 	{
 		res = save_jpeg_libjpeg(fname, img, qual);
+		error += U" " + res.second;
+	}
+#endif
+#ifdef CRN_USING_GDIPLUS
+	if (res.first == false)
+	{
+		res = save_jpeg_gdiplus(fname, img, qual);
 		error += U" " + res.second;
 	}
 #endif
