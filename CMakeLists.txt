@@ -96,6 +96,10 @@ if(MSVC)
 
 	set_property(DIRECTORY APPEND PROPERTY COMPILE_DEFINITIONS _CRT_SECURE_NO_WARNINGS)
 	set_property(DIRECTORY APPEND PROPERTY COMPILE_DEFINITIONS _SCL_SECURE_NO_WARNINGS)
+
+	if(EXISTS "${CMAKE_SOURCE_DIR}/cmake/msvc/kit.cmake")
+		include("${CMAKE_SOURCE_DIR}/cmake/msvc/kit.cmake")
+	endif()
 endif()
 #------------------------------------------------------------------------------
 # APPLE OS X
@@ -171,7 +175,7 @@ set(LIBCRN_LIB
 	${GDIPLUS_LIBRARIES}
 )
 
-add_library(${PRJ_NAME} SHARED ${LIBCRN_SRC} ${LIBCRN_HEADER_CFG} ${LIBCRN_HEADER})
+add_library(${PRJ_NAME} STATIC ${LIBCRN_SRC} ${LIBCRN_HEADER_CFG} ${LIBCRN_HEADER})
 target_link_libraries(${PRJ_NAME} ${LIBCRN_LIB})
 
 # Create Android package
@@ -179,3 +183,7 @@ target_link_libraries(${PRJ_NAME} ${LIBCRN_LIB})
 	#include("cmake/android/Apk.cmake" REQUIRED)
 	#android_create_apk(${PRJ_NAME} "${CMAKE_BINARY_DIR}/apk" "${APP_SHARED_LIBRARIES}" "" "Data")
 #endif(ANDROID)
+
+# ---
+
+add_subdirectory(src/demos)
