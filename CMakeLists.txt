@@ -1,5 +1,5 @@
 # This is the CMake script for compiling libcrn
-# Martial TOLA - February 2016
+# Martial TOLA - March 2016
 
 cmake_minimum_required(VERSION 2.8.9)
 set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake")
@@ -10,7 +10,7 @@ if (COMMAND cmake_policy)
 	endif(POLICY CMP0042)
 endif (COMMAND cmake_policy)
 
-set(DOC_DIR ${CMAKE_CURRENT_BINARY_DIR}/doc)
+set(DOC_DIR ${PROJECT_BINARY_DIR}/doc)
 
 # project configuration
 set(PRJ_NAME libcrn)
@@ -22,7 +22,7 @@ SET(CRN_PACKAGE_VERSION "${CRN_PACKAGE_VERSION_MAJOR}.${CRN_PACKAGE_VERSION_MINO
 message("${PRJ_NAME} ${CRN_PACKAGE_VERSION}")
 
 project(${PRJ_NAME})
-set(CMAKE_INSTALL_PREFIX "${CMAKE_CURRENT_BINARY_DIR}/${PRJ_NAME}_deploy_${CRN_PACKAGE_VERSION}")
+set(CMAKE_INSTALL_PREFIX "${PROJECT_BINARY_DIR}/${PRJ_NAME}_deploy_${CRN_PACKAGE_VERSION}")
 
 # set Release as default build target
 if (NOT CMAKE_BUILD_TYPE)
@@ -97,6 +97,22 @@ if(MSVC)
 	set_property(DIRECTORY APPEND PROPERTY COMPILE_DEFINITIONS _CRT_SECURE_NO_WARNINGS)
 	set_property(DIRECTORY APPEND PROPERTY COMPILE_DEFINITIONS _SCL_SECURE_NO_WARNINGS)
 
+	# Create filters in VS project
+	macro(GroupSources curdir)
+		file(GLOB children RELATIVE ${PROJECT_SOURCE_DIR}/${curdir}
+			${PROJECT_SOURCE_DIR}/${curdir}/*)
+		foreach(child ${children})
+			if(IS_DIRECTORY ${PROJECT_SOURCE_DIR}/${curdir}/${child})
+				GroupSources(${curdir}/${child})
+			else()
+				string(REPLACE "/" "\\" groupname ${curdir})
+				string(REPLACE "src" "" groupname ${groupname})
+				source_group(${groupname} FILES
+					${PROJECT_SOURCE_DIR}/${curdir}/${child})
+			endif()
+		endforeach()
+	endmacro()
+
 	if(EXISTS "${CMAKE_SOURCE_DIR}/cmake/msvc/kit.cmake")
 		include("${CMAKE_SOURCE_DIR}/cmake/msvc/kit.cmake")
 	endif()
@@ -117,7 +133,6 @@ else(ICONV_FOUND)
 	message(FATAL_ERROR "Iconv not found. Please set ICONV_INCLUDE_DIR and ICONV_LIBRARIES.")
 endif(ICONV_FOUND)
 
-
 # Find GDIPLUS
 if(MSVC)
 	OPTION(CRN_USING_GDIPLUS "Use Gdi+ to load and save images." on)
@@ -128,62 +143,7 @@ if(MSVC)
 	endif (CRN_USING_GDIPLUS)
 endif(MSVC)
 
-# sources
-configure_file(src/libcrn/CRN.h.in ${CMAKE_CURRENT_BINARY_DIR}${CMAKE_FILES_DIRECTORY}/include/CRN.h)
-
-include_directories(${CMAKE_CURRENT_BINARY_DIR}${CMAKE_FILES_DIRECTORY}/include)
-include_directories(src/libcrn)
-
-file(
-	GLOB_RECURSE
-	LIBCRN_SRC
-	src/libcrn/*.cpp
-)
-file(
-	GLOB_RECURSE
-	LIBCRN_HEADER_CFG
-	${CMAKE_CURRENT_BINARY_DIR}${CMAKE_FILES_DIRECTORY}/include/*.h
-)
-file(
-	GLOB_RECURSE
-	LIBCRN_HEADER
-	src/libcrn/*.h src/libcrn/*.hpp
-)
-if (MSVC)
-	set(LIBCRN_HEADER ${LIBCRN_HEADER} src/libcrn/3rdParty/_msvc_only_/dirent.hh)
-
-	# Create filters in VS project
-	macro(GroupSources curdir)
-		file(GLOB children RELATIVE ${PROJECT_SOURCE_DIR}/${curdir}
-			${PROJECT_SOURCE_DIR}/${curdir}/*)
-		foreach(child ${children})
-			if(IS_DIRECTORY ${PROJECT_SOURCE_DIR}/${curdir}/${child})
-				GroupSources(${curdir}/${child})
-			else()
-				string(REPLACE "/" "\\" groupname ${curdir})
-				string(REPLACE "src" "" groupname ${groupname})
-				source_group(${groupname} FILES
-					${PROJECT_SOURCE_DIR}/${curdir}/${child})
-			endif()
-		endforeach()
-	endmacro()
-	GroupSources(src/libcrn)
-endif(MSVC)
-
-set(LIBCRN_LIB
-	${ICONV_LIBRARIES}
-	${GDIPLUS_LIBRARIES}
-)
-
-add_library(${PRJ_NAME} STATIC ${LIBCRN_SRC} ${LIBCRN_HEADER_CFG} ${LIBCRN_HEADER})
-target_link_libraries(${PRJ_NAME} ${LIBCRN_LIB})
-
-# Create Android package
-#if(ANDROID)
-	#include("cmake/android/Apk.cmake" REQUIRED)
-	#android_create_apk(${PRJ_NAME} "${CMAKE_BINARY_DIR}/apk" "${APP_SHARED_LIBRARIES}" "" "Data")
-#endif(ANDROID)
-
 # ---
 
+add_subdirectory(src/libcrn)
 add_subdirectory(src/demos)
