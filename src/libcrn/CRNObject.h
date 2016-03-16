@@ -1,4 +1,4 @@
-/* Copyright 2006-2014 Yann LEYDIER, CoReNum, INSA-Lyon
+/* Copyright 2006-2016 Yann LEYDIER, CoReNum, INSA-Lyon, ENS-Lyon
  * 
  * This file is part of libcrn.
  * 
@@ -96,9 +96,9 @@ namespace crn
 			virtual ~Object() {}
 
 			/*! \brief Returns the name of the class */
-			virtual const String& GetClassName() const = 0;
+			virtual const String& GetClassName() const;
 			/*! \brief Returns the id of the class */
-			virtual Protocol GetClassProtocols() const noexcept = 0;
+			virtual Protocol GetClassProtocols() const noexcept { return Protocol::Object;}
 			/*! \brief Checks if a protocol is implemented */
 			bool Implements(Protocol classid) const noexcept { if ((GetClassProtocols() & classid) == classid) return true; else return false; }
 

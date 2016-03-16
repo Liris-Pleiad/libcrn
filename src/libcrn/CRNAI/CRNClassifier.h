@@ -1,4 +1,4 @@
-/* Copyright 2008-2014 INSA Lyon, CoReNum
+/* Copyright 2008-2016 INSA Lyon, CoReNum, ENS-Lyon
  * 
  * This file is part of libcrn.
  * 
@@ -41,18 +41,12 @@ namespace crn
 	 * 
 	 * \author 	Yann LEYDIER
 	 * \date		July 2008
-	 * \version 0.2
+	 * \version 0.3
 	 * \ingroup classify
 	 */
-	class Classifier : public ComplexObject
+	class Classifier : public Object
 	{
 		public:
-			/*! \brief Destructor */
-			virtual ~Classifier() override {}
-
-			/*! \brief This is a ComplexObject */
-			virtual Protocol GetClassProtocols() const noexcept override { return Protocol::ComplexObject; }
-
 			/*! \brief Sets the model of the classifier */
 			virtual void SetModel(const SCVector &newmodel) = 0;
 			/*! \brief Updates the model of the classifier using contextual data */

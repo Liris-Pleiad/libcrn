@@ -23,6 +23,7 @@
 #include <CRNProtocols.h>
 
 #include <CRNAI/CRN2Means.h>
+#include <CRNAI/CRNIterativeClustering.h>
 
 #include <iostream>
 
@@ -34,6 +35,7 @@ class B {};
 	bool operator>(B b1, B b2) { return false; }
 	bool operator<=(B b1, B b2) { return false; }
 	bool operator>=(B b1, B b2) { return false; }
+	bool operator==(B b1, B b2) { return false; }
 	B operator+(B b1, B b2) { return b1; }
 	B operator-(B b1, B b2) { return b1; }
 	B operator*(B b1, B b2) { return b1; }
@@ -47,6 +49,7 @@ struct C
 	bool operator>(const C& other) const { return false; }
 	bool operator<=(const C& other) const { return false; }
 	bool operator>=(const C& other) const { return false; }
+	bool operator==(const C& other) const { return false; }
 	C operator+(const C& other) const { return other; }
 	C operator-(const C& other) const { return other; }
 	C operator*(const C& other) const { return other; }
@@ -105,6 +108,9 @@ int main(int argc, char *argv[])
 	auto vec = std::vector<int>{1, 2, 4, 54, 0};
 	std::cout << TwoMeans(vec.begin(), vec.end()).second << std::endl;
 
+	auto ic1 = IterativeClustering<int>{};
+	auto ic2 = IterativeClustering<B>{};
+	//auto ic2 = IterativeClustering<A>{};
 
 #ifdef _MSC_VER
 	getchar();

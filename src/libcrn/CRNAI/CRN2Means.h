@@ -1,4 +1,4 @@
-/* Copyright 2013-2015 INSA-Lyon
+/* Copyright 2013-2016 INSA-Lyon, ENS-Lyon
  * 
  * This file is part of libcrn.
  * 
@@ -43,15 +43,21 @@ namespace crn
 	 * \version 0.1
 	 * \ingroup cluster
 	 */
-	template<typename ITER> 
+	template<
+		typename ITER, 
+		typename std::enable_if<
+			// can copy
+			std::is_copy_assignable<typename std::iterator_traits<ITER>::value_type>::value &&
+			// can assign 0
+			std::is_assignable<typename std::add_lvalue_reference<typename std::decay<typename std::iterator_traits<ITER>::value_type>::type>::type, int>::value && 
+			// operator<
+			protocol::HasLT<typename std::iterator_traits<ITER>::value_type>::value && 
+			// operators +, -, *(double)
+			protocol::IsVectorOverR<typename std::iterator_traits<ITER>::value_type>::value ,
+			int>::type = 0
+		>
 		std::pair<typename std::iterator_traits<ITER>::value_type, typename std::iterator_traits<ITER>::value_type> 
-		TwoMeans(ITER beg, ITER en, double stop_crit = 0.00001, 
-				typename std::enable_if<
-					std::is_copy_assignable<typename std::iterator_traits<ITER>::value_type>::value && // can copy
-					std::is_assignable<typename std::add_lvalue_reference<typename std::decay<typename std::iterator_traits<ITER>::value_type>::type>::type, int>::value && // can assign 0
-					protocol::HasLT<typename std::iterator_traits<ITER>::value_type>::value && // operator<
-					protocol::IsVectorOverR<typename std::iterator_traits<ITER>::value_type>::value // operators +, -, *(double)
-				>::type *dummy = nullptr)
+		TwoMeans(ITER beg, ITER en, double stop_crit = 0.00001)
 			noexcept(std::is_nothrow_constructible<typename std::iterator_traits<ITER>::value_type>::value 
 					&& std::is_nothrow_copy_assignable<typename std::iterator_traits<ITER>::value_type>::value)
 	{

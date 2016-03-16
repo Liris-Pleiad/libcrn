@@ -1,4 +1,4 @@
-/* Copyright 2006-2014 Yann LEYDIER, INSA-Lyon, CoReNum
+/* Copyright 2006-2016 Yann LEYDIER, INSA-Lyon, CoReNum, ENS-Lyon
  * 
  * This file is part of libcrn.
  * 
@@ -29,6 +29,7 @@
 
 using namespace crn;
 
+const String& Object::GetClassName() const { static const String s; return s; }
 /*!
  * Prints the object in a string
  *

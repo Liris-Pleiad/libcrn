@@ -33,12 +33,20 @@ namespace crn
 	{
 		// Metric objects
 		/*! \brief Distance between two objects */
-		template<typename T> double Distance(const T &o1, const T &o2, typename std::enable_if<std::is_class<T>::value>::type *dummy = nullptr)
+		template<
+			typename T,
+			typename std::enable_if<std::is_class<T>::value, int>::type = 0
+			> 
+		double Distance(const T &o1, const T &o2)
 		{
-			return o1.Distance(o2);
+		 return o1.Distance(o2);
 		}
 		/*! \brief Distance between two integral numbers */
-		template<typename T> double Distance(T o1, T o2, typename std::enable_if<std::is_arithmetic<T>::value>::type *dummy = nullptr)
+		template<
+			typename T,
+			typename std::enable_if<std::is_arithmetic<T>::value, int>::type = 0
+		>
+		double Distance(T o1, T o2)
 		{
 			return double(Abs(o1 - o2));
 		}
@@ -101,6 +109,7 @@ namespace crn
 
 		// Addable objects
 		template<typename T> DummyType operator+(const T &, const T &) { return DummyType{}; }
+		template<typename T> DummyType operator==(const T &, const T &) { return DummyType{}; }
 
 		template<typename T> struct HasPlus :
 			public std::integral_constant<
@@ -111,11 +120,20 @@ namespace crn
 			>::value
 			>
 		{};
-		
+		template<typename T> struct HasEquals :
+			public std::integral_constant<
+			bool,
+			!std::is_same<
+				DummyType,
+				decltype(std::declval<T const&>() == std::declval<T const&>())
+			>::value
+			>
+		{};
+
 		/*! Has:
 		 * - operator+(T, T)
 		 */
-		template<typename T> struct IsMagma: public std::integral_constant<bool, HasPlus<T>::value> {};
+		template<typename T> struct IsMagma: public std::integral_constant<bool, HasEquals<T>::value && HasPlus<T>::value> {};
 
 		// Addable and subtractable objects
 		template<typename T> DummyType operator-(const T &, const T &) { return DummyType{}; }
@@ -129,7 +147,7 @@ namespace crn
 			>::value
 			>
 		{};
-		
+
 		/*! Has:
 		 * - operator+(T, T)
 		 * - operator-(T, T)
@@ -148,7 +166,7 @@ namespace crn
 			>::value
 			>
 		{};
-		
+
 		/*! Has:
 		 * - operator+(T, T)
 		 * - operator-(T, T)
@@ -179,7 +197,7 @@ namespace crn
 			>::value
 			>
 		{};
-		
+
 		/*! Has:
 		 * - operator+(T, T)
 		 * - operator-(T, T)
@@ -189,7 +207,7 @@ namespace crn
 		template<typename T> struct IsVectorOverR: public std::integral_constant<bool, IsGroup<T>::value && HasRightOuterMult<T>::value && HasLeftOuterMult<T>::value> {};
 
 		// Addable, subtractable, inner-multipliable and outer-multipliable objects
-		
+
 		/*! Has:
 		 * - operator+(T, T)
 		 * - operator-(T, T)
@@ -206,12 +224,12 @@ namespace crn
 			public std::integral_constant<
 			bool,
 			!std::is_same<
-			DummyType,
-			decltype(std::declval<T const&>() / std::declval<T const&>())
+				DummyType,
+				decltype(std::declval<T const&>() / std::declval<T const&>())
 			>::value
 			>
 		{};
-		
+
 		/*! Has:
 		 * - operator+(T, T)
 		 * - operator-(T, T)
@@ -223,7 +241,7 @@ namespace crn
 		template<typename T> struct IsField: public std::integral_constant<bool, IsAlgebra<T>::value && HasDivide<T>::value> {};
 
 		// Serializable objects
-		
+
 		/*! Has:
 		 * - T::T(xml::Element &)
 		 * - Serialize(const T &, xml::Element &parent)
@@ -232,14 +250,14 @@ namespace crn
 		template<typename T> struct IsSerializable: public std::false_type {};
 
 		// Clonable objects
-		
+
 		/*! Has:
 		 * - T::Clone()
 		 */
 		template<typename T> struct IsClonable: public std::false_type {};
 
 		// Savable objects
-		
+
 		/*! Has:
 		 * - T::T(const Path &)
 		 * - Save(const T &, const Path &)
@@ -289,6 +307,6 @@ namespace crn
 	};
 }
 CRN_DECLARE_ENUM_OPERATORS(crn::Protocol)
-/*@}*/
+	/*@}*/
 #endif
 

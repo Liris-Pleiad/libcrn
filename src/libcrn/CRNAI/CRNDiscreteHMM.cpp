@@ -1,4 +1,4 @@
-/* Copyright 2008-2015 INSA Lyon, CoReNum
+/* Copyright 2008-2016 INSA Lyon, CoReNum, ENS-Lyon
  * 
  * This file is part of libcrn.
  * 
@@ -133,17 +133,15 @@ bool DiscreteHMM::IsValid() const
 /*!
  * Check if two models are equal
  *
- * \param[in]	obj	the other HMM
+ * \param[in]	other	the other HMM
  *
  * \return	true if models are equal, false else
  */
-bool DiscreteHMM::equals(const Object &obj) const
+bool DiscreteHMM::operator==(const DiscreteHMM &other) const
 {
-	const DiscreteHMM& h = (const DiscreteHMM&) obj;
-	
-	return ((h.GetStateTransitionProbability())->Equals(*stateTransitionProbability) && 
-	(h.GetStateGivenSymbolProbability())->Equals(*stateGivenSymbolProbability) && 
-	(h.GetFirstStateProbability())->Equals(*firstStateProbability));
+	return ((other.GetStateTransitionProbability())->Equals(*stateTransitionProbability) && 
+	(other.GetStateGivenSymbolProbability())->Equals(*stateGivenSymbolProbability) && 
+	(other.GetFirstStateProbability())->Equals(*firstStateProbability));
 }
 
 /*!

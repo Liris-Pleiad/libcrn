@@ -1,4 +1,4 @@
-/* Copyright 2008-2014 INSA Lyon, CoReNum
+/* Copyright 2008-2016 INSA Lyon, CoReNum, ENS-Lyon
  * 
  * This file is part of libcrn.
  * 
@@ -35,7 +35,7 @@ namespace crn
 	 * 
 	 * \author 	Jean DUONG
 	 * \date	September 2008
-	 * \version	0.2
+	 * \version	0.3
 	 * \ingroup math
 	 */
 	class DiscreteHMM: public Object
@@ -59,10 +59,8 @@ namespace crn
 			/*! \brief Destructor */
 			virtual ~DiscreteHMM() override;
 
-			/*! \brief Returns the id of the class */
-			virtual Protocol GetClassProtocols() const noexcept override { return Protocol::Clonable; }
-			/*! \brief Returns the name of the class */
-			virtual const String& GetClassName() const override { static const String cn(U"DiscreteHMM"); return cn; }
+			/*! \brief Tests the equality of two models */
+			bool operator==(const DiscreteHMM &other) const;
 
 			/*! \brief Returns the number of states */
 			size_t GetNbStates() const noexcept { return nbStates; }
@@ -98,9 +96,6 @@ namespace crn
 			void BaumWelchMultiple(const MatrixInt& observationSet, size_t maxIter);
 
 		private:
-			/*! \brief Tests the equality of two models */
-			bool equals(const Object &obj) const override;
-			
 			/*! \brief Internal */
 			UMatrixDouble alpha(const MatrixInt& observed) const;
 			/*! \brief Internal */
