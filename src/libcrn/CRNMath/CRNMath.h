@@ -156,7 +156,7 @@ namespace crn
 	 *
 	 * An enumeration of distances
 	 */
-	enum class Distance { INVALID = 0, D4 = 1, D8 = 2 };
+	enum class DistanceType { INVALID = 0, D4 = 1, D8 = 2 };
 	/*@}*/
 
 }

@@ -236,9 +236,9 @@ namespace crn
 			template<typename Y> void Blit(const Image<Y> &src, Rect srczone, size_t dx, size_t dy);
 			
 			/*! \brief Flood fills a portion of the image */
-			void FloodFill(size_t x, size_t y, const pixel_type &val, crn::Distance dist = crn::Distance::D4);
+			void FloodFill(size_t x, size_t y, const pixel_type &val, crn::DistanceType dist = crn::DistanceType::D4);
 			/*! \brief Fills a portion of the image */
-			void ScanFill(size_t x, size_t y, const pixel_type &val, crn::Distance dist = crn::Distance::D4);
+			void ScanFill(size_t x, size_t y, const pixel_type &val, crn::DistanceType dist = crn::DistanceType::D4);
 
 			/*! \brief Draws a rectangle using a specified color */
 			void DrawRect(const Rect &r, pixel_type color, bool filled = false);

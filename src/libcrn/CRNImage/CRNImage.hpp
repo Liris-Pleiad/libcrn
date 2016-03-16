@@ -270,9 +270,9 @@ namespace crn
 	 * \param[in]	x	the beginning abscissa
 	 * \param[in]	y	the beginning ordinate
 	 * \param[in]	val	the value used to fill
-	 * \param[in]	dist	the distance to use (Distance::D4 or Distance::D8)
+	 * \param[in]	dist	the distance to use (DistanceType::D4 or DistanceType::D8)
 	 */
-	template<typename T> void Image<T>::FloodFill(size_t x, size_t y, const pixel_type &val, crn::Distance dist)
+	template<typename T> void Image<T>::FloodFill(size_t x, size_t y, const pixel_type &val, crn::DistanceType dist)
 	{
 		if ((x >= width) || (y >= height))
 			throw crn::ExceptionDomain("Image::FloodFill(): Coordinates out of bounds.");
@@ -281,7 +281,7 @@ namespace crn
 		if (oldval == val)
 			return; // do not fill twice
 		pixels[offset] = val;
-		if ((dist == crn::Distance::D4) || (dist == crn::Distance::D8))
+		if ((dist == crn::DistanceType::D4) || (dist == crn::DistanceType::D8))
 		{
 			if (x > 0)
 				if (pixels[offset - 1] == oldval)
@@ -296,7 +296,7 @@ namespace crn
 				if (pixels[offset + width] == oldval)
 					FloodFill(x, y + 1, val, dist);
 		}
-		if (dist == crn::Distance::D8)
+		if (dist == crn::DistanceType::D8)
 		{
 			if ((x > 0) && (y > 0))
 				if (pixels[offset - 1 - width] == oldval)
@@ -322,9 +322,9 @@ namespace crn
 	 * \param[in]  x  the beginning abscissa
 	 * \param[in]  y  the beginning ordinate
 	 * \param[in]  val  the value used to fill
-	 * \param[in]  dist  the distance to use (Distance::D4 or Distance::D8)
+	 * \param[in]  dist  the distance to use (DistanceType::D4 or DistanceType::D8)
 	 */
-	template<typename T> void Image<T>::ScanFill(size_t x, size_t y, const pixel_type &val, crn::Distance dist)
+	template<typename T> void Image<T>::ScanFill(size_t x, size_t y, const pixel_type &val, crn::DistanceType dist)
 	{
 		if ((x >= width) || (y >= height))
 			throw crn::ExceptionDomain("Image::ScanFill(): Coordinates out of bounds.");
@@ -370,7 +370,7 @@ namespace crn
 						todo.emplace_back(pos.first - 1, std::make_pair(bx, ex));
 						checklimitup = ex;
 					}
-					if (dist == crn::Distance::D8)
+					if (dist == crn::DistanceType::D8)
 					{
 						// look up-left (only for the first pixel of the stream)
 						if ((tx == pos.second.first) && (tx > 0) && (tx - 1 >= checklimitup))
@@ -427,7 +427,7 @@ namespace crn
 						todo.emplace_back(pos.first + 1, std::make_pair(bx, ex));
 						checklimitdown = ex;
 					}
-					if (dist == crn::Distance::D8)
+					if (dist == crn::DistanceType::D8)
 					{
 						// look up-left (only for the first pixel of the stream)
 						if ((tx == pos.second.first) && (tx > 0) && (tx - 1 >= checklimitdown))
