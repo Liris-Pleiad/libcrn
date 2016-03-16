@@ -19,10 +19,83 @@
  * \author Yann Leydier
  */
 
-#include <CRN.h>
+#include <CRNProtocols.h>
+#include <iostream>
+
+class A {};
+class B {};
+//namespace NS
+//{
+	bool operator<(B b1, B b2) { return false; }
+	bool operator>(B b1, B b2) { return false; }
+	bool operator<=(B b1, B b2) { return false; }
+	bool operator>=(B b1, B b2) { return false; }
+	B operator+(B b1, B b2) { return b1; }
+	B operator-(B b1, B b2) { return b1; }
+	B operator*(B b1, B b2) { return b1; }
+	B operator*(B b1, double b2) { return b1; }
+	B operator*(double b1, B b2) { return b2; }
+	B operator/(B b1, B b2) { return b1; }
+//}
+struct C
+{
+	bool operator<(const C& other) const { return false; }
+	bool operator>(const C& other) const { return false; }
+	bool operator<=(const C& other) const { return false; }
+	bool operator>=(const C& other) const { return false; }
+	C operator+(const C& other) const { return other; }
+	C operator-(const C& other) const { return other; }
+	C operator*(const C& other) const { return other; }
+	C operator/(const C& other) const { return other; }
+};
+
+using namespace crn;
 
 int main(int argc, char *argv[])
 {
+	std::cout << "HasLT" << std::endl;
+	std::cout << "int " << protocol::HasLT<int>::value << " should be 1" << std::endl;
+	std::cout << "A " << protocol::HasLT<A>::value << " should be 0" <<  std::endl;
+	std::cout << "B (not using namespace) " << protocol::HasLT<B>::value << " should be 0" <<  std::endl;
+	//using NS::operator<;
+	std::cout << "B (using namespace) " << protocol::HasLT<B>::value << " should be 1" <<  std::endl;
+	std::cout << "C " << protocol::HasLT<C>::value << " should be 1" <<  std::endl;
+
+	std::cout << "IsPOSet" << std::endl;
+	std::cout << "int " << protocol::IsPOSet<int>::value << " should be 1" << std::endl;
+	std::cout << "A " << protocol::IsPOSet<A>::value << " should be 0" <<  std::endl;
+	std::cout << "B (using namespace) " << protocol::IsPOSet<B>::value << " should be 1" <<  std::endl;
+	std::cout << "C " << protocol::IsPOSet<C>::value << " should be 1" <<  std::endl;
+
+	std::cout << "IsMagma" << std::endl;
+	std::cout << "int " << protocol::IsMagma<int>::value << " should be 1" << std::endl;
+	std::cout << "A " << protocol::IsMagma<A>::value << " should be 0" <<  std::endl;
+	std::cout << "B (using namespace) " << protocol::IsMagma<B>::value << " should be 1" <<  std::endl;
+	std::cout << "C " << protocol::IsMagma<C>::value << " should be 1" <<  std::endl;
+
+	std::cout << "IsRing" << std::endl;
+	std::cout << "int " << protocol::IsRing<int>::value << " should be 1" << std::endl;
+	std::cout << "A " << protocol::IsRing<A>::value << " should be 0" <<  std::endl;
+	std::cout << "B (using namespace) " << protocol::IsRing<B>::value << " should be 1" <<  std::endl;
+	std::cout << "C " << protocol::IsRing<C>::value << " should be 1" <<  std::endl;
+
+	std::cout << "IsVectorOverR" << std::endl;
+	std::cout << "int " << protocol::IsVectorOverR<int>::value << " should be 1" << std::endl;
+	std::cout << "A " << protocol::IsVectorOverR<A>::value << " should be 0" <<  std::endl;
+	std::cout << "B (using namespace) " << protocol::IsVectorOverR<B>::value << " should be 1" <<  std::endl;
+	std::cout << "C " << protocol::IsVectorOverR<C>::value << " should be 0" <<  std::endl;
+
+	std::cout << "IsAlgebra" << std::endl;
+	std::cout << "int " << protocol::IsAlgebra<int>::value << " should be 1" << std::endl;
+	std::cout << "A " << protocol::IsAlgebra<A>::value << " should be 0" <<  std::endl;
+	std::cout << "B (using namespace) " << protocol::IsAlgebra<B>::value << " should be 1" <<  std::endl;
+	std::cout << "C " << protocol::IsAlgebra<C>::value << " should be 0" <<  std::endl;
+
+	std::cout << "IsField" << std::endl;
+	std::cout << "int " << protocol::IsField<int>::value << " should be 1" << std::endl;
+	std::cout << "A " << protocol::IsField<A>::value << " should be 0" <<  std::endl;
+	std::cout << "B (using namespace) " << protocol::IsField<B>::value << " should be 1" <<  std::endl;
+	std::cout << "C " << protocol::IsField<C>::value << " should be 0" <<  std::endl;
 	return 0;
 }
 
