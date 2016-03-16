@@ -96,6 +96,10 @@ int main(int argc, char *argv[])
 	std::cout << "A " << protocol::IsField<A>::value << " should be 0" <<  std::endl;
 	std::cout << "B (using namespace) " << protocol::IsField<B>::value << " should be 1" <<  std::endl;
 	std::cout << "C " << protocol::IsField<C>::value << " should be 0" <<  std::endl;
+
+#ifdef _MSC_VER
+	getchar();
+#endif
 	return 0;
 }
 
