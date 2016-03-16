@@ -1,4 +1,4 @@
-/* Copyright 2011-2014 CoReNum, INSA-Lyon
+/* Copyright 2011-2016 CoReNum, INSA-Lyon, ENS-Lyon
  * 
  * This file is part of libcrn.
  * 
@@ -68,9 +68,13 @@ namespace crn
 			CRN_DECLARE_CLASS_CONSTRUCTOR(Attributes)
 			CRN_SERIALIZATION_CONSTRUCTOR(Attributes)
 		};
-
 		CRN_ALIAS_SMART_PTR(Attributes)
 	}
+	namespace protocol
+	{
+		template<> struct IsSerializable<PDF::Attributes> : public std::true_type {};
+	}
+
 }
 
 #endif

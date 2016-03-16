@@ -1,4 +1,4 @@
-/* Copyright 2007-2014 Yann LEYDIER, CoReNum, INSA-Lyon
+/* Copyright 2007-2016 Yann LEYDIER, CoReNum, INSA-Lyon, ENS-Lyon
  * 
  * This file is part of libcrn.
  * 
@@ -44,6 +44,8 @@ namespace crn
 	 */
 	class kMeans
 	{
+		// TODO
+#if 0
 		public:
 			/*! \brief Blank constructor */
 			kMeans();
@@ -142,6 +144,7 @@ namespace crn
 			std::vector<SObject> proto; /*!< The prototypes */
 			std::vector<std::vector<SCObject>> classes; /*!< The list of samples for each class */
 			String dataclass; /*!< The class name of the samples and prototypes */
+#endif
 	};
 }
 #endif

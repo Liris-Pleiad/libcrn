@@ -1,4 +1,4 @@
-/* Copyright 2006-2015 Yann LEYDIER, INSA-Lyon, CoReNum, Université Paris Descartes
+/* Copyright 2006-2016 Yann LEYDIER, INSA-Lyon, CoReNum, Université Paris Descartes, ENS-Lyon
  *
  * This file is part of libcrn.
  *
@@ -309,5 +309,9 @@ namespace crn
 
 	/*! \brief Size of an histogram */
 	inline size_t Size(const Histogram &h) noexcept { return h.Size(); }
+	namespace protocol
+	{
+		template<> struct IsSerializable<Histogram> : public std::true_type {};
+	}	
 }
 #endif

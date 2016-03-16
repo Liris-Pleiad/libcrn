@@ -1,4 +1,4 @@
-/* Copyright 2006-2016 Yann LEYDIER, CoReNum, INSA-Lyon, Université Paris Descartes
+/* Copyright 2006-2016 Yann LEYDIER, CoReNum, INSA-Lyon, Université Paris Descartes, ENS-Lyon
  * 
  * This file is part of libcrn.
  * 
@@ -157,6 +157,10 @@ namespace crn
 		CRN_DECLARE_CLASS_CONSTRUCTOR(Map)
 		public: Map(xml::Element &el):protocols(Protocol::Serializable) { Deserialize(el); }
 	};
+	namespace protocol
+	{
+		template<> struct IsSerializable<Map> : public std::true_type {};
+	}
 
 	inline void swap(Map &m1, Map &m2) noexcept { m1.Swap(m2); }
 }

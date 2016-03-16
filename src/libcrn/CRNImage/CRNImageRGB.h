@@ -1,4 +1,4 @@
-/* Copyright 2006-2015 Yann LEYDIER, CoReNum, INSA-Lyon
+/* Copyright 2006-2016 Yann LEYDIER, CoReNum, INSA-Lyon, ENS-Lyon
  * 
  * This file is part of libcrn.
  * 
@@ -235,6 +235,19 @@ namespace crn
 	};
 
 	CRN_ALIAS_SMART_PTR(RGB2Gray)
+
+	namespace protocol
+	{
+		template<> struct IsSerializable<RGB2Gray> : public std::true_type {};
+		template<> struct IsSerializable<RGB2GrayRed> : public std::true_type {};
+		template<> struct IsSerializable<RGB2GrayGreen> : public std::true_type {};
+		template<> struct IsSerializable<RGB2GrayBlue> : public std::true_type {};
+		template<> struct IsSerializable<RGB2GraySaturation> : public std::true_type {};
+		template<> struct IsSerializable<RGB2GrayValue> : public std::true_type {};
+		template<> struct IsSerializable<RGB2GrayY> : public std::true_type {};
+		template<> struct IsSerializable<RGB2GrayL> : public std::true_type {};
+		template<> struct IsSerializable<RGB2GrayLPrime> : public std::true_type {};
+	}
 
 	template<typename T> Image<T> MakeImageGray(const Image<pixel::RGB<T>> &img)
 	{

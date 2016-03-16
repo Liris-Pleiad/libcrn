@@ -1,4 +1,4 @@
-/* Copyright 2009-2014 INSA Lyon, CoReNum
+/* Copyright 2009-2016 INSA Lyon, CoReNum, ENS-Lyon
  * 
  * This file is part of libcrn.
  * 
@@ -92,6 +92,10 @@ namespace crn
 		CRN_DECLARE_CLASS_CONSTRUCTOR(Int)
 		CRN_SERIALIZATION_CONSTRUCTOR(Int)
 	};
+	namespace protocol
+	{
+		template<> struct IsSerializable<Int> : public std::true_type {};
+	}
 }
 
 #include <CRNData/CRNIntPtr.h>

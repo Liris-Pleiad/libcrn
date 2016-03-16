@@ -1,4 +1,4 @@
-/* Copyright 2006-2014 Yann LEYDIER, CoReNum, INSA-Lyon
+/* Copyright 2006-2016 Yann LEYDIER, CoReNum, INSA-Lyon, ENS-Lyon
  * 
  * This file is part of libcrn.
  * 
@@ -111,6 +111,10 @@ namespace crn
 		CRN_DECLARE_CLASS_CONSTRUCTOR(Prop3)
 		CRN_SERIALIZATION_CONSTRUCTOR(Prop3)
 	};
+	namespace protocol
+	{
+		template<> struct IsSerializable<Prop3> : public std::true_type {};
+	}
 
 	CRN_ALIAS_SMART_PTR(Prop3)
 }

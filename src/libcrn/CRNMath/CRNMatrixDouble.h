@@ -1,4 +1,4 @@
-/* Copyright 2007-2014 Yann LEYDIER, CoReNum, INSA-Lyon
+/* Copyright 2007-2016 Yann LEYDIER, CoReNum, INSA-Lyon, ENS-Lyon
  * 
  * This file is part of libcrn.
  * 
@@ -84,8 +84,12 @@ namespace crn
 		protected:
 			CRN_DECLARE_CLASS_CONSTRUCTOR(MatrixDouble)
 	};
+	namespace protocol
+	{
+		template<> struct IsSerializable<MatrixDouble> : public std::true_type {};
+	}
 
-		template<> struct TypeInfo<MatrixDouble>
+	template<> struct TypeInfo<MatrixDouble>
 	{
 		using SumType = MatrixDouble;
 		using DiffType = MatrixDouble;

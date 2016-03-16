@@ -1,4 +1,4 @@
-/* Copyright 2007-2016 Yann LEYDIER, CoReNum, INSA-Lyon
+/* Copyright 2007-2016 Yann LEYDIER, CoReNum, INSA-Lyon, ENS-Lyon
  * 
  * This file is part of libcrn.
  * 
@@ -29,6 +29,7 @@
 
 using namespace crn;
 
+#if 0
 const String DEFNAME(U"unknown class");
 static const Protocol CLASSREQ(crn::Protocol::VectorOverR|crn::Protocol::Metric|crn::Protocol::Clonable);
 
@@ -270,3 +271,4 @@ int kMeans::Classify(const Object &obj, double *distance)
 	return res.class_id;
 }
 
+#endif

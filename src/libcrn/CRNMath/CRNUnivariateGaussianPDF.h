@@ -1,4 +1,4 @@
-/* Copyright 2008-2015 INSA Lyon, CoReNum
+/* Copyright 2008-2016 INSA Lyon, CoReNum, ENS-Lyon
  * 
  * This file is part of libcrn.
  * 
@@ -100,6 +100,10 @@ namespace crn
 			CRN_DECLARE_CLASS_CONSTRUCTOR(UnivariateGaussianPDF)
 			CRN_SERIALIZATION_CONSTRUCTOR(UnivariateGaussianPDF)
 	};
+	namespace protocol
+	{
+		template<> struct IsSerializable<UnivariateGaussianPDF> : public std::true_type {};
+	}
 
 	CRN_ALIAS_SMART_PTR(UnivariateGaussianPDF)
 }

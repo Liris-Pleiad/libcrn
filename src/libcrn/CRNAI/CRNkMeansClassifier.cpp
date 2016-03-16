@@ -1,4 +1,4 @@
-/* Copyright 2008-2016 INSA Lyon, CoReNum, INSA-Lyon
+/* Copyright 2008-2016 INSA Lyon, CoReNum, INSA-Lyon, ENS-Lyon
  * 
  * This file is part of libcrn.
  * 
@@ -29,6 +29,7 @@
 
 using namespace crn;
 
+#if 0
 /*!
  * Default constructor
  */
@@ -96,3 +97,4 @@ ClassifResult kMeansClassifier::Classify(const Object &sample)
 	return res;
 }
 
+#endif

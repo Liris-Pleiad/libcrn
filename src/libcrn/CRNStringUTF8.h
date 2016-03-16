@@ -1,4 +1,4 @@
-/* Copyright 2006-2015 Yann LEYDIER, CoReNum, INSA-Lyon, Université Paris Descartes
+/* Copyright 2006-2016 Yann LEYDIER, CoReNum, INSA-Lyon, Université Paris Descartes, ENS-Lyon
  * 
  * This file is part of libcrn.
  * 
@@ -256,6 +256,10 @@ namespace crn
 		CRN_DECLARE_CLASS_CONSTRUCTOR(StringUTF8)
 		CRN_SERIALIZATION_CONSTRUCTOR(StringUTF8)
 	};
+	namespace protocol
+	{
+		template<> struct IsSerializable<StringUTF8> : public std::true_type {};
+	}
 
 	/*! \addtogroup string */
 	/*@{*/

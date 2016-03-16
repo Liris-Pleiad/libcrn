@@ -1,4 +1,4 @@
-/* Copyright 2010-2015 CoReNum, INSA-Lyon, Université Paris Descartes
+/* Copyright 2010-2016 CoReNum, INSA-Lyon, Université Paris Descartes, ENS-Lyon
  * 
  * This file is part of libcrn.
  * 
@@ -166,6 +166,10 @@ namespace crn
 
 		CRN_DECLARE_CLASS_CONSTRUCTOR(Path)
 	};
+	namespace protocol
+	{
+		template<> struct IsSerializable<Path> : public std::true_type {};
+	}
 
 	/*! \addtogroup string */
 	/*@{*/

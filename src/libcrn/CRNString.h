@@ -1,4 +1,4 @@
-/* Copyright 2008-2015 INSA Lyon, CoReNum, Université Paris Descartes
+/* Copyright 2008-2016 INSA Lyon, CoReNum, Université Paris Descartes, ENS-Lyon
  * 
  * This file is part of libcrn.
  * 
@@ -292,6 +292,10 @@ long long ToLongLong() const { return convertTo<long long>(); }
 		CRN_DECLARE_CLASS_CONSTRUCTOR(String)
 		CRN_SERIALIZATION_CONSTRUCTOR(String)
 	};
+	namespace protocol
+	{
+		template<> struct IsSerializable<String> : public std::true_type {};
+	}
 
 	/* \addtogroup string */
 	/*@{*/

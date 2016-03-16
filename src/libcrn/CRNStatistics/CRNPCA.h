@@ -1,4 +1,4 @@
-/* Copyright 2009-2015 Jean DUONG, CoReNum, INSA-Lyon, Université Paris Descartes
+/* Copyright 2009-2016 Jean DUONG, CoReNum, INSA-Lyon, Université Paris Descartes, ENS-Lyon
  * 
  * This file is part of libcrn.
  * 
@@ -105,6 +105,10 @@ namespace crn
 	};
 
 	CRN_ALIAS_SMART_PTR(PCA)
+	namespace protocol
+	{
+		template<> struct IsSerializable<PCA> : public std::true_type {};
+	}
 
 	/*!
 	 * Constructor

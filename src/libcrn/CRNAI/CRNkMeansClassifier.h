@@ -1,4 +1,4 @@
-/* Copyright 2008-2014 INSA Lyon, CoReNum, INSA-Lyon
+/* Copyright 2008-2016 INSA Lyon, CoReNum, INSA-Lyon, ENS-Lyon
  * 
  * This file is part of libcrn.
  * 
@@ -39,6 +39,8 @@ namespace crn
 	 */
 	class kMeansClassifier : public Classifier
 	{
+		// TODO
+#if 0
 		public:
 			/*! \brief Constructor */
 			kMeansClassifier();
@@ -59,6 +61,7 @@ namespace crn
 
 		private:
 			kMeans classifier; /*!< The actual k-means engine */
+#endif
 	};
 
 	CRN_ALIAS_SMART_PTR(kMeansClassifier)

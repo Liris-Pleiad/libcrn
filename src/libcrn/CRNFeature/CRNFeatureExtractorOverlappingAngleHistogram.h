@@ -1,4 +1,4 @@
-/* Copyright 2012-2014 INSA-Lyon
+/* Copyright 2012-2016 INSA-Lyon, ENS-Lyon
  * 
  * This file is part of libcrn.
  * 
@@ -78,6 +78,10 @@ namespace crn
 		CRN_DECLARE_CLASS_CONSTRUCTOR(FeatureExtractorOverlappingAngleHistogram)
 		CRN_SERIALIZATION_CONSTRUCTOR(FeatureExtractorOverlappingAngleHistogram)
 	};
+	namespace protocol
+	{
+		template<> struct IsSerializable<FeatureExtractorOverlappingAngleHistogram> : public std::true_type {};
+	}
 
 	CRN_ALIAS_SMART_PTR(FeatureExtractorOverlappingAngleHistogram)
 }

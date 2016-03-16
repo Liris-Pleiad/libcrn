@@ -1,4 +1,4 @@
-/* Copyright 2008-2015 INSA Lyon, CoReNum
+/* Copyright 2008-2016 INSA Lyon, CoReNum, ENS-Lyon
  * 
  * This file is part of libcrn.
  * 
@@ -43,7 +43,11 @@ namespace crn
 			virtual UObject Create(xml::Element &el) const = 0;
 	};
 	/*! \brief	Factory element */
-	template<class T> class DataFactoryElement: public DataFactoryElementBase
+	template<
+		class T,
+		typename std::enable_if<protocol::IsSerializable<T>::value, int>::type = 0
+		>
+	class DataFactoryElement: public DataFactoryElementBase
 	{
 		public:
 			virtual ~DataFactoryElement() override {}

@@ -1,4 +1,4 @@
-/* Copyright 2007-2014 Yann LEYDIER, CoReNum, INSA-Lyon
+/* Copyright 2007-2016 Yann LEYDIER, CoReNum, INSA-Lyon, ENS-Lyon
  * 
  * This file is part of libcrn.
  * 
@@ -91,6 +91,10 @@ namespace crn
 		CRN_DECLARE_CLASS_CONSTRUCTOR(RealCoeff)
 		CRN_SERIALIZATION_CONSTRUCTOR(RealCoeff)
 	};
+	namespace protocol
+	{
+		template<> struct IsSerializable<RealCoeff> : public std::true_type {};
+	}
 
 	CRN_ALIAS_SMART_PTR(RealCoeff)
 }

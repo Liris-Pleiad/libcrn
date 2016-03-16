@@ -1,4 +1,4 @@
-/* Copyright 2006-2014 Yann LEYDIER, CoReNum, INSA-Lyon
+/* Copyright 2006-2016 Yann LEYDIER, CoReNum, INSA-Lyon, ENS-Lyon
  * 
  * This file is part of libcrn.
  * 
@@ -105,6 +105,10 @@ namespace crn
 		CRN_DECLARE_CLASS_CONSTRUCTOR(Real)
 		CRN_SERIALIZATION_CONSTRUCTOR(Real)
 	};
+	namespace protocol
+	{
+		template<> struct IsSerializable<Real> : public std::true_type {};
+	}
 }
 
 #include <CRNData/CRNRealPtr.h>

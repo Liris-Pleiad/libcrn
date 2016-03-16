@@ -1,4 +1,4 @@
-/* Copyright 2008-2014 INSA Lyon, CoReNum
+/* Copyright 2008-2016 INSA Lyon, CoReNum, ENS-Lyon
  * 
  * This file is part of libcrn.
  * 
@@ -72,6 +72,10 @@ namespace crn
 		CRN_DECLARE_CLASS_CONSTRUCTOR(Point2DInt)
 		CRN_SERIALIZATION_CONSTRUCTOR(Point2DInt)
 	};
+	namespace protocol
+	{
+		template<> struct IsSerializable<Point2DInt> : public std::true_type {};
+	}
   
 	CRN_ALIAS_SMART_PTR(Point2DInt)
 

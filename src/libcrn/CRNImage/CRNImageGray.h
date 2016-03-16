@@ -1,4 +1,4 @@
-/* Copyright 2006-2015 Yann LEYDIER, CoReNum, INSA-Lyon
+/* Copyright 2006-2016 Yann LEYDIER, CoReNum, INSA-Lyon, ENS-Lyon
  * 
  * This file is part of libcrn.
  * 
@@ -340,6 +340,8 @@ namespace crn
 		if (histo.Size() < 3)
 			return Fisher(img);
 
+		// TODO
+#if 0
 		auto km = kMeans{};
 		km.AddSamples(histo);
 		auto min = 0.0;
@@ -382,6 +384,7 @@ namespace crn
 			else
 				out.At(tmp) = pixel::BWBlack;
 		}
+#endif
 
 		return out;
 	}
@@ -763,6 +766,20 @@ namespace crn
 			CRN_DECLARE_CLASS_CONSTRUCTOR(Gray2BWOtsu)
 				CRN_SERIALIZATION_CONSTRUCTOR(Gray2BWOtsu)
 	};
+
+	namespace protocol
+	{
+		template<> struct IsSerializable<Gray2BW> : public std::true_type {};
+		template<> struct IsSerializable<Gray2BWThreshold> : public std::true_type {};
+		template<> struct IsSerializable<Gray2BWNiblack> : public std::true_type {};
+		template<> struct IsSerializable<Gray2BWSauvola> : public std::true_type {};
+		template<> struct IsSerializable<Gray2BWkMeansHisto> : public std::true_type {};
+		template<> struct IsSerializable<Gray2BWLocalMin> : public std::true_type {};
+		template<> struct IsSerializable<Gray2BWLocalMax> : public std::true_type {};
+		template<> struct IsSerializable<Gray2BWFisher> : public std::true_type {};
+		template<> struct IsSerializable<Gray2BWEntropy> : public std::true_type {};
+		template<> struct IsSerializable<Gray2BWOtsu> : public std::true_type {};
+	}
 
 	CRN_ALIAS_SMART_PTR(Gray2BW)
 

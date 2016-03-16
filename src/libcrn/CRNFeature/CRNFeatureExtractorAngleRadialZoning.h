@@ -1,4 +1,4 @@
-/* Copyright 2012-2014 CoReNum, INSA-Lyon
+/* Copyright 2012-2016 CoReNum, INSA-Lyon, ENS-Lyon
  * 
  * This file is part of libcrn.
  * 
@@ -82,6 +82,10 @@ namespace crn
 		CRN_DECLARE_CLASS_CONSTRUCTOR(FeatureExtractorAngleRadialZoning)
 		CRN_SERIALIZATION_CONSTRUCTOR(FeatureExtractorAngleRadialZoning)
 	};
+	namespace protocol
+	{
+		template<> struct IsSerializable<FeatureExtractorAngleRadialZoning> : public std::true_type {};
+	}
 
 	CRN_ALIAS_SMART_PTR(FeatureExtractorAngleRadialZoning)
 }

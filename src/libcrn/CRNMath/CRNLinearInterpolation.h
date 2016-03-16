@@ -1,4 +1,4 @@
-/* Copyright 2012-2014 CoReNum
+/* Copyright 2012-2016 CoReNum, ENS-Lyon
  * 
  * This file is part of libcrn.
  * 
@@ -92,6 +92,10 @@ namespace crn
 		CRN_DECLARE_CLASS_CONSTRUCTOR(LinearInterpolation)			
 		CRN_SERIALIZATION_CONSTRUCTOR(LinearInterpolation)			
 	};
+	namespace protocol
+	{
+		template<> struct IsSerializable<LinearInterpolation> : public std::true_type {};
+	}
 
 	CRN_ALIAS_SMART_PTR(LinearInterpolation)
 }

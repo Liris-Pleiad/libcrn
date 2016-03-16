@@ -1,4 +1,4 @@
-/* Copyright 2007-2014 Yann LEYDIER, CoReNum, INSA-Lyon
+/* Copyright 2007-2016 Yann LEYDIER, CoReNum, INSA-Lyon, ENS-Lyon
  * 
  * This file is part of libcrn.
  * 
@@ -68,6 +68,10 @@ namespace crn
 		CRN_DECLARE_CLASS_CONSTRUCTOR(FeatureExtractorProfile)
 		CRN_SERIALIZATION_CONSTRUCTOR(FeatureExtractorProfile)
 	};
+	namespace protocol
+	{
+		template<> struct IsSerializable<FeatureExtractorProfile> : public std::true_type {};
+	}
 
 	CRN_ALIAS_SMART_PTR(FeatureExtractorProfile)
 }

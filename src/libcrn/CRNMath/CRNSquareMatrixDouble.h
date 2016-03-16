@@ -1,4 +1,4 @@
-/* Copyright 2008-2015 INSA Lyon
+/* Copyright 2008-2016 INSA-Lyon, ENS-Lyon
  * 
  * This file is part of libcrn.
  * 
@@ -118,6 +118,10 @@ namespace crn
 		public:
 			SquareMatrixDouble(xml::Element &el):MatrixDouble(1, 1) { Deserialize(el); }
 	};
+	namespace protocol
+	{
+		template<> struct IsSerializable<SquareMatrixDouble> : public std::true_type {};
+	}
 
 	template<> struct TypeInfo<SquareMatrixDouble>
 	{

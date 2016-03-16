@@ -1,4 +1,4 @@
-/* Copyright 2007-2015 Yann LEYDIER, CoReNum, INSA-Lyon
+/* Copyright 2007-2016 Yann LEYDIER, CoReNum, INSA-Lyon, ENS-Lyon
  * 
  * This file is part of libcrn.
  * 
@@ -60,6 +60,10 @@ namespace crn
 		public:
 			FeatureSet(xml::Element &el):Vector(el) { }
 	};
+	namespace protocol
+	{
+		template<> struct IsSerializable<FeatureSet> : public std::true_type {};
+	}
 
 	CRN_ALIAS_SMART_PTR(FeatureSet)
 }
