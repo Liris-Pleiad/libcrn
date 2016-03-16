@@ -29,129 +29,224 @@
 /*@{*/
 namespace crn
 {
-	// Metric objects
-	
-	/*! \brief Distance between two objects */
-	template<typename T> double Distance(const T &o1, const T &o2, typename std::enable_if<std::is_class<T>::value>::type *dummy = nullptr)
+	namespace protocol
 	{
-		return o1.Distance(o2);
+		// Metric objects
+		/*! \brief Distance between two objects */
+		template<typename T> double Distance(const T &o1, const T &o2, typename std::enable_if<std::is_class<T>::value>::type *dummy = nullptr)
+		{
+			return o1.Distance(o2);
+		}
+		/*! \brief Distance between two integral numbers */
+		template<typename T> double Distance(T o1, T o2, typename std::enable_if<std::is_arithmetic<T>::value>::type *dummy = nullptr)
+		{
+			return double(Abs(o1 - o2));
+		}
+		/*! Has:
+		 * - Distance(T, T)
+		 */
+		template<typename T> struct IsMetric: public std::integral_constant<bool, std::is_arithmetic<T>::value>{};
+
+		// Partially ordered objects
+		struct DummyType {};
+		template<typename T> DummyType operator<(const T &, const T &) { return DummyType{}; }
+		template<typename T> DummyType operator>(const T &, const T &) { return DummyType{}; }
+		template<typename T> DummyType operator<=(const T &, const T &) { return DummyType{}; }
+		template<typename T> DummyType operator>=(const T &, const T &) { return DummyType{}; }
+
+		template<typename T> struct HasLT :
+			public std::integral_constant<
+			bool,
+			!std::is_same<
+				DummyType,
+				decltype(std::declval<T const&>() < std::declval<T const&>())
+			>::value
+			>
+		{};
+		template<typename T> struct HasGT :
+			public std::integral_constant<
+			bool,
+			!std::is_same<
+				DummyType,
+				decltype(std::declval<T const&>() > std::declval<T const&>())
+			>::value
+			>
+		{};
+		template<typename T> struct HasLE :
+			public std::integral_constant<
+			bool,
+			!std::is_same<
+				DummyType,
+				decltype(std::declval<T const&>() <= std::declval<T const&>())
+			>::value
+			>
+		{};
+		template<typename T> struct HasGE :
+			public std::integral_constant<
+			bool,
+			!std::is_same<
+				DummyType,
+				decltype(std::declval<T const&>() >= std::declval<T const&>())
+			>::value
+			>
+		{};
+
+		/*! Has:
+		 * - Prop3 operator<(T, T)
+		 * - Prop3 operator<=(T, T)
+		 * - Prop3 operator>(T, T)
+		 * - Prop3 operator>=(T, T)
+		 */
+		template<typename T> struct IsPOSet: public std::integral_constant<bool, HasLT<T>::value && HasGT<T>::value && HasLE<T>::value && HasGE<T>::value> {};
+
+		// Addable objects
+		template<typename T> DummyType operator+(const T &, const T &) { return DummyType{}; }
+
+		template<typename T> struct HasPlus :
+			public std::integral_constant<
+			bool,
+			!std::is_same<
+				DummyType,
+				decltype(std::declval<T const&>() + std::declval<T const&>())
+			>::value
+			>
+		{};
+		
+		/*! Has:
+		 * - operator+(T, T)
+		 */
+		template<typename T> struct IsMagma: public std::integral_constant<bool, HasPlus<T>::value> {};
+
+		// Addable and subtractable objects
+		template<typename T> DummyType operator-(const T &, const T &) { return DummyType{}; }
+
+		template<typename T> struct HasMinus :
+			public std::integral_constant<
+			bool,
+			!std::is_same<
+				DummyType,
+				decltype(std::declval<T const&>() - std::declval<T const&>())
+			>::value
+			>
+		{};
+		
+		/*! Has:
+		 * - operator+(T, T)
+		 * - operator-(T, T)
+		 */
+		template<typename T> struct IsGroup: public std::integral_constant<bool, IsMagma<T>::value && HasMinus<T>::value> {};
+
+		// Addable, subtractable and inner-multipliable objects
+		template<typename T> DummyType operator*(const T &, const T &) { return DummyType{}; }
+
+		template<typename T> struct HasInnerMult :
+			public std::integral_constant<
+			bool,
+			!std::is_same<
+				DummyType,
+				decltype(std::declval<T const&>() * std::declval<T const&>())
+			>::value
+			>
+		{};
+		
+		/*! Has:
+		 * - operator+(T, T)
+		 * - operator-(T, T)
+		 * - operator*(T, T)
+		 */
+		template<typename T> struct IsRing: public std::integral_constant<bool, IsGroup<T>::value && HasInnerMult<T>::value> {};
+
+		// Addable, subtractable and outer-multipliable objects
+		struct doubleWrapper { doubleWrapper(double) {} };
+		template<typename T> DummyType operator*(const T &, doubleWrapper) { return DummyType{}; }
+		template<typename T> DummyType operator*(doubleWrapper, const T &) { return DummyType{}; }
+
+		template<typename T> struct HasRightOuterMult :
+			public std::integral_constant<
+			bool,
+			!std::is_same<
+				DummyType,
+				decltype(std::declval<T const&>() * 0.0)
+			>::value
+			>
+		{};
+		template<typename T> struct HasLeftOuterMult :
+			public std::integral_constant<
+			bool,
+			!std::is_same<
+				DummyType,
+				decltype(0.0 * std::declval<T const&>())
+			>::value
+			>
+		{};
+		
+		/*! Has:
+		 * - operator+(T, T)
+		 * - operator-(T, T)
+		 * - operator*(T, double)
+		 * - operator*(double, T)
+		 */
+		template<typename T> struct IsVectorOverR: public std::integral_constant<bool, IsGroup<T>::value && HasRightOuterMult<T>::value && HasLeftOuterMult<T>::value> {};
+
+		// Addable, subtractable, inner-multipliable and outer-multipliable objects
+		
+		/*! Has:
+		 * - operator+(T, T)
+		 * - operator-(T, T)
+		 * - operator*(T, T)
+		 * - operator*(T, double)
+		 * - operator*(double, T)
+		 */
+		template<typename T> struct IsAlgebra: public std::integral_constant<bool, IsRing<T>::value && IsVectorOverR<T>::value> {};
+
+		// Addable, subtractable, inner-multipliable, outer-multipliable and dividable objects
+		template<typename T> DummyType operator/(const T &, const T &) { return DummyType{}; }
+
+		template<typename T> struct HasDivide :
+			public std::integral_constant<
+			bool,
+			!std::is_same<
+			DummyType,
+			decltype(std::declval<T const&>() / std::declval<T const&>())
+			>::value
+			>
+		{};
+		
+		/*! Has:
+		 * - operator+(T, T)
+		 * - operator-(T, T)
+		 * - operator*(T, T)
+		 * - operator*(T, double)
+		 * - operator*(double, T)
+		 * - operator/(T, T)
+		 */
+		template<typename T> struct IsField: public std::integral_constant<bool, IsAlgebra<T>::value && HasDivide<T>::value> {};
+
+		// Serializable objects
+		
+		/*! Has:
+		 * - T::T(xml::Element &)
+		 * - Serialize(const T &, xml::Element &parent)
+		 * - Deserialize(T &, xml::Element &)
+		 */
+		template<typename T> struct IsSerializable: public std::false_type {};
+
+		// Clonable objects
+		
+		/*! Has:
+		 * - T::Clone()
+		 */
+		template<typename T> struct IsClonable: public std::false_type {};
+
+		// Savable objects
+		
+		/*! Has:
+		 * - T::T(const Path &)
+		 * - Save(const T &, const Path &)
+		 * - Load(T &, const Path &)
+		 */
+		template<typename T> struct IsSavable: public std::false_type {};
 	}
-	/*! \brief Distance between two integral numbers */
-	template<typename T> double Distance(T o1, T o2, typename std::enable_if<std::is_arithmetic<T>::value>::type *dummy = nullptr)
-	{
-		return double(Abs(o1 - o2));
-	}
-	/*! Has:
-	 * - Distance(T, T)
-	 */
-	template<typename T> struct IsMetric: public std::integral_constant<bool, std::is_arithmetic<T>::value>{};
-
-	// Partially ordered objects
-	namespace impl
-	{
-		struct Dummy {};
-		template<typename T> Dummy operator<(const T &, const T &) { return Dummy{}; }
-		template<typename T> auto LT(const T &o1, const T &o2) -> decltype(o1 < o2) { return o1 < o2; }
-	}
-	template<typename T> struct HasLT :
-		public std::integral_constant<
-		bool,
-		!std::is_same<
-		impl::Dummy,
-		typename std::result_of<decltype(impl::LT<T>)&(const T &, const T &)>::type
-		>::value
-		>
-	{};
-
-	/*! Has:
-	 * - Prop3 operator<(T, T)
-	 * - Prop3 operator<=(T, T)
-	 * - Prop3 operator>(T, T)
-	 * - Prop3 operator>=(T, T)
-	 */
-	template<typename T> struct IsPOSet: public std::integral_constant<bool, std::is_arithmetic<T>::value> {};
-
-	// Addable objects
-	
-	/*! Has:
-	 * - operator+(T, T)
-	 */
-	template<typename T> struct IsMagma: public std::integral_constant<bool, std::is_arithmetic<T>::value> {};
-
-	// Addable and subtractable objects
-	
-	/*! Has:
-	 * - operator+(T, T)
-	 * - operator-(T, T)
-	 */
-	template<typename T> struct IsGroup: public std::integral_constant<bool, std::is_arithmetic<T>::value> {};
-
-	// Addable, subtractable and inner-multipliable objects
-	
-	/*! Has:
-	 * - operator+(T, T)
-	 * - operator-(T, T)
-	 * - operator*(T, T)
-	 */
-	template<typename T> struct IsRing: public std::integral_constant<bool, std::is_arithmetic<T>::value> {};
-
-	// Addable, subtractable and outer-multipliable objects
-	
-	/*! Has:
-	 * - operator+(T, T)
-	 * - operator-(T, T)
-	 * - operator*(T, double)
-	 * - operator*(double, T)
-	 */
-	template<typename T> struct IsVectorOverR: public std::integral_constant<bool, std::is_arithmetic<T>::value> {};
-
-	// Addable, subtractable, inner-multipliable and outer-multipliable objects
-	
-	/*! Has:
-	 * - operator+(T, T)
-	 * - operator-(T, T)
-	 * - operator*(T, T)
-	 * - operator*(T, double)
-	 * - operator*(double, T)
-	 */
-	template<typename T> struct IsAlgebra: public std::integral_constant<bool, std::is_arithmetic<T>::value> {};
-
-	// Addable, subtractable, inner-multipliable, outer-multipliable and dividable objects
-	
-	/*! Has:
-	 * - operator+(T, T)
-	 * - operator-(T, T)
-	 * - operator*(T, T)
-	 * - operator*(T, double)
-	 * - operator*(double, T)
-	 * - operator/(T, T)
-	 */
-	template<typename T> struct IsField: public std::integral_constant<bool, std::is_arithmetic<T>::value> {};
-
-	// Serializable objects
-	
-	/*! Has:
-	 * - T::T(xml::Element &)
-	 * - Serialize(const T &, xml::Element &parent)
-	 * - Deserialize(T &, xml::Element &)
-	 */
-	template<typename T> struct IsSerializable: public std::false_type {};
-
-	// Clonable objects
-	
-	/*! Has:
-	 * - T::Clone()
-	 */
-	template<typename T> struct IsClonable: public std::false_type {};
-
-	// Savable objects
-	
-	/*! Has:
-	 * - T::T(const Path &)
-	 * - Save(const T &, const Path &)
-	 * - Load(T &, const Path &)
-	 */
-	template<typename T> struct IsSavable: public std::false_type {};
 
 	enum class Protocol: uint32_t { 
 		// *** Base classes
