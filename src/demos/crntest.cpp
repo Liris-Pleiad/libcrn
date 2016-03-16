@@ -19,7 +19,11 @@
  * \author Yann Leydier
  */
 
+#include <typeinfo>
 #include <CRNProtocols.h>
+
+#include <CRNAI/CRN2Means.h>
+
 #include <iostream>
 
 class A {};
@@ -96,6 +100,11 @@ int main(int argc, char *argv[])
 	std::cout << "A " << protocol::IsField<A>::value << " should be 0" <<  std::endl;
 	std::cout << "B (using namespace) " << protocol::IsField<B>::value << " should be 1" <<  std::endl;
 	std::cout << "C " << protocol::IsField<C>::value << " should be 0" <<  std::endl;
+
+
+	auto vec = std::vector<int>{1, 2, 4, 54, 0};
+	std::cout << TwoMeans(vec.begin(), vec.end()).second << std::endl;
+
 
 #ifdef _MSC_VER
 	getchar();
