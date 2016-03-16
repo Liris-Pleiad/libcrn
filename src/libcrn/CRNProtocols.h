@@ -1,4 +1,4 @@
-/* Copyright 2006-2014 Yann LEYDIER, INSA-Lyon
+/* Copyright 2006-2016 Yann LEYDIER, INSA-Lyon, ENS-Lyon
  * 
  * This file is part of libcrn.
  * 
@@ -28,6 +28,22 @@
 /*@{*/
 namespace crn
 {
+	namespace impl
+	{
+		struct Dummy {};
+		template<typename T> Dummy operator<(const T &, const T &) { return Dummy{}; }
+		template<typename T> auto LT(const T &o1, const T &o2) -> decltype(o1 < o2) { return o1 < o2; }
+	}
+	template<typename T> struct HasLT :
+		public std::integral_constant<
+		bool,
+		!std::is_same<
+		impl::Dummy,
+		typename std::result_of<decltype(impl::LT<T>)&(const T &, const T &)>::type
+		>::value
+		>
+	{};
+
 	enum class Protocol: uint32_t { 
 		// *** Base classes
 		// -> Object
