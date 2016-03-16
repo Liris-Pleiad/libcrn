@@ -55,10 +55,10 @@ int main(int argc, char *argv[])
 			CRNVerbose(crn::String(_("\tStokes height: ")) + StrokesHeight(*ig));
 			CRNVerbose(crn::String(_("\tLines height: ")) + EstimateLinesXHeight(*ig));
 		}
-		catch (...)
+		catch (std::exception &ex)
 		{
 			CRNVerbose(crn::String(U"*** ") + argv[tmp] + 
-					crn::String(_(" ignored (not a valid image file). ***")));
+					crn::String(_(" ignored (not a valid image file). *** ")) + ex.what());
 		}
 	}
 }

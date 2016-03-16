@@ -48,6 +48,8 @@
 
 using namespace crn;
 
+ImageBase::~ImageBase() = default;
+
 /*! \returns the bounding box of the image */
 Rect ImageBase::GetBBox() const noexcept
 {
@@ -439,6 +441,25 @@ static std::pair<UImage, String> load_gdkpixbuf(const Path &fname)
 #endif
 
 #ifdef CRN_USING_GDIPLUS
+struct crn::ImageBase::gditoken
+{
+	Gdiplus::GdiplusStartupInput gdiplusStartupInput;
+	ULONG_PTR           gdiplusToken;
+	gditoken()
+	{
+		Gdiplus::GdiplusStartup(&gdiplusToken, &gdiplusStartupInput, nullptr);
+	}
+	~gditoken()
+	{
+		Gdiplus::GdiplusShutdown(gdiplusToken);
+	}
+};
+std::unique_ptr<ImageBase::gditoken> ImageBase::gdiinit;
+
+CRN_BEGIN_CLASS_CONSTRUCTOR(ImageBase)
+	ImageBase::gdiinit = std::make_unique<ImageBase::gditoken>();
+CRN_END_CLASS_CONSTRUCTOR(ImageBase)
+
 static std::pair<UImage, String> load_gdiplus(const Path &filename)
 {
 	// gdiplus does not support URIs
@@ -452,13 +473,13 @@ static std::pair<UImage, String> load_gdiplus(const Path &filename)
 	Gdiplus::ColorPalette *pal = NULL;
 	if (!img)
 	{
-		return std::make_pair(UImage{}, String(_("No image loaded.")));
+		return std::make_pair(UImage{}, String(_("Gdi+ could not load the image.")));
 	}
 	Gdiplus::Status stat = img->GetLastStatus();
 	if (stat != Gdiplus::Ok)
 	{
 		delete img;
-		return std::make_pair(UImage{}, String(_("Image could not be loaded. Error number ") + int(stat)));
+		return std::make_pair(UImage{}, String(_("Gdi+ could not load the image correctly. Error number ") + int(stat)));
 	}
 	int w = img->GetWidth();
 	int h = img->GetHeight();
@@ -477,7 +498,7 @@ static std::pair<UImage, String> load_gdiplus(const Path &filename)
 			return std::make_pair(UImage{}, String(_("Could not lock pixels. Error number ") + int(res)));
 		}
 		auto *pixels = (uint8_t*)bitmapData.Scan0;
-#pragma omp parallel for
+//#pragma omp parallel for
 		FOREACHPIXEL(x, y, *rret)
 		{
 			rret->At(x, y) = pixels[3 * x + y * bitmapData.Stride] ? true : false;
@@ -556,7 +577,7 @@ static std::pair<UImage, String> load_gdiplus(const Path &filename)
 			return std::make_pair(UImage{}, String(_("Could not lock pixels. Error number ") + int(res)));
 		}
 		auto *pixels = (uint8_t*)bitmapData.Scan0;
-#pragma omp parallel for
+//#pragma omp parallel for
 		FOREACHPIXEL(x, y, *rret)
 		{
 			size_t offset = x * 3 + y * bitmapData.Stride;
@@ -587,9 +608,6 @@ UImage crn::NewImageFromFile(const Path &fname)
 
 	std::lock_guard<std::mutex> lock(crn::FileShield::GetMutex(fname)); // lock the file
 
-	/**************************************************************
-	 * try PNG
-	 *************************************************************/
 	std::pair<UImage, String> res(std::make_pair(UImage{}, String(U"")));
 	String errors;
 #ifdef CRN_USING_LIBPNG

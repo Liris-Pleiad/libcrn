@@ -47,6 +47,7 @@ namespace crn
 	{
 		public:
 			virtual Protocol GetClassProtocols() const noexcept override { return crn::Protocol::Clonable; }
+			virtual ~ImageBase() override;
 
 			/**************************************************************************************
 			 * Construction and copy
@@ -88,6 +89,12 @@ namespace crn
 
 		protected:
 			size_t width, height;
+
+#ifdef CRN_USING_GDIPLUS
+			struct gditoken;
+			static std::unique_ptr<gditoken> gdiinit;
+			CRN_DECLARE_CLASS_CONSTRUCTOR(ImageBase)
+#endif
 	};
 
 	using SImage = std::shared_ptr<ImageBase>;
