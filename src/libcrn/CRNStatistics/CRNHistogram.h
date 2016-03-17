@@ -153,11 +153,6 @@ namespace crn
 			/*! \brief Destructor */
 			virtual ~Histogram() override;
 
-			/*! \brief This is a Metric, Serializable and Clonable ComplexObject */
-			virtual Protocol GetClassProtocols() const noexcept override { return crn::Protocol::ComplexObject|crn::Protocol::Metric|crn::Protocol::Serializable|crn::Protocol::Clonable; }
-			/*! \brief Returns the id of the class */
-			virtual const String& GetClassName() const override { static const String cn(U"Histogram"); return cn; }
-
 			/*! \brief Creates a new instance of the same histogram */
 			virtual UObject Clone() const override { return std::make_unique<Histogram>(*this, 1u); }
 
@@ -291,6 +286,8 @@ namespace crn
 
 			std::vector<unsigned int> Std() && { return std::move(bins); }
 
+			/*! \brief Distance between two metric objects. */
+			double Distance(const Object &obj) const { return MinkowskiDistance((const Histogram&)obj, 1); }
 		private:
 			using datatype = std::vector<unsigned int>; /*!< Inner data representation */
 			datatype bins; /*!< Classes for this histogram. */
@@ -300,8 +297,6 @@ namespace crn
 			virtual void deserialize(xml::Element &el) override;
 			/*! \brief Dumps the object to an XML element. Unsafe. */
 			virtual xml::Element serialize(xml::Element &parent) const override;
-			/*! \brief Distance between two metric objects. */
-			virtual double distance(const Object &obj) const override { return MinkowskiDistance((const Histogram&)obj, 1); }
 
 			CRN_DECLARE_CLASS_CONSTRUCTOR(Histogram)
 			CRN_SERIALIZATION_CONSTRUCTOR(Histogram)
@@ -312,6 +307,7 @@ namespace crn
 	namespace protocol
 	{
 		template<> struct IsSerializable<Histogram> : public std::true_type {};
+		template<> struct IsClonable<Histogram> : public std::true_type {};
 	}	
 }
 #endif

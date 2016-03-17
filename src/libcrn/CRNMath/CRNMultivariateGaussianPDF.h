@@ -1,4 +1,4 @@
-/* Copyright 2008-2014 INSA Lyon, CoReNum
+/* Copyright 2008-2016 INSA Lyon, CoReNum, ENS-Lyon
  * 
  * This file is part of libcrn.
  * 
@@ -55,11 +55,6 @@ namespace crn
 			MultivariateGaussianPDF& operator=(const MultivariateGaussianPDF&) = default;
 			MultivariateGaussianPDF& operator=(MultivariateGaussianPDF&&) = default;
 
-			/*! \brief This is a Clonable object */
-			virtual Protocol GetClassProtocols() const noexcept override { return Protocol::Clonable; }
-			/*! \brief Returns the name of the class */
-			virtual const String& GetClassName() const override { static const String cn(U"MultivariateGaussianPDF"); return cn; }
-
 			/*! \brief Returns the number of features */
 			size_t GetDimension() const noexcept { return dimension; }
 			/*! \brief Sets the number of features */
@@ -97,6 +92,11 @@ namespace crn
 			/*! \brief Internal */
 			void updateAuxiliaryAttributes();
 	};
+
+	namespace protocol
+	{
+		template<> struct IsClonable<MultivariateGaussianPDF> : public std::true_type {};
+	}
     
 }
 

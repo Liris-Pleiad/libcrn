@@ -150,12 +150,6 @@ namespace crn
 				std::swap(data, m.data);
 			}
 
-			/*! \brief This is a ComplexObject */
-			virtual Protocol GetClassProtocols() const noexcept override { return crn::Protocol::VectorOverR | crn::Protocol::Clonable | crn::Protocol::Ring | crn::Protocol::Metric; }
-
-			/*! \brief Returns the name of the class */
-			virtual const String& GetClassName() const override { static const String cn(U"Matrix"); return cn; }
-
 			virtual UObject Clone() const override { return std::make_unique<Matrix>(*this); }
 	
 			Matrix& operator+=(const Matrix &m) { Add(m); return *this; }
@@ -842,6 +836,11 @@ namespace crn
 		using DiffType = Matrix<typename TypeInfo<I>::DiffType>;
 		using DecimalType = Matrix<typename TypeInfo<I>::DecimalType>;
 	};
+
+	namespace protocol
+	{
+		template<typename T> struct IsClonable<Matrix<T>> : public std::true_type {};
+	}
 
 }
 

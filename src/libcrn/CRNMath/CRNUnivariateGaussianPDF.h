@@ -52,10 +52,6 @@ namespace crn
 			UnivariateGaussianPDF& operator=(const UnivariateGaussianPDF&) = default;
 			UnivariateGaussianPDF& operator=(UnivariateGaussianPDF&&) = default;
 
-			/*! \brief This is a Clonable object */
-			virtual Protocol GetClassProtocols() const noexcept override { return crn::Protocol::Clonable | crn::Protocol::Serializable; }
-			/*! \brief Returns the name of the class */
-			virtual const String& GetClassName() const override { static const String cn(U"UnivariateGaussianPDF"); return cn; }
 			/*! \brief Clones the model */
 			virtual UObject Clone() const override { return std::make_unique<UnivariateGaussianPDF>(*this); }
 
@@ -103,6 +99,7 @@ namespace crn
 	namespace protocol
 	{
 		template<> struct IsSerializable<UnivariateGaussianPDF> : public std::true_type {};
+		template<> struct IsClonable<UnivariateGaussianPDF> : public std::true_type {};
 	}
 
 	CRN_ALIAS_SMART_PTR(UnivariateGaussianPDF)

@@ -80,8 +80,6 @@ namespace crn
 			Path& operator=(const Path&) = default;
 			Path& operator=(Path&&) = default;
 
-			/*! \brief Returns the id of the class */
-			virtual const String& GetClassName() const override;
 			/*! \brief Creates another string from this one */
 			virtual UObject Clone() const override { return std::make_unique<Path>(*this); }
 
@@ -169,6 +167,7 @@ namespace crn
 	namespace protocol
 	{
 		template<> struct IsSerializable<Path> : public std::true_type {};
+		template<> struct IsClonable<Path> : public std::true_type {};
 	}
 
 	/*! \addtogroup string */

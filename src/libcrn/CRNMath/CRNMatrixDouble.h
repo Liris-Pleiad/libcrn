@@ -58,11 +58,6 @@ namespace crn
 			/*! \brief Destructor */
 			virtual ~MatrixDouble() override {}
 
-			/*! \brief Returns the name of the class */
-			virtual const String& GetClassName() const override { static const String cn(U"MatrixDouble"); return cn; }
-			/*! \brief Returns the protocols of the class: ComplexObject, VectorOverR, Clonable, Ring, Serializable and Metric */
-			virtual Protocol GetClassProtocols() const noexcept override { return crn::Protocol::VectorOverR | crn::Protocol::Clonable | crn::Protocol::Ring | crn::Protocol::Serializable | crn::Protocol::Metric; }
-
 			virtual UObject Clone() const override { return std::make_unique<MatrixDouble>(*this); }
 	
 			/*! \brief Computes the sum of the squared elements */
@@ -87,6 +82,7 @@ namespace crn
 	namespace protocol
 	{
 		template<> struct IsSerializable<MatrixDouble> : public std::true_type {};
+		template<> struct IsClonable<MatrixDouble> : public std::true_type {};
 	}
 
 	template<> struct TypeInfo<MatrixDouble>

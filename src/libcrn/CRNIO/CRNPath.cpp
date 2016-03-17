@@ -1,4 +1,4 @@
-/* Copyright 2010-2015 CoReNum
+/* Copyright 2010-2016 CoReNum, ENS-Lyon
  * 
  * This file is part of libcrn.
  * 
@@ -46,12 +46,6 @@ char Path::Separator() noexcept
 #else
 	return '/';
 #endif
-}
-
-const String& Path::GetClassName() const
-{
-	static const String cn(U"Path");
-	return cn;
 }
 
 /*!

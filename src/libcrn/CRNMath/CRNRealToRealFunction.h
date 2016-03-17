@@ -1,4 +1,4 @@
-/* Copyright 2008-2015 INSA Lyon, CoReNum, Université Paris Descartes
+/* Copyright 2008-2016 INSA Lyon, CoReNum, Université Paris Descartes, ENS-Lyon
  * 
  * This file is part of libcrn.
  * 
@@ -57,11 +57,6 @@ namespace crn
 			RealToRealFunction& operator=(const RealToRealFunction&) = delete;
 			RealToRealFunction& operator=(RealToRealFunction&&) = default;
 
-			/*! \brief Returns the id of the class */
-			virtual Protocol GetClassProtocols() const noexcept override { return Protocol::Clonable; }
-			/*! \brief Returns the name of the class */
-			virtual const String& GetClassName() const override { static const String cn(U"RealToRealFunction"); return cn; }
-
 			/*! \brief Returns the beginning of the definition interval */
 			double GetLeftEndpoint() const noexcept { return left_endpoint; }
 			/*! \brief Returns the end of the definition interval */
@@ -95,6 +90,11 @@ namespace crn
 			double right_endpoint; /*!< right extrema of the function */
 
 	};
+
+	namespace protocol
+	{
+		template<> struct IsClonable<RealToRealFunction> : public std::true_type {};
+	}
 
 }
 #endif

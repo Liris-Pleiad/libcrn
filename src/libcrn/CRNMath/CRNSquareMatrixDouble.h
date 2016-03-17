@@ -55,9 +55,6 @@ namespace crn
 			SquareMatrixDouble& operator=(const SquareMatrixDouble &) = default;
 			SquareMatrixDouble& operator=(SquareMatrixDouble &&) = default;
 
-			/*! \brief Returns the name of the class */
-			virtual const String& GetClassName() const override { static const String cn(U"SquareMatrixDouble"); return cn; }
-			
 			virtual UObject Clone() const override { return std::make_unique<SquareMatrixDouble>(*this); }
 			
 			/*********************************************************************/
@@ -76,8 +73,8 @@ namespace crn
 			bool IsUpperTriangular() const;
 			/*! \brief Check if matrix is lower triangular */
 			bool IsLowerTriangular() const;
-            /*! \brief Check if matrix is upper Hessenberg */
-            bool IsUpperHessenberg() const;
+			/*! \brief Check if matrix is upper Hessenberg */
+			bool IsUpperHessenberg() const;
 			/*! \brief Check if matrix is diagonal */
 			bool IsDiagonal() const;
 			/*! \brief Trace */
@@ -98,9 +95,9 @@ namespace crn
 			SquareMatrixDouble MakeGaussJordanInverse() const;
 			/*! \brief Get the lower triangular factor in Cholesky decomposition */
 			SquareMatrixDouble MakeCholesky() const;
-            /*! \brief Get the upper Hessenberg form of matrix */
-            SquareMatrixDouble MakeUpperHessenberg() const;
-			
+			/*! \brief Get the upper Hessenberg form of matrix */
+			SquareMatrixDouble MakeUpperHessenberg() const;
+
 			/*! \brief Perform diagonalization for 2x2 symmetric matrix */
 			std::multimap<double, MatrixDouble> MakeSpectralEigensystem() const;
 			/*! \brief Perform diagonalization for symmetric matrix */
@@ -109,18 +106,19 @@ namespace crn
 			std::multimap<double, MatrixDouble> MakeTQLIEigensystem(size_t maxiter = 30) const;
 			/*! \brief Extract eigenvalues for matrix of real (eigenvalues may be complex) */
 			std::vector<std::complex<double>> Eigenvalues(size_t max_iter = 30) const;
-			
+
 		private:
 			/*! \brief Tridiagonalization */
 			void tred2(SquareMatrixDouble &z, std::vector<double> &diag, std::vector<double> &offdiag) const;
 
 			CRN_DECLARE_CLASS_CONSTRUCTOR(SquareMatrixDouble)
 		public:
-			SquareMatrixDouble(xml::Element &el):MatrixDouble(1, 1) { Deserialize(el); }
+				SquareMatrixDouble(xml::Element &el):MatrixDouble(1, 1) { Deserialize(el); }
 	};
 	namespace protocol
 	{
 		template<> struct IsSerializable<SquareMatrixDouble> : public std::true_type {};
+		template<> struct IsClonable<SquareMatrixDouble> : public std::true_type {};
 	}
 
 	template<> struct TypeInfo<SquareMatrixDouble>

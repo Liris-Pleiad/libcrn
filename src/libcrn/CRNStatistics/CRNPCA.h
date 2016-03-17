@@ -55,11 +55,6 @@ namespace crn
 			/*! \brief Destructor */
 			virtual ~PCA() override {}
 
-			/*! \brief Returns the name of the class */
-			virtual const String& GetClassName() const override { static const String cn(U"Principal_Components_Analysis"); return cn; }
-			/*! \brief Returns the id of the class */
-			virtual Protocol GetClassProtocols() const noexcept override { return crn::Protocol::Clonable | crn::Protocol::Serializable; }
-
 			virtual UObject Clone() const override { return std::make_unique<PCA>(*this); }
 
 			PCA& operator=(const PCA&) = default;
@@ -108,6 +103,7 @@ namespace crn
 	namespace protocol
 	{
 		template<> struct IsSerializable<PCA> : public std::true_type {};
+		template<> struct IsClonable<PCA> : public std::true_type {};
 	}
 
 	/*!

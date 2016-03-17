@@ -1,4 +1,4 @@
-/* Copyright 2006-2014 Yann LEYDIER, CoReNum, INSA-Lyon
+/* Copyright 2006-2016 Yann LEYDIER, CoReNum, INSA-Lyon, ENS-Lyon
  * 
  * This file is part of libcrn.
  * 
@@ -52,9 +52,6 @@ namespace crn
 			MatrixInt& operator=(const MatrixInt &) = default;
 			MatrixInt& operator=(MatrixInt &&) = default;
 
-			/*! \brief Returns the name of the class */
-			virtual const String& GetClassName() const override { static const String cn(U"MatrixInt"); return cn; }
-			
 			virtual UObject Clone() const override { return std::make_unique<MatrixInt>(*this); }
 
 			// Special matrix constructors
@@ -92,6 +89,11 @@ namespace crn
 		using DiffType = MatrixInt;
 		using DecimalType = MatrixInt;
 	};
+
+	namespace protocol
+	{
+		template<> struct IsClonable<MatrixInt> : public std::true_type {};
+	}
 
 }
 #endif

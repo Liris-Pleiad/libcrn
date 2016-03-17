@@ -61,8 +61,6 @@ namespace crn
 			LinearInterpolation& operator=(const LinearInterpolation&) = default;
 			LinearInterpolation& operator=(LinearInterpolation&&) = default;
 
-			virtual const String& GetClassName() const override { static const String cn(U"LinearInterpolation"); return cn; }
-			virtual Protocol GetClassProtocols() const noexcept override { return Protocol::Clonable | Protocol::Serializable; }
 			virtual UObject Clone() const override { return std::make_unique<LinearInterpolation>(*this); }
 
 			/*! \brief Gets ordinate at x */
@@ -95,6 +93,7 @@ namespace crn
 	namespace protocol
 	{
 		template<> struct IsSerializable<LinearInterpolation> : public std::true_type {};
+		template<> struct IsClonable<LinearInterpolation> : public std::true_type {};
 	}
 
 	CRN_ALIAS_SMART_PTR(LinearInterpolation)

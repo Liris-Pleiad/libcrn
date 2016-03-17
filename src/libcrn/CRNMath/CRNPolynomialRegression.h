@@ -1,4 +1,4 @@
-/* Copyright 2011-2015 CoReNum, INSA-Lyon, Université Paris Descartes
+/* Copyright 2011-2016 CoReNum, INSA-Lyon, Université Paris Descartes, ENS-Lyon
  * 
  * This file is part of libcrn.
  * 
@@ -71,8 +71,6 @@ namespace crn
 			PolynomialRegression& operator=(PolynomialRegression&&) = default;
 			virtual ~PolynomialRegression() override {}
 
-			virtual const String& GetClassName() const override { static const String cn(U"PolynomialRegression"); return cn; }
-			virtual Protocol GetClassProtocols() const noexcept override { return Protocol::Clonable; }
 			virtual UObject Clone() const override { return std::make_unique<PolynomialRegression>(*this); }
 
 			/*! \brief Sets the behaviour for points before the first control point and after the last control point */
@@ -113,6 +111,11 @@ namespace crn
 	};
 
 	CRN_ALIAS_SMART_PTR(PolynomialRegression)
+
+	namespace protocol
+	{
+		template<> struct IsClonable<PolynomialRegression> : public std::true_type {};
+	}
 }
 
 #endif

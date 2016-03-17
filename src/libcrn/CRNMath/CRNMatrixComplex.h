@@ -1,4 +1,4 @@
-/* Copyright 2013-2015 INSA-Lyon
+/* Copyright 2013-2016 INSA-Lyon, ENS-Lyon
  * 
  * This file is part of libcrn.
  * 
@@ -58,9 +58,6 @@ namespace crn
 			MatrixComplex& operator=(const MatrixComplex &) = default;
 			MatrixComplex& operator=(MatrixComplex &&) = default;
 
-			/*! \brief Returns the name of the class */
-			virtual const String& GetClassName() const override { static const String cn(U"MatrixComplex"); return cn; }
-			
 			virtual UObject Clone() const override { return std::make_unique<MatrixComplex>(*this); }
 
 			/*! \brief Grows the matrix to power of 2 sizes (for FFT) */
@@ -88,6 +85,10 @@ namespace crn
 		using DecimalType = MatrixComplex;
 	};
 
+	namespace protocol
+	{
+		template<> struct IsClonable<MatrixComplex> : public std::true_type {};
+	}
 }
 
 #endif

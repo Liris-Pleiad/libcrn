@@ -50,44 +50,39 @@ namespace crn
 			UnivariateGaussianMixture(){}
 			UnivariateGaussianMixture(const UnivariateGaussianMixture& m) = default;
 			UnivariateGaussianMixture(UnivariateGaussianMixture&&) = default;
-            /*!
-             * Create a gaussian mixture to model a given set of data
-             *
-             * \param[in] 	it_begin	iterator pointing to first pair of input data
-             * \param[in] 	it_end      ending iterator
-             * \param[in] 	nbSeeds		the number of density functions
-             *
-             * \return	the inferred gaussian mixture model
-             */
-            template<typename ITER> UnivariateGaussianMixture(ITER it_begin, ITER it_end, size_t nb_seeds = 2)
-            {
-                if (nb_seeds == 1)
-                {
-                    auto mvd = MeanVarDev(it_begin, it_end);
-                    
-                    AddMember(UnivariateGaussianPDF(std::get<0>(mvd), std::get<1>(mvd)), 1.0);
-                }
-                else
-                    EM(it_begin, it_end, (unsigned int)(nb_seeds));
-            }
-        
+			/*!
+			 * Create a gaussian mixture to model a given set of data
+			 *
+			 * \param[in] 	it_begin	iterator pointing to first pair of input data
+			 * \param[in] 	it_end      ending iterator
+			 * \param[in] 	nbSeeds		the number of density functions
+			 *
+			 * \return	the inferred gaussian mixture model
+			 */
+			template<typename ITER> UnivariateGaussianMixture(ITER it_begin, ITER it_end, size_t nb_seeds = 2)
+			{
+				if (nb_seeds == 1)
+				{
+					auto mvd = MeanVarDev(it_begin, it_end);
+
+					AddMember(UnivariateGaussianPDF(std::get<0>(mvd), std::get<1>(mvd)), 1.0);
+				}
+				else
+					EM(it_begin, it_end, (unsigned int)(nb_seeds));
+			}
+
 			/*! \brief Clones the model */
 			virtual UObject Clone() const override { return std::make_unique<UnivariateGaussianMixture>(*this); }
-			
+
 			/*! \brief Destructor */
 			virtual ~UnivariateGaussianMixture() override;
 
 			UnivariateGaussianMixture& operator=(const UnivariateGaussianMixture&) = delete;
 			UnivariateGaussianMixture& operator=(UnivariateGaussianMixture&&) = default;
-			
-			/*! \brief Returns the id of the class */
-			virtual Protocol GetClassProtocols() const noexcept override { return crn::Protocol::Clonable | crn::Protocol::Serializable; }
-			/*! \brief Returns the name of the class */
-			virtual const String& GetClassName() const override { static const String cn(U"Univariate_Gaussian_Mixture"); return cn; }
 
 			/*! \brief Returns the number of density functions */
 			size_t GetNbMembers() const noexcept { return members.size(); }
-			
+
 			/*! \brief Returns the weight of a given density function */
 			double GetWeight(size_t k) const;
 			/*! \brief Returns a given density function */
@@ -96,7 +91,7 @@ namespace crn
 			double GetMean(size_t k) const;
 			/*! \brief Returns the variance of a given density function */
 			double GetVariance(size_t k) const;
-			
+
 			/*! \brief Adds a density function */
 			void AddMember(UnivariateGaussianPDF pdf, double Weight);
 			/*! \brief Replaces a given density function and its weight */
@@ -155,10 +150,10 @@ namespace crn
 	namespace protocol
 	{
 		template<> struct IsSerializable<UnivariateGaussianMixture> : public std::true_type {};
+		template<> struct IsClonable<UnivariateGaussianMixture> : public std::true_type {};
 	}
 
 	CRN_ALIAS_SMART_PTR(UnivariateGaussianMixture)
-
 
 	/*!
 	 * Maximum log-likelihood estimator

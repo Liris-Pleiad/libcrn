@@ -1,4 +1,4 @@
-/* Copyright 2008-2015 INSA Lyon, CoReNum, Université Paris Descartes
+/* Copyright 2008-2016 INSA Lyon, CoReNum, Université Paris Descartes, ENS-Lyon
  * 
  * This file is part of libcrn.
  * 
@@ -76,11 +76,6 @@ namespace crn
 			/*! \brief Destructor */
 			virtual ~MultivariateGaussianMixture() override;
 			
-			/*! \brief This is a Clonable object */
-			virtual Protocol GetClassProtocols() const noexcept override { return Protocol::Clonable; }
-			/*! \brief Returns the name of the class */
-			virtual const String& GetClassName() const override { static const String cn(U"MultivariateGaussianMixture"); return cn; }
-
 			/*! \brief Set mixture from another one */
 			void SetTo(const MultivariateGaussianMixture& m);
 			/*! \brief Returns the number of features */
@@ -344,6 +339,11 @@ namespace crn
 			std::vector<std::pair<MultivariateGaussianPDF, double>> members; /*!< the Gaussians and their coefficient */
 			size_t dimension; /*!< the dimension of the data */
 	};
+
+	namespace protocol
+	{
+		template<> struct IsClonable<MultivariateGaussianMixture> : public std::true_type {};
+	}
     
 }
 

@@ -65,9 +65,6 @@ namespace crn
 			CubicSpline& operator=(const CubicSpline&) = default;
 			CubicSpline& operator=(CubicSpline&&) = default;
 
-			virtual const String& GetClassName() const override { static const String cn(U"CubicSpline"); return cn; }
-			/*! \brief The class is clonable */
-			virtual Protocol GetClassProtocols() const noexcept override { return Protocol::Clonable; }
 			virtual UObject Clone() const override { return std::make_unique<CubicSpline>(*this); }
 
 			/*! \brief Sets the behaviour for points before the first control point and after the last control point */
@@ -100,6 +97,11 @@ namespace crn
 	};
 
 	CRN_ALIAS_SMART_PTR(CubicSpline)
+
+	namespace protocol
+	{
+		template<> struct IsClonable<CubicSpline> : public std::true_type {};
+	}
 }
 
 #endif

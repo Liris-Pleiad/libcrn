@@ -61,11 +61,6 @@ namespace crn
 			Prop3& operator=(const Prop3 &) = default;
 			Prop3& operator=(Prop3 &&) = default;
 
-			/*! \brief This is a Serializable object */
-			virtual Protocol GetClassProtocols() const noexcept override { return crn::Protocol::Serializable|crn::Protocol::Clonable; }
-			/*! \brief Returns the id of the class */
-			virtual const String& GetClassName() const override { static const String cn(U"Prop3"); return cn; }
-
 			/*! \brief Creates another Prop3 from this one */
 			virtual UObject Clone() const override { return std::make_unique<Prop3>(*this); }
 
@@ -114,6 +109,7 @@ namespace crn
 	namespace protocol
 	{
 		template<> struct IsSerializable<Prop3> : public std::true_type {};
+		template<> struct IsClonable<Prop3> : public std::true_type {};
 	}
 
 	CRN_ALIAS_SMART_PTR(Prop3)
