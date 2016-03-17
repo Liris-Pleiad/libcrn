@@ -147,3 +147,6 @@ endif(MSVC)
 
 add_subdirectory(src/libcrn)
 add_subdirectory(src/demos)
+
+#add_subdirectory(src/libgtkcrnmm)
+#add_subdirectory(src/titus)
