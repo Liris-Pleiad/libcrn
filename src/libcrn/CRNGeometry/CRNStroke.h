@@ -57,11 +57,6 @@ namespace crn
 			Stroke(Stroke&&) = default;
 			Stroke& operator=(Stroke&&) = default;
 
-			/*! \brief This is a Clonable and Serializable object */
-			virtual Protocol GetClassProtocols() const noexcept override { return Protocol::Clonable|Protocol::Serializable; } 
-			/*! \brief Returns the id of the class */
-			virtual const String& GetClassName() const override { static const String cn(U"Stroke"); return cn; }
-			
 			/*! \brief Converts object to string. */
 			virtual String ToString() const override;
 
@@ -165,6 +160,7 @@ namespace crn
 	namespace protocol
 	{
 		template<> struct IsSerializable<Stroke> : public std::true_type {};
+		template<> struct IsClonable<Stroke> : public std::true_type {};
 	}
 
 	/*! \brief Size of a stroke */

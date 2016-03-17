@@ -85,18 +85,13 @@ namespace crn
 			/*! \brief Clones the rectangle */
 			virtual UObject Clone() const override { return std::make_unique<Rect>(bx, by, ex, ey); }
 
-			/*! \brief This is a Serializable and Clonable object. */
-			virtual Protocol GetClassProtocols() const noexcept override { return crn::Protocol::Serializable|crn::Protocol::Clonable; } 
-			/*! \brief Returns the id of the class */
-			virtual const String& GetClassName() const override { static const String cn(U"Rect"); return cn; }
-			
 			Rect& operator=(const Rect&) = default;
 			Rect& operator=(Rect&&) = default;
 
 			/*! \brief Checks if two rectangles are identical */
-			bool operator==(const Rect &r) const;
+			bool operator==(const Rect &r) const noexcept;
 			/*! \brief Checks if two rectangles are different */
-			bool operator!=(const Rect &r) const;
+			bool operator!=(const Rect &r) const noexcept;
 
 			/*! \brief Returns whether the rect is valid */
 			inline bool IsValid() const noexcept { return valid; }
@@ -817,6 +812,7 @@ namespace crn
 	namespace protocol
 	{
 		template<> struct IsSerializable<Rect> : public std::true_type {};
+		template<> struct IsClonable<Rect> : public std::true_type {};
 	}
 
 	CRN_ALIAS_SMART_PTR(Rect)

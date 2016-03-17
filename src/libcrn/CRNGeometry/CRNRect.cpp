@@ -1,4 +1,4 @@
-/* Copyright 2006-2014 Yann LEYDIER, CoReNum, INSA-Lyon
+/* Copyright 2006-2016 Yann LEYDIER, CoReNum, INSA-Lyon, ENS-Lyon
  * 
  * This file is part of libcrn.
  * 
@@ -36,7 +36,7 @@ using namespace crn;
  * \param[in]	r	The rectangle to check
  * \return	true if identical, false else
  */
-bool Rect::operator==(const Rect &r) const
+bool Rect::operator==(const Rect &r) const noexcept
 {
 	if (valid && r.valid && (GetLeft() == r.GetLeft()) && (GetRight() == r.GetRight()) && 
 			(GetTop() == r.GetTop()) && (GetBottom() == r.GetBottom()))
@@ -54,7 +54,7 @@ bool Rect::operator==(const Rect &r) const
  * \param[in]	r	The rectangle to check
  * \return	true if different, false else
  */
-bool Rect::operator!=(const Rect &r) const
+bool Rect::operator!=(const Rect &r) const noexcept
 {
 	if (!valid || !r.valid)
 		return true;
