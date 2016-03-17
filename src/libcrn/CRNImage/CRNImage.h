@@ -46,7 +46,6 @@ namespace crn
 	class ImageBase: public Object
 	{
 		public:
-			virtual Protocol GetClassProtocols() const noexcept override { return crn::Protocol::Clonable; }
 			virtual ~ImageBase() override;
 
 			/**************************************************************************************
@@ -121,7 +120,6 @@ namespace crn
 	{
 		public:
 			using pixel_type = T;
-			virtual const String& GetClassName() const override { static const auto cn(U"Image<" + String(typeid(pixel_type).name()) + U">"); return cn; }
 			
 			/**************************************************************************************
 			 * Construction and copy
@@ -268,6 +266,10 @@ namespace crn
 		protected:
 			std::vector<pixel_type> pixels; /*!< the pixels */
 	};
+	namespace protocol
+	{
+		template<class T> struct IsClonable<Image<T>>: public std::true_type {};
+	}
 
 	/**************************************************************************************
 	 * Characterization
@@ -307,15 +309,17 @@ namespace crn
 	template<typename T> Image<T> Rotate270(const Image<T> &img);
 
 	template<typename T> inline auto Size(const Image<T> &img) noexcept(noexcept(img.Size())) -> decltype(img.Size()) { return img.Size(); }
-
-	template<typename T1, typename T2> Image<SumType<typename std::common_type<T1, T2>::type>> operator+(const Image<T1> &i1, const Image<T2> &i2);
-	template<typename T1, typename T2> Image<DiffType<typename std::common_type<T1, T2>::type>> operator-(const Image<T1> &i1, const Image<T2> &i2);
-	template<typename T1, typename T2> Image<SumType<typename std::common_type<T1, T2>::type>> operator*(const Image<T1> &i1, const Image<T2> &i2);
-	template<typename T1, typename T2> Image<SumType<typename std::common_type<T1, T2>::type>> operator/(const Image<T1> &i1, const Image<T2> &i2);
-
-	/*@}*/
-
 } // namespace crn
+
+template<typename T1, typename T2> crn::Image<crn::SumType<typename std::common_type<T1, T2>::type>> operator+(const crn::Image<T1> &i1, const crn::Image<T2> &i2);
+template<typename T1, typename T2> crn::Image<crn::DiffType<typename std::common_type<T1, T2>::type>> operator-(const crn::Image<T1> &i1, const crn::Image<T2> &i2);
+template<typename T1, typename T2> crn::Image<crn::SumType<typename std::common_type<T1, T2>::type>> operator*(const crn::Image<T1> &i1, const crn::Image<T2> &i2);
+template<typename T> crn::Image<crn::SumType<typename std::common_type<T, double>::type>> operator*(double d, const crn::Image<T> &i);
+template<typename T> crn::Image<crn::SumType<typename std::common_type<T, double>::type>> operator*(const crn::Image<T> &i, double d);
+template<typename T1, typename T2> crn::Image<crn::SumType<typename std::common_type<T1, T2>::type>> operator/(const crn::Image<T1> &i1, const crn::Image<T2> &i2);
+
+/*@}*/
+
 #include <CRNImage/CRNImageFormats.h>
 
 namespace crn
