@@ -309,15 +309,17 @@ namespace crn
 	template<typename T> Image<T> Rotate270(const Image<T> &img);
 
 	template<typename T> inline auto Size(const Image<T> &img) noexcept(noexcept(img.Size())) -> decltype(img.Size()) { return img.Size(); }
+	/*@}*/
 } // namespace crn
 
+/*! \addtogroup image */
+/*@{*/
 template<typename T1, typename T2> crn::Image<crn::SumType<typename std::common_type<T1, T2>::type>> operator+(const crn::Image<T1> &i1, const crn::Image<T2> &i2);
 template<typename T1, typename T2> crn::Image<crn::DiffType<typename std::common_type<T1, T2>::type>> operator-(const crn::Image<T1> &i1, const crn::Image<T2> &i2);
 template<typename T1, typename T2> crn::Image<crn::SumType<typename std::common_type<T1, T2>::type>> operator*(const crn::Image<T1> &i1, const crn::Image<T2> &i2);
 template<typename T> crn::Image<crn::SumType<typename std::common_type<T, double>::type>> operator*(double d, const crn::Image<T> &i);
 template<typename T> crn::Image<crn::SumType<typename std::common_type<T, double>::type>> operator*(const crn::Image<T> &i, double d);
 template<typename T1, typename T2> crn::Image<crn::SumType<typename std::common_type<T1, T2>::type>> operator/(const crn::Image<T1> &i1, const crn::Image<T2> &i2);
-
 /*@}*/
 
 #include <CRNImage/CRNImageFormats.h>

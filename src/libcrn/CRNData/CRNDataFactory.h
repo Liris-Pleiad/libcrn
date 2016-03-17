@@ -67,6 +67,11 @@ namespace crn
 	class DataFactory
 	{
 		public:
+			DataFactory(const DataFactory &) = delete;
+			DataFactory(DataFactory &&) = delete;
+			DataFactory& operator=(const DataFactory &) = delete;
+			DataFactory& operator=(DataFactory &&) = delete;
+
 			/*! \brief Creates and initializes a SObject from an XML element */
 			static UObject CreateData(xml::Element &el);
 			/*! \brief Registers a class in the factory */
@@ -79,10 +84,6 @@ namespace crn
 		private:
 			/*! \brief Default constructor */
 			DataFactory();
-			/*! \brief Disable copy constructor */
-			DataFactory(const DataFactory &);
-			/*! \brief Disable copy operator */
-			DataFactory& operator=(const DataFactory &);
 			/*! \brief Creates a SObject from class name */
 			UObject createObject(const String &name, xml::Element &el);
 			/*! \brief Returns singleton's instance */
