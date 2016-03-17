@@ -1,4 +1,4 @@
-/* Copyright 2008-2016 INSA Lyon, CoReNum
+/* Copyright 2008-2016 INSA Lyon, CoReNum, ENS-Lyon
  * 
  * This file is part of libcrn.
  * 
@@ -79,37 +79,6 @@ Point2DDouble Point2DDouble::MakeRotation(Angle<Radian> theta) const
 	double sin_theta = theta.Sin();
 		
 	return Point2DDouble(X * cos_theta - Y * sin_theta, X * sin_theta + Y * cos_theta);	
-}
-
-/*!
- * Perform plan rotation for many points
- *
- * \param[in]	P	a set of points to rotate
- * \param[in]	theta	the rotation angle (in radian)
- *
- * \return the new point
- */
-std::vector<Point2DDouble> Point2DDouble::MakeRotation(std::vector<Point2DDouble> P, Angle<Radian> theta)
-{
-	double cos_theta = theta.Cos();
-	double sin_theta = theta.Sin();	
-	
-	std::vector<Point2DDouble> Q;
-
-	if (!P.empty())
-	{
-		
-		for (auto pt : P)
-		{
-			
-			double x = pt.X;
-			double y = pt.Y;
-			
-			Q.push_back(Point2DDouble(x * cos_theta - y * sin_theta, x * sin_theta + y * cos_theta));
-		}		
-	}
-	
-	return Q;
 }
 
 CRN_BEGIN_CLASS_CONSTRUCTOR(Point2DDouble)

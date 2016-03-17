@@ -55,14 +55,6 @@ namespace crn
 			/*! \brief Rotation for single point */
 			Point2DDouble MakeRotation(Angle<Radian> theta) const;
 		
-			/*! \brief Rotation for many points */
-			static std::vector<Point2DDouble> MakeRotation(std::vector<Point2DDouble> P, Angle<Radian> theta);
-				
-			/*! \brief This is a Metric, VectorOverR, Serializable and Clonable object */
-			virtual Protocol GetClassProtocols() const noexcept override { return Point2D<double>::GetClassProtocols()|Protocol::Serializable|Protocol::Clonable; } 
-			/*! \brief Returns the id of the class */
-			virtual const String& GetClassName() const override { static const String cn(U"Point2DDouble"); return cn; }
-			
 			/*!\brief Creates a new object, copied from this */
 			virtual UObject Clone() const override { return std::make_unique<Point2DDouble>(X, Y); }
 
@@ -78,6 +70,7 @@ namespace crn
 	namespace protocol
 	{
 		template<> struct IsSerializable<Point2DDouble> : public std::true_type {};
+		template<> struct IsClonable<Point2DDouble> : public std::true_type {};
 	}
 
 	CRN_ALIAS_SMART_PTR(Point2DDouble)
