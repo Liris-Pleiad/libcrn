@@ -197,7 +197,7 @@ namespace crn
 				else if (t == U"Real")
 				{
 					auto r = std::static_pointer_cast<Real>(value);
-					r->SetValue(valstring.ToDouble());
+					*r = valstring.ToDouble();
 				}
 				else if (t == U"Prop3")
 				{

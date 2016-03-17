@@ -29,27 +29,27 @@
 /*@{*/
 namespace crn
 {
+	/*! \brief Distance between two objects */
+	template<
+		typename T,
+		typename std::enable_if<std::is_class<T>::value, int>::type = 0
+		> 
+	double Distance(const T &o1, const T &o2)
+	{
+	 return o1.Distance(o2);
+	}
+	/*! \brief Distance between two integral numbers */
+	template<
+		typename T,
+		typename std::enable_if<std::is_arithmetic<T>::value, int>::type = 0
+	>
+	double Distance(T o1, T o2)
+	{
+		return double(Abs(o1 - o2));
+	}
 	namespace protocol
 	{
 		// Metric objects
-		/*! \brief Distance between two objects */
-		template<
-			typename T,
-			typename std::enable_if<std::is_class<T>::value, int>::type = 0
-			> 
-		double Distance(const T &o1, const T &o2)
-		{
-		 return o1.Distance(o2);
-		}
-		/*! \brief Distance between two integral numbers */
-		template<
-			typename T,
-			typename std::enable_if<std::is_arithmetic<T>::value, int>::type = 0
-		>
-		double Distance(T o1, T o2)
-		{
-			return double(Abs(o1 - o2));
-		}
 		/*! Has:
 		 * - Distance(T, T)
 		 */

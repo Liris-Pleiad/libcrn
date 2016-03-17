@@ -81,6 +81,7 @@ namespace crn
 	{
 		template<> struct IsSerializable<Int> : public std::true_type {};
 	}
+	inline double Distance(const Int &i1, const Int &i2) noexcept { return Abs(i1 - i2); }
 }
 inline crn::Int operator+(crn::Int i1, const crn::Int &i2) noexcept { return i1 += i2; }
 inline crn::Int operator-(crn::Int i1, const crn::Int &i2) noexcept { return i1 -= i2; }

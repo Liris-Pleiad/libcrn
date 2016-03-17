@@ -25,7 +25,6 @@
 #include <CRNImage/CRNImage.h>
 #include <CRNStatistics/CRNHistogram.h>
 #include <CRNAI/CRNkMeans.h>
-#include <CRNData/CRNRealCoeff.h>
 #include <CRNUtils/CRNDefaultAction.h>
 
 /*! \defgroup imagegray Gray images 

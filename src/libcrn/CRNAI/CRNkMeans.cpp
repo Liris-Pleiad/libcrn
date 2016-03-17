@@ -20,7 +20,6 @@
  */
 
 #include <CRNAI/CRNkMeans.h>
-#include <CRNData/CRNRealCoeff.h>
 #include <CRNException.h>
 #include <CRNAI/CRNBasicClassify.h>
 #include <CRNStatistics/CRNHistogram.h>

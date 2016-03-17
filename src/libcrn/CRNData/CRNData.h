@@ -122,7 +122,7 @@ namespace crn
 				return int(*i);
 			const Real *r = dynamic_cast<const Real*>(&obj);
 			if (r)
-				return r->GetValue();
+				return *r;
 			const String *s = dynamic_cast<const String*>(&obj);
 			if (s)
 				return s->ToDouble();

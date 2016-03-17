@@ -212,9 +212,9 @@ int ConfigurationFile::GetInt(const String &key) const
  */
 double ConfigurationFile::GetDouble(const String &key) const
 {
-	SCReal val(std::dynamic_pointer_cast<const Real>(GetData(key)));
+	auto val = std::dynamic_pointer_cast<const Real>(GetData(key));
 	if (val)
-		return val->GetValue();
+		return *val;
 	throw ExceptionInvalidArgument(key.CStr() + StringUTF8(_(" is not a double.")));
 }
 
@@ -223,7 +223,7 @@ double ConfigurationFile::GetDouble(const String &key) const
  */
 Path ConfigurationFile::GetUserDirectory() const
 {
-#ifdef CRN_PF_WIN32
+#ifdef _MSC_VER
 	crn::Path p(getenv("APPDATA"));
 #else
 	crn::Path p(getenv("HOME"));

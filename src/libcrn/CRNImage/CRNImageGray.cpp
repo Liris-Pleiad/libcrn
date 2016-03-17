@@ -831,7 +831,7 @@ Gray2BWNiblack::Gray2BWNiblack(size_t halfwin, double k)
 ImageBW Gray2BWNiblack::Binarize(const ImageGray &img)
 {
 	return Niblack(img, *std::static_pointer_cast<Int>(GetUserData(U"halfwin")), 
-			std::static_pointer_cast<Real>(GetUserData(U"k"))->GetValue());
+			*std::static_pointer_cast<Real>(GetUserData(U"k")));
 }
 
 /*! Default constructor
@@ -847,7 +847,7 @@ Gray2BWSauvola::Gray2BWSauvola(size_t halfwin, double k)
 ImageBW Gray2BWSauvola::Binarize(const ImageGray &img)
 {
 	return Sauvola(img, *std::static_pointer_cast<Int>(GetUserData(U"halfwin")), 
-			std::static_pointer_cast<Real>(GetUserData(U"k"))->GetValue());
+			*std::static_pointer_cast<Real>(GetUserData(U"k")));
 }
 
 /*! Default constructor
