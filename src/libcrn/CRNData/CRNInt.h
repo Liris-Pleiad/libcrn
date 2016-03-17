@@ -50,40 +50,25 @@ namespace crn
 			Int& operator=(const Int&) = default;
 			Int& operator=(Int&&) = default;
 
-			/*! \brief This is a Serializable, Ring, POSet, Metric and Clonable object */
-			virtual Protocol GetClassProtocols() const noexcept override { return crn::Protocol::Serializable|crn::Protocol::Ring|crn::Protocol::POSet|crn::Protocol::Metric|crn::Protocol::Clonable; }
-			/*! \brief Returns the id of the class */
-			virtual const String& GetClassName() const override { static const String cn(U"Int"); return cn; }
-
 			/*! \brief Dumps value to a string */
 			virtual String ToString() const override { return String(val); }
 			/*! \brief Creates a new object this one */
 			virtual UObject Clone() const override { return std::make_unique<Int>(val); }
 
-			/*! \brief Returns the value */
-			int GetValue() const noexcept { return val; }
-			/*! \brief Converts to double */
+			/*! \brief Converts to int */
 			operator int() const noexcept { return val; }
-			/*! \brief Sets the value */
-			void SetValue(int i) noexcept { val = i; }
+
+			Int& operator+=(Int i) noexcept { val += i.val; return *this; }
+			Int& operator-=(Int i) noexcept { val -= i.val; return *this; }
+			Int& operator*=(Int i) noexcept { val *= i.val; return *this; }
+			Int& operator/=(Int i) noexcept { val /= i.val; return *this; }
+			bool operator<(Int i) noexcept { return val < i.val; }
+			bool operator>(Int i) noexcept { return val > i.val; }
+			bool operator<=(Int i) noexcept { return val <= i.val; }
+			bool operator>=(Int i) noexcept { return val >= i.val; }
 
 		private:
 			int val; /*!< internal value storage */
-			/*! \brief Distance between to reals */
-			virtual double distance(const Object &obj) const override { return Abs(val - static_cast<const Int&>(obj).GetValue()); }
-			/*! \brief Addition with another real */
-			virtual void add(const Object &v) override { val += static_cast<const Int&>(v).GetValue(); }
-			/*! \brief Subtraction with another real */
-			virtual void sub(const Object &v) override { val -= static_cast<const Int&>(v).GetValue(); }
-			/*! \brief Equality with another real */
-			virtual bool equals(const Object &v) const override { if (val == static_cast<const Int&>(v).GetValue()) return true; else return false; };
-			/*! \brief Multiplication with another real */
-			virtual void mult(const Object &obj) override { val *= static_cast<const Int&>(obj).GetValue(); }
-			/*! \brief Comparison with another real */
-			virtual Prop3 ge(const Object &l) const override { return val >= static_cast<const Int&>(l).GetValue(); }
-			/*! \brief Comparison with another real */
-			virtual Prop3 le(const Object &l) const override { return val <= static_cast<const Int&>(l).GetValue(); }
-
 			/*! \brief Reads from an XML element */
 			virtual void deserialize(xml::Element &el) override;
 			/*! \brief Dumps to an XML element */
@@ -97,6 +82,12 @@ namespace crn
 		template<> struct IsSerializable<Int> : public std::true_type {};
 	}
 }
+inline crn::Int operator+(crn::Int i1, const crn::Int &i2) noexcept { return i1 += i2; }
+inline crn::Int operator-(crn::Int i1, const crn::Int &i2) noexcept { return i1 -= i2; }
+inline crn::Int operator*(crn::Int i1, const crn::Int &i2) noexcept { return i1 *= i2; }
+inline double operator*(double d, const crn::Int &i) noexcept { return d * int(i); }
+inline double operator*(const crn::Int &i, double d) noexcept { return d * int(i); }
+inline crn::Int operator/(crn::Int i1, const crn::Int &i2) noexcept { return i1 /= i2; }
 
 #include <CRNData/CRNIntPtr.h>
 

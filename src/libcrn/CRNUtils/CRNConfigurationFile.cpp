@@ -1,4 +1,4 @@
-/* Copyright 2010-2016 CoReNum, INSA-Lyon
+/* Copyright 2010-2016 CoReNum, INSA-Lyon, ENS-lyon
  *
  * This file is part of libcrn.
  *
@@ -199,9 +199,9 @@ Prop3 ConfigurationFile::GetProp3(const String &key) const
  */
 int ConfigurationFile::GetInt(const String &key) const
 {
-	SCInt val(std::dynamic_pointer_cast<const Int>(GetData(key)));
+	auto val = std::dynamic_pointer_cast<const Int>(GetData(key));
 	if (val)
-		return val->GetValue();
+		return *val;
 	throw ExceptionInvalidArgument(key.CStr() + StringUTF8(_(" is not an int.")));
 }
 

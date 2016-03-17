@@ -1,4 +1,4 @@
-/* Copyright 2006-2015 Yann LEYDIER, CoReNum, INSA-Lyon
+/* Copyright 2006-2016 Yann LEYDIER, CoReNum, INSA-Lyon, ENS-Lyon
  *
  * This file is part of libcrn.
  *
@@ -815,7 +815,7 @@ Gray2BWThreshold::Gray2BWThreshold(uint8_t t)
 
 ImageBW Gray2BWThreshold::Binarize(const ImageGray &img)
 {
-	return Threshold(img, uint8_t(std::static_pointer_cast<Int>(GetUserData(U"threshold"))->GetValue()));
+	return Threshold(img, uint8_t(*std::static_pointer_cast<Int>(GetUserData(U"threshold"))));
 }
 
 /*! Default constructor
@@ -830,7 +830,7 @@ Gray2BWNiblack::Gray2BWNiblack(size_t halfwin, double k)
 
 ImageBW Gray2BWNiblack::Binarize(const ImageGray &img)
 {
-	return Niblack(img, std::static_pointer_cast<Int>(GetUserData(U"halfwin"))->GetValue(), 
+	return Niblack(img, *std::static_pointer_cast<Int>(GetUserData(U"halfwin")), 
 			std::static_pointer_cast<Real>(GetUserData(U"k"))->GetValue());
 }
 
@@ -846,7 +846,7 @@ Gray2BWSauvola::Gray2BWSauvola(size_t halfwin, double k)
 
 ImageBW Gray2BWSauvola::Binarize(const ImageGray &img)
 {
-	return Sauvola(img, std::static_pointer_cast<Int>(GetUserData(U"halfwin"))->GetValue(), 
+	return Sauvola(img, *std::static_pointer_cast<Int>(GetUserData(U"halfwin")), 
 			std::static_pointer_cast<Real>(GetUserData(U"k"))->GetValue());
 }
 
@@ -862,8 +862,8 @@ Gray2BWkMeansHisto::Gray2BWkMeansHisto(size_t classes, size_t black_classes)
 
 ImageBW Gray2BWkMeansHisto::Binarize(const ImageGray &img)
 {
-	return kMeansHisto(img, std::static_pointer_cast<Int>(GetUserData(U"classes"))->GetValue(), 
-			std::static_pointer_cast<Int>(GetUserData(U"black_classes"))->GetValue());
+	return kMeansHisto(img, *std::static_pointer_cast<Int>(GetUserData(U"classes")), 
+			*std::static_pointer_cast<Int>(GetUserData(U"black_classes")));
 }
 
 /*! Default constructor
@@ -876,7 +876,7 @@ Gray2BWLocalMin::Gray2BWLocalMin(size_t area)
 
 ImageBW Gray2BWLocalMin::Binarize(const ImageGray &img)
 {
-	return LocalMin(img, std::static_pointer_cast<Int>(GetUserData(U"area"))->GetValue());
+	return LocalMin(img, *std::static_pointer_cast<Int>(GetUserData(U"area")));
 }
 
 /*! Default constructor
@@ -889,7 +889,7 @@ Gray2BWLocalMax::Gray2BWLocalMax(size_t area)
 
 ImageBW Gray2BWLocalMax::Binarize(const ImageGray &img)
 {
-	return LocalMax(img, std::static_pointer_cast<Int>(GetUserData(U"area"))->GetValue());
+	return LocalMax(img, *std::static_pointer_cast<Int>(GetUserData(U"area")));
 }
 
 /*! Default constructor

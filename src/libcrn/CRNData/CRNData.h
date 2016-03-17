@@ -1,4 +1,4 @@
-/* Copyright 2009-2015 INSA Lyon, Université Paris-Descartes
+/* Copyright 2009-2016 INSA Lyon, Université Paris-Descartes, ENS-Lyon
  * 
  * This file is part of libcrn.
  * 
@@ -86,7 +86,7 @@ namespace crn
 		{
 			const Int *i = dynamic_cast<const Int*>(&obj);
 			if (i)
-				return i->GetValue();
+				return int(*i);
 			const String *s = dynamic_cast<const String*>(&obj);
 			if (s)
 				return s->ToInt();
@@ -119,7 +119,7 @@ namespace crn
 		{
 			const Int *i = dynamic_cast<const Int*>(&obj);
 			if (i)
-				return i->GetValue();
+				return int(*i);
 			const Real *r = dynamic_cast<const Real*>(&obj);
 			if (r)
 				return r->GetValue();
@@ -176,7 +176,7 @@ namespace crn
 		{
 			const Int *i = dynamic_cast<const Int*>(&obj);
 			if (i)
-				return i->GetValue() != 0;
+				return *i != 0;
 			const Prop3 *p = dynamic_cast<const Prop3*>(&obj);
 			if (p)
 				return p->IsTrue();

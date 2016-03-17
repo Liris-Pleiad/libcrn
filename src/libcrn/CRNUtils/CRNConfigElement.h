@@ -1,4 +1,4 @@
-/* Copyright 2011-2015 CoReNum, INSA-Lyon, Université Paris Descartes
+/* Copyright 2011-2016 CoReNum, INSA-Lyon, Université Paris Descartes, ENS-Lyon
  * 
  * This file is part of libcrn.
  * 
@@ -192,7 +192,7 @@ namespace crn
 				if (t == U"Int")
 				{
 					auto i = std::static_pointer_cast<Int>(value);
-					i->SetValue(valstring.ToInt());
+					*i = valstring.ToInt();
 				}
 				else if (t == U"Real")
 				{
