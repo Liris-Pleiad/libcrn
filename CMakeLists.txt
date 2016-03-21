@@ -143,10 +143,15 @@ if(MSVC)
 	endif (CRN_USING_GDIPLUS)
 endif(MSVC)
 
-# ---
+# Find Gtkmm
+set(GTK2_DEBUG on)
+set(GTK2_HINTS "${CMAKE_SOURCE_DIR}/gtkmm2formsvc14")
+find_package(GTK2 2.22 COMPONENTS gtk gtkmm)
 
+# ---
 add_subdirectory(src/libcrn)
 add_subdirectory(src/demos)
-
-#add_subdirectory(src/libgtkcrnmm)
-#add_subdirectory(src/titus)
+if(GTK2_FOUND)
+	add_subdirectory(src/libgtkcrnmm)
+	add_subdirectory(src/titus)
+endif()

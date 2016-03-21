@@ -1,4 +1,4 @@
-# libgtkcrnmm build script
+# titus build script
 
 #############################
 # add path to CRN.h
@@ -14,23 +14,23 @@ include_directories(${GTK2_INCLUDE_DIRS})
 # sources
 file(
 	GLOB_RECURSE
-	LIBGTKCRNMM_SRC
+	TITUS_SRC
 	*.cpp
 )
 file(
 	GLOB_RECURSE
-	LIBGTKCRNMM_HEADER
+	TITUS_HEADER
 	*.h
 	*.hpp
 )
 if (MSVC)
-	GroupSources(src/libgtkcrnmm)
+	GroupSources(src/titus)
 endif(MSVC)
 
-set(LIBGTKCRNMM_LIB
-	libcrn
+set(TITUS_LIB
+	libgtkcrnmm
 	${GTK2_LIBRARIES}
 )
 
-add_library(libgtkcrnmm STATIC ${LIBGTKCRNMM_SRC} ${LIBGTKCRNMM_HEADER})
-target_link_libraries(libgtkcrnmm ${LIBGTKCRNMM_LIB})
+add_executable(titus ${TITUS_SRC} ${TITUS_HEADER})
+target_link_libraries(titus ${TITUS_LIB})
