@@ -19,7 +19,6 @@
  * \author Yann LEYDIER
  */
 
-#define GETTEXT_PACKAGE "libcrn3"
 #include <CRN.h>
 #include <GtkCRNMain.h>
 #include <GtkCRNApp.h>
@@ -47,8 +46,11 @@ class Titus: public GtkCRN::App
 		Titus():
 			current_image(NONE),
 			fdial(*this, _("Please select an image"), Gtk::FILE_CHOOSER_ACTION_OPEN),
-			refreshing(false),
+			refreshing(false)
+#ifdef CRN_USING_GTKMM3
+			,
 			ff(Gtk::FileFilter::create())
+#endif
 		{
 			Glib::ustring title("Titus ");
 			title += CRN_PACKAGE_VERSION;
@@ -289,7 +291,11 @@ class Titus: public GtkCRN::App
 
 			fdial.set_modal();
 			fdial.set_position(Gtk::WIN_POS_CENTER_ON_PARENT);
+#ifdef CRN_USING_GTKMM3
 			ff->add_pixbuf_formats();
+#else
+			ff.add_pixbuf_formats();
+#endif
 			fdial.set_filter(ff);
 			fdial.add_button(Gtk::Stock::CANCEL, Gtk::RESPONSE_CANCEL);
 			fdial.add_button(Gtk::Stock::OPEN, Gtk::RESPONSE_ACCEPT);
@@ -364,8 +370,13 @@ class Titus: public GtkCRN::App
 				dial = std::make_shared<Gtk::FileChooserDialog>(*this, _("Select a PNG image to export…"), Gtk::FILE_CHOOSER_ACTION_SAVE);
 				dial->set_modal();
 				dial->set_position(Gtk::WIN_POS_CENTER_ON_PARENT);
+#ifdef CRN_USING_GTKMM3
 				auto ff = Gtk::FileFilter::create();
 				ff->add_pixbuf_formats();
+#else
+				Gtk::FileFilter ff;
+				ff.add_pixbuf_formats();
+#endif
 				dial->set_filter(ff);
 				dial->add_button(Gtk::Stock::CANCEL, Gtk::RESPONSE_CANCEL);
 				dial->add_button(Gtk::Stock::SAVE, Gtk::RESPONSE_ACCEPT);
@@ -1207,7 +1218,11 @@ class Titus: public GtkCRN::App
 		GtkCRN::Image img;
 		int current_image;
 		Gtk::FileChooserDialog fdial;
+#ifdef CRN_USING_GTKMM3
 		Glib::RefPtr<Gtk::FileFilter> ff;
+#else
+		Gtk::FileFilter ff;
+#endif
 		bool refreshing;
 
 		SImageRGB irgb;
@@ -1221,9 +1236,9 @@ class Titus: public GtkCRN::App
 int main(int argc, char *argv[])
 {
 	setlocale(LC_ALL, "");
-	bindtextdomain(GETTEXT_PACKAGE, CRN_LOCALE_FULL_PATH);
-	bind_textdomain_codeset(GETTEXT_PACKAGE, "UTF-8");
-	textdomain(GETTEXT_PACKAGE);
+	CRNbindtextdomain(GETTEXT_PACKAGE, CRN_LOCALE_FULL_PATH);
+	CRNbind_textdomain_codeset(GETTEXT_PACKAGE, "UTF-8");
+	CRNtextdomain(GETTEXT_PACKAGE);
 
 	GtkCRN::Main kit(argc, argv);
 	GtkCRN::Main::SetDefaultExceptionHandler();

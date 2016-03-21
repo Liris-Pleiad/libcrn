@@ -24,7 +24,7 @@
 
 #include <CRN.h>
 
-#if defined(CRN_USING_GTKMM)
+#if defined(CRN_USING_GLIB_INTL)
 // libintl through gtk
 #		include <gtk/gtk.h>
 #		include <glib/gi18n-lib.h>

@@ -72,17 +72,17 @@ Main::Main(int &argc, char **&argv):
 		CRNdout << GETTEXT_PACKAGE << " gettext package = " << GETTEXT_PACKAGE << std::endl;
 
 		CRNdout << "setting path to " << Config::GetLocalePath().CStr() << std::endl;
-		loc = bindtextdomain(GETTEXT_PACKAGE, Config::GetLocalePath().CStr());
+		loc = CRNbindtextdomain(GETTEXT_PACKAGE, Config::GetLocalePath().CStr());
 		if (!loc)
 			CRNdout << GETTEXT_PACKAGE << " no bound path. should be " << Config::GetLocalePath().CStr() << std::endl;
 		else
 			CRNdout << GETTEXT_PACKAGE << " path = " << loc << std::endl;
-		loc = bind_textdomain_codeset(GETTEXT_PACKAGE, "UTF-8");
+		loc = CRNbind_textdomain_codeset(GETTEXT_PACKAGE, "UTF-8");
 		if (!loc)
 			CRNdout << GETTEXT_PACKAGE << " no bound codeset. should be " << "UTF-8" << std::endl;
 		else
 			CRNdout << GETTEXT_PACKAGE << " Codeset = " << loc << std::endl;
-		loc = textdomain(GETTEXT_PACKAGE);
+		loc = CRNtextdomain(GETTEXT_PACKAGE);
 		if (!loc)
 			CRNdout << GETTEXT_PACKAGE << " textdomain failed" << std::endl;
 		else

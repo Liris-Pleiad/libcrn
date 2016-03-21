@@ -62,7 +62,7 @@ Gtk::Widget* GtkCRN::create_widget_from_object(const crn::Object *obj)
 			tab->set_col_spacings(4);
 			expander->add(*tab);
 			int row = 0;
-			for (crn::Map::const_iterator it = m->Begin(); it != m->End(); ++it)
+			for (crn::Map::const_iterator it = m->begin(); it != m->end(); ++it)
 			{
 				tab->attach(*Gtk::manage(new Gtk::Label(it->first.CStr())), 0, 1, row, row + 1, Gtk::FILL, Gtk::FILL);
 				tab->attach(*Gtk::manage(create_widget_from_object(it->second.get())), 1, 2, row, row + 1, Gtk::FILL|Gtk::EXPAND, Gtk::FILL);
@@ -92,7 +92,7 @@ Gtk::Widget* GtkCRN::create_widget_from_object(const crn::Object *obj)
 			Gtk::Expander *expander = new Gtk::Expander(v->GetName().CStr());
 			Gtk::VBox *vbox = Gtk::manage(new Gtk::VBox);
 			expander->add(*vbox);
-			for (crn::Vector::const_iterator it = v->Begin(); it != v->End(); ++it)
+			for (crn::Vector::const_iterator it = v->begin(); it != v->end(); ++it)
 			{
 				vbox->pack_start(*Gtk::manage(create_widget_from_object((*it).get())), false, true, 0);
 			}
