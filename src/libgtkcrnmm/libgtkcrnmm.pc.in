@@ -1,0 +1,11 @@
+prefix=@CMAKE_INSTALL_PREFIX@
+exec_prefix=${prefix}/bin
+libdir=${prefix}/lib
+includedir=${prefix}/include
+
+Name: libgtkcrnmm
+Description: The CoReNum image processing UI library.
+Requires: @PKGC_LIBGTKCRNMM_DEPS@
+Version: @CRN_PACKAGE_VERSION@
+Libs: -L${libdir} -lgtkcrnmm @PKGC_LIBGTKCRNMM_LDFLAGS@ 
+Cflags: -I${includedir}/libgtkcrnmm-@CRN_PACKAGE_VERSION_MAJOR@.@CRN_PACKAGE_VERSION_MINOR@ @PKGC_LIBGTKCRNMM_CFLAGS@

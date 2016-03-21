@@ -13,9 +13,10 @@ os: Visual Studio 2015
 
 # environment variables
 environment:
-#  QT5_DIR: C:\Qt\5.4\msvc2013_64_opengl
-#  QT5_DIR: C:\Qt\5.5\msvc2013_64
 #  BOOST_ROOT: C:\Libraries\boost_1_59_0
+#
+  QT5_DIR: C:\Qt\5.4\msvc2013_64_opengl
+#  QT5_DIR: C:\Qt\5.5\msvc2013_64
 #
 #  CONFIG_QGL: Release
 #
@@ -40,6 +41,7 @@ init:
 #  - dir C:\Qt
 #  - dir C:\Qt\5.5
 #  - set PATH=%QT5_DIR%\bin;%PATH%
+  - set APPVEYOR=TRUE
   - set CACHE=FALSE
 
 #---------------------------------#
