@@ -137,11 +137,11 @@ void ConfigElement::apply_changes()
 {
 	if (typ == U"Int")
 	{
-		std::static_pointer_cast<crn::Int>(value)->SetValue(std::static_pointer_cast<crn::Int>(tmpvalue)->GetValue());
+		*std::static_pointer_cast<crn::Int>(value) = *std::static_pointer_cast<crn::Int>(tmpvalue);
 	}
 	else if (typ == U"Real")
 	{
-		std::static_pointer_cast<crn::Real>(value)->SetValue(std::static_pointer_cast<crn::Real>(tmpvalue)->GetValue());
+		*std::static_pointer_cast<crn::Real>(value) = *std::static_pointer_cast<crn::Real>(tmpvalue);
 	}
 	else if (typ == U"Prop3")
 	{
@@ -171,11 +171,11 @@ void ConfigElement::on_combo_changed(Gtk::ComboBoxText *combo)
 	const crn::StringUTF8 val(combo->get_active_text().c_str());
 	if (typ == U"Int")
 	{
-		std::static_pointer_cast<crn::Int>(tmpvalue)->SetValue(val.ToInt());
+		*std::static_pointer_cast<crn::Int>(tmpvalue) = val.ToInt();
 	}
 	else if (typ == U"Real")
 	{
-		std::static_pointer_cast<crn::Real>(tmpvalue)->SetValue(val.ToDouble());
+		*std::static_pointer_cast<crn::Real>(tmpvalue) = val.ToDouble();
 	}
 	else if (typ == U"String")
 	{
@@ -195,11 +195,11 @@ void ConfigElement::on_range_changed(Gtk::Range *range)
 {
 	if (typ == U"Int")
 	{
-		std::static_pointer_cast<crn::Int>(tmpvalue)->SetValue(int(range->get_value()));
+		*std::static_pointer_cast<crn::Int>(tmpvalue) = int(range->get_value());
 	}
 	else if (typ == U"Real")
 	{
-		std::static_pointer_cast<crn::Real>(tmpvalue)->SetValue(range->get_value());
+		*std::static_pointer_cast<crn::Real>(tmpvalue) = range->get_value();
 	}
 }
 
@@ -207,11 +207,11 @@ void ConfigElement::on_spin_changed(Gtk::SpinButton *spin)
 {
 	if (typ == U"Int")
 	{
-		std::static_pointer_cast<crn::Int>(tmpvalue)->SetValue(spin->get_value_as_int());
+		*std::static_pointer_cast<crn::Int>(tmpvalue) = spin->get_value_as_int();
 	}
 	else if (typ == U"Real")
 	{
-		std::static_pointer_cast<crn::Real>(tmpvalue)->SetValue(spin->get_value());
+		*std::static_pointer_cast<crn::Real>(tmpvalue) = spin->get_value();
 	}
 }
 
