@@ -44,6 +44,7 @@
 #cmakedefine CRN_PF_ANDROID
 
 // Dependencies
+#cmakedefine CRN_USING_GLIB_INTL
 #cmakedefine CRN_USING_GDKPB
 #cmakedefine CRN_USING_GTKMM
 #cmakedefine CRN_USING_LIBPNG
