@@ -25,6 +25,7 @@ file(
 )
 if (MSVC)
 	GroupSources(src/libgtkcrnmm)
+	add_definitions("/wd4250")
 endif(MSVC)
 
 set(LIBGTKCRNMM_LIB

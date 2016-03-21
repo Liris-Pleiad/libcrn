@@ -19,7 +19,6 @@
  * \author Yann LEYDIER
  */
 
-#define GETTEXT_PACKAGE "libcrn3"
 #include <CRN.h>
 #include <GtkCRNMain.h>
 #include <GtkCRNApp.h>

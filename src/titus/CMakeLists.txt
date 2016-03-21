@@ -25,6 +25,7 @@ file(
 )
 if (MSVC)
 	GroupSources(src/titus)
+	add_definitions("/wd4250")
 endif(MSVC)
 
 set(TITUS_LIB

@@ -144,7 +144,6 @@ if(MSVC)
 endif(MSVC)
 
 # Find Gtkmm
-set(GTK2_DEBUG on)
 set(GTK2_HINTS "${CMAKE_SOURCE_DIR}/gtkmm2formsvc14")
 find_package(GTK2 2.22 COMPONENTS gtk gtkmm)
 
