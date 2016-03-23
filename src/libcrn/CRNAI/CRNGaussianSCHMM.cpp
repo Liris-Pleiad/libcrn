@@ -112,7 +112,7 @@ MatrixDouble GaussianSCHMM::GetStateGivenSymbolProbability(const MatrixDouble& x
  */
 void GaussianSCHMM::SetStateTransitionProbability(const SquareMatrixDouble& a)
 {
-	stateTransitionProbability = *a.CloneAs<SquareMatrixDouble>();
+	stateTransitionProbability = a;
 	nbStates = a.GetRows();
 }
 
@@ -386,17 +386,17 @@ void GaussianSCHMM::BaumWelchSingle(const MatrixDouble& Observed, unsigned int M
 					// increase mu_jk
 					//mu_jk.add(Ot.getScaled(gamma_tjk));
 					MatrixDouble tm = Ot;
-					tm.Mult(gamma_tjk);
-					mu_jk.Add(tm);
+					tm *= gamma_tjk;
+					mu_jk += tm;
 
 					// increase U_jk
 					//SMatrixDouble* TranslatedPattern = Ot.getSubstracted(mu_jk_old);
 					MatrixDouble TranslatedPattern = Ot;
-					TranslatedPattern.Sub(mu_jk_old);
+					TranslatedPattern -= mu_jk_old;
 					//U_jk.add(TranslatedPattern.getRightAutoProduct().getScaled(gamma_tjk));
 					SquareMatrixDouble tsm = TranslatedPattern.MakeVectorRightAutoProduct();
-					tsm.Mult(gamma_tjk);
-					U_jk.Add(tsm);
+					tsm *= gamma_tjk;
+					U_jk += tsm;
 					
 					// Increase scale factors
 
@@ -409,8 +409,8 @@ void GaussianSCHMM::BaumWelchSingle(const MatrixDouble& Observed, unsigned int M
 				}
 
 				c_jk /= c_jk_scale;
-				mu_jk.Mult(1.0 / mu_jk_scale);
-				U_jk.Mult(1.0 / U_jk_scale);
+				mu_jk *= 1.0 / mu_jk_scale;
+				U_jk *= 1.0 / U_jk_scale;
 
 				stateGivenSymbolProbability[j].SetMember(MultivariateGaussianPDF(mu_jk, U_jk), c_jk, k);
 			}

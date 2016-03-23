@@ -69,40 +69,40 @@ int main(int argc, char *argv[])
 	std::cout << "C " << protocol::HasLT<C>::value << " should be 1" <<  std::endl;
 
 	std::cout << "IsPOSet" << std::endl;
-	std::cout << "int " << protocol::IsPOSet<int>::value << " should be 1" << std::endl;
-	std::cout << "A " << protocol::IsPOSet<A>::value << " should be 0" <<  std::endl;
-	std::cout << "B (using namespace) " << protocol::IsPOSet<B>::value << " should be 1" <<  std::endl;
-	std::cout << "C " << protocol::IsPOSet<C>::value << " should be 1" <<  std::endl;
+	std::cout << "int " << IsPOSet<int>::value << " should be 1" << std::endl;
+	std::cout << "A " << IsPOSet<A>::value << " should be 0" <<  std::endl;
+	std::cout << "B (using namespace) " << IsPOSet<B>::value << " should be 1" <<  std::endl;
+	std::cout << "C " << IsPOSet<C>::value << " should be 1" <<  std::endl;
 
 	std::cout << "IsMagma" << std::endl;
-	std::cout << "int " << protocol::IsMagma<int>::value << " should be 1" << std::endl;
-	std::cout << "A " << protocol::IsMagma<A>::value << " should be 0" <<  std::endl;
-	std::cout << "B (using namespace) " << protocol::IsMagma<B>::value << " should be 1" <<  std::endl;
-	std::cout << "C " << protocol::IsMagma<C>::value << " should be 1" <<  std::endl;
+	std::cout << "int " << IsMagma<int>::value << " should be 1" << std::endl;
+	std::cout << "A " << IsMagma<A>::value << " should be 0" <<  std::endl;
+	std::cout << "B (using namespace) " << IsMagma<B>::value << " should be 1" <<  std::endl;
+	std::cout << "C " << IsMagma<C>::value << " should be 1" <<  std::endl;
 
 	std::cout << "IsRing" << std::endl;
-	std::cout << "int " << protocol::IsRing<int>::value << " should be 1" << std::endl;
-	std::cout << "A " << protocol::IsRing<A>::value << " should be 0" <<  std::endl;
-	std::cout << "B (using namespace) " << protocol::IsRing<B>::value << " should be 1" <<  std::endl;
-	std::cout << "C " << protocol::IsRing<C>::value << " should be 1" <<  std::endl;
+	std::cout << "int " << IsRing<int>::value << " should be 1" << std::endl;
+	std::cout << "A " << IsRing<A>::value << " should be 0" <<  std::endl;
+	std::cout << "B (using namespace) " << IsRing<B>::value << " should be 1" <<  std::endl;
+	std::cout << "C " << IsRing<C>::value << " should be 1" <<  std::endl;
 
 	std::cout << "IsVectorOverR" << std::endl;
-	std::cout << "int " << protocol::IsVectorOverR<int>::value << " should be 1" << std::endl;
-	std::cout << "A " << protocol::IsVectorOverR<A>::value << " should be 0" <<  std::endl;
-	std::cout << "B (using namespace) " << protocol::IsVectorOverR<B>::value << " should be 1" <<  std::endl;
-	std::cout << "C " << protocol::IsVectorOverR<C>::value << " should be 0" <<  std::endl;
+	std::cout << "int " << IsVectorOverR<int>::value << " should be 1" << std::endl;
+	std::cout << "A " << IsVectorOverR<A>::value << " should be 0" <<  std::endl;
+	std::cout << "B (using namespace) " << IsVectorOverR<B>::value << " should be 1" <<  std::endl;
+	std::cout << "C " << IsVectorOverR<C>::value << " should be 0" <<  std::endl;
 
 	std::cout << "IsAlgebra" << std::endl;
-	std::cout << "int " << protocol::IsAlgebra<int>::value << " should be 1" << std::endl;
-	std::cout << "A " << protocol::IsAlgebra<A>::value << " should be 0" <<  std::endl;
-	std::cout << "B (using namespace) " << protocol::IsAlgebra<B>::value << " should be 1" <<  std::endl;
-	std::cout << "C " << protocol::IsAlgebra<C>::value << " should be 0" <<  std::endl;
+	std::cout << "int " << IsAlgebra<int>::value << " should be 1" << std::endl;
+	std::cout << "A " << IsAlgebra<A>::value << " should be 0" <<  std::endl;
+	std::cout << "B (using namespace) " << IsAlgebra<B>::value << " should be 1" <<  std::endl;
+	std::cout << "C " << IsAlgebra<C>::value << " should be 0" <<  std::endl;
 
 	std::cout << "IsField" << std::endl;
-	std::cout << "int " << protocol::IsField<int>::value << " should be 1" << std::endl;
-	std::cout << "A " << protocol::IsField<A>::value << " should be 0" <<  std::endl;
-	std::cout << "B (using namespace) " << protocol::IsField<B>::value << " should be 1" <<  std::endl;
-	std::cout << "C " << protocol::IsField<C>::value << " should be 0" <<  std::endl;
+	std::cout << "int " << IsField<int>::value << " should be 1" << std::endl;
+	std::cout << "A " << IsField<A>::value << " should be 0" <<  std::endl;
+	std::cout << "B (using namespace) " << IsField<B>::value << " should be 1" <<  std::endl;
+	std::cout << "C " << IsField<C>::value << " should be 0" <<  std::endl;
 
 
 	auto vec = std::vector<int>{1, 2, 4, 54, 0};

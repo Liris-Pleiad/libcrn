@@ -75,13 +75,10 @@ namespace crn
 			Path(int i, Format fmt = Format::LOCAL):StringUTF8(i),format(fmt) { }	
 			/*! \brief Constructor from an xml element */
 			Path(xml::Element &el):format(Format::AUTO) { Deserialize(el); }
-			virtual ~Path() override {}
+			virtual ~Path() override = default;
 
 			Path& operator=(const Path&) = default;
 			Path& operator=(Path&&) = default;
-
-			/*! \brief Creates another string from this one */
-			virtual UObject Clone() const override { return std::make_unique<Path>(*this); }
 
 			/*! \brief Splits the string in multiple strings delimited by a set of separators */
 			std::vector<Path> Split(const StringUTF8 &sep) const;
@@ -159,16 +156,15 @@ namespace crn
 
 			/*! \brief Converts the path to the local format */
 			Path& ToLocal();
+
+			// XXX TODO overload Serialize/Deserialize
 		private:
 			Format format;
 
 		CRN_DECLARE_CLASS_CONSTRUCTOR(Path)
 	};
-	namespace protocol
-	{
-		template<> struct IsSerializable<Path> : public std::true_type {};
-		template<> struct IsClonable<Path> : public std::true_type {};
-	}
+	template<> struct IsSerializable<Path> : public std::true_type {};
+	template<> struct IsClonable<Path> : public std::true_type {};
 
 	/*! \addtogroup string */
 	/*@{*/

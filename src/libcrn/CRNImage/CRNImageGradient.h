@@ -1,4 +1,4 @@
-/* Copyright 2006-2015 Yann LEYDIER, CoReNum, INSA-Lyon
+/* Copyright 2006-2016 Yann LEYDIER, CoReNum, INSA-Lyon, ENS-Lyon
  * 
  * This file is part of libcrn.
  * 
@@ -66,8 +66,6 @@ namespace crn
 
 			virtual ~ImageGradient() override {}
 
-			virtual UObject Clone() const override { return std::make_unique<ImageGradient>(*this); }
-
 			/*! \brief Returns the module significance threshold */
 			unsigned int GetMinModule() const noexcept { return thresh; }
 			/*! \brief Sets the module significance threshold */
@@ -106,6 +104,8 @@ namespace crn
 		private:
 			unsigned int thresh;
 	};
+	template<> struct IsClonable<ImageGradient> : public std::true_type {};
+
 	CRN_ALIAS_SMART_PTR(ImageGradient)
 }
 #endif

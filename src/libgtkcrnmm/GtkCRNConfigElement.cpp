@@ -37,8 +37,21 @@ ConfigElement::ConfigElement(crn::ConfigElement &el, bool differ):
 	if (!value)
 		throw crn::ExceptionUninitialized(_("The element was not initialized."));
 	if (differ)
-		tmpvalue = value->Clone();
-	typ = tmpvalue->GetClassName();
+		tmpvalue = crn::Clone(*value);
+
+	if (std::dynamic_pointer_cast<crn::Int>(tmpvalue))
+		typ = U"Int";
+	else if (std::dynamic_pointer_cast<crn::Real>(tmpvalue))
+		typ = U"Real";
+	else if (std::dynamic_pointer_cast<crn::Prop3>(tmpvalue))
+		typ = U"Prop3";
+	else if (std::dynamic_pointer_cast<crn::String>(tmpvalue))
+		typ = U"String";
+	else if (std::dynamic_pointer_cast<crn::StringUTF8>(tmpvalue))
+		typ = U"StringUTF8";
+	else if (std::dynamic_pointer_cast<crn::Path>(tmpvalue))
+		typ = U"Path";
+
 	Gtk::Label *lab = Gtk::manage(new Gtk::Label(el.GetName().CStr()));
 	lab->show();
 	pack_start(*lab, false, true, 2);

@@ -1,4 +1,4 @@
-/* Copyright 2008-2016 INSA Lyon, CoReNum
+/* Copyright 2008-2016 INSA Lyon, CoReNum, ENS-Lyon
  *
  * This file is part of libcrn.
  *
@@ -735,11 +735,11 @@ int String::EditDistance(const String &s) const
  *
  * \param[in]	el	the XML element to read
  */
-void String::deserialize(xml::Element &el)
+void String::Deserialize(xml::Element &el)
 {
-	if (el.GetName() != GetClassName().CStr())
+	if (el.GetName() != "String")
 	{
-		throw ExceptionInvalidArgument(StringUTF8("void String::deserialize(xml::Element &el): ") +
+		throw ExceptionInvalidArgument(StringUTF8("void String::Deserialize(xml::Element &el): ") +
 				_("Wrong XML element."));
 	}
 	xml::Node c(el.GetFirstChild());
@@ -756,53 +756,11 @@ void String::deserialize(xml::Element &el)
  * \param[in]	parent	the parent element to which we will add the new element
  * \return	The newly created element, nullptr if failed.
  */
-xml::Element String::serialize(xml::Element &parent) const
+xml::Element String::Serialize(xml::Element &parent) const
 {
-	xml::Element el(parent.PushBackElement(GetClassName().CStr()));
+	xml::Element el(parent.PushBackElement("String"));
 	el.PushBackText(CStr());
 	return el;
-}
-
-/*!
- * UNSAFE Greater or Equal
- *
- * \param[in]	l	the object to compare
- * \return	true if success, false else
- */
-Prop3 String::ge(const Object &l) const
-{
-	const String &s = (const String&)l;
-	if (data.compare(s.data) >= 0)
-		return Prop3::True;
-	else
-		return Prop3::False;
-}
-
-/*!
- * UNSAFE Lower or Equal
- *
- * \param[in]	l	the object to compare
- * \return	true if success, false else
- */
-Prop3 String::le(const Object &l) const
-{
-	const String &s = (const String&)l;
-	if (data.compare(s.data) <= 0)
-		return Prop3::True;
-	else
-		return Prop3::False;
-}
-
-/*!
- * Distance between two metric objects. Insecure method to be provided.
- * It checks if the two objects are of the same type.
- *
- * \param[in]	obj	The object to compute the distance with
- * \return	The distance, or HUGE_VAL (inf) if no object passed or not of the same class
- */
-double String::distance(const Object &obj) const
-{
-	return EditDistance((String&)obj);
 }
 
 /*!

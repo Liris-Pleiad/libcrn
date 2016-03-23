@@ -36,11 +36,11 @@ using namespace crn;
  *
  * \param[in]	el	the XML element to read
  */
-void Point2DDouble::deserialize(xml::Element &el)
+void Point2DDouble::Deserialize(xml::Element &el)
 {
-	if (el.GetName() != GetClassName().CStr())
+	if (el.GetName() != "Point2DDouble")
 	{
-		throw ExceptionInvalidArgument(StringUTF8("bool Point2DDouble::deserialize(xml::Element &el): ") + 
+		throw ExceptionInvalidArgument(StringUTF8("void Point2DDouble::Deserialize(xml::Element &el): ") + 
 				_("Wrong XML element."));
 	}
 
@@ -56,9 +56,9 @@ void Point2DDouble::deserialize(xml::Element &el)
  * \param[in]	parent	the element in which the new element will be stored
  * \return	the newly created element
  */
-xml::Element Point2DDouble::serialize(xml::Element &parent) const
+xml::Element Point2DDouble::Serialize(xml::Element &parent) const
 {
-	xml::Element el(parent.PushBackElement(GetClassName().CStr()));
+	xml::Element el(parent.PushBackElement("Point2DDouble"));
 
 	el.SetAttribute("x", X);
 	el.SetAttribute("y", Y);

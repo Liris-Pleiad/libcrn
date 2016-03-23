@@ -80,10 +80,7 @@ namespace crn
 
 			Rect(const Rect&) = default;
 			Rect(Rect&&) = default;
-			virtual ~Rect() override {}
-
-			/*! \brief Clones the rectangle */
-			virtual UObject Clone() const override { return std::make_unique<Rect>(bx, by, ex, ey); }
+			virtual ~Rect() override = default;
 
 			Rect& operator=(const Rect&) = default;
 			Rect& operator=(Rect&&) = default;
@@ -541,7 +538,7 @@ namespace crn
 			}
 		
 			/*! \brief Dumps to a string */
-			virtual String ToString() const override;
+			String ToString() const;
 
 			/*! \brief Functor to sort rectangles regarding directions
 			 *
@@ -796,12 +793,12 @@ namespace crn
 		/*! \brief Returns an spiral iterator after the last point of the rectangle */
 		inline spiral_iterator SEnd() const { return spiral_iterator(); } 
 
-		private:
 			/*! \brief Initializes the object from an XML element. Unsafe. */
-			virtual void deserialize(xml::Element &el) override;
+			void Deserialize(xml::Element &el);
 			/*! \brief Dumps the object to an XML element. Unsafe. */
-			virtual xml::Element serialize(xml::Element &parent) const override;
+			xml::Element Serialize(xml::Element &parent) const;
 
+		private:
 			int bx, by, ex, ey; /*!< the coordinates */
 			int w, h; /*!< the width and height */
 			bool valid; /*!< whether the rectangle is valid */
@@ -809,11 +806,8 @@ namespace crn
 		CRN_DECLARE_CLASS_CONSTRUCTOR(Rect)
 		CRN_SERIALIZATION_CONSTRUCTOR(Rect)
 	};
-	namespace protocol
-	{
-		template<> struct IsSerializable<Rect> : public std::true_type {};
-		template<> struct IsClonable<Rect> : public std::true_type {};
-	}
+	template<> struct IsSerializable<Rect> : public std::true_type {};
+	template<> struct IsClonable<Rect> : public std::true_type {};
 
 	CRN_ALIAS_SMART_PTR(Rect)
 

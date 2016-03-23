@@ -1,4 +1,4 @@
-/* Copyright 2010-2015 CoReNum, INSA-Lyon, Université Paris-Descartes
+/* Copyright 2010-2016 CoReNum, INSA-Lyon, Université Paris-Descartes, ENS-Lyon
  * 
  * This file is part of libcrn.
  * 
@@ -52,7 +52,7 @@ UReal crn::Data::ToCRN(double d)
  */
 UString crn::Data::ToCRN(const String &str)
 {
-	return str.CloneAs<String>();
+	return CloneAs<String>(str);
 }
 
 /*!
@@ -62,7 +62,7 @@ UString crn::Data::ToCRN(const String &str)
  */
 UStringUTF8 crn::Data::ToCRN(const StringUTF8 &str)
 {
-	return str.CloneAs<StringUTF8>();
+	return CloneAs<StringUTF8>(str);
 }
 
 /*!
@@ -72,7 +72,7 @@ UStringUTF8 crn::Data::ToCRN(const StringUTF8 &str)
  */
 UPath crn::Data::ToCRN(const Path &str)
 {
-	return str.CloneAs<Path>();
+	return CloneAs<Path>(str);
 }
 
 /*!
@@ -82,7 +82,7 @@ UPath crn::Data::ToCRN(const Path &str)
  */
 UProp3 crn::Data::ToCRN(const Prop3 &val)
 {
-	return val.CloneAs<Prop3>();
+	return CloneAs<Prop3>(val);
 }
 
 static const auto asciiOffset = 33;

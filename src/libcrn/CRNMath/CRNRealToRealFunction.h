@@ -48,8 +48,6 @@ namespace crn
 			RealToRealFunction(double l, double u);
 			RealToRealFunction(const RealToRealFunction& F);
 			RealToRealFunction(RealToRealFunction&&) = default;
-			/*! \brief Clones the function */
-			virtual UObject Clone() const override { return std::make_unique<RealToRealFunction>(*this); }
 
 			/*! \brief Destructor */
 			virtual ~RealToRealFunction() override;
@@ -90,11 +88,7 @@ namespace crn
 			double right_endpoint; /*!< right extrema of the function */
 
 	};
-
-	namespace protocol
-	{
-		template<> struct IsClonable<RealToRealFunction> : public std::true_type {};
-	}
+	template<> struct IsClonable<RealToRealFunction> : public std::true_type {};
 
 }
 #endif

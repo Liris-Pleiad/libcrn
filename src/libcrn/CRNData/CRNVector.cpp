@@ -1,4 +1,4 @@
-/* Copyright 2006-2016 Yann LEYDIER, INSA-Lyon, CoReNum
+/* Copyright 2006-2016 Yann LEYDIER, INSA-Lyon, CoReNum, ENS-Lyon
  * 
  * This file is part of libcrn.
  * 
@@ -34,64 +34,20 @@ using namespace crn;
  * Default constructor
  * \param[in]	protos	the mandatory protocols for the contents
  */
-Vector::Vector(Protocol protos):
-	protocols(protos)
-{
-}
-
+Vector::Vector() = default;
 /*!
  * Destructor
  */
-Vector::~Vector()
-{
-}
-
-/*!
- * Returns the protocols supported by the container depending on its contents.
- * \return the protocols supported by the container.
- */
-Protocol Vector::GetClassProtocols() const noexcept
-{
-	return protocols & (crn::Protocol::Object|crn::Protocol::Clonable|crn::Protocol::Serializable|crn::Protocol::Metric);
-}
-
-/*!
- * Dumps the contents to a string
- * \return	a string representing the contents of the container
- */
-String Vector::ToString() const
-{
-	String s = GetClassName();
-	s += " { ";
-	for (const_iterator it = begin(); it != end(); ++it)
-	{
-		s += (*it)->ToString();
-		const_iterator nit(it);
-		++nit;
-		if (nit != end())
-			s += ", ";
-	}
-	s += " }";
-	return s;
-}
+Vector::~Vector() = default;
 
 /*!
  * Adds an object at the end of the list
  *
- * \throws	ExceptionProtocol	object has wrong protocols
- *
  * \param[in]	d	the object to add
  */
-void Vector::PushBack(SObject d)
+void Vector::PushBack(const SObject &d)
 {
-	if (checkProtocols(*d))
-	{
-		data.push_back(d);
-	}
-	else
-	{
-		throw ExceptionProtocol(StringUTF8(_("Object not added: protocols differ obj=")) + int(d->GetClassProtocols()) + crn::StringUTF8("  // vec=") + int(protocols));
-	}
+	data.push_back(d);
 }
 
 /*!
@@ -145,23 +101,18 @@ Vector::iterator Vector::Find(const SCObject &o)
  * \param[in]	d	the object to add
  * \param[in]	pos	the position
  */
-void Vector::Insert(SObject d, size_t pos)
+void Vector::Insert(const SObject &d, size_t pos)
 {
-	if (checkProtocols(*d))
+	if (pos < data.size())
 	{
-		if (pos < data.size())
-		{
-			data.insert(data.begin() + pos, d);
-		}
-		else if ((pos == data.size()) || (pos == 0))
-		{
-			data.push_back(d);
-		}
-		else
-			throw ExceptionDomain(_("Index out of bounds."));
+		data.insert(data.begin() + pos, d);
+	}
+	else if ((pos == data.size()) || (pos == 0))
+	{
+		data.push_back(d);
 	}
 	else
-		throw ExceptionProtocol(StringUTF8(_("Object not added: protocols differ obj=")) + int(d->GetClassProtocols()) + crn::StringUTF8("  // vec=") + int(protocols));
+		throw ExceptionDomain(_("Index out of bounds."));
 }
 
 /*! Reorders the elements
@@ -290,38 +241,18 @@ void Vector::Remove(iterator begin, iterator end)
 }
 
 /*!
- * Clones the container and its contents if applicable.
- *
- * \throws	ExceptionProtocol	the content of the vector is not clonable
- *
- * \return	the cloned container
- */
-UObject Vector::Clone() const
-{
-	if (!(protocols & crn::Protocol::Clonable))
-		throw ExceptionProtocol(_("This vector does not contain clonable objects."));
-
-	UVector v = std::make_unique<Vector>(protocols);
-	v->SetName(GetName());
-	for (const_iterator it = begin(); it != end(); ++it)
-		v->PushBack((*it)->Clone());
-	return std::forward<UVector>(v);
-}
-
-/*!
  * Sorts the list using the POSET protocol if applicable.
  * \throws	ExceptionProtocol	the content of the vector is not POSET
  */
 void Vector::Sort()
 {
-	if (!(protocols & crn::Protocol::POSet))
-		throw ExceptionProtocol(_("This vector does not contain poset objects."));
-
+	/* XXX TODO
 	std::sort(begin(), end(), [](const SCObject &o1, const SCObject &o2)
 				{
 					return (o1->LT(*o2)).IsTrue();
 				}
 			);
+			*/
 }
 
 /*****************************************************************************/
@@ -335,16 +266,13 @@ void Vector::Sort()
  *
  * \param[in]	el	the element to load
  */
-void Vector::deserialize(xml::Element &el)
+void Vector::Deserialize(xml::Element &el)
 {
-	if (!(protocols & crn::Protocol::Serializable))
-		throw ExceptionProtocol(_("This vector does not contain serializable objects."));
-	if (el.GetValue() != GetClassName().CStr())
+	if (el.GetValue() != "Vector")
 	{
-		throw ExceptionInvalidArgument(StringUTF8("bool Vector::deserialize(xml::Element &el): ") + 
+		throw ExceptionInvalidArgument(StringUTF8("void Vector::Deserialize(xml::Element &el): ") + 
 				_("Wrong XML element."));
 	}
-	protocols = Protocol(el.GetAttribute<int>("protocols"));
 	std::multimap<int, SObject> xmllist;
 	for (xml::Element te = el.BeginElement(); te != el.EndElement(); ++te)
 	{
@@ -355,7 +283,7 @@ void Vector::deserialize(xml::Element &el)
 		}
 		catch (crn::Exception &)
 		{	// XXX throw?
-			CRNWarning(String(U"bool Vector::deserialize"
+			CRNWarning(String(U"void Vector::Deserialize"
 						U"(xml::Element &el): ") + String(_("Unknown XML element: ")) +
 					te.GetValue());
 		}
@@ -379,42 +307,17 @@ void Vector::deserialize(xml::Element &el)
  * \param[in]	parent	the parent element to which we will add the new element
  * \return The newly created element, nullptr if failed.
  */
-xml::Element Vector::serialize(xml::Element &parent) const
+xml::Element Vector::Serialize(xml::Element &parent) const
 {
-	if (!(protocols & crn::Protocol::Serializable))
-		throw ExceptionProtocol(_("This vector does not contain serializable objects."));
-	xml::Element el(parent.PushBackElement(GetClassName().CStr()));
-	el.SetAttribute("protocols", int(protocols));
+	xml::Element el(parent.PushBackElement("Vector"));
 
 	for (size_t tmp = 0; tmp < data.size(); tmp++)
 	{
-		xml::Element item = data[tmp]->Serialize(el);
+		xml::Element item = crn::Serialize(*data[tmp], el);
 		item.SetAttribute("vector_index", int(tmp));
 	}
 
 	return el;
-}
-
-/*!
- * Computes the distance to another vector using the Metric protocal if applicable.
- *
- * \throws	ExceptionProtocol	the content of the vector is not metric
- * \throws	ExceptionDimension	the vector do not have the same size
- * \param[in]	obj	the other vector
- * \return	the distance
- */
-double Vector::distance(const Object &obj) const
-{
-	if (!(protocols & crn::Protocol::Metric))
-		throw ExceptionProtocol(_("This vector does not contain metric objects."));
-	const Vector &other = static_cast<const Vector&>(obj);
-	if (other.Size() != Size())
-		throw ExceptionDimension(StringUTF8("Double Vector::distance(const Object &obj) const: ") + 
-				_("The vector do not have the same size."));
-	double d = 0;
-	for (size_t tmp = 0; tmp < Size(); tmp++)
-		d += data[tmp]->Distance(*other.At(tmp));
-	return d;
 }
 
 /*! 
@@ -425,40 +328,6 @@ double Vector::distance(const Object &obj) const
 void Vector::Swap(Vector &other) noexcept
 {
 	data.swap(other.data);
-	std::swap(protocols, other.protocols);
-}
-
-/*! 
- * Checks if the protocols are compatible with the object's constraints
- *
- * \param[in]  obj  the object to check
- * \return true if the protocols are compatible with the constraints, false else
- */
-bool Vector::checkProtocols(const Object &obj)
-{
-	if ((obj.GetClassProtocols() & protocols) == protocols)
-	{
-		return true;
-	}
-	try
-	{
-		const Vector &v(dynamic_cast<const Vector&>(obj));
-		if ((v.protocols & protocols) == protocols)
-		{
-			return true;
-		}
-	}
-	catch (...) { }
-	try
-	{
-		const Map &m(dynamic_cast<const Map&>(obj));
-		if ((m.GetContentProtocols() & protocols) == protocols)
-		{
-			return true;
-		}
-	}
-	catch (...) { }
-	return false;
 }
 
 /*! Optimizes the memory usage */

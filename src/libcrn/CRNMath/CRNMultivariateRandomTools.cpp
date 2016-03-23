@@ -1,4 +1,4 @@
-/* Copyright 2008-2015 INSA Lyon
+/* Copyright 2008-2016 INSA-Lyon, ENS-Lyon
  * 
  * This file is part of libcrn.
  * 
@@ -153,7 +153,7 @@ MatrixDouble MultivariateRandomTools::NewGaussianMixtureSample(const Multivariat
 		CumulWeights.At(k, 0) = Mass;
 	}
 	
-	CumulWeights.Mult(1.0 / Mass);
+	CumulWeights *= 1.0 / Mass;
 	
 	// Build indexes to indicate which PDF of the mixture is used to generate each pattern
 	

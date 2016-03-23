@@ -1,4 +1,4 @@
-/* Copyright 2008-2016 INSA Lyon, CoReNum
+/* Copyright 2008-2016 INSA Lyon, CoReNum, ENS-Lyon
  * 
  * This file is part of libcrn.
  * 
@@ -59,25 +59,19 @@ namespace crn
 			 * \param[in]	end	an input iterator after the last prototype
 			 * \return	the index of-, the distance to- and the nearest neighbor
 			 */
-			template<typename ConstIterator> static ClassifResult NearestNeighbor(const Object &obj, ConstIterator begin, ConstIterator end)
+			template<
+				typename ConstIterator,
+				typename std::enable_if<IsMetric<typename std::iterator_traits<ConstIterator>::value_type>::value, int>::type = 0
+				>
+			static ClassifResult NearestNeighbor(const typename std::iterator_traits<ConstIterator>::value_type &obj, ConstIterator begin, ConstIterator end)
 			{
-				if (!obj.Implements(crn::Protocol::Metric))
-					throw ExceptionProtocol(StringUTF8("ClassifResult BasicClassify::"
-								"NearestNeighbor(const Object &obj, ConstIterator begin, "
-								"ConstIterator end): The sample is not metric."));
-				String cid = obj.GetClassName();
-
 				int nearest = 0;
 				double mindist = std::numeric_limits<double>::max();
 				int classid = 0;
 				ConstIterator prot;
-				for (ConstIterator it = begin; it != end; ++it)
+				for (auto it = begin; it != end; ++it)
 				{
-					if ((*it)->GetClassName() != cid)
-						throw ExceptionRuntime(StringUTF8("ClassifResult BasicClassify::"
-								"NearestNeighbor(const Object &obj, ConstIterator begin, "
-								"ConstIterator end): A model data is not of the same class as the sample."));
-					double d = obj.Distance(**it);
+					double d = Distance(obj, **it);
 					if (d < mindist)
 					{
 						mindist = d;
@@ -94,7 +88,7 @@ namespace crn
 			 * 
 			 * Classify a sample using the k nearest neighbors
 			 * 
-			 * \throws	ExceptionProtocol	the sample is not metric
+			 * \throws	std::bad_cast	the map does not contain objects of the same type as obj
 			 * \throws	ExceptionRuntime	the sample is not of the same class as the model
 			 * 
 			 * \param[in]	obj	the sample to classify
@@ -102,17 +96,15 @@ namespace crn
 			 * \param[in]	k	the number of nearest neighbors to taken into account
 			 * \return	the label of-, the distance to- and the nearest prototype whose class is most represented in the k nearest neighbors
 			 */
-			static ClassifResult kNearestNeighbors(const Object &obj, const Map &database, int k)
+			template<
+				typename T,
+				typename std::enable_if<IsMetric<T>::value, int>::type = 0
+				>
+			static ClassifResult kNearestNeighbors(const T &obj, const Map &database, int k)
 			{
-				if (!obj.Implements(crn::Protocol::Metric))
-					throw ExceptionProtocol(StringUTF8("ClassifResult BasicClassify::"
-								"kNearestNeighbors(const Object &obj, const Map &database, "
-								"int k): The sample is not metric."));
-				String cid = obj.GetClassName();
-
 				std::set<ClassifResult> knn;
 				std::set<ClassifResult>::iterator maxneighbor;
-				int classid = 0;
+				auto classid = 0;
 				for (Map::const_iterator dataclass = database.begin(); 
 						dataclass != database.end(); ++dataclass)
 				{
@@ -125,11 +117,7 @@ namespace crn
 					for (Vector::const_iterator sample = samples->begin();
 							sample != samples->end(); ++sample)
 					{
-						if (sample->GetClassName() != cid)
-							throw ExceptionRuntime(StringUTF8("ClassifResult BasicClassify::"
-									"kNearestNeighbors(const Object &obj, "
-									"const Map &database, int k): A model data is not of the same class as the sample."));
-						double d = obj.Distance(**sample);
+						auto d = Distance(obj, dynamic_cast<const T&>(**sample)); // may throw
 						if (knn.size() < (unsigned int)k)
 						{ // knn list not already full
 							knn.insert(ClassifResult(classid, label, d, *sample));
@@ -153,7 +141,7 @@ namespace crn
 			 * 
 			 * Classify a sample using the k nearest neighbors
 			 * 
-			 * \throws	ExceptionProtocol	the sample is not metric
+			 * \throws	std::bad_cast	the map does not contain objects of the same type as obj
 			 * \throws	ExceptionRuntime	the sample is not of the same class as the model
 			 * 
 			 * \param[in]	obj	the sample to classify
@@ -161,14 +149,12 @@ namespace crn
 			 * \param[in]	epsilon	the maximal distance
 			 * \return	the label of-, the distance to- and the nearest prototype whose class is most represented in the k nearest neighbors
 			 */
-			static ClassifResult EpsilonNeighbors(const Object &obj, const Map &database, double epsilon)
+			template<
+				typename T,
+				typename std::enable_if<IsMetric<T>::value, int>::type = 0
+				>
+			static ClassifResult EpsilonNeighbors(const T &obj, const Map &database, double epsilon)
 			{
-				if (!obj.Implements(crn::Protocol::Metric))
-					throw ExceptionInvalidArgument(StringUTF8("ClassifResult BasicClassify::"
-								"EpsilonNeighbors(const Object &obj, const Map &database, "
-								"double epsilon): The sample is not metric."));
-				String cid = obj.GetClassName();
-
 				std::set<ClassifResult> en;
 				int classid = 0;
 				for (Map::const_iterator dataclass = database.begin(); 
@@ -183,11 +169,7 @@ namespace crn
 					for (Vector::const_iterator sample = samples->begin();
 							sample != samples->end(); ++sample)
 					{
-						if (sample->GetClassName() != cid)
-							throw ExceptionRuntime(StringUTF8("ClassifResult BasicClassify::"
-									"EpsilonNeighbors(const Object &obj, const Map &database, "
-									"double epsilon): A model data is not of the same class as the sample."));
-						double d = obj.Distance(**sample);
+						double d = Distance(obj, dynamic_cast<const T&>(**sample)); // may throw
 						if (d < epsilon)
 						{ // add to list
 							en.insert(ClassifResult(classid, label, d, *sample));

@@ -1,4 +1,4 @@
-/* Copyright 2007-2015 Yann LEYDIER, INSA-Lyon
+/* Copyright 2007-2016 Yann LEYDIER, INSA-Lyon, ENS-Lyon
  * 
  * This file is part of libcrn.
  * 
@@ -40,7 +40,7 @@ using namespace crn;
 SObject FeatureExtractorAngleZoning::Extract(Block &b)
 {
 	// create feature vector
-	SVector feat = std::make_shared<Vector>(Protocol::Feature);
+	auto feat = std::make_shared<Vector>();
 	for (int tmp = 0; tmp < xdiv * ydiv; ++tmp)
 		feat->PushBack(std::make_shared<Histogram>(zonesize));
 	// extract angles
@@ -81,7 +81,7 @@ SObject FeatureExtractorAngleZoning::Extract(Block &b)
 SObject FeatureExtractorAngleZoning::ExtractWithMask(Block &b, ImageIntGray &mask)
 {
 	// create feature vector
-	SVector feat = std::make_shared<Vector>(Protocol::Feature);
+	auto feat = std::make_shared<Vector>();
 	for (int tmp = 0; tmp < xdiv * ydiv; ++tmp)
 		feat->PushBack(std::make_shared<Histogram>(zonesize));
 	// extract angles
@@ -123,7 +123,7 @@ SObject FeatureExtractorAngleZoning::ExtractWithMask(Block &b, ImageIntGray &mas
  */
 void FeatureExtractorAngleZoning::deserialize(xml::Element &el)
 {
-	if (el.GetName() != GetClassName().CStr())
+	if (el.GetName() != GetClassName())
 	{
 		throw ExceptionInvalidArgument(StringUTF8("bool FeatureExtractorAngleZoning::deserialize("
 					"xml::Element &el): ") + _("Wrong XML element."));
@@ -144,7 +144,7 @@ void FeatureExtractorAngleZoning::deserialize(xml::Element &el)
  */
 xml::Element FeatureExtractorAngleZoning::serialize(xml::Element &parent) const
 {
-	xml::Element el(parent.PushBackElement(GetClassName().CStr()));
+	xml::Element el(parent.PushBackElement(GetClassName()));
 	el.SetAttribute("xdiv", xdiv);
 	el.SetAttribute("ydiv", ydiv);
 	el.SetAttribute("maxval", maxval);

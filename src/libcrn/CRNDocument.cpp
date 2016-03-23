@@ -1,4 +1,4 @@
-/* Copyright 2006-2016 Yann LEYDIER, INSA-Lyon
+/* Copyright 2006-2016 Yann LEYDIER, INSA-Lyon, ENS-Lyon
  * 
  * This file is part of libcrn.
  * 
@@ -42,7 +42,7 @@ size_t Document::ThumbHeight = 100;
  * Default constructor
  *
  */
-Document::Document():ComplexObject(U""),
+Document::Document():Savable(U""),
 	basename(""),
 	author(U""),
 	date(U"")
@@ -448,7 +448,7 @@ void Document::load(const Path &fname)
 {
 	xml::Document doc(fname); // may throw
 	xml::Element root(doc.GetRoot()); // may throw
-	if (root.GetName() != GetClassName())
+	if (root.GetName() != "Document")
 	{
 		throw ExceptionRuntime(StringUTF8("bool Document::load(const String &fname): ") + 
 				_("Not a Document file."));
@@ -653,7 +653,7 @@ void Document::save(const Path &fname)
 
 	xml::Document doc;
 	doc.PushBackComment("libcrn Document file");
-	xml::Element root(doc.PushBackElement(GetClassName().CStr()));
+	xml::Element root(doc.PushBackElement("Document"));
 	root.SetAttribute("basename", basename.CStr());
 	root.SetAttribute("author", author.CStr());
 	root.SetAttribute("date", date.CStr());

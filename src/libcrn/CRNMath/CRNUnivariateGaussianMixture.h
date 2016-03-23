@@ -71,9 +71,6 @@ namespace crn
 					EM(it_begin, it_end, (unsigned int)(nb_seeds));
 			}
 
-			/*! \brief Clones the model */
-			virtual UObject Clone() const override { return std::make_unique<UnivariateGaussianMixture>(*this); }
-
 			/*! \brief Destructor */
 			virtual ~UnivariateGaussianMixture() override;
 
@@ -116,7 +113,7 @@ namespace crn
 			template<typename ITER> unsigned int EM(ITER it_begin, ITER it_end, size_t nbSeeds = 2, double epsilon = std::numeric_limits<double>::epsilon(), size_t maximalIterations = 100);
 
 			/*! \brief Dumps a summary of the mixture to a string */
-			virtual String ToString() const override;
+			String ToString() const;
 			/*! \brief Dumps a summary of one element of the mixture to a string */
 			String ToString(size_t k) const;
 
@@ -135,23 +132,20 @@ namespace crn
 			/*! \brief Creates a data sample following the mixture's probability law */
 			std::vector<double> MakeRandomSample(size_t n = 1, size_t m = 100, bool reseed = true) const;
 
+			void Deserialize(xml::Element &el);
+			xml::Element Serialize(xml::Element &parent) const;
+
 		private:
 			/*! \brief Checks if an index is valid */
 			bool isValidMemberIndex(size_t k) const { return k < members.size(); }
-
-			void deserialize(xml::Element &el) override;
-			xml::Element serialize(xml::Element &parent) const override;
 
 			std::vector<std::pair<UnivariateGaussianPDF, double>> members; /*!< the PDFs and their weights */
 
 			CRN_DECLARE_CLASS_CONSTRUCTOR(UnivariateGaussianMixture)
 			CRN_SERIALIZATION_CONSTRUCTOR(UnivariateGaussianMixture)
 	};
-	namespace protocol
-	{
-		template<> struct IsSerializable<UnivariateGaussianMixture> : public std::true_type {};
-		template<> struct IsClonable<UnivariateGaussianMixture> : public std::true_type {};
-	}
+	template<> struct IsSerializable<UnivariateGaussianMixture> : public std::true_type {};
+	template<> struct IsClonable<UnivariateGaussianMixture> : public std::true_type {};
 
 	CRN_ALIAS_SMART_PTR(UnivariateGaussianMixture)
 

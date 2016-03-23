@@ -1,4 +1,4 @@
-/* Copyright 2009-2014 INSA Lyon, CoReNum
+/* Copyright 2009-2016 INSA Lyon, CoReNum, ENS-Lyon
  * 
  * This file is part of libcrn.
  * 
@@ -35,11 +35,11 @@ using namespace crn;
  *
  * \param[in]	el	the element to load
  */
-void Int::deserialize(xml::Element &el)
+void Int::Deserialize(xml::Element &el)
 {
-	if (el.GetValue() != GetClassName().CStr())
+	if (el.GetValue() != "Int")
 	{
-		throw ExceptionInvalidArgument(StringUTF8("bool Int::deserialize(xml::Element &el): ") + 
+		throw ExceptionInvalidArgument(StringUTF8("void Int::Deserialize(xml::Element &el): ") + 
 				_("Wrong XML element."));
 	}
 	val = el.GetAttribute<int>("value");
@@ -52,9 +52,9 @@ void Int::deserialize(xml::Element &el)
  * \param[in]	parent	the parent element to which we will add the new element
  * \return The newly created element
  */
-xml::Element Int::serialize(xml::Element &parent) const
+xml::Element Int::Serialize(xml::Element &parent) const
 {
-	xml::Element el(parent.PushBackElement(GetClassName().CStr()));
+	xml::Element el(parent.PushBackElement("Int"));
 	el.SetAttribute("value", val);
 	return el;
 }

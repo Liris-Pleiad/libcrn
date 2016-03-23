@@ -1,4 +1,4 @@
-/* Copyright 2008-2015 INSA Lyon
+/* Copyright 2008-2016 INSA-Lyon, ENS-Lyon
  * 
  * This file is part of libcrn.
  * 
@@ -101,8 +101,8 @@ MatrixDouble LinearSystem::GaussJordan(const SquareMatrixDouble &Coefficients, c
 	}
 	else
 	{
-		USquareMatrixDouble CopyCoefficients = Coefficients.CloneAs<SquareMatrixDouble>();
-		UMatrixDouble CopyConstantTerms = ConstantTerms.CloneAs<MatrixDouble>();
+		USquareMatrixDouble CopyCoefficients = CloneAs<SquareMatrixDouble>(Coefficients);
+		UMatrixDouble CopyConstantTerms = CloneAs<MatrixDouble>(ConstantTerms);
 	
 		for (size_t c = 0; c < n - 1; c++)
 		{

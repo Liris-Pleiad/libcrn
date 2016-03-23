@@ -55,23 +55,17 @@ namespace crn
 			/*! \brief Rotation for single point */
 			Point2DDouble MakeRotation(Angle<Radian> theta) const;
 		
-			/*!\brief Creates a new object, copied from this */
-			virtual UObject Clone() const override { return std::make_unique<Point2DDouble>(X, Y); }
-
-		private:
 			/*! \brief Initializes the object from an XML element. Unsafe. */
-			virtual void deserialize(xml::Element &el) override;
+			void Deserialize(xml::Element &el);
 			/*! \brief Dumps the object to an XML element. Unsafe. */
-			virtual xml::Element serialize(xml::Element &parent) const override;
+			xml::Element Serialize(xml::Element &parent) const;
+		private:
 
 		CRN_DECLARE_CLASS_CONSTRUCTOR(Point2DDouble)
 		CRN_SERIALIZATION_CONSTRUCTOR(Point2DDouble)
 	};
-	namespace protocol
-	{
-		template<> struct IsSerializable<Point2DDouble> : public std::true_type {};
-		template<> struct IsClonable<Point2DDouble> : public std::true_type {};
-	}
+	template<> struct IsSerializable<Point2DDouble> : public std::true_type {};
+	template<> struct IsClonable<Point2DDouble> : public std::true_type {};
 
 	CRN_ALIAS_SMART_PTR(Point2DDouble)
 }

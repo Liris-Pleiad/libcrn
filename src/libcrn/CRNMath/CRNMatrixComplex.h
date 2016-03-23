@@ -53,12 +53,10 @@ namespace crn
 			MatrixComplex(MatrixComplex &&) = default;
 
 			/*! \brief Destructor */
-			virtual ~MatrixComplex() override {}
+			virtual ~MatrixComplex() override = default;
 
 			MatrixComplex& operator=(const MatrixComplex &) = default;
 			MatrixComplex& operator=(MatrixComplex &&) = default;
-
-			virtual UObject Clone() const override { return std::make_unique<MatrixComplex>(*this); }
 
 			/*! \brief Grows the matrix to power of 2 sizes (for FFT) */
 			void GrowToPowerOf2(bool make_square, const std::complex<double> &fill_value = std::complex<double>(0, 0));
@@ -84,11 +82,6 @@ namespace crn
 		using DiffType = MatrixComplex;
 		using DecimalType = MatrixComplex;
 	};
-
-	namespace protocol
-	{
-		template<> struct IsClonable<MatrixComplex> : public std::true_type {};
-	}
 }
 
 #endif

@@ -1,4 +1,4 @@
-/* Copyright 2006-2014 Yann LEYDIER, CoReNum, INSA-Lyon
+/* Copyright 2006-2016 Yann LEYDIER, CoReNum, INSA-Lyon, ENS-Lyon
  * 
  * This file is part of libcrn.
  * 
@@ -179,11 +179,11 @@ Prop3& Prop3::operator&=(const Prop3 &prop) noexcept
  * \throws	ExceptionDomain	wrong attribute
  * \param[in]	el	the element to read
  */
-void Prop3::deserialize(xml::Element &el)
+void Prop3::Deserialize(xml::Element &el)
 {
-	if (el.GetName() != GetClassName().CStr())
+	if (el.GetName() != "Prop3")
 	{
-		throw ExceptionInvalidArgument(StringUTF8("bool Prop3::deserialize(xml::Element &el): ") + 
+		throw ExceptionInvalidArgument(StringUTF8("bool Prop3::Deserialize(xml::Element &el): ") + 
 				_("Wrong XML element."));
 	}
 	value = el.GetAttribute<int>("value", false); // may throw
@@ -196,9 +196,9 @@ void Prop3::deserialize(xml::Element &el)
  *
  * \return	the newly created element
  */
-xml::Element Prop3::serialize(xml::Element &parent) const
+xml::Element Prop3::Serialize(xml::Element &parent) const
 {
-	xml::Element el(parent.PushBackElement(GetClassName().CStr()));
+	xml::Element el(parent.PushBackElement("Prop3"));
 	el.SetAttribute("value", value);
 	return el;
 }

@@ -42,18 +42,12 @@ namespace crn
 		public:
 			/*! \brief Default constructor*/
 			Int(int i = 0) noexcept:val(i) {}
-			/*! \brief Destructor*/
-			virtual ~Int() override {}
+			virtual ~Int() override = default;
 
 			Int(const Int&) = default;
 			Int(Int&&) = default;
 			Int& operator=(const Int&) = default;
 			Int& operator=(Int&&) = default;
-
-			/*! \brief Dumps value to a string */
-			virtual String ToString() const override { return String(val); }
-			/*! \brief Creates a new object this one */
-			virtual UObject Clone() const override { return std::make_unique<Int>(val); }
 
 			/*! \brief Converts to int */
 			operator int() const noexcept { return val; }
@@ -67,20 +61,19 @@ namespace crn
 			bool operator<=(Int i) noexcept { return val <= i.val; }
 			bool operator>=(Int i) noexcept { return val >= i.val; }
 
+			/*! \brief Reads from an XML element */
+			void Deserialize(xml::Element &el);
+			/*! \brief Dumps to an XML element */
+			xml::Element Serialize(xml::Element &parent) const;
+
 		private:
 			int val; /*!< internal value storage */
-			/*! \brief Reads from an XML element */
-			virtual void deserialize(xml::Element &el) override;
-			/*! \brief Dumps to an XML element */
-			virtual xml::Element serialize(xml::Element &parent) const override;
-
 		CRN_DECLARE_CLASS_CONSTRUCTOR(Int)
 		CRN_SERIALIZATION_CONSTRUCTOR(Int)
 	};
-	namespace protocol
-	{
-		template<> struct IsSerializable<Int> : public std::true_type {};
-	}
+	template<> struct IsSerializable<Int> : public std::true_type {};
+	template<> struct IsClonable<Int> : public std::true_type {};
+
 	inline double Distance(const Int &i1, const Int &i2) noexcept { return Abs(i1 - i2); }
 }
 inline crn::Int operator+(crn::Int i1, const crn::Int &i2) noexcept { return i1 += i2; }

@@ -71,8 +71,6 @@ namespace crn
 			PolynomialRegression& operator=(PolynomialRegression&&) = default;
 			virtual ~PolynomialRegression() override {}
 
-			virtual UObject Clone() const override { return std::make_unique<PolynomialRegression>(*this); }
-
 			/*! \brief Sets the behaviour for points before the first control point and after the last control point */
 			void SetExtrapolationMode(Extrapolation ex) noexcept { extrapolation = ex; }
 
@@ -109,13 +107,9 @@ namespace crn
 			Extrapolation extrapolation;
 			size_t dimension;
 	};
+	template<> struct IsClonable<PolynomialRegression> : public std::true_type {};
 
 	CRN_ALIAS_SMART_PTR(PolynomialRegression)
-
-	namespace protocol
-	{
-		template<> struct IsClonable<PolynomialRegression> : public std::true_type {};
-	}
 }
 
 #endif

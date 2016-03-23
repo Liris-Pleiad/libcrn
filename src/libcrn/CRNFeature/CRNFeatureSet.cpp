@@ -1,4 +1,4 @@
-/* Copyright 2007-2014 Yann LEYDIER, INSA-Lyon
+/* Copyright 2007-2016 Yann LEYDIER, INSA-Lyon, ENS-Lyon
  * 
  * This file is part of libcrn.
  * 
@@ -37,7 +37,7 @@ using namespace crn;
  */
 SVector FeatureSet::Extract(Block &b)
 {
-	SVector fv = std::make_shared<Vector>(Protocol::Feature);
+	auto fv = std::make_shared<Vector>();
 	for (size_t tmp = 0; tmp < Size(); tmp++)
 		fv->PushBack(std::static_pointer_cast<FeatureExtractor>(At(tmp))->Extract(b));
 	return fv;
@@ -53,7 +53,7 @@ SVector FeatureSet::Extract(Block &b)
  */
 SVector FeatureSet::ExtractWithMask(Block &b, ImageIntGray &mask)
 {
-	SVector fv = std::make_shared<Vector>(Protocol::Feature);
+	auto fv = std::make_shared<Vector>();
 	for (size_t tmp = 0; tmp < Size(); tmp++)
 		fv->PushBack(std::static_pointer_cast<FeatureExtractor>(At(tmp))->ExtractWithMask(b, mask));
 	return fv;

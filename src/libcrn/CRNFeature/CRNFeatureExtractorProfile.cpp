@@ -1,4 +1,4 @@
-/* Copyright 2007-2015 Yann LEYDIER, INSA-Lyon
+/* Copyright 2007-2016 Yann LEYDIER, INSA-Lyon, ENS-Lyon
  * 
  * This file is part of libcrn.
  * 
@@ -80,7 +80,7 @@ SObject FeatureExtractorProfile::Extract(Block &b)
 			hp.Resize(size);
 		// append
 		if (!h)
-			h = hp.CloneAs<Histogram>();
+			h = CloneAs<Histogram>(hp);
 		else
 			h->Append(hp);
 	}
@@ -102,7 +102,7 @@ SObject FeatureExtractorProfile::Extract(Block &b)
 			hp.Resize(size);
 		// append
 		if (!h)
-			h = hp.CloneAs<Histogram>();
+			h = CloneAs<Histogram>(hp);
 		else
 			h->Append(hp);
 	}
@@ -124,7 +124,7 @@ SObject FeatureExtractorProfile::Extract(Block &b)
 			hp.Resize(size);
 		// append
 		if (!h)
-			h = hp.CloneAs<Histogram>();
+			h = CloneAs<Histogram>(hp);
 		else
 			h->Append(hp);
 	}
@@ -146,7 +146,7 @@ SObject FeatureExtractorProfile::Extract(Block &b)
 			hp.Resize(size);
 		// append
 		if (!h)
-			h = hp.CloneAs<Histogram>();
+			h = CloneAs<Histogram>(hp);
 		else
 			h->Append(hp);
 	}
@@ -162,7 +162,7 @@ SObject FeatureExtractorProfile::Extract(Block &b)
  */
 void FeatureExtractorProfile::deserialize(xml::Element &el)
 {
-	if (el.GetName() != GetClassName().CStr())
+	if (el.GetName() != GetClassName())
 	{
 		throw ExceptionInvalidArgument(StringUTF8("bool FeatureExtractorProfile::deserialize("
 					"xml::Element &el): ") + _("Wrong XML element."));
@@ -181,7 +181,7 @@ void FeatureExtractorProfile::deserialize(xml::Element &el)
  */
 xml::Element FeatureExtractorProfile::serialize(xml::Element &parent) const
 {
-	xml::Element el(parent.PushBackElement(GetClassName().CStr()));
+	xml::Element el(parent.PushBackElement(GetClassName()));
 	el.SetAttribute("directions", int(dirs));
 	el.SetAttribute("size", size);
 	el.SetAttribute("maxval", maxval);

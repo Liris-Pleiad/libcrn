@@ -1,4 +1,4 @@
-/* Copyright 2012-2016 CoReNum, INSA-Lyon
+/* Copyright 2012-2016 CoReNum, INSA-Lyon, ENS-Lyon
  *
  * This file is part of libcrn.
  *
@@ -233,7 +233,7 @@ SObject FeatureExtractorOverlappingAngleHistogram::ExtractWithMask(Block &b, Ima
  */
 void FeatureExtractorOverlappingAngleHistogram::deserialize(xml::Element &el)
 {
-	if (el.GetName() != GetClassName().CStr())
+	if (el.GetName() != GetClassName())
 	{
 		throw ExceptionInvalidArgument(StringUTF8("bool FeatureExtractorOverlappingAngleHistogram::deserialize("
 					"xml::Element &el): ") + _("Wrong XML element."));
@@ -251,7 +251,7 @@ void FeatureExtractorOverlappingAngleHistogram::deserialize(xml::Element &el)
  */
 xml::Element FeatureExtractorOverlappingAngleHistogram::serialize(xml::Element &parent) const
 {
-	xml::Element el(parent.PushBackElement(GetClassName().CStr()));
+	xml::Element el(parent.PushBackElement(GetClassName()));
 	el.SetAttribute("nbangles", nbangles);
 	el.SetAttribute("distance", distance);
 	return el;

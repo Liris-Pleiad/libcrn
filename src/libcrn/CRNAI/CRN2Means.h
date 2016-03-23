@@ -53,7 +53,7 @@ namespace crn
 			// operator<
 			protocol::HasLT<typename std::iterator_traits<ITER>::value_type>::value && 
 			// operators +, -, *(double)
-			protocol::IsVectorOverR<typename std::iterator_traits<ITER>::value_type>::value ,
+			IsVectorOverR<typename std::iterator_traits<ITER>::value_type>::value ,
 			int>::type = 0
 		>
 		std::pair<typename std::iterator_traits<ITER>::value_type, typename std::iterator_traits<ITER>::value_type> 

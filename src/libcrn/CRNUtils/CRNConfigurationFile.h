@@ -76,13 +76,13 @@ namespace crn
 			 */
 			template<typename T> void SetData(const String &key, T value)
 			{
-				data->Set(key, Data::ToCRN(value));
+				data.Set(key, Data::ToCRN(value));
 			}
 
 			/*! \brief Returns the path to the user configuration directory */
 			Path GetUserDirectory() const;
 		private:
-			SMap data; /*!< data storage */
+			Map data; /*!< data storage */
 			Path appname; /*!< name of the application */
 			Path filename; /*!< name of the configuration file */
 

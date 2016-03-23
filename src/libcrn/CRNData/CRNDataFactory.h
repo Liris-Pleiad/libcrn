@@ -45,7 +45,7 @@ namespace crn
 	/*! \brief	Factory element */
 	template<
 		class T,
-		typename std::enable_if<protocol::IsSerializable<T>::value, int>::type = 0
+		typename std::enable_if<IsSerializable<T>::value, int>::type = 0
 		>
 	class DataFactoryElement: public DataFactoryElementBase
 	{

@@ -46,9 +46,6 @@ namespace crn
 			MultivariateGaussianPDF(const MultivariateGaussianPDF &) = default;
 			MultivariateGaussianPDF(MultivariateGaussianPDF &&) = default;
 
-			/*! \brief Clones the model */
-			virtual UObject Clone() const override { return std::make_unique<MultivariateGaussianPDF>(*this); }
-			
 			/*! \brief Destructor */
 			virtual ~MultivariateGaussianPDF() override;
 
@@ -79,7 +76,7 @@ namespace crn
 			bool IsValid() const;
 			
 			/*! \brief Dumps a summary to a string */
-			virtual String ToString() const override;
+			String ToString() const;
 			        
 		private:
 			size_t dimension; /*!< the dimension of the data */
@@ -93,11 +90,8 @@ namespace crn
 			void updateAuxiliaryAttributes();
 	};
 
-	namespace protocol
-	{
-		template<> struct IsClonable<MultivariateGaussianPDF> : public std::true_type {};
-	}
-    
+	template<> struct IsClonable<MultivariateGaussianPDF> : public std::true_type {};
+   
 }
 
 #endif

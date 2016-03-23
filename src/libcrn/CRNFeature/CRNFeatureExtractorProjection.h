@@ -50,7 +50,7 @@ namespace crn
 			virtual ~FeatureExtractorProjection() override {}
 
 			/*! \brief Returns the id of the class */
-			virtual const String& GetClassName() const override { static const String cn(U"FeatureExtractorProjection"); return cn; }
+			virtual StringUTF8 GetClassName() const override { return "FeatureExtractorProjection"; }
 
 			/*! \brief Returns a CRNPROTOCOL_FEATURE object computed from a block */
 			virtual SObject Extract(Block &b) override;
@@ -68,10 +68,7 @@ namespace crn
 		CRN_DECLARE_CLASS_CONSTRUCTOR(FeatureExtractorProjection)
 		CRN_SERIALIZATION_CONSTRUCTOR(FeatureExtractorProjection)
 	};
-	namespace protocol
-	{
-		template<> struct IsSerializable<FeatureExtractorProjection> : public std::true_type {};
-	}
+	template<> struct IsSerializable<FeatureExtractorProjection> : public std::true_type {};
 
 	CRN_ALIAS_SMART_PTR(FeatureExtractorProjection)
 }

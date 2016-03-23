@@ -52,9 +52,6 @@ namespace crn
 			GaussianSCHMM& operator=(const GaussianSCHMM&) = default;
 			GaussianSCHMM(GaussianSCHMM&&) = default;
 			GaussianSCHMM& operator=(GaussianSCHMM&&) = default;
-		
-			/*! \brief Clone the model */
-			virtual UObject Clone() const override { return std::make_unique<GaussianSCHMM>(*this); }
 
 			/*! \brief Returns the number of states */
 			size_t GetNbStates() const noexcept { return nbStates; }
@@ -99,6 +96,7 @@ namespace crn
 			MatrixDouble beta(const MatrixDouble &observed) const;
 
 	};
+	template<> struct IsClonable<GaussianSCHMM> : public std::true_type {};
 
 	CRN_ALIAS_SMART_PTR(GaussianSCHMM)
 }

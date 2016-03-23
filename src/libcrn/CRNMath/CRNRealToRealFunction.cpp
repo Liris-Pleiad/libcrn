@@ -1,4 +1,4 @@
-/* Copyright 2008-2015 INSA Lyon
+/* Copyright 2008-2016 INSA-Lyon, ENS-Lyon
  * 
  * This file is part of libcrn.
  * 
@@ -44,7 +44,7 @@ RealToRealFunction::RealToRealFunction(const RealToRealFunction& F)
 	left_endpoint = F.GetLeftEndpoint();
 	right_endpoint = F.GetRightEndpoint();
 
-	image = F.GetImage()->CloneAs<MatrixDouble>();
+	image = CloneAs<MatrixDouble>(*F.GetImage());
 }
 
 /*!

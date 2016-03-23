@@ -1,4 +1,4 @@
-/* Copyright 2008-2014 INSA Lyon, CoReNum
+/* Copyright 2008-2016 INSA-Lyon, CoReNum, ENS-Lyon
  * 
  * This file is part of libcrn.
  * 
@@ -251,11 +251,11 @@ String UnivariateGaussianPDF::ToString() const
  * \throws	ExceptionDomain	wrong attribute
  * \param[in]	el	the element to read
  */
-void UnivariateGaussianPDF::deserialize(xml::Element &el)
+void UnivariateGaussianPDF::Deserialize(xml::Element &el)
 {
-	if (el.GetName() != GetClassName().CStr())
+	if (el.GetName() != "UnivariateGaussianPDF")
 	{
-		throw ExceptionInvalidArgument(StringUTF8("bool UnivariateGaussianPDF::deserialize(xml::Element &el): ") +
+		throw ExceptionInvalidArgument(StringUTF8("bool UnivariateGaussianPDF::Deserialize(xml::Element &el): ") +
 				_("Wrong XML element."));
 	}
 	double m = el.GetAttribute<double>("mean", false); // may throw
@@ -264,9 +264,9 @@ void UnivariateGaussianPDF::deserialize(xml::Element &el)
 	variance = v;
 }
 
-xml::Element UnivariateGaussianPDF::serialize(xml::Element &parent) const
+xml::Element UnivariateGaussianPDF::Serialize(xml::Element &parent) const
 {
-	xml::Element el(parent.PushBackElement(GetClassName().CStr()));
+	xml::Element el(parent.PushBackElement("UnivariateGaussianPDF"));
 	
 	el.SetAttribute("mean", mean);
 	el.SetAttribute("variance", variance);

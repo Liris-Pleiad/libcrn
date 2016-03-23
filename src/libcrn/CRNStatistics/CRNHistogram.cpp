@@ -1056,10 +1056,10 @@ void Histogram::Resize(size_t newsize)
  *
  * \param[in]	el	the element to load
  */
-void Histogram::deserialize(xml::Element &el)
+void Histogram::Deserialize(xml::Element &el)
 {
 	bins.clear();
-	if (el.GetValue() != GetClassName().CStr())
+	if (el.GetValue() != "Histogram")
 	{
 		throw ExceptionInvalidArgument(StringUTF8("bool Histogram::deserialize(xml::Element &el): ") +
 				_("Wrong XML element."));
@@ -1090,9 +1090,9 @@ void Histogram::deserialize(xml::Element &el)
  *
  * \return The newly created element
  */
-xml::Element Histogram::serialize(xml::Element &parent) const
+xml::Element Histogram::Serialize(xml::Element &parent) const
 {
-	xml::Element el(parent.PushBackElement(GetClassName().CStr()));
+	xml::Element el(parent.PushBackElement("Histogram"));
 	auto text = Data::ASCII85Encode(reinterpret_cast<const uint8_t * const>(bins.data()), bins.size() * sizeof(datatype::value_type));
 	xml::Text t(el.PushBackText(text, false));
 
@@ -1106,8 +1106,7 @@ xml::Element Histogram::serialize(xml::Element &parent) const
  */
 String Histogram::ToString() const
 {
-	String s(GetClassName());
-	s += U": ";
+	String s(U"Histogram: ");
 	for (auto & elem : bins)
 	{
 		s += elem;

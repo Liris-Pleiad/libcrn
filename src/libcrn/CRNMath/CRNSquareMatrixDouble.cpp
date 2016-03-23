@@ -1,4 +1,4 @@
-/* Copyright 2008-2015 INSA Lyon
+/* Copyright 2008-2016 INSA-Lyon, ENS-Lyon
  * 
  * This file is part of libcrn.
  * 
@@ -569,7 +569,7 @@ SquareMatrixDouble SquareMatrixDouble::MakeInverse() const
 				C[r][c] = Cofactor(r, c);
 
 		C.Transpose();
-		C.Mult(1.0 / dt);
+		C *= 1.0 / dt;
 
 		return C;
 	}

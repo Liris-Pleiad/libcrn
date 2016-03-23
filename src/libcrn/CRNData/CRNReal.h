@@ -23,7 +23,7 @@
 #define CRNREAL_HEADER
 
 #include <CRNObject.h>
-#include <CRNString.h>
+#include <CRNMath/CRNMath.h>
 
 namespace crn
 {
@@ -41,17 +41,12 @@ namespace crn
 			/*! \brief Default constructor*/
 			Real(double d = 0):val(d) {}
 			/*! \brief Destructor*/
-			virtual ~Real() override {}
+			virtual ~Real() override = default;
 
 			Real(const Real&) = default;
 			Real(Real&&) = default;
 			Real& operator=(const Real&) = default;
 			Real& operator=(Real&&) = default;
-
-			/*! \brief Dumps value to a string */
-			virtual String ToString() const override;
-			/*! \brief Creates a new object this one */
-			virtual UObject Clone() const override { return std::make_unique<Real>(val); }
 
 			/*! \brief Converts to double */
 			operator double() const noexcept { return val; }
@@ -65,21 +60,20 @@ namespace crn
 			bool operator<=(Real r) noexcept { return val <= r.val; }
 			bool operator>=(Real r) noexcept { return val >= r.val; }
 
+			/*! \brief Reads from an XML element */
+			void Deserialize(xml::Element &el);
+			/*! \brief Dumps to an XML element */
+			xml::Element Serialize(xml::Element &parent) const;
+
 		private:
 			double val; /*!< internal value storage */
-
-			/*! \brief Reads from an XML element */
-			virtual void deserialize(xml::Element &el) override;
-			/*! \brief Dumps to an XML element */
-			virtual xml::Element serialize(xml::Element &parent) const override;
 
 		CRN_DECLARE_CLASS_CONSTRUCTOR(Real)
 		CRN_SERIALIZATION_CONSTRUCTOR(Real)
 	};
-	namespace protocol
-	{
-		template<> struct IsSerializable<Real> : public std::true_type {};
-	}
+	template<> struct IsSerializable<Real> : public std::true_type {};
+	template<> struct IsClonable<Real> : public std::true_type {};
+
 	inline double Distance(const Real &r1, const Real &r2) noexcept { return Abs(r1 - r2); }
 }
 inline crn::Real operator+(crn::Real r1, const crn::Real &r2) noexcept { return r1 += r2; }

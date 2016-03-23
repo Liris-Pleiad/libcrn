@@ -41,9 +41,9 @@ DiscreteHMM::DiscreteHMM(const DiscreteHMM &h)
 	nbStates = h.GetNbStates();
 	nbSymbols = h.GetNbSymbols();
 	
-	stateTransitionProbability = h.GetStateTransitionProbability()->CloneAs<SquareMatrixDouble>();
-	stateGivenSymbolProbability = h.GetStateGivenSymbolProbability()->CloneAs<MatrixDouble>();
-	firstStateProbability = h.GetFirstStateProbability()->CloneAs<MatrixDouble>();
+	stateTransitionProbability = CloneAs<SquareMatrixDouble>(*h.GetStateTransitionProbability());
+	stateGivenSymbolProbability = CloneAs<MatrixDouble>(*h.GetStateGivenSymbolProbability());
+	firstStateProbability = CloneAs<MatrixDouble>(*h.GetFirstStateProbability());
 }
 
 /*!
@@ -78,7 +78,7 @@ DiscreteHMM::~DiscreteHMM()
  */
 void DiscreteHMM::SetStateTransitionProbability(const SquareMatrixDouble& a)
 {
-	stateTransitionProbability = a.CloneAs<SquareMatrixDouble>();
+	stateTransitionProbability = CloneAs<SquareMatrixDouble>(a);
 	nbStates = a.GetRows();
 }
 
@@ -89,7 +89,7 @@ void DiscreteHMM::SetStateTransitionProbability(const SquareMatrixDouble& a)
  */
 void DiscreteHMM::SetStateGivenSymbolProbability(const MatrixDouble& b)
 {
-	stateGivenSymbolProbability = b.CloneAs<MatrixDouble>();
+	stateGivenSymbolProbability = CloneAs<MatrixDouble>(b);
 	nbStates = b.GetRows();
 	nbSymbols = b.GetCols();
 }
@@ -101,7 +101,7 @@ void DiscreteHMM::SetStateGivenSymbolProbability(const MatrixDouble& b)
  */
 void DiscreteHMM::SetFirstStateProbability(const MatrixDouble& p)
 {
-	firstStateProbability = p.CloneAs<MatrixDouble>();
+	firstStateProbability = CloneAs<MatrixDouble>(p);
 	nbStates = p.GetRows();
 }
 
@@ -139,9 +139,9 @@ bool DiscreteHMM::IsValid() const
  */
 bool DiscreteHMM::operator==(const DiscreteHMM &other) const
 {
-	return ((other.GetStateTransitionProbability())->Equals(*stateTransitionProbability) && 
-	(other.GetStateGivenSymbolProbability())->Equals(*stateGivenSymbolProbability) && 
-	(other.GetFirstStateProbability())->Equals(*firstStateProbability));
+	return (*other.GetStateTransitionProbability() == *stateTransitionProbability) && 
+	(*other.GetStateGivenSymbolProbability() == *stateGivenSymbolProbability) && 
+	(*other.GetFirstStateProbability() == *firstStateProbability);
 }
 
 /*!
@@ -353,16 +353,16 @@ void DiscreteHMM::BaumWelchSingle(const MatrixInt& observed, size_t maxIter)
 
 	while (Continue)
 	{
-		SDiscreteHMM H = CloneAs<DiscreteHMM>();
+		SDiscreteHMM H = CloneAs<DiscreteHMM>(*this);
 
 		size_t i, j, k, t;
 		size_t N = nbStates;
 		size_t K = nbSymbols;
 		size_t T = observed.GetCols();
 
-		SquareMatrixDouble A = *stateTransitionProbability->CloneAs<SquareMatrixDouble>();
-		MatrixDouble B = *stateGivenSymbolProbability->CloneAs<MatrixDouble>();
-		MatrixDouble P = *firstStateProbability->CloneAs<MatrixDouble>();
+		SquareMatrixDouble A = *stateTransitionProbability;
+		MatrixDouble B = *stateGivenSymbolProbability;
+		MatrixDouble P = *firstStateProbability;
 
 		UMatrixDouble Alpha(alpha(observed));
 		UMatrixDouble Beta(beta(observed));
@@ -480,16 +480,16 @@ void DiscreteHMM::BaumWelchSingle(const MatrixInt& observed, size_t maxIter)
 			}
 		}
 
-		firstStateProbability = P.CloneAs<MatrixDouble>();
-		stateTransitionProbability = A.CloneAs<SquareMatrixDouble>();
-		stateGivenSymbolProbability = B.CloneAs<MatrixDouble>();
+		firstStateProbability = CloneAs<MatrixDouble>(P);
+		stateTransitionProbability = CloneAs<SquareMatrixDouble>(A);
+		stateGivenSymbolProbability = CloneAs<MatrixDouble>(B);
 
 		//////////////////////////////
 		// End for Baum-Welch step. //
 		//////////////////////////////
 
 		Count++;
-		Continue = !((this->Equals(*H)) || (Count > maxIter));
+		Continue = !((*this == *H) || (Count > maxIter));
 	}
 
 	// XXX I forgot if this thing is still useful !!!
@@ -514,7 +514,7 @@ void DiscreteHMM::BaumWelchMultiple(const MatrixInt& observationSet, size_t maxI
 
 	while (Continue)
 	{
-		SDiscreteHMM H = CloneAs<DiscreteHMM>();
+		SDiscreteHMM H = CloneAs<DiscreteHMM>(*this);
 
 		SSquareMatrixDouble A = stateTransitionProbability;
 		SMatrixDouble B = stateGivenSymbolProbability;
@@ -671,7 +671,7 @@ void DiscreteHMM::BaumWelchMultiple(const MatrixInt& observationSet, size_t maxI
 			}
 		}
 
-		CumulP->Mult(1.0 / double(nbSymbols));
+		*CumulP *= 1.0 / double(nbSymbols);
 
 		for (n = 0; n < N; n++)
 		{
@@ -690,7 +690,7 @@ void DiscreteHMM::BaumWelchMultiple(const MatrixInt& observationSet, size_t maxI
 
 		Count++;
 
-		Continue = !((Equals(*H)) || (Count > maxIter));
+		Continue = !((*this == *H) || (Count > maxIter));
 	}
 
 	// ???

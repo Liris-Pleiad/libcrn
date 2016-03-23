@@ -46,7 +46,7 @@ void Progress::Advance()
 			snprintf(buff, 1024, " %.2f %%", (double)f);
 			break;
 	}
-	disp = GetName() + buff;
+	disp = name + buff;
 	display(disp);
 }
 

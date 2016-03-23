@@ -57,7 +57,7 @@ namespace crn
 			virtual ~FeatureExtractorAngleZoning() override {}
 
 			/*! \brief Returns the id of the class */
-			virtual const String& GetClassName() const override { static const String cn(U"FeatureExtractorAngleZoning"); return cn; }
+			virtual StringUTF8 GetClassName() const override { return "FeatureExtractorAngleZoning"; }
 
 			/*! \brief Returns a CRNPROTOCOL_FEATURE object computed from a block */
 			virtual SObject Extract(Block &b) override;
@@ -77,10 +77,7 @@ namespace crn
 		CRN_DECLARE_CLASS_CONSTRUCTOR(FeatureExtractorAngleZoning)
 		CRN_SERIALIZATION_CONSTRUCTOR(FeatureExtractorAngleZoning)
 	};
-	namespace protocol
-	{
-		template<> struct IsSerializable<FeatureExtractorAngleZoning> : public std::true_type {};
-	}
+	template<> struct IsSerializable<FeatureExtractorAngleZoning> : public std::true_type {};
 
 	CRN_ALIAS_SMART_PTR(FeatureExtractorAngleZoning)
 }

@@ -27,11 +27,13 @@
 #include <sstream>
 #include <iomanip>
 #include <complex>
+#include <vector>
 #include <stdlib.h>
 
 namespace crn
 {
 	class String;
+	class Prop3;
 
 	/****************************************************************************/
 	/*! \brief A character string class
@@ -51,8 +53,8 @@ namespace crn
 			/* Constructors                                                       */
 			/**********************************************************************/
 			/*! \brief Default constructor (empty string) */
-			StringUTF8() {}
-			virtual ~StringUTF8() override {}
+			StringUTF8() = default;
+			virtual ~StringUTF8() override = default;
 			/*! \brief Constructor from a std string */
 			StringUTF8(const std::string &s):data(s) {}
 			/*! \brief Constructor from a std string */
@@ -93,18 +95,6 @@ namespace crn
 			StringUTF8(StringUTF8&&) = default;
 			StringUTF8& operator=(StringUTF8&&) = default;
 
-			/**********************************************************************/
-			/* Protocols                                                          */
-			/**********************************************************************/
-			/*! \brief This a Clonable, Serializable and POSet object */
-			virtual Protocol GetClassProtocols() const noexcept override { return crn::Protocol::Clonable|crn::Protocol::Serializable|crn::Protocol::POSet; }
-			/*! \brief Returns the id of the class */
-			virtual const String& GetClassName() const override;
-			/*! \brief Copies to wide string */
-			virtual String ToString() const override;
-			/*! \brief Creates another string from this one */
-			virtual UObject Clone() const override { return std::make_unique<StringUTF8>(*this); }
-			
 			/**********************************************************************/
 			/* Typecast methods                                                   */
 			/**********************************************************************/
@@ -232,34 +222,24 @@ namespace crn
 			/*! \brief Generates an almost unique id */
 			static crn::StringUTF8 CreateUniqueId(size_t len = 8);
 
-		private:
-
-			// CRNPROTOCOL_SERIALIZABLE
 			/*! \brief Initializes the object from an XML element. Unsafe. */
-			virtual void deserialize(xml::Element &el) override;
+			void Deserialize(xml::Element &el);
 			/*! \brief Dumps the object to an XML element. Unsafe. */
-			virtual xml::Element serialize(xml::Element &parent) const override;
-			// CRNPROTOCOL_POSET
-			/*! \brief UNSAFE Greater or Equal */
-			virtual Prop3 ge(const Object &l) const override;
-			/*! \brief UNSAFE Lower or Equal */
-			virtual Prop3 le(const Object &l) const override;
+			xml::Element Serialize(xml::Element &parent) const;
+		private:
 
 			/*! \brief Internal. */
 			template<typename T> T convertTo() const { std::stringstream ss(data); T val; ss >> val; return val; }
 			/*! \brief Internal. */
 			template<typename T> void convertFrom(T val) { std::stringstream ss; ss << std::setprecision(Precision()) << val; data = ss.str(); }
 
-
 			std::string data; /*!< internal string */
 		
 		CRN_DECLARE_CLASS_CONSTRUCTOR(StringUTF8)
 		CRN_SERIALIZATION_CONSTRUCTOR(StringUTF8)
 	};
-	namespace protocol
-	{
-		template<> struct IsSerializable<StringUTF8> : public std::true_type {};
-	}
+	template<> struct IsSerializable<StringUTF8> : public std::true_type {};
+	template<> struct IsClonable<StringUTF8> : public std::true_type {};
 
 	/*! \addtogroup string */
 	/*@{*/
@@ -270,6 +250,12 @@ namespace crn
 	inline bool operator!=(const StringUTF8 &s1, const StringUTF8 &s2) { return s1.Std() != s2.Std(); }
 	/*! \brief Compares two strings */
 	inline bool operator<(const StringUTF8 &s1, const StringUTF8 &s2) { return s1.Std() < s2.Std(); }
+	/*! \brief Compares two strings */
+	inline bool operator>(const StringUTF8 &s1, const StringUTF8 &s2) { return s1.Std() > s2.Std(); }
+	/*! \brief Compares two strings */
+	inline bool operator<=(const StringUTF8 &s1, const StringUTF8 &s2) { return s1.Std() <= s2.Std(); }
+	/*! \brief Compares two strings */
+	inline bool operator>=(const StringUTF8 &s1, const StringUTF8 &s2) { return s1.Std() >= s2.Std(); }
 	/*! \brief Adds two strings */
 	inline StringUTF8 operator+(const StringUTF8 &s1, const StringUTF8 &s2) { return StringUTF8(s1.Std() + s2.Std()); }
 
@@ -310,6 +296,5 @@ template<typename traits> inline std::basic_ostream<char, traits>& operator<<(st
 	strm << s.CStr();
 	return strm;
 }
-
 
 #endif

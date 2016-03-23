@@ -1,4 +1,4 @@
-/* Copyright 2012 CoReNum
+/* Copyright 2012-2016 CoReNum, ENS-Lyon
  * 
  * This file is part of libcrn.
  * 
@@ -69,11 +69,11 @@ double LinearInterpolation::operator[](double x) const
  *
  * \param[in]	el	the XML element to read
  */
-void LinearInterpolation::deserialize(xml::Element &el)
+void LinearInterpolation::Deserialize(xml::Element &el)
 {
-	if (el.GetName() != GetClassName().CStr())
+	if (el.GetName() != "LinearInterpolation")
 	{
-		throw ExceptionInvalidArgument(StringUTF8("bool LinearInterpolation::deserialize(xml::Element &el): ") + 
+		throw ExceptionInvalidArgument(StringUTF8("void LinearInterpolation::Deserialize(xml::Element &el): ") + 
 				_("Wrong XML element."));
 	}
 
@@ -92,9 +92,9 @@ void LinearInterpolation::deserialize(xml::Element &el)
  * \param[in]	parent	the element in which the new element will be stored
  * \return	the newly created element
  */
-xml::Element LinearInterpolation::serialize(xml::Element &parent) const
+xml::Element LinearInterpolation::Serialize(xml::Element &parent) const
 {
-	xml::Element el(parent.PushBackElement(GetClassName().CStr()));
+	xml::Element el(parent.PushBackElement("LinearInterpolation"));
 
 	for (const Point2DDouble &p : data)
 		p.Serialize(el);

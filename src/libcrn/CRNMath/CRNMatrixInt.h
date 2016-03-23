@@ -47,12 +47,10 @@ namespace crn
 			MatrixInt(MatrixInt &&) = default;
 
 			/*! \brief Destructor */
-			virtual ~MatrixInt() override {}
+			virtual ~MatrixInt() override = default;
 			
 			MatrixInt& operator=(const MatrixInt &) = default;
 			MatrixInt& operator=(MatrixInt &&) = default;
-
-			virtual UObject Clone() const override { return std::make_unique<MatrixInt>(*this); }
 
 			// Special matrix constructors
 			/*! \brief Creates a Gaussian mask given standard deviation */
@@ -89,11 +87,6 @@ namespace crn
 		using DiffType = MatrixInt;
 		using DecimalType = MatrixInt;
 	};
-
-	namespace protocol
-	{
-		template<> struct IsClonable<MatrixInt> : public std::true_type {};
-	}
 
 }
 #endif

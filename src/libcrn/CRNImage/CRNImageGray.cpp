@@ -810,12 +810,12 @@ Angle<Radian> crn::EstimateSkew(const ImageGray &img)
  */
 Gray2BWThreshold::Gray2BWThreshold(uint8_t t)
 {
-	SetUserData(U"threshold", std::make_shared<Int>(t));
+	UserData.Set(U"threshold", std::make_shared<Int>(t));
 }
 
 ImageBW Gray2BWThreshold::Binarize(const ImageGray &img)
 {
-	return Threshold(img, uint8_t(*std::static_pointer_cast<Int>(GetUserData(U"threshold"))));
+	return Threshold(img, uint8_t(*std::static_pointer_cast<Int>(UserData[U"threshold"])));
 }
 
 /*! Default constructor
@@ -824,14 +824,14 @@ ImageBW Gray2BWThreshold::Binarize(const ImageGray &img)
  */
 Gray2BWNiblack::Gray2BWNiblack(size_t halfwin, double k)
 {
-	SetUserData(U"halfwin", std::make_shared<Int>(int(halfwin)));
-	SetUserData(U"k", std::make_shared<Real>(k));
+	UserData.Set(U"halfwin", std::make_shared<Int>(int(halfwin)));
+	UserData.Set(U"k", std::make_shared<Real>(k));
 }
 
 ImageBW Gray2BWNiblack::Binarize(const ImageGray &img)
 {
-	return Niblack(img, *std::static_pointer_cast<Int>(GetUserData(U"halfwin")), 
-			*std::static_pointer_cast<Real>(GetUserData(U"k")));
+	return Niblack(img, *std::static_pointer_cast<Int>(UserData[U"halfwin"]), 
+			*std::static_pointer_cast<Real>(UserData[U"k"]));
 }
 
 /*! Default constructor
@@ -840,14 +840,14 @@ ImageBW Gray2BWNiblack::Binarize(const ImageGray &img)
  */
 Gray2BWSauvola::Gray2BWSauvola(size_t halfwin, double k)
 {
-	SetUserData(U"halfwin", std::make_shared<Int>(int(halfwin)));
-	SetUserData(U"k", std::make_shared<Real>(k));
+	UserData.Set(U"halfwin", std::make_shared<Int>(int(halfwin)));
+	UserData.Set(U"k", std::make_shared<Real>(k));
 }
 
 ImageBW Gray2BWSauvola::Binarize(const ImageGray &img)
 {
-	return Sauvola(img, *std::static_pointer_cast<Int>(GetUserData(U"halfwin")), 
-			*std::static_pointer_cast<Real>(GetUserData(U"k")));
+	return Sauvola(img, *std::static_pointer_cast<Int>(UserData[U"halfwin"]), 
+			*std::static_pointer_cast<Real>(UserData[U"k"]));
 }
 
 /*! Default constructor
@@ -856,14 +856,14 @@ ImageBW Gray2BWSauvola::Binarize(const ImageGray &img)
  */
 Gray2BWkMeansHisto::Gray2BWkMeansHisto(size_t classes, size_t black_classes)
 {
-	SetUserData(U"classes", std::make_shared<Int>(int(classes)));
-	SetUserData(U"black_classes", std::make_shared<Int>(int(black_classes)));
+	UserData.Set(U"classes", std::make_shared<Int>(int(classes)));
+	UserData.Set(U"black_classes", std::make_shared<Int>(int(black_classes)));
 }
 
 ImageBW Gray2BWkMeansHisto::Binarize(const ImageGray &img)
 {
-	return kMeansHisto(img, *std::static_pointer_cast<Int>(GetUserData(U"classes")), 
-			*std::static_pointer_cast<Int>(GetUserData(U"black_classes")));
+	return kMeansHisto(img, *std::static_pointer_cast<Int>(UserData[U"classes"]), 
+			*std::static_pointer_cast<Int>(UserData[U"black_classes"]));
 }
 
 /*! Default constructor
@@ -871,12 +871,12 @@ ImageBW Gray2BWkMeansHisto::Binarize(const ImageGray &img)
  */
 Gray2BWLocalMin::Gray2BWLocalMin(size_t area)
 {
-	SetUserData(U"area", std::make_shared<Int>(int(area)));
+	UserData.Set(U"area", std::make_shared<Int>(int(area)));
 }
 
 ImageBW Gray2BWLocalMin::Binarize(const ImageGray &img)
 {
-	return LocalMin(img, *std::static_pointer_cast<Int>(GetUserData(U"area")));
+	return LocalMin(img, *std::static_pointer_cast<Int>(UserData[U"area"]));
 }
 
 /*! Default constructor
@@ -884,12 +884,12 @@ ImageBW Gray2BWLocalMin::Binarize(const ImageGray &img)
  */
 Gray2BWLocalMax::Gray2BWLocalMax(size_t area)
 {
-	SetUserData(U"area", std::make_shared<Int>(int(area)));
+	UserData.Set(U"area", std::make_shared<Int>(int(area)));
 }
 
 ImageBW Gray2BWLocalMax::Binarize(const ImageGray &img)
 {
-	return LocalMax(img, *std::static_pointer_cast<Int>(GetUserData(U"area")));
+	return LocalMax(img, *std::static_pointer_cast<Int>(UserData[U"area"]));
 }
 
 /*! Default constructor

@@ -44,7 +44,7 @@ namespace crn
 	 * \version 0.3
 	 * \ingroup classify
 	 */
-	class Classifier : public Object
+	class Classifier
 	{
 		public:
 			/*! \brief Sets the model of the classifier */

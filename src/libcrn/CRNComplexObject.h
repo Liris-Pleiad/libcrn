@@ -1,4 +1,4 @@
-/* Copyright 2006-2014 INSA Lyon, CoReNum
+/* Copyright 2006-2016 INSA Lyon, CoReNum, ENS-Lyon
  * 
  * This file is part of libcrn.
  * 
@@ -31,8 +31,8 @@
 
 namespace crn
 {
-	class ComplexObject;
-	CRN_ALIAS_SMART_PTR(ComplexObject)
+	class Savable;
+	CRN_ALIAS_SMART_PTR(Savable)
 }
 namespace crn
 {
@@ -55,24 +55,24 @@ namespace crn
 	 * \version 0.2
 	 * \ingroup base
 	 */
-	class ComplexObject: public Object
+	class Savable : public Object
 	{
 		/**************************************************************************/
 		/* Complex object interface                                               */
 		/**************************************************************************/
 		public:
 			/*! \brief Default constructor */
-			ComplexObject(const String &s = U"");
+			Savable(const String &s = U"");
 			/*! \brief Destructor */
-			virtual ~ComplexObject() override;
+			virtual ~Savable();
 
 			/*! \brief No copy construction allowed */
-			ComplexObject(const ComplexObject&) = delete;
+			Savable(const Savable&) = delete;
 			/*! \brief No assignment allowed */
-			ComplexObject& operator=(const ComplexObject&) = delete;
+			Savable& operator=(const Savable&) = delete;
 
-			ComplexObject(ComplexObject&&) noexcept;
-			ComplexObject& operator=(ComplexObject&&c);
+			Savable(Savable&&) noexcept;
+			Savable& operator=(Savable&&c);
 
 			/*! \brief Returns the name of the object */
 			const String& GetName() const { return name; }
@@ -96,9 +96,6 @@ namespace crn
 			/*! \brief Deletes all user data entries */
 			void ClearUserData();
 
-			/*! \brief Converts object to string */
-			virtual String ToString() const override;
-
 		private:
 			String name; /*!< The name of the object */
 			std::unique_ptr<Map> user_data; /*!< A map of user-set objects */
@@ -108,7 +105,7 @@ namespace crn
 		/**************************************************************************/
 		public:
 			/*! \brief Constructor from file name */
-			ComplexObject(const String &s, const Path &fname);
+			Savable(const String &s, const Path &fname);
 			/*! \brief Loads the object from an XML file (Safe) */
 			void Load(const Path &fname);
 			/*! \brief Saves the object to an XML file (Safe) */
@@ -135,12 +132,11 @@ namespace crn
 		/**************************************************************************/
 		/* Serializable protocol                                                  */
 		/**************************************************************************/
-		protected:
+		public:
 			/*! \brief Initializes some internal data from an XML element. */
-			virtual void deserialize_internal_data(xml::Element &el) override;
+			void deserialize_internal_data(xml::Element &el);
 			/*! \brief Dumps some internal data to an XML element. */
-			virtual void serialize_internal_data(xml::Element &el) const override;
-
+			void serialize_internal_data(xml::Element &el) const;
 	};
 }
 

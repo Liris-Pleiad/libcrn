@@ -640,7 +640,7 @@ namespace crn
 			/*! \brief Default constructor */
 			Gray2BWThreshold(uint8_t t = 127);
 			virtual ~Gray2BWThreshold() override { }
-			virtual const String& GetClassName() const override { static const String cn(U"Gray2BWThreshold"); return cn; }
+			virtual StringUTF8 GetClassName() const override { return "Gray2BWThreshold"; }
 			virtual ImageBW Binarize(const ImageGray &img) override;
 			CRN_DECLARE_CLASS_CONSTRUCTOR(Gray2BWThreshold)
 				CRN_SERIALIZATION_CONSTRUCTOR(Gray2BWThreshold)
@@ -655,7 +655,7 @@ namespace crn
 			/*! \brief Default constructor */
 			Gray2BWNiblack(size_t halfwin = 3, double k = 0.5);
 			virtual ~Gray2BWNiblack() override { }
-			virtual const String& GetClassName() const override { static const String cn(U"Gray2BWNiblack"); return cn; }
+			virtual StringUTF8 GetClassName() const override { return "Gray2BWNiblack"; }
 			virtual ImageBW Binarize(const ImageGray &img) override;
 			CRN_DECLARE_CLASS_CONSTRUCTOR(Gray2BWNiblack)
 				CRN_SERIALIZATION_CONSTRUCTOR(Gray2BWNiblack)
@@ -670,7 +670,7 @@ namespace crn
 			/*! \brief Default constructor */
 			Gray2BWSauvola(size_t halfwin = 3, double k = 0.5);
 			virtual ~Gray2BWSauvola() override { }
-			virtual const String& GetClassName() const override { static const String cn(U"Gray2BWSauvola"); return cn; }
+			virtual StringUTF8 GetClassName() const override { return "Gray2BWSauvola"; }
 			virtual ImageBW Binarize(const ImageGray &img) override;
 			CRN_DECLARE_CLASS_CONSTRUCTOR(Gray2BWSauvola)
 				CRN_SERIALIZATION_CONSTRUCTOR(Gray2BWSauvola)
@@ -685,7 +685,7 @@ namespace crn
 			/*! \brief Default constructor */
 			Gray2BWkMeansHisto(size_t classes = 5, size_t black_classes = 3);
 			virtual ~Gray2BWkMeansHisto() override { }
-			virtual const String& GetClassName() const override { static const String cn(U"Gray2BWkMeansHisto"); return cn; }
+			virtual StringUTF8 GetClassName() const override { return "Gray2BWkMeansHisto"; }
 			virtual ImageBW Binarize(const ImageGray &img) override;
 			CRN_DECLARE_CLASS_CONSTRUCTOR(Gray2BWkMeansHisto)
 				CRN_SERIALIZATION_CONSTRUCTOR(Gray2BWkMeansHisto)
@@ -700,7 +700,7 @@ namespace crn
 			/*! \brief Default constructor */
 			Gray2BWLocalMin(size_t area = 1);
 			virtual ~Gray2BWLocalMin() override { }
-			virtual const String& GetClassName() const override { static const String cn(U"Gray2BWLocalMin"); return cn; }
+			virtual StringUTF8 GetClassName() const override { return "Gray2BWLocalMin"; }
 			virtual ImageBW Binarize(const ImageGray &img) override;
 			CRN_DECLARE_CLASS_CONSTRUCTOR(Gray2BWLocalMin)
 				CRN_SERIALIZATION_CONSTRUCTOR(Gray2BWLocalMin)
@@ -715,7 +715,7 @@ namespace crn
 			/*! \brief Default constructor */
 			Gray2BWLocalMax(size_t area = 1);
 			virtual ~Gray2BWLocalMax() override { }
-			virtual const String& GetClassName() const override { static const String cn(U"Gray2BWLocalMax"); return cn; }
+			virtual StringUTF8 GetClassName() const override { return "Gray2BWLocalMax"; }
 			virtual ImageBW Binarize(const ImageGray &img) override;
 			CRN_DECLARE_CLASS_CONSTRUCTOR(Gray2BWLocalMax)
 				CRN_SERIALIZATION_CONSTRUCTOR(Gray2BWLocalMax)
@@ -730,7 +730,7 @@ namespace crn
 			/*! \brief Default constructor */
 			Gray2BWFisher();
 			virtual ~Gray2BWFisher() override { }
-			virtual const String& GetClassName() const override { static const String cn(U"Gray2BWFisher"); return cn; }
+			virtual StringUTF8 GetClassName() const override { return "Gray2BWFisher"; }
 			virtual ImageBW Binarize(const ImageGray &img) override;
 			CRN_DECLARE_CLASS_CONSTRUCTOR(Gray2BWFisher)
 				CRN_SERIALIZATION_CONSTRUCTOR(Gray2BWFisher)
@@ -745,7 +745,7 @@ namespace crn
 			/*! \brief Default constructor */
 			Gray2BWEntropy();
 			virtual ~Gray2BWEntropy() override { }
-			virtual const String& GetClassName() const override { static const String cn(U"Gray2BWEntropy"); return cn; }
+			virtual StringUTF8 GetClassName() const override { return "Gray2BWEntropy"; }
 			virtual ImageBW Binarize(const ImageGray &img) override;
 			CRN_DECLARE_CLASS_CONSTRUCTOR(Gray2BWEntropy)
 				CRN_SERIALIZATION_CONSTRUCTOR(Gray2BWEntropy)
@@ -760,25 +760,22 @@ namespace crn
 			/*! \brief Default constructor */
 			Gray2BWOtsu();
 			virtual ~Gray2BWOtsu() override { }
-			virtual const String& GetClassName() const override { static const String cn(U"Gray2BWOtsu"); return cn; }
+			virtual StringUTF8 GetClassName() const override { return "Gray2BWOtsu"; }
 			virtual ImageBW Binarize(const ImageGray &img) override;
 			CRN_DECLARE_CLASS_CONSTRUCTOR(Gray2BWOtsu)
 				CRN_SERIALIZATION_CONSTRUCTOR(Gray2BWOtsu)
 	};
 
-	namespace protocol
-	{
-		template<> struct IsSerializable<Gray2BW> : public std::true_type {};
-		template<> struct IsSerializable<Gray2BWThreshold> : public std::true_type {};
-		template<> struct IsSerializable<Gray2BWNiblack> : public std::true_type {};
-		template<> struct IsSerializable<Gray2BWSauvola> : public std::true_type {};
-		template<> struct IsSerializable<Gray2BWkMeansHisto> : public std::true_type {};
-		template<> struct IsSerializable<Gray2BWLocalMin> : public std::true_type {};
-		template<> struct IsSerializable<Gray2BWLocalMax> : public std::true_type {};
-		template<> struct IsSerializable<Gray2BWFisher> : public std::true_type {};
-		template<> struct IsSerializable<Gray2BWEntropy> : public std::true_type {};
-		template<> struct IsSerializable<Gray2BWOtsu> : public std::true_type {};
-	}
+	template<> struct IsSerializable<Gray2BW> : public std::true_type {};
+	template<> struct IsSerializable<Gray2BWThreshold> : public std::true_type {};
+	template<> struct IsSerializable<Gray2BWNiblack> : public std::true_type {};
+	template<> struct IsSerializable<Gray2BWSauvola> : public std::true_type {};
+	template<> struct IsSerializable<Gray2BWkMeansHisto> : public std::true_type {};
+	template<> struct IsSerializable<Gray2BWLocalMin> : public std::true_type {};
+	template<> struct IsSerializable<Gray2BWLocalMax> : public std::true_type {};
+	template<> struct IsSerializable<Gray2BWFisher> : public std::true_type {};
+	template<> struct IsSerializable<Gray2BWEntropy> : public std::true_type {};
+	template<> struct IsSerializable<Gray2BWOtsu> : public std::true_type {};
 
 	CRN_ALIAS_SMART_PTR(Gray2BW)
 

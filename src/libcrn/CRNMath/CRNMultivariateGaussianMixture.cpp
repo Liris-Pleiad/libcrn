@@ -1,4 +1,4 @@
-/* Copyright 2008-2016 INSA Lyon, CoReNum
+/* Copyright 2008-2016 INSA Lyon, CoReNum, ENS-Lyon
  * 
  * This file is part of libcrn.
  * 
@@ -449,14 +449,14 @@ unsigned int MultivariateGaussianMixture::EM(const MatrixDouble& patterns, size_
 					for (size_t c = 0; c < dimension; ++c)
 						m[r][c] = xi[r] * xi[c];
 
-				m.Mult(pik);
-				sigma.Add(m);
+				m *= pik;
+				sigma += m;
 			}
 
 			double invCumulPk = 1.0 / cumulPk;
 
-			mu.Mult(invCumulPk);
-			sigma.Mult(invCumulPk);
+			mu *= invCumulPk;
+			sigma *= invCumulPk;
 
 			members[k].second = double(cumulPk) / double(nbPatterns);
 			members[k].first = MultivariateGaussianPDF(mu, sigma);			
@@ -626,14 +626,14 @@ unsigned int MultivariateGaussianMixture::EM(const std::vector<std::vector<doubl
                     for (size_t c = 0; c < dimension; ++c)
                         m[r][c] = xi[r] * xi[c];
                 
-                m.Mult(pik);
-                sigma.Add(m);
+                m *= pik;
+                sigma += m;
             }
             
             double invCumulPk = 1.0 / cumulPk;
             
-            mu.Mult(invCumulPk);
-            sigma.Mult(invCumulPk);
+            mu *= invCumulPk;
+            sigma *= invCumulPk;
             
             members[k].second = double(cumulPk) / double(nbPatterns);
             members[k].first = MultivariateGaussianPDF(mu, sigma);			

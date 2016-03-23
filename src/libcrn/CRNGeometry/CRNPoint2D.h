@@ -55,10 +55,10 @@ namespace crn
 			Point2D(const Point2D &) = default;
 			Point2D(Point2D &&) = default;
 			/*! \brief Destructor */
-			virtual ~Point2D() override {}
-			
+			virtual ~Point2D() override = default;
+
 			/*! \brief Converts object to string */
-			virtual String ToString() const override { return String(U'(') + X + String(U" × ") + Y + String(U')'); }
+			String ToString() const { return String(U'(') + X + String(U" × ") + Y + String(U')'); }
 
 			value_type X, Y; /*!< The coordinates */
 
@@ -98,6 +98,8 @@ namespace crn
 					Direction direction; /*!< direction of the sort */
 			};
 	};
+	template<typename T> struct IsClonable<Point2D<T>>: public std::true_type {};
+
 	template<typename T> double Distance(const Point2D<T> &p1, const Point2D<T> &p2)
 	{
 		return 0; // TODO

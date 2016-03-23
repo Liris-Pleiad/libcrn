@@ -40,16 +40,13 @@ namespace crn
 	{
 		public:
 			/*! \brief Default constructor */
-			FeatureSet():Vector(Protocol::Serializable) {}
+			FeatureSet() = default;
 
 			FeatureSet(const FeatureSet&) = delete;
 			FeatureSet(FeatureSet&&) = default;
 			FeatureSet& operator=(const FeatureSet&) = delete;
 			FeatureSet& operator=(FeatureSet&&) = default;
-			virtual ~FeatureSet() override {}
-
-			/*! \brief Returns the id of the class */
-			virtual const String& GetClassName() const override { static const String cn(U"FeatureSet"); return cn; }
+			virtual ~FeatureSet() override = default;
 
 			/*! \brief Extracts all the features of the set from a block */
 			SVector Extract(Block &b);
@@ -57,13 +54,11 @@ namespace crn
 			SVector ExtractWithMask(Block &b, ImageIntGray &mask);
 	
 		CRN_DECLARE_CLASS_CONSTRUCTOR(FeatureSet)
+			// TODO override Serializable
 		public:
 			FeatureSet(xml::Element &el):Vector(el) { }
 	};
-	namespace protocol
-	{
-		template<> struct IsSerializable<FeatureSet> : public std::true_type {};
-	}
+	template<> struct IsSerializable<FeatureSet> : public std::true_type {};
 
 	CRN_ALIAS_SMART_PTR(FeatureSet)
 }

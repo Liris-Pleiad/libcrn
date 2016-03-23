@@ -67,7 +67,7 @@ if(CMAKE_COMPILER_IS_GNUCXX)
 		set(ENABLE_CXX11 "-std=c++0x")
 	endif()
 
-	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${ENABLE_CXX11}")
+	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${ENABLE_CXX11} -Wfatal-errors")
 	message("GNUCXX compiler detected (with ${ENABLE_CXX11} activated)")
 endif()
 #------------------------------------------------------------------------------
@@ -83,7 +83,7 @@ if(CMAKE_COMPILER_IS_CLANGXX)
 
 #	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${ENABLE_CXX11} -Qunused-arguments")
 #	set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${ENABLE_CXX11} -Qunused-arguments")
-	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${ENABLE_CXX11}")
+	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${ENABLE_CXX11} -Wfatal-errors")
 	set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${ENABLE_CXX11}")
 	message("Clang compiler detected (with ${ENABLE_CXX11} activated)")
 endif()

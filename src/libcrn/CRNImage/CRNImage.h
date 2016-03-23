@@ -1,4 +1,4 @@
-/* Copyright 2006-2015 Yann LEYDIER, INSA-Lyon, CoReNum
+/* Copyright 2006-2016 Yann LEYDIER, INSA-Lyon, CoReNum, ENS-Lyon
  * 
  * This file is part of libcrn.
  * 
@@ -142,7 +142,7 @@ namespace crn
 			Image(Image &&img) = default;
 
 			/*! \brief Destructor */
-			virtual ~Image() override {}
+			virtual ~Image() override = default;
 
 			/*! \brief Copy operator */
 			Image& operator=(const Image &img) = default;
@@ -153,8 +153,6 @@ namespace crn
 			/*! \brief Move operator */
 			Image& operator=(Image &&img) = default;
 
-			/*! \brief Clones the image */
-			virtual UObject Clone() const override { return std::make_unique<Image>(*this); }
 			/*! \brief Swaps two images */
 			void Swap(Image &other)
 			{
@@ -266,10 +264,7 @@ namespace crn
 		protected:
 			std::vector<pixel_type> pixels; /*!< the pixels */
 	};
-	namespace protocol
-	{
-		template<class T> struct IsClonable<Image<T>>: public std::true_type {};
-	}
+	template<class T> struct IsClonable<Image<T>>: public std::true_type {};
 
 	/**************************************************************************************
 	 * Characterization

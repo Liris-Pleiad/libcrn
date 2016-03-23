@@ -36,7 +36,7 @@ namespace crn
 	 * \version 0.1
 	 * \ingroup	utils
 	 */
-	class ConfigElement: public Object
+	class ConfigElement
 	{
 		public:
 			/*! \brief Default constructor for serialization. */
@@ -59,11 +59,7 @@ namespace crn
 			ConfigElement(ConfigElement&&) = default;
 			ConfigElement& operator=(const ConfigElement&) = delete;
 			ConfigElement& operator=(ConfigElement&&) = default;
-			virtual ~ConfigElement() override {}
-
-			virtual const String& GetClassName() const override { static const String cn(U"ConfigElement"); return cn; }
-			/*! \brief The class is serializable */
-			virtual Protocol GetClassProtocols() const noexcept override { return Protocol::Serializable; }
+			~ConfigElement() = default;
 
 			/*! \brief Gets the inner type of data in the element */
 			String GetType() const;
@@ -115,7 +111,7 @@ namespace crn
 			{
 				const String t(GetType());
 				if (!minValue)
-					minValue = value->Clone();
+					minValue = Clone(*value);
 				setValue(val, minValue);
 			}
 			/*! \brief Tells if the element has max value */
@@ -142,7 +138,7 @@ namespace crn
 			{
 				const String t(GetType());
 				if (!maxValue)
-					maxValue = value->Clone();
+					maxValue = Clone(*value);
 				setValue(val, maxValue);
 			}
 
@@ -176,7 +172,7 @@ namespace crn
 			 */
 			template<typename T> void AddAllowedValue(T val)
 			{
-				allowedValues.PushBack(value->Clone());
+				allowedValues.PushBack(Clone(*value));
 				setValue(val, allowedValues.Back());
 			}
 
@@ -185,39 +181,44 @@ namespace crn
 			 * \param[in]	val	the value to convert
 			 * \param[in]	value	the placeholder
 			 */
-			template<typename T> static void setValue(T val, SObject value)
+			template<typename T> static void setValue(T val, const SObject &value)
 			{
 				const String valstring(val);
-				const String t(value->GetClassName());
-				if (t == U"Int")
+				auto i = std::static_pointer_cast<Int>(value);
+				if (i)
 				{
-					auto i = std::static_pointer_cast<Int>(value);
 					*i = valstring.ToInt();
+					return;
 				}
-				else if (t == U"Real")
+				auto r = std::static_pointer_cast<Real>(value);
+				if (r)
 				{
-					auto r = std::static_pointer_cast<Real>(value);
 					*r = valstring.ToDouble();
+					return;
 				}
-				else if (t == U"Prop3")
+				auto p = std::static_pointer_cast<Prop3>(value);
+				if (p)
 				{
-					auto p = std::static_pointer_cast<Prop3>(value);
 					*p = valstring.ToProp3();
+					return;
 				}
-				else if (t == U"String")
+				auto s = std::static_pointer_cast<String>(value);
+				if (s)
 				{
-					auto s = std::static_pointer_cast<String>(value);
 					*s = valstring;
+					return;
 				}
-				else if (t == U"StringUTF8")
+				auto su = std::static_pointer_cast<StringUTF8>(value);
+				if (su)
 				{
-					auto s = std::static_pointer_cast<StringUTF8>(value);
-					*s = valstring.CStr();
+					*su = valstring.CStr();
+					return;
 				}
-				else if (t == U"Path")
+				auto pa = std::static_pointer_cast<Path>(value);
+				if (pa)
 				{
-					auto s = std::static_pointer_cast<Path>(value);
-					*s = valstring.CStr();
+					*pa = valstring.CStr();
+					return;
 				}
 			}
 			

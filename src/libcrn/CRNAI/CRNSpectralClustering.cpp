@@ -180,8 +180,8 @@ SpectralClustering::SpectralClustering(const SquareMatrixDouble &w)
 		d[r][r] = s;
 	}
     auto l = d;
-	l.Mult(w);
-	l.Mult(d);
+	l *= w;
+	l *= d;
 
 	eigenpairs = l.MakeTQLIEigensystem(1000);
 }

@@ -157,11 +157,19 @@ namespace std
 
 namespace crn
 {
-	template<typename T> inline std::shared_ptr<T> MoveShared(T &&v, typename std::enable_if<!std::is_lvalue_reference<T>::value>::type *dummy = nullptr)
+	template<
+		typename T,
+		typename std::enable_if<!std::is_lvalue_reference<T>::value, int>::type = 0
+		> 
+	inline std::shared_ptr<T> MoveShared(T &&v)
 	{
 		return std::make_shared<T>(std::move(v));
 	}
-	template<typename T> inline std::unique_ptr<T> MoveUnique(T &&v, typename std::enable_if<!std::is_lvalue_reference<T>::value>::type *dummy = nullptr)
+	template<
+		typename T,
+		typename std::enable_if<!std::is_lvalue_reference<T>::value, int>::type = 0
+		>
+	inline std::unique_ptr<T> MoveUnique(T &&v)
 	{
 		return std::make_unique<T>(std::move(v));
 	}

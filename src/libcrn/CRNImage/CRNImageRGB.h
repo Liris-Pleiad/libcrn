@@ -125,7 +125,7 @@ namespace crn
 			/*! \brief Default constructor */
 			RGB2GrayRed() {}
 			virtual ~RGB2GrayRed() override { }
-			virtual const String& GetClassName() const override { static const String cn(U"RGB2GrayRed"); return cn; }
+			virtual StringUTF8 GetClassName() const override { return "RGB2GrayRed"; }
 			virtual ImageGray Convert(const ImageRGB &img) override { return RedChannel(img); }
 	};
 
@@ -140,7 +140,7 @@ namespace crn
 			/*! \brief Default constructor */
 			RGB2GrayGreen() {}
 			virtual ~RGB2GrayGreen() override { }
-			virtual const String& GetClassName() const override { static const String cn(U"RGB2GrayGreen"); return cn; }
+			virtual StringUTF8 GetClassName() const override { return "RGB2GrayGreen"; }
 			virtual ImageGray Convert(const ImageRGB &img) override { return GreenChannel(img); }
 	};
 
@@ -155,7 +155,7 @@ namespace crn
 			/*! \brief Default constructor */
 			RGB2GrayBlue() {}
 			virtual ~RGB2GrayBlue() override { }
-			virtual const String& GetClassName() const override { static const String cn(U"RGB2GrayBlue"); return cn; }
+			virtual StringUTF8 GetClassName() const override { return "RGB2GrayBlue"; }
 			virtual ImageGray Convert(const ImageRGB &img) override { return BlueChannel(img); }
 	};
 
@@ -170,7 +170,7 @@ namespace crn
 			/*! \brief Default constructor */
 			RGB2GraySaturation() {}
 			virtual ~RGB2GraySaturation() override { }
-			virtual const String& GetClassName() const override { static const String cn(U"RGB2GraySaturation"); return cn; }
+			virtual StringUTF8 GetClassName() const override { return "RGB2GraySaturation"; }
 			virtual ImageGray Convert(const ImageRGB &img) override { return SChannel(img); }
 	};
 
@@ -185,7 +185,7 @@ namespace crn
 			/*! \brief Default constructor */
 			RGB2GrayValue() {}
 			virtual ~RGB2GrayValue() override { }
-			virtual const String& GetClassName() const override { static const String cn(U"RGB2GrayValue"); return cn; }
+			virtual StringUTF8 GetClassName() const override { return "RGB2GrayValue"; }
 			virtual ImageGray Convert(const ImageRGB &img) override { return VChannel(img); }
 	};
 
@@ -200,7 +200,7 @@ namespace crn
 			/*! \brief Default constructor */
 			RGB2GrayY() {}
 			virtual ~RGB2GrayY() override { }
-			virtual const String& GetClassName() const override { static const String cn(U"RGB2GrayY"); return cn; }
+			virtual StringUTF8 GetClassName() const override { return "RGB2GrayY"; }
 			virtual ImageGray Convert(const ImageRGB &img) override { return YChannel(img); }
 	};
 
@@ -215,7 +215,7 @@ namespace crn
 			/*! \brief Default constructor */
 			RGB2GrayL() {}
 			virtual ~RGB2GrayL() override { }
-			virtual const String& GetClassName() const override { static const String cn(U"RGB2GrayL"); return cn; }
+			virtual StringUTF8 GetClassName() const override { return "RGB2GrayL"; }
 			virtual ImageGray Convert(const ImageRGB &img) override { return LChannel(img); }
 	};
 
@@ -230,24 +230,21 @@ namespace crn
 			/*! \brief Default constructor */
 			RGB2GrayLPrime() {}
 			virtual ~RGB2GrayLPrime() override { }
-			virtual const String& GetClassName() const override { static const String cn(U"RGB2GrayLPrime"); return cn; }
+			virtual StringUTF8 GetClassName() const override { return "RGB2GrayLPrime"; }
 			virtual ImageGray Convert(const ImageRGB &img) override { return LPrime(img); }
 	};
 
 	CRN_ALIAS_SMART_PTR(RGB2Gray)
 
-	namespace protocol
-	{
-		template<> struct IsSerializable<RGB2Gray> : public std::true_type {};
-		template<> struct IsSerializable<RGB2GrayRed> : public std::true_type {};
-		template<> struct IsSerializable<RGB2GrayGreen> : public std::true_type {};
-		template<> struct IsSerializable<RGB2GrayBlue> : public std::true_type {};
-		template<> struct IsSerializable<RGB2GraySaturation> : public std::true_type {};
-		template<> struct IsSerializable<RGB2GrayValue> : public std::true_type {};
-		template<> struct IsSerializable<RGB2GrayY> : public std::true_type {};
-		template<> struct IsSerializable<RGB2GrayL> : public std::true_type {};
-		template<> struct IsSerializable<RGB2GrayLPrime> : public std::true_type {};
-	}
+	template<> struct IsSerializable<RGB2Gray> : public std::true_type {};
+	template<> struct IsSerializable<RGB2GrayRed> : public std::true_type {};
+	template<> struct IsSerializable<RGB2GrayGreen> : public std::true_type {};
+	template<> struct IsSerializable<RGB2GrayBlue> : public std::true_type {};
+	template<> struct IsSerializable<RGB2GraySaturation> : public std::true_type {};
+	template<> struct IsSerializable<RGB2GrayValue> : public std::true_type {};
+	template<> struct IsSerializable<RGB2GrayY> : public std::true_type {};
+	template<> struct IsSerializable<RGB2GrayL> : public std::true_type {};
+	template<> struct IsSerializable<RGB2GrayLPrime> : public std::true_type {};
 
 	template<typename T> Image<T> MakeImageGray(const Image<pixel::RGB<T>> &img)
 	{

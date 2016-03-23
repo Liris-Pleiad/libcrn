@@ -53,9 +53,7 @@ namespace crn
 			PCA(const PCA&) = default;
 			PCA(PCA&&) = default;
 			/*! \brief Destructor */
-			virtual ~PCA() override {}
-
-			virtual UObject Clone() const override { return std::make_unique<PCA>(*this); }
+			virtual ~PCA() override = default;
 
 			PCA& operator=(const PCA&) = default;
 			PCA& operator=(PCA&&) = default;
@@ -83,9 +81,9 @@ namespace crn
 			/*! \brief Apply reverse transform to get given patterns' pre-images. */
 			std::vector<std::vector<double>> ReverseTransform(const std::vector< std::vector<double> > &data) const;
 
+			void Deserialize(xml::Element &el);
+			xml::Element Serialize(xml::Element &parent) const;
 		private:
-			void deserialize(xml::Element &el) override;
-			xml::Element serialize(xml::Element &parent) const override;
 
 			/*! \brief Optimized 2x2 correlation matrix diagonalization */
 			std::multimap<double, MatrixDouble> makeCorrelationSpectralEigensystem(double g) const;
@@ -98,13 +96,10 @@ namespace crn
 			CRN_DECLARE_CLASS_CONSTRUCTOR(PCA)
 		public : PCA(xml::Element& el):means(1,1),dimension(1),deviations(1,1){Deserialize(el);}
 	};
+	template<> struct IsSerializable<PCA> : public std::true_type {};
+	template<> struct IsClonable<PCA> : public std::true_type {};
 
 	CRN_ALIAS_SMART_PTR(PCA)
-	namespace protocol
-	{
-		template<> struct IsSerializable<PCA> : public std::true_type {};
-		template<> struct IsClonable<PCA> : public std::true_type {};
-	}
 
 	/*!
 	 * Constructor

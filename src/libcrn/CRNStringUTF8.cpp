@@ -21,22 +21,15 @@
 
 #include <CRNi18n.h>
 #include <CRNStringUTF8.h>
+#include <CRNMath/CRNProp3.h>
 #include <CRNException.h>
 #include <3rdParty/unicode/UtfConverter.h>
 #include <CRNString.h>
-#include <CRNMath/CRNProp3.h>
 #include <CRNData/CRNDataFactory.h>
 #include <CRNUtils/CRNXml.h>
 #include <random>
 
 using namespace crn;
-
-/*! \return	the id of the class */
-const String& StringUTF8::GetClassName() const
-{ // defined here to avoid cyclic dependencies with crn::String
-	static const String cn(U"StringUTF8"); 
-	return cn; 
-}
 
 /*! Precision of the floating point conversion
  * \return	a reference to the configuration variable
@@ -88,15 +81,6 @@ StringUTF8::StringUTF8(const Prop3 &p)
 		data = "false";
 	else
 		data = "unknown";
-}
-
-/*!
- * Conversion to wide string
- * \return	a wide string
- */
-String StringUTF8::ToString() const
-{
-	return *this;
 }
 
 /*!
@@ -496,9 +480,9 @@ size_t StringUTF8::BackwardFindNotOf(const StringUTF8 &s, size_t last_pos) const
  *
  * \param[in]	el	the XML element to read
  */
-void StringUTF8::deserialize(xml::Element &el)
+void StringUTF8::Deserialize(xml::Element &el)
 {
-	if (el.GetValue() != GetClassName().CStr())
+	if (el.GetValue() != "StringUTF8")
 	{
 		throw ExceptionInvalidArgument(StringUTF8("bool StringUTF8::deserialize(xml::Element &el): ") + 
 				_("Wrong XML element."));
@@ -517,41 +501,11 @@ void StringUTF8::deserialize(xml::Element &el)
  * \param[in]	parent	the parent element to which we will add the new element
  * \return	The newly created element, nullptr if failed.
  */
-xml::Element StringUTF8::serialize(xml::Element &parent) const
+xml::Element StringUTF8::Serialize(xml::Element &parent) const
 {
-	xml::Element el(parent.PushBackElement(GetClassName().CStr()));
+	xml::Element el(parent.PushBackElement("StringUTF8"));
 	el.PushBackText(*this);
 	return el;
-}
-
-/*!
- * UNSAFE Greater or Equal
- *
- * \param[in]	l	the object to compare
- * \return	true if success, false else
- */
-Prop3 StringUTF8::ge(const Object &l) const
-{
-	const StringUTF8 &s = (const StringUTF8&)l;
-	if (data.compare(s.data) >= 0)
-		return Prop3::True;
-	else
-		return Prop3::False;
-}
-
-/*!
- * UNSAFE Lower or Equal 
- *
- * \param[in]	l	the object to compare
- * \return	true if success, false else
- */
-Prop3 StringUTF8::le(const Object &l) const
-{
-	const StringUTF8 &s = (const StringUTF8&)l;
-	if (data.compare(s.data) <= 0)
-		return Prop3::True;
-	else
-		return Prop3::False;
 }
 
 /*! 

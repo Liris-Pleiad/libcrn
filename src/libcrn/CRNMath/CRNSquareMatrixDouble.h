@@ -50,12 +50,10 @@ namespace crn
 			SquareMatrixDouble(SquareMatrixDouble &&) = default;
 			
 			/*! \brief Destructor */
-			virtual ~SquareMatrixDouble() override {}
+			virtual ~SquareMatrixDouble() override = default;
 			
 			SquareMatrixDouble& operator=(const SquareMatrixDouble &) = default;
 			SquareMatrixDouble& operator=(SquareMatrixDouble &&) = default;
-
-			virtual UObject Clone() const override { return std::make_unique<SquareMatrixDouble>(*this); }
 			
 			/*********************************************************************/
 			/* Special matrix constructors                                       */
@@ -107,6 +105,7 @@ namespace crn
 			/*! \brief Extract eigenvalues for matrix of real (eigenvalues may be complex) */
 			std::vector<std::complex<double>> Eigenvalues(size_t max_iter = 30) const;
 
+			// TODO XXX overload serialization for element name
 		private:
 			/*! \brief Tridiagonalization */
 			void tred2(SquareMatrixDouble &z, std::vector<double> &diag, std::vector<double> &offdiag) const;
@@ -115,11 +114,8 @@ namespace crn
 		public:
 				SquareMatrixDouble(xml::Element &el):MatrixDouble(1, 1) { Deserialize(el); }
 	};
-	namespace protocol
-	{
-		template<> struct IsSerializable<SquareMatrixDouble> : public std::true_type {};
-		template<> struct IsClonable<SquareMatrixDouble> : public std::true_type {};
-	}
+	template<> struct IsSerializable<SquareMatrixDouble> : public std::true_type {};
+	template<> struct IsClonable<SquareMatrixDouble> : public std::true_type {};
 
 	template<> struct TypeInfo<SquareMatrixDouble>
 	{

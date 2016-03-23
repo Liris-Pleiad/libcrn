@@ -1,4 +1,4 @@
-/* Copyright 2007-2015 Yann LEYDIER, CoReNum, INSA-Lyon, Université Paris Descartes
+/* Copyright 2007-2016 Yann LEYDIER, CoReNum, INSA-Lyon, Université Paris Descartes, ENS-Lyon
  * 
  * This file is part of libcrn.
  * 
@@ -36,22 +36,19 @@ namespace crn
 	 * \version 0.1
 	 * \ingroup utils
 	 */
-	class Progress: public ComplexObject
+	class Progress
 	{
 		public:
 			enum class Type { PERCENT = 0, ABSOLUTE = 1 };
 			/*! \brief Constructor */
-			Progress(const String &name, size_t maxcount = 100):ComplexObject(name),end(maxcount),current(0),type(Type::PERCENT) { }
+			Progress(const String &nam, size_t maxcount = 100):name(nam),end(maxcount),current(0),type(Type::PERCENT) { }
 			Progress(const Progress &) = delete;
 			Progress(Progress&&) = default;
 			Progress& operator=(const Progress &) = delete;
 			Progress& operator=(Progress&&) = default;
 
 			/*! \brief Destructor */
-			virtual ~Progress() override;
-
-			/*! \brief It is a ComplexObject */
-			virtual Protocol GetClassProtocols() const noexcept override { return Protocol::ComplexObject; }
+			virtual ~Progress();
 
 			/*! \brief Progresses of one step */
 			void Advance();
@@ -67,6 +64,7 @@ namespace crn
 			/*! \brief Displays the progress */
 			virtual void display(const String &msg) = 0;
 
+			String name;
 			size_t current; /*!< The current step */
 			size_t end; /*!< The last step */
 			String disp; /*!< The text displayed */
@@ -92,7 +90,6 @@ namespace crn
 			ConsoleProgress(const String &name, size_t maxcount = 100):Progress(name, maxcount) {}
 			/*! \brief Destructor */
 			virtual ~ConsoleProgress() override {}
-			virtual const String& GetClassName() const override { static const String cn(U"ConsoleProgress"); return cn; }
 
 		protected:
 			/*! \brief Displays the progress */

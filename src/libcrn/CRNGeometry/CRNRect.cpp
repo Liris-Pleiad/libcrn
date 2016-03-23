@@ -548,11 +548,11 @@ bool Rect::Contains(const Rect &rct) const
  *
  * \param[in]	el	the XML element to read
  */
-void Rect::deserialize(xml::Element &el)
+void Rect::Deserialize(xml::Element &el)
 {
-	if (el.GetName() != GetClassName().CStr())
+	if (el.GetName() != "Rect")
 	{
-		throw ExceptionInvalidArgument(StringUTF8("bool Rect::deserialize(xml::Element &el): ") + 
+		throw ExceptionInvalidArgument(StringUTF8("void Rect::Deserialize(xml::Element &el): ") + 
 				_("Wrong XML element."));
 	}
 	bx = el.GetAttribute<int>("bx");
@@ -577,9 +577,9 @@ void Rect::deserialize(xml::Element &el)
  * \param[in]	parent	the element in which the new element will be stored
  * \return	the newly created element
  */
-xml::Element Rect::serialize(xml::Element &parent) const
+xml::Element Rect::Serialize(xml::Element &parent) const
 {
-	xml::Element el(parent.PushBackElement(GetClassName().CStr()));
+	xml::Element el(parent.PushBackElement("Rect"));
 	el.SetAttribute("bx", bx);
 	el.SetAttribute("ex", ex);
 	el.SetAttribute("by", by);

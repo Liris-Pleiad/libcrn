@@ -1,4 +1,4 @@
-/* Copyright 2010-2015 CoReNum, INSA-Lyon
+/* Copyright 2010-2016 CoReNum, INSA-Lyon, ENS-Lyon
  * 
  * This file is part of libgtkcrnmm.
  * 
@@ -41,23 +41,19 @@ Gtk::Widget* GtkCRN::create_widget_from_object(const crn::Object *obj)
 		return new Gtk::Label(_("null object"));
 	}
 	// Map
-	else if (obj->GetClassName() == U"Map")
+	const crn::Map *m = static_cast<const crn::Map*>(obj);
+	if (m)
 	{
-		const crn::Map *m = static_cast<const crn::Map*>(obj);
 		if (m->IsEmpty())
 		{
-			Glib::ustring txt("<i>");
-			txt += m->GetName().CStr();
-			txt += " ";
-			txt += _("(empty)");
-			txt += "</i>";
+			Glib::ustring txt("<i>(empty)</i>");
 			Gtk::Label *lab = Gtk::manage(new Gtk::Label(txt));
 			lab->set_use_markup();
 			return lab;
 		}
 		else
 		{
-			Gtk::Expander *expander = new Gtk::Expander(m->GetName().CStr());
+			Gtk::Expander *expander = new Gtk::Expander("Map");
 			Gtk::Table *tab = Gtk::manage(new Gtk::Table(int(m->Size()), 2));
 			tab->set_col_spacings(4);
 			expander->add(*tab);
@@ -73,23 +69,19 @@ Gtk::Widget* GtkCRN::create_widget_from_object(const crn::Object *obj)
 		}
 	}
 	// Vector
-	else if (obj->GetClassName() == U"Vector")
+	const crn::Vector *v = static_cast<const crn::Vector*>(obj);
+	if (v)
 	{
-		const crn::Vector *v = static_cast<const crn::Vector*>(obj);
 		if (v->IsEmpty())
 		{
-			Glib::ustring txt("<i>");
-			txt += v->GetName().CStr();
-			txt += " ";
-			txt += _("(empty)");
-			txt += "</i>";
+			Glib::ustring txt("<i>(empty)</i>");
 			Gtk::Label *lab = Gtk::manage(new Gtk::Label(txt));
 			lab->set_use_markup();
 			return lab;
 		}
 		else
 		{
-			Gtk::Expander *expander = new Gtk::Expander(v->GetName().CStr());
+			Gtk::Expander *expander = new Gtk::Expander("Vector");
 			Gtk::VBox *vbox = Gtk::manage(new Gtk::VBox);
 			expander->add(*vbox);
 			for (crn::Vector::const_iterator it = v->begin(); it != v->end(); ++it)
@@ -101,17 +93,27 @@ Gtk::Widget* GtkCRN::create_widget_from_object(const crn::Object *obj)
 		}
 	}
 	// Prop3
-	else if (obj->GetClassName() == U"Prop3")
+	const crn::Prop3 *p = static_cast<const crn::Prop3*>(obj);
+	if (p)
 	{
-		const crn::Prop3 *p = static_cast<const crn::Prop3*>(obj);
 		GtkCRN::Prop3 *pw = new GtkCRN::Prop3(Gtk::ICON_SIZE_BUTTON, *p);
 		pw->set_sensitive(false);
 		return pw;
 	}
-	else
+	// String
+	const auto *s = static_cast<const crn::String*>(obj);
+	if (s)
 	{
-		// Other
-		return new Gtk::Label(obj->ToString().CStr());
+		return new Gtk::Label(s->CStr());
 	}
+	// StringUTF8 and Path
+	const auto *su = static_cast<const crn::StringUTF8*>(obj);
+	if (su)
+	{
+		return new Gtk::Label(su->CStr());
+	}
+	// TODO XXX add Int and Real
+	// Other
+	return new Gtk::Label(typeid(*obj).name());
 }
 

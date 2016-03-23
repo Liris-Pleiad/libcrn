@@ -1,4 +1,4 @@
-/* Copyright 2014-2015 INSA-Lyon, Université Paris Descartes
+/* Copyright 2014-2016 INSA-Lyon, Université Paris Descartes, ENS-Lyon
  * 
  * This file is part of libcrn.
  * 
@@ -132,7 +132,7 @@ namespace crn
 			}
 
 			/*! \brief Destructor */
-			virtual ~Matrix() override {}
+			virtual ~Matrix() override = default;
 			Matrix(const Matrix &) = default;
 			template<typename Y> Matrix(const Matrix<Y> &m) : rows(m.GetRows()), cols(m.GetCols())
 			{
@@ -149,16 +149,6 @@ namespace crn
 				std::swap(cols, m.cols);
 				std::swap(data, m.data);
 			}
-
-			virtual UObject Clone() const override { return std::make_unique<Matrix>(*this); }
-	
-			Matrix& operator+=(const Matrix &m) { Add(m); return *this; }
-			Matrix& operator-=(const Matrix &m) { Sub(m); return *this; }
-			Matrix& operator*=(double d) { Mult(d); return *this; }
-			Matrix& operator/=(double d) { for (auto &v : data) v = T(v / d); return *this; }
-			Matrix& operator*=(const Matrix &m) { Mult(m); return *this; }
-			bool operator==(const Matrix &m) { return Equals(m); }
-			bool operator!=(const Matrix &m) { return !Equals(m); }
 
 			/*! \brief Returns the number of rows.
 			 *
@@ -270,18 +260,57 @@ namespace crn
 					At(r, c) += v;
 			}
 
-			using Object::Mult;
+			Matrix& operator+=(const Matrix &m)
+			{
+				if ((m.GetRows() != rows) || (m.GetCols() != cols))
+					throw ExceptionDimension("Matrix::+=(): incompatible dimensions");
+				for (auto i : Range(data))
+					At(i) += m.At(i);
+				return *this;
+			}
+			Matrix& operator-=(const Matrix &m)
+			{
+				if ((m.GetRows() != rows) || (m.GetCols() != cols))
+					throw ExceptionDimension("Matrix::+=(): incompatible dimensions");
+				for (auto i : Range(data))
+					At(i) -= m.At(i);
+				return *this;
+			}
+			Matrix& operator*=(const Matrix &m)
+			{ 
+				if (cols != m.GetRows())
+					throw ExceptionDimension("Matrix::*=(): incompatible dimensions");
+				auto p = datatype(rows * m.GetCols());
+				for (size_t r = 0; r < rows; r++)
+					for (size_t c = 0; c < m.GetCols(); c++)
+						for (size_t k = 0; k < cols; k++)
+							p[r * m.GetCols() + c] += At(r, k) * m[k][c];							
+				cols = m.GetCols();
+				data.swap(p);
+				return *this;
+			}
+			bool operator==(const Matrix &m) const
+			{
+				if ((m.GetRows() != rows) || (m.GetCols() != cols))
+					return false;
+				return std::equal(data.begin(), data.end(), m.data.begin());
+			}
+			inline bool operator!=(const Matrix &m) const
+			{ return !(*this == m); }
+
+			/*! \brief Scaling
+			 *
+			 * Scale all the cells of the matrix by a given factor
+			 * \param[in]	d	scaling factor
+			 */
+			Matrix& operator*=(double d) {	for (auto &v : data) v = T(v * d); return *this; }
+
 			/*! \brief Scaling
 			 *
 			 * Scale all the cells of the matrix by a given factor
 			 * \param[in]	factor	scaling factor
 			 */
-			virtual void Mult(double factor) override
-			{	
-				for (size_t r = 0; r < rows; ++r)
-					for (size_t c = 0; c < cols; ++c)
-						At(r, c) = T(factor * At(r, c));
-			}
+			Matrix& operator/=(double d) { for (auto &v : data) v = T(v / d); return *this; }
 
 			/*! \brief Scale one row from matrix
 			 * \throws	ExceptionDomain	row out of bounds
@@ -565,7 +594,7 @@ namespace crn
 				for (size_t r = 0; r < rows; ++r)
 					for (size_t c = 0; c < cols; ++c)
 						m.At(c) += At(r, c);
-				m.Mult(1.0 / double(rows));
+				m *= 1.0 / double(rows);
 				return m;
 			}
 
@@ -576,7 +605,7 @@ namespace crn
 				for (size_t r = 0; r < rows; ++r)
 					for (size_t c = 0; c < cols; ++c)
 						m.At(c) += Sqr(At(r, c) - means[c]);
-				m.Mult(1.0 / double(rows));
+				m *= 1.0 / double(rows);
 				return m;
 			}
 
@@ -641,7 +670,7 @@ namespace crn
 			/*! \brief Prints matrix into a string
 			 * \return a string containing the matrix values
 			 */
-			virtual String ToString() const override
+			String ToString() const
 			{
 				String s;
 				for (size_t r = 0; r < rows; r++)
@@ -660,139 +689,11 @@ namespace crn
 			/*! \brief checks the validity of indexes */
 			inline bool areValidIndexes(size_t r, size_t c) const { return (r < rows) && (c < cols); }
 
-			/*! \brief Addition
-			 * \throws	ExceptionDimension	matrices do not have the same size
-			 * \param[in]	obj	the matrix to add
-			 */
-			virtual void add(const Object &obj) override
-			{
-				const auto& m = static_cast<const Matrix&>(obj);
-				if ((m.GetRows() != rows) || (m.GetCols() != cols))
-					throw ExceptionDimension("Matrix::add(): incompatible dimensions");
-				for (size_t r = 0; r < rows; ++r)
-					for (size_t c = 0; c < cols; ++c)
-						At(r, c) += m[r][c];
-			}
-
-			/*! \brief Comparison
-			 * \param[in]	obj	the matrix to compare with
-			 * \return	true if the two matrices are identical, false else
-			 */
-			virtual bool equals(const Object &obj) const override
-			{
-				const auto& m = static_cast<const Matrix&>(obj);
-				if ((m.GetRows() != rows) || (m.GetCols() != cols))
-					return false;
-				for (size_t r = 0; r < rows; ++r)
-					for (size_t c = 0; c < cols; ++c)
-						if (At(r, c) != m[r][c])
-							return false;
-				return true;
-			}
-
-			/*! \brief Subtraction
-			 * \throws	ExceptionDimension	matrices do not have the same size
-			 * \param[in]	obj	the matrix to subtract
-			 */
-			virtual void sub(const Object &obj) override
-			{
-				const auto& m = static_cast<const Matrix&>(obj);
-				if ((m.GetRows() != rows) || (m.GetCols() != cols))
-					throw ExceptionDimension("Matrix::sub(): incompatible dimensions");
-				for (size_t r = 0; r < rows; ++r)
-					for (size_t c = 0; c < cols; ++c)
-						At(r, c) -= m[r][c];
-			}
-
-			/*! \brief Weighted sum of matrices
-			 * \throws	ExceptionDimension	a matrix does not have the correct size
-			 * \param[in]	plist	vector of terms
-			 * \return a new matrix corresponding to the sum
-			 */
-			virtual UObject sum(const std::vector<std::pair<const Object*, double> > &plist) const override
-			{
-				auto nbRows = static_cast<const Matrix*>(plist[0].first)->GetRows();
-				auto nbCols = static_cast<const Matrix*>(plist[0].first)->GetCols();
-				auto s = std::make_unique<Matrix>(nbRows, nbCols);
-				for (const auto &term : plist)
-				{
-					const auto *m = static_cast<const Matrix*>(term.first);
-					if ((m->GetRows() == nbRows) && (m->GetCols() == nbCols))
-						for (size_t r = 0; r < nbRows; r++)
-							for (size_t c = 0; c < nbCols; c++)
-								s->IncreaseElement(r, c, T(term.second) * m->At(r, c));
-					else
-						throw ExceptionDimension("UObject Matrix::sum() const: wrong matrix dimensions.");
-				}
-				return std::forward<std::unique_ptr<Matrix>>(s);
-			}
-
-			/*! \brief Mean of matrices
-			 * \throws	ExceptionDimension	a matrix does not have the correct size
-			 * \return a new matrix corresponding to the mean
-			 */
-			virtual UObject mean(const std::vector<std::pair<const Object*, double> > &plist) const override
-			{
-				double n = 0;
-				auto nbRows = static_cast<const Matrix*>(plist[0].first)->GetRows();
-				auto nbCols = static_cast<const Matrix*>(plist[0].first)->GetCols();
-				auto s = std::make_unique<Matrix>(nbRows, nbCols);
-				for (const auto &term : plist)
-				{
-					const auto *m = static_cast<const Matrix*>(term.first);
-					if ((m->GetRows() == nbRows) && (m->GetCols() == nbCols))
-						for (size_t r = 0; r < nbRows; r++)
-							for (size_t c = 0; c < nbCols; c++)
-							{
-								n += term.second;
-								s->IncreaseElement(r, c, T(term.second) * m->At(r, c));
-							}
-					else
-						throw ExceptionDimension("UObject Matrix::mean() const: wrong matrix dimensions.");
-				}
-				s->Mult(1.0 / n);
-				return std::forward<std::unique_ptr<Matrix>>(s);
-			}
-
-			/*! \brief Product by another matrix on the right side
-			 * \throws	ExceptionDimension	matrices do not have compatible sizes
-			 * \param[in]	obj	the factor matrix
-			 */
-			virtual void mult(const Object &obj) override
-			{
-				const auto &m = static_cast<const Matrix&>(obj);
-				if (cols != m.GetRows())
-					throw ExceptionDimension("Matrix::mult(): incompatible dimensions");
-				datatype p(rows * m.GetCols());
-				for (size_t r = 0; r < rows; r++)
-					for (size_t c = 0; c < m.GetCols(); c++)
-						for (size_t k = 0; k < cols; k++)
-							p[r * m.GetCols() + c] += At(r, k) * m[k][c];							
-				cols = m.GetCols();
-				data.swap(p);
-			}
-
-			/*! \brief Metric distance
-			 * \throws	ExceptionDimension	incompatible dimensions
-			 * \param[in]	obj	the matrix to compare
-			 * \return	the norm1 distance
-			 */
-			virtual double distance(const Object &obj) const override
-			{
-				const auto &other = static_cast<const Matrix&>(obj);
-				if ((other.GetRows() != rows) || (other.GetCols() != cols))
-					throw ExceptionDimension("Matrix::distance(): incompatible dimensions");
-				auto d = 0.0;
-				for (size_t r = 0; r < rows; ++r)
-					for (size_t c = 0; c < cols; ++c)
-						d += Abs(At(r, c) - other.At(r, c));
-				return d;
-			}
-
 			using datatype = std::vector<T>; /*!< Internal data representation */
 			datatype data; /*!< rows, cols */
 			size_t rows, cols; /*!< dimensions of the matrix */
 	};
+	template<typename T> struct IsClonable<Matrix<T>> : public std::true_type {};
 
 	template<typename T> Matrix<T> operator+(const Matrix<T> &m1, const Matrix<T> &m2)
 	{ return Matrix<T>(m1) += m2; }
@@ -836,11 +737,6 @@ namespace crn
 		using DiffType = Matrix<typename TypeInfo<I>::DiffType>;
 		using DecimalType = Matrix<typename TypeInfo<I>::DecimalType>;
 	};
-
-	namespace protocol
-	{
-		template<typename T> struct IsClonable<Matrix<T>> : public std::true_type {};
-	}
 
 }
 

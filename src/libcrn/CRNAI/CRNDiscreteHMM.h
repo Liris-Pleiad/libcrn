@@ -53,9 +53,6 @@ namespace crn
 			DiscreteHMM(DiscreteHMM&&) noexcept;
 			DiscreteHMM& operator=(DiscreteHMM&&) noexcept;
 
-			/*! \brief Clones the model */
-			virtual UObject Clone() const override { return std::make_unique<DiscreteHMM>(*this); }
-
 			/*! \brief Destructor */
 			virtual ~DiscreteHMM() override;
 
@@ -84,7 +81,7 @@ namespace crn
 			/*! \brief Checks if the model is valid */
 			bool IsValid() const;
 			/*! \brief Dumps a summary to a string */
-			virtual String ToString() const override;
+			String ToString() const;
 
 			/*! \brief Returns the a priori probability of an observed sequence */
 			double SequenceProbability(const MatrixInt& observed) const;
@@ -109,6 +106,7 @@ namespace crn
 			SMatrixDouble stateGivenSymbolProbability; /*!< The state given symbol probability matrix */
 			SMatrixDouble firstStateProbability; /*!< The first state probability matrix */
 	};
+	template<> struct IsClonable<DiscreteHMM> : public std::true_type {};
 
 	CRN_ALIAS_SMART_PTR(DiscreteHMM)
 }

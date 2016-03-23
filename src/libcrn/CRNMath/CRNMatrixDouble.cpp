@@ -1,4 +1,4 @@
-/* Copyright 2007-2015 Yann LEYDIER, CoReNum, INSA-Lyon
+/* Copyright 2007-2016 Yann LEYDIER, CoReNum, INSA-Lyon, ENS-Lyon
  * 
  * This file is part of libcrn.
  * 
@@ -189,11 +189,11 @@ SquareMatrixDouble MatrixDouble::MakeVectorRightAutoProduct() const
  *
  * \param[in]	el	the element to load
  */
-void MatrixDouble::deserialize(xml::Element &el)
+void MatrixDouble::Deserialize(xml::Element &el)
 {
-	if (el.GetName() != GetClassName().CStr())
+	if (el.GetName() != "MatrixDouble")
 	{
-		throw ExceptionInvalidArgument(StringUTF8("bool MatrixDouble::deserialize(xml::Element &el): ") + 
+		throw ExceptionInvalidArgument(StringUTF8("bool MatrixDouble::Deserialize(xml::Element &el): ") + 
 				_("Wrong XML element."));
 	}
 	size_t nr = el.GetAttribute<int>("nb_rows", false); // may throw
@@ -204,7 +204,7 @@ void MatrixDouble::deserialize(xml::Element &el)
 
 	auto vals = Data::ASCII85Decode<double>(t.GetValue());
 	if (vals.size() != nc * nr)
-		throw ExceptionRuntime(StringUTF8("bool MatrixDouble::deserialize(TiXmlElement *el): ") + 
+		throw ExceptionRuntime(StringUTF8("bool MatrixDouble::Deserialize(TiXmlElement *el): ") + 
 				_("Cannot convert CDATA."));
 
 	rows = nr;
@@ -221,9 +221,9 @@ void MatrixDouble::deserialize(xml::Element &el)
  *
  * \return The newly created element, nullptr if failed.
  */
-xml::Element MatrixDouble::serialize(xml::Element &parent) const
+xml::Element MatrixDouble::Serialize(xml::Element &parent) const
 {
-	xml::Element el(parent.PushBackElement(GetClassName().CStr()));
+	xml::Element el(parent.PushBackElement("MatrixDouble"));
 
 	el.SetAttribute("nb_rows", int(rows));
 	el.SetAttribute("nb_columns", int(cols));

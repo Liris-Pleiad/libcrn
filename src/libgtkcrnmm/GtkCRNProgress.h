@@ -1,4 +1,4 @@
-/* Copyright 2010-2015 CoReNum, INSA-Lyon
+/* Copyright 2010-2016 CoReNum, INSA-Lyon, ENS-Lyon
  * 
  * This file is part of libgtkcrnmm.
  * 
@@ -39,8 +39,7 @@ namespace GtkCRN
 			/*! \brief Constructor */
 			Progress(const crn::String &name, sigc::slot<void> execute_at_end, size_t maxcount = 100);
 			/*! \brief Destructor */
-			virtual ~Progress() override {}
-			virtual const crn::String& GetClassName() const override { static const crn::String cn(U"GtkCRN::Progress"); return cn; }
+			virtual ~Progress() override = default;
 
 			/*! \brief Gets the Gtk progress bar */
 			Gtk::ProgressBar& GetProgressBar() { return pb; }

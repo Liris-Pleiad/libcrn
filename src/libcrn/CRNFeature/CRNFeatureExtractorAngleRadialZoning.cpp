@@ -80,7 +80,7 @@ SObject FeatureExtractorAngleRadialZoning::Extract(Block &b)
 	}
 
 	// create feature vector
-	SVector feat = std::make_shared<Vector>(Protocol::Feature);
+	auto feat = std::make_shared<Vector>();
 	for (size_t tmp = 0; tmp < nbzones; ++tmp)
 		feat->PushBack(std::make_shared<Histogram>(zonesize));
 	// extract angles
@@ -151,7 +151,7 @@ SObject FeatureExtractorAngleRadialZoning::ExtractWithMask(Block &b, ImageIntGra
 	}
 
 	// create feature vector
-	SVector feat = std::make_shared<Vector>(Protocol::Feature);
+	auto feat = std::make_shared<Vector>();
 	for (size_t tmp = 0; tmp < nbzones; ++tmp)
 		feat->PushBack(std::make_shared<Histogram>(zonesize));
 	// extract angles
@@ -192,9 +192,9 @@ SObject FeatureExtractorAngleRadialZoning::ExtractWithMask(Block &b, ImageIntGra
  */
 void FeatureExtractorAngleRadialZoning::deserialize(xml::Element &el)
 {
-	if (el.GetName() != GetClassName().CStr())
+	if (el.GetName() != GetClassName())
 	{
-		throw ExceptionInvalidArgument(StringUTF8("bool FeatureExtractorAngleRadialZoning::deserialize("
+		throw ExceptionInvalidArgument(StringUTF8("void FeatureExtractorAngleRadialZoning::deserialize("
 					"xml::Element &el): ") + _("Wrong XML element."));
 	}
 	int n = el.GetAttribute<int>("nbzones", false); // may throw
@@ -214,7 +214,7 @@ void FeatureExtractorAngleRadialZoning::deserialize(xml::Element &el)
  */
 xml::Element FeatureExtractorAngleRadialZoning::serialize(xml::Element &parent) const
 {
-	xml::Element el(parent.PushBackElement(GetClassName().CStr()));
+	xml::Element el(parent.PushBackElement(GetClassName()));
 	el.SetAttribute("nbzones", nbzones);
 	el.SetAttribute("maxval", maxval);
 	el.SetAttribute("zonesize", zonesize);

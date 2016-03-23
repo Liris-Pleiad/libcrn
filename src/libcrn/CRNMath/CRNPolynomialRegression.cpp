@@ -1,4 +1,4 @@
-/* Copyright 2011-2014 CoReNum, INSA-Lyon
+/* Copyright 2011-2016 CoReNum, INSA-Lyon, ENS-Lyon
  * 
  * This file is part of libcrn.
  * 
@@ -54,12 +54,12 @@ void PolynomialRegression::computeCoeffs()
 	}
 	// Y = X ⋅ A + ε ⇒ Â = (tX ⋅ X)^-1 ⋅ tX ⋅ Y
 	SquareMatrixDouble tmpMat(X.MakeCovariance());
-	tmpMat.Mult((double)data.size()); // covariance is normalized, we don't want this
+	tmpMat *= (double)data.size(); // covariance is normalized, we don't want this
 	tmpMat = tmpMat.MakeGaussJordanInverse();
 	X.Transpose();
 	MatrixDouble res(tmpMat);
-	res.Mult(X);
-	res.Mult(Y);
+	res *= X;
+	res *= Y;
 	for (size_t d = 0; d <= dimension; ++d)
 	{
 		coefficients[d] = res[d][0];
