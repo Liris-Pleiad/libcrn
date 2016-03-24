@@ -70,11 +70,13 @@ namespace crn
 			/*! \brief Get the product of a column vector by its own transposed on the right side */
 			SquareMatrixDouble MakeVectorRightAutoProduct() const;
 
-			void Deserialize(xml::Element &el);
-			xml::Element Serialize(xml::Element &parent) const;
+			virtual void Deserialize(xml::Element &el);
+			virtual xml::Element Serialize(xml::Element &parent) const;
 
 		protected:
 			CRN_DECLARE_CLASS_CONSTRUCTOR(MatrixDouble)
+		private:
+			virtual std::string getClassName() const { return "MatrixDouble"; }
 	};
 	template<> struct IsSerializable<MatrixDouble> : public std::true_type {};
 

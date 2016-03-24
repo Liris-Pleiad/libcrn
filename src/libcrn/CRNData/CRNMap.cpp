@@ -39,6 +39,20 @@ Map::Map() = default;
  */
 Map::~Map() = default;
 
+Map::Map(const Map &other)
+{
+	for (const auto &p : other)
+		data.emplace(p.first, Clone(*p.second));
+}
+
+Map& Map::operator=(const Map &other)
+{
+	data.clear();
+	for (const auto &p : other)
+		data.emplace(p.first, Clone(*p.second));
+	return *this;
+}
+
 /*!
  * Retrieves an object from key
  *

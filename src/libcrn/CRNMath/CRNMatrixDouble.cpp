@@ -191,7 +191,7 @@ SquareMatrixDouble MatrixDouble::MakeVectorRightAutoProduct() const
  */
 void MatrixDouble::Deserialize(xml::Element &el)
 {
-	if (el.GetName() != "MatrixDouble")
+	if (el.GetName() != getClassName())
 	{
 		throw ExceptionInvalidArgument(StringUTF8("bool MatrixDouble::Deserialize(xml::Element &el): ") + 
 				_("Wrong XML element."));
@@ -223,7 +223,7 @@ void MatrixDouble::Deserialize(xml::Element &el)
  */
 xml::Element MatrixDouble::Serialize(xml::Element &parent) const
 {
-	xml::Element el(parent.PushBackElement("MatrixDouble"));
+	xml::Element el(parent.PushBackElement(getClassName()));
 
 	el.SetAttribute("nb_rows", int(rows));
 	el.SetAttribute("nb_columns", int(cols));

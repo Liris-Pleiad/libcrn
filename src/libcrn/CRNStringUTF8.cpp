@@ -484,7 +484,7 @@ void StringUTF8::Deserialize(xml::Element &el)
 {
 	if (el.GetValue() != "StringUTF8")
 	{
-		throw ExceptionInvalidArgument(StringUTF8("bool StringUTF8::deserialize(xml::Element &el): ") + 
+		throw ExceptionInvalidArgument(StringUTF8("void StringUTF8::deserialize(xml::Element &el): ") + 
 				_("Wrong XML element."));
 	}
 	xml::Node c(el.GetFirstChild());

@@ -79,9 +79,9 @@ namespace crn
 			/*! \brief Destructor */
 			virtual ~Vector() override;
 
-			Vector(const Vector &) = delete;
+			Vector(const Vector &);
 			Vector(Vector &&) = default;
-			Vector& operator=(const Vector &) = delete;
+			Vector& operator=(const Vector &);
 			Vector& operator=(Vector &&) = default;
 
 			/*! \brief Returns the number of data objects in the vector */
@@ -172,8 +172,6 @@ namespace crn
 			/*! \brief Gets the inner data */
 			std::vector<SObject> Std() && { return std::move(data); }
 
-			/*! \brief Sorts the list using the POSET protocol if applicable */
-			void Sort();
 			/*! \brief Swaps contents with another vector */
 			void Swap(Vector &other) noexcept;
 
@@ -188,6 +186,7 @@ namespace crn
 			/*! \brief Dumps to an XML node if applicable */
 			xml::Element Serialize(xml::Element &parent) const;
 		private:
+			virtual std::string getClassName() const { return "Vector"; }
 
 			std::vector<SObject> data; /*!< internal data storage */
 
@@ -195,9 +194,7 @@ namespace crn
 		public: Vector(xml::Element &el) { Deserialize(el); }
 	};
 	template<> struct IsSerializable<Vector> : public std::true_type {};
-	// TODO XXX override Clone()
 	template<> struct IsClonable<Vector> : public std::true_type {};
-	// TODO XXX override Distance()
 	template<> struct IsMetric<Vector> : public std::true_type {};
 
 	/*! \brief Size of a vector */

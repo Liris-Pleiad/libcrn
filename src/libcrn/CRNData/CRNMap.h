@@ -46,8 +46,8 @@ namespace crn
 			/*! \brief Destructor */
 			virtual ~Map() override;
 
-			Map(const Map &) = delete;
-			Map& operator=(const Map &) = delete;
+			Map(const Map &other);
+			Map& operator=(const Map &other);
 			Map(Map &&) = default;
 			Map& operator=(Map &&) = default;
 
@@ -145,7 +145,6 @@ namespace crn
 		public: Map(xml::Element &el) { Deserialize(el); }
 	};
 	template<> struct IsSerializable<Map> : public std::true_type {};
-	// TODO XXX override Clone()
 	template<> struct IsClonable<Map> : public std::true_type {};
 
 	inline void swap(Map &m1, Map &m2) noexcept { m1.Swap(m2); }

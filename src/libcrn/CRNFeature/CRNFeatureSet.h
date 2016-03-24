@@ -53,10 +53,10 @@ namespace crn
 			/*! \brief Extracts all the features of the set from a block */
 			SVector ExtractWithMask(Block &b, ImageIntGray &mask);
 	
-		CRN_DECLARE_CLASS_CONSTRUCTOR(FeatureSet)
-			// TODO override Serializable
-		public:
 			FeatureSet(xml::Element &el):Vector(el) { }
+			CRN_DECLARE_CLASS_CONSTRUCTOR(FeatureSet)
+		private:
+			virtual std::string getClassName() const override { return "FeatureSet"; }				
 	};
 	template<> struct IsSerializable<FeatureSet> : public std::true_type {};
 

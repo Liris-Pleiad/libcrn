@@ -105,14 +105,14 @@ namespace crn
 			/*! \brief Extract eigenvalues for matrix of real (eigenvalues may be complex) */
 			std::vector<std::complex<double>> Eigenvalues(size_t max_iter = 30) const;
 
-			// TODO XXX overload serialization for element name
 		private:
 			/*! \brief Tridiagonalization */
 			void tred2(SquareMatrixDouble &z, std::vector<double> &diag, std::vector<double> &offdiag) const;
+			virtual std::string getClassName() const override { return "SquareMatrixDouble"; }
 
 			CRN_DECLARE_CLASS_CONSTRUCTOR(SquareMatrixDouble)
 		public:
-				SquareMatrixDouble(xml::Element &el):MatrixDouble(1, 1) { Deserialize(el); }
+			SquareMatrixDouble(xml::Element &el):MatrixDouble(1, 1) { Deserialize(el); }
 	};
 	template<> struct IsSerializable<SquareMatrixDouble> : public std::true_type {};
 	template<> struct IsClonable<SquareMatrixDouble> : public std::true_type {};

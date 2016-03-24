@@ -157,7 +157,10 @@ namespace crn
 			/*! \brief Converts the path to the local format */
 			Path& ToLocal();
 
-			// XXX TODO overload Serialize/Deserialize
+			/*! \brief Initializes the object from an XML element. */
+			virtual void Deserialize(xml::Element &el) override;
+			/*! \brief Dumps the object to an XML element. */
+			virtual xml::Element Serialize(xml::Element &parent) const override;
 		private:
 			Format format;
 

@@ -222,10 +222,10 @@ namespace crn
 			/*! \brief Generates an almost unique id */
 			static crn::StringUTF8 CreateUniqueId(size_t len = 8);
 
-			/*! \brief Initializes the object from an XML element. Unsafe. */
-			void Deserialize(xml::Element &el);
-			/*! \brief Dumps the object to an XML element. Unsafe. */
-			xml::Element Serialize(xml::Element &parent) const;
+			/*! \brief Initializes the object from an XML element. */
+			virtual void Deserialize(xml::Element &el);
+			/*! \brief Dumps the object to an XML element. */
+			virtual xml::Element Serialize(xml::Element &parent) const;
 		private:
 
 			/*! \brief Internal. */

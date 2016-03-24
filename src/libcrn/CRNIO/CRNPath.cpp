@@ -551,6 +551,43 @@ std::vector<Path> Path::Split(const StringUTF8 &sep) const
 	return words;
 }
 
+/*! 
+ * Initializes the object from an XML element. Unsafe.
+ *
+ * \throws	ExceptionInvalidArgument	not a StringUTF8
+ * \throws	ExceptionDomain	no CDATA found
+ *
+ * \param[in]	el	the XML element to read
+ */
+void Path::Deserialize(xml::Element &el)
+{
+	if (el.GetValue() != "Path")
+	{
+		throw ExceptionInvalidArgument(StringUTF8("void Path::deserialize(xml::Element &el): ") + 
+				_("Wrong XML element."));
+	}
+	xml::Node c(el.GetFirstChild());
+	if (!c)
+		return; // no content
+	xml::Text t(c.AsText()); // may throw
+	*this = t.GetValue();
+	ShrinkToFit();
+}
+
+/*! 
+ * Dumps the object to an XML element. Unsafe. 
+ *
+ * \param[in]	parent	the parent element to which we will add the new element
+ * \return	The newly created element, nullptr if failed.
+ */
+xml::Element Path::Serialize(xml::Element &parent) const
+{
+	xml::Element el(parent.PushBackElement("Path"));
+	el.PushBackText(*this);
+	return el;
+}
+
+
 CRN_BEGIN_CLASS_CONSTRUCTOR(Path)
 	CRN_DATA_FACTORY_REGISTER(U"Path", Path)
 CRN_END_CLASS_CONSTRUCTOR(Path)

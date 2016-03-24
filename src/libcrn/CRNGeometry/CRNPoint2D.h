@@ -100,9 +100,19 @@ namespace crn
 	};
 	template<typename T> struct IsClonable<Point2D<T>>: public std::true_type {};
 
-	template<typename T> double Distance(const Point2D<T> &p1, const Point2D<T> &p2)
+	template<typename T> double Distance(const Point2D<T> &p1, const Point2D<T> &p2, DistanceType dt = DistanceType::EUCLIDEAN)
 	{
-		return 0; // TODO
+		switch (dt)
+		{
+			case DistanceType::D4:
+				return Abs(p1.X - p2.X) + Abs(p1.Y - p2.Y);
+			case DistanceType::D8:
+				return Max(Abs(p1.X - p2.X), Abs(p1.Y - p2.Y));
+			case DistanceType::EUCLIDEAN:
+				return sqrt(Sqr(p1.X - p2.X) + Sqr(p1.Y - p2.Y));
+			default:
+				throw ExceptionInvalidArgument("double Distance(const Point2D<T>&, const Point2D<T>&, DistanceType): invalid distance type.");
+		}
 	}
 }
 

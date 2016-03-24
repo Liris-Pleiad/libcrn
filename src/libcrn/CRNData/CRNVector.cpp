@@ -40,6 +40,20 @@ Vector::Vector() = default;
  */
 Vector::~Vector() = default;
 
+Vector::Vector(const Vector &other)
+{
+	for (const auto &o : other)
+		data.push_back(Clone(*o));
+}
+
+Vector& Vector::operator=(const Vector &other)
+{
+	data.clear();
+	for (const auto &o : other)
+		data.push_back(Clone(*o));
+	return *this;
+}
+
 /*!
  * Adds an object at the end of the list
  *
@@ -240,21 +254,6 @@ void Vector::Remove(iterator begin, iterator end)
 	data.erase(begin.it, end.it);
 }
 
-/*!
- * Sorts the list using the POSET protocol if applicable.
- * \throws	ExceptionProtocol	the content of the vector is not POSET
- */
-void Vector::Sort()
-{
-	/* XXX TODO
-	std::sort(begin(), end(), [](const SCObject &o1, const SCObject &o2)
-				{
-					return (o1->LT(*o2)).IsTrue();
-				}
-			);
-			*/
-}
-
 /*****************************************************************************/
 /*!
  * Unsafe load
@@ -268,7 +267,7 @@ void Vector::Sort()
  */
 void Vector::Deserialize(xml::Element &el)
 {
-	if (el.GetValue() != "Vector")
+	if (el.GetValue() != getClassName())
 	{
 		throw ExceptionInvalidArgument(StringUTF8("void Vector::Deserialize(xml::Element &el): ") + 
 				_("Wrong XML element."));
@@ -309,7 +308,7 @@ void Vector::Deserialize(xml::Element &el)
  */
 xml::Element Vector::Serialize(xml::Element &parent) const
 {
-	xml::Element el(parent.PushBackElement("Vector"));
+	xml::Element el(parent.PushBackElement(getClassName()));
 
 	for (size_t tmp = 0; tmp < data.size(); tmp++)
 	{
