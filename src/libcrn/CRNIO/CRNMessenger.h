@@ -38,9 +38,9 @@ namespace crn
 	{
 		public:
 			/*! \brief Empty constructor */
-			Messenger() { }
+			Messenger() = default;
 			/*! \brief Empty virtual destructor */
-			virtual ~Messenger() { }
+			virtual ~Messenger() = default;
 			/*! \brief Prints a debug message */
 			virtual void PrintDebug(const String &msg) = 0;
 			/*! \brief Prints a message */

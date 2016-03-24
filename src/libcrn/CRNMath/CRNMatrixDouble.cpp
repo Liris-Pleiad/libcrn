@@ -236,5 +236,6 @@ xml::Element MatrixDouble::Serialize(xml::Element &parent) const
 
 CRN_BEGIN_CLASS_CONSTRUCTOR(MatrixDouble)
 	CRN_DATA_FACTORY_REGISTER(U"MatrixDouble", MatrixDouble)
+	Cloner::Register<MatrixDouble>();
 CRN_END_CLASS_CONSTRUCTOR(MatrixDouble)
 

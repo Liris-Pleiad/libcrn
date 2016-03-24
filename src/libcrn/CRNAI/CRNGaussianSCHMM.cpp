@@ -27,6 +27,7 @@
 #include <CRNMath/CRNMultivariateGaussianPDF.h>
 #include <CRNAI/CRNGaussianSCHMM.h>
 #include <CRNStringUTF8.h>
+#include <CRNProtocols.h>
 
 using namespace crn;
 
@@ -424,3 +425,6 @@ void GaussianSCHMM::BaumWelchSingle(const MatrixDouble& Observed, unsigned int M
 	}
 }
 
+CRN_BEGIN_CLASS_CONSTRUCTOR(GaussianSCHMM)
+	Cloner::Register<GaussianSCHMM>();
+CRN_END_CLASS_CONSTRUCTOR(GaussianSCHMM)

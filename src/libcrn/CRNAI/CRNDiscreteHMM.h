@@ -105,6 +105,8 @@ namespace crn
 			SSquareMatrixDouble stateTransitionProbability; /*!< The state transition probability matrix */
 			SMatrixDouble stateGivenSymbolProbability; /*!< The state given symbol probability matrix */
 			SMatrixDouble firstStateProbability; /*!< The first state probability matrix */
+			
+			CRN_DECLARE_CLASS_CONSTRUCTOR(DiscreteHMM)
 	};
 	template<> struct IsClonable<DiscreteHMM> : public std::true_type {};
 

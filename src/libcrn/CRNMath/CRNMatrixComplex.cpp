@@ -22,6 +22,7 @@
 #include <CRNMath/CRNMatrixComplex.h>
 #include <CRNMath/CRNMatrixDouble.h>
 #include <CRNGeometry/CRNPoint2DInt.h>
+#include <CRNProtocols.h> 
 #include <CRNi18n.h> 
 
 using namespace crn;
@@ -244,3 +245,6 @@ std::pair<Point2DInt, double> MatrixComplex::CrossCorrelation(const MatrixComple
 	return std::make_pair(p, maxc);	
 }
 
+CRN_BEGIN_CLASS_CONSTRUCTOR(MatrixComplex)
+	Cloner::Register<MatrixComplex>();
+CRN_END_CLASS_CONSTRUCTOR(MatrixComplex)

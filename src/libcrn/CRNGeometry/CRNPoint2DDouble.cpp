@@ -83,5 +83,6 @@ Point2DDouble Point2DDouble::MakeRotation(Angle<Radian> theta) const
 
 CRN_BEGIN_CLASS_CONSTRUCTOR(Point2DDouble)
 	CRN_DATA_FACTORY_REGISTER(U"Point2DDouble", Point2DDouble)
+	Cloner::Register<Point2DDouble>();
 CRN_END_CLASS_CONSTRUCTOR(Point2DDouble)
 

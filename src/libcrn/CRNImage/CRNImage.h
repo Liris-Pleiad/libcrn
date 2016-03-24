@@ -43,10 +43,10 @@ namespace crn
 	class Point2DInt;
 
 	/*! \brief Base class for images */
-	class ImageBase: public Object
+	class ImageBase
 	{
 		public:
-			virtual ~ImageBase() override;
+			virtual ~ImageBase();
 
 			/**************************************************************************************
 			 * Construction and copy
@@ -264,7 +264,6 @@ namespace crn
 		protected:
 			std::vector<pixel_type> pixels; /*!< the pixels */
 	};
-	template<class T> struct IsClonable<Image<T>>: public std::true_type {};
 
 	/**************************************************************************************
 	 * Characterization

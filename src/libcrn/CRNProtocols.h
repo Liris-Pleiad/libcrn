@@ -34,40 +34,23 @@
 /*@{*/
 namespace crn
 {
-	/*! \brief Distance between two objects */
-	template<
-		typename T,
-						 typename std::enable_if<std::is_class<T>::value, int>::type = 0
-							 > 
-							 double Distance(const T &o1, const T &o2)
-							 {
-								 return o1.Distance(o2);
-							 }
-	/*! \brief Distance between two numbers */
-	template<
-		typename T,
-						 typename std::enable_if<std::is_arithmetic<T>::value, int>::type = 0
-							 >
-							 double Distance(T o1, T o2)
-							 {
-								 return double(Abs(o1 - o2));
-							 }
-
 	class Serializer
 	{
 		public:
 			static void Deserialize(Object &obj, xml::Element &el)
 			{
-				const auto it = getInstance().serializers.find(typeid(obj));
+				const auto id = std::type_index{typeid(obj)};
+				const auto it = getInstance().serializers.find(id);
 				if (it == getInstance().serializers.end())
-					throw ExceptionProtocol{};
+					throw ExceptionProtocol{id.name() + StringUTF8(": not a serializable object.")};
 				it->second->Deserialize(obj, el);
 			}
 			static xml::Element Serialize(const Object &obj, xml::Element &el)
 			{
-				const auto it = getInstance().serializers.find(typeid(obj));
+				const auto id = std::type_index{typeid(obj)};
+				const auto it = getInstance().serializers.find(id);
 				if (it == getInstance().serializers.end())
-					throw ExceptionProtocol{};
+					throw ExceptionProtocol{id.name() + StringUTF8(": not a serializable object.")};
 				return it->second->Serialize(obj, el);
 			}
 			template<typename T> static void Register()
@@ -101,9 +84,10 @@ namespace crn
 		public:
 			static UObject Clone(const Object &obj)
 			{
-				const auto it = getInstance().cloners.find(typeid(obj));
+				const auto id = std::type_index{typeid(obj)};
+				const auto it = getInstance().cloners.find(id);
 				if (it == getInstance().cloners.end())
-					throw ExceptionProtocol{};
+					throw ExceptionProtocol{id.name() + StringUTF8(": not a clonable object.")};
 				return it->second->Clone(obj);
 			}
 			template<typename T> static void Register()
@@ -122,6 +106,38 @@ namespace crn
 			virtual UObject Clone(const Object &o) const override { return std::make_unique<T>(static_cast<const T&>(o)); }
 		};
 			std::unordered_map<std::type_index, std::unique_ptr<cloner>> cloners;
+	};
+
+	class Ruler
+	{
+		public:
+			static double Distance(const Object &o1, const Object &o2)
+			{
+				const auto id1 = std::type_index{typeid(o1)};
+				const auto id2 = std::type_index{typeid(o2)};
+				if (id1 != id2)
+					throw ExceptionDomain{"Cannot compute distance between objects of different classes."};
+				const auto it = getInstance().rulers.find(id1);
+				if (it == getInstance().rulers.end())
+					throw ExceptionProtocol{id1.name() + StringUTF8(": not a metric object.")};
+				return it->second->Distance(o1, o2);
+			}
+			template<typename T> static void Register()
+			{
+				getInstance().rulers.emplace(typeid(T), std::make_unique<rulerImpl<T>>());
+			}
+		private:
+			Ruler() {}
+			static inline Ruler& getInstance() { static Ruler r; return r; }
+			struct ruler
+			{
+				virtual double Distance(const Object &o1, const Object &o2) const = 0;
+			};
+			template<typename T> struct rulerImpl: public ruler
+		{
+			virtual double Distance(const Object &o1, const Object &o2) const override { return Distance(static_cast<const T&>(o1), static_cast<const T&>(o2)); }
+		};
+			std::unordered_map<std::type_index, std::unique_ptr<ruler>> rulers;
 	};
 
 }

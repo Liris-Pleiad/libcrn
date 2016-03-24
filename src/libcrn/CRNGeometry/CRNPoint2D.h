@@ -98,7 +98,6 @@ namespace crn
 					Direction direction; /*!< direction of the sort */
 			};
 	};
-	template<typename T> struct IsClonable<Point2D<T>>: public std::true_type {};
 
 	template<typename T> double Distance(const Point2D<T> &p1, const Point2D<T> &p2, DistanceType dt = DistanceType::EUCLIDEAN)
 	{

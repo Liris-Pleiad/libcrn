@@ -88,6 +88,8 @@ namespace crn
 			
 			/*! \brief Internal */
 			void updateAuxiliaryAttributes();
+
+			CRN_DECLARE_CLASS_CONSTRUCTOR(MultivariateGaussianPDF)
 	};
 
 	template<> struct IsClonable<MultivariateGaussianPDF> : public std::true_type {};

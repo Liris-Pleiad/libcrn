@@ -21,21 +21,54 @@
 
 #include <CRNObject.h>
 #include <CRNProtocols.h>
+#include <CRNData/CRNInt.h>
+#include <CRNData/CRNReal.h>
+#include <CRNMath/CRNProp3.h>
 
 using namespace crn;
 
+/*! Clones an object if possible
+ * \throws	ExceptionProtocol	not a clonable object
+ */
 UObject crn::Clone(const Object &obj)
 {
 	return Cloner::Clone(obj);
 }
 
+UInt crn::Clone(int i)
+{
+	return std::make_unique<Int>(i);
+}
+
+UReal crn::Clone(double d)
+{
+	return std::make_unique<Real>(d);
+}
+
+UProp3 crn::Clone(bool b)
+{
+	return std::make_unique<Prop3>(b);
+}
+
+/*! Reads an object from XML if possible
+ * \throws	ExceptionProtocol	not a serializable object
+ */
 void crn::Deserialize(Object &obj, xml::Element &el)
 {
 	Serializer::Deserialize(obj, el);
 }
 
+/*! Writes an object to XML if possible
+ * \throws	ExceptionProtocol	not a serializable object
+ */
 xml::Element crn::Serialize(const Object &obj, xml::Element &parent)
 {
 	return Serializer::Serialize(obj, parent);
+}
+
+/*! Distance between two objects */
+double crn::Distance(const Object &o1, const Object &o2)
+{
+	return Ruler::Distance(o1, o2);
 }
 

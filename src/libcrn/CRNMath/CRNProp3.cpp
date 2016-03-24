@@ -205,5 +205,6 @@ xml::Element Prop3::Serialize(xml::Element &parent) const
 
 CRN_BEGIN_CLASS_CONSTRUCTOR(Prop3)
 	CRN_DATA_FACTORY_REGISTER(U"Prop3", Prop3)
+	Cloner::Register<Prop3>();
 CRN_END_CLASS_CONSTRUCTOR(Prop3)
 

@@ -73,6 +73,7 @@ namespace crn
 	};
 	template<> struct IsSerializable<Real> : public std::true_type {};
 	template<> struct IsClonable<Real> : public std::true_type {};
+	template<> struct IsMetric<Real> : public std::true_type {};
 
 	inline double Distance(const Real &r1, const Real &r2) noexcept { return Abs(r1 - r2); }
 }

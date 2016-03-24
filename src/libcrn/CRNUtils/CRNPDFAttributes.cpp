@@ -86,6 +86,7 @@ xml::Element Attributes::Serialize(xml::Element &parent) const
 
 CRN_BEGIN_CLASS_CONSTRUCTOR(Attributes)
 	CRN_DATA_FACTORY_REGISTER(U"PDFAttributes", Attributes)
+	Cloner::Register<Attributes>();
 CRN_END_CLASS_CONSTRUCTOR(Attributes)
 
 

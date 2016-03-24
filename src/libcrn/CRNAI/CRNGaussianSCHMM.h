@@ -95,6 +95,7 @@ namespace crn
 			/*\brief Internal */
 			MatrixDouble beta(const MatrixDouble &observed) const;
 
+			CRN_DECLARE_CLASS_CONSTRUCTOR(GaussianSCHMM)
 	};
 	template<> struct IsClonable<GaussianSCHMM> : public std::true_type {};
 

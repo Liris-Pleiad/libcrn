@@ -28,6 +28,7 @@
 #include <CRNMath/CRNProp3.h>
 #include <CRNData/CRNDataFactory.h>
 #include <CRNUtils/CRNXml.h>
+#include <CRNProtocols.h>
 #include <algorithm> // for min & max
 
 using namespace crn;
@@ -803,5 +804,7 @@ crn::String String::CreateUniqueId(size_t len)
 
 CRN_BEGIN_CLASS_CONSTRUCTOR(String)
 	CRN_DATA_FACTORY_REGISTER(U"String", String)
+	Cloner::Register<String>();
+	Ruler::Register<String>();
 CRN_END_CLASS_CONSTRUCTOR(String)
 

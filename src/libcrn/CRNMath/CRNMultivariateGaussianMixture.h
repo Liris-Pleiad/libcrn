@@ -335,6 +335,8 @@ namespace crn
 
 			std::vector<std::pair<MultivariateGaussianPDF, double>> members; /*!< the Gaussians and their coefficient */
 			size_t dimension; /*!< the dimension of the data */
+
+			CRN_DECLARE_CLASS_CONSTRUCTOR(MultivariateGaussianMixture)
 	};
 
 	template<> struct IsClonable<MultivariateGaussianMixture> : public std::true_type {};

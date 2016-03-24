@@ -39,21 +39,32 @@ namespace crn
 		protected:
 	};
 
+	/*! \brief Clones an object if possible */
 	UObject Clone(const Object &obj);
+	class Int;
+	std::unique_ptr<Int> Clone(int i);
+	class Real;
+	std::unique_ptr<Real> Clone(double d);
+	class Prop3;
+	std::unique_ptr<Prop3> Clone(bool b);
+
 	template<typename T> inline std::unique_ptr<T> CloneAs(const Object &obj) { return std::unique_ptr<T>(dynamic_cast<T*>(Clone(obj).release())); }
 
 	namespace xml
 	{
 		class Element;
 	}
+	/*! \brief Reads an object from XML if possible */
 	void Deserialize(Object &obj, xml::Element &el);
+	/*! \brief Writes an object to XML if possible */
 	xml::Element Serialize(const Object &obj, xml::Element &parent);
-	double Distance(const Object &o1, const Object &o2);
 
+	/*! \brief Distance between two objects */
+	double Distance(const Object &o1, const Object &o2);
+	// see CRNMath.h for Distance between numbers
 
 	namespace protocol
 	{
-		// Partially ordered objects
 		struct DummyType {};
 		template<typename T> DummyType operator<(const T &, const T &) { return DummyType{}; }
 		template<typename T> DummyType operator>(const T &, const T &) { return DummyType{}; }
@@ -97,7 +108,6 @@ namespace crn
 			>
 		{};
 
-		// Addable objects
 		template<typename T> DummyType operator+(const T &, const T &) { return DummyType{}; }
 		template<typename T> DummyType operator==(const T &, const T &) { return DummyType{}; }
 
@@ -120,7 +130,6 @@ namespace crn
 			>
 		{};
 
-		// Addable and subtractable objects
 		template<typename T> DummyType operator-(const T &, const T &) { return DummyType{}; }
 
 		template<typename T> struct HasMinus :
@@ -133,7 +142,6 @@ namespace crn
 			>
 		{};
 
-		// Addable, subtractable and inner-multipliable objects
 		template<typename T> DummyType operator*(const T &, const T &) { return DummyType{}; }
 
 		template<typename T> struct HasInnerMult :
@@ -146,7 +154,6 @@ namespace crn
 			>
 		{};
 
-		// Addable, subtractable and outer-multipliable objects
 		struct doubleWrapper { doubleWrapper(double) {} };
 		template<typename T> DummyType operator*(const T &, doubleWrapper) { return DummyType{}; }
 		template<typename T> DummyType operator*(doubleWrapper, const T &) { return DummyType{}; }
@@ -170,9 +177,6 @@ namespace crn
 			>
 		{};
 
-		// Addable, subtractable, inner-multipliable and outer-multipliable objects
-
-		// Addable, subtractable, inner-multipliable, outer-multipliable and dividable objects
 		template<typename T> DummyType operator/(const T &, const T &) { return DummyType{}; }
 
 		template<typename T> struct HasDivide :
@@ -184,8 +188,6 @@ namespace crn
 			>::value
 			>
 		{};
-
-
 	}
 
 	/*! Has:

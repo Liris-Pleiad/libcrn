@@ -1,4 +1,4 @@
-/* Copyright 2006-2015 Yann LEYDIER, CoReNum
+/* Copyright 2006-2016 Yann LEYDIER, CoReNum, ENS-Lyon
  * 
  * This file is part of libcrn.
  * 
@@ -19,11 +19,12 @@
  * \author Yann LEYDIER, Jean DUONG
  */
 
-#include <CRNi18n.h>
 #include <CRNMath/CRNMatrixInt.h>
 #include <CRNMath/CRNMath.h>
 #include <CRNException.h>
 #include <CRNStringUTF8.h>
+#include <CRNProtocols.h>
+#include <CRNi18n.h>
 
 using namespace crn;
 
@@ -339,4 +340,7 @@ MatrixInt MatrixInt::NewChamferDT2()
 	return m;
 }
 
+CRN_BEGIN_CLASS_CONSTRUCTOR(MatrixInt)
+	Cloner::Register<MatrixInt>();
+CRN_END_CLASS_CONSTRUCTOR(MatrixInt)
 

@@ -277,4 +277,5 @@ xml::Element UnivariateGaussianPDF::Serialize(xml::Element &parent) const
 
 CRN_BEGIN_CLASS_CONSTRUCTOR(UnivariateGaussianPDF)
 	CRN_DATA_FACTORY_REGISTER(U"UnivariateGaussianPDF", UnivariateGaussianPDF)
+	Cloner::Register<UnivariateGaussianPDF>();
 CRN_END_CLASS_CONSTRUCTOR(UnivariateGaussianPDF)

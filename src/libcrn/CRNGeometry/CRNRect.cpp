@@ -767,5 +767,6 @@ void Rect::spiral_iterator::update()
 
 CRN_BEGIN_CLASS_CONSTRUCTOR(Rect)
 	CRN_DATA_FACTORY_REGISTER(U"Rect", Rect)
+	Cloner::Register<Rect>();
 CRN_END_CLASS_CONSTRUCTOR(Rect)
 

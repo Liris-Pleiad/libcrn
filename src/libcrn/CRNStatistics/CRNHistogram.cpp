@@ -1,4 +1,4 @@
-/* Copyright 2006-2016 Yann LEYDIER, INSA-Lyon, CoReNum, Université Paris Descartes
+/* Copyright 2006-2016 Yann LEYDIER, INSA-Lyon, CoReNum, Université Paris Descartes, ENS-Lyon
  *
  * This file is part of libcrn.
  *
@@ -1369,5 +1369,7 @@ Histogram Histogram::MakePopulationHistogram() const
 
 CRN_BEGIN_CLASS_CONSTRUCTOR(Histogram)
 	CRN_DATA_FACTORY_REGISTER(U"Histogram", Histogram)
+	Cloner::Register<Histogram>();
+	Ruler::Register<Histogram>();
 CRN_END_CLASS_CONSTRUCTOR(Histogram)
 

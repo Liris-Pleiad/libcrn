@@ -106,6 +106,8 @@ namespace crn
 			std::vector<crn::Point2DDouble> data; /*!< the points */
 			Extrapolation extrapolation;
 			size_t dimension;
+
+			CRN_DECLARE_CLASS_CONSTRUCTOR(PolynomialRegression)
 	};
 	template<> struct IsClonable<PolynomialRegression> : public std::true_type {};
 

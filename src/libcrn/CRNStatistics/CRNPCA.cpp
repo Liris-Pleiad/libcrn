@@ -806,5 +806,6 @@ xml::Element PCA::Serialize(xml::Element &parent) const
 
 CRN_BEGIN_CLASS_CONSTRUCTOR(PCA)
 	CRN_DATA_FACTORY_REGISTER(U"PCA", PCA)
+	Cloner::Register<PCA>();
 CRN_END_CLASS_CONSTRUCTOR(PCA)
 

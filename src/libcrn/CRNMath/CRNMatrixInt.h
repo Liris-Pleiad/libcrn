@@ -79,8 +79,11 @@ namespace crn
 			static MatrixInt NewChamferDT1();
 			/*! \brief Creates the second chamfer DT mask */
 			static MatrixInt NewChamferDT2();
+
+			CRN_DECLARE_CLASS_CONSTRUCTOR(MatrixInt)
 	};
-	
+	template<> struct IsClonable<MatrixInt> : public std::true_type {};
+
 	template<> struct TypeInfo<MatrixInt>
 	{
 		using SumType = MatrixInt;

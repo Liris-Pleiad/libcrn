@@ -1445,5 +1445,6 @@ std::vector<std::complex<double>> SquareMatrixDouble::Eigenvalues(size_t max_ite
 
 CRN_BEGIN_CLASS_CONSTRUCTOR(SquareMatrixDouble)
 	CRN_DATA_FACTORY_REGISTER(U"SquareMatrixDouble", SquareMatrixDouble)
+	Cloner::Register<SquareMatrixDouble>();
 CRN_END_CLASS_CONSTRUCTOR(SquareMatrixDouble)
 

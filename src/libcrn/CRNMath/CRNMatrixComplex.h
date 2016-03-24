@@ -69,7 +69,10 @@ namespace crn
 
 			/*! \brief Cross correlation */
 			std::pair<Point2DInt, double> CrossCorrelation(const MatrixComplex &other, const std::complex<double> &fill1 = std::complex<double>(0, 0), const std::complex<double> &fill2 = std::complex<double>(0, 0));
+
+			CRN_DECLARE_CLASS_CONSTRUCTOR(MatrixComplex)
 	};
+	template<> struct IsClonable<MatrixComplex> : public std::true_type {};
 
 	CRN_ALIAS_SMART_PTR(MatrixComplex)
 

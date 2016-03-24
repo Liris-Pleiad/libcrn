@@ -29,6 +29,7 @@
 #include <CRNMath/CRNSquareMatrixDouble.h>
 #include <CRNStatistics/CRNStatisticSample.h>
 #include <CRNStringUTF8.h>
+#include <CRNProtocols.h>
 #include <CRNi18n.h>
 
 using namespace crn;
@@ -721,3 +722,6 @@ bool MultivariateGaussianMixture::IsValid() const
 	return status;
 }
 
+CRN_BEGIN_CLASS_CONSTRUCTOR(MultivariateGaussianMixture)
+	Cloner::Register<MultivariateGaussianMixture>();
+CRN_END_CLASS_CONSTRUCTOR(MultivariateGaussianMixture)

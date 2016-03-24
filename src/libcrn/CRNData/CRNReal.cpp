@@ -64,5 +64,7 @@ xml::Element Real::Serialize(xml::Element &parent) const
 
 CRN_BEGIN_CLASS_CONSTRUCTOR(Real)
 	CRN_DATA_FACTORY_REGISTER(U"Real", Real)
+	Cloner::Register<Real>();
+	Ruler::Register<Real>();
 CRN_END_CLASS_CONSTRUCTOR(Real)
 

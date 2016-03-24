@@ -335,6 +335,21 @@ void Vector::ShrinkToFit()
 	std::vector<SObject> (data.begin(), data.end()).swap(data);
 }
 
+/*! Distance between two vectors
+ * \throws	ExceptionDimension	vectors have different sizes
+ * \throws	ExceptionDomain	some objects are not of the same type
+ * \throws	ExceptionProtocol	an object is not metric
+ */
+double crn::Distance(const Vector &v1, const Vector &v2)
+{
+	if (v1.Size() != v2.Size())
+		throw ExceptionDimension(StringUTF8("double Distance(const Vector&, const Vector&): ") + _("vectors have different sizes."));
+	auto d = 0.0;
+	for (auto tmp : Range(v1))
+		d += Distance(v1, v2);
+	return d;
+}
+
 CRN_BEGIN_CLASS_CONSTRUCTOR(Vector)
 	CRN_DATA_FACTORY_REGISTER(U"Vector", Vector)
 CRN_END_CLASS_CONSTRUCTOR(Vector)

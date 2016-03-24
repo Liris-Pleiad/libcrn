@@ -38,6 +38,21 @@ Stroke::Stroke() = default;
  */
 Stroke::~Stroke() = default;
 
+Stroke::Stroke(const Stroke &other):
+	points(other.points)
+{
+	if (other.bbox)
+		bbox = CloneAs<Rect>(*other.bbox);
+}
+
+Stroke& Stroke::operator=(const Stroke &other)
+{
+	points = other.points;
+	if (other.bbox)
+		bbox = CloneAs<Rect>(*other.bbox);
+	return *this;
+}
+
 /*! 
  * Initializes the object from an XML element. Unsafe.
  *
@@ -308,20 +323,8 @@ Stroke Stroke::MakeFirstIntersection(const Rect &rect) const
 	return s;
 }
 
-/*!
- * Clone the stroke
- *
- * \return	a new stroke
- */
-UObject Clone(const Stroke &str)
-{
-	UStroke s(std::make_unique<Stroke>());
-	for (const auto &p : str)
-		s->AddPoint(p);
-	return std::move(s);
-}
-
 CRN_BEGIN_CLASS_CONSTRUCTOR(Stroke)
 	CRN_DATA_FACTORY_REGISTER(U"Stroke", Stroke)
+	Cloner::Register<Stroke>();
 CRN_END_CLASS_CONSTRUCTOR(Stroke)
 

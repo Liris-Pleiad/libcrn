@@ -61,5 +61,7 @@ xml::Element Int::Serialize(xml::Element &parent) const
 
 CRN_BEGIN_CLASS_CONSTRUCTOR(Int)
 	CRN_DATA_FACTORY_REGISTER(U"Int", Int)
+	Cloner::Register<Int>();
+	Ruler::Register<Int>();
 CRN_END_CLASS_CONSTRUCTOR(Int)
 

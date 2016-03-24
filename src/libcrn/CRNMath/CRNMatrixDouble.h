@@ -79,6 +79,7 @@ namespace crn
 			virtual std::string getClassName() const { return "MatrixDouble"; }
 	};
 	template<> struct IsSerializable<MatrixDouble> : public std::true_type {};
+	template<> struct IsClonable<MatrixDouble> : public std::true_type {};
 
 	template<> struct TypeInfo<MatrixDouble>
 	{

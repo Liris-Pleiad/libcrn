@@ -104,7 +104,6 @@ namespace crn
 		private:
 			unsigned int thresh;
 	};
-	template<> struct IsClonable<ImageGradient> : public std::true_type {};
 
 	CRN_ALIAS_SMART_PTR(ImageGradient)
 }

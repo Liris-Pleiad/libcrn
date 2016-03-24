@@ -1,4 +1,4 @@
-/* Copyright 2008-2015 INSA Lyon, CoReNum
+/* Copyright 2008-2016 INSA Lyon, CoReNum, ENS-Lyon
  * 
  * This file is part of libcrn.
  * 
@@ -26,6 +26,7 @@
 #include <CRNMath/CRNSquareMatrixDouble.h>
 #include <CRNMath/CRNMultivariateGaussianPDF.h>
 #include <CRNStringUTF8.h>
+#include <CRNProtocols.h>
 #include <CRNi18n.h>
 
 using namespace crn;
@@ -221,3 +222,7 @@ bool MultivariateGaussianPDF::IsValid() const
 	
 	return true;
 }
+
+CRN_BEGIN_CLASS_CONSTRUCTOR(MultivariateGaussianPDF)
+	Cloner::Register<MultivariateGaussianPDF>();
+CRN_END_CLASS_CONSTRUCTOR(MultivariateGaussianPDF)

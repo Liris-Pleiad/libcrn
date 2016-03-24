@@ -25,6 +25,7 @@
 #include <CRNMath/CRNMatrixDouble.h>
 #include <CRNMath/CRNSquareMatrixDouble.h>
 #include <CRNAI/CRNDiscreteHMM.h>
+#include <CRNProtocols.h>
 
 using namespace crn;
 
@@ -777,3 +778,7 @@ String DiscreteHMM::ToString() const
 	s += firstStateProbability->ToString();
 	return s;
 }
+
+CRN_BEGIN_CLASS_CONSTRUCTOR(DiscreteHMM)
+	Cloner::Register<DiscreteHMM>();
+CRN_END_CLASS_CONSTRUCTOR(DiscreteHMM)

@@ -157,6 +157,17 @@ namespace crn
 	 * An enumeration of distances
 	 */
 	enum class DistanceType { INVALID = 0, D4, D8, EUCLIDEAN };
+
+	/*! \brief Distance between two numbers */
+	template<
+		typename T,
+		typename std::enable_if<std::is_arithmetic<T>::value, int>::type = 0
+		>
+	double Distance(T o1, T o2)
+	{
+	 return double(Abs(o1 - o2));
+	}
+	
 	/*@}*/
 
 }

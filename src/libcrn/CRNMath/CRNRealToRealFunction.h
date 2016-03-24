@@ -87,6 +87,7 @@ namespace crn
 			double left_endpoint; /*!< left extrema of the function */
 			double right_endpoint; /*!< right extrema of the function */
 
+			CRN_DECLARE_CLASS_CONSTRUCTOR(RealToRealFunction)
 	};
 	template<> struct IsClonable<RealToRealFunction> : public std::true_type {};
 

@@ -178,9 +178,6 @@ namespace crn
 			/*! \brief Optimizes the memory usage */
 			void ShrinkToFit();
 
-			/*! \brief Distance to another vector if applicable */
-			double Distance(const Vector &obj) const;
-
 			/*! \brief Reads from an XML node if applicable */
 			void Deserialize(xml::Element &el);
 			/*! \brief Dumps to an XML node if applicable */
@@ -196,6 +193,9 @@ namespace crn
 	template<> struct IsSerializable<Vector> : public std::true_type {};
 	template<> struct IsClonable<Vector> : public std::true_type {};
 	template<> struct IsMetric<Vector> : public std::true_type {};
+
+	/*! \brief Distance between two vectors */
+	double Distance(const Vector &v1, const Vector &v2);
 
 	/*! \brief Size of a vector */
 	inline size_t Size(const Vector &v) noexcept { return v.Size(); }

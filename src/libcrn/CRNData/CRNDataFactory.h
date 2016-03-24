@@ -24,6 +24,7 @@
 
 #include <CRNObject.h>
 #include <CRNUtils/CRNXml.h>
+#include <CRNProtocols.h>
 #include <map>
 
 #ifdef RegisterClass
@@ -102,6 +103,8 @@ namespace crn
  * \param[in]	classname	the class to register
  * \ingroup	data
  */
-#define CRN_DATA_FACTORY_REGISTER(elemname, classname) crn::DataFactory::RegisterClass(elemname, std::make_unique<crn::DataFactoryElement<classname>>());
+#define CRN_DATA_FACTORY_REGISTER(elemname, classname) \
+	crn::DataFactory::RegisterClass(elemname, std::make_unique<crn::DataFactoryElement<classname>>());\
+	crn::Serializer::Register<classname>();
 
 #endif

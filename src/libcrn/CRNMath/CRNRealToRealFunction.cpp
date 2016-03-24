@@ -20,6 +20,7 @@
  */
 
 #include <CRNMath/CRNRealToRealFunction.h>
+#include <CRNProtocols.h>
 #include <CRNi18n.h>
 
 using namespace crn;
@@ -225,4 +226,7 @@ MatrixDouble RealToRealFunction::MakePreimage(double y) const
 	return P;
 }
 
+CRN_BEGIN_CLASS_CONSTRUCTOR(RealToRealFunction)
+	Cloner::Register<RealToRealFunction>();
+CRN_END_CLASS_CONSTRUCTOR(RealToRealFunction)
 

@@ -693,7 +693,6 @@ namespace crn
 			datatype data; /*!< rows, cols */
 			size_t rows, cols; /*!< dimensions of the matrix */
 	};
-	template<typename T> struct IsClonable<Matrix<T>> : public std::true_type {};
 
 	template<typename T> Matrix<T> operator+(const Matrix<T> &m1, const Matrix<T> &m2)
 	{ return Matrix<T>(m1) += m2; }

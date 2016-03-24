@@ -1,4 +1,4 @@
-/* Copyright 2009 INSA Lyon
+/* Copyright 2009-2016 INSA Lyon, ENS-Lyon
  * 
  * This file is part of libcrn.
  * 
@@ -37,6 +37,8 @@ ConsoleMessenger::ConsoleMessenger()
 	WarningPrefix = String(U"[") + _("WARNING") + String(U"] ");
 	ErrorPrefix = String(U"[") + _("ERROR") + String(U"] ");
 }
+
+ConsoleMessenger::~ConsoleMessenger() = default;
 
 /*! Prints a debug message */
 void ConsoleMessenger::PrintDebug(const String &msg)

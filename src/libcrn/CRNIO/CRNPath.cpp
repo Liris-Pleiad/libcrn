@@ -590,5 +590,6 @@ xml::Element Path::Serialize(xml::Element &parent) const
 
 CRN_BEGIN_CLASS_CONSTRUCTOR(Path)
 	CRN_DATA_FACTORY_REGISTER(U"Path", Path)
+	Cloner::Register<Path>();
 CRN_END_CLASS_CONSTRUCTOR(Path)
 

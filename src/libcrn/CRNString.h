@@ -276,6 +276,7 @@ long long ToLongLong() const { return convertTo<long long>(); }
 	};
 	template<> struct IsClonable<String> : public std::true_type {};
 	template<> struct IsSerializable<String> : public std::true_type {};
+	template<> struct IsMetric<String> : public std::true_type {};
 
 	/* \addtogroup string */
 	/*@{*/

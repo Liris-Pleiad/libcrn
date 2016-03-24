@@ -54,8 +54,8 @@ namespace crn
 			/*! \brief Destructor */
 			virtual ~Stroke() override;
 
-			Stroke(const Stroke&) = delete;
-			Stroke& operator=(const Stroke&) = delete;
+			Stroke(const Stroke &other);
+			Stroke& operator=(const Stroke &other);
 			Stroke(Stroke&&) = default;
 			Stroke& operator=(Stroke&&) = default;
 
@@ -118,7 +118,6 @@ namespace crn
 	};
 	template<> struct IsSerializable<Stroke> : public std::true_type {};
 	template<> struct IsClonable<Stroke> : public std::true_type {};
-	UObject Clone(const Stroke &str);
 
 	/*! \brief Size of a stroke */
 	inline size_t Size(const Stroke &s) noexcept { return s.GetNbPoints(); }

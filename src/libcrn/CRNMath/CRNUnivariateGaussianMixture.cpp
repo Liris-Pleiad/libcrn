@@ -783,5 +783,6 @@ xml::Element UnivariateGaussianMixture::Serialize(xml::Element &parent) const
 
 CRN_BEGIN_CLASS_CONSTRUCTOR(UnivariateGaussianMixture)
 	CRN_DATA_FACTORY_REGISTER(U"UnivariateGaussianMixture", UnivariateGaussianMixture)
+	Cloner::Register<UnivariateGaussianMixture>();
 CRN_END_CLASS_CONSTRUCTOR(UnivariateGaussianMixture)
 

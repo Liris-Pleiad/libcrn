@@ -300,6 +300,7 @@ void Map::Save(const Path &fname) const
 
 CRN_BEGIN_CLASS_CONSTRUCTOR(Map)
 	CRN_DATA_FACTORY_REGISTER(U"Map", Map)
+	Cloner::Register<Map>();
 CRN_END_CLASS_CONSTRUCTOR(Map)
 
 

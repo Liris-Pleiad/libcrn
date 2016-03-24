@@ -27,6 +27,7 @@
 #include <CRNString.h>
 #include <CRNData/CRNDataFactory.h>
 #include <CRNUtils/CRNXml.h>
+#include <CRNProtocols.h>
 #include <random>
 
 using namespace crn;
@@ -619,5 +620,6 @@ StringUTF8& StringUTF8::ReplaceSuffix(const StringUTF8 &old_suffix, const String
 
 CRN_BEGIN_CLASS_CONSTRUCTOR(StringUTF8)
 	CRN_DATA_FACTORY_REGISTER(U"StringUTF8", StringUTF8)
+	Cloner::Register<StringUTF8>();
 CRN_END_CLASS_CONSTRUCTOR(StringUTF8)
 

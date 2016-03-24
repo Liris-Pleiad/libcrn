@@ -92,6 +92,8 @@ namespace crn
 			std::vector<double> z; /*!< the coefficients */
 			std::vector<crn::Point2DDouble> data; /*!< the points */
 			Extrapolation extrapolation; /*!< the extrapolation method */
+
+			CRN_DECLARE_CLASS_CONSTRUCTOR(CubicSpline)
 	};
 	template<> struct IsClonable<CubicSpline> : public std::true_type {};
 

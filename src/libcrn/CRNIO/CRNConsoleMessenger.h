@@ -1,4 +1,4 @@
-/* Copyright 2009 INSA Lyon
+/* Copyright 2009-2016 INSA-Lyon, ENS-Lyon
  * 
  * This file is part of libcrn.
  * 
@@ -38,7 +38,7 @@ namespace crn
 		public:
 			/*! \brief Default constructor */
 			ConsoleMessenger();
-			virtual ~ConsoleMessenger() override {}
+			virtual ~ConsoleMessenger() override;
 			/*! \brief Prints a debug message */
 			virtual void PrintDebug(const String &msg) override;
 			/*! \brief Prints a message */

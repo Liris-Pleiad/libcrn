@@ -162,5 +162,6 @@ std::vector<Point2DInt> crn::MakeSegment(const Point2DInt &p_begin, const Point2
 
 CRN_BEGIN_CLASS_CONSTRUCTOR(Point2DInt)
 	CRN_DATA_FACTORY_REGISTER(U"Point2DInt", Point2DInt)
+	Cloner::Register<Point2DInt>();
 CRN_END_CLASS_CONSTRUCTOR(Point2DInt)
 

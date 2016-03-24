@@ -283,9 +283,6 @@ namespace crn
 
 			std::vector<unsigned int> Std() && { return std::move(bins); }
 
-			/*! \brief Distance between two metric objects. */
-			double Distance(const Histogram &obj) const { return MinkowskiDistance(obj, 1); }
-
 			/*! \brief Initializes the object from an XML element. Unsafe. */
 			void Deserialize(xml::Element &el);
 			/*! \brief Dumps the object to an XML element. Unsafe. */
@@ -301,6 +298,9 @@ namespace crn
 	};
 	template<> struct IsSerializable<Histogram> : public std::true_type {};
 	template<> struct IsClonable<Histogram> : public std::true_type {};
+	inline double Distance(const Histogram &h1, const Histogram &h2) { return h1.MinkowskiDistance(h2, 1); }
+	template<> struct IsMetric<Histogram> : public std::true_type {};
+
 
 	/*! \brief Size of an histogram */
 	inline size_t Size(const Histogram &h) noexcept { return h.Size(); }

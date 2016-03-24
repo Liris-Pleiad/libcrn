@@ -104,6 +104,7 @@ xml::Element LinearInterpolation::Serialize(xml::Element &parent) const
 
 CRN_BEGIN_CLASS_CONSTRUCTOR(LinearInterpolation)
 	CRN_DATA_FACTORY_REGISTER(U"LinearInterpolation", LinearInterpolation)
+	Cloner::Register<LinearInterpolation>();
 CRN_END_CLASS_CONSTRUCTOR(LinearInterpolation)
 
 

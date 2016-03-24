@@ -21,6 +21,7 @@
 
 #include <CRNMath/CRNPolynomialRegression.h>
 #include <CRNMath/CRNSquareMatrixDouble.h>
+#include <CRNProtocols.h>
 
 using namespace crn;
 
@@ -98,4 +99,8 @@ double PolynomialRegression::operator[](double x) const
 	}
 	return y;
 }
+
+CRN_BEGIN_CLASS_CONSTRUCTOR(PolynomialRegression)
+	Cloner::Register<PolynomialRegression>();
+CRN_END_CLASS_CONSTRUCTOR(PolynomialRegression)
 
