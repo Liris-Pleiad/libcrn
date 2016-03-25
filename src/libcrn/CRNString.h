@@ -296,11 +296,6 @@ long long ToLongLong() const { return convertTo<long long>(); }
 	/*! \brief Adds two strings */
 	inline String operator+(const String &s1, const String &s2) { return String(s1.Std() + s2.Std()); }
 	
-	/*! \brief (almost) Universal conversion to String */
-	template<typename T> String ToString(const T &obj) { return obj.ToString(); }
-	/*! \brief (almost) Universal conversion to String */
-	inline String ToString(const String &obj) { return obj; }
-
 	/*! \brief Distance between two strings */
 	inline double Distance(const String &s1, const String &s2) { return s1.EditDistance(s2); }
 

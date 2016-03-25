@@ -33,5 +33,5 @@ set(LIBGTKCRNMM_LIB
 	${GTK2_LIBRARIES}
 )
 
-add_library(libgtkcrnmm STATIC ${LIBGTKCRNMM_SRC} ${LIBGTKCRNMM_HEADER})
+add_library(libgtkcrnmm ${LIBGTKCRNMM_SRC} ${LIBGTKCRNMM_HEADER})
 target_link_libraries(libgtkcrnmm ${LIBGTKCRNMM_LIB})

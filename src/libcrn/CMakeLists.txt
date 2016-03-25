@@ -43,7 +43,7 @@ if(CRN_USING_GLIB_INTL OR CRN_USING_GDKPB)
 	)
 endif()
 
-add_library(${PRJ_NAME} STATIC ${LIBCRN_SRC} ${LIBCRN_HEADER_CFG} ${LIBCRN_HEADER})
+add_library(${PRJ_NAME} ${LIBCRN_SRC} ${LIBCRN_HEADER_CFG} ${LIBCRN_HEADER})
 target_link_libraries(${PRJ_NAME} ${LIBCRN_LIB})
 
 # Create Android package
