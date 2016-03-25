@@ -15,10 +15,10 @@ set(DOC_DIR ${PROJECT_BINARY_DIR}/doc)
 # project configuration
 set(PRJ_NAME libcrn)
 
-SET(CRN_PACKAGE_VERSION_MAJOR 3)
-SET(CRN_PACKAGE_VERSION_MINOR 9)
-SET(CRN_PACKAGE_VERSION_PATCH 0)
-SET(CRN_PACKAGE_VERSION "${CRN_PACKAGE_VERSION_MAJOR}.${CRN_PACKAGE_VERSION_MINOR}.${CRN_PACKAGE_VERSION_PATCH}")
+set(CRN_PACKAGE_VERSION_MAJOR 3)
+set(CRN_PACKAGE_VERSION_MINOR 9)
+set(CRN_PACKAGE_VERSION_PATCH 0)
+set(CRN_PACKAGE_VERSION "${CRN_PACKAGE_VERSION_MAJOR}.${CRN_PACKAGE_VERSION_MINOR}.${CRN_PACKAGE_VERSION_PATCH}")
 message("${PRJ_NAME} ${CRN_PACKAGE_VERSION}")
 
 project(${PRJ_NAME})
@@ -31,6 +31,8 @@ if (NOT CMAKE_BUILD_TYPE)
 		FORCE)
 endif ()
 message("Build type : ${CMAKE_BUILD_TYPE}")
+
+set (BUILD_SHARED_LIBS on)
 
 #############################
 if(WIN32)
@@ -93,6 +95,8 @@ endif()
 # /MP for multiple compilation units (cl.exe) ; without any value, it is set automatically depending on your number of main threads
 if(MSVC)
 	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /MP")
+
+	set (BUILD_SHARED_LIBS off)
 
 	set_property(DIRECTORY APPEND PROPERTY COMPILE_DEFINITIONS _CRT_SECURE_NO_WARNINGS)
 	set_property(DIRECTORY APPEND PROPERTY COMPILE_DEFINITIONS _SCL_SECURE_NO_WARNINGS)
@@ -159,4 +163,7 @@ if(GTK2_FOUND)
 	add_subdirectory(src/libgtkcrnmm)
 	add_subdirectory(src/titus)
 endif()
+
+enable_testing()
+add_subdirectory(src/tests)
 
