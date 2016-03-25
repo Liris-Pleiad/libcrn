@@ -53,6 +53,10 @@ if(ANDROID)
 	endif (ANDROID_NATIVE_API_LEVEL LESS 9)
 	set(CRN_PF_ANDROID ON)
 	#set(ICONV_INCLUDE_DIR "${ANDROID_NDK}/sources/android/support/include") # need to include a homebuilt version of iconv
+
+	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIE")
+	set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -fPIE -pie")
+	set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -fPIE -pie")
 endif(ANDROID)
 #############################
 

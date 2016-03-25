@@ -59,23 +59,23 @@ namespace crn
 			}
 		private:
 			Serializer() {}
-			static inline Serializer& getInstance() { static Serializer s; return s; }
+			static Serializer& getInstance();
 			struct serializer
 			{
 				virtual void Deserialize(Object &obj, xml::Element &el) = 0;
 				virtual xml::Element Serialize(const Object &obj, xml::Element &parent) = 0;
 			};
 			template<typename T> struct serializerImpl: public serializer
-		{
-			virtual void Deserialize(Object &obj, xml::Element &el) override
 			{
-				static_cast<T&>(obj).Deserialize(el);
-			}
-			virtual xml::Element Serialize(const Object &obj, xml::Element &parent) override
-			{
-				return static_cast<const T&>(obj).Serialize(parent);
-			}
-		};
+				virtual void Deserialize(Object &obj, xml::Element &el) override
+				{
+					static_cast<T&>(obj).Deserialize(el);
+				}
+				virtual xml::Element Serialize(const Object &obj, xml::Element &parent) override
+				{
+					return static_cast<const T&>(obj).Serialize(parent);
+				}
+			};
 			std::unordered_map<std::type_index, std::unique_ptr<serializer>> serializers;
 	};
 
@@ -94,17 +94,28 @@ namespace crn
 			{
 				getInstance().cloners.emplace(typeid(T), std::make_unique<clonerImpl<T>>());
 			}
+
+			static std::string GetClasses()
+			{
+				auto s = std::string{};
+				for (const auto &c : getInstance().cloners)
+				{
+					s += c.first.name();
+					s += " ";
+				}
+				return s;
+			}
 		private:
 			Cloner() {}
-			static inline Cloner& getInstance() { static Cloner c; return c; }
+			static Cloner& getInstance();
 			struct cloner
 			{
 				virtual UObject Clone(const Object &o) const = 0;
 			};
 			template<typename T> struct clonerImpl: public cloner
-		{
-			virtual UObject Clone(const Object &o) const override { return std::make_unique<T>(static_cast<const T&>(o)); }
-		};
+			{
+				virtual UObject Clone(const Object &o) const override { return std::make_unique<T>(static_cast<const T&>(o)); }
+			};
 			std::unordered_map<std::type_index, std::unique_ptr<cloner>> cloners;
 	};
 
@@ -128,15 +139,15 @@ namespace crn
 			}
 		private:
 			Ruler() {}
-			static inline Ruler& getInstance() { static Ruler r; return r; }
+			static Ruler& getInstance();
 			struct ruler
 			{
 				virtual double Distance(const Object &o1, const Object &o2) const = 0;
 			};
 			template<typename T> struct rulerImpl: public ruler
-		{
-			virtual double Distance(const Object &o1, const Object &o2) const override { return Distance(static_cast<const T&>(o1), static_cast<const T&>(o2)); }
-		};
+			{
+				virtual double Distance(const Object &o1, const Object &o2) const override { return Distance(static_cast<const T&>(o1), static_cast<const T&>(o2)); }
+			};
 			std::unordered_map<std::type_index, std::unique_ptr<ruler>> rulers;
 	};
 
