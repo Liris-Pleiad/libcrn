@@ -63,141 +63,13 @@ namespace crn
 	double Distance(const Object &o1, const Object &o2);
 	// see CRNMath.h for Distance between numbers
 
-	namespace protocol
-	{
-		struct DummyType {};
-		template<typename T> DummyType operator<(const T &, const T &) { return DummyType{}; }
-		template<typename T> DummyType operator>(const T &, const T &) { return DummyType{}; }
-		template<typename T> DummyType operator<=(const T &, const T &) { return DummyType{}; }
-		template<typename T> DummyType operator>=(const T &, const T &) { return DummyType{}; }
-
-		template<typename T> struct HasLT :
-			public std::integral_constant<
-			bool,
-			!std::is_same<
-			DummyType,
-			decltype(std::declval<T const&>() < std::declval<T const&>())
-			>::value
-			>
-		{};
-		template<typename T> struct HasGT :
-			public std::integral_constant<
-			bool,
-			!std::is_same<
-			DummyType,
-			decltype(std::declval<T const&>() > std::declval<T const&>())
-			>::value
-			>
-		{};
-		template<typename T> struct HasLE :
-			public std::integral_constant<
-			bool,
-			!std::is_same<
-			DummyType,
-			decltype(std::declval<T const&>() <= std::declval<T const&>())
-			>::value
-			>
-		{};
-		template<typename T> struct HasGE :
-			public std::integral_constant<
-			bool,
-			!std::is_same<
-			DummyType,
-			decltype(std::declval<T const&>() >= std::declval<T const&>())
-			>::value
-			>
-		{};
-
-		template<typename T> DummyType operator+(const T &, const T &) { return DummyType{}; }
-		template<typename T> DummyType operator==(const T &, const T &) { return DummyType{}; }
-
-		template<typename T> struct HasPlus :
-			public std::integral_constant<
-			bool,
-			!std::is_same<
-			DummyType,
-			decltype(std::declval<T const&>() + std::declval<T const&>())
-			>::value
-			>
-		{};
-		template<typename T> struct HasEquals :
-			public std::integral_constant<
-			bool,
-			!std::is_same<
-			DummyType,
-			decltype(std::declval<T const&>() == std::declval<T const&>())
-			>::value
-			>
-		{};
-
-		template<typename T> DummyType operator-(const T &, const T &) { return DummyType{}; }
-
-		template<typename T> struct HasMinus :
-			public std::integral_constant<
-			bool,
-			!std::is_same<
-			DummyType,
-			decltype(std::declval<T const&>() - std::declval<T const&>())
-			>::value
-			>
-		{};
-
-		template<typename T> DummyType operator*(const T &, const T &) { return DummyType{}; }
-
-		template<typename T> struct HasInnerMult :
-			public std::integral_constant<
-			bool,
-			!std::is_same<
-			DummyType,
-			decltype(std::declval<T const&>() * std::declval<T const&>())
-			>::value
-			>
-		{};
-
-		struct doubleWrapper { doubleWrapper(double) {} };
-		template<typename T> DummyType operator*(const T &, doubleWrapper) { return DummyType{}; }
-		template<typename T> DummyType operator*(doubleWrapper, const T &) { return DummyType{}; }
-
-		template<typename T> struct HasRightOuterMult :
-			public std::integral_constant<
-			bool,
-			!std::is_same<
-			DummyType,
-			decltype(std::declval<T const&>() * 0.0)
-			>::value
-			>
-		{};
-		template<typename T> struct HasLeftOuterMult :
-			public std::integral_constant<
-			bool,
-			!std::is_same<
-			DummyType,
-			decltype(0.0 * std::declval<T const&>())
-			>::value
-			>
-		{};
-
-		template<typename T> DummyType operator/(const T &, const T &) { return DummyType{}; }
-
-		template<typename T> struct HasDivide :
-			public std::integral_constant<
-			bool,
-			!std::is_same<
-			DummyType,
-			decltype(std::declval<T const&>() / std::declval<T const&>())
-			>::value
-			>
-		{};
-	}
-
 	/*! Has:
 	 * - Prop3 operator<(T, T)
 	 * - Prop3 operator<=(T, T)
 	 * - Prop3 operator>(T, T)
 	 * - Prop3 operator>=(T, T)
 	 */
-	template<typename T> struct IsPOSet: public std::integral_constant<bool, protocol::HasLT<T>::value && protocol::HasGT<T>::value && protocol::HasLE<T>::value && protocol::HasGE<T>::value> {};
-
+	template<typename T> struct IsPOSet: public std::integral_constant<bool, traits::HasLT<T>::value && traits::HasGT<T>::value && traits::HasLE<T>::value && traits::HasGE<T>::value> {};
 
 	// Metric objects
 	/*! Has:
@@ -209,20 +81,20 @@ namespace crn
 	 * - operator+(T, T)
 	 * - operator==(T, T)
 	 */
-	template<typename T> struct IsMagma: public std::integral_constant<bool, protocol::HasEquals<T>::value && protocol::HasPlus<T>::value> {};
+	template<typename T> struct IsMagma: public std::integral_constant<bool, traits::HasEquals<T>::value && traits::HasPlus<T>::value> {};
 
 	/*! Has:
 	 * - operator+(T, T)
 	 * - operator-(T, T)
 	 */
-	template<typename T> struct IsGroup: public std::integral_constant<bool, IsMagma<T>::value && protocol::HasMinus<T>::value> {};
+	template<typename T> struct IsGroup: public std::integral_constant<bool, IsMagma<T>::value && traits::HasMinus<T>::value> {};
 
 	/*! Has:
 	 * - operator+(T, T)
 	 * - operator-(T, T)
 	 * - operator*(T, T)
 	 */
-	template<typename T> struct IsRing: public std::integral_constant<bool, IsGroup<T>::value && protocol::HasInnerMult<T>::value> {};
+	template<typename T> struct IsRing: public std::integral_constant<bool, IsGroup<T>::value && traits::HasInnerMult<T>::value> {};
 
 	/*! Has:
 	 * - operator+(T, T)
@@ -230,8 +102,7 @@ namespace crn
 	 * - operator*(T, double)
 	 * - operator*(double, T)
 	 */
-	template<typename T> struct IsVectorOverR: public std::integral_constant<bool, IsGroup<T>::value && protocol::HasRightOuterMult<T>::value && protocol::HasLeftOuterMult<T>::value> {};
-
+	template<typename T> struct IsVectorOverR: public std::integral_constant<bool, IsGroup<T>::value && traits::HasRightOuterMult<T>::value && traits::HasLeftOuterMult<T>::value> {};
 
 	/*! Has:
 	 * - operator+(T, T)
@@ -241,6 +112,7 @@ namespace crn
 	 * - operator*(double, T)
 	 */
 	template<typename T> struct IsAlgebra: public std::integral_constant<bool, IsRing<T>::value && IsVectorOverR<T>::value> {};
+
 	/*! Has:
 	 * - operator+(T, T)
 	 * - operator-(T, T)
@@ -249,9 +121,7 @@ namespace crn
 	 * - operator*(double, T)
 	 * - operator/(T, T)
 	 */
-	template<typename T> struct IsField: public std::integral_constant<bool, IsAlgebra<T>::value && protocol::HasDivide<T>::value> {};
-
-	// Serializable objects
+	template<typename T> struct IsField: public std::integral_constant<bool, IsAlgebra<T>::value && traits::HasDivide<T>::value> {};
 
 	/*! Has:
 	 * - T::T(xml::Element &)
@@ -259,14 +129,11 @@ namespace crn
 	 * - Deserialize(T &, xml::Element &)
 	 */
 	template<typename T> struct IsSerializable: public std::false_type {};
-	// Clonable objects
 
 	/*! Has:
 	 * - T::Clone()
 	 */
 	template<typename T> struct IsClonable: public std::false_type {};
-
-	// Savable objects
 
 	/*! Has:
 	 * - T::T(const Path &)
@@ -274,7 +141,6 @@ namespace crn
 	 * - Load(T &, const Path &)
 	 */
 	template<typename T> struct IsSavable: public std::false_type {};
-
 }
 
 /*! \brief	Defines a default constructor from xml element 

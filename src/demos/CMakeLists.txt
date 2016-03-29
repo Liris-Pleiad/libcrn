@@ -12,7 +12,3 @@ add_executable(estimateStrokes estimateStrokes.cpp)
 # add dependencies
 target_link_libraries(estimateStrokes libcrn)
 
-# create estiamteStrokes
-add_executable(crntest crntest.cpp)
-# add dependencies
-target_link_libraries(crntest libcrn)

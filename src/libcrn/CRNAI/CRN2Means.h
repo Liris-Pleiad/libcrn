@@ -51,7 +51,7 @@ namespace crn
 			// can assign 0
 			std::is_assignable<typename std::add_lvalue_reference<typename std::decay<typename std::iterator_traits<ITER>::value_type>::type>::type, int>::value && 
 			// operator<
-			protocol::HasLT<typename std::iterator_traits<ITER>::value_type>::value && 
+			traits::HasLT<typename std::iterator_traits<ITER>::value_type>::value && 
 			// operators +, -, *(double)
 			IsVectorOverR<typename std::iterator_traits<ITER>::value_type>::value ,
 			int>::type = 0

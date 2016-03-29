@@ -45,7 +45,7 @@ namespace crn
 			// operator=
 			std::is_copy_assignable<T>::value &&
 			// operator<
-			protocol::HasLT<T>::value
+			traits::HasLT<T>::value
 			, int>::type = 0
 		> 
 	struct IterativeClustering
