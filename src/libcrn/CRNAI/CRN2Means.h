@@ -58,8 +58,6 @@ namespace crn
 		>
 		std::pair<typename std::iterator_traits<ITER>::value_type, typename std::iterator_traits<ITER>::value_type> 
 		TwoMeans(ITER beg, ITER en, double stop_crit = 0.00001)
-			noexcept(std::is_nothrow_constructible<typename std::iterator_traits<ITER>::value_type>::value 
-					&& std::is_nothrow_copy_assignable<typename std::iterator_traits<ITER>::value_type>::value)
 	{
 		using datatype = typename std::iterator_traits<ITER>::value_type;
 		using dectype = DecimalType<datatype>;
