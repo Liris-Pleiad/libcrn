@@ -186,15 +186,38 @@ namespace crn
 	template<typename T> using DiffType = typename TypeInfo<T>::DiffType;
 	template<typename T> using DecimalType = typename TypeInfo<T>::DecimalType;
 
-	template<typename P, typename std::enable_if<traits::IsDereferenceable<P>::value, int>::type = 0> typename std::pointer_traits<P>::element_type& Dereference(const P &p) { return *p; }
+	template<
+		typename P, 
+		typename std::enable_if<traits::IsDereferenceable<P>::value, int>::type = 0
+		> 
+	typename std::pointer_traits<P>::element_type& Dereference(const P &p) { return *p; }
 
-	template<typename P, typename std::enable_if<!traits::IsDereferenceable<P>::value, int>::type = 0> const P& Dereference(const P &p) { return p; }
-	template<typename P, typename std::enable_if<!traits::IsDereferenceable<P>::value, int>::type = 0> P& Dereference(P &p) { return p; }
+	template<
+		typename P, 
+		typename std::enable_if<!traits::IsDereferenceable<P>::value, int>::type = 0
+		> 
+	const P& Dereference(const P &p) { return p; }
+	
+	template<
+		typename P, 
+		typename std::enable_if<!traits::IsDereferenceable<P>::value, int>::type = 0
+		> 
+	P& Dereference(P &p) { return p; }
 
 	/*! \brief	Returns an object of the same type that represents 0 */
-	template<typename T, std::enable_if<std::is_constructible<T, int>::value, int> = 0> T Zero(const T &) { return T(0); }
+	template<
+		typename T, 
+		typename std::enable_if<std::is_constructible<T, int>::value, int>::type = 0
+		> 
+	T Zero(const T &) { return T(0); }
 	/*! \brief	Returns an object of the same type that represents 0 */
-	template<typename T, std::enable_if<!std::is_constructible<T, int>::value && traits::HasMinus<T>::value, int> = 0> T Zero(const T &val) { return T(val - val); }
+	template<
+		typename T, 
+		typename std::enable_if<
+			!std::is_constructible<T, int>::value && traits::HasMinus<T>::value,
+	 		int>::type = 0
+		> 
+	T Zero(const T &val) { return T(val - val); }
 
 	/*! \brief A class that represents scalar values in [[b, e[[ */
 	template<typename S> class ScalarRange
