@@ -40,10 +40,6 @@ set(ARCHIVE_INSTALL_PATH "lib")
 set(CRN_DATA_PATH "share/crn" CACHE PATH "Path to the data files")
 
 #############################
-if(WIN32)
-	set(CRN_PF_WIN32 ON)
-endif(WIN32)
-
 if(UNIX)
 	set(CRN_PF_UNIX ON)
 endif(UNIX)
@@ -74,8 +70,8 @@ if(CMAKE_COMPILER_IS_GNUCXX)
 	set(ENABLE_CXX11 "-std=c++11")
 
 	EXECUTE_PROCESS(COMMAND "${CMAKE_CXX_COMPILER} -dumpversion" OUTPUT_VARIABLE GCC_VERSION)
-	if (GCC_VERSION LESS 4.7)
-		set(ENABLE_CXX11 "-std=c++0x")
+	if (GCC_VERSION LESS 4.8)
+		message(FATAL_ERROR "g++ >= 4.8 needed.")
 	endif()
 
 	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${ENABLE_CXX11} -Wfatal-errors -pthread")
@@ -163,9 +159,28 @@ endif(MSVC)
 set(GTK2_HINTS "${CMAKE_SOURCE_DIR}/gtkmm2formsvc14")
 find_package(GTK2 2.22 COMPONENTS gtk gtkmm)
 if(GTK2_FOUND)
-	#set(CRN_USING_GLIB_INTL on)
+	set(CRN_USING_GLIB_INTL on)
 	set(CRN_USING_GTKMM on)
 	set(CRN_USING_GDKPB on)
+endif()
+
+# libintl/gettext
+find_package(Intl)
+if(Intl_FOUND)
+	set(CRN_USING_LIBINTL on)
+	set(CRN_USING_GLIB_INTL off)
+endif()
+
+# libpng
+find_package(PNG)
+if(PNG_FOUND)
+	set(CRN_USING_LIBPNG on)
+endif()
+
+# jpeglib
+find_package(JPEG)
+if(JPEG_FOUND)
+	set(CRN_USING_LIBJPEG on)
 endif()
 
 # ---
