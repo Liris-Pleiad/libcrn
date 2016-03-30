@@ -57,7 +57,8 @@ Main::Main(int &argc, char **&argv):
 		if (!Glib::thread_supported())
 			Glib::thread_init();
 
-		Gio::init();
+		Glib::init();
+		//Gio::init(); // XXX TODO symbole non exporté
 
 		// locales
 		char *loc = getenv("LANG");
