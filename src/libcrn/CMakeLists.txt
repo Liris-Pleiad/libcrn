@@ -28,18 +28,46 @@ file(
 )
 if (MSVC)
 	set(LIBCRN_HEADER ${LIBCRN_HEADER} 3rdParty/_msvc_only_/dirent.hh)
-
 	GroupSources(src/libcrn)
 endif(MSVC)
 
+add_definitions("-DBUILD_LIBCRN")
+
+# Dependencies
 set(LIBCRN_LIB
 	${ICONV_LIBRARIES}
 	${GDIPLUS_LIBRARIES}
 )
+
+# Gtk
 if(CRN_USING_GLIB_INTL OR CRN_USING_GDKPB)
 	include_directories(${GTK2_INCLUDE_DIRS})
 	list(APPEND LIBCRN_LIB
 		${GTK2_LIBRARIES}
+	)
+endif()
+
+# libintl
+if(CRN_USING_LIBINTL)
+	include_directories(${INTL_INCLUDE_DIRS})
+	list(APPEND LIBCRN_LIB
+		${INTL_LIBRARIES}
+	)
+endif()
+
+# libpng
+if(CRN_USING_LIBPNG)
+	include_directories(${PNG_INCLUDE_DIRS})
+	list(APPEND LIBCRN_LIB
+		${PNG_LIBRARIES}
+	)
+endif()
+
+# jpeglib
+if(CRN_USING_LIBJPEG)
+	include_directories(${JPEG_INCLUDE_DIRS})
+	list(APPEND LIBCRN_LIB
+		${JPEG_LIBRARIES}
 	)
 endif()
 

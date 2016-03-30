@@ -1,4 +1,4 @@
-/* Copyright 2011-2015 CoReNum, INSA-Lyon
+/* Copyright 2011-2016 CoReNum, INSA-Lyon, ENS-Lyon
  *
  * This file is part of libcrn.
  *
@@ -19,6 +19,7 @@
  * \author Yann LEYDIER
  */
 
+#define GETTEXT_PACKAGE "libcrn"
 #include <CRN.h>
 #include <GtkCRNMain.h>
 #include <GtkCRNApp.h>

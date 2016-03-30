@@ -1,4 +1,4 @@
-/* Copyright 2006-2014 Yann LEYDIER, INSA-Lyon
+/* Copyright 2006-2016 Yann LEYDIER, INSA-Lyon, ENS-Lyon
  * 
  * This file is part of libcrn.
  * 
@@ -38,7 +38,6 @@
 #define CRN_PACKAGE_VERSION "@CRN_PACKAGE_VERSION@"
 
 // Platform
-#cmakedefine CRN_PF_WIN32
 #cmakedefine CRN_PF_UNIX
 #cmakedefine CRN_PF_APPLE
 #cmakedefine CRN_PF_ANDROID
@@ -65,7 +64,7 @@
 #define CRN_LOCALE_FULL_PATH "@CRN_LOCALE_FULL_PATH@"
 
 // i18n
-#ifdef BUILDING_CRN
+#ifdef BUILD_LIBCRN
 #	define GETTEXT_PACKAGE	"libcrn"
 #endif
 

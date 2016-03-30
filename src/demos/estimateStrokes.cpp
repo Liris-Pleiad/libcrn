@@ -1,4 +1,4 @@
-/* Copyright 2008-2012 INSA Lyon
+/* Copyright 2008-2016 INSA Lyon, ENS-Lyon
  * 
  * This file is part of libcrn.
  * 
@@ -19,7 +19,7 @@
  * \author Yann Leydier
  */
 
-//#define GETTEXT_PACKAGE "libcrn3" // MT TODO
+#define GETTEXT_PACKAGE "libcrn"
 #include <CRN.h>
 #include <CRNi18n.h>
 #include <locale.h>

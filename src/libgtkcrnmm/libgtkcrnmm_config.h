@@ -21,7 +21,7 @@
 
 #include <CRN.h>
 
-#ifdef BUILDING_GTKCRNMM
-#define GETTEXT_PACKAGE "libcrn"
+#ifdef BUILD_LIBGTKCRNMM
+#	define GETTEXT_PACKAGE "libcrn"
 #endif
 

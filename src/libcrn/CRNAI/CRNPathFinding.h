@@ -22,7 +22,7 @@
 #ifndef CRNPathFinding_HEADER
 #define CRNPathFinding_HEADER
 
-#include <CRNTypes.h>
+#include <CRNType.h>
 #include <memory>
 #include <vector>
 #include <list>

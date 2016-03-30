@@ -28,6 +28,9 @@ if (MSVC)
 	add_definitions("/wd4250")
 endif(MSVC)
 
+add_definitions("-DBUILD_LIBGTKCRNMM")
+
+# Dependencies
 set(LIBGTKCRNMM_LIB
 	crn
 	${GTK2_LIBRARIES}
