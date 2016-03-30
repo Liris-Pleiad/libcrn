@@ -1,0 +1,38 @@
+# Findgtkcrnmm2
+# --------
+#
+# Findgtkcrnmm2.cmake
+#
+
+find_path(GTKCRNMM2_INCLUDE_DIR libgtkcrnmm_config.h
+	HINTS
+		${LIBCRN_HINTS}/@LIBGTKCRNMM_INCLUDE_INSTALL@
+	PATHS
+		/usr/@LIBGTKCRNMM_INCLUDE_INSTALL@
+		/usr/local/@LIBGTKCRNMM_INCLUDE_INSTALL@
+		$ENV{LIBCRN_PATH}/@LIBGTKCRNMM_INCLUDE_INSTALL@
+)
+
+find_library(GTKCRNMM2_LIBRARY NAME libgtkcrnmm${CMAKE_SHARED_LIBRARY_SUFFIX}
+	HINTS
+		${LIBCRN_HINTS}/lib
+	PATHS
+		/usr/lib
+		/usr/local/lib
+		$ENV{LIBCRN_PATH}/lib
+)
+
+include(FindPackageHandleStandardArgs)
+# handle the QUIETLY and REQUIRED arguments and set LIBGTKCRNMM2_FOUND to TRUE
+# if all listed variables are TRUE
+find_package_handle_standard_args(GTKCRNMM2  DEFAULT_MSG
+	GTKCRNMM2_LIBRARY GTKCRNMM2_INCLUDE_DIR)
+
+find_package(CRN REQUIRED)
+find_package(GTK2 2.22 REQUIRED gtk gtkmm)
+
+mark_as_advanced(GTKCRNMM2_INCLUDE_DIR GTKCRNMM2_LIBRARY)
+
+set(GTKCRNMM2_INCLUDE_DIRS ${CRN_INCLUDE_DIRS} ${GTKCRNMM2_INCLUDE_DIR} ${GTK2_INCLUDE_DIRS})
+set(GTKCRNMM2_LIBRARIES ${CRN_LIBRARIES} ${GTKCRNMM2_LIBRARY} ${GTK2_LIBRARIES})
+
