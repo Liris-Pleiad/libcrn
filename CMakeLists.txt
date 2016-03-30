@@ -34,6 +34,11 @@ message("Build type : ${CMAKE_BUILD_TYPE}")
 
 set (BUILD_SHARED_LIBS on)
 
+set(RUNTIME_INSTALL_PATH "bin")
+set(LIBRARY_INSTALL_PATH "lib")
+set(ARCHIVE_INSTALL_PATH "lib")
+set(CRN_DATA_PATH "share/crn" CACHE PATH "Path to the data files")
+
 #############################
 if(WIN32)
 	set(CRN_PF_WIN32 ON)
@@ -98,6 +103,9 @@ endif()
 #------------------------------------------------------------------------------
 # /MP for multiple compilation units (cl.exe) ; without any value, it is set automatically depending on your number of main threads
 if(MSVC)
+	set(CMAKE_SHARED_LIBRARY_PREFIX "lib")
+	set(CMAKE_STATIC_LIBRARY_PREFIX "lib")
+
 	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /MP")
 
 	set (BUILD_SHARED_LIBS off)
@@ -170,4 +178,40 @@ endif()
 
 enable_testing()
 add_subdirectory(src/tests)
+
+# Pack
+include(InstallRequiredSystemLibraries)
+set(CPACK_PACKAGE_FILE_NAME "libcrn-${CRN_PACKAGE_VERSION_MAJOR}.${CRN_PACKAGE_VERSION_MINOR}.${CRN_PACKAGE_VERSION_PATCH}${CRN_PACK_NAME}")
+set(CPACK_PACKAGE_VERSION_MAJOR ${CRN_PACKAGE_VERSION_MAJOR})
+set(CPACK_PACKAGE_VERSION_MINOR ${CRN_PACKAGE_VERSION_MINOR})
+set(CPACK_PACKAGE_VERSION_PATCH ${CRN_PACKAGE_VERSION_PATCH})
+set(CPACK_BINARY_TZ OFF)
+if(WIN32)
+	set(CPACK_BINARY_NSIS OFF) # tmp
+	set(CPACK_NSIS_DISPLAY_NAME "libcrn ${CRN_PACKAGE_VERSION_MAJOR}.${CRN_PACKAGE_VERSION_MINOR}.${CRN_PACKAGE_VERSION_PATCH}")
+	set(CPACK_BINARY_TBZ2 OFF)
+	set(CPACK_BINARY_ZIP ON)
+	set(CPACK_NSIS_SOURCE_DIR "${PROJECT_SOURCE_DIR}")
+else(WIN32)
+	set(CPACK_BINARY_TBZ2 ON)
+endif(WIN32)
+if(UNIX)
+	set(CPACK_DEBIAN_PACKAGE_VERSION ${CRN_PACKAGE_VERSION})
+	set(CPACK_DEBIAN_PACKAGE_MAINTAINER "Yann LEYDIER <yann.leydier@corenum.com>")
+	set(CPACK_DEBIAN_PACKAGE_DESCRIPTION "The CoReNum image processing library.")
+	set(CPACK_DEBIAN_PACKAGE_SECTION "devel")
+	set(CPACK_DEBIAN_PACKAGE_SHLIBDEPS ON) # auto depends
+	set(CPACK_DEB_COMPONENT_INSTALL ON)
+	set(CPACK_RPM_COMPONENT_INSTALL ON)
+endif(UNIX)
+set(CPACK_COMPONENTS_ALL bin dev app)
+set(CPACK_COMPONENT_BIN_DISPLAY_NAME "Runtime files")
+set(CPACK_COMPONENT_BIN_DESCRIPTION "Libraries and configuration files")
+set(CPACK_COMPONENT_DEV_DISPLAY_NAME "Development files")
+set(CPACK_COMPONENT_DEV_DESCRIPTION "Headers and various library-related files")
+set(CPACK_COMPONENT_DEV_DEPENDS bin)
+set(CPACK_COMPONENT_APP_DISPLAY_NAME "Applications")
+set(CPACK_COMPONENT_APP_DESCRIPTION "Demonstration applications")
+set(CPACK_COMPONENT_APP_DEPENDS bin)
+include(CPack)
 

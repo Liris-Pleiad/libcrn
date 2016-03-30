@@ -27,7 +27,7 @@ if (MSVC)
 endif(MSVC)
 
 set(TESTS_LIB
-	libcrn
+	crn
 )
 
 add_executable(tests ${TESTS_SRC} ${TESTS_HEADER})

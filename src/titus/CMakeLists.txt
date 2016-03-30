@@ -29,9 +29,13 @@ if (MSVC)
 endif(MSVC)
 
 set(TITUS_LIB
-	libgtkcrnmm
+	gtkcrnmm
 	${GTK2_LIBRARIES}
 )
 
 add_executable(titus ${TITUS_SRC} ${TITUS_HEADER})
 target_link_libraries(titus ${TITUS_LIB})
+
+install(TARGETS titus DESTINATION bin COMPONENT app)
+install(FILES "titus.png" DESTINATION ${CRN_DATA_PATH} COMPONENT app)
+
