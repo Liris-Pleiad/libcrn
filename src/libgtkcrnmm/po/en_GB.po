@@ -550,6 +550,27 @@ msgstr "The selection is not a line."
 #~ msgid "The preference is not the same dimension as the distance matrix."
 #~ msgstr "The preference is not the same dimension as the distance matrix."
 
+#~ msgid "The sample is not compatible with the already existing data."
+#~ msgstr "The sample is not compatible with the already existing data."
+
+#~ msgid "Void histogram."
+#~ msgstr "Void histogram."
+
+#~ msgid "No sample available."
+#~ msgstr "No sample available."
+
+#~ msgid "Error classifying a sample!"
+#~ msgstr "Error classifying a sample!"
+
+#~ msgid "Wrong class number."
+#~ msgstr "Wrong class number."
+
+#~ msgid "Some samples were not added."
+#~ msgstr "Some samples were not added."
+
+#~ msgid "The model is not a Vector."
+#~ msgstr "The model is not a Vector."
+
 #~ msgid "The neighborhood must be > 1."
 #~ msgstr "The neighbourhood must be > 1."
 
@@ -853,6 +874,9 @@ msgstr "The selection is not a line."
 #~ msgid "the last block of ASCII85 data cannot be a single byte."
 #~ msgstr "the last block of ASCII85 data cannot be a single byte."
 
+#~ msgid "Value object does not conform to the map's protocols."
+#~ msgstr "Value object does not conform to the map's protocols."
+
 #~ msgid "Key not found"
 #~ msgstr "Key not found"
 
@@ -871,15 +895,17 @@ msgstr "The selection is not a line."
 #~ msgid "End iterator is before first."
 #~ msgstr "End iterator is before first."
 
+#~ msgid "This map does not contain clonable objects."
+#~ msgstr "This map does not contain clonable objects."
+
+#~ msgid "This map does not contain serializable objects."
+#~ msgstr "This map does not contain serializable objects."
+
 #~ msgid "Cannot deserialize: "
 #~ msgstr "Cannot deserialize: "
 
 #~ msgid " because "
 #~ msgstr " because "
-
-#, fuzzy
-#~ msgid "Cannot find root element."
-#~ msgstr "Cannot find value element."
 
 #~ msgid "Null XML element."
 #~ msgstr "Null XML element."
@@ -890,12 +916,26 @@ msgstr "The selection is not a line."
 #~ msgid "Unknown type: "
 #~ msgstr "Unknown type: "
 
+#~ msgid "Object not added: protocols differ obj="
+#~ msgstr "Object not added: protocols differ obj="
+
+#~ msgid "This vector does not contain clonable objects."
+#~ msgstr "This vector does not contain clonable objects."
+
+#~ msgid "This vector does not contain poset objects."
+#~ msgstr "This vector does not contain poset objects."
+
+#~ msgid "This vector does not contain serializable objects."
+#~ msgstr "This vector does not contain serializable objects."
+
 #~ msgid "Unknown XML element: "
 #~ msgstr "Unknown XML element: "
 
-#, fuzzy
-#~ msgid "vectors have different sizes."
-#~ msgstr "matrices of different sizes"
+#~ msgid "This vector does not contain metric objects."
+#~ msgstr "This vector does not contain metric objects."
+
+#~ msgid "The vector do not have the same size."
+#~ msgstr "The vector do not have the same size."
 
 #~ msgid "Cannot create file "
 #~ msgstr "Cannot create file "
@@ -914,9 +954,6 @@ msgstr "The selection is not a line."
 
 #~ msgid "Cannot save file. "
 #~ msgstr "Cannot save file. "
-
-#~ msgid "Cannot create bitmap"
-#~ msgstr "Cannot create bitmap"
 
 #~ msgid "Null file name."
 #~ msgstr "Null file name."
@@ -954,17 +991,6 @@ msgstr "The selection is not a line."
 
 #~ msgid "Cannot open image. "
 #~ msgstr "Cannot open image. "
-
-#, fuzzy
-#~ msgid "Gdi+ could not load the image."
-#~ msgstr " could not be loaded properly."
-
-#, fuzzy
-#~ msgid "Gdi+ could not load the image correctly. Error number "
-#~ msgstr "Could not lock pixels. Error number "
-
-#~ msgid "Could not lock pixels. Error number "
-#~ msgstr "Could not lock pixels. Error number "
 
 #~ msgid "No decoder could open the file."
 #~ msgstr "No decoder could open the file."
@@ -1095,10 +1121,6 @@ msgstr "The selection is not a line."
 #~ msgid "No element in the XML."
 #~ msgstr "No element in the XML."
 
-#, fuzzy
-#~ msgid "The element is of unknown type."
-#~ msgstr "The element was not initialized."
-
 #~ msgid "Null charset"
 #~ msgstr "Null charset"
 
@@ -1140,54 +1162,6 @@ msgstr "The selection is not a line."
 
 #~ msgid "negative scale."
 #~ msgstr "negative scale."
-
-#~ msgid "The sample is not compatible with the already existing data."
-#~ msgstr "The sample is not compatible with the already existing data."
-
-#~ msgid "Void histogram."
-#~ msgstr "Void histogram."
-
-#~ msgid "No sample available."
-#~ msgstr "No sample available."
-
-#~ msgid "Error classifying a sample!"
-#~ msgstr "Error classifying a sample!"
-
-#~ msgid "Wrong class number."
-#~ msgstr "Wrong class number."
-
-#~ msgid "Some samples were not added."
-#~ msgstr "Some samples were not added."
-
-#~ msgid "The model is not a Vector."
-#~ msgstr "The model is not a Vector."
-
-#~ msgid "Value object does not conform to the map's protocols."
-#~ msgstr "Value object does not conform to the map's protocols."
-
-#~ msgid "This map does not contain clonable objects."
-#~ msgstr "This map does not contain clonable objects."
-
-#~ msgid "This map does not contain serializable objects."
-#~ msgstr "This map does not contain serializable objects."
-
-#~ msgid "Object not added: protocols differ obj="
-#~ msgstr "Object not added: protocols differ obj="
-
-#~ msgid "This vector does not contain clonable objects."
-#~ msgstr "This vector does not contain clonable objects."
-
-#~ msgid "This vector does not contain poset objects."
-#~ msgstr "This vector does not contain poset objects."
-
-#~ msgid "This vector does not contain serializable objects."
-#~ msgstr "This vector does not contain serializable objects."
-
-#~ msgid "This vector does not contain metric objects."
-#~ msgstr "This vector does not contain metric objects."
-
-#~ msgid "The vector do not have the same size."
-#~ msgstr "The vector do not have the same size."
 
 #~ msgid "Please select an image"
 #~ msgstr "Please select an image"
@@ -1553,6 +1527,9 @@ msgstr "The selection is not a line."
 
 #~ msgid " ignored (not a valid image file). ***"
 #~ msgstr " ignored (not a valid image file). ***"
+
+#~ msgid " could not be loaded properly."
+#~ msgstr " could not be loaded properly."
 
 #~ msgid "TESTING FRAMEWORK"
 #~ msgstr "TESTING FRAMEWORK"
@@ -2780,6 +2757,12 @@ msgstr "The selection is not a line."
 #~ msgid "Image could not be loaded. Error number "
 #~ msgstr "Image could not be loaded. Error number "
 
+#~ msgid "Could not lock pixels. Error number "
+#~ msgstr "Could not lock pixels. Error number "
+
+#~ msgid "Cannot create bitmap"
+#~ msgstr "Cannot create bitmap"
+
 #~ msgid "Should return a CRNImageIntGray."
 #~ msgstr "Should return a CRNImageIntGray."
 
@@ -3827,6 +3810,10 @@ msgstr "The selection is not a line."
 #, fuzzy
 #~ msgid "Cannot get X CDATA."
 #~ msgstr "Cannot get CDATA."
+
+#, fuzzy
+#~ msgid "Cannot find Y element."
+#~ msgstr "Cannot find value element."
 
 #, fuzzy
 #~ msgid "Cannot get Y CDATA."

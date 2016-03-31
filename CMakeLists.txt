@@ -155,18 +155,24 @@ if(MSVC)
 	endif (CRN_USING_GDIPLUS)
 endif(MSVC)
 
+# gettext
+find_package(Gettext)
+set(LANGUAGES "en_GB;fr")
+
 # Find Gtkmm
 set(GTK2_HINTS "${CMAKE_SOURCE_DIR}/gtkmm2formsvc14")
 find_package(GTK2 2.22 COMPONENTS gtk gtkmm)
 if(GTK2_FOUND)
-	set(CRN_USING_GLIB_INTL on)
+	if(Gettext_FOUND)
+		set(CRN_USING_GLIB_INTL on)
+	endif()
 	set(CRN_USING_GTKMM on)
 	set(CRN_USING_GDKPB on)
 endif()
 
-# libintl/gettext
+# libintl
 find_package(Intl)
-if(Intl_FOUND)
+if(Intl_FOUND AND Gettext_FOUND)
 	set(CRN_USING_LIBINTL on)
 	set(CRN_USING_GLIB_INTL off)
 endif()
@@ -183,7 +189,12 @@ if(JPEG_FOUND)
 	set(CRN_USING_LIBJPEG on)
 endif()
 
-# ---
+# Translation
+#set(GettextTranslate_ALL on)
+#set(LOCALEDIR "share/locale")
+#include(GettextTranslate)
+
+# Build
 add_subdirectory(src/libcrn)
 add_subdirectory(src/demos)
 if(GTK2_FOUND)
@@ -191,6 +202,7 @@ if(GTK2_FOUND)
 	add_subdirectory(src/titus)
 endif()
 
+# Tests
 enable_testing()
 add_subdirectory(src/tests)
 

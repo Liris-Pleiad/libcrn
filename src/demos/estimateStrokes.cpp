@@ -19,9 +19,7 @@
  * \author Yann Leydier
  */
 
-#define GETTEXT_PACKAGE "libcrn"
 #include <CRN.h>
-#include <CRNi18n.h>
 #include <locale.h>
 #include <CRNBlock.h>
 #include <CRNImage/CRNImageGray.h>
@@ -30,15 +28,11 @@
 
 int main(int argc, char *argv[])
 {
-	setlocale(LC_ALL, "");
-	CRNbindtextdomain(GETTEXT_PACKAGE, CRN_LOCALE_FULL_PATH);
-	CRNbind_textdomain_codeset(GETTEXT_PACKAGE, "UTF-8");
-	CRNtextdomain(GETTEXT_PACKAGE);
 	crn::IO::CurrentMessenger()->VerbosePrefix = U"";
 	crn::IO::IsVerbose() = true;
 	if (argc < 2)
 	{
-		CRNVerbose(crn::String(_("Usage: ")) +  argv[0] + 
+		CRNVerbose(crn::String(U"Usage: ") +  argv[0] + 
 					crn::String(U" image1 [image2 [...]]"));
 		getchar();
 		return -1;
@@ -51,14 +45,14 @@ int main(int argc, char *argv[])
 			crn::SBlock b(crn::Block::New(img));
 			crn::SImageGray ig(b->GetGray());
 			CRNVerbose(crn::String(U"*** ") + argv[tmp] + crn::String(U" ***"));
-			CRNVerbose(crn::String(_("\tStokes width: ")) + StrokesWidth(*ig));
-			CRNVerbose(crn::String(_("\tStokes height: ")) + StrokesHeight(*ig));
-			CRNVerbose(crn::String(_("\tLines height: ")) + EstimateLinesXHeight(*ig));
+			CRNVerbose(crn::String(U"\tStokes width: ") + StrokesWidth(*ig));
+			CRNVerbose(crn::String(U"\tStokes height: ") + StrokesHeight(*ig));
+			CRNVerbose(crn::String(U"\tLines height: ") + EstimateLinesXHeight(*ig));
 		}
 		catch (std::exception &ex)
 		{
 			CRNVerbose(crn::String(U"*** ") + argv[tmp] + 
-					crn::String(_(" ignored (not a valid image file). *** ")) + ex.what());
+					crn::String(U" ignored (not a valid image file). *** ") + ex.what());
 		}
 	}
 }

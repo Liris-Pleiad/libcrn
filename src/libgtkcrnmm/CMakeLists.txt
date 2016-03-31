@@ -53,3 +53,6 @@ install(DIRECTORY . DESTINATION ${LIBGTKCRNMM_INCLUDE_INSTALL} COMPONENT dev FIL
 configure_file(FindGTKCRNMM2.cmake.in ${PROJECT_BINARY_DIR}/share/FindGTKCRNMM2.cmake @ONLY)
 install(FILES "${PROJECT_BINARY_DIR}/share/FindGTKCRNMM2.cmake" DESTINATION "share/cmake" COMPONENT dev) # XXX TODO find where to install this!
 
+# Translation
+add_subdirectory(po)
+
