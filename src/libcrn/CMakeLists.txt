@@ -105,5 +105,5 @@ install(FILES "${PROJECT_SOURCE_DIR}/cmake/FindGTK2.cmake" DESTINATION "share/cm
 	#android_create_apk(crn "${CMAKE_BINARY_DIR}/apk" "${APP_SHARED_LIBRARIES}" "" "Data")
 #endif(ANDROID)
 
-add_subdirectory(po)
+#add_subdirectory(po)
 

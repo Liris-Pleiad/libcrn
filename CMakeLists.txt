@@ -158,6 +158,11 @@ endif(MSVC)
 # gettext
 find_package(Gettext)
 set(LANGUAGES "en_GB;fr")
+include(Gettext)
+TRANSLATE("${PROJECT_SOURCE_DIR}/src/libcrn" "libcrn")
+TRANSLATE("${PROJECT_SOURCE_DIR}/src/libgtkcrnmm" "libgtkcrnmm")
+TRANSLATE("${PROJECT_SOURCE_DIR}/src/titus" "titus")
+INSTALL_TRANSLATIONS()
 
 # Find Gtkmm
 set(GTK2_HINTS "${CMAKE_SOURCE_DIR}/gtkmm2formsvc14")
