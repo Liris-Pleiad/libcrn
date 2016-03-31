@@ -3,7 +3,7 @@
 set(Gettext_FOUND ON CACHE BOOL "Are Gettext tools available?")
 
 function(REQUIRE_BINARY binname varname)
-	if (defined ${${varname}-NOTFOUND})
+	if (${${varname}} STREQUAL "${varname}-NOTFOUND")
 		set(Gettext_FOUND OFF CACHE BOOL "Are Gettext tools available?" FORCE)
 	endif()
 endfunction()
