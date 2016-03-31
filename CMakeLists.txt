@@ -159,10 +159,12 @@ endif(MSVC)
 find_package(Gettext)
 set(LANGUAGES "en_GB;fr")
 include(Gettext)
-TRANSLATE("${PROJECT_SOURCE_DIR}/src/libcrn" "libcrn")
-TRANSLATE("${PROJECT_SOURCE_DIR}/src/libgtkcrnmm" "libgtkcrnmm")
-TRANSLATE("${PROJECT_SOURCE_DIR}/src/titus" "titus")
-INSTALL_TRANSLATIONS()
+	if (Gettext_FOUND)
+	TRANSLATE("${PROJECT_SOURCE_DIR}/src/libcrn" "libcrn")
+	TRANSLATE("${PROJECT_SOURCE_DIR}/src/libgtkcrnmm" "libgtkcrnmm")
+	TRANSLATE("${PROJECT_SOURCE_DIR}/src/titus" "titus")
+	INSTALL_TRANSLATIONS()
+endif()
 
 # Find Gtkmm
 set(GTK2_HINTS "${CMAKE_SOURCE_DIR}/gtkmm2formsvc14")
@@ -193,11 +195,6 @@ find_package(JPEG)
 if(JPEG_FOUND)
 	set(CRN_USING_LIBJPEG on)
 endif()
-
-# Translation
-#set(GettextTranslate_ALL on)
-#set(LOCALEDIR "share/locale")
-#include(GettextTranslate)
 
 # Build
 add_subdirectory(src/libcrn)

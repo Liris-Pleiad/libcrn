@@ -1,48 +1,38 @@
 # Create and install translation files
 
+set(Gettext_FOUND ON CACHE BOOL "Are Gettext tools available?")
+
 function(REQUIRE_BINARY binname varname)
 	if (defined ${${varname}-NOTFOUND})
-		message(FATAL_ERROR "Could not find " binname)
+		set(Gettext_FOUND OFF CACHE BOOL "Are Gettext tools available?" FORCE)
 	endif()
 endfunction()
 
-find_program(XGETTEXT_EXECUTABLE xgettext
+find_program(Gettext_XGETTEXT_EXECUTABLE xgettext
 	HINTS ${XGETTEXT} ${BINARIES}
 	)
 REQUIRE_BINARY(xgettext XGETTEXT_EXECUTABLE)
 
-find_program(MSGINIT_EXECUTABLE msginit
+find_program(Gettext_MSGINIT_EXECUTABLE msginit
 	HINTS ${MSGINIT} ${BINARIES}
 	)
 REQUIRE_BINARY(msginit MSGINIT_EXECUTABLE)
 
-find_program(MSGFILTER_EXECUTABLE msgfilter
-	HINTS ${MSGFILTER} ${BINARIES}
-	)
-REQUIRE_BINARY(msgfilter MSGFILTER_EXECUTABLE)
-
-find_program(MSGCONV_EXECUTABLE msgconv
-	HINTS ${MSGCONV} ${BINARIES}
-	)
-REQUIRE_BINARY(msgconv MSGCONV_EXECUTABLE)
-
-find_program(MSGMERGE_EXECUTABLE msgmerge
+find_program(Gettext_MSGMERGE_EXECUTABLE msgmerge
 	HINTS ${MSGMERGE} ${BINARIES}
 	)
 REQUIRE_BINARY(msgmerge MSGMERGE_EXECUTABLE)
 
-find_program(MSGFMT_EXECUTABLE msgfmt
+find_program(Gettext_MSGFMT_EXECUTABLE msgfmt
 	HINTS ${MSGFMT} ${BINARIES}
 	)
 REQUIRE_BINARY(msgfmt MSGFMT_EXECUTABLE)
 
 mark_as_advanced(
-	MSGCONV_EXECUTABLE 
-	MSGFILTER_EXECUTABLE 
-	MSGFMT_EXECUTABLE 
-	MSGINIT_EXECUTABLE 
-	MSGMERGE_EXECUTABLE 
-	XGETTEXT_EXECUTABLE
+	Gettext_MSGFMT_EXECUTABLE 
+	Gettext_MSGINIT_EXECUTABLE 
+	Gettext_MSGMERGE_EXECUTABLE 
+	Gettext_XGETTEXT_EXECUTABLE
 	)
 
 function(TRANSLATE srcdir domainname)
@@ -56,7 +46,7 @@ function(TRANSLATE srcdir domainname)
 	# create pot file
 	set(POT_FILE "${CMAKE_BINARY_DIR}/${domainname}.pot")
 	add_custom_command(OUTPUT "${POT_FILE}"
-		COMMAND "${XGETTEXT_EXECUTABLE}"
+		COMMAND "${Gettext_XGETTEXT_EXECUTABLE}"
 			-o "${POT_FILE}"
 			-c++
 			--from-code=utf-8
@@ -79,7 +69,7 @@ function(TRANSLATE srcdir domainname)
 			# create po file
 			set(MO_DEP "${POFILE}")
 			add_custom_command(OUTPUT "${POFILE}"
-				COMMAND "${MSGINIT_EXECUTABLE}"
+				COMMAND "${Gettext_MSGINIT_EXECUTABLE}"
 				--input="${POT_FILE}"
 				--output-file="${POFILE}"
 				--locale=${LANG}
@@ -89,7 +79,7 @@ function(TRANSLATE srcdir domainname)
 			# update po file
 			set(MO_DEP "${POFILE}.update")
 			add_custom_command(OUTPUT "${POFILE}.update"
-				COMMAND "${MSGMERGE_EXECUTABLE}"
+				COMMAND "${Gettext_MSGMERGE_EXECUTABLE}"
 				-U "${POFILE}"
 				"${POT_FILE}"
 				DEPENDS "${POT_FILE}"
@@ -107,7 +97,7 @@ function(TRANSLATE srcdir domainname)
 		endif()
 		list(APPEND MO_FILES "${MOFILE}")
 		add_custom_command(OUTPUT "${MOFILE}"
-			COMMAND "${MSGFMT_EXECUTABLE}"
+			COMMAND "${Gettext_MSGFMT_EXECUTABLE}"
 			-o "${MOFILE}"
 			"${POFILE}"
 			DEPENDS "${MO_DEP}"
