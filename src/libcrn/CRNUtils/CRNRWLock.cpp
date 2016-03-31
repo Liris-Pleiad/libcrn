@@ -20,7 +20,7 @@
  */
 
 #include <CRNUtils/CRNRWLock.h>
-#ifdef CRN_PF_WIN32
+#ifdef _MSC_VER
 #	include <windows.h>
 #else
 #	include <pthread.h>
@@ -30,7 +30,7 @@ using namespace crn;
 
 struct RWLock::internal_data
 {
-#ifdef CRN_PF_WIN32
+#ifdef _MSC_VER
 	bool wrpriority;              // true, if writer priority
 	DWORD rdcount;                // number of active readers
 	DWORD rdwaiting;              // number of waiting readers
@@ -47,7 +47,7 @@ struct RWLock::internal_data
 RWLock::RWLock():
 	data(std::make_unique<internal_data>())
 {
-#ifdef CRN_PF_WIN32
+#ifdef _MSC_VER
 	data->wrpriority = true; // XXX
 	data->rdcount = data->rdwaiting = data->wrcount = data->wrwaiting = 0;
 	InitializeCriticalSection(&(data->rwcs));
@@ -61,7 +61,7 @@ RWLock::RWLock():
 /*! Destructor */
 RWLock::~RWLock()
 {
-#ifdef CRN_PF_WIN32
+#ifdef _MSC_VER
 	CloseHandle(data->rdgreen);
 	CloseHandle(data->wrgreen);
 	DeleteCriticalSection(&(data->rwcs));
@@ -73,7 +73,7 @@ RWLock::~RWLock()
 /*! Requests authorization to read */
 void RWLock::WaitReadLock()
 {
-#ifdef CRN_PF_WIN32
+#ifdef _MSC_VER
 	bool wait = false;
 	do 
 	{
@@ -120,7 +120,7 @@ void RWLock::WaitReadLock()
 /*! Releases read token */
 void RWLock::ReadUnlock()
 {
-#ifdef CRN_PF_WIN32
+#ifdef _MSC_VER
 	EnterCriticalSection(&(data->rwcs));
 	data->rdcount -= 1;
 
@@ -148,7 +148,7 @@ void RWLock::ReadUnlock()
 /*! Requests authorization to write */
 void RWLock::WaitWriteLock()
 {
-#ifdef CRN_PF_WIN32
+#ifdef _MSC_VER
 	bool wait = false;
 	do
 	{
@@ -194,7 +194,7 @@ void RWLock::WaitWriteLock()
 /*! Releases write token */
 void RWLock::WriteUnlock()
 {
-#ifdef CRN_PF_WIN32
+#ifdef _MSC_VER
 	EnterCriticalSection(&(data->rwcs));
 	data->wrcount -= 1;
 	if (data->wrpriority)

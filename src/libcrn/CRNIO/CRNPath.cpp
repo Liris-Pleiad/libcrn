@@ -41,7 +41,7 @@ char Path::NoDrive()
  */
 char Path::Separator() noexcept
 {
-#ifdef CRN_PF_WIN32
+#ifdef _MSC_VER
 	return '\\';
 #else
 	return '/';

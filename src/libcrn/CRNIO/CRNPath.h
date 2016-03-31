@@ -42,7 +42,7 @@ namespace crn
 			enum class Format
 			{
 				AUTO = 0, URI = 1, UNIX = 2, WINDOWS = 3,
-#ifdef CRN_PF_WIN32
+#ifdef _MSC_VER
 				LOCAL = 3
 #else
 				LOCAL = 2

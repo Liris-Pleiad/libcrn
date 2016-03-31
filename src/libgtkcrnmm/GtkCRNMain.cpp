@@ -39,7 +39,7 @@
 using namespace crn;
 using namespace GtkCRN;
 
-#ifdef CRN_PF_WIN32
+#ifdef _MSC_VER
 const char *HOMEPATH = "APPDATA";
 #else
 const char *HOMEPATH = "HOME";

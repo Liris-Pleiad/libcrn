@@ -124,7 +124,7 @@ Glib::RefPtr<Gdk::Pixbuf> GdkCRN::PixbufFromCRNImage(const ImageBase &img)
  */
 Glib::RefPtr<Gdk::Pixbuf> GdkCRN::PixbufFromFile(const Path &p)
 {
-#ifdef CRN_PF_WIN32
+#ifdef _MSC_VER
 	auto ext = p.GetExtension();
 	ext.ToLower();
 	if (ext == "png" || ext == "jpeg" || ext == "jpg")

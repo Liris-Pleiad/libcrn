@@ -137,7 +137,7 @@ void IO::Error(const String &msg)
 void IO::Mkdir(const Path &name)
 {
 	int res = 0;
-#if defined(CRN_PF_WIN32)
+#if defined(_MSC_VER)
 	Path winname(name);
 	winname.ToWindows();
 	res = _mkdir(winname.CStr());
@@ -241,7 +241,7 @@ void IO::Rmdir(const Path &name)
 		diren=readdir(d);
 	}
 	int ret;
-#ifdef CRN_PF_WIN32
+#ifdef _MSC_VER
 	ret = _rmdir(lname.CStr());
 #else
 	ret = remove(lname.CStr());

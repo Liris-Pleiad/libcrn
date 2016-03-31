@@ -30,7 +30,7 @@
 #endif
 #include <iostream>
 #ifdef __GNUG__
-#	if !defined(CRN_PF_ANDROID) && !defined(CRN_PF_WIN32)
+#	if !defined(CRN_PF_ANDROID) && !defined(_MSC_VER)
 #		define DEMANGLE
 #	endif
 #endif
@@ -41,7 +41,7 @@ static const std::string getCallStack()
 {
 	if (!Exception::TraceStack())
 		return "";
-#ifdef CRN_PF_WIN32
+#ifdef _MSC_VER
 	return "";
 #else
 #	ifdef CRN_PF_ANDROID
