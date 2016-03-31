@@ -1,0 +1,4130 @@
+# English translations for libcrn package.
+# Copyright (C) 2007-2015 Yann LEYDIER
+# This file is distributed under the same license as the libcrn package.
+# Yann LEYDIER <yann@leydier.info>, 2007-2015, 2015.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: libcrn 3.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-03-31 13:53+0200\n"
+"PO-Revision-Date: 2015-11-24 13:55+0100\n"
+"Last-Translator: Yann LEYDIER <yann@leydier.info>\n"
+"Language-Team: English <>\n"
+"Language: en_GB\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Gtranslator 2.91.6\n"
+
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNPDFAttributes.cpp:28
+msgid "Single pages"
+msgstr "Single pages"
+
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNPDFAttributes.cpp:29
+msgid "Continuous pages"
+msgstr "Continuous pages"
+
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNPDFAttributes.cpp:30
+msgid "Two pages, first on the left"
+msgstr "Two pages, first on the left"
+
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNPDFAttributes.cpp:31
+msgid "Tow pages, first on the right"
+msgstr "Tow pages, first on the right"
+
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNPDFAttributes.cpp:36
+msgid "Lossy image compression"
+msgstr "Lossy image compression"
+
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNPDFAttributes.cpp:37
+msgid "Allow users to copy the content"
+msgstr "Allow users to copy the content"
+
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNPDFAttributes.cpp:38
+msgid "Allow users to print the document"
+msgstr "Allow users to print the document"
+
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNPDFAttributes.cpp:40
+msgid "Author"
+msgstr "Author"
+
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNPDFAttributes.cpp:44
+msgid "Title"
+msgstr "Title"
+
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNPDFAttributes.cpp:49
+msgid "Subject"
+msgstr "Subject"
+
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNPDFAttributes.cpp:53
+msgid "Keywords"
+msgstr "Keywords"
+
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNPDFAttributes.cpp:58
+msgid "Page layout"
+msgstr "Page layout"
+
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNPDFAttributes.cpp:77
+msgid "Quality"
+msgstr "Quality"
+
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNPDFAttributes.cpp:85
+msgid "Editor's password"
+msgstr "Editor's password"
+
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNPDFAttributes.cpp:89
+msgid "User's password"
+msgstr "User's password"
+
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNPDFAttributes.cpp:227
+msgid "JPEG quality must be between 0 and 100."
+msgstr "JPEG quality must be between 0 and 100."
+
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNProp3.cpp:80
+msgid "null event."
+msgstr "null event."
+
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNProgressWindow.cpp:106
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNProgressWindow.cpp:121
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNSelectionBox.cpp:748
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNSelectionBox.cpp:764
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNSelectionBox.cpp:802
+msgid "index out of bounds."
+msgstr "index out of bounds."
+
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNObject.cpp:41
+msgid "null object"
+msgstr "null object"
+
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNFileSelecter.cpp:47
+msgid "Filename"
+msgstr "Filename"
+
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNSelectionBox.cpp:63
+msgid "GtkCRN::SelectionBox: Invalid orientation."
+msgstr "GtkCRN::SelectionBox: Invalid orientation."
+
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNDocument.cpp:46
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNDocument.cpp:64
+msgid "Views"
+msgstr "Views"
+
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNDocument.cpp:58
+msgid "Blocks"
+msgstr "Blocks"
+
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNDocument.cpp:64
+msgid "_Views"
+msgstr "_Views"
+
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNDocument.cpp:65
+msgid "_Add Views"
+msgstr "_Add Views"
+
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNDocument.cpp:65
+msgid "Add Views"
+msgstr "Add Views"
+
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNDocument.cpp:66
+msgid "_Refresh Views"
+msgstr "_Refresh Views"
+
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNDocument.cpp:66
+msgid "Refresh Views"
+msgstr "Refresh Views"
+
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNDocument.cpp:67
+msgid "Select _First View"
+msgstr "Select _First View"
+
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNDocument.cpp:67
+msgid "Select First View"
+msgstr "Select First View"
+
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNDocument.cpp:68
+msgid "Select _Previous View"
+msgstr "Select _Previous View"
+
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNDocument.cpp:68
+msgid "Select Previous View"
+msgstr "Select Previous View"
+
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNDocument.cpp:69
+msgid "Select _Next View"
+msgstr "Select _Next View"
+
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNDocument.cpp:69
+msgid "Select Next View"
+msgstr "Select Next View"
+
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNDocument.cpp:70
+msgid "Select _Last View"
+msgstr "Select _Last View"
+
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNDocument.cpp:70
+msgid "Select Last View"
+msgstr "Select Last View"
+
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNDocument.cpp:71
+msgid "Select _All Views"
+msgstr "Select _All Views"
+
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNDocument.cpp:71
+msgid "Select All Views"
+msgstr "Select All Views"
+
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNDocument.cpp:72
+msgid "_Deselect Views"
+msgstr "_Deselect Views"
+
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNDocument.cpp:72
+msgid "Deselect Views"
+msgstr "Deselect Views"
+
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNDocument.cpp:73
+msgid "Select _Even Views"
+msgstr "Select _Even Views"
+
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNDocument.cpp:74
+msgid "Select _Odd Views"
+msgstr "Select _Odd Views"
+
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNDocument.cpp:75
+msgid "_Invert View Selection"
+msgstr "_Invert View Selection"
+
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNDocument.cpp:75
+msgid "Invert View Selection"
+msgstr "Invert View Selection"
+
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNDocument.cpp:76
+msgid "_Remove View Selection"
+msgstr "_Remove View Selection"
+
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNDocument.cpp:76
+msgid "Remove View Selection"
+msgstr "Remove View Selection"
+
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNDocument.cpp:78
+msgid "_Export PDF"
+msgstr "_Export PDF"
+
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNDocument.cpp:78
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNDocument.cpp:1021
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNDocument.cpp:1050
+msgid "Export PDF"
+msgstr "Export PDF"
+
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNDocument.cpp:83
+msgid "_Add Subblock"
+msgstr "_Add Subblock"
+
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNDocument.cpp:83
+msgid "Add Subblock"
+msgstr "Add Subblock"
+
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNDocument.cpp:85
+msgid "_Remove Subblock"
+msgstr "_Remove Subblock"
+
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNDocument.cpp:85
+msgid "Remove Subblock"
+msgstr "Remove Subblock"
+
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNDocument.cpp:87
+msgid "_Show/Hide Subblocks"
+msgstr "_Show/Hide Subblocks"
+
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNDocument.cpp:87
+msgid "Show/Hide Subblocks"
+msgstr "Show/Hide Subblocks"
+
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNDocument.cpp:88
+msgid "Subblocks _Settings"
+msgstr "Subblocks _Settings"
+
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNDocument.cpp:88
+msgid "Subblocks Settings"
+msgstr "Subblocks Settings"
+
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNDocument.cpp:129
+msgid "Block name"
+msgstr "Block name"
+
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNDocument.cpp:130
+msgid "Coordinates"
+msgstr "Coordinates"
+
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNDocument.cpp:230
+msgid "Inexistent view"
+msgstr "Inexistent view"
+
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNDocument.cpp:251
+msgid "The document was never saved. It is impossible to generate thumbnails."
+msgstr "The document was never saved. It is impossible to generate thumbnails."
+
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNDocument.cpp:264
+#, c-format
+msgid ""
+"%i error(s) occurred during the generation of the thumbnails. Some images "
+"may be deffective."
+msgstr ""
+"%i error(s) occurred during the generation of the thumbnails. Some images "
+"may be deffective."
+
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNDocument.cpp:288
+msgid "Refresh"
+msgstr "Refresh"
+
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNDocument.cpp:289
+msgid "Loading view"
+msgstr "Loading view"
+
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNDocument.cpp:528
+msgid "Please select views to add"
+msgstr "Please select views to add"
+
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNDocument.cpp:728
+msgid "Add a subblock"
+msgstr "Add a subblock"
+
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNDocument.cpp:738
+msgid "Subblock tree"
+msgstr "Subblock tree"
+
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNDocument.cpp:740
+msgid "New subblock's name"
+msgstr "New subblock's name"
+
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNDocument.cpp:760
+msgid "New subblock"
+msgstr "New subblock"
+
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNDocument.cpp:778
+msgid "Cannot add such selection to the subblock tree."
+msgstr "Cannot add such selection to the subblock tree."
+
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNDocument.cpp:858
+msgid "Configure subblocks display"
+msgstr "Configure subblocks display"
+
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNDocument.cpp:869
+msgid "Frame color"
+msgstr "Frame colour"
+
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNDocument.cpp:875
+msgid "Fill color"
+msgstr "Fill colour"
+
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNDocument.cpp:880
+msgid "Show subblock _labels"
+msgstr "Show subblock _labels"
+
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNDocument.cpp:883
+msgid "Label color"
+msgstr "Label colour"
+
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNDocument.cpp:1051
+msgid "Writing image"
+msgstr "Writing image"
+
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNFileSelecterDialog.cpp:34
+msgid "File selection"
+msgstr "File selection"
+
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNMain.cpp:92
+msgid "Using default language."
+msgstr "British english language selected."
+
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GdkCRNPixbuf.cpp:117
+msgid "unsupported pixel format."
+msgstr "unsupported pixel format."
+
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GdkCRNPixbuf.cpp:151
+msgid "Null pixbuf given."
+msgstr "Null pixbuf given."
+
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNConfigElement.cpp:38
+msgid "The element was not initialized."
+msgstr "The element was not initialized."
+
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNApp.cpp:39
+msgid "_File"
+msgstr "_File"
+
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNApp.cpp:39
+msgid "File"
+msgstr "File"
+
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNApp.cpp:41
+msgid "_?"
+msgstr "_?"
+
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNApp.cpp:41
+msgid "?"
+msgstr "?"
+
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNApp.cpp:57
+msgid "Are you sure you want to quit?"
+msgstr "Are you sure you want to quit?"
+
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNApp.cpp:139
+msgid "Advanced details"
+msgstr "Advanced details"
+
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNApp.cpp:168
+msgid "Unhandled exception caught."
+msgstr "Unhandled exception caught."
+
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNDrawingPanel.cpp:36
+msgid "_Background Color…"
+msgstr "_Background Colour…"
+
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNDrawingPanel.cpp:36
+msgid "Background Color"
+msgstr "Background Colour"
+
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNDrawingPanel.cpp:38
+msgid "Background"
+msgstr "Background"
+
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNDrawingPanel.cpp:47
+msgid "_Foreground Color…"
+msgstr "_Foreground Colour…"
+
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNDrawingPanel.cpp:47
+msgid "Foreground Color"
+msgstr "Foreground Colour"
+
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNDrawingPanel.cpp:49
+msgid "Foreground"
+msgstr "Foreground"
+
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNDrawingPanel.cpp:58
+msgid "_Clear"
+msgstr "_Clear"
+
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNDrawingPanel.cpp:58
+msgid "Clear"
+msgstr "Clear"
+
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNDrawingPanel.cpp:59
+msgid "_Increase Thickness"
+msgstr "_Increase Thickness"
+
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNDrawingPanel.cpp:59
+msgid "Increase Thickness"
+msgstr "Increase Thickness"
+
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNDrawingPanel.cpp:60
+msgid "_Decrease Thickness"
+msgstr "_Decrease Thickness"
+
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNDrawingPanel.cpp:60
+msgid "Decrease Thickness"
+msgstr "Decrease Thickness"
+
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNDrawingPanel.cpp:61
+msgid "Set _Thickness"
+msgstr "Set _Thickness"
+
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNDrawingPanel.cpp:61
+msgid "Set Thickness"
+msgstr "Set Thickness"
+
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNDrawingPanel.cpp:99
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNImage.cpp:193
+msgid "null or negative zoom value."
+msgstr "null or negative zoom value."
+
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNImage.cpp:127
+msgid "_Clear User Selection"
+msgstr "_Clear User Selection"
+
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNImage.cpp:127
+msgid "Clear User Selection"
+msgstr "Clear User Selection"
+
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNImage.cpp:1934
+msgid "Cannot set selection type to Text."
+msgstr "Cannot set selection type to Text."
+
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNImage.cpp:1936
+msgid "Cannot set selection type to Polygon."
+msgstr "Cannot set selection type to Polygon."
+
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNImage.cpp:2023
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNImage.cpp:2041
+msgid "The polygon must have more than two points."
+msgstr "The polygon must have more than two points."
+
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNImage.cpp:2059
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNImage.cpp:2077
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNImage.cpp:2094
+msgid "Overlay not found."
+msgstr "Overlay not found."
+
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNImage.cpp:2062
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNImage.cpp:2080
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNImage.cpp:2097
+msgid "Overlay item not found."
+msgstr "Overlay item not found."
+
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNImage.cpp:2159
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNImage.cpp:2162
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNImage.cpp:2181
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNImage.cpp:2184
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNImage.cpp:2203
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNImage.cpp:2206
+msgid "No selection found."
+msgstr "No selection found."
+
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNImage.cpp:2169
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNImage.cpp:2228
+msgid "The selection is not a rectangle."
+msgstr "The selection is not a rectangle."
+
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNImage.cpp:2191
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNImage.cpp:2245
+msgid "The selection is not a point."
+msgstr "The selection is not a point."
+
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNImage.cpp:2213
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNImage.cpp:2266
+msgid "The selection is not a line."
+msgstr "The selection is not a line."
+
+#~ msgid "invalid index."
+#~ msgstr "invalid index."
+
+#~ msgid "flat histogram."
+#~ msgstr "flat histogram."
+
+#~ msgid "window larger than histogram. Cropping."
+#~ msgstr "window larger than histogram. Cropping."
+
+#~ msgid "histograms must have same size."
+#~ msgstr "histograms must have same size."
+
+#~ msgid "Cannot resize histogram with null size."
+#~ msgstr "Cannot resize histogram with null size."
+
+#~ msgid "Wrong XML element."
+#~ msgstr "Wrong XML element."
+
+#~ msgid "Cannot get CDATA."
+#~ msgstr "Cannot get CDATA."
+
+#~ msgid "Cannot convert CDATA."
+#~ msgstr "Cannot convert CDATA."
+
+#~ msgid "The histogram is empty."
+#~ msgstr "The histogram is empty."
+
+#~ msgid "Illegal range."
+#~ msgstr "Illegal range."
+
+#~ msgid "Index out of dimension range."
+#~ msgstr "Index out of dimension range."
+
+#~ msgid "Incompatible input pattern dimensions."
+#~ msgstr "Incompatible input pattern dimensions."
+
+#~ msgid "Incompatible output dimensions."
+#~ msgstr "Incompatible output dimensions."
+
+#~ msgid "Incomplete PCA xml element."
+#~ msgstr "Incomplete PCA xml element."
+
+#~ msgid "The damping must be in [0, 1[."
+#~ msgstr "The damping must be in [0, 1[."
+
+#~ msgid "The number of stable iterations to stop must be >1."
+#~ msgstr "The number of stable iterations to stop must be >1."
+
+#~ msgid "The maximal number of iterations must be >1."
+#~ msgstr "The maximal number of iterations must be >1."
+
+#~ msgid "The preference is not the same dimension as the distance matrix."
+#~ msgstr "The preference is not the same dimension as the distance matrix."
+
+#~ msgid "The neighborhood must be > 1."
+#~ msgstr "The neighbourhood must be > 1."
+
+#~ msgid "The neighborhood is greater than the number of elements."
+#~ msgstr "The neighbourhood is greater than the number of elements."
+
+#~ msgid "The distance matrix is not square."
+#~ msgstr "The distance matrix is not square."
+
+#~ msgid "lambda must be > 0."
+#~ msgstr "lambda must be > 0."
+
+#~ msgid "Index out of range"
+#~ msgstr "Index out of range"
+
+#~ msgid "Illegal input vector dimension"
+#~ msgstr "Illegal input vector dimension"
+
+#~ msgid "empty distance matrix."
+#~ msgstr "empty distance matrix."
+
+#~ msgid "the distance matrix is not square."
+#~ msgstr "the distance matrix is not square."
+
+#~ msgid "Neighborhood to compute sigma must be >=1."
+#~ msgstr "Neighborhood to compute sigma must be >=1."
+
+#~ msgid "Empty distance matrix."
+#~ msgstr "Empty distance matrix."
+
+#~ msgid "Dimension must be >=1."
+#~ msgstr "Dimension must be >=1."
+
+#~ msgid "Sigma must be positive."
+#~ msgstr "Sigma must be positive."
+
+#~ msgid "Eigenvalues should be in [0, 1]."
+#~ msgstr "Eigenvalues should be in [0, 1]."
+
+#~ msgid "Cannot project on less than one coordinate."
+#~ msgstr "Cannot project on less than one coordinate."
+
+#~ msgid "Null suffix to search."
+#~ msgstr "Null suffix to search."
+
+#~ msgid "Null suffix to delete."
+#~ msgstr "Null suffix to delete."
+
+#~ msgid "no direction given."
+#~ msgstr "no direction given."
+
+#~ msgid "negative size."
+#~ msgstr "negative size."
+
+#~ msgid "negative maximal value."
+#~ msgstr "negative maximal value."
+
+#~ msgid "no orientation given."
+#~ msgstr "no orientation given."
+
+#~ msgid "Cannot open file "
+#~ msgstr "Cannot open file "
+
+#~ msgid "cannot open file "
+#~ msgstr "cannot open file "
+
+#~ msgid "DEBUG"
+#~ msgstr "DEBUG"
+
+#~ msgid "WARNING"
+#~ msgstr "WARNING"
+
+#~ msgid "ERROR"
+#~ msgstr "ERROR"
+
+#~ msgid "libzip version is too old to support zip_discard()."
+#~ msgstr "libzip version is too old to support zip_discard()."
+
+#~ msgid "The file already exists."
+#~ msgstr "The file already exists."
+
+#~ msgid "The file is inconsistent."
+#~ msgstr "The file is inconsistent."
+
+#~ msgid "Not enough memory."
+#~ msgstr "Not enough memory."
+
+#~ msgid "This is not a zip file."
+#~ msgstr "This is not a zip file."
+
+#~ msgid "Cannot open file."
+#~ msgstr "Cannot open file."
+
+#~ msgid "Cannot read file."
+#~ msgstr "Cannot read file."
+
+#~ msgid "Unknown zip error."
+#~ msgstr "Unknown zip error."
+
+#~ msgid "VERBOSE"
+#~ msgstr "VERBOSE"
+
+#~ msgid "the path does not contain a filename."
+#~ msgstr "the path does not contain a filename."
+
+#~ msgid "Cannot create directory: "
+#~ msgstr "Cannot create directory: "
+
+#~ msgid "Cannot remove: "
+#~ msgstr "Cannot remove: "
+
+#~ msgid "Cannot open directory: "
+#~ msgstr "Cannot open directory: "
+
+#~ msgid "Cannot remove file: "
+#~ msgstr "Cannot remove file: "
+
+#~ msgid "Cannot remove directory: "
+#~ msgstr "Cannot remove directory: "
+
+#~ msgid "Cannot copy a file over itself."
+#~ msgstr "Cannot copy a file over itself."
+
+#~ msgid "Cannot open source file: "
+#~ msgstr "Cannot open source file: "
+
+#~ msgid "Cannot open destination file: "
+#~ msgstr "Cannot open destination file: "
+
+#~ msgid "Negative standard deviation"
+#~ msgstr "Negative standard deviation"
+
+#~ msgid "No preimage found."
+#~ msgstr "No preimage found."
+
+#~ msgid "Incompatible dimensions"
+#~ msgstr "Incompatible dimensions"
+
+#~ msgid "Invalid index"
+#~ msgstr "Invalid index"
+
+#~ msgid "incompatible dimensions."
+#~ msgstr "incompatible dimensions."
+
+#~ msgid "incompatible dimensions"
+#~ msgstr "incompatible dimensions"
+
+#~ msgid "invalid or incompatible matrix dimensions"
+#~ msgstr "invalid or incompatible matrix dimensions"
+
+#~ msgid "Equation has either no solution or an infinity of solutions."
+#~ msgstr "Equation has either no solution or an infinity of solutions."
+
+#~ msgid "Negative variance."
+#~ msgstr "Negative variance."
+
+#~ msgid "true"
+#~ msgstr "true"
+
+#~ msgid "false"
+#~ msgstr "false"
+
+#~ msgid "unknown"
+#~ msgstr "unknown"
+
+#~ msgid "FFT: signal size is not a power of 2."
+#~ msgstr "FFT: signal size is not a power of 2."
+
+#~ msgid "not a column vector."
+#~ msgstr "not a column vector."
+
+#~ msgid "the matrix is not square."
+#~ msgstr "the matrix is not square."
+
+#~ msgid "row or column index out of range"
+#~ msgstr "row or column index out of range"
+
+#~ msgid "The matrix cannot be inversed."
+#~ msgstr "The matrix cannot be inversed."
+
+#~ msgid "Matrix cannot be inversed. Null pivot at column: "
+#~ msgstr "Matrix cannot be inversed. Null pivot at column: "
+
+#~ msgid "Too many iterations."
+#~ msgstr "Too many iterations."
+
+#~ msgid "UTF not supported."
+#~ msgstr "UTF not supported."
+
+#~ msgid "null filename."
+#~ msgstr "null filename."
+
+#~ msgid "filename not found."
+#~ msgstr "filename not found."
+
+#~ msgid "Index out of bounds."
+#~ msgstr "Index out of bounds."
+
+#~ msgid "id not found."
+#~ msgstr "id not found."
+
+#~ msgid "bad changeset size."
+#~ msgstr "bad changeset size."
+
+#~ msgid "changeset contains duplicates."
+#~ msgstr "changeset contains duplicates."
+
+#~ msgid "changeset contains values out of bounds."
+#~ msgstr "changeset contains values out of bounds."
+
+#~ msgid "Not a Document file."
+#~ msgstr "Not a Document file."
+
+#~ msgid "the document was never saved."
+#~ msgstr "the document was never saved."
+
+#~ msgid "NewBlock"
+#~ msgstr "NewBlock"
+
+#~ msgid "No image."
+#~ msgstr "No image."
+
+#~ msgid "unsupported image type."
+#~ msgstr "unsupported image type."
+
+#~ msgid "No parent."
+#~ msgstr "No parent."
+
+#~ msgid "this is a topmost block. Its bounding box cannot be changed."
+#~ msgstr "this is a topmost block. Its bounding box cannot be changed."
+
+#~ msgid "Uninitialized bounding box."
+#~ msgstr "Uninitialized bounding box."
+
+#~ msgid "bounding box out of parent's bounding box."
+#~ msgstr "bounding box out of parent's bounding box."
+
+#~ msgid "tree not found."
+#~ msgstr "tree not found."
+
+#~ msgid "Cannot open image."
+#~ msgstr "Cannot open image."
+
+#~ msgid "Uninitialized clipping rectangle."
+#~ msgstr "Uninitialized clipping rectangle."
+
+#~ msgid "Clipping rectangle out of bounds."
+#~ msgstr "Clipping rectangle out of bounds."
+
+#~ msgid "Cannot access to any source or buffer."
+#~ msgstr "Cannot access to any source or buffer."
+
+#~ msgid "No filename given."
+#~ msgstr "No filename given."
+
+#~ msgid "Saved block do not have the same size."
+#~ msgstr "Saved block do not have the same size."
+
+#~ msgid "Wrong content."
+#~ msgstr "Wrong content."
+
+#~ msgid "Wrong image dimensions."
+#~ msgstr "Wrong image dimensions."
+
+#~ msgid "block not found."
+#~ msgstr "block not found."
+
+#~ msgid "ratio is null or negative."
+#~ msgstr "ratio is null or negative."
+
+#~ msgid "overlap is negative."
+#~ msgstr "overlap is negative."
+
+#~ msgid "Tree not found."
+#~ msgstr "Tree not found."
+
+#~ msgid "Identical indexes."
+#~ msgstr "Identical indexes."
+
+#~ msgid "Cannot find subblock."
+#~ msgstr "Cannot find subblock."
+
+#~ msgid "null block or block is not a child."
+#~ msgstr "null block or block is not a child."
+
+#~ msgid "Wrong direction."
+#~ msgstr "Wrong direction."
+
+#~ msgid "No user data to remove."
+#~ msgstr "No user data to remove."
+
+#~ msgid "Cannot save an object with no filename."
+#~ msgstr "Cannot save an object with no filename."
+
+#~ msgid "the character 'z' is invalid inside an ASCII85 block."
+#~ msgstr "the character 'z' is invalid inside an ASCII85 block."
+
+#~ msgid "ASCII85 only allows characters '!' to 'u', but found a: "
+#~ msgstr "ASCII85 only allows characters '!' to 'u', but found a: "
+
+#~ msgid "the last block of ASCII85 data cannot be a single byte."
+#~ msgstr "the last block of ASCII85 data cannot be a single byte."
+
+#~ msgid "Key not found"
+#~ msgstr "Key not found"
+
+#~ msgid "Object not found."
+#~ msgstr "Object not found."
+
+#~ msgid "Invalid iterator."
+#~ msgstr "Invalid iterator."
+
+#~ msgid "First iterator is end()."
+#~ msgstr "First iterator is end()."
+
+#~ msgid "First and end iterators are equal."
+#~ msgstr "First and end iterators are equal."
+
+#~ msgid "End iterator is before first."
+#~ msgstr "End iterator is before first."
+
+#~ msgid "Cannot deserialize: "
+#~ msgstr "Cannot deserialize: "
+
+#~ msgid " because "
+#~ msgstr " because "
+
+#, fuzzy
+#~ msgid "Cannot find root element."
+#~ msgstr "Cannot find value element."
+
+#~ msgid "Null XML element."
+#~ msgstr "Null XML element."
+
+#~ msgid "Cannot read element."
+#~ msgstr "Cannot read element."
+
+#~ msgid "Unknown type: "
+#~ msgstr "Unknown type: "
+
+#~ msgid "Unknown XML element: "
+#~ msgstr "Unknown XML element: "
+
+#, fuzzy
+#~ msgid "vectors have different sizes."
+#~ msgstr "matrices of different sizes"
+
+#~ msgid "Cannot create file "
+#~ msgstr "Cannot create file "
+
+#~ msgid "Cannot create the PNG structure."
+#~ msgstr "Cannot create the PNG structure "
+
+#~ msgid "Cannot create the PNG info."
+#~ msgstr "Cannot create the PNG info."
+
+#~ msgid "Error while generating the PNG image."
+#~ msgstr "Error while generating the PNG image."
+
+#~ msgid "Cannot create temporary buffer."
+#~ msgstr "Cannot create temporary buffer."
+
+#~ msgid "Cannot save file. "
+#~ msgstr "Cannot save file. "
+
+#~ msgid "Cannot create bitmap"
+#~ msgstr "Cannot create bitmap"
+
+#~ msgid "Null file name."
+#~ msgstr "Null file name."
+
+#~ msgid ""
+#~ "No library for saving image found or write permissions on the file or "
+#~ "directory are not granted. No image will be saved."
+#~ msgstr ""
+#~ "No library for saving image found or write permissions on the file or "
+#~ "directory are not granted. No image will be saved."
+
+#~ msgid "Cannot create jpeg file structure."
+#~ msgstr "Cannot create jpeg file structure."
+
+#~ msgid "The number of iterations is null."
+#~ msgstr "The number of iterations is null."
+
+#~ msgid "Cannot create PNG reader."
+#~ msgstr "Cannot create PNG reader."
+
+#~ msgid "Cannot create PNG info."
+#~ msgstr "Cannot create PNG info."
+
+#~ msgid "Error while reading the PNG file "
+#~ msgstr "Error while reading the PNG file "
+
+#~ msgid "Not a JPEG file."
+#~ msgstr "Not a JPEG file."
+
+#~ msgid "JPEG file contains unnatural bytes per pixel count."
+#~ msgstr "JPEG file contains unnatural bytes per pixel count."
+
+#~ msgid "Cannot convert filename string. "
+#~ msgstr "Cannot convert filename string. "
+
+#~ msgid "Cannot open image. "
+#~ msgstr "Cannot open image. "
+
+#, fuzzy
+#~ msgid "Gdi+ could not load the image."
+#~ msgstr " could not be loaded properly."
+
+#, fuzzy
+#~ msgid "Gdi+ could not load the image correctly. Error number "
+#~ msgstr "Could not lock pixels. Error number "
+
+#~ msgid "Could not lock pixels. Error number "
+#~ msgstr "Could not lock pixels. Error number "
+
+#~ msgid "No decoder could open the file."
+#~ msgstr "No decoder could open the file."
+
+#~ msgid "Min neighbors must be < 8."
+#~ msgstr "Min neighbours must be < 8."
+
+#~ msgid "matrices of different sizes"
+#~ msgstr "matrices of different sizes"
+
+#~ msgid "even matrix dimensions."
+#~ msgstr "even matrix dimensions."
+
+#~ msgid "Unused stopwatch."
+#~ msgstr "Unused stopwatch."
+
+#~ msgid "Stopwatch: "
+#~ msgstr "Stopwatch: "
+
+#~ msgid "Total time: "
+#~ msgstr "Total time: "
+
+#~ msgid " is not a Path."
+#~ msgstr " is not a Path."
+
+#~ msgid " is not a String."
+#~ msgstr " is not a String."
+
+#~ msgid " is not a StringUTF8."
+#~ msgstr " is not a StringUTF8."
+
+#~ msgid " is not a Prop3."
+#~ msgstr " is not a Prop3."
+
+#~ msgid " is not an int."
+#~ msgstr " is not an int."
+
+#~ msgid " is not a double."
+#~ msgstr " is not a double."
+
+#~ msgid "Cannot find attribute."
+#~ msgstr "Cannot find attribute."
+
+#~ msgid "Wrong attribute type."
+#~ msgstr "Wrong attribute type."
+
+#~ msgid "File not found."
+#~ msgstr "File not found."
+
+#~ msgid "File could not be opened."
+#~ msgstr "File could not be opened."
+
+#~ msgid "File read error."
+#~ msgstr "File read error."
+
+#~ msgid "Element mismatch."
+#~ msgstr "Element mismatch."
+
+#~ msgid "Could not parse element."
+#~ msgstr "Could not parse element."
+
+#~ msgid "Could not parse attribute."
+#~ msgstr "Could not parse attribute."
+
+#~ msgid "Could not identify tag."
+#~ msgstr "Could not identify tag."
+
+#~ msgid "Could not parse text."
+#~ msgstr "Could not parse text."
+
+#~ msgid "Could not parse CDATA."
+#~ msgstr "Could not parse CDATA."
+
+#~ msgid "Could not parse comment."
+#~ msgstr "Could not parse comment."
+
+#~ msgid "Could not parse declaration."
+#~ msgstr "Could not parse declaration."
+
+#~ msgid "Could not parse unknown item."
+#~ msgstr "Could not parse unknown item."
+
+#~ msgid "Empty document."
+#~ msgstr "Empty document."
+
+#~ msgid "Parse error."
+#~ msgstr "Parse error."
+
+#~ msgid "Cannot convert text."
+#~ msgstr "Cannot convert text."
+
+#~ msgid "No text node."
+#~ msgstr "No text node."
+
+#~ msgid "Not an element."
+#~ msgstr "Not an element."
+
+#~ msgid "Not a comment."
+#~ msgstr "Not a comment."
+
+#~ msgid "Not a text."
+#~ msgstr "Not a text."
+
+#~ msgid "No child node."
+#~ msgstr "No child node."
+
+#~ msgid "Empty element name."
+#~ msgstr "Empty element name."
+
+#~ msgid "Null node."
+#~ msgstr "Null node."
+
+#~ msgid "Node not found."
+#~ msgstr "Node not found."
+
+#~ msgid "Invalid node."
+#~ msgstr "Invalid node."
+
+#~ msgid "Empty attribute name."
+#~ msgstr "Empty attribute name."
+
+#~ msgid "Cannot find attribute: "
+#~ msgstr "Cannot find attribute: "
+
+#~ msgid "Empty filename."
+#~ msgstr "Empty filename."
+
+#~ msgid "No element in the XML."
+#~ msgstr "No element in the XML."
+
+#, fuzzy
+#~ msgid "The element is of unknown type."
+#~ msgstr "The element was not initialized."
+
+#~ msgid "Null charset"
+#~ msgstr "Null charset"
+
+#~ msgid "Cannot convert from "
+#~ msgstr "Cannot convert from "
+
+#~ msgid "Cannot convert to "
+#~ msgstr "Cannot convert to "
+
+#~ msgid "Invalid character."
+#~ msgstr "Invalid character."
+
+#~ msgid "Incomplete multibyte character."
+#~ msgstr "Incomplete multibyte character."
+
+#~ msgid "Invalid character in: "
+#~ msgstr "Invalid character in: "
+
+#~ msgid "Incomplete multibyte character in: "
+#~ msgstr "Incomplete multibyte character in: "
+
+#~ msgid "Invalid stroke"
+#~ msgstr "Invalid stroke"
+
+#~ msgid "Null step."
+#~ msgstr "Null step."
+
+#~ msgid "index out of range."
+#~ msgstr "index out of range."
+
+#~ msgid "Cannot reach abscissa."
+#~ msgstr "Cannot reach abscissa."
+
+#~ msgid "No orientation given."
+#~ msgstr "No orientation given."
+
+#~ msgid "The rectangle isn't initialized."
+#~ msgstr "The rectangle isn't initialized."
+
+#~ msgid "negative scale."
+#~ msgstr "negative scale."
+
+#~ msgid "The sample is not compatible with the already existing data."
+#~ msgstr "The sample is not compatible with the already existing data."
+
+#~ msgid "Void histogram."
+#~ msgstr "Void histogram."
+
+#~ msgid "No sample available."
+#~ msgstr "No sample available."
+
+#~ msgid "Error classifying a sample!"
+#~ msgstr "Error classifying a sample!"
+
+#~ msgid "Wrong class number."
+#~ msgstr "Wrong class number."
+
+#~ msgid "Some samples were not added."
+#~ msgstr "Some samples were not added."
+
+#~ msgid "The model is not a Vector."
+#~ msgstr "The model is not a Vector."
+
+#~ msgid "Value object does not conform to the map's protocols."
+#~ msgstr "Value object does not conform to the map's protocols."
+
+#~ msgid "This map does not contain clonable objects."
+#~ msgstr "This map does not contain clonable objects."
+
+#~ msgid "This map does not contain serializable objects."
+#~ msgstr "This map does not contain serializable objects."
+
+#~ msgid "Object not added: protocols differ obj="
+#~ msgstr "Object not added: protocols differ obj="
+
+#~ msgid "This vector does not contain clonable objects."
+#~ msgstr "This vector does not contain clonable objects."
+
+#~ msgid "This vector does not contain poset objects."
+#~ msgstr "This vector does not contain poset objects."
+
+#~ msgid "This vector does not contain serializable objects."
+#~ msgstr "This vector does not contain serializable objects."
+
+#~ msgid "This vector does not contain metric objects."
+#~ msgstr "This vector does not contain metric objects."
+
+#~ msgid "The vector do not have the same size."
+#~ msgstr "The vector do not have the same size."
+
+#~ msgid "Please select an image"
+#~ msgstr "Please select an image"
+
+#~ msgid "_Open image"
+#~ msgstr "_Open image"
+
+#~ msgid "Open image"
+#~ msgstr "Open image"
+
+#~ msgid "_Save image"
+#~ msgstr "_Save image"
+
+#~ msgid "Save image"
+#~ msgstr "Save image"
+
+#~ msgid "_RGB"
+#~ msgstr "_RGB"
+
+#~ msgid "Show RGB image"
+#~ msgstr "Show RGB image"
+
+#~ msgid "_Gray"
+#~ msgstr "_Grey"
+
+#~ msgid "Show Gray image"
+#~ msgstr "Show Gray image"
+
+#~ msgid "_BW"
+#~ msgstr "_BW"
+
+#~ msgid "Show BW image"
+#~ msgstr "Show BW image"
+
+#~ msgid "_Result"
+#~ msgstr "_Result"
+
+#~ msgid "Show result image"
+#~ msgstr "Show result image"
+
+#~ msgid "Gene_ric"
+#~ msgstr "Gene_ric"
+
+#~ msgid "_Gaussian blur"
+#~ msgstr "_Gaussian blur"
+
+#~ msgid "Gaussian blur along _x"
+#~ msgstr "Gaussian blur along _x"
+
+#~ msgid "Gaussian blur along _y"
+#~ msgstr "Gaussian blur along _y"
+
+#~ msgid "Gaussian _derivative along x"
+#~ msgstr "Gaussian _derivative along x"
+
+#~ msgid "Gaussian d_erivative along y"
+#~ msgstr "Gaussian d_erivative along y"
+
+#~ msgid "Gaussian _second derivative along x"
+#~ msgstr "Gaussian _second derivative along x"
+
+#~ msgid "Gaussian se_cond derivative along y"
+#~ msgstr "Gaussian se_cond derivative along y"
+
+#~ msgid "_Red"
+#~ msgstr "_Red"
+
+#~ msgid "_Green"
+#~ msgstr "_Green"
+
+#~ msgid "_Blue"
+#~ msgstr "_Blue"
+
+#~ msgid "_Hue"
+#~ msgstr "_Hue"
+
+#~ msgid "_Saturation"
+#~ msgstr "_Saturation"
+
+#~ msgid "Pseudo s_aturation"
+#~ msgstr "Pseudo s_aturation"
+
+#~ msgid "_Value"
+#~ msgstr "_Value"
+
+#~ msgid "Luminance (_YUV)"
+#~ msgstr "Luminance (_YUV)"
+
+#~ msgid "Luminance (HS_L)"
+#~ msgstr "Luminance (HS_L)"
+
+#~ msgid "Pseudo l_uminance"
+#~ msgstr "Pseudo l_uminance"
+
+#~ msgid "_Saturate"
+#~ msgstr "_Saturate"
+
+#~ msgid "Edge _preserving filter"
+#~ msgstr "Edge _preserving filter"
+
+#~ msgid "_Differential"
+#~ msgstr "_Differential"
+
+#~ msgid "To _RGB"
+#~ msgstr "To _RGB"
+
+#~ msgid "_Threshold"
+#~ msgstr "_Threshold"
+
+#~ msgid "_Fisher"
+#~ msgstr "_Fisher"
+
+#~ msgid "_Entropy"
+#~ msgstr "_Entropy"
+
+#~ msgid "_Otsu"
+#~ msgstr "_Otsu"
+
+#~ msgid "_Niblack"
+#~ msgstr "_Niblack"
+
+#~ msgid "_Sauvola"
+#~ msgstr "_Sauvola"
+
+#~ msgid "_k means histogram"
+#~ msgstr "_k means histogram"
+
+#~ msgid "Local m_in"
+#~ msgstr "Local m_in"
+
+#~ msgid "Local m_ax"
+#~ msgstr "Local m_ax"
+
+#~ msgid "_Strokes statistics"
+#~ msgstr "_Strokes statistics"
+
+#~ msgid "_Histogram"
+#~ msgstr "_Histogram"
+
+#~ msgid "_Radial histogram"
+#~ msgstr "_Radial histogram"
+
+#~ msgid "To _gray"
+#~ msgstr "To _grey"
+
+#~ msgid "_Left profile"
+#~ msgstr "_Left profile"
+
+#~ msgid "_Right profile"
+#~ msgstr "_Right profile"
+
+#~ msgid "_Top profile"
+#~ msgstr "_Top profile"
+
+#~ msgid "_Bottom profile"
+#~ msgstr "_Bottom profile"
+
+#~ msgid "_Horizontal projection"
+#~ msgstr "_Horizontal projection"
+
+#~ msgid "_Vertical projection"
+#~ msgstr "_Vertical projection"
+
+#~ msgid "_Diffuse"
+#~ msgstr "_Diffuse"
+
+#~ msgid "Gradient (_grayscale)"
+#~ msgstr "Gradient (_grayscale)"
+
+#~ msgid "Gradient (_RGB)"
+#~ msgstr "Gradient (_RGB)"
+
+#~ msgid "Gradient _module"
+#~ msgstr "Gradient _module"
+
+#~ msgid "_Divergence"
+#~ msgstr "_Divergence"
+
+#~ msgid "_Laplacian"
+#~ msgstr "_Laplacian"
+
+#~ msgid "_Edge"
+#~ msgstr "_Edge"
+
+#~ msgid "_Corner"
+#~ msgstr "_Corner"
+
+#~ msgid "Kappa _1"
+#~ msgstr "Kappa _1"
+
+#~ msgid "Kappa _2"
+#~ msgstr "Kappa _2"
+
+#~ msgid "_Hessian corner"
+#~ msgstr "_Hessian corner"
+
+#~ msgid "_Isophote curvature"
+#~ msgstr "_Isophote curvature"
+
+#~ msgid "_Flowline curvature"
+#~ msgstr "_Flowline curvature"
+
+#~ msgid "_Gaussian curvature"
+#~ msgstr "_Gaussian curvature"
+
+#~ msgid "G_radient curvature"
+#~ msgstr "G_radient curvature"
+
+#~ msgid "L_x"
+#~ msgstr "L_x"
+
+#~ msgid "L_y"
+#~ msgstr "L_y"
+
+#~ msgid "L_xx"
+#~ msgstr "L_xx"
+
+#~ msgid "L_xy"
+#~ msgstr "L_xy"
+
+#~ msgid "L_yy"
+#~ msgstr "L_yy"
+
+#~ msgid "L_w"
+#~ msgstr "L_w"
+
+#~ msgid "L_vv"
+#~ msgstr "L_vv"
+
+#~ msgid "L_vw"
+#~ msgstr "L_vw"
+
+#~ msgid "L_ww"
+#~ msgstr "L_ww"
+
+#~ msgid "Invalid image file."
+#~ msgstr "Invalid image file."
+
+#~ msgid "Select a PNG image to export…"
+#~ msgstr "Select a PNG image to export…"
+
+#~ msgid "Testing tool for libcrn functions"
+#~ msgstr "Testing tool for libcrn functions"
+
+#~ msgid "http://www.corenum.com/knowledge/libcrn.html"
+#~ msgstr "http://www.corenum.com/knowledge/libcrn.html"
+
+#~ msgid "Gaussian blur"
+#~ msgstr "Gaussian blur"
+
+#~ msgid "Sigma"
+#~ msgstr "Sigma"
+
+#~ msgid "Gaussian blur along x"
+#~ msgstr "Gaussian blur along x"
+
+#~ msgid "Gaussian blur along y"
+#~ msgstr "Gaussian blur along y"
+
+#~ msgid "Gaussian derivative along x"
+#~ msgstr "Gaussian derivative along x"
+
+#~ msgid "Gaussian derivative along y"
+#~ msgstr "Gaussian derivative along y"
+
+#~ msgid "Gaussian second derivative along x"
+#~ msgstr "Gaussian second derivative along x"
+
+#~ msgid "Gaussian second derivative along y"
+#~ msgstr "Gaussian second derivative along y"
+
+#~ msgid "Edge preserving filter"
+#~ msgstr "Edge preserving filter"
+
+#~ msgid "# iterations"
+#~ msgstr "# iterations"
+
+#~ msgid "Maximal distance between colors of a same class"
+#~ msgstr "Maximal distance between colors of a same class"
+
+#~ msgid "Differential"
+#~ msgstr "Differential"
+
+#~ msgid "Threshold"
+#~ msgstr "Threshold"
+
+#~ msgid "Niblack"
+#~ msgstr "Niblack"
+
+#~ msgid "Half window"
+#~ msgstr "Half window"
+
+#~ msgid "k"
+#~ msgstr "k"
+
+#~ msgid "Sauvola"
+#~ msgstr "Sauvola"
+
+#~ msgid "k means histogram"
+#~ msgstr "k means histogram"
+
+#~ msgid "Number of classes"
+#~ msgstr "Number of classes"
+
+#~ msgid "Number of black classes"
+#~ msgstr "Number of black classes"
+
+#~ msgid ""
+#~ "The number of black classes must be lower than the total number of "
+#~ "classes."
+#~ msgstr ""
+#~ "The number of black classes must be lower than the total number of "
+#~ "classes."
+
+#~ msgid "Local min"
+#~ msgstr "Local min"
+
+#~ msgid "Radius"
+#~ msgstr "Radius"
+
+#~ msgid "Local max"
+#~ msgstr "Local max"
+
+#~ msgid "Strokes width: "
+#~ msgstr "Strokes width: "
+
+#~ msgid "Strokes height: "
+#~ msgstr "Strokes height: "
+
+#~ msgid "Number of iterations"
+#~ msgstr "Number of iterations"
+
+#~ msgid "Max divergence to allow modification of a pixel"
+#~ msgstr "Max divergence to allow modification of a pixel"
+
+#~ msgid "(empty)"
+#~ msgstr "(empty)"
+
+#~ msgid ""
+#~ "Converts a doxygen XML output to an HTML file showing which methods in "
+#~ "which class throw exceptions."
+#~ msgstr ""
+#~ "Converts a doxygen XML output to an HTML file showing which methods in "
+#~ "which class throw exceptions."
+
+#~ msgid "Usage:"
+#~ msgstr "Usage:"
+
+#~ msgid "<path to doxygen xml output> [<path to doxygen xml output> […] ]"
+#~ msgstr "<path to doxygen xml output> [<path to doxygen xml output> […] ]"
+
+#~ msgid "Usage: "
+#~ msgstr "Usage: "
+
+#~ msgid "\tStokes width: "
+#~ msgstr "\tStokes width: "
+
+#~ msgid "\tStokes height: "
+#~ msgstr "\tStokes height: "
+
+#~ msgid "\tLines height: "
+#~ msgstr "\tLines height: "
+
+#~ msgid " ignored (not a valid image file). ***"
+#~ msgstr " ignored (not a valid image file). ***"
+
+#~ msgid "TESTING FRAMEWORK"
+#~ msgstr "TESTING FRAMEWORK"
+
+#~ msgid "[R]un all enabled tests."
+#~ msgstr "[R]un all enabled tests."
+
+#~ msgid "[E]nable / Disable tests."
+#~ msgstr "[E]nable / Disable tests."
+
+#~ msgid "[A]dd / Remove parameters from parameterized tests."
+#~ msgstr "[A]dd / Remove parameters from parameterized tests."
+
+#~ msgid "[S]ave / Load a configuration file."
+#~ msgstr "[S]ave / Load a configuration file."
+
+#~ msgid "[L]eave the application."
+#~ msgstr "[L]eave the application."
+
+#~ msgid "Enter your choice : "
+#~ msgstr "Enter your choice : "
+
+#~ msgid "Enabling / Disabling Tests"
+#~ msgstr "Enabling / Disabling Tests"
+
+#~ msgid "[E]nable all"
+#~ msgstr "[E]nable all"
+
+#~ msgid "[D]isable all"
+#~ msgstr "[D]isable all"
+
+#~ msgid "[S]witch to tree view"
+#~ msgstr "[S]witch to tree view"
+
+#~ msgid "[R]eturn to previous menu"
+#~ msgstr "[R]eturn to previous menu"
+
+#~ msgid ""
+#~ "Type the number of the test case in which you want to enable / disable "
+#~ "tests : "
+#~ msgstr ""
+#~ "Type the number of the test case in which you want to enable / disable "
+#~ "tests : "
+
+#~ msgid "Enabling / Disabling Tests in "
+#~ msgstr "Enabling / Disabling Tests in "
+
+#~ msgid "Test Name"
+#~ msgstr "Test Name"
+
+#~ msgid "State"
+#~ msgstr "State"
+
+#~ msgid "enabled"
+#~ msgstr "enabled"
+
+#~ msgid "disabled"
+#~ msgstr "disabled"
+
+#~ msgid "[E]nable all tests"
+#~ msgstr "[E]nable all tests"
+
+#~ msgid "[D]isable all tests"
+#~ msgstr "[D]isable all tests"
+
+#~ msgid "Type the number of the test you want to switch enable / disable : "
+#~ msgstr "Type the number of the test you want to switch enable / disable : "
+
+#~ msgid "Adding / Removing parameters"
+#~ msgstr "Adding / Removing parameters"
+
+#~ msgid ""
+#~ "Type the number of the test case in which you want to add / remove "
+#~ "parameters : "
+#~ msgstr ""
+#~ "Type the number of the test case in which you want to add / remove "
+#~ "parameters : "
+
+#~ msgid "Parameter in"
+#~ msgstr "Parameter in"
+
+#~ msgid "Parameter out"
+#~ msgstr "Parameter out"
+
+#~ msgid "[A]dd parameters to the whole test case"
+#~ msgstr "[A]dd parameters to the whole test case"
+
+#~ msgid "[D]elete parameters from the whole test case"
+#~ msgstr "[D]elete parameters from the whole test case"
+
+#~ msgid ""
+#~ "Type the number of the test in which you want to add / remove "
+#~ "parameters : "
+#~ msgstr ""
+#~ "Type the number of the test in which you want to add / remove "
+#~ "parameters : "
+
+#~ msgid "Adding parameter in "
+#~ msgstr "Adding parameter in "
+
+#~ msgid " (Test)"
+#~ msgstr " (Test)"
+
+#~ msgid "(Test Case)"
+#~ msgstr "(Test Case)"
+
+#~ msgid "Test parameters"
+#~ msgstr "Test parameters"
+
+#~ msgid "Shared parameters for the test case"
+#~ msgstr "Shared parameters for the test case"
+
+#~ msgid "Parameter number"
+#~ msgstr "Parameter number"
+
+#~ msgid "Input parameter"
+#~ msgstr "Input parameter"
+
+#~ msgid "Output parameter"
+#~ msgstr "Output parameter"
+
+#~ msgid "Enter the number of the parameters you want to delete : "
+#~ msgstr "Enter the number of the parameters you want to delete : "
+
+#~ msgid "Incorrect number."
+#~ msgstr "Incorrect number."
+
+#~ msgid "Add / Remove parameters in "
+#~ msgstr "Add / Remove parameters in "
+
+#~ msgid "[A]dd new parameters"
+#~ msgstr "[A]dd new parameters"
+
+#~ msgid "[D]elete parameters"
+#~ msgstr "[D]elete parameters"
+
+#~ msgid "Test Case Name"
+#~ msgstr "Test Case Name"
+
+#~ msgid "Tests enabled"
+#~ msgstr "Tests enabled"
+
+#~ msgid "Loading / Saving a configuration file"
+#~ msgstr "Loading / Saving a configuration file"
+
+#~ msgid "[L]oad a configuration file."
+#~ msgstr "[L]oad a configuration file."
+
+#~ msgid "[S]ave a configuration file."
+#~ msgstr "[S]ave a configuration file."
+
+#~ msgid "Enter the path to the configuration file : "
+#~ msgstr "Enter the path to the configuration file : "
+
+#~ msgid "The configuration file was successfully loaded."
+#~ msgstr "The configuration file was successfully loaded."
+
+#~ msgid "An error has occurred during the loading."
+#~ msgstr "An error has occurred during the loading."
+
+#~ msgid "The configuration file was successfully saved."
+#~ msgstr "The configuration file was successfully saved."
+
+#~ msgid "An error has occurred during the saving."
+#~ msgstr "An error has occurred during the saving."
+
+#~ msgid "Press ENTER to continue..."
+#~ msgstr "Press ENTER to continue..."
+
+#~ msgid "Type the "
+#~ msgstr "Type the "
+
+#~ msgid "input"
+#~ msgstr "input"
+
+#~ msgid "output"
+#~ msgstr "output"
+
+#~ msgid " string : "
+#~ msgstr " string : "
+
+#~ msgid "The Test Unit is starting"
+#~ msgstr "The Test Unit is starting"
+
+#~ msgid "The Test Unit is finished"
+#~ msgstr "The Test Unit is finished"
+
+#~ msgid "Result : "
+#~ msgstr "Result : "
+
+#~ msgid " test case passed"
+#~ msgstr " test case passed"
+
+#~ msgid "Ellapsed time : "
+#~ msgstr "Ellapsed time : "
+
+#~ msgid "Starting "
+#~ msgstr "Starting "
+
+#~ msgid " test case."
+#~ msgstr " test case."
+
+#~ msgid "Warning : this test case should pass before : "
+#~ msgstr "Warning : this test case should pass before : "
+
+#~ msgid " Comment : "
+#~ msgstr " Comment : "
+
+#~ msgid " Result : "
+#~ msgstr " Result : "
+
+#~ msgid " test passed"
+#~ msgstr " test passed"
+
+#~ msgid "Ending "
+#~ msgstr "Ending "
+
+#~ msgid "should pass before. "
+#~ msgstr "should pass before. "
+
+#~ msgid "SUCCESS !"
+#~ msgstr "SUCCESS !"
+
+#~ msgid "FAILED !"
+#~ msgstr "FAILED !"
+
+#~ msgid " ellapsed time : "
+#~ msgstr " ellapsed time : "
+
+#~ msgid "Using parameters :"
+#~ msgstr "Using parameters :"
+
+#~ msgid ""
+#~ "The object can't be typed unless it has overloaded the >> method with "
+#~ "cin. (istream & operator >>(istream &in, objectType *obj);"
+#~ msgstr ""
+#~ "The object can't be typed unless it has overloaded the >> method with "
+#~ "cin. (istream & operator >>(istream &in, objectType *obj);"
+
+#~ msgid "Circular dependency between tests"
+#~ msgstr "Circular dependency between tests"
+
+#~ msgid "Expected : "
+#~ msgstr "Expected : "
+
+#~ msgid " was successfully thrown."
+#~ msgstr " was successfully thrown."
+
+#~ msgid "Expected exception "
+#~ msgstr "Expected exception "
+
+#~ msgid " but got another exception."
+#~ msgstr " but got another exception."
+
+#~ msgid " but no exception was thrown."
+#~ msgstr " but no exception was thrown."
+
+#~ msgid "An exception was successfully thrown."
+#~ msgstr "An exception was successfully thrown."
+
+#~ msgid "Expected any exception but none was thrown."
+#~ msgstr "Expected any exception but none was thrown."
+
+#~ msgid "The code was successfully executed without an exception."
+#~ msgstr "The code was successfully executed without an exception."
+
+#~ msgid "Expected no exception but one was thrown."
+#~ msgstr "Expected no exception but one was thrown."
+
+#~ msgid "Expected "
+#~ msgstr "Expected "
+
+#~ msgid " to be true."
+#~ msgstr " to be true."
+
+#~ msgid "Needed '"
+#~ msgstr "Needed '"
+
+#~ msgid "' to be true to continue, stopping test."
+#~ msgstr "' to be true to continue, stopping test."
+
+#~ msgid "Circular dependency between test cases"
+#~ msgstr "Circular dependency between test cases"
+
+#~ msgid "Not a Test Unit configuration file."
+#~ msgstr "Not a Test Unit configuration file."
+
+#~ msgid "Allocation problem."
+#~ msgstr "Allocation problem."
+
+#~ msgid "Testing the crn::Document class."
+#~ msgstr "Testing the crn::Document class."
+
+#~ msgid "Testing the constructors."
+#~ msgstr "Testing the constructors."
+
+#~ msgid "By default, the"
+#~ msgstr "By default, the"
+
+#~ msgid "author"
+#~ msgstr "author"
+
+#~ msgid "should be empty."
+#~ msgstr "should be empty."
+
+#~ msgid "base name"
+#~ msgstr "base name"
+
+#~ msgid "date"
+#~ msgstr "date"
+
+#~ msgid ""
+#~ "Tests that Get and Set methods on author, basename and date are working."
+#~ msgstr ""
+#~ "Tests that Get and Set methods on author, basename and date are working."
+
+#~ msgid "Testing that the AddView method is working."
+#~ msgstr "Testing that the AddView method is working."
+
+#~ msgid "Testing that the RemoveView method is working."
+#~ msgstr "Testing that the RemoveView method is working."
+
+#~ msgid "Shouldn't work with an out-of-bounds index."
+#~ msgstr "Shouldn't work with an out-of-bounds index."
+
+#~ msgid "Shouldn't work with an inexistant name."
+#~ msgstr "Shouldn't work with an inexistant name."
+
+#~ msgid "Testing the GetView method."
+#~ msgstr "Testing the GetView method."
+
+#~ msgid "Shouldn't work with out-of-bounds indexes."
+#~ msgstr "Shouldn't work with out-of-bounds indexes."
+
+#~ msgid "Should throw an exception as the file couldn't be loaded."
+#~ msgstr "Should throw an exception as the file couldn't be loaded."
+
+#~ msgid "The resulting block bounding box is incorrect."
+#~ msgstr "The resulting block bounding box is incorrect."
+
+#~ msgid ""
+#~ "Should have saved the block to an xml file after it has been deleted."
+#~ msgstr ""
+#~ "Should have saved the block to an xml file after it has been deleted."
+
+#~ msgid "Problem while creating a temporary directory: "
+#~ msgstr "Problem while creating a temporary directory: "
+
+#~ msgid "Testing the views iteraotrs."
+#~ msgstr "Testing the views iteraotrs."
+
+#~ msgid "Testing the Load ans Save methods."
+#~ msgstr "Testing the Load ans Save methods."
+
+#~ msgid "Shouldn't have worked with an inexistant file."
+#~ msgstr "Shouldn't have worked with an inexistant file."
+
+#~ msgid "Incorrect number of views."
+#~ msgstr "Incorrect number of views."
+
+#~ msgid "Test image generation problem."
+#~ msgstr "Test image generation problem."
+
+#~ msgid "The test image can't be saved in : "
+#~ msgstr "The test image can't be saved in : "
+
+#~ msgid "The test image can't be loaded using crn::ImageRGB::NewFromFile(...)"
+#~ msgstr ""
+#~ "The test image can't be loaded using crn::ImageRGB::NewFromFile(...)"
+
+#~ msgid "The loaded png image differs from the generated test image."
+#~ msgstr "The loaded png image differs from the generated test image."
+
+#~ msgid ""
+#~ "Loading from an empty file name should throw an ExceptionInvalidArgument."
+#~ msgstr ""
+#~ "Loading from an empty file name should throw an ExceptionInvalidArgument."
+
+#~ msgid "Loading from an inexistant file should throw an ExceptionIO."
+#~ msgstr "Loading from an inexistant file should throw an ExceptionIO."
+
+#~ msgid "Zip creation test case."
+#~ msgstr "Zip creation test case."
+
+#~ msgid "Checks if files are created and read."
+#~ msgstr "Checks if files are created and read."
+
+#~ msgid "Should throw exception when reading non-existing file."
+#~ msgstr "Should throw exception when reading non-existing file."
+
+#~ msgid "This was not a Zip file."
+#~ msgstr "This was not a Zip file."
+
+#~ msgid "File should not be created because the archive was empty."
+#~ msgstr "File should not be created because the archive was empty."
+
+#~ msgid "Should not have overwritten the file."
+#~ msgstr "Should not have overwritten the file."
+
+#~ msgid "Should have overwritten the file."
+#~ msgstr "Should have overwritten the file."
+
+#~ msgid "Zip add/read files"
+#~ msgstr "Zip add/read files"
+
+#~ msgid "Checks the insertion and reading of files"
+#~ msgstr "Checks the insertion and reading of files"
+
+#~ msgid "Should have added file."
+#~ msgstr "Should have added file."
+
+#~ msgid "Should have found the file."
+#~ msgstr "Should have found the file."
+
+#~ msgid "Archive should have been created."
+#~ msgstr "Archive should have been created."
+
+#~ msgid "The file does not exist."
+#~ msgstr "The file does not exist."
+
+#~ msgid "The file should be read."
+#~ msgstr "The file should be read."
+
+#~ msgid "The file was not read correctly."
+#~ msgstr "The file was not read correctly."
+
+#~ msgid "Zip add/read directories"
+#~ msgstr "Zip add/read directories"
+
+#~ msgid "Checks the insertion and reading of directories"
+#~ msgstr "Checks the insertion and reading of directories"
+
+#~ msgid "Directory should have been created."
+#~ msgstr "Directory should have been created."
+
+#~ msgid "Should have found the directory."
+#~ msgstr "Should have found the directory."
+
+#~ msgid "Testing the crn::Block class."
+#~ msgstr "Testing the crn::Block class."
+
+#~ msgid "Tests that all the constructors are working."
+#~ msgstr "Tests that all the constructors are working."
+
+#~ msgid "The top block creation shouldn't have thrown an exception."
+#~ msgstr "The top block creation shouldn't have thrown an exception."
+
+#~ msgid "There was a problem during the block creation."
+#~ msgstr "There was a problem during the block creation."
+
+#~ msgid "The block name isn't correctly initialized"
+#~ msgstr "The block name isn't correctly initialized"
+
+#~ msgid "The parent tree name should be empty for a top block."
+#~ msgstr "The parent tree name should be empty for a top block."
+
+#~ msgid ""
+#~ "Default file name should be empty as the block hasn't loaded any file."
+#~ msgstr ""
+#~ "Default file name should be empty as the block hasn't loaded any file."
+
+#~ msgid "Bounding box isn't good."
+#~ msgstr "Bounding box isn't good."
+
+#~ msgid "The image hasn't been correctly initialized"
+#~ msgstr "The image hasn't been correctly initialized"
+
+#~ msgid ""
+#~ "The creation from a null image pointer should have thrown an exception."
+#~ msgstr ""
+#~ "The creation from a null image pointer should have thrown an exception."
+
+#~ msgid "Pointer should be null."
+#~ msgstr "Pointer should be null."
+
+#~ msgid "The HSV image type should be unsuported and then throw an exception."
+#~ msgstr ""
+#~ "The HSV image type should be unsuported and then throw an exception."
+
+#~ msgid "empty filename and empty xml file name"
+#~ msgstr "empty filename and empty xml file name"
+
+#~ msgid "pointer should be null."
+#~ msgstr "pointer should be null."
+
+#~ msgid "The image hasn't been saved, it's needed for the rest of the test."
+#~ msgstr "The image hasn't been saved, it's needed for the rest of the test."
+
+#~ msgid "good filename but no xml file"
+#~ msgstr "good filename but no xml file"
+
+#~ msgid "Non existing file name, no xml"
+#~ msgstr "Non existing file name, no xml"
+
+#~ msgid "The parent tree name isn't correctly initialized."
+#~ msgstr "The parent tree name isn't correctly initialized."
+
+#~ msgid "The children's parent isn't correct."
+#~ msgstr "The children's parent isn't correct."
+
+#~ msgid "The children's topmost parent isn't correct."
+#~ msgstr "The children's topmost parent isn't correct."
+
+#~ msgid "The children's parent tree name isn't correct."
+#~ msgstr "The children's parent tree name isn't correct."
+
+#~ msgid "The given bounding box is legal, the child should have been created."
+#~ msgstr ""
+#~ "The given bounding box is legal, the child should have been created."
+
+#~ msgid ""
+#~ "The given bounding box was illegal, the child shouldn't have been created."
+#~ msgstr ""
+#~ "The given bounding box was illegal, the child shouldn't have been created."
+
+#~ msgid " tree should exist."
+#~ msgstr " tree should exist."
+
+#~ msgid "Name affectation doesn't work."
+#~ msgstr "Name affectation doesn't work."
+
+#~ msgid "The bounding box hasn't been correctly initialized."
+#~ msgstr "The bounding box hasn't been correctly initialized."
+
+#~ msgid "A child with a defective bounding box shouldn't be added."
+#~ msgstr "A child with a defective bounding box shouldn't be added."
+
+#~ msgid ""
+#~ "The child should be added at the end if the given position isn't valid."
+#~ msgstr ""
+#~ "The child should be added at the end if the given position isn't valid."
+
+#~ msgid "the child should have been correctly added."
+#~ msgstr "the child should have been correctly added."
+
+#~ msgid "Testing the AddChildRelative and AddChildRelativeAt methods."
+#~ msgstr "Testing the AddChildRelative and AddChildRelativeAt methods."
+
+#~ msgid "Shouldn't work with a defective BBox."
+#~ msgstr "Shouldn't work with a defective BBox."
+
+#~ msgid "Previous operation shouldn't have add a child."
+#~ msgstr "Previous operation shouldn't have add a child."
+
+#~ msgid "The overflowing BBox should have been cut down to block dimension."
+#~ msgstr "The overflowing BBox should have been cut down to block dimension."
+
+#~ msgid "Relative BBox"
+#~ msgstr "Relative BBox"
+
+#~ msgid "doesn't have the expected value."
+#~ msgstr "doesn't have the expected value."
+
+#~ msgid "Absolute BBox"
+#~ msgstr "Absolute BBox"
+
+#~ msgid "Child should be added with cut down BBox."
+#~ msgstr "Child should be added with cut down BBox."
+
+#~ msgid "Testing the RemoveChild methods."
+#~ msgstr "Testing the RemoveChild methods."
+
+#~ msgid ""
+#~ "The given tree name doesn't exist, this shouldn't have removed anything."
+#~ msgstr ""
+#~ "The given tree name doesn't exist, this shouldn't have removed anything."
+
+#~ msgid "The child hasn't been removed."
+#~ msgstr "The child hasn't been removed."
+
+#~ msgid "The child should no longer consider his former parent as a parent."
+#~ msgstr "The child should no longer consider his former parent as a parent."
+
+#~ msgid "The child should have been removed."
+#~ msgstr "The child should have been removed."
+
+#~ msgid "The child was already removed."
+#~ msgstr "The child was already removed."
+
+#~ msgid "The given block isn't a child, this shouldn't remove anything"
+#~ msgstr "The given block isn't a child, this shouldn't remove anything"
+
+#~ msgid "Testing the methods GetAbsoluteBBox and SetAbsoluteBBox."
+#~ msgstr "Testing the methods GetAbsoluteBBox and SetAbsoluteBBox."
+
+#~ msgid "The bounding box wasn't initialized correctly."
+#~ msgstr "The bounding box wasn't initialized correctly."
+
+#~ msgid ""
+#~ "Setting the bounding box of the top most parent shouldn't be allowed."
+#~ msgstr ""
+#~ "Setting the bounding box of the top most parent shouldn't be allowed."
+
+#~ msgid "The  bounding box shouldn't have been modified."
+#~ msgstr "The  bounding box shouldn't have been modified."
+
+#~ msgid ""
+#~ "The block isn't the top most parent so the method should have suceeded."
+#~ msgstr ""
+#~ "The block isn't the top most parent so the method should have suceeded."
+
+#~ msgid "The bounding box isn't correctly set."
+#~ msgstr "The bounding box isn't correctly set."
+
+#~ msgid "Child outside new bounding box should have been erased."
+#~ msgstr "Child outside new bounding box should have been erased."
+
+#~ msgid "Testing the tree related methods."
+#~ msgstr "Testing the tree related methods."
+
+#~ msgid "The number of trees isn't correct."
+#~ msgstr "The number of trees isn't correct."
+
+#~ msgid "The tree name differs from the one expected for i = "
+#~ msgstr "The tree name differs from the one expected for i = "
+
+#~ msgid "The tree should exist for i = "
+#~ msgstr "The tree should exist for i = "
+
+#~ msgid "shouldn't return true when the tree doesn't exist."
+#~ msgstr "shouldn't return true when the tree doesn't exist."
+
+#~ msgid "The previous removal shouldn't have changed the number of trees."
+#~ msgstr "The previous removal shouldn't have changed the number of trees."
+
+#~ msgid ""
+#~ "A tree has been deleted so the number of trees should be decremented."
+#~ msgstr ""
+#~ "A tree has been deleted so the number of trees should be decremented."
+
+#~ msgid "This tree should have been deleted."
+#~ msgstr "This tree should have been deleted."
+
+#~ msgid "Returned a null pointer for i = "
+#~ msgstr "Returned a null pointer for i = "
+
+#~ msgid "pointer is null for i = "
+#~ msgstr "pointer is null for i = "
+
+#~ msgid " and j = "
+#~ msgstr " and j = "
+
+#~ msgid "The child name isn't correct for i = "
+#~ msgstr "The child name isn't correct for i = "
+
+#~ msgid "Should return false when called with an inexistant tree name."
+#~ msgstr "Should return false when called with an inexistant tree name."
+
+#~ msgid "Call with inexistant tree shouldn't have modified the value."
+#~ msgstr "Call with inexistant tree shouldn't have modified the value."
+
+#~ msgid "Incorrect mean width."
+#~ msgstr "Incorrect mean width."
+
+#~ msgid "Incorrect mean height."
+#~ msgstr "Incorrect mean height."
+
+#~ msgid "Incorrect mean area."
+#~ msgstr "Incorrect mean area."
+
+#~ msgid "Testing the sortTree method."
+#~ msgstr "Testing the sortTree method."
+
+#~ msgid ""
+#~ "this method should throw an exception when used with a non existing tree."
+#~ msgstr ""
+#~ "this method should throw an exception when used with a non existing tree."
+
+#~ msgid "this was not the expected arrangement, problem at i = "
+#~ msgstr "this was not the expected arrangement, problem at i = "
+
+#~ msgid "Testing the tree filtering methods."
+#~ msgstr "Testing the tree filtering methods."
+
+#~ msgid "Problem with the number of childrens."
+#~ msgstr "Problem with the number of childrens."
+
+#~ msgid "should throw exception when applied to a non existing tree."
+#~ msgstr "should throw exception when applied to a non existing tree."
+
+#~ msgid "No child should have been removed."
+#~ msgstr "No child should have been removed."
+
+#~ msgid "The number of remaining child isn't correct"
+#~ msgstr "The number of remaining child isn't correct"
+
+#~ msgid "Shouldn't work with a non existing tree."
+#~ msgstr "Shouldn't work with a non existing tree."
+
+#~ msgid "Problem with the number of added children."
+#~ msgstr "Problem with the number of added children."
+
+#~ msgid ""
+#~ "The previous operation with null margin shouldn't have removed anything."
+#~ msgstr ""
+#~ "The previous operation with null margin shouldn't have removed anything."
+
+#~ msgid "Testing the children merging methods."
+#~ msgstr "Testing the children merging methods."
+
+#~ msgid "Shouldn't work with an inexistant tree."
+#~ msgstr "Shouldn't work with an inexistant tree."
+
+#~ msgid "Merging a child with itself shouldn't work."
+#~ msgstr "Merging a child with itself shouldn't work."
+
+#~ msgid "Previous operation shouldn't have modified the children number."
+#~ msgstr "Previous operation shouldn't have modified the children number."
+
+#~ msgid "The merged bounding box isn't equal to the one expected."
+#~ msgstr "The merged bounding box isn't equal to the one expected."
+
+#~ msgid "The childrens were not copied during the merging."
+#~ msgstr "The childrens were not copied during the merging."
+
+#~ msgid ""
+#~ "defaultChildrenNbr needs to be greater or equal to 6 in order for this "
+#~ "test to run."
+#~ msgstr ""
+#~ "defaultChildrenNbr needs to be greater or equal to 6 in order for this "
+#~ "test to run."
+
+#~ msgid ""
+#~ "defaultWidth needs to be greater than 36 in order for this test to run."
+#~ msgstr ""
+#~ "defaultWidth needs to be greater than 36 in order for this test to run."
+
+#~ msgid ""
+#~ "defaultHeight needs to be greater or equal to 6 in order for this test to "
+#~ "run."
+#~ msgstr ""
+#~ "defaultHeight needs to be greater or equal to 6 in order for this test to "
+#~ "run."
+
+#~ msgid "Shouldn't work on a inexistant tree."
+#~ msgstr "Shouldn't work on a inexistant tree."
+
+#~ msgid "Shouldn't work with a negative overlap parameter."
+#~ msgstr "Shouldn't work with a negative overlap parameter."
+
+#~ msgid "The number of child isn't correct"
+#~ msgstr "The number of child isn't correct"
+
+#~ msgid "Testing the buffer accessors GetRGB, GetGray, GetBW and GetGradient."
+#~ msgstr ""
+#~ "Testing the buffer accessors GetRGB, GetGray, GetBW and GetGradient."
+
+#~ msgid "The width is incorrect."
+#~ msgstr "The width is incorrect."
+
+#~ msgid "The height is incorrect."
+#~ msgstr "The height is incorrect."
+
+#~ msgid "the returned SImageRGB differs from the one used for creation."
+#~ msgstr "the returned SImageRGB differs from the one used for creation."
+
+#~ msgid "Should be able to get image from the parent block."
+#~ msgstr "Should be able to get image from the parent block."
+
+#~ msgid "the returned SImageGray differs from the one used for creation."
+#~ msgstr "the returned SImageGray differs from the one used for creation."
+
+#~ msgid ""
+#~ "Shouldn't return anything when the block was created with SImageGray and "
+#~ "the method is called with false."
+#~ msgstr ""
+#~ "Shouldn't return anything when the block was created with SImageGray and "
+#~ "the method is called with false."
+
+#~ msgid ""
+#~ "Should return anything when the block was created with SImageGray and the "
+#~ "method is called with false."
+#~ msgstr ""
+#~ "Should return anything when the block was created with SImageGray and the "
+#~ "method is called with false."
+
+#~ msgid "the returned SImageBW differs from the one used for creation."
+#~ msgstr "the returned SImageBW differs from the one used for creation."
+
+#~ msgid ""
+#~ "Shouldn't return anything when the block was created with SImageBW and "
+#~ "the method is called with false."
+#~ msgstr ""
+#~ "Shouldn't return anything when the block was created with SImageBW and "
+#~ "the method is called with false."
+
+#~ msgid "Cannot create block."
+#~ msgstr "Cannot create block."
+
+#~ msgid ""
+#~ "Shouldn't return anything when the block was created with SImageGradient "
+#~ "and the method is called with false."
+#~ msgstr ""
+#~ "Shouldn't return anything when the block was created with SImageGradient "
+#~ "and the method is called with false."
+
+#~ msgid "Problem with negative value of"
+#~ msgstr "Problem with negative value of"
+
+#~ msgid ""
+#~ "Testing the FlushAll, FlushRGB, FlushGray, FlushBW and FlushGradient "
+#~ "methods."
+#~ msgstr ""
+#~ "Testing the FlushAll, FlushRGB, FlushGray, FlushBW and FlushGradient "
+#~ "methods."
+
+#~ msgid "The buffer should have been flushed."
+#~ msgstr "The buffer should have been flushed."
+
+#~ msgid ""
+#~ "Testing the SubstituteRGB, SubstituteGray, SubstituteBW and "
+#~ "SubstituteGradient methods."
+#~ msgstr ""
+#~ "Testing the SubstituteRGB, SubstituteGray, SubstituteBW and "
+#~ "SubstituteGradient methods."
+
+#~ msgid "The test needs to be sure that a buffer already exists."
+#~ msgstr "The test needs to be sure that a buffer already exists."
+
+#~ msgid "Should work with a null pointer."
+#~ msgstr "Should work with a null pointer."
+
+#~ msgid "Shouldn't work with incorect image dimensions."
+#~ msgstr "Shouldn't work with incorect image dimensions."
+
+#~ msgid "The buffer doesn't seem to be substituted."
+#~ msgstr "The buffer doesn't seem to be substituted."
+
+#~ msgid "Testing the ExtractCC method."
+#~ msgstr "Testing the ExtractCC method."
+
+#~ msgid "Should return something."
+#~ msgstr "Should return something."
+
+#~ msgid "The number of connected components isn't correct."
+#~ msgstr "The number of connected components isn't correct."
+
+#~ msgid "Problem with bounding boxes estimation."
+#~ msgstr "Problem with bounding boxes estimation."
+
+#~ msgid "Problem with the returned SImageIntGray."
+#~ msgstr "Problem with the returned SImageIntGray."
+
+#~ msgid ""
+#~ "Connected component bounding box cannot be out of block's bounding box."
+#~ msgstr ""
+#~ "Connected component bounding box cannot be out of block's bounding box."
+
+#~ msgid "Testing the block iterators methods."
+#~ msgstr "Testing the block iterators methods."
+
+#~ msgid "Should return an iterator on the first child block."
+#~ msgstr "Should return an iterator on the first child block."
+
+#~ msgid "The block wasn't modified."
+#~ msgstr "The block wasn't modified."
+
+#~ msgid "Should return an iterator after the last child block."
+#~ msgstr "Should return an iterator after the last child block."
+
+#~ msgid "Testing the pixel iterators methods."
+#~ msgstr "Testing the pixel iterators methods."
+
+#~ msgid "An exception should be thrown when the tree is inexistant."
+#~ msgstr "An exception should be thrown when the tree is inexistant."
+
+#~ msgid "Iterator should be valid."
+#~ msgstr "Iterator should be valid."
+
+#~ msgid "An exception should be throw when the index is invalid."
+#~ msgstr "An exception should be throw when the index is invalid."
+
+#~ msgid "x coordinate seems to be wrong."
+#~ msgstr "x coordinate seems to be wrong."
+
+#~ msgid "y coordinate seems to be wrong."
+#~ msgstr "y coordinate seems to be wrong."
+
+#~ msgid "An exception should be thrown when the index is invalid."
+#~ msgstr "An exception should be thrown when the index is invalid."
+
+#~ msgid "The number of pixels the loop ran through isn't correct."
+#~ msgstr "The number of pixels the loop ran through isn't correct."
+
+#~ msgid "Testing the masked pixel iterators methods."
+#~ msgstr "Testing the masked pixel iterators methods."
+
+#~ msgid "An exception should be thrown when the index is wrong."
+#~ msgstr "An exception should be thrown when the index is wrong."
+
+#~ msgid "Iterator should be valid when the index is valid."
+#~ msgstr "Iterator should be valid when the index is valid."
+
+#~ msgid "Some black pixels were missed."
+#~ msgstr "Some black pixels were missed."
+
+#~ msgid "On child of top most, "
+#~ msgstr "On child of top most, "
+
+#~ msgid "Tests that the Load and Save methods works."
+#~ msgstr "Tests that the Load and Save methods works."
+
+#~ msgid "Should have worked after filename has been set."
+#~ msgstr "Should have worked after filename has been set."
+
+#~ msgid "Tests the destruction of blocks loaded from xml"
+#~ msgstr "Tests the destruction of blocks loaded from xml"
+
+#~ msgid "crn::String class test case."
+#~ msgstr "crn::String class test case."
+
+#~ msgid "Checks that the different ways of creating a String work."
+#~ msgstr "Checks that the different ways of creating a String work."
+
+#~ msgid "Checks that the different comparison operators work."
+#~ msgstr "Checks that the different comparison operators work."
+
+#~ msgid "Testing the informative methods like Size, Length, IsEmpty, etc."
+#~ msgstr "Testing the informative methods like Size, Length, IsEmpty, etc."
+
+#~ msgid "Checks that the different addition operators work."
+#~ msgstr "Checks that the different addition operators work."
+
+#~ msgid "Checks that the different attribution operators work."
+#~ msgstr "Checks that the different attribution operators work."
+
+#~ msgid "Testing the methods modifying the string."
+#~ msgstr "Testing the methods modifying the string."
+
+#~ msgid "Testing methods like Find, FindAnyOf, BackwardFindNotOf, etc."
+#~ msgstr "Testing methods like Find, FindAnyOf, BackwardFindNotOf, etc."
+
+#~ msgid "crn::Path class test case."
+#~ msgstr "crn::Path class test case."
+
+#~ msgid "Checks that the different ways of creating a Path work."
+#~ msgstr "Checks that the different ways of creating a Path work."
+
+#~ msgid "Checks that the different conversions work."
+#~ msgstr "Checks that the different conversions work."
+
+#~ msgid "Checks that the different identifications work."
+#~ msgstr "Checks that the different identifications work."
+
+#~ msgid "Checks that the different search functions work."
+#~ msgstr "Checks that the different search functions work."
+
+#~ msgid "Checks that the different concatenation methods work."
+#~ msgstr "Checks that the different concatenation methods work."
+
+#~ msgid "crn::StringUTF8 class test case."
+#~ msgstr "crn::StringUTF8 class test case."
+
+#~ msgid "Checks that the different ways of creating a StringUTF8 work."
+#~ msgstr "Checks that the different ways of creating a StringUTF8 work."
+
+#~ msgid "Testing Framework"
+#~ msgstr "Testing Framework"
+
+#~ msgid "_Open a configuration file"
+#~ msgstr "_Open a configuration file"
+
+#~ msgid "Open a configuration file"
+#~ msgstr "Open a configuration file"
+
+#~ msgid "_Save a configuration file"
+#~ msgstr "_Save a configuration file"
+
+#~ msgid "Save a configuration file"
+#~ msgstr "Save a configuration file"
+
+#~ msgid "_Run the tests"
+#~ msgstr "_Run the tests"
+
+#~ msgid "Run the tests"
+#~ msgstr "Run the tests"
+
+#~ msgid "Enabled"
+#~ msgstr "Enabled"
+
+#~ msgid "Name"
+#~ msgstr "Name"
+
+#~ msgid "Show failed assertions only"
+#~ msgstr "Show failed assertions only"
+
+#~ msgid "Test name"
+#~ msgstr "Test name"
+
+#~ msgid "File name"
+#~ msgstr "File name"
+
+#~ msgid "Line"
+#~ msgstr "Line"
+
+#~ msgid "Assertion result"
+#~ msgstr "Assertion result"
+
+#~ msgid "User comment"
+#~ msgstr "User comment"
+
+#~ msgid "Load a configuration file"
+#~ msgstr "Load a configuration file"
+
+#~ msgid "Cannot read configuration file."
+#~ msgstr "Cannot read configuration file."
+
+#~ msgid "Cannot write configuration file."
+#~ msgstr "Cannot write configuration file."
+
+#~ msgid "enabled tests"
+#~ msgstr "enabled tests"
+
+#~ msgid "Description"
+#~ msgstr "Description"
+
+#~ msgid "Depends on"
+#~ msgstr "Depends on"
+
+#~ msgid "Test Case results"
+#~ msgstr "Test Case results"
+
+#~ msgid "tests passed."
+#~ msgstr "tests passed."
+
+#~ msgid "assertions"
+#~ msgstr "assertions"
+
+#~ msgid "Ellapsed time"
+#~ msgstr "Ellapsed time"
+
+#~ msgid "The test case was not run."
+#~ msgstr "The test case was not run."
+
+#~ msgid "There was"
+#~ msgstr "There was"
+
+#~ msgid "failures"
+#~ msgstr "failures"
+
+#~ msgid "failure"
+#~ msgstr "failure"
+
+#~ msgid "Test results"
+#~ msgstr "Test results"
+
+#~ msgid "The test passed"
+#~ msgstr "The test passed"
+
+#~ msgid "The test failed"
+#~ msgstr "The test failed"
+
+#~ msgid "The test was not run."
+#~ msgstr "The test was not run."
+
+#~ msgid "Cannot allocate pixels. Probably wrong image dimensions."
+#~ msgstr "Cannot allocate pixels. Probably wrong image dimensions."
+
+#~ msgid "Moving a "
+#~ msgstr "Moving a "
+
+#~ msgid " in "
+#~ msgstr " in "
+
+#~ msgid "Invalid"
+#~ msgstr "Invalid"
+
+#~ msgid "Source images do not have the same size."
+#~ msgstr "Source images do not have the same size."
+
+#~ msgid "Cannot allocate the pixels."
+#~ msgstr "Cannot allocate the pixels."
+
+#~ msgid "Pixel format is not savable."
+#~ msgstr "Pixel format is not savable."
+
+#~ msgid "Flat image."
+#~ msgstr "Flat image."
+
+#~ msgid "Even matrix dimensions. Nothing will be done."
+#~ msgstr "Even matrix dimensions. Nothing will be done."
+
+#~ msgid "Matrix bigger than the image! Nothing will be done."
+#~ msgstr "Matrix bigger than the image! Nothing will be done."
+
+#~ msgid "Null image."
+#~ msgstr "Null image."
+
+#~ msgid "The composite image is empty."
+#~ msgstr "The composite image is empty."
+
+#~ msgid "Offset out of bounds."
+#~ msgstr "Offset out of bounds."
+
+#~ msgid "Strokes width > 50 or null."
+#~ msgstr "Strokes width > 50 or null."
+
+#~ msgid "Strokes height > 50 or null."
+#~ msgstr "Strokes height > 50 or null."
+
+#~ msgid ""
+#~ "Cannot allocate pixels. Probably wrong image dimensions, or "
+#~ "allocateSize() was not overloaded properly."
+#~ msgstr ""
+#~ "Cannot allocate pixels. Probably wrong image dimensions, or "
+#~ "allocateSize() was not overloaded properly."
+
+#~ msgid ""
+#~ "Cannot allocate pixels. Probably wrong image dimensions, allocateSize() "
+#~ "was not overloaded properly.\n"
+#~ " zone = "
+#~ msgstr ""
+#~ "Cannot allocate pixels. Probably wrong image dimensions, allocateSize() "
+#~ "was not overloaded properly.\n"
+#~ " zone = "
+
+#~ msgid "The source and destination must be different."
+#~ msgstr "The source and destination must be different."
+
+#~ msgid "Incompatible pixel formats"
+#~ msgstr "Incompatible pixel format."
+
+#~ msgid "Images do not have the same size."
+#~ msgstr "Images do not have the same size."
+
+#~ msgid "Cannot convert from term format to source format."
+#~ msgstr "Cannot convert from term format to source format."
+
+#~ msgid "invalid orientation."
+#~ msgstr "invalid orientation."
+
+#~ msgid "Convolution of "
+#~ msgstr "Convolution of "
+
+#~ msgid "Matrix bigger than the image!"
+#~ msgstr "Matrix bigger than the image!"
+
+#~ msgid "Even strelrix dimensions."
+#~ msgstr "Even strelrix dimensions."
+
+#~ msgid "Neighborhood size must be < 7."
+#~ msgstr "Neighbourhood size must be < 7."
+
+#~ msgid "Bad dimension"
+#~ msgstr "Bad dimension"
+
+#~ msgid "Pattern not found"
+#~ msgstr "Pattern not found"
+
+#~ msgid "Index out of bounds"
+#~ msgstr "Index out of bounds"
+
+#~ msgid "The argument is not a vector"
+#~ msgstr "The argument is not a vector."
+
+#~ msgid "The sample is empty."
+#~ msgstr "The sample is empty."
+
+#~ msgid "Null or negative standard deviation."
+#~ msgstr "Null or negative standard deviation."
+
+#~ msgid "crn::Functor class test case."
+#~ msgstr "crn::Functor class test case."
+
+#~ msgid "Checks that the different ways of creating a Functor work."
+#~ msgstr "Checks that the different ways of creating a Functor work."
+
+#~ msgid "The bound object was copied instead of referenced."
+#~ msgstr "The bound object was copied instead of referenced."
+
+#~ msgid "Checks that the different binders work."
+#~ msgstr "Checks that the different binders work."
+
+#~ msgid "The bound argument was copied instead of referenced."
+#~ msgstr "The bound argument was copied instead of referenced."
+
+#~ msgid "Checks that the different return binders work."
+#~ msgstr "Checks that the different return binders work."
+
+#~ msgid "Checks that the destroyer works."
+#~ msgstr "Checks that the destroyer works."
+
+#~ msgid "Null vector."
+#~ msgstr "Null vector."
+
+#~ msgid "null or negative row or column dimensions"
+#~ msgstr "null or negative row or column dimensions"
+
+#~ msgid "null or negative row and column dimensions"
+#~ msgstr "null or negative row and column dimensions"
+
+#~ msgid "Empty matrix."
+#~ msgstr "Empty matrix."
+
+#~ msgid "The argument is not a matrix."
+#~ msgstr "The argument is not a matrix."
+
+#~ msgid "Invalid orientation."
+#~ msgstr "Invalid orientation."
+
+#~ msgid "column index out of range"
+#~ msgstr "column index out of range"
+
+#~ msgid "row index out of range"
+#~ msgstr "row index out of range"
+
+#~ msgid "Wrong matrix dimensions."
+#~ msgstr "Wrong matrix dimensions."
+
+#~ msgid "wrong matrix dimensions"
+#~ msgstr "wrong matrix dimensions"
+
+#~ msgid "The argument is not a square matrix."
+#~ msgstr "The argument is not a square matrix."
+
+#~ msgid "nullptr pointer."
+#~ msgstr "nullptr pointer."
+
+#~ msgid "Cannot copy file. Error "
+#~ msgstr "Cannot copy file. Error "
+
+#~ msgid "No image loaded."
+#~ msgstr "No image loaded."
+
+#~ msgid "Image could not be loaded. Error number "
+#~ msgstr "Image could not be loaded. Error number "
+
+#~ msgid "Should return a CRNImageIntGray."
+#~ msgstr "Should return a CRNImageIntGray."
+
+#~ msgid "The data is not a Vector."
+#~ msgstr "The data is not a Vector."
+
+#~ msgid "NULL object"
+#~ msgstr "NULL object"
+
+#~ msgid "NULL pointer."
+#~ msgstr "NULL pointer."
+
+#~ msgid "Testing the crn::WeakPointer templated class."
+#~ msgstr "Testing the crn::WeakPointer templated class."
+
+#~ msgid "Testing the different ways of creating a weak pointer."
+#~ msgstr "Testing the different ways of creating a weak pointer."
+
+#~ msgid ""
+#~ "The default weak pointer constructor didn't initialize a null pointer"
+#~ msgstr ""
+#~ "The default weak pointer constructor didn't initialize a null pointer"
+
+#~ msgid "Shared pointer constructor didn't initialize correctly."
+#~ msgstr "Shared pointer constructor didn't initialize correctly."
+
+#~ msgid "Constructor from foreign shared pointer didn't initialize correctly."
+#~ msgstr ""
+#~ "Constructor from foreign shared pointer didn't initialize correctly."
+
+#~ msgid ""
+#~ "Constructor from foreign shared pointer, inheritance between the 2 types "
+#~ "and casting upwards."
+#~ msgstr ""
+#~ "Constructor from foreign shared pointer, inheritance between the 2 types "
+#~ "and casting upwards."
+
+#~ msgid ""
+#~ "Constructor from foreign shared pointer constructor didn't initialize "
+#~ "correctly."
+#~ msgstr ""
+#~ "Constructor from foreign shared pointer constructor didn't initialize "
+#~ "correctly."
+
+#~ msgid ""
+#~ "Constructor from foreign shared pointer, inheritance between the 2 types "
+#~ "and casting downwards."
+#~ msgstr ""
+#~ "Constructor from foreign shared pointer, inheritance between the 2 types "
+#~ "and casting downwards."
+
+#~ msgid ""
+#~ "The weak pointer copy constructor with manually allocated memory didn't "
+#~ "initialize correctly."
+#~ msgstr ""
+#~ "The weak pointer copy constructor with manually allocated memory didn't "
+#~ "initialize correctly."
+
+#~ msgid ""
+#~ "Weak pointer copy constructor : The dereferenced value does not match the "
+#~ "one used for initialisation."
+#~ msgstr ""
+#~ "Weak pointer copy constructor : The dereferenced value does not match the "
+#~ "one used for initialisation."
+
+#~ msgid "Constructor from foreign weak pointer didn't initialize correctly."
+#~ msgstr "Constructor from foreign weak pointer didn't initialize correctly."
+
+#~ msgid ""
+#~ "Constructor from foreign weak pointer, inheritance between the 2 types "
+#~ "and casting upwards."
+#~ msgstr ""
+#~ "Constructor from foreign weak pointer, inheritance between the 2 types "
+#~ "and casting upwards."
+
+#~ msgid ""
+#~ "Constructor from foreign weak pointer constructor didn't initialize "
+#~ "correctly."
+#~ msgstr ""
+#~ "Constructor from foreign weak pointer constructor didn't initialize "
+#~ "correctly."
+
+#~ msgid ""
+#~ "Constructor from foreign weak pointer, inheritance between the 2 types "
+#~ "and casting downwards."
+#~ msgstr ""
+#~ "Constructor from foreign weak pointer, inheritance between the 2 types "
+#~ "and casting downwards."
+
+#~ msgid "Testing the destruction of weak pointers"
+#~ msgstr "Testing the destruction of weak pointers"
+
+#~ msgid "Allocating problem."
+#~ msgstr "Allocating problem."
+
+#~ msgid "The object has been deleted too early."
+#~ msgstr "The object has been deleted too early."
+
+#~ msgid ""
+#~ "The weak pointer should return null when the GetPointer method is called."
+#~ msgstr ""
+#~ "The weak pointer should return null when the GetPointer method is called."
+
+#~ msgid "The object sould have been deleted."
+#~ msgstr "The object sould have been deleted."
+
+#~ msgid "The object shouldn't have been deleted."
+#~ msgstr "The object shouldn't have been deleted."
+
+#~ msgid "Testing the comparison operators"
+#~ msgstr "Testing the comparison operators"
+
+#~ msgid "Standard shared pointer comparison (with operator == ) failed."
+#~ msgstr "Standard shared pointer comparison (with operator == ) failed."
+
+#~ msgid "Standard weak pointer comparison (with operator < ) failed."
+#~ msgstr "Standard weak pointer comparison (with operator < ) failed."
+
+#~ msgid "Foreign shared pointer comparison (with operator == ) failed."
+#~ msgstr "Foreign shared pointer comparison (with operator == ) failed."
+
+#~ msgid "Foreign weak pointer comparison (with operator == ) failed."
+#~ msgstr "Foreign weak pointer comparison (with operator == ) failed."
+
+#~ msgid "Assignment from weak pointer didn't work."
+#~ msgstr "Assignment from weak pointer didn't work."
+
+#~ msgid "Assignment from foreign weak pointer, casting upward didn't work."
+#~ msgstr "Assignment from foreign weak pointer, casting upward didn't work."
+
+#~ msgid ""
+#~ "Assignment from foreign weak pointer, casting upward : the assignment "
+#~ "didn't work."
+#~ msgstr ""
+#~ "Assignment from foreign weak pointer, casting upward : the assignment "
+#~ "didn't work."
+
+#~ msgid ""
+#~ "Assignment from foreign weak pointer, casting downward allowed didn't "
+#~ "work."
+#~ msgstr ""
+#~ "Assignment from foreign weak pointer, casting downward allowed didn't "
+#~ "work."
+
+#~ msgid ""
+#~ "Assignment from foreign weak pointer, casting downward allowed : the "
+#~ "assignment didn't work."
+#~ msgstr ""
+#~ "Assignment from foreign weak pointer, casting downward allowed : the "
+#~ "assignment didn't work."
+
+#~ msgid ""
+#~ "Assignment from foreign weak pointer, casting downward not allowed should "
+#~ "have failed"
+#~ msgstr ""
+#~ "Assignment from foreign weak pointer, casting downward not allowed should "
+#~ "have failed"
+
+#~ msgid ""
+#~ "Assignment from foreign weak pointer, casting downward not allowed : the "
+#~ "assignment should have failed"
+#~ msgstr ""
+#~ "Assignment from foreign weak pointer, casting downward not allowed : the "
+#~ "assignment should have failed"
+
+#~ msgid "Assignment from shared pointer didn't work."
+#~ msgstr "Assignment from shared pointer didn't work."
+
+#~ msgid "Assignment from foreign shared pointer, casting upward didn't work."
+#~ msgstr "Assignment from foreign shared pointer, casting upward didn't work."
+
+#~ msgid ""
+#~ "Assignment from foreign shared pointer, casting upward : the assignment "
+#~ "didn't work."
+#~ msgstr ""
+#~ "Assignment from foreign shared pointer, casting upward : the assignment "
+#~ "didn't work."
+
+#~ msgid ""
+#~ "Assignment from foreign shared pointer, casting downward allowed didn't "
+#~ "work."
+#~ msgstr ""
+#~ "Assignment from foreign shared pointer, casting downward allowed didn't "
+#~ "work."
+
+#~ msgid ""
+#~ "Assignment from foreign shared pointer, casting downward allowed : the "
+#~ "assignment didn't work."
+#~ msgstr ""
+#~ "Assignment from foreign shared pointer, casting downward allowed : the "
+#~ "assignment didn't work."
+
+#~ msgid ""
+#~ "Assignment from foreign shared pointer, casting downward not allowed "
+#~ "should have failed"
+#~ msgstr ""
+#~ "Assignment from foreign shared pointer, casting downward not allowed "
+#~ "should have failed"
+
+#~ msgid ""
+#~ "Assignment from foreign shared pointer, casting downward not allowed : "
+#~ "the assignment should have failed"
+#~ msgstr ""
+#~ "Assignment from foreign shared pointer, casting downward not allowed : "
+#~ "the assignment should have failed"
+
+#~ msgid "Dereferencing problem"
+#~ msgstr "Dereferencing problem"
+
+#~ msgid "Const dereferencing problem"
+#~ msgstr "Const dereferencing problem"
+
+#~ msgid "Const call method operator -> didn't work."
+#~ msgstr "Const call method operator -> didn't work."
+
+#~ msgid "Call method operator -> didn't work."
+#~ msgstr "Call method operator -> didn't work."
+
+#~ msgid "Type cast didn't work."
+#~ msgstr "Type cast didn't work."
+
+#~ msgid "Const type cast didn't work."
+#~ msgstr "Const type cast didn't work."
+
+#~ msgid "Testing the crn::SharedPointer templated class."
+#~ msgstr "Testing the crn::SharedPointer templated class."
+
+#~ msgid "Testing the different ways of creating a shared pointer."
+#~ msgstr "Testing the different ways of creating a shared pointer."
+
+#~ msgid ""
+#~ "The default shared pointer constructor didn't initialize a null pointer"
+#~ msgstr ""
+#~ "The default shared pointer constructor didn't initialize a null pointer"
+
+#~ msgid ""
+#~ "The plain pointer constructor with no memory allocated didn't initialize "
+#~ "correctly."
+#~ msgstr ""
+#~ "The plain pointer constructor with no memory allocated didn't initialize "
+#~ "correctly."
+
+#~ msgid ""
+#~ "The plain pointer constructor with manually allocated memory didn't "
+#~ "initialize correctly."
+#~ msgstr ""
+#~ "The plain pointer constructor with manually allocated memory didn't "
+#~ "initialize correctly."
+
+#~ msgid ""
+#~ "Plain pointer constructor : The dereferenced value does not match the one "
+#~ "used for initialisation."
+#~ msgstr ""
+#~ "Plain pointer constructor : The dereferenced value does not match the one "
+#~ "used for initialisation."
+
+#~ msgid ""
+#~ "The copy pointer constructor with manually allocated memory didn't "
+#~ "initialize correctly."
+#~ msgstr ""
+#~ "The copy pointer constructor with manually allocated memory didn't "
+#~ "initialize correctly."
+
+#~ msgid ""
+#~ "Copy pointer constructor : The dereferenced value does not match the one "
+#~ "used for initialisation."
+#~ msgstr ""
+#~ "Copy pointer constructor : The dereferenced value does not match the one "
+#~ "used for initialisation."
+
+#~ msgid "Foreign shared pointer constructor didn't initialize correctly."
+#~ msgstr "Foreign shared pointer constructor didn't initialize correctly."
+
+#~ msgid ""
+#~ "Foreign shared pointer constructor, inheritance between the 2 types and "
+#~ "casting upwards."
+#~ msgstr ""
+#~ "Foreign shared pointer constructor, inheritance between the 2 types and "
+#~ "casting upwards."
+
+#~ msgid ""
+#~ "Foreign shared pointer constructor, inheritance between the 2 types and "
+#~ "casting downwards."
+#~ msgstr ""
+#~ "Foreign shared pointer constructor, inheritance between the 2 types and "
+#~ "casting downwards."
+
+#~ msgid "Weak pointer shared pointer constructor didn't initialize correctly."
+#~ msgstr ""
+#~ "Weak pointer shared pointer constructor didn't initialize correctly."
+
+#~ msgid ""
+#~ "Weak pointer shared pointer constructor : The dereferenced value does not "
+#~ "match the one used for initialisation."
+#~ msgstr ""
+#~ "Weak pointer shared pointer constructor : The dereferenced value does not "
+#~ "match the one used for initialisation."
+
+#~ msgid "Testing the destruction of shared pointers."
+#~ msgstr "Testing the destruction of shared pointers."
+
+#~ msgid ""
+#~ "Shared pointers should not allow to create two objects from one single "
+#~ "regular pointer."
+#~ msgstr ""
+#~ "Shared pointers should not allow to create two objects from one single "
+#~ "regular pointer."
+
+#~ msgid "Standard shared pointer comparison (with operator < ) failed."
+#~ msgstr "Standard shared pointer comparison (with operator < ) failed."
+
+#~ msgid ""
+#~ "Standard assignment from plain pointer : original pointer hasn't been "
+#~ "deleted."
+#~ msgstr ""
+#~ "Standard assignment from plain pointer : original pointer hasn't been "
+#~ "deleted."
+
+#~ msgid "Standard assignment from plain pointer : the assignment didn't work."
+#~ msgstr ""
+#~ "Standard assignment from plain pointer : the assignment didn't work."
+
+#~ msgid ""
+#~ "Standard assignment from plain pointer : the returned reference isn't "
+#~ "good."
+#~ msgstr ""
+#~ "Standard assignment from plain pointer : the returned reference isn't "
+#~ "good."
+
+#~ msgid ""
+#~ "Standard assignment from plain pointer : original pointer shouldn't have "
+#~ "been deleted."
+#~ msgstr ""
+#~ "Standard assignment from plain pointer : original pointer shouldn't have "
+#~ "been deleted."
+
+#~ msgid "First pointer should now have been deleted."
+#~ msgstr "First pointer should now have been deleted."
+
+#~ msgid ""
+#~ "Assignment from shared pointer : the first pointer should have been "
+#~ "deleted."
+#~ msgstr ""
+#~ "Assignment from shared pointer : the first pointer should have been "
+#~ "deleted."
+
+#~ msgid "Assignment from foreign plain pointer, casting upward didn't work."
+#~ msgstr "Assignment from foreign plain pointer, casting upward didn't work."
+
+#~ msgid ""
+#~ "Assignment from foreign plain pointer, casting upward : the assignment "
+#~ "didn't work."
+#~ msgstr ""
+#~ "Assignment from foreign plain pointer, casting upward : the assignment "
+#~ "didn't work."
+
+#~ msgid ""
+#~ "Assignment from foreign plain pointer, casting downward allowed didn't "
+#~ "work."
+#~ msgstr ""
+#~ "Assignment from foreign plain pointer, casting downward allowed didn't "
+#~ "work."
+
+#~ msgid ""
+#~ "Assignment from foreign plain pointer, casting downward allowed : the "
+#~ "assignment didn't work."
+#~ msgstr ""
+#~ "Assignment from foreign plain pointer, casting downward allowed : the "
+#~ "assignment didn't work."
+
+#~ msgid ""
+#~ "Assignment from foreign plain pointer, casting downward not allowed "
+#~ "should have failed"
+#~ msgstr ""
+#~ "Assignment from foreign plain pointer, casting downward not allowed "
+#~ "should have failed"
+
+#~ msgid ""
+#~ "Assignment from foreign plain pointer, casting downward not allowed : the "
+#~ "assignment should have failed"
+#~ msgstr ""
+#~ "Assignment from foreign plain pointer, casting downward not allowed : the "
+#~ "assignment should have failed"
+
+#~ msgid ""
+#~ "Imperative assignment from foreign plain pointer, casting upward didn't "
+#~ "work."
+#~ msgstr ""
+#~ "Imperative assignment from foreign plain pointer, casting upward didn't "
+#~ "work."
+
+#~ msgid ""
+#~ "Imperative assignment from foreign plain pointer, casting upward : the "
+#~ "assignment didn't work."
+#~ msgstr ""
+#~ "Imperative assignment from foreign plain pointer, casting upward : the "
+#~ "assignment didn't work."
+
+#~ msgid ""
+#~ "Imperative assignment from foreign plain pointer, casting downward "
+#~ "allowed didn't work."
+#~ msgstr ""
+#~ "Imperative assignment from foreign plain pointer, casting downward "
+#~ "allowed didn't work."
+
+#~ msgid ""
+#~ "Imperative assignment from foreign plain pointer, casting downward "
+#~ "allowed : the assignment didn't work."
+#~ msgstr ""
+#~ "Imperative assignment from foreign plain pointer, casting downward "
+#~ "allowed : the assignment didn't work."
+
+#~ msgid ""
+#~ "Imperative assignment from foreign plain pointer, casting downward not "
+#~ "allowed shouldn't have failed"
+#~ msgstr ""
+#~ "Imperative assignment from foreign plain pointer, casting downward not "
+#~ "allowed shouldn't have failed"
+
+#~ msgid ""
+#~ "Imperative assignment from foreign plain pointer, casting downward not "
+#~ "allowed : the assignment should have worked"
+#~ msgstr ""
+#~ "Imperative assignment from foreign plain pointer, casting downward not "
+#~ "allowed : the assignment should have worked"
+
+#~ msgid ""
+#~ "Imperative assignment from foreign plain pointer, casting downward not "
+#~ "allowed, no inheritance relation, shouldn't have failed"
+#~ msgstr ""
+#~ "Imperative assignment from foreign plain pointer, casting downward not "
+#~ "allowed, no inheritance relation, shouldn't have failed"
+
+#~ msgid ""
+#~ "Imperative assignment from foreign plain pointer, casting downward not "
+#~ "allowed, no inheritance relation, : the assignment should have worked"
+#~ msgstr ""
+#~ "Imperative assignment from foreign plain pointer, casting downward not "
+#~ "allowed, no inheritance relation, : the assignment should have worked"
+
+#~ msgid ""
+#~ "Imperative assignment from foreign shared pointer, casting upward didn't "
+#~ "work."
+#~ msgstr ""
+#~ "Imperative assignment from foreign shared pointer, casting upward didn't "
+#~ "work."
+
+#~ msgid ""
+#~ "Imperative assignment from foreign shared pointer, casting upward : the "
+#~ "assignment didn't work."
+#~ msgstr ""
+#~ "Imperative assignment from foreign shared pointer, casting upward : the "
+#~ "assignment didn't work."
+
+#~ msgid ""
+#~ "Imperative assignment from foreign shared pointer, casting downward "
+#~ "allowed didn't work."
+#~ msgstr ""
+#~ "Imperative assignment from foreign shared pointer, casting downward "
+#~ "allowed didn't work."
+
+#~ msgid ""
+#~ "Imperative assignment from foreign shared pointer, casting downward "
+#~ "allowed : the assignment didn't work."
+#~ msgstr ""
+#~ "Imperative assignment from foreign shared pointer, casting downward "
+#~ "allowed : the assignment didn't work."
+
+#~ msgid ""
+#~ "Imperative assignment from foreign shared pointer, casting downward not "
+#~ "allowed shouldn't have failed"
+#~ msgstr ""
+#~ "Imperative assignment from foreign shared pointer, casting downward not "
+#~ "allowed shouldn't have failed"
+
+#~ msgid ""
+#~ "Imperative assignment from foreign shared pointer, casting downward not "
+#~ "allowed : the assignment should have worked"
+#~ msgstr ""
+#~ "Imperative assignment from foreign shared pointer, casting downward not "
+#~ "allowed : the assignment should have worked"
+
+#~ msgid ""
+#~ "Imperative assignment from foreign shared pointer, casting downward not "
+#~ "allowed, no inheritance relation, shouldn't have failed"
+#~ msgstr ""
+#~ "Imperative assignment from foreign shared pointer, casting downward not "
+#~ "allowed, no inheritance relation, shouldn't have failed"
+
+#~ msgid ""
+#~ "Imperative assignment from foreign shared pointer, casting downward not "
+#~ "allowed, no inheritance relation, : the assignment should have worked"
+#~ msgstr ""
+#~ "Imperative assignment from foreign shared pointer, casting downward not "
+#~ "allowed, no inheritance relation, : the assignment should have worked"
+
+#~ msgid "Cannot deserialize:"
+#~ msgstr "Cannot deserialize:"
+
+#~ msgid "_Skeleton"
+#~ msgstr "_Skeleton"
+
+#~ msgid "Lambda _1"
+#~ msgstr "Lambda _1"
+
+#~ msgid "Lambda _2"
+#~ msgstr "Lambda _2"
+
+#~ msgid "No data. Initialisation problem?"
+#~ msgstr "No data. Initialisation problem?"
+
+#~ msgid "null pixel."
+#~ msgstr "null pixel."
+
+#~ msgid "null pointers shouldn't work."
+#~ msgstr "null pointers shouldn't work."
+
+#~ msgid "Null matrix"
+#~ msgstr "Null matrix"
+
+#~ msgid "null matrix"
+#~ msgstr "null matrix"
+
+#~ msgid "Invalid matrix"
+#~ msgstr "Invalid matrix"
+
+#~ msgid "Null block."
+#~ msgstr "Null block."
+
+#~ msgid "Null mask."
+#~ msgstr "Null mask."
+
+#~ msgid "no histogram to append."
+#~ msgstr "no histogram to append."
+
+#~ msgid "Null data"
+#~ msgstr "Null data"
+
+#~ msgid "Null stroke"
+#~ msgstr "Null stroke"
+
+#~ msgid "No source image."
+#~ msgstr "No source image."
+
+#~ msgid "Null source image."
+#~ msgstr "Null source image."
+
+#~ msgid "No structuring element."
+#~ msgstr "No structuring element."
+
+#~ msgid "Source is NULL!"
+#~ msgstr "Source is NULL!"
+
+#~ msgid "No image to clean."
+#~ msgstr "No image to clean."
+
+#~ msgid "Null pixel."
+#~ msgstr "Null pixel."
+
+#~ msgid "Null image. Nothing will be done."
+#~ msgstr "Null image. Nothing will be done."
+
+#~ msgid "Wrong image dimensions. Nothing will be done."
+#~ msgstr "Wrong image dimensions. Nothing will be done."
+
+#~ msgid "parameters must have the same size."
+#~ msgstr "parameters must have the same size."
+
+#~ msgid "Cannot convert image to a RGB format."
+#~ msgstr "Cannot convert image to a RGB format."
+
+#~ msgid "Null histogram."
+#~ msgstr "Null histogram."
+
+#~ msgid "Unable to extract connected components."
+#~ msgstr "Unable to extract connected components."
+
+#~ msgid "Null or negative step."
+#~ msgstr "Null or negative step."
+
+#~ msgid "Cannot convert factor image to double."
+#~ msgstr "Cannot convert factor image to double."
+
+#~ msgid "Cannot convert image to ImageIntGray."
+#~ msgstr "Cannot convert image to ImageIntGray."
+
+#~ msgid "Even strelrix dimensions. Nothing will be done."
+#~ msgstr "Even strelrix dimensions. Nothing will be done."
+
+#~ msgid "Cannot convert source to gray image."
+#~ msgstr "Cannot convert source to grey image."
+
+#~ msgid "Cannot convert source to RGB image."
+#~ msgstr "Cannot convert source to RGB image."
+
+#~ msgid "Attribute not found."
+#~ msgstr "Attribute not found."
+
+#~ msgid "Not a CRNComplexObject file."
+#~ msgstr "Not a CRNComplexObject file."
+
+#~ msgid "Cannot save xml."
+#~ msgstr "Cannot save xml."
+
+#~ msgid "Cannot save xml in <"
+#~ msgstr "Cannot save xml in <"
+
+#~ msgid "Cannot read file: "
+#~ msgstr "Cannot read file: "
+
+#~ msgid "Cannot create element."
+#~ msgstr "Cannot create file."
+
+#~ msgid "No base directory provided!"
+#~ msgstr "No base directory provided!"
+
+#~ msgid "null or negative size"
+#~ msgstr "null or negative size"
+
+#~ msgid "Null or negative scale."
+#~ msgstr "Null or negative scale."
+
+#~ msgid ""
+#~ "Cannot access to any source or buffer and it was asked not to create any."
+#~ msgstr ""
+#~ "Cannot access to any source or buffer and it was asked not to create any."
+
+#~ msgid "index out of bounds"
+#~ msgstr "index out of bounds"
+
+#~ msgid "null source histogram."
+#~ msgstr "null source histogram."
+
+#~ msgid "Cannot deserialize component.."
+#~ msgstr "Cannot deserialize component.."
+
+#~ msgid "Cannot deserialize object."
+#~ msgstr "Cannot deserialize object."
+
+#~ msgid "Zoom in"
+#~ msgstr "Zoom in"
+
+#~ msgid "Zoom out"
+#~ msgstr "Zoom out"
+
+#~ msgid "Original size"
+#~ msgstr "Original size"
+
+#~ msgid "Sketch spotting"
+#~ msgstr "Sketch spotting"
+
+#~ msgid "Date"
+#~ msgstr "Date"
+
+#~ msgid "Number of views"
+#~ msgstr "Number of views"
+
+#~ msgid "Background color"
+#~ msgstr "Background colour"
+
+#~ msgid "Foreground color"
+#~ msgstr "Foreground colour"
+
+#~ msgid "Line width"
+#~ msgstr "Line width"
+
+#~ msgid "Are you sure you wish to quit?"
+#~ msgstr "Are you sure you wish to quit?"
+
+#~ msgid "Please select the image(s) to add"
+#~ msgstr "Please select the image(s) to add"
+
+#~ msgid "Enter the name of the image to save"
+#~ msgstr "Enter the name of the image to save"
+
+#~ msgid "PNG images"
+#~ msgstr "PNG images"
+
+#~ msgid "Select or enter a tree"
+#~ msgstr "Select or enter a tree"
+
+#~ msgid "View list"
+#~ msgstr "View list"
+
+#~ msgid "Bloc tree"
+#~ msgstr "Bloc tree"
+
+#~ msgid "Save the displayed view to a file"
+#~ msgstr "Save the displayed view to a file"
+
+#~ msgid "Add a new view"
+#~ msgstr "Add a new view"
+
+#~ msgid "Remove selected view"
+#~ msgstr "Remove selected view"
+
+#~ msgid "Add a new subblock"
+#~ msgstr "Add a new subblock"
+
+#~ msgid "Remove selected tree or subblock"
+#~ msgstr "Remove selected tree or subblock"
+
+#~ msgid "Refresh block tree"
+#~ msgstr "Refresh block tree"
+
+#~ msgid "Fit window"
+#~ msgstr "Fit window"
+
+#~ msgid "Null image given."
+#~ msgstr "Null image given."
+
+#~ msgid "GtkCRN is not initialized."
+#~ msgstr "GtkCRN is not initialized."
+
+#~ msgid "_Image"
+#~ msgstr "_Image"
+
+#~ msgid "Convolve _3x3"
+#~ msgstr "Convolve _3x3"
+
+#~ msgid "Convolve _5x5"
+#~ msgstr "Convolve _5x5"
+
+#~ msgid "Dilate 3x3"
+#~ msgstr "Dilate 3x3"
+
+#~ msgid "Dilate 5x5"
+#~ msgstr "Dilate 5x5"
+
+#~ msgid "Erode 3x3"
+#~ msgstr "Erode 3x3"
+
+#~ msgid "Erode 5x5"
+#~ msgstr "Erode 5x5"
+
+#~ msgid "Cann_y"
+#~ msgstr "Cann_y"
+
+#~ msgid "RGB"
+#~ msgstr "RGB"
+
+#~ msgid "Gray"
+#~ msgstr "Grey"
+
+#~ msgid "BW"
+#~ msgstr "BW"
+
+#~ msgid "Images"
+#~ msgstr "Images"
+
+#~ msgid "Please select a PNG file name"
+#~ msgstr "Please select a PNG file name"
+
+#~ msgid "Unknown data format: "
+#~ msgstr "Unknown data format: "
+
+#~ msgid "Convolution"
+#~ msgstr "Convolution"
+
+#~ msgid "Matrix"
+#~ msgstr "Matrix"
+
+#~ msgid "Dilatation"
+#~ msgstr "Dilatation"
+
+#~ msgid "Erosion"
+#~ msgstr "Erosion"
+
+#~ msgid "Binarisation"
+#~ msgstr "Binarisation"
+
+#~ msgid "Number of black classes (< #classes)"
+#~ msgstr "Number of black classes (< #classes)"
+
+#~ msgid ""
+#~ "Mean strokes width: %i\n"
+#~ "Mean strokes height: %i\n"
+#~ "Mean lines height: %i"
+#~ msgstr ""
+#~ "Mean strokes width: %i\n"
+#~ "Mean strokes height: %i\n"
+#~ "Mean lines height: %i"
+
+#~ msgid "Diffusion"
+#~ msgstr "Diffusion"
+
+#~ msgid "Control"
+#~ msgstr "Control"
+
+#~ msgid "Open"
+#~ msgstr "Open"
+
+#~ msgid "Save"
+#~ msgstr "Save"
+
+#~ msgid "Quit"
+#~ msgstr "Quit"
+
+#~ msgid "File Name"
+#~ msgstr "File Name"
+
+#~ msgid "Passed"
+#~ msgstr "Passed"
+
+#~ msgid "Cannot create PDF structure."
+#~ msgstr "Cannot create PDF structure."
+
+#~ msgid "Cannot create PDF page."
+#~ msgstr "Cannot create PDF page."
+
+#~ msgid "Cannot save PDF file."
+#~ msgstr "Cannot save PDF file."
+
+#~ msgid "Cannot convert gradient to the right image format."
+#~ msgstr "Cannot convert gradient to the right image format."
+
+#~ msgid "Cannot open directory "
+#~ msgstr "Cannot open directory "
+
+#~ msgid "cannot open file."
+#~ msgstr "cannot open file."
+
+#~ msgid "This object needs to be loaded from a xml file, enter its path : "
+#~ msgstr "This object needs to be loaded from a xml file, enter its path : "
+
+#~ msgid ""
+#~ "This object can't be loaded from a file and can't be entered by keyboard, "
+#~ "you can't add parameters."
+#~ msgstr ""
+#~ "This object can't be loaded from a file and can't be entered by keyboard, "
+#~ "you can't add parameters."
+
+#~ msgid " parameter : "
+#~ msgstr " parameter : "
+
+#~ msgid "not a compatible type."
+#~ msgstr "not a compatible type."
+
+#~ msgid "invalid size"
+#~ msgstr "invalid size"
+
+#~ msgid "A model data is not of the same class as the sample."
+#~ msgstr "A model data is not of the same class as the sample."
+
+#~ msgid "Cannot read <Verbose> attribute"
+#~ msgstr "Cannot read <Verbose> attribute"
+
+#~ msgid "Cannot read <ConfigurationPath> attribute"
+#~ msgstr "Cannot read <ConfigurationPath> attribute"
+
+#~ msgid "Cannot read <root> element"
+#~ msgstr "Cannot read <root> element"
+
+#~ msgid "TODO"
+#~ msgstr "TODO"
+
+#~ msgid "Cannot find entry point in file "
+#~ msgstr "Cannot find entry point in file "
+
+#~ msgid "The module is of wrong category."
+#~ msgstr "The module is of wrong category."
+
+#~ msgid "Optimization needed: "
+#~ msgstr "Optimization needed: "
+
+#~ msgid "Cannot get b&w image."
+#~ msgstr "Cannot get b&w image."
+
+#~ msgid "No library for image loading found. No image will be saved."
+#~ msgstr "No library for image loading found. No image will be saved."
+
+#~ msgid "Wrong number of classes."
+#~ msgstr "Wrong number of classes."
+
+#~ msgid "Wrong number of black classes."
+#~ msgstr "Wrong number of black classes."
+
+#~ msgid "Area size is null or negative."
+#~ msgstr "Area size is null or negative."
+
+#~ msgid "Null or negative dimension."
+#~ msgstr "Null or negative dimension."
+
+#~ msgid "Null or negative row or column dimensions."
+#~ msgstr "Null or negative row or column dimensions."
+
+#~ msgid "Unable to extract text lines."
+#~ msgstr "Unable to extract text lines."
+
+#~ msgid "No image loading library linked."
+#~ msgstr "No image loading library linked."
+
+#~ msgid "Wrong angle (not in crn::Angle)."
+#~ msgstr "Wrong angle (not in crn::Angle)."
+
+#~ msgid "Loaded configuration file "
+#~ msgstr "Loaded configuration file "
+
+#~ msgid "source exhausted."
+#~ msgstr "source exhausted."
+
+#~ msgid "target exhausted."
+#~ msgstr "target exhausted."
+
+#~ msgid "source illegal."
+#~ msgstr "source illegal."
+
+#~ msgid "[libcrn] %s"
+#~ msgstr "[libcrn] %s"
+
+#~ msgid "Wrong distance. Using d4."
+#~ msgstr "Wrong distance. Using d4."
+
+#~ msgid "The given number is negative, it shouldn't remove anything."
+#~ msgstr "The given number is negative, it shouldn't remove anything."
+
+#~ msgid " : The default scale should be 1.0."
+#~ msgstr " : The default scale should be 1.0."
+
+#~ msgid " : negative scale, the method shouldn't work."
+#~ msgstr " : negative scale, the method shouldn't work."
+
+#~ msgid " : null scale, the method shouldn't work."
+#~ msgstr " : null scale, the method shouldn't work."
+
+#~ msgid " : The scale shouldn't have changed."
+#~ msgstr " : The scale shouldn't have changed."
+
+#~ msgid ""
+#~ " : The previous operation with negative margin shouldn't have removed "
+#~ "anything."
+#~ msgstr ""
+#~ " : The previous operation with negative margin shouldn't have removed "
+#~ "anything."
+
+#~ msgid " : negative indexes shouldn't work."
+#~ msgstr " : negative indexes shouldn't work."
+
+#~ msgid "Testing the GetRGB1, GetGray1, GetBW1, GetGradient1 methods."
+#~ msgstr "Testing the GetRGB1, GetGray1, GetBW1, GetGradient1 methods."
+
+#~ msgid ""
+#~ " : Shouldn't work when called on a block that doesn't have a RGB source."
+#~ msgstr ""
+#~ " : Shouldn't work when called on a block that doesn't have a RGB source."
+
+#~ msgid " : SetScale shouldn't affect RGB1 dimensions."
+#~ msgstr " : SetScale shouldn't affect RGB1 dimensions."
+
+#~ msgid ""
+#~ " : Shouldn't work when called on a block that doesn't have a Gray source."
+#~ msgstr ""
+#~ " : Shouldn't work when called on a block that doesn't have a Gray source."
+
+#~ msgid " : SetScale shouldn't affect Gray1 dimensions."
+#~ msgstr " : SetScale shouldn't affect Gray1 dimensions."
+
+#~ msgid ""
+#~ " : Shouldn't work when called on a block that doesn't have a BW source."
+#~ msgstr ""
+#~ " : Shouldn't work when called on a block that doesn't have a BW source."
+
+#~ msgid " : SetScale shouldn't affect BW1 dimensions."
+#~ msgstr " : SetScale shouldn't affect BW1 dimensions."
+
+#~ msgid ""
+#~ " : Shouldn't work when called on a block that doesn't have a Gradient "
+#~ "source."
+#~ msgstr ""
+#~ " : Shouldn't work when called on a block that doesn't have a Gradient "
+#~ "source."
+
+#~ msgid " : SetScale shouldn't affect Gradient1 dimensions."
+#~ msgstr " : SetScale shouldn't affect Gradient1 dimensions."
+
+#~ msgid "Cannot find points."
+#~ msgstr "Cannot find points."
+
+#~ msgid "A sample is not multiscaled."
+#~ msgstr "A sample is not multiscaled."
+
+#~ msgid "Cannot find value element."
+#~ msgstr "Cannot find value element."
+
+#~ msgid "Cannot get value CDATA."
+#~ msgstr "Cannot get value CDATA."
+
+#~ msgid "Cannot convert value CDATA."
+#~ msgstr "Cannot convert value CDATA."
+
+#~ msgid "Cannot find coeff element."
+#~ msgstr "Cannot find coeff element."
+
+#~ msgid "Cannot get coeff CDATA."
+#~ msgstr "Cannot get coeff CDATA."
+
+#~ msgid "Cannot convert coeff CDATA."
+#~ msgstr "Cannot convert coeff CDATA."
+
+#~ msgid "Cannot create value element."
+#~ msgstr "Cannot create value element."
+
+#~ msgid "Cannot create value CDATA."
+#~ msgstr "Cannot create value CDATA."
+
+#~ msgid "Cannot create value CDATA element."
+#~ msgstr "Cannot create value CDATA element."
+
+#~ msgid "Cannot create coeff element."
+#~ msgstr "Cannot create coeff element."
+
+#~ msgid "Cannot create coeff CDATA."
+#~ msgstr "Cannot create coeff CDATA."
+
+#~ msgid "Cannot create coeff CDATA element."
+#~ msgstr "Cannot create coeff CDATA element."
+
+#~ msgid "Object is NULL."
+#~ msgstr "Object is NULL."
+
+#~ msgid "Object is not a CRNCLASS_DATA."
+#~ msgstr "Object is not a CRNCLASS_DATA."
+
+#~ msgid "The key is already used. Nothing will be done."
+#~ msgstr "The key is already used. Nothing will be done."
+
+#~ msgid "Object does not implement CRNCLASS_VECTOROVERR."
+#~ msgstr "Object does not implement CRNCLASS_VECTOROVERR."
+
+#~ msgid "Object does not implement CRNCLASS_METRIC."
+#~ msgstr "Object does not implement CRNCLASS_METRIC."
+
+#~ msgid "Object does not implement CRNCLASS_CLONABLE."
+#~ msgstr "Object does not implement CRNCLASS_CLONABLE."
+
+#~ msgid "Object does not implement CRNCLASS_FEATURE."
+#~ msgstr "Object does not implement CRNCLASS_FEATURE."
+
+#~ msgid "Vectors do not have the same dimension."
+#~ msgstr "Vectors do not have the same dimension."
+
+#~ msgid "Object does not implement CRNCLASS_FEATUREEXTRACTOR."
+#~ msgstr "Object does not implement CRNCLASS_FEATUREEXTRACTOR."
+
+#, fuzzy
+#~ msgid "Cannot get X CDATA."
+#~ msgstr "Cannot get CDATA."
+
+#, fuzzy
+#~ msgid "Cannot get Y CDATA."
+#~ msgstr "Cannot get CDATA."
+
+#, fuzzy
+#~ msgid "Cannot convert Y CDATA."
+#~ msgstr "Cannot convert CDATA."
+
+#~ msgid "Cannot get gradient image."
+#~ msgstr "Cannot get gradient image."
+
+#~ msgid "Cannot extract gradient."
+#~ msgstr "Cannot extract gradient."
+
+#~ msgid "Null filename given."
+#~ msgstr "Null filename given."
+
+#~ msgid "No query given."
+#~ msgstr "No query given."
+
+#~ msgid "No word retrieval can be performed without an idiom properly set."
+#~ msgstr "No word retrieval can be performed without an idiom properly set."
+
+#~ msgid "Cannot codify query."
+#~ msgstr "Cannot codify query."
+
+#~ msgid "Cannot textify query."
+#~ msgstr "Cannot textify query."
+
+#~ msgid "Cannot extract guides, skipping image "
+#~ msgstr "Cannot extract guides, skipping image "
+
+#~ msgid "Search without a token."
+#~ msgstr "Search without a token."
+
+#~ msgid "Hit without a score."
+#~ msgstr "Hit without a score."
+
+#~ msgid "Hit without a view."
+#~ msgstr "Hit without a view."
+
+#~ msgid "Hit without a ok."
+#~ msgstr "Hit without a ok."
+
+#~ msgid "Hit without a left."
+#~ msgstr "Hit without a left."
+
+#~ msgid "Hit without a top."
+#~ msgstr "Hit without a top."
+
+#~ msgid "Hit without a right."
+#~ msgstr "Hit without a right."
+
+#~ msgid "Hit without a bottom."
+#~ msgstr "Hit without a bottom."
+
+#~ msgid "Cannot save idiom."
+#~ msgstr "Cannot save idiom."
+
+#~ msgid "hits removal."
+#~ msgstr "hits removal."
+
+#~ msgid "search file removal."
+#~ msgstr "search file removal."
+
+#~ msgid "trace file removal."
+#~ msgstr "trace file removal."
+
+#~ msgid "Null query bloc."
+#~ msgstr "Null query bloc."
+
+#~ msgid "Cannot extract gradient image."
+#~ msgstr "Cannot extract gradient image."
+
+#~ msgid "Cannot extract gray image."
+#~ msgstr "Cannot extract grey image."
+
+#~ msgid "Cannot extract gradient curvatures."
+#~ msgstr "Cannot extract gradient curvatures."
+
+#~ msgid "BuffBW is NULL."
+#~ msgstr "BuffBW is NULL."
+
+#~ msgid "Classifier not initialized."
+#~ msgstr "Classifier not initialized."
+
+#~ msgid "Wrong index."
+#~ msgstr "Wrong index."
+
+#~ msgid "New alphabet"
+#~ msgstr "New alphabet"
+
+#~ msgid "Cannot find attribute <Code>"
+#~ msgstr "Cannot find attribute <Code>"
+
+#~ msgid "Cannot find attribute <Diacritical>"
+#~ msgstr "Cannot find attribute <Diacritical>"
+
+#~ msgid "Cannot find attribute <Symbol>"
+#~ msgstr "Cannot find attribute <Symbol>"
+
+#~ msgid "Cannot find attribute <AlphabetAbs>"
+#~ msgstr "Cannot find attribute <AlphabetAbs>"
+
+#~ msgid "Cannot find attribute <Orientation>"
+#~ msgstr "Cannot find attribute <Orientation>"
+
+#~ msgid "Cannot load alphabet."
+#~ msgstr "Cannot load alphabet."
+
+#~ msgid "Cannot load image"
+#~ msgstr "Cannot load image"
+
+#~ msgid "Cannot find attribute <Left>"
+#~ msgstr "Cannot find attribute <Left>"
+
+#~ msgid "Cannot find attribute <Right>"
+#~ msgstr "Cannot find attribute <Right>"
+
+#~ msgid "Cannot find attribute <Top>"
+#~ msgstr "Cannot find attribute <Top>"
+
+#~ msgid "Cannot find attribute <Bottom>"
+#~ msgstr "Cannot find attribute <Bottom>"
+
+#~ msgid "Cannot find attribute <BaseLine>"
+#~ msgstr "Cannot find attribute <BaseLine>"
+
+#~ msgid "Cannot find attribute <LinkLeft>"
+#~ msgstr "Cannot find attribute <LinkLeft>"
+
+#~ msgid "Cannot find attribute <LinkRight>"
+#~ msgstr "Cannot find attribute <LinkRight>"
+
+#~ msgid "Cannot find attribute <Extremum>"
+#~ msgstr "Cannot find attribute <Extremum>"
+
+#~ msgid "Please set an alphabet before."
+#~ msgstr "Please set an alphabet before."
+
+#~ msgid "Please save the alphabet before."
+#~ msgstr "Please save the alphabet before."
+
+#~ msgid "No grapheme given."
+#~ msgstr "No grapheme given."
+
+#~ msgid "Wrong code given"
+#~ msgstr "Wrong code given"
+
+#~ msgid "No alphabet given."
+#~ msgstr "No alphabet given."
+
+#~ msgid "Cannot find attribute <ALphabetAbs>"
+#~ msgstr "Cannot find attribute <ALphabetAbs>"
+
+#~ msgid "No bloc given."
+#~ msgstr "No bloc given."
+
+#~ msgid "Cannot read file"
+#~ msgstr "Cannot read file"
+
+#~ msgid "Cannot find attribute <FontAbs>"
+#~ msgstr "Cannot find attribute <FontAbs>"
+
+#~ msgid "Cannot load font."
+#~ msgstr "Cannot load font."
+
+#~ msgid "Cannot find attribute <GrammarAbs>"
+#~ msgstr "Cannot find attribute <GrammarAbs>"
+
+#~ msgid "Font does not refer to the idiom's alphabet."
+#~ msgstr "Font does not refer to the idiom's alphabet."
+
+#~ msgid "Cannot load grammar."
+#~ msgstr "Cannot load grammar."
+
+#~ msgid "Grammar does not refer to the idiom's alphabet."
+#~ msgstr "Grammar does not refer to the idiom's alphabet."
+
+#~ msgid "No alphabet to save."
+#~ msgstr "No alphabet to save."
+
+#~ msgid "Cannot save alphabet."
+#~ msgstr "Cannot save alphabet."
+
+#~ msgid "No font to save."
+#~ msgstr "No font to save."
+
+#~ msgid "Cannot save font."
+#~ msgstr "Cannot save font."
+
+#~ msgid "Cannot save grammar."
+#~ msgstr "Cannot save grammar."
+
+#~ msgid "Cannot extract Guides."
+#~ msgstr "Cannot extract Guides."
+
+#~ msgid "No Guides."
+#~ msgstr "No Guides."
+
+#~ msgid "Cannot extract ZOIs."
+#~ msgstr "Cannot extract ZOIs."
+
+#~ msgid "Cannot extract gradient of the image."
+#~ msgstr "Cannot extract gradient of the image."
+
+#~ msgid "ZOIs not extracted."
+#~ msgstr "ZOIs not extracted."
+
+#~ msgid "Cannot read attribute 'renderer'."
+#~ msgstr "Cannot read attribute 'renderer'."
+
+#~ msgid "Cannot read class_index."
+#~ msgstr "Cannot read class_index."
+
+#~ msgid "Cannot read cache_index."
+#~ msgstr "Cannot read cache_index."
+
+#~ msgid "Cannot read filename."
+#~ msgstr "Cannot read filename."
+
+#~ msgid "Cannot read cache_value."
+#~ msgstr "Cannot read cache_value."
+
+#~ msgid "No pixel model."
+#~ msgstr "No pixel model."
+
+#~ msgid "Cannot read basename."
+#~ msgstr "Cannot read basename."
+
+#~ msgid "Wrong class id."
+#~ msgstr "Wrong class id."
+
+#~ msgid "Cannot load cached mask."
+#~ msgstr "Cannot load cached mask."
+
+#~ msgid "Cannot load original file."
+#~ msgstr "Cannot load original file."
+
+#~ msgid "No name given"
+#~ msgstr "No name given"
+
+#~ msgid "Cannot find the original gray image"
+#~ msgstr "Cannot find the original grey image"
+
+#~ msgid "Search without a word."
+#~ msgstr "Search without a word."
+
+#~ msgid "Cannot extract gradient of a zoi."
+#~ msgstr "Cannot extract gradient of a zoi."
+
+#~ msgid "No file name given."
+#~ msgstr "No file name given."
+
+#, fuzzy
+#~ msgid "Null parent XML element."
+#~ msgstr "Null XML element given."
+
+#, fuzzy
+#~ msgid "Cannot find the request bloc"
+#~ msgstr "Cannot find attribute <Symbol>"
+
+#~ msgid "Unknown class: "
+#~ msgstr "Unknown class: "
+
+#~ msgid "No key found for data element :"
+#~ msgstr "No key found for data element :"
+
+#~ msgid "Image has no type!"
+#~ msgstr "Image has no type!"
+
+#~ msgid "Division factor is null. Nothing will be done."
+#~ msgstr "Division factor is null. Nothing will be done."
+
+#~ msgid "The source and destination are not of the same type."
+#~ msgstr "The source and destination are not of the same type."
+
+#~ msgid "Cannot access to RGB buffer."
+#~ msgstr "Cannot access to RGB buffer."
+
+#~ msgid "Cannot access to Gray buffer."
+#~ msgstr "Cannot access to Gray buffer."
+
+#~ msgid "Cannot access to BW buffer."
+#~ msgstr "Cannot access to BW buffer."
+
+#~ msgid "Cannot access to Gradient buffer."
+#~ msgstr "Cannot access to Gradient buffer."
+
+#~ msgid "No source given."
+#~ msgstr "No source given."
+
+#~ msgid "No source histogram."
+#~ msgstr "No source histogram."
+
+#~ msgid "No library for image loading found. No image will be created."
+#~ msgstr "No library for image loading found. No image will be created."
+
+#~ msgid "xxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+#~ msgstr "++++++++++++++++++++++"
