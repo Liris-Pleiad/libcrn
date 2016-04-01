@@ -1,4 +1,4 @@
-/* Copyright 2010-2014 CoReNum, INSA-Lyon
+/* Copyright 2010-2016 CoReNum, INSA-Lyon, ENS-Lyon
  * 
  * This file is part of libgtkcrnmm.
  * 
@@ -21,7 +21,9 @@
 
 #include <CRN.h>
 
+#cmakedefine CRN_USING_GTKMM3
+
 #ifdef BUILD_LIBGTKCRNMM
-#	define GETTEXT_PACKAGE "libcrn"
+#	define GETTEXT_PACKAGE "libgtkcrnmm"
 #endif
 

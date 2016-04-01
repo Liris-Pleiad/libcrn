@@ -19,7 +19,7 @@
  * \author Yann LEYDIER
  */
 
-#define GETTEXT_PACKAGE "libcrn"
+#define GETTEXT_PACKAGE "titus"
 #include <CRN.h>
 #include <GtkCRNMain.h>
 #include <GtkCRNApp.h>

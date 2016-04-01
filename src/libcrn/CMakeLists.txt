@@ -105,6 +105,7 @@ install(FILES "${PROJECT_BINARY_DIR}/share/FindCRN.cmake" DESTINATION "share/cma
 install(FILES "${PROJECT_SOURCE_DIR}/cmake/FindIconv.cmake" DESTINATION "share/cmake" COMPONENT dev) # XXX TODO find where to install this!
 install(FILES "${PROJECT_SOURCE_DIR}/cmake/FindIntl.cmake" DESTINATION "share/cmake" COMPONENT dev) # XXX TODO find where to install this!
 install(FILES "${PROJECT_SOURCE_DIR}/cmake/FindGTK2.cmake" DESTINATION "share/cmake" COMPONENT dev) # XXX TODO find where to install this!
+install(FILES "${PROJECT_SOURCE_DIR}/cmake/FindGTK3.cmake" DESTINATION "share/cmake" COMPONENT dev) # XXX TODO find where to install this!
 
 # Create Android package
 #if(ANDROID)

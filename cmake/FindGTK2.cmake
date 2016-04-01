@@ -112,6 +112,7 @@
 #   * Added GTK2_HINTS to find paths
 #	  * Added version 2.22 to list
 #   * Also append no suffix to library name when _append_version is true
+#   * Added vc140 suffix
 # Version 1.6 (CMake 3.0)
 #   * Create targets for each library
 #   * Do not link libfreetype

@@ -177,14 +177,13 @@ if(Intl_FOUND AND Gettext_FOUND)
 	set(CRN_USING_LIBINTL on)
 endif()
 
-# Find Gtkmm
+# Find Gtkmm2
 find_package(GTK2 2.22 COMPONENTS gtk gtkmm)
 if(GTK2_FOUND)
 	if(Intl_FOUND AND Gettext_FOUND)
 		message("Using Glibintl")
 		set(CRN_USING_GLIB_INTL on)
 		set(CRN_USING_LIBINTL off)
-		message("				libintl : ${Intl_LIBRARIES}")
 	endif()
 	message("Using Gtkmm2")
 	set(CRN_USING_GTKMM on)
@@ -192,18 +191,34 @@ if(GTK2_FOUND)
 	set(CRN_USING_GDKPB on)
 endif()
 
-# libpng
-find_package(PNG)
-if(PNG_FOUND)
-	set(CRN_USING_LIBPNG on)
-	message("Using libpng")
+find_package(GTK3 3.10 COMPONENTS gtk gtkmm)
+if(GTK3_FOUND)
+	if(Intl_FOUND AND Gettext_FOUND)
+		message("Using Glibintl")
+		set(CRN_USING_GLIB_INTL on)
+		set(CRN_USING_LIBINTL off)
+	endif()
+	message("Using Gtkmm3")
+	set(CRN_USING_GTKMM on)
+	message("Using GdkPixbuf")
+	set(CRN_USING_GDKPB on)
 endif()
 
+if(NOT MSVC)
+# libpng
+	find_package(PNG)
+	if(PNG_FOUND)
+		set(CRN_USING_LIBPNG on)
+		message("Using libpng")
+	endif()
+
 # jpeglib
-find_package(JPEG)
-if(JPEG_FOUND)
-	set(CRN_USING_LIBJPEG on)
-	message("Using jpeglib")
+	find_package(JPEG)
+	if(JPEG_FOUND)
+		set(CRN_USING_LIBJPEG on)
+		message("Using jpeglib")
+	endif()
+
 endif()
 
 # Build
