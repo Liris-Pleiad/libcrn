@@ -27,20 +27,6 @@
 #if defined(CRN_USING_GLIB_INTL)
 // libintl through glib
 #	include <glib/gi18n-lib.h>
-#	ifdef _MSC_VER
-#		undef printf
-#		undef fprintf
-#		undef sprintf
-#		undef snprintf
-#		undef vprintf
-#		undef vfprintf
-#		undef vsprintf
-#		undef vsnprintf
-#		undef textdomain
-#		undef bindtextdomain
-#		undef bind_textdomain_codeset
-#		undef setlocale
-#	endif
 #	define CRNtextdomain textdomain
 #	define CRNbindtextdomain bindtextdomain
 #	define CRNbind_textdomain_codeset bind_textdomain_codeset

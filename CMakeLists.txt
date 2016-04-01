@@ -128,6 +128,11 @@ if(MSVC)
 	if(EXISTS "${CMAKE_SOURCE_DIR}/cmake/msvc/kit.cmake")
 		include("${CMAKE_SOURCE_DIR}/cmake/msvc/kit.cmake")
 	endif()
+
+	# set default search path to the binary kit
+	set(CMAKE_FIND_ROOT_PATH "${CMAKE_SOURCE_DIR}/gtkmm2formsvc14")
+	set(CMAKE_PREFIX_PATH "${CMAKE_SOURCE_DIR}/gtkmm2formsvc14")
+
 endif()
 #------------------------------------------------------------------------------
 # APPLE OS X
@@ -156,7 +161,6 @@ if(MSVC)
 endif(MSVC)
 
 # gettext
-#find_package(Gettext)
 set(LANGUAGES "en_GB;fr")
 include(Gettext)
 if (Gettext_FOUND)
@@ -174,13 +178,13 @@ if(Intl_FOUND AND Gettext_FOUND)
 endif()
 
 # Find Gtkmm
-set(GTK2_HINTS "${CMAKE_SOURCE_DIR}/gtkmm2formsvc14")
 find_package(GTK2 2.22 COMPONENTS gtk gtkmm)
 if(GTK2_FOUND)
 	if(Intl_FOUND AND Gettext_FOUND)
 		message("Using Glibintl")
 		set(CRN_USING_GLIB_INTL on)
 		set(CRN_USING_LIBINTL off)
+		message("				libintl : ${Intl_LIBRARIES}")
 	endif()
 	message("Using Gtkmm2")
 	set(CRN_USING_GTKMM on)

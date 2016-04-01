@@ -46,13 +46,12 @@ if(CRN_USING_GLIB_INTL OR CRN_USING_GDKPB)
 	include_directories(${GTK2_INCLUDE_DIRS})
 	list(APPEND LIBCRN_LIB
 		${GTK2_LIBRARIES}
-		${INTL_LIBRARIES}
 	)
 	set(FINDLIBCRN_DEPS "${FINDLIBCRN_DEPS}\nset(FINDLIBCRN_GTK2 on)")
 	if(CRN_USING_GLIB_INTL)
-		include_directories(${INTL_INCLUDE_DIRS})
+		include_directories(${Intl_INCLUDE_DIRS})
 		list(APPEND LIBCRN_LIB
-			${INTL_LIBRARIES}
+			${Intl_LIBRARIES}
 		)
 		set(FINDLIBCRN_DEPS "${FINDLIBCRN_DEPS}\nset(FINDLIBCRN_INTL on)")
 	endif()
@@ -60,9 +59,9 @@ endif()
 
 # libintl
 if(CRN_USING_LIBINTL)
-	include_directories(${INTL_INCLUDE_DIRS})
+	include_directories(${Intl_INCLUDE_DIRS})
 	list(APPEND LIBCRN_LIB
-		${INTL_LIBRARIES}
+		${Intl_LIBRARIES}
 	)
 	set(FINDLIBCRN_DEPS "${FINDLIBCRN_DEPS}\nset(FINDLIBCRN_INTL on)")
 endif()
