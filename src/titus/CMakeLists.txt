@@ -30,7 +30,6 @@ endif(MSVC)
 
 set(TITUS_LIB
 	gtkcrnmm
-	${GTK2_LIBRARIES}
 )
 
 add_executable(titus ${TITUS_SRC} ${TITUS_HEADER})

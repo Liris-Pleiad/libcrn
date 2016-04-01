@@ -156,44 +156,50 @@ if(MSVC)
 endif(MSVC)
 
 # gettext
-find_package(Gettext)
+#find_package(Gettext)
 set(LANGUAGES "en_GB;fr")
 include(Gettext)
-	if (Gettext_FOUND)
+if (Gettext_FOUND)
 	TRANSLATE("${PROJECT_SOURCE_DIR}/src/libcrn" "libcrn")
 	TRANSLATE("${PROJECT_SOURCE_DIR}/src/libgtkcrnmm" "libgtkcrnmm")
 	TRANSLATE("${PROJECT_SOURCE_DIR}/src/titus" "titus")
 	INSTALL_TRANSLATIONS()
 endif()
 
+# libintl
+find_package(Intl)
+if(Intl_FOUND AND Gettext_FOUND)
+	message("Using libintl")
+	set(CRN_USING_LIBINTL on)
+endif()
+
 # Find Gtkmm
 set(GTK2_HINTS "${CMAKE_SOURCE_DIR}/gtkmm2formsvc14")
 find_package(GTK2 2.22 COMPONENTS gtk gtkmm)
 if(GTK2_FOUND)
-	if(Gettext_FOUND)
+	if(Intl_FOUND AND Gettext_FOUND)
+		message("Using Glibintl")
 		set(CRN_USING_GLIB_INTL on)
+		set(CRN_USING_LIBINTL off)
 	endif()
+	message("Using Gtkmm2")
 	set(CRN_USING_GTKMM on)
+	message("Using GdkPixbuf")
 	set(CRN_USING_GDKPB on)
-endif()
-
-# libintl
-find_package(Intl)
-if(Intl_FOUND AND Gettext_FOUND)
-	set(CRN_USING_LIBINTL on)
-	set(CRN_USING_GLIB_INTL off)
 endif()
 
 # libpng
 find_package(PNG)
 if(PNG_FOUND)
 	set(CRN_USING_LIBPNG on)
+	message("Using libpng")
 endif()
 
 # jpeglib
 find_package(JPEG)
 if(JPEG_FOUND)
 	set(CRN_USING_LIBJPEG on)
+	message("Using jpeglib")
 endif()
 
 # Build

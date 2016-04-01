@@ -4,7 +4,7 @@ set(Gettext_FOUND ON CACHE BOOL "Are Gettext tools available?")
 
 function(REQUIRE_BINARY varname)
 	if ("${${varname}}" STREQUAL "${varname}-NOTFOUND" OR "${${varname}}" STREQUAL "")
-		set(Gettext_FOUND OFF CACHE BOOL "Are Gettext tools available?" FORCE)
+		set(Gettext_FOUND OFF CACHE BOOL "Are Gettext tools available?")
 	endif()
 endfunction()
 
@@ -36,6 +36,7 @@ mark_as_advanced(
 	)
 
 function(TRANSLATE srcdir domainname)
+	message("Adding targets to generate translations for ${domainname}")
 	# create directory for po files
 	if (NOT EXISTS "${srcdir}/po")
 		file(MAKE_DIRECTORY "${srcdir}/po")
