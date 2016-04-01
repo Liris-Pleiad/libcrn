@@ -4,29 +4,29 @@ set(Gettext_FOUND ON CACHE BOOL "Are Gettext tools available?")
 
 function(REQUIRE_BINARY varname)
 	if ("${${varname}}" STREQUAL "${varname}-NOTFOUND" OR "${${varname}}" STREQUAL "")
-		set(Gettext_FOUND OFF CACHE BOOL "Are Gettext tools available?")
+		set(Gettext_FOUND OFF CACHE BOOL "Are Gettext tools available?" FORCE)
 	endif()
 endfunction()
 
 find_program(Gettext_XGETTEXT_EXECUTABLE xgettext
 	HINTS ${XGETTEXT} ${BINARIES}
 	)
-REQUIRE_BINARY(XGETTEXT_EXECUTABLE)
+REQUIRE_BINARY(Gettext_XGETTEXT_EXECUTABLE)
 
 find_program(Gettext_MSGINIT_EXECUTABLE msginit
 	HINTS ${MSGINIT} ${BINARIES}
 	)
-REQUIRE_BINARY(MSGINIT_EXECUTABLE)
+REQUIRE_BINARY(Gettext_MSGINIT_EXECUTABLE)
 
 find_program(Gettext_MSGMERGE_EXECUTABLE msgmerge
 	HINTS ${MSGMERGE} ${BINARIES}
 	)
-REQUIRE_BINARY(MSGMERGE_EXECUTABLE)
+REQUIRE_BINARY(Gettext_MSGMERGE_EXECUTABLE)
 
 find_program(Gettext_MSGFMT_EXECUTABLE msgfmt
 	HINTS ${MSGFMT} ${BINARIES}
 	)
-REQUIRE_BINARY(MSGFMT_EXECUTABLE)
+REQUIRE_BINARY(Gettext_MSGFMT_EXECUTABLE)
 
 mark_as_advanced(
 	Gettext_MSGFMT_EXECUTABLE 
