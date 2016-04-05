@@ -36,10 +36,16 @@ add_definitions("-DBUILD_LIBCRN")
 # Dependencies
 set(LIBCRN_LIB
 	${ICONV_LIBRARIES}
-	${GDIPLUS_LIBRARIES}
 )
 
 set(FINDLIBCRN_DEPS "# libcrn optional dependencies")
+
+if(CRN_USING_GDIPLUS)
+	set(FINDLIBCRN_DEPS "${FINDLIBCRN_DEPS}\nset(FINDLIBCRN_GDIPLUS on)")
+	list(APPEND LIBCRN_LIB
+		${GDIPLUS_LIBRARIES}
+	)
+endif()
 
 # Gtk
 if(CRN_USING_GLIB_INTL OR CRN_USING_GDKPB)

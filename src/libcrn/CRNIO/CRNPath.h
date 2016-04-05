@@ -178,7 +178,7 @@ namespace crn
 	/*! \brief Size of a path */
 	inline size_t Size(Path &p) noexcept { return p.Size(); }
 	/*! \brief Swaps two paths */
-	inline void swap(Path &p1, Path &p2) noexcept { p1.Swap(p2); }
+	inline void Swap(Path &p1, Path &p2) noexcept { p1.Swap(p2); }
 
 	namespace literals
 	{

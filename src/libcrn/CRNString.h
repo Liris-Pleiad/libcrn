@@ -300,7 +300,7 @@ long long ToLongLong() const { return convertTo<long long>(); }
 	inline double Distance(const String &s1, const String &s2) { return s1.EditDistance(s2); }
 
 	/*! \brief Swaps two strings */
-	inline void swap(String &s1, String &s2) noexcept { s1.Swap(s2); }
+	inline void Swap(String &s1, String &s2) noexcept { s1.Swap(s2); }
 
 	/*! \brief Size of a string */
 	inline size_t Size(const String &s) noexcept { return s.Size(); }

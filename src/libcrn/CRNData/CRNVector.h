@@ -200,7 +200,7 @@ namespace crn
 	/*! \brief Size of a vector */
 	inline size_t Size(const Vector &v) noexcept { return v.Size(); }
 	/*! \brief Swaps two vectors */
-	inline void swap(Vector &v1, Vector &v2) noexcept { v1.Swap(v2); }
+	inline void Swap(Vector &v1, Vector &v2) noexcept { v1.Swap(v2); }
 }
 CRN_ADD_RANGED_FOR_TO_POINTERS(crn::Vector)
 CRN_ADD_RANGED_FOR_TO_CONST_POINTERS(crn::Vector)

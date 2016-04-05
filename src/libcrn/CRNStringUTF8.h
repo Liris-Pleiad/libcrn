@@ -260,7 +260,7 @@ namespace crn
 	inline StringUTF8 operator+(const StringUTF8 &s1, const StringUTF8 &s2) { return StringUTF8(s1.Std() + s2.Std()); }
 
 	/*! \brief Swaps two strings */
-	inline void swap(StringUTF8 &s1, StringUTF8 &s2) noexcept { s1.Swap(s2); }
+	inline void Swap(StringUTF8 &s1, StringUTF8 &s2) noexcept { s1.Swap(s2); }
 	
 	/*! \brief Size of a string */
 	inline size_t Size(const StringUTF8 &s) noexcept { return s.Size(); }

@@ -147,7 +147,7 @@ namespace crn
 	template<> struct IsSerializable<Map> : public std::true_type {};
 	template<> struct IsClonable<Map> : public std::true_type {};
 
-	inline void swap(Map &m1, Map &m2) noexcept { m1.Swap(m2); }
+	inline void Swap(Map &m1, Map &m2) noexcept { m1.Swap(m2); }
 }
 CRN_ADD_RANGED_FOR_TO_POINTERS(crn::Map)
 CRN_ADD_RANGED_FOR_TO_CONST_POINTERS(crn::Map)
