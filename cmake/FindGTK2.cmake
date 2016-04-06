@@ -420,10 +420,10 @@ function(_GTK2_FIND_LIBRARY _var _lib _expand_vc _append_version)
 						HINTS
 								${GTK2_HINTS}/lib
             PATHS
-            $ENV{GTKMM_BASEPATH}/lib
-            [HKEY_CURRENT_USER\\SOFTWARE\\gtkmm\\2.4;Path]/lib
-            [HKEY_LOCAL_MACHINE\\SOFTWARE\\gtkmm\\2.4;Path]/lib
-        )
+							$ENV{GTKMM_BASEPATH}/lib
+							[HKEY_CURRENT_USER\\SOFTWARE\\gtkmm\\2.4;Path]/lib
+							[HKEY_LOCAL_MACHINE\\SOFTWARE\\gtkmm\\2.4;Path]/lib
+					)
     endif()
 
     select_library_configurations(GTK2_${_var})

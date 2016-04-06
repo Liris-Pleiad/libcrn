@@ -29,7 +29,8 @@
 using namespace crn;
 using namespace GtkCRN;
 
-Gtk::Window* App::main_window(nullptr);
+//Gtk::Window* App::main_window(nullptr);
+Gtk::Window*& App::internal_main_window() { static Gtk::Window *main = nullptr; return main; }
 
 /*! Constructor. Creates Actions and adds them to UI manager. */
 App::App():

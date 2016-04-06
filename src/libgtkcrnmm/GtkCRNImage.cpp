@@ -2374,6 +2374,11 @@ bool Image::refresh()
 			cc->paint();
 #else /* CRN_USING_GTKMM3 */
 			Cairo::RefPtr<Cairo::Context> cc = pm->create_cairo_context();
+			if (!cc)
+			{
+				std::cerr << "cannot create cairo context to refresh image" << std::endl; // XXX
+				return true;
+			}
 #endif /* CRN_USING_GTKMM3 */
 			crn::Rect screen(0, 0, dispw, disph);
 			if (!screen.IsValid())

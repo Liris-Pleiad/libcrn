@@ -49,9 +49,9 @@ namespace GtkCRN
 			virtual ~App() {}
 
 			/*! \brief Gets a pointer to the main window */
-			static Gtk::Window* get_main_window() { return main_window; }
+			static Gtk::Window* get_main_window() { return internal_main_window(); }
 			/*! \brief Sets the main window of the application to be used as parent for dialogs and messages */
-			static void set_main_window(Gtk::Window *win) { main_window = win; }
+			static void set_main_window(Gtk::Window *win) { internal_main_window() = win; }
 
 			/*! \brief Displays a message */
 			static void show_message(const Glib::ustring &message, Gtk::MessageType mtype);
@@ -75,7 +75,7 @@ namespace GtkCRN
 			Glib::RefPtr<Gtk::UIManager> ui_manager; /*!< add your action groups to the ui manager to easily create menus and toolbars */
 			Glib::RefPtr<Gtk::ActionGroup> actions; /*!< default actions */
 
-			static Gtk::Window *main_window; /*!< main window of the application */
+			static Gtk::Window*& internal_main_window();
 	};
 };
 

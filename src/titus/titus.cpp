@@ -1234,6 +1234,20 @@ class Titus: public GtkCRN::App
 		SImage currimg;
 };
 
+/*
+class Titus : public GtkCRN::App
+{
+	public:
+		Titus() 
+		{
+			add(box);
+			box.pack_start(*Gtk::manage(new Gtk::Label("toto")));
+			show_all_children();
+		}
+	private:
+		Gtk::VBox box;
+};
+*/
 int main(int argc, char *argv[])
 {
 	setlocale(LC_ALL, "");

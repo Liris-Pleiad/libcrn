@@ -92,6 +92,12 @@ endif()
 
 # Build
 add_library(crn ${LIBCRN_SRC} ${LIBCRN_HEADER_CFG} ${LIBCRN_HEADER})
+add_custom_command(TARGET crn PRE_LINK COMMAND ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/${CMAKE_CFG_INTDIR}/gendef 
+	${CMAKE_CURRENT_BINARY_DIR}/crn.def 
+	$<TARGET_FILE_NAME:crn> 
+	${CMAKE_CURRENT_BINARY_DIR}/crn.dir/${CMAKE_CFG_INTDIR}/*.obj)
+# TODO s'assurer que gendef a été créé
+set_target_properties(crn PROPERTIES LINK_FLAGS "/DEF:\"${CMAKE_CURRENT_BINARY_DIR}/crn.def\"")
 target_link_libraries(crn ${LIBCRN_LIB})
 
 # Install

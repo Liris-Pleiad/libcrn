@@ -45,6 +45,11 @@ if(GTK2_FOUND)
 
 	# Build
 	add_library(gtkcrnmm2 ${LIBGTKCRNMM_SRC} ${LIBGTKCRNMM_HEADER})
+	add_custom_command(TARGET gtkcrnmm2 PRE_LINK COMMAND ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/${CMAKE_CFG_INTDIR}/gendef
+		${CMAKE_CURRENT_BINARY_DIR}/gtkcrnmm2.def 
+		$<TARGET_FILE_NAME:gtkcrnmm2> 
+		${CMAKE_CURRENT_BINARY_DIR}/gtkcrnmm2.dir/${CMAKE_CFG_INTDIR}/*.obj)
+	set_target_properties(gtkcrnmm2 PROPERTIES LINK_FLAGS "/DEF:\"${CMAKE_CURRENT_BINARY_DIR}/gtkcrnmm2.def\"")
 	target_link_libraries(gtkcrnmm2 ${LIBGTKCRNMM2_LIB})
 
 	# Install

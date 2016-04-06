@@ -31,6 +31,18 @@ find_library(GTKCRNMM3_LIBRARY NAME libgtkcrnmm3@CRNLIB_EXT@
 		$ENV{LIBCRN_PATH}/lib
 )
 
+find_library(GTKCRNMM3_LIBRARY_DEBUG NAME libgtkcrnmm3-d@CRNLIB_EXT@
+	HINTS
+		${LIBCRN_HINTS}/lib
+	PATHS
+		/usr/lib
+		/usr/local/lib
+		$ENV{LIBCRN_PATH}/lib
+)
+if(NOT "${GTKCRNMM3_LIBRARY_DEBUG_FOUND}" STREQUAL "${GTKCRNMM3_LIBRARY_DEBUG_FOUND}-NOTFOUND")
+	set(GTKCRNMM3_LIBRARY "optimized;${GTKCRNMM3_LIBRARY};debug;${GTKCRNMM3_LIBRARY_DEBUG}")
+endif()
+
 include(FindPackageHandleStandardArgs)
 # handle the QUIETLY and REQUIRED arguments and set LIBGTKCRNMM3_FOUND to TRUE
 # if all listed variables are TRUE

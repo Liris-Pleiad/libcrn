@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libcrn 3.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-03-31 14:48+0200\n"
+"POT-Creation-Date: 2016-04-05 17:17+0200\n"
 "PO-Revision-Date: 2015-11-24 13:55+0100\n"
 "Last-Translator: Yann LEYDIER <yann@leydier.info>\n"
 "Language-Team: English <>\n"
@@ -26,31 +26,31 @@ msgstr "unsupported pixel format."
 msgid "Null pixbuf given."
 msgstr "Null pixbuf given."
 
-#: E:/CoReNum/v4/libcrn/src/libgtkcrnmm/GtkCRNApp.cpp:39
+#: E:/CoReNum/v4/libcrn/src/libgtkcrnmm/GtkCRNApp.cpp:40
 msgid "_File"
 msgstr "_File"
 
-#: E:/CoReNum/v4/libcrn/src/libgtkcrnmm/GtkCRNApp.cpp:39
+#: E:/CoReNum/v4/libcrn/src/libgtkcrnmm/GtkCRNApp.cpp:40
 msgid "File"
 msgstr "File"
 
-#: E:/CoReNum/v4/libcrn/src/libgtkcrnmm/GtkCRNApp.cpp:41
+#: E:/CoReNum/v4/libcrn/src/libgtkcrnmm/GtkCRNApp.cpp:42
 msgid "_?"
 msgstr "_?"
 
-#: E:/CoReNum/v4/libcrn/src/libgtkcrnmm/GtkCRNApp.cpp:41
+#: E:/CoReNum/v4/libcrn/src/libgtkcrnmm/GtkCRNApp.cpp:42
 msgid "?"
 msgstr "?"
 
-#: E:/CoReNum/v4/libcrn/src/libgtkcrnmm/GtkCRNApp.cpp:57
+#: E:/CoReNum/v4/libcrn/src/libgtkcrnmm/GtkCRNApp.cpp:58
 msgid "Are you sure you want to quit?"
 msgstr "Are you sure you want to quit?"
 
-#: E:/CoReNum/v4/libcrn/src/libgtkcrnmm/GtkCRNApp.cpp:139
+#: E:/CoReNum/v4/libcrn/src/libgtkcrnmm/GtkCRNApp.cpp:140
 msgid "Advanced details"
 msgstr "Advanced details"
 
-#: E:/CoReNum/v4/libcrn/src/libgtkcrnmm/GtkCRNApp.cpp:168
+#: E:/CoReNum/v4/libcrn/src/libgtkcrnmm/GtkCRNApp.cpp:169
 msgid "Unhandled exception caught."
 msgstr "Unhandled exception caught."
 
