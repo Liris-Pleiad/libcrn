@@ -45,11 +45,13 @@ if(GTK2_FOUND)
 
 	# Build
 	add_library(gtkcrnmm2 ${LIBGTKCRNMM_SRC} ${LIBGTKCRNMM_HEADER})
-	add_custom_command(TARGET gtkcrnmm2 PRE_LINK COMMAND ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/${CMAKE_CFG_INTDIR}/gendef
-		${CMAKE_CURRENT_BINARY_DIR}/gtkcrnmm2.def 
-		$<TARGET_FILE_NAME:gtkcrnmm2> 
-		${CMAKE_CURRENT_BINARY_DIR}/gtkcrnmm2.dir/${CMAKE_CFG_INTDIR}/*.obj)
-	set_target_properties(gtkcrnmm2 PROPERTIES LINK_FLAGS "/DEF:\"${CMAKE_CURRENT_BINARY_DIR}/gtkcrnmm2.def\"")
+	if(MSVC)
+		add_custom_command(TARGET gtkcrnmm2 PRE_LINK COMMAND ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/${CMAKE_CFG_INTDIR}/gendef
+			${CMAKE_CURRENT_BINARY_DIR}/gtkcrnmm2.def 
+			$<TARGET_FILE_NAME:gtkcrnmm2> 
+			${CMAKE_CURRENT_BINARY_DIR}/gtkcrnmm2.dir/${CMAKE_CFG_INTDIR}/*.obj)
+		set_target_properties(gtkcrnmm2 PROPERTIES LINK_FLAGS "/DEF:\"${CMAKE_CURRENT_BINARY_DIR}/gtkcrnmm2.def\"")
+	endif()
 	target_link_libraries(gtkcrnmm2 ${LIBGTKCRNMM2_LIB})
 
 	# Install
@@ -78,6 +80,13 @@ if(GTK3_FOUND)
 		)
 	# Build
 	add_library(gtkcrnmm3 ${LIBGTKCRNMM_SRC} ${LIBGTKCRNMM_HEADER})
+	if(MSVC)
+		add_custom_command(TARGET gtkcrnmm3 PRE_LINK COMMAND ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/${CMAKE_CFG_INTDIR}/gendef
+			${CMAKE_CURRENT_BINARY_DIR}/gtkcrnmm3.def 
+			$<TARGET_FILE_NAME:gtkcrnmm3> 
+			${CMAKE_CURRENT_BINARY_DIR}/gtkcrnmm3.dir/${CMAKE_CFG_INTDIR}/*.obj)
+		set_target_properties(gtkcrnmm3 PROPERTIES LINK_FLAGS "/DEF:\"${CMAKE_CURRENT_BINARY_DIR}/gtkcrnmm3.def\"")
+	endif()
 	target_link_libraries(gtkcrnmm3 ${LIBGTKCRNMM3_LIB})
 	# Install
 	# - binaries
