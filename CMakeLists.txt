@@ -109,7 +109,7 @@ if(MSVC)
 	set(CMAKE_IMPORT_LIBRARY_PREFIX "lib")
 	set(CMAKE_DEBUG_POSTFIX "-d")
 
-	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /MP")
+	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /MP /D_MBCS")
 
 	#set(BUILD_SHARED_LIBS off)
 	set(CRNLIB_EXT "${CMAKE_IMPORT_LIBRARY_SUFFIX}")
@@ -230,7 +230,9 @@ if(NOT MSVC)
 endif()
 
 # Build
-add_executable(gendef src/gendef/gendef.cc)
+if(MSVC)
+	add_executable(gendef src/gendef/gendef.cc)
+endif()
 add_subdirectory(src/libcrn)
 add_subdirectory(src/demos)
 if(GTK2_FOUND)

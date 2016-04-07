@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libcrn 3.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-04-05 17:17+0200\n"
+"POT-Creation-Date: 2016-04-07 08:46+0200\n"
 "PO-Revision-Date: 2015-11-24 13:55+0100\n"
 "Last-Translator: Yann LEYDIER <yann@leydier.info>\n"
 "Language-Team: English <>\n"
@@ -384,27 +384,27 @@ msgstr "Overlay not found."
 msgid "Overlay item not found."
 msgstr "Overlay item not found."
 
-#: E:/CoReNum/v4/libcrn/src/libgtkcrnmm/GtkCRNImage.cpp:2159
-#: E:/CoReNum/v4/libcrn/src/libgtkcrnmm/GtkCRNImage.cpp:2162
-#: E:/CoReNum/v4/libcrn/src/libgtkcrnmm/GtkCRNImage.cpp:2181
-#: E:/CoReNum/v4/libcrn/src/libgtkcrnmm/GtkCRNImage.cpp:2184
-#: E:/CoReNum/v4/libcrn/src/libgtkcrnmm/GtkCRNImage.cpp:2203
-#: E:/CoReNum/v4/libcrn/src/libgtkcrnmm/GtkCRNImage.cpp:2206
+#: E:/CoReNum/v4/libcrn/src/libgtkcrnmm/GtkCRNImage.cpp:2165
+#: E:/CoReNum/v4/libcrn/src/libgtkcrnmm/GtkCRNImage.cpp:2168
+#: E:/CoReNum/v4/libcrn/src/libgtkcrnmm/GtkCRNImage.cpp:2187
+#: E:/CoReNum/v4/libcrn/src/libgtkcrnmm/GtkCRNImage.cpp:2190
+#: E:/CoReNum/v4/libcrn/src/libgtkcrnmm/GtkCRNImage.cpp:2209
+#: E:/CoReNum/v4/libcrn/src/libgtkcrnmm/GtkCRNImage.cpp:2212
 msgid "No selection found."
 msgstr "No selection found."
 
-#: E:/CoReNum/v4/libcrn/src/libgtkcrnmm/GtkCRNImage.cpp:2169
-#: E:/CoReNum/v4/libcrn/src/libgtkcrnmm/GtkCRNImage.cpp:2228
+#: E:/CoReNum/v4/libcrn/src/libgtkcrnmm/GtkCRNImage.cpp:2175
+#: E:/CoReNum/v4/libcrn/src/libgtkcrnmm/GtkCRNImage.cpp:2234
 msgid "The selection is not a rectangle."
 msgstr "The selection is not a rectangle."
 
-#: E:/CoReNum/v4/libcrn/src/libgtkcrnmm/GtkCRNImage.cpp:2191
-#: E:/CoReNum/v4/libcrn/src/libgtkcrnmm/GtkCRNImage.cpp:2245
+#: E:/CoReNum/v4/libcrn/src/libgtkcrnmm/GtkCRNImage.cpp:2197
+#: E:/CoReNum/v4/libcrn/src/libgtkcrnmm/GtkCRNImage.cpp:2251
 msgid "The selection is not a point."
 msgstr "The selection is not a point."
 
-#: E:/CoReNum/v4/libcrn/src/libgtkcrnmm/GtkCRNImage.cpp:2213
-#: E:/CoReNum/v4/libcrn/src/libgtkcrnmm/GtkCRNImage.cpp:2266
+#: E:/CoReNum/v4/libcrn/src/libgtkcrnmm/GtkCRNImage.cpp:2219
+#: E:/CoReNum/v4/libcrn/src/libgtkcrnmm/GtkCRNImage.cpp:2272
 msgid "The selection is not a line."
 msgstr "The selection is not a line."
 

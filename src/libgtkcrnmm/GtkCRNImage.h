@@ -241,12 +241,13 @@ namespace GtkCRN
 			/*! \brief Gets the mouse selection type */
 			Overlay get_selection_type() const { return selection_type; }
 			/*! \brief Gets the mouse selection configuration */
-			OverlayConfig& get_selection_config() { return get_overlay_config(selection_overlay); }
+			OverlayConfig& get_selection_config() { return get_overlay_config(selection_overlay()); }
 			/*! \brief Is there a mouse selection? */
 			bool has_selection() const;
 			/*! \brief Clears the mouse selection */
 			void clear_selection();
-			static const crn::String selection_overlay; /*!< the name of the mouse selection overlay */
+			/*! \brief Returns the name of the mouse selection overlay */
+			static const crn::String& selection_overlay();
 			/*! \brief Gets the mouse selection as a rectangle */
 			const crn::Rect& get_selection_as_rect() const;
 			/*! \brief Gets the mouse selection as a point */

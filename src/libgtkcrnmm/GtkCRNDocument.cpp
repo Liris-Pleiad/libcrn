@@ -946,7 +946,7 @@ void Document::thread_safe_reload_image(const crn::String &view_id)
  */
 void Document::on_image_overlay_changed(crn::String overlay_id, crn::String overlay_item_id, Image::MouseMode mm)
 {
-	if (overlay_id == Image::selection_overlay)
+	if (overlay_id == Image::selection_overlay())
 	{
 		tree_actions->get_action("document-blocks-add")->set_sensitive(overlay_item_id.IsNotEmpty());
 	}
