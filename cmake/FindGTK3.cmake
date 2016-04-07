@@ -317,9 +317,9 @@ function(_GTK3_FIND_LIBRARY _var _lib _expand_vc _append_version)
     # Not GTK versions per se but the versions encoded into Windows
     # import libraries (GtkMM 2.14.1 has a gtkmm-vc80-2_4.lib for example)
     # Also the MSVC libraries use _ for . (this is handled below)
-    set(_versions 3.16 3.14 3.12 3.10 3.8 3.6 3.4 3.2 3.0
+    set(_versions 3.16 3.14 3.12 3.10 3.8 3.6 3.4 3.2 3.0 3
 									2.22 2.20 2.18 2.16 2.14 2.12
-                  2.10  2.8  2.6  2.4  2.2 2.0
+                  2.10  2.8  2.6  2.4  2.2 2.0 2
                   1.20 1.18 1.16 1.14 1.12
                   1.10  1.8  1.6  1.4  1.2 1.0)
 
@@ -718,7 +718,7 @@ foreach(_GTK3_component ${GTK3_FIND_COMPONENTS})
                 _GTK3_FIND_LIBRARY    (GDK gdk-quartz false true)
             endif()
             if(NOT GTK3_GDK_FOUND)
-                _GTK3_FIND_LIBRARY    (GDK gdk-x11 false true)
+                _GTK3_FIND_LIBRARY    (GDK gdk false true)
             endif()
         else()
             _GTK3_FIND_LIBRARY    (GDK gdk-win32 false true)
@@ -732,7 +732,7 @@ foreach(_GTK3_component ${GTK3_FIND_COMPONENTS})
                 _GTK3_FIND_LIBRARY    (GTK gtk-quartz false true)
             endif()
             if(NOT GTK3_GTK_FOUND)
-                _GTK3_FIND_LIBRARY    (GTK gtk-x11 false true)
+                _GTK3_FIND_LIBRARY    (GTK gtk false true)
             endif()
         else()
             _GTK3_FIND_LIBRARY    (GTK gtk-win32 false true)

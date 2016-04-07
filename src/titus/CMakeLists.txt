@@ -7,8 +7,6 @@ include_directories("${PROJECT_BINARY_DIR}/include/libcrn")
 include_directories("${PROJECT_SOURCE_DIR}/src/libcrn")
 # add path to libgtkcrnmm
 include_directories("${PROJECT_SOURCE_DIR}/src/libgtkcrnmm")
-# add path to Gtkmm
-include_directories(${GTK2_INCLUDE_DIRS})
 #############################
 
 # sources
@@ -29,29 +27,18 @@ if (MSVC)
 endif(MSVC)
 
 if(GTK2_FOUND)
-	include_directories("${PROJECT_BINARY_DIR}/include/libgtkcrnmm2")
-	
-	set(TITUS2_LIB
-		gtkcrnmm2
-	)
-
 	add_executable(titus2 ${TITUS_SRC} ${TITUS_HEADER})
-	target_link_libraries(titus2 ${TITUS2_LIB})
-
+	target_include_directories(titus2 PRIVATE "${PROJECT_BINARY_DIR}/include/libgtkcrnmm2")
+	target_link_libraries(titus2 gtkcrnmm2)
 	install(TARGETS titus2 DESTINATION bin COMPONENT app)
 endif()
 
 if(GTK3_FOUND)
-	include_directories("${PROJECT_BINARY_DIR}/include/libgtkcrnmm3")
-
-	set(TITUS3_LIB
-		gtkcrnmm3
-	)
-
 	add_executable(titus3 ${TITUS_SRC} ${TITUS_HEADER})
-	target_link_libraries(titus3 ${TITUS3_LIB})
-
+	target_include_directories(titus3 PRIVATE "${PROJECT_BINARY_DIR}/include/libgtkcrnmm3")
+	target_link_libraries(titus3 gtkcrnmm3)
 	install(TARGETS titus3 DESTINATION bin COMPONENT app)
 endif()
 
 install(FILES "titus.png" DESTINATION ${CRN_DATA_PATH} COMPONENT app)
+

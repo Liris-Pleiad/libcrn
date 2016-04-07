@@ -33,32 +33,30 @@ endif(MSVC)
 
 add_definitions("-DBUILD_LIBCRN")
 
+# Build
+add_library(crn ${LIBCRN_SRC} ${LIBCRN_HEADER_CFG} ${LIBCRN_HEADER})
+
 # Dependencies
-set(LIBCRN_LIB
-	${ICONV_LIBRARIES}
-)
+# Iconv needed
+target_link_libraries(crn	${ICONV_LIBRARIES})
 
 set(FINDLIBCRN_DEPS "# libcrn optional dependencies")
 
 if(CRN_USING_GDIPLUS)
 	set(FINDLIBCRN_DEPS "${FINDLIBCRN_DEPS}\nset(FINDLIBCRN_GDIPLUS on)")
-	list(APPEND LIBCRN_LIB
-		${GDIPLUS_LIBRARIES}
-	)
+	target_link_libraries(crn	${GDIPLUS_LIBRARIES})
 endif()
 
 # Gtk
-if(CRN_USING_GLIB_INTL OR CRN_USING_GDKPB)
-	include_directories(${GTK2_INCLUDE_DIRS})
-	list(APPEND LIBCRN_LIB
-		${GTK2_LIBRARIES}
-	)
+if(CRN_USING_GLIB_INTL)
+	target_link_libraries(crn GTK2::glib)
+endif() 
+if(CRN_USING_GDKPB)
+	target_link_libraries(crn GTK2::gdk_pixbuf)
 	set(FINDLIBCRN_DEPS "${FINDLIBCRN_DEPS}\nset(FINDLIBCRN_GTK2 on)")
 	if(CRN_USING_GLIB_INTL)
 		include_directories(${Intl_INCLUDE_DIRS})
-		list(APPEND LIBCRN_LIB
-			${Intl_LIBRARIES}
-		)
+		target_link_libraries(crn	${Intl_LIBRARIES})
 		set(FINDLIBCRN_DEPS "${FINDLIBCRN_DEPS}\nset(FINDLIBCRN_INTL on)")
 	endif()
 endif()
@@ -66,32 +64,24 @@ endif()
 # libintl
 if(CRN_USING_LIBINTL)
 	include_directories(${Intl_INCLUDE_DIRS})
-	list(APPEND LIBCRN_LIB
-		${Intl_LIBRARIES}
-	)
+	target_link_libraries(crn	${Intl_LIBRARIES})
 	set(FINDLIBCRN_DEPS "${FINDLIBCRN_DEPS}\nset(FINDLIBCRN_INTL on)")
 endif()
 
 # libpng
 if(CRN_USING_LIBPNG)
 	include_directories(${PNG_INCLUDE_DIRS})
-	list(APPEND LIBCRN_LIB
-		${PNG_LIBRARIES}
-	)
+	target_link_libraries(crn	${PNG_LIBRARIES})
 	set(FINDLIBCRN_DEPS "${FINDLIBCRN_DEPS}\nset(FINDLIBCRN_PNG on)")
 endif()
 
 # jpeglib
 if(CRN_USING_LIBJPEG)
 	include_directories(${JPEG_INCLUDE_DIRS})
-	list(APPEND LIBCRN_LIB
-		${JPEG_LIBRARIES}
-	)
+	target_link_libraries(crn	${JPEG_LIBRARIES})
 	set(FINDLIBCRN_DEPS "${FINDLIBCRN_DEPS}\nset(FINDLIBCRN_JPEG on)")
 endif()
 
-# Build
-add_library(crn ${LIBCRN_SRC} ${LIBCRN_HEADER_CFG} ${LIBCRN_HEADER})
 if(MSVC)
 	add_custom_command(TARGET crn PRE_LINK COMMAND ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/${CMAKE_CFG_INTDIR}/gendef 
 		${CMAKE_CURRENT_BINARY_DIR}/crn.def 
@@ -100,7 +90,6 @@ if(MSVC)
 # TODO s'assurer que gendef a été créé
 	set_target_properties(crn PROPERTIES LINK_FLAGS "/DEF:\"${CMAKE_CURRENT_BINARY_DIR}/crn.def\"")
 endif()
-target_link_libraries(crn ${LIBCRN_LIB})
 
 # Install
 # - binaries

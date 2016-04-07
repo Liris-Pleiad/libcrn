@@ -14,13 +14,13 @@ file(
 	GLOB_RECURSE
 	LIBGTKCRNMM_SRC
 	*.cpp
-)
+	)
 file(
 	GLOB_RECURSE
 	LIBGTKCRNMM_HEADER
 	*.h
 	*.hpp
-)
+	)
 if (MSVC)
 	GroupSources(src/libgtkcrnmm)
 	add_definitions("/wd4250")
@@ -33,18 +33,11 @@ set(LIBGTKCRNMM_INCLUDE_INSTALL "include/libgtkcrnmm-${CRN_PACKAGE_VERSION_MAJOR
 # Gtkmm2
 if(GTK2_FOUND)
 	# sources
-	configure_file(libgtkcrnmm_config.h.in "${PROJECT_BINARY_DIR}/include/libgtkcrnmm2/libgtkcrnmm_config.h")
-	include_directories("${PROJECT_BINARY_DIR}/include/libgtkcrnmm2")
-	# add path to Gtkmm
-	include_directories(${GTK2_INCLUDE_DIRS})
-	# Dependencies
-	set(LIBGTKCRNMM2_LIB
-		crn
-		${GTK2_LIBRARIES}
-		)
-
+	configure_file(libgtkcrnmm_config2.h.in "${PROJECT_BINARY_DIR}/include/libgtkcrnmm2/libgtkcrnmm_config.h")
 	# Build
 	add_library(gtkcrnmm2 ${LIBGTKCRNMM_SRC} ${LIBGTKCRNMM_HEADER})
+	target_include_directories(gtkcrnmm2 PRIVATE "${PROJECT_BINARY_DIR}/include/libgtkcrnmm2")
+
 	if(MSVC)
 		add_custom_command(TARGET gtkcrnmm2 PRE_LINK COMMAND ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/${CMAKE_CFG_INTDIR}/gendef
 			${CMAKE_CURRENT_BINARY_DIR}/gtkcrnmm2.def 
@@ -52,7 +45,10 @@ if(GTK2_FOUND)
 			${CMAKE_CURRENT_BINARY_DIR}/gtkcrnmm2.dir/${CMAKE_CFG_INTDIR}/*.obj)
 		set_target_properties(gtkcrnmm2 PROPERTIES LINK_FLAGS "/DEF:\"${CMAKE_CURRENT_BINARY_DIR}/gtkcrnmm2.def\"")
 	endif()
-	target_link_libraries(gtkcrnmm2 ${LIBGTKCRNMM2_LIB})
+
+	# Dependencies
+	target_link_libraries(gtkcrnmm2 crn)
+	target_link_libraries(gtkcrnmm2 GTK2::gtkmm)
 
 	# Install
 	# - binaries
@@ -67,19 +63,14 @@ endif()
 
 # Gtkmm3
 if(GTK3_FOUND)
-	set(CRN_USING_GTKMM3 on)
+	#set(CRN_USING_GTKMM3 on)
 	# sources
-	configure_file(libgtkcrnmm_config.h.in ${PROJECT_BINARY_DIR}/include/libgtkcrnmm3/libgtkcrnmm_config.h)
-	include_directories("${PROJECT_BINARY_DIR}/include/libgtkcrnmm3")
-	# add path to Gtkmm3
-	include_directories(${GTK3_INCLUDE_DIRS})
-	# Dependencies
-	set(LIBGTKCRNMM3_LIB
-		crn
-		${GTK3_LIBRARIES}
-		)
+	configure_file(libgtkcrnmm_config3.h.in ${PROJECT_BINARY_DIR}/include/libgtkcrnmm3/libgtkcrnmm_config.h)
+
 	# Build
 	add_library(gtkcrnmm3 ${LIBGTKCRNMM_SRC} ${LIBGTKCRNMM_HEADER})
+	target_include_directories(gtkcrnmm3 PRIVATE "${PROJECT_BINARY_DIR}/include/libgtkcrnmm3")
+
 	if(MSVC)
 		add_custom_command(TARGET gtkcrnmm3 PRE_LINK COMMAND ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/${CMAKE_CFG_INTDIR}/gendef
 			${CMAKE_CURRENT_BINARY_DIR}/gtkcrnmm3.def 
@@ -87,7 +78,9 @@ if(GTK3_FOUND)
 			${CMAKE_CURRENT_BINARY_DIR}/gtkcrnmm3.dir/${CMAKE_CFG_INTDIR}/*.obj)
 		set_target_properties(gtkcrnmm3 PROPERTIES LINK_FLAGS "/DEF:\"${CMAKE_CURRENT_BINARY_DIR}/gtkcrnmm3.def\"")
 	endif()
-	target_link_libraries(gtkcrnmm3 ${LIBGTKCRNMM3_LIB})
+	# Dependencies
+	target_link_libraries(gtkcrnmm3 GTK3::gtkmm)
+	target_link_libraries(gtkcrnmm3 crn)
 	# Install
 	# - binaries
 	install(TARGETS gtkcrnmm3 RUNTIME DESTINATION "${RUNTIME_INSTALL_PATH}" COMPONENT bin  LIBRARY DESTINATION "${LIBRARY_INSTALL_PATH}" COMPONENT bin ARCHIVE DESTINATION "${ARCHIVE_INSTALL_PATH}" COMPONENT bin)
