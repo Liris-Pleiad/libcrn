@@ -83,6 +83,7 @@ if(CRN_USING_LIBJPEG)
 endif()
 
 if(MSVC)
+	add_dependencies(crn gendef)
 	add_custom_command(TARGET crn PRE_LINK COMMAND ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/${CMAKE_CFG_INTDIR}/gendef 
 		${CMAKE_CURRENT_BINARY_DIR}/crn.def 
 		$<TARGET_FILE_NAME:crn> 

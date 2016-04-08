@@ -39,6 +39,7 @@ if(GTK2_FOUND)
 	target_include_directories(gtkcrnmm2 PRIVATE "${PROJECT_BINARY_DIR}/include/libgtkcrnmm2")
 
 	if(MSVC)
+		add_dependencies(gtkcrnmm2 gendef)
 		add_custom_command(TARGET gtkcrnmm2 PRE_LINK COMMAND ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/${CMAKE_CFG_INTDIR}/gendef
 			${CMAKE_CURRENT_BINARY_DIR}/gtkcrnmm2.def 
 			$<TARGET_FILE_NAME:gtkcrnmm2> 
@@ -72,6 +73,7 @@ if(GTK3_FOUND)
 	target_include_directories(gtkcrnmm3 PRIVATE "${PROJECT_BINARY_DIR}/include/libgtkcrnmm3")
 
 	if(MSVC)
+		add_dependencies(gtkcrnmm3 gendef)
 		add_custom_command(TARGET gtkcrnmm3 PRE_LINK COMMAND ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/${CMAKE_CFG_INTDIR}/gendef
 			${CMAKE_CURRENT_BINARY_DIR}/gtkcrnmm3.def 
 			$<TARGET_FILE_NAME:gtkcrnmm3> 
