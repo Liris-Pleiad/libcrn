@@ -1,4 +1,4 @@
-/* Copyright 2011-2014 CoReNum
+/* Copyright 2011-2016 CoReNum, ENS-Lyon
  * 
  * This file is part of libcrn.
  * 

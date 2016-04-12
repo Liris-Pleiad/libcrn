@@ -1,4 +1,4 @@
-/* Copyright 2007-2014 Yann LEYDIER, CoReNum, INSA-Lyon
+/* Copyright 2007-2016 Yann LEYDIER, CoReNum, INSA-Lyon, ENS-Lyon
  * 
  * This file is part of libcrn.
  * 
@@ -56,15 +56,8 @@ namespace crn
 			MatrixDouble& operator=(MatrixDouble &&) = default;
 			
 			/*! \brief Destructor */
-			virtual ~MatrixDouble() override {}
+			virtual ~MatrixDouble() override = default;
 
-			/*! \brief Returns the name of the class */
-			virtual const String& GetClassName() const override { static const String cn(U"MatrixDouble"); return cn; }
-			/*! \brief Returns the protocols of the class: ComplexObject, VectorOverR, Clonable, Ring, Serializable and Metric */
-			virtual Protocol GetClassProtocols() const noexcept override { return crn::Protocol::VectorOverR | crn::Protocol::Clonable | crn::Protocol::Ring | crn::Protocol::Serializable | crn::Protocol::Metric; }
-
-			virtual UObject Clone() const override { return std::make_unique<MatrixDouble>(*this); }
-	
 			/*! \brief Computes the sum of the squared elements */
 			double CumulateSquaredCells() const;
 
@@ -77,15 +70,18 @@ namespace crn
 			/*! \brief Get the product of a column vector by its own transposed on the right side */
 			SquareMatrixDouble MakeVectorRightAutoProduct() const;
 
-		private:
-			void deserialize(xml::Element &el) override;
-			xml::Element serialize(xml::Element &parent) const override;
+			virtual void Deserialize(xml::Element &el);
+			virtual xml::Element Serialize(xml::Element &parent) const;
 
 		protected:
 			CRN_DECLARE_CLASS_CONSTRUCTOR(MatrixDouble)
+		private:
+			virtual std::string getClassName() const { return "MatrixDouble"; }
 	};
+	template<> struct IsSerializable<MatrixDouble> : public std::true_type {};
+	template<> struct IsClonable<MatrixDouble> : public std::true_type {};
 
-		template<> struct TypeInfo<MatrixDouble>
+	template<> struct TypeInfo<MatrixDouble>
 	{
 		using SumType = MatrixDouble;
 		using DiffType = MatrixDouble;

@@ -1,4 +1,4 @@
-/* Copyright 2007-2015 Yann LEYDIER, CoReNum, INSA-Lyon
+/* Copyright 2007-2016 Yann LEYDIER, CoReNum, INSA-Lyon, ENS-Lyon
  * 
  * This file is part of libcrn.
  * 
@@ -40,26 +40,25 @@ namespace crn
 	{
 		public:
 			/*! \brief Default constructor */
-			FeatureSet():Vector(Protocol::Serializable) {}
+			FeatureSet() = default;
 
 			FeatureSet(const FeatureSet&) = delete;
 			FeatureSet(FeatureSet&&) = default;
 			FeatureSet& operator=(const FeatureSet&) = delete;
 			FeatureSet& operator=(FeatureSet&&) = default;
-			virtual ~FeatureSet() override {}
-
-			/*! \brief Returns the id of the class */
-			virtual const String& GetClassName() const override { static const String cn(U"FeatureSet"); return cn; }
+			virtual ~FeatureSet() override = default;
 
 			/*! \brief Extracts all the features of the set from a block */
 			SVector Extract(Block &b);
 			/*! \brief Extracts all the features of the set from a block */
 			SVector ExtractWithMask(Block &b, ImageIntGray &mask);
 	
-		CRN_DECLARE_CLASS_CONSTRUCTOR(FeatureSet)
-		public:
 			FeatureSet(xml::Element &el):Vector(el) { }
+			CRN_DECLARE_CLASS_CONSTRUCTOR(FeatureSet)
+		private:
+			virtual std::string getClassName() const override { return "FeatureSet"; }				
 	};
+	template<> struct IsSerializable<FeatureSet> : public std::true_type {};
 
 	CRN_ALIAS_SMART_PTR(FeatureSet)
 }

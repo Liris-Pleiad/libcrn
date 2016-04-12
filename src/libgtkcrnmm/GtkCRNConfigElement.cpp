@@ -37,8 +37,21 @@ ConfigElement::ConfigElement(crn::ConfigElement &el, bool differ):
 	if (!value)
 		throw crn::ExceptionUninitialized(_("The element was not initialized."));
 	if (differ)
-		tmpvalue = value->Clone();
-	typ = tmpvalue->GetClassName();
+		tmpvalue = crn::Clone(*value);
+
+	if (std::dynamic_pointer_cast<crn::Int>(tmpvalue))
+		typ = U"Int";
+	else if (std::dynamic_pointer_cast<crn::Real>(tmpvalue))
+		typ = U"Real";
+	else if (std::dynamic_pointer_cast<crn::Prop3>(tmpvalue))
+		typ = U"Prop3";
+	else if (std::dynamic_pointer_cast<crn::String>(tmpvalue))
+		typ = U"String";
+	else if (std::dynamic_pointer_cast<crn::StringUTF8>(tmpvalue))
+		typ = U"StringUTF8";
+	else if (std::dynamic_pointer_cast<crn::Path>(tmpvalue))
+		typ = U"Path";
+
 	Gtk::Label *lab = Gtk::manage(new Gtk::Label(el.GetName().CStr()));
 	lab->show();
 	pack_start(*lab, false, true, 2);
@@ -137,11 +150,11 @@ void ConfigElement::apply_changes()
 {
 	if (typ == U"Int")
 	{
-		std::static_pointer_cast<crn::Int>(value)->SetValue(std::static_pointer_cast<crn::Int>(tmpvalue)->GetValue());
+		*std::static_pointer_cast<crn::Int>(value) = *std::static_pointer_cast<crn::Int>(tmpvalue);
 	}
 	else if (typ == U"Real")
 	{
-		std::static_pointer_cast<crn::Real>(value)->SetValue(std::static_pointer_cast<crn::Real>(tmpvalue)->GetValue());
+		*std::static_pointer_cast<crn::Real>(value) = *std::static_pointer_cast<crn::Real>(tmpvalue);
 	}
 	else if (typ == U"Prop3")
 	{
@@ -171,11 +184,11 @@ void ConfigElement::on_combo_changed(Gtk::ComboBoxText *combo)
 	const crn::StringUTF8 val(combo->get_active_text().c_str());
 	if (typ == U"Int")
 	{
-		std::static_pointer_cast<crn::Int>(tmpvalue)->SetValue(val.ToInt());
+		*std::static_pointer_cast<crn::Int>(tmpvalue) = val.ToInt();
 	}
 	else if (typ == U"Real")
 	{
-		std::static_pointer_cast<crn::Real>(tmpvalue)->SetValue(val.ToDouble());
+		*std::static_pointer_cast<crn::Real>(tmpvalue) = val.ToDouble();
 	}
 	else if (typ == U"String")
 	{
@@ -195,11 +208,11 @@ void ConfigElement::on_range_changed(Gtk::Range *range)
 {
 	if (typ == U"Int")
 	{
-		std::static_pointer_cast<crn::Int>(tmpvalue)->SetValue(int(range->get_value()));
+		*std::static_pointer_cast<crn::Int>(tmpvalue) = int(range->get_value());
 	}
 	else if (typ == U"Real")
 	{
-		std::static_pointer_cast<crn::Real>(tmpvalue)->SetValue(range->get_value());
+		*std::static_pointer_cast<crn::Real>(tmpvalue) = range->get_value();
 	}
 }
 
@@ -207,11 +220,11 @@ void ConfigElement::on_spin_changed(Gtk::SpinButton *spin)
 {
 	if (typ == U"Int")
 	{
-		std::static_pointer_cast<crn::Int>(tmpvalue)->SetValue(spin->get_value_as_int());
+		*std::static_pointer_cast<crn::Int>(tmpvalue) = spin->get_value_as_int();
 	}
 	else if (typ == U"Real")
 	{
-		std::static_pointer_cast<crn::Real>(tmpvalue)->SetValue(spin->get_value());
+		*std::static_pointer_cast<crn::Real>(tmpvalue) = spin->get_value();
 	}
 }
 

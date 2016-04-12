@@ -21,7 +21,7 @@
 
 #include <CRNUtils/CRNTimer.h>
 #include <CRNi18n.h>
-#ifdef CRN_PF_WIN32
+#ifdef _MSC_VER
 #	include <windows.h>
 #else
 #	include <sys/time.h>
@@ -37,7 +37,7 @@ std::map<String, Timer::StopWatch> Timer::stopwatches;
  */
 double Timer::getTime()
 {
-#ifdef CRN_PF_WIN32
+#ifdef _MSC_VER
 	_SYSTEMTIME tim;
 	GetSystemTime(&tim);
 	return ((tim.wDay * 24.0 + tim.wHour) * 60.0 + tim.wMinute) * 60.0 + 

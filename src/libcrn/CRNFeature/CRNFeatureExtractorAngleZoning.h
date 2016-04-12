@@ -1,4 +1,4 @@
-/* Copyright 2007-2014 Yann LEYDIER, CoReNum, INSA-Lyon
+/* Copyright 2007-2016 Yann LEYDIER, CoReNum, INSA-Lyon, ENS-Lyon
  * 
  * This file is part of libcrn.
  * 
@@ -57,7 +57,7 @@ namespace crn
 			virtual ~FeatureExtractorAngleZoning() override {}
 
 			/*! \brief Returns the id of the class */
-			virtual const String& GetClassName() const override { static const String cn(U"FeatureExtractorAngleZoning"); return cn; }
+			virtual StringUTF8 GetClassName() const override { return "FeatureExtractorAngleZoning"; }
 
 			/*! \brief Returns a CRNPROTOCOL_FEATURE object computed from a block */
 			virtual SObject Extract(Block &b) override;
@@ -77,6 +77,7 @@ namespace crn
 		CRN_DECLARE_CLASS_CONSTRUCTOR(FeatureExtractorAngleZoning)
 		CRN_SERIALIZATION_CONSTRUCTOR(FeatureExtractorAngleZoning)
 	};
+	template<> struct IsSerializable<FeatureExtractorAngleZoning> : public std::true_type {};
 
 	CRN_ALIAS_SMART_PTR(FeatureExtractorAngleZoning)
 }

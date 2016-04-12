@@ -1,4 +1,4 @@
-/* Copyright 2006-2014 Yann LEYDIER, CoReNum, INSA-Lyon
+/* Copyright 2006-2016 Yann LEYDIER, CoReNum, INSA-Lyon, ENS-Lyon
  * 
  * This file is part of libcrn.
  * 
@@ -36,7 +36,7 @@ using namespace crn;
  * \param[in]	r	The rectangle to check
  * \return	true if identical, false else
  */
-bool Rect::operator==(const Rect &r) const
+bool Rect::operator==(const Rect &r) const noexcept
 {
 	if (valid && r.valid && (GetLeft() == r.GetLeft()) && (GetRight() == r.GetRight()) && 
 			(GetTop() == r.GetTop()) && (GetBottom() == r.GetBottom()))
@@ -54,7 +54,7 @@ bool Rect::operator==(const Rect &r) const
  * \param[in]	r	The rectangle to check
  * \return	true if different, false else
  */
-bool Rect::operator!=(const Rect &r) const
+bool Rect::operator!=(const Rect &r) const noexcept
 {
 	if (!valid || !r.valid)
 		return true;
@@ -548,11 +548,11 @@ bool Rect::Contains(const Rect &rct) const
  *
  * \param[in]	el	the XML element to read
  */
-void Rect::deserialize(xml::Element &el)
+void Rect::Deserialize(xml::Element &el)
 {
-	if (el.GetName() != GetClassName().CStr())
+	if (el.GetName() != "Rect")
 	{
-		throw ExceptionInvalidArgument(StringUTF8("bool Rect::deserialize(xml::Element &el): ") + 
+		throw ExceptionInvalidArgument(StringUTF8("void Rect::Deserialize(xml::Element &el): ") + 
 				_("Wrong XML element."));
 	}
 	bx = el.GetAttribute<int>("bx");
@@ -577,9 +577,9 @@ void Rect::deserialize(xml::Element &el)
  * \param[in]	parent	the element in which the new element will be stored
  * \return	the newly created element
  */
-xml::Element Rect::serialize(xml::Element &parent) const
+xml::Element Rect::Serialize(xml::Element &parent) const
 {
-	xml::Element el(parent.PushBackElement(GetClassName().CStr()));
+	xml::Element el(parent.PushBackElement("Rect"));
 	el.SetAttribute("bx", bx);
 	el.SetAttribute("ex", ex);
 	el.SetAttribute("by", by);
@@ -767,5 +767,6 @@ void Rect::spiral_iterator::update()
 
 CRN_BEGIN_CLASS_CONSTRUCTOR(Rect)
 	CRN_DATA_FACTORY_REGISTER(U"Rect", Rect)
+	Cloner::Register<Rect>();
 CRN_END_CLASS_CONSTRUCTOR(Rect)
 

@@ -1,4 +1,4 @@
-/* Copyright 2011-2015 CoReNum, INSA-Lyon, Université Paris Descartes
+/* Copyright 2011-2016 CoReNum, INSA-Lyon, Université Paris Descartes, ENS-Lyon
  * 
  * This file is part of libcrn.
  * 
@@ -65,11 +65,6 @@ namespace crn
 			CubicSpline& operator=(const CubicSpline&) = default;
 			CubicSpline& operator=(CubicSpline&&) = default;
 
-			virtual const String& GetClassName() const override { static const String cn(U"CubicSpline"); return cn; }
-			/*! \brief The class is clonable */
-			virtual Protocol GetClassProtocols() const noexcept override { return Protocol::Clonable; }
-			virtual UObject Clone() const override { return std::make_unique<CubicSpline>(*this); }
-
 			/*! \brief Sets the behaviour for points before the first control point and after the last control point */
 			void SetExtrapolationMode(Extrapolation ex) noexcept { extrapolation = ex; }
 
@@ -97,7 +92,10 @@ namespace crn
 			std::vector<double> z; /*!< the coefficients */
 			std::vector<crn::Point2DDouble> data; /*!< the points */
 			Extrapolation extrapolation; /*!< the extrapolation method */
+
+			CRN_DECLARE_CLASS_CONSTRUCTOR(CubicSpline)
 	};
+	template<> struct IsClonable<CubicSpline> : public std::true_type {};
 
 	CRN_ALIAS_SMART_PTR(CubicSpline)
 }

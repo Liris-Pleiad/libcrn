@@ -1,4 +1,4 @@
-/* Copyright 2006-2016 INSA Lyon
+/* Copyright 2006-2016 INSA-Lyon, ENS-Lyon
  *
  * This file is part of libcrn.
  *
@@ -59,7 +59,7 @@ SBlock Block::New(const SImage &src, const String &nam)
  * \param[in]	nam	the name of the new block
  */
 Block::Block(const SImage &src, const String &nam):
-	ComplexObject(nam),
+	Savable(nam),
 	child(std::make_shared<Map>()),
 	srcRGB(nullptr),
 	srcGray(nullptr),
@@ -143,7 +143,7 @@ SBlock Block::New(const Path &ifname, const Path &xfname, const String &nam)
  *
  */
 Block::Block(const Path &ifname, const Path &xfname, const String &nam):
-	ComplexObject(nam),
+	Savable(nam),
 	child(std::make_shared<Map>()),
 	srcRGB(nullptr),
 	srcGray(nullptr),
@@ -193,7 +193,7 @@ SBlock Block::create(const WBlock &par, const String &tree, const Rect &clip, co
  * \param[in]	nam	the name of the new block
  */
 Block::Block(const WBlock &par, const String &tree, const Rect &clip, const String &nam):
-	ComplexObject(nam),
+	Savable(nam),
 	child(std::make_shared<Map>()),
 	parent(par),
 	parenttree(tree),
@@ -1022,7 +1022,7 @@ void Block::Save(const Path &fname)
  */
 void Block::addToXml(xml::Document &parent)
 {
-	xml::Element eb(parent.PushBackElement(GetClassName().CStr()));
+	xml::Element eb(parent.PushBackElement("Block"));
 	eb.SetAttribute("left", bbox.GetLeft());
 	eb.SetAttribute("top", bbox.GetTop());
 	eb.SetAttribute("right", bbox.GetRight());
@@ -1047,7 +1047,7 @@ void Block::addToXml(xml::Document &parent)
  */
 void Block::addToXml(xml::Element &parent)
 {
-	xml::Element eb(parent.PushBackElement(GetClassName().CStr()));
+	xml::Element eb(parent.PushBackElement("Block"));
 	eb.SetAttribute("left", bbox.GetLeft());
 	eb.SetAttribute("top", bbox.GetTop());
 	eb.SetAttribute("right", bbox.GetRight());
@@ -1136,7 +1136,7 @@ void Block::addTreeFromXml(xml::Element &bnode)
 		const StringUTF8 treename = tree.GetAttribute<StringUTF8>("treename");
 		for (xml::Element block = tree.BeginElement(); block != tree.EndElement(); ++block)
 		{
-			if (block.GetName() != GetClassName())
+			if (block.GetName() != "Block")
 				continue;
 			int l = block.GetAttribute<int>("left", false); // may throw
 			int t = block.GetAttribute<int>("top", false); // may throw

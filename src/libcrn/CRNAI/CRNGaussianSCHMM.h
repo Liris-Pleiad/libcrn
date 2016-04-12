@@ -1,4 +1,4 @@
-/* Copyright 2008-2014 INSA Lyon, CoReNum
+/* Copyright 2008-2016 INSA Lyon, CoReNum, ENS-Lyon
  * 
  * This file is part of libcrn.
  * 
@@ -52,14 +52,6 @@ namespace crn
 			GaussianSCHMM& operator=(const GaussianSCHMM&) = default;
 			GaussianSCHMM(GaussianSCHMM&&) = default;
 			GaussianSCHMM& operator=(GaussianSCHMM&&) = default;
-		
-			/*! \brief Clone the model */
-			virtual UObject Clone() const override { return std::make_unique<GaussianSCHMM>(*this); }
-
-			/*! \brief This is a Clonable object */
-			virtual Protocol GetClassProtocols() const noexcept override { return Protocol::Clonable; }
-			/*! \brief Returns the name of the class */
-			virtual const String& GetClassName() const override { static const String cn(U"GaussianSCHMM"); return cn; }
 
 			/*! \brief Returns the number of states */
 			size_t GetNbStates() const noexcept { return nbStates; }
@@ -103,7 +95,9 @@ namespace crn
 			/*\brief Internal */
 			MatrixDouble beta(const MatrixDouble &observed) const;
 
+			CRN_DECLARE_CLASS_CONSTRUCTOR(GaussianSCHMM)
 	};
+	template<> struct IsClonable<GaussianSCHMM> : public std::true_type {};
 
 	CRN_ALIAS_SMART_PTR(GaussianSCHMM)
 }

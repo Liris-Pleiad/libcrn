@@ -1,4 +1,4 @@
-/* Copyright 2013-2015 INSA-Lyon
+/* Copyright 2013-2016 INSA-Lyon, ENS-Lyon
  * 
  * This file is part of libcrn.
  * 
@@ -53,15 +53,10 @@ namespace crn
 			MatrixComplex(MatrixComplex &&) = default;
 
 			/*! \brief Destructor */
-			virtual ~MatrixComplex() override {}
+			virtual ~MatrixComplex() override = default;
 
 			MatrixComplex& operator=(const MatrixComplex &) = default;
 			MatrixComplex& operator=(MatrixComplex &&) = default;
-
-			/*! \brief Returns the name of the class */
-			virtual const String& GetClassName() const override { static const String cn(U"MatrixComplex"); return cn; }
-			
-			virtual UObject Clone() const override { return std::make_unique<MatrixComplex>(*this); }
 
 			/*! \brief Grows the matrix to power of 2 sizes (for FFT) */
 			void GrowToPowerOf2(bool make_square, const std::complex<double> &fill_value = std::complex<double>(0, 0));
@@ -74,7 +69,10 @@ namespace crn
 
 			/*! \brief Cross correlation */
 			std::pair<Point2DInt, double> CrossCorrelation(const MatrixComplex &other, const std::complex<double> &fill1 = std::complex<double>(0, 0), const std::complex<double> &fill2 = std::complex<double>(0, 0));
+
+			CRN_DECLARE_CLASS_CONSTRUCTOR(MatrixComplex)
 	};
+	template<> struct IsClonable<MatrixComplex> : public std::true_type {};
 
 	CRN_ALIAS_SMART_PTR(MatrixComplex)
 
@@ -87,7 +85,6 @@ namespace crn
 		using DiffType = MatrixComplex;
 		using DecimalType = MatrixComplex;
 	};
-
 }
 
 #endif

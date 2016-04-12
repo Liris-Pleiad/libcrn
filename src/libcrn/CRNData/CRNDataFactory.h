@@ -1,4 +1,4 @@
-/* Copyright 2008-2015 INSA Lyon, CoReNum
+/* Copyright 2008-2016 INSA Lyon, CoReNum, ENS-Lyon
  * 
  * This file is part of libcrn.
  * 
@@ -24,6 +24,7 @@
 
 #include <CRNObject.h>
 #include <CRNUtils/CRNXml.h>
+#include <CRNProtocols.h>
 #include <map>
 
 #ifdef RegisterClass
@@ -43,7 +44,11 @@ namespace crn
 			virtual UObject Create(xml::Element &el) const = 0;
 	};
 	/*! \brief	Factory element */
-	template<class T> class DataFactoryElement: public DataFactoryElementBase
+	template<
+		class T,
+		typename std::enable_if<IsSerializable<T>::value, int>::type = 0
+		>
+	class DataFactoryElement: public DataFactoryElementBase
 	{
 		public:
 			virtual ~DataFactoryElement() override {}
@@ -63,6 +68,11 @@ namespace crn
 	class DataFactory
 	{
 		public:
+			DataFactory(const DataFactory &) = delete;
+			DataFactory(DataFactory &&) = delete;
+			DataFactory& operator=(const DataFactory &) = delete;
+			DataFactory& operator=(DataFactory &&) = delete;
+
 			/*! \brief Creates and initializes a SObject from an XML element */
 			static UObject CreateData(xml::Element &el);
 			/*! \brief Registers a class in the factory */
@@ -75,10 +85,6 @@ namespace crn
 		private:
 			/*! \brief Default constructor */
 			DataFactory();
-			/*! \brief Disable copy constructor */
-			DataFactory(const DataFactory &);
-			/*! \brief Disable copy operator */
-			DataFactory& operator=(const DataFactory &);
 			/*! \brief Creates a SObject from class name */
 			UObject createObject(const String &name, xml::Element &el);
 			/*! \brief Returns singleton's instance */
@@ -97,6 +103,8 @@ namespace crn
  * \param[in]	classname	the class to register
  * \ingroup	data
  */
-#define CRN_DATA_FACTORY_REGISTER(elemname, classname) crn::DataFactory::RegisterClass(elemname, std::make_unique<crn::DataFactoryElement<classname>>());
+#define CRN_DATA_FACTORY_REGISTER(elemname, classname) \
+	crn::DataFactory::RegisterClass(elemname, std::make_unique<crn::DataFactoryElement<classname>>());\
+	crn::Serializer::Register<classname>();
 
 #endif

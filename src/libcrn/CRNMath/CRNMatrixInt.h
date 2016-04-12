@@ -1,4 +1,4 @@
-/* Copyright 2006-2014 Yann LEYDIER, CoReNum, INSA-Lyon
+/* Copyright 2006-2016 Yann LEYDIER, CoReNum, INSA-Lyon, ENS-Lyon
  * 
  * This file is part of libcrn.
  * 
@@ -47,15 +47,10 @@ namespace crn
 			MatrixInt(MatrixInt &&) = default;
 
 			/*! \brief Destructor */
-			virtual ~MatrixInt() override {}
+			virtual ~MatrixInt() override = default;
 			
 			MatrixInt& operator=(const MatrixInt &) = default;
 			MatrixInt& operator=(MatrixInt &&) = default;
-
-			/*! \brief Returns the name of the class */
-			virtual const String& GetClassName() const override { static const String cn(U"MatrixInt"); return cn; }
-			
-			virtual UObject Clone() const override { return std::make_unique<MatrixInt>(*this); }
 
 			// Special matrix constructors
 			/*! \brief Creates a Gaussian mask given standard deviation */
@@ -84,8 +79,11 @@ namespace crn
 			static MatrixInt NewChamferDT1();
 			/*! \brief Creates the second chamfer DT mask */
 			static MatrixInt NewChamferDT2();
+
+			CRN_DECLARE_CLASS_CONSTRUCTOR(MatrixInt)
 	};
-	
+	template<> struct IsClonable<MatrixInt> : public std::true_type {};
+
 	template<> struct TypeInfo<MatrixInt>
 	{
 		using SumType = MatrixInt;

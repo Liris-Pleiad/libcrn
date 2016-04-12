@@ -1,4 +1,4 @@
-/* Copyright 2006-2016 Yann LEYDIER, CoReNum, INSA-Lyon, Université Paris Descartes
+/* Copyright 2006-2016 Yann LEYDIER, CoReNum, INSA-Lyon, Université Paris Descartes, ENS-Lyon
  * 
  * This file is part of libcrn.
  * 
@@ -38,28 +38,18 @@ namespace crn
 	 * \version 0.3
 	 * \ingroup containers
 	 */
-	class Map: public ComplexObject
+	class Map: public Object
 	{
 		public:
 			/*! \brief Default constructor */
-			Map(Protocol protos = crn::Protocol::Object);
+			Map();
 			/*! \brief Destructor */
 			virtual ~Map() override;
 
-			Map(const Map &) = delete;
-			Map& operator=(const Map &) = delete;
+			Map(const Map &other);
+			Map& operator=(const Map &other);
 			Map(Map &&) = default;
 			Map& operator=(Map &&) = default;
-
-			/*! \brief The protocols of this object depend on its contents */
-			virtual Protocol GetClassProtocols() const noexcept override;
-			/*! \brief Returns the protocol constraint of its content */
-			Protocol GetContentProtocols() const noexcept { return protocols; }
-			/*! \brief Returns the id of the class */
-			virtual const String& GetClassName() const override { static const String cn(U"Map"); return cn; }
-
-			/*! \brief Clones the container and its contents if applicable */
-			virtual UObject Clone() const override;
 
 			/*! \brief Returns the number of data objects in the map */
 			size_t Size() const noexcept { return data.size(); }
@@ -90,9 +80,6 @@ namespace crn
 			void Remove(iterator first, iterator end_);
 			/*! \brief Empties the map */
 			void Clear() noexcept { data.clear(); }
-
-			/*! \brief Dumps the contents to a string */
-			virtual String ToString() const override;
 
 			/*! \brief Returns an iterator to the first element */
 			iterator begin() { return data.begin(); }
@@ -143,22 +130,24 @@ namespace crn
 
 			std::map<String, SObject> Std() && { return std::move(data); }
 
-		private:
-			/*! \brief Checks if the protocols are compatible with the object's constraints */
-			bool checkProtocols(const Object &obj);
 			/*! \brief Reads from an XML node if applicable */
-			virtual void deserialize(xml::Element &el) override;
+			void Deserialize(xml::Element &el);
 			/*! \brief Dumps to an XML node if applicable */
-			virtual xml::Element serialize(xml::Element &parent) const override;
+			xml::Element Serialize(xml::Element &parent) const;
 
+			void Load(const Path &fname);
+			void Save(const Path &fname) const;
+
+		private:
 			std::map<String, SObject> data; /*!< internal data storage */
-			Protocol protocols; /*!< Mandatory protocols for the contents */
 
 		CRN_DECLARE_CLASS_CONSTRUCTOR(Map)
-		public: Map(xml::Element &el):protocols(Protocol::Serializable) { Deserialize(el); }
+		public: Map(xml::Element &el) { Deserialize(el); }
 	};
+	template<> struct IsSerializable<Map> : public std::true_type {};
+	template<> struct IsClonable<Map> : public std::true_type {};
 
-	inline void swap(Map &m1, Map &m2) noexcept { m1.Swap(m2); }
+	inline void Swap(Map &m1, Map &m2) noexcept { m1.Swap(m2); }
 }
 CRN_ADD_RANGED_FOR_TO_POINTERS(crn::Map)
 CRN_ADD_RANGED_FOR_TO_CONST_POINTERS(crn::Map)

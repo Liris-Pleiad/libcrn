@@ -1,4 +1,4 @@
-/* Copyright 2009-2015 CoReNum, INSA-Lyon
+/* Copyright 2009-2016 CoReNum, INSA-Lyon, ENS-Lyon
  * 
  * This file is part of libcrn.
  * 
@@ -286,7 +286,7 @@ void BlockTreeExtractorWordsFromProjection::Extract(Block &b)
  */
 void BlockTreeExtractorWordsFromProjection::deserialize(xml::Element &el)
 {
-	if (el.GetName() != GetClassName().CStr())
+	if (el.GetName() != GetClassName())
 	{
 		throw ExceptionInvalidArgument(StringUTF8("bool BlockTreeExtractorWordsFromProjection::deserialize("
 					"xml::Element &el): ") + _("Wrong XML element."));
@@ -304,7 +304,7 @@ void BlockTreeExtractorWordsFromProjection::deserialize(xml::Element &el)
  */
 xml::Element BlockTreeExtractorWordsFromProjection::serialize(xml::Element &parent) const
 {
-	xml::Element el(parent.PushBackElement(GetClassName().CStr()));
+	xml::Element el(parent.PushBackElement(GetClassName()));
 	el.SetAttribute("wordTreeName", wordTreeName.CStr());
 	el.SetAttribute("ccTreeName", connectedComponentTreeName.CStr());
 	return el;

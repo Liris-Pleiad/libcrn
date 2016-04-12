@@ -1,4 +1,4 @@
-/* Copyright 2011-2014 CoReNum, INSA-Lyon
+/* Copyright 2011-2016 CoReNum, INSA-Lyon, ENS-Lyon
  * 
  * This file is part of libcrn.
  * 
@@ -49,10 +49,6 @@ namespace crn
 				Attributes& operator=(Attributes&&) = default;
 				virtual ~Attributes() override {}
 
-				virtual const String& GetClassName() const override { static const String cn(U"PDFAttributes"); return cn; }
-				virtual Protocol GetClassProtocols() const noexcept override { return Protocol::Serializable | Protocol::Clonable; }
-				virtual UObject Clone() const override { return std::make_unique<Attributes>(*this); }
-
 				bool lossy_compression; /*!< true = JPEG images, false = PNG images */
 				int jpeg_qual; /*!< 0: high compression / bad quality, 100: low compression / better quality */
 				Layout layout; /*!< Page display layout */
@@ -61,16 +57,18 @@ namespace crn
 				bool printable; /*!< Can the document be printed? (needs owner_password to be set) */
 				bool copyable; /*!< Can the document be copy-pasted? (needs owner_password to be set) */
 
-			private:
-				void deserialize(xml::Element &el) override;
-				xml::Element serialize(xml::Element &parent) const override;
+				void Deserialize(xml::Element &el);
+				xml::Element Serialize(xml::Element &parent) const;
 			
+			private:
 			CRN_DECLARE_CLASS_CONSTRUCTOR(Attributes)
 			CRN_SERIALIZATION_CONSTRUCTOR(Attributes)
 		};
-
 		CRN_ALIAS_SMART_PTR(Attributes)
 	}
+	template<> struct IsSerializable<PDF::Attributes> : public std::true_type {};
+	template<> struct IsClonable<PDF::Attributes> : public std::true_type {};
+
 }
 
 #endif

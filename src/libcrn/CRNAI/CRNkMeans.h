@@ -1,4 +1,4 @@
-/* Copyright 2007-2014 Yann LEYDIER, CoReNum, INSA-Lyon
+/* Copyright 2007-2016 Yann LEYDIER, CoReNum, INSA-Lyon, ENS-Lyon
  * 
  * This file is part of libcrn.
  * 
@@ -22,9 +22,9 @@
 #ifndef CRNKMEANS_HEADER
 #define CRNKMEANS_HEADER
 
-#include <CRNString.h>
-#include <CRNStatistics/CRNHistogramPtr.h>
-#include <CRNAI/CRNkMeansPtr.h>
+#include <CRNAI/CRNBasicClassify.h>
+#include <vector>
+#include <random>
 
 /*! \defgroup cluster Clustering 
 	 * \ingroup	ai */
@@ -39,109 +39,143 @@ namespace crn
 	 *
 	 * \author 	Yann LEYDIER
 	 * \date		March 2007
-	 * \version 0.2
+	 * \version 0.3
 	 * \ingroup cluster
 	 */
-	class kMeans
+	template<
+		typename T,
+		typename std::enable_if<IsMetric<typename std::result_of<decltype(Dereference<T>)&(const T&)>::type>::value, int>::type = 0,
+		typename std::enable_if<IsVectorOverR<typename std::result_of<decltype(Dereference<T>)&(const T&)>::type>::value, int>::type = 0
+		> class kMeans
 	{
 		public:
-			/*! \brief Blank constructor */
-			kMeans();
-			/*! \brief Destructor */
-			~kMeans();
-
+			using value_type = typename std::result_of<decltype(Dereference<T>)&(const T&)>::type;
 			kMeans(const kMeans&) = delete;
 			kMeans(kMeans&&) = default;
 			kMeans& operator=(const kMeans&) = delete;
 			kMeans& operator=(kMeans&&) = default;
 
-			/*! \brief Dumps a short summary to a string */
-			String ToString() const;
-
 			/*! \brief Adds one prototype */
-			void AddPrototype(const Object &sam);
-			/*! \brief Adds one random prototype out of the samples pool */
-			void AddRandomPrototype();
-			/*! \brief Adds a std::vector of prototypes
-			 *
-			 * Adds a vector of prototypes if their class is the same as the dataclass.
-			 * If it is the first sample, then the dataclass is set to its class.
-			 * The prototypes are copied.
-			 *
-			 * \param[in]	beg	An iterator on the first object
-			 * \param[in]	en	An iterator after the last object
-			 * \return	the number of samples added
-			 */
-			template<typename ITER> size_t AddPrototypes(ITER beg, ITER en)
+			void AddPrototype(const T &sam)
 			{
-				size_t nb = 0;
-				for (ITER it = beg; it != en; ++it)
-				{
-					try
-					{
-						AddPrototype(**it);
-						nb += 1;
-					}
-					catch (...) { }
-				}
-				return nb;
+				proto.push_back(Dereference(sam));
+			}
+			/*! \brief Adds one random prototype out of the samples pool
+			 * \throws	ExceptionNotFound	No sample available
+			 */
+			void AddRandomPrototype()
+			{
+				const auto nb = GetNbSamples();
+				if (!nb)
+					throw ExceptionNotFound("No sample available.");
+				auto generator = std::default_random_engine{};
+				auto distribution = std::uniform_int_distribution<size_t>{0, nb - 1};
+				AddPrototype(data[distribution(generator)]);
 			}
 			/*! \brief Returns the number of classes */
 			size_t GetNbClasses() const noexcept { return proto.size(); }
 			/*! \brief Returns the vector of prototypes */
-			const std::vector<SObject>& GetPrototypes() noexcept { return proto; }
+			const std::vector<value_type>& GetPrototypes() const noexcept { return proto; }
 			/*! \brief Clears the prototypes */
 			void ClearPrototypes() noexcept { proto.clear(); }
 
-			/*! \brief Adds one sample */
-			void AddSample(const SCObject &sam);
-			/*! \brief Adds a vector of samples 
-			 *
-			 * Adds a vector of sample if their class is the same as the dataclass.
-			 * If it is the first sample, then the dataclass is set to its class.
-			 * The samples are referenced.
-			 *
-			 * \param[in]	beg	An iterator on the first object
-			 * \param[in]	en	An iterator after the last object
-			 * \return	the number of samples added
+			/*! \brief Adds one sample
+			 * \param[in]	sam	The sample to add
 			 */
-			template<typename ITER> size_t AddSamples(ITER beg, ITER en)
+			void AddSample(const T &sam)
 			{
-				size_t nb = 0;
-				for (ITER it = beg; it != en; ++it)
-				{
-					try
-					{
-						AddSample(*it);
-						nb += 1;
-					}
-					catch (...) { }
-				}
-				return nb;
+				data.push_back(sam);
 			}
-
-			/*! \brief Adds samples from histogram */
-			size_t AddSamples(const Histogram &histo);
+			/*! \brief Adds one sample
+			 * \param[in]	sam	The sample to add
+			 */
+			void AddSample(T &&sam)
+			{
+				data.push_back(std::move(sam));
+			}
 			/*! \brief Returns the number of samples */
 			size_t GetNbSamples() const noexcept { return data.size(); }
 			/*! \brief Returns the vector of samples */
-			const std::vector<SCObject>& GetSamples() noexcept { return data; }
+			const std::vector<const T>& GetSamples() const noexcept { return data; }
 			/*! \brief Clears the samples */
 			void ClearSamples() noexcept { data.clear(); }
 
-			/*! \brief Runs the k-means */
-			int Run(int maxcnt = 100);
-			/*! \brief Finds the closest prototype */
-			int Classify(const Object &obj, double *distance = nullptr);
+			/*! \brief Runs the k-means
+			 * \param[in]	maxcnt	maximal number of iterations
+			 * \return	the number of iterations
+			 */
+			size_t Run(size_t maxcnt = 100)
+			{
+				auto cnt = size_t(0);
+				const auto k = proto.size();
+				classes.clear();
+				classes.resize(k);
+				auto popclasses = std::vector<size_t>(k, 0);
+				auto finished = false;
+				while (!finished)
+				{
+					for (auto &c : classes)
+						c.clear();
+					// for each sample
+					for (auto elnum = size_t(0); elnum < data.size(); ++elnum)
+					{
+						// classify
+						classes[Classify(*data[elnum])].push_back(elnum);
+					}
+					finished = true;
+					// for each class
+					for (auto p = size_t(0); p < k; p++)
+					{
+						// compute mean
+						auto sum = SumType<value_type>(Zero(*data.front()));
+						for (const auto &num : classes[p])
+							sum += *data[num];
+						proto[p] = value_type(sum * (1.0 / double(classes[p].size())));
+						// check if finished
+						if (popclasses[p] != classes[p].size())
+						{
+							popclasses[p] = classes[p].size();
+							finished = false;
+						}
+					}
+					cnt += 1;
+					if (cnt > maxcnt)
+						break;
+				}
+				return cnt;
+			}
 
-			/*! \brief Returns the content of one class */
-			const std::vector<SCObject>& GetClass(size_t k);
+			/*! \brief Finds the closest prototype
+			 * \param[in]	obj	the sample to classify
+			 * \param[out]	distance	the distance to the closest prototype
+			 * \return	the index of the closest prototype
+			 */
+			size_t Classify(const value_type &obj, double *distance = nullptr)
+			{
+				if (proto.empty())
+					throw ExceptionDimension();
+				auto res = BasicClassify::NearestNeighbor(obj, proto.begin(), proto.end());
+				if (distance)
+					*distance = res.distance;
+				return res.class_id;
+			}
+
+			/*! \brief Returns the content of one class
+			 * \throws	ExceptionDimension	wrong class number
+			 * \param[in]	k	The id of the class
+			 * \return	the content of class k
+			 */
+			const std::vector<size_t>& GetClass(size_t k) const
+			{
+				if (k >= classes.size())
+					throw ExceptionDimension("kMeans::GetClass(): Wrong class number.");
+				return classes[k];
+			}
 
 		private:
-			std::vector<SCObject> data; /*!< The samples */
-			std::vector<SObject> proto; /*!< The prototypes */
-			std::vector<std::vector<SCObject>> classes; /*!< The list of samples for each class */
-			String dataclass; /*!< The class name of the samples and prototypes */
+			std::vector<const T> data; /*!< The samples */
+			std::vector<value_type> proto; /*!< The prototypes */
+			std::vector<std::vector<size_t>> classes; /*!< The list of samples for each class */
 	};
 }
 #endif

@@ -78,7 +78,7 @@ ConfigElement::ConfigElement(const String& nam, bool val, const String& desc):
  * \param[in]	desc	the description of the element
  */
 ConfigElement::ConfigElement(const String& nam, const Prop3& val, const String& desc):
-	value(val.Clone()),
+	value(Clone(val)),
 	minValue(nullptr),
 	maxValue(nullptr),
 	name(nam),
@@ -91,7 +91,7 @@ ConfigElement::ConfigElement(const String& nam, const Prop3& val, const String& 
  * \param[in]	desc	the description of the element
  */
 ConfigElement::ConfigElement(const String& nam, const String& val, const String& desc):
-	value(val.Clone()),
+	value(Clone(val)),
 	minValue(nullptr),
 	maxValue(nullptr),
 	name(nam),
@@ -104,7 +104,7 @@ ConfigElement::ConfigElement(const String& nam, const String& val, const String&
  * \param[in]	desc	the description of the element
  */
 ConfigElement::ConfigElement(const String& nam, const StringUTF8& val, const String& desc):
-	value(val.Clone()),
+	value(Clone(val)),
 	minValue(nullptr),
 	maxValue(nullptr),
 	name(nam),
@@ -117,7 +117,7 @@ ConfigElement::ConfigElement(const String& nam, const StringUTF8& val, const Str
  * \param[in]	desc	the description of the element
  */
 ConfigElement::ConfigElement(const String& nam, const Path& val, const String& desc):
-	value(val.Clone()),
+	value(Clone(val)),
 	minValue(nullptr),
 	maxValue(nullptr),
 	name(nam),
@@ -126,12 +126,31 @@ ConfigElement::ConfigElement(const String& nam, const Path& val, const String& d
 
 /*! Gets the inner type of data in the element
  * \throws	ExceptionUninitialized	the element was not initialized
+ * \throws	ExceptionInvalidArgument the element is of unknown type
  * \return	Int, Real, Prop3, String, StringUTF8 or Path
  */
 String ConfigElement::GetType() const
 {
 	if (!value)
 		throw	ExceptionUninitialized(_("The element was not initialized."));
-	return value->GetClassName();
+	auto i = std::static_pointer_cast<Int>(value);
+	if (i)
+		return U"Int";
+	auto r = std::static_pointer_cast<Real>(value);
+	if (r)
+		return U"Real";
+	auto p = std::static_pointer_cast<Prop3>(value);
+	if (p)
+		return U"Prop3";
+	auto s = std::static_pointer_cast<String>(value);
+	if (s)
+		return U"String";
+	auto su = std::static_pointer_cast<StringUTF8>(value);
+	if (su)
+		return U"StringUTF8";
+	auto pa = std::static_pointer_cast<Path>(value);
+	if (pa)
+		return U"Path";
+	throw	ExceptionInvalidArgument(_("The element is of unknown type."));
 }
 

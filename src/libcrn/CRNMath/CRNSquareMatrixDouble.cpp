@@ -1,4 +1,4 @@
-/* Copyright 2008-2015 INSA Lyon
+/* Copyright 2008-2016 INSA-Lyon, ENS-Lyon
  * 
  * This file is part of libcrn.
  * 
@@ -569,7 +569,7 @@ SquareMatrixDouble SquareMatrixDouble::MakeInverse() const
 				C[r][c] = Cofactor(r, c);
 
 		C.Transpose();
-		C.Mult(1.0 / dt);
+		C *= 1.0 / dt;
 
 		return C;
 	}
@@ -1443,10 +1443,8 @@ std::vector<std::complex<double>> SquareMatrixDouble::Eigenvalues(size_t max_ite
     return eigenvalues;
 }
 
-
-
-
 CRN_BEGIN_CLASS_CONSTRUCTOR(SquareMatrixDouble)
 	CRN_DATA_FACTORY_REGISTER(U"SquareMatrixDouble", SquareMatrixDouble)
+	Cloner::Register<SquareMatrixDouble>();
 CRN_END_CLASS_CONSTRUCTOR(SquareMatrixDouble)
 

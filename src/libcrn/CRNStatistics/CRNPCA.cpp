@@ -1,4 +1,4 @@
-/* Copyright 2009-2016 Jean DUONG, INSA-Lyon, CoReNum
+/* Copyright 2009-2016 Jean DUONG, INSA-Lyon, CoReNum, ENS-Lyon
  * 
  * This file is part of libcrn.
  * 
@@ -711,9 +711,9 @@ std::vector<std::vector<double>> PCA::ReverseTransform(const std::vector< std::v
  *
  * \param[in]	el	the element to load
  */
-void PCA::deserialize(xml::Element &el)
+void PCA::Deserialize(xml::Element &el)
 {
-	if (el.GetName() != GetClassName().CStr())
+	if (el.GetName() != "PCA")
 	{
 		throw ExceptionInvalidArgument(StringUTF8("bool PCA::deserialize(xml::Element &el): ") + 
 				_("Wrong XML element."));
@@ -771,9 +771,9 @@ void PCA::deserialize(xml::Element &el)
  *
  * \return The newly created element
  */
-xml::Element PCA::serialize(xml::Element &parent) const
+xml::Element PCA::Serialize(xml::Element &parent) const
 {
-	xml::Element el(parent.PushBackElement(GetClassName().CStr()));
+	xml::Element el(parent.PushBackElement("PCA"));
 	el.SetAttribute("dimension", int(dimension));
 	
     MatrixDouble mmat(1, dimension);
@@ -806,5 +806,6 @@ xml::Element PCA::serialize(xml::Element &parent) const
 
 CRN_BEGIN_CLASS_CONSTRUCTOR(PCA)
 	CRN_DATA_FACTORY_REGISTER(U"PCA", PCA)
+	Cloner::Register<PCA>();
 CRN_END_CLASS_CONSTRUCTOR(PCA)
 

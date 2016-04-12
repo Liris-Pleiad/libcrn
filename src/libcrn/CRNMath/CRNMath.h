@@ -1,4 +1,4 @@
-/* Copyright 2006-2015 Yann LEYDIER, CoReNum, INSA-Lyon, Université Paris Descartes
+/* Copyright 2006-2016 Yann LEYDIER, CoReNum, INSA-Lyon, Université Paris Descartes, ENS-Lyon
  *
  * This file is part of libcrn.
  *
@@ -149,14 +149,25 @@ namespace crn
 	 *
 	 * An enumeration of orientations
 	 */
-	enum class Orientation { INVALID = 0, HORIZONTAL = 1, VERTICAL = 2 };
+	enum class Orientation { INVALID = 0, HORIZONTAL, VERTICAL };
 	Orientation ToOrientation(Direction d) noexcept;
 
 	/*! \brief An enumeration of distances
 	 *
 	 * An enumeration of distances
 	 */
-	enum class Distance { INVALID = 0, D4 = 1, D8 = 2 };
+	enum class DistanceType { INVALID = 0, D4, D8, EUCLIDEAN };
+
+	/*! \brief Distance between two numbers */
+	template<
+		typename T,
+		typename std::enable_if<std::is_arithmetic<T>::value, int>::type = 0
+		>
+	double Distance(T o1, T o2)
+	{
+	 return double(Abs(o1 - o2));
+	}
+	
 	/*@}*/
 
 }

@@ -1,4 +1,4 @@
-/* Copyright 2008-2014 INSA Lyon, CoReNum
+/* Copyright 2008-2016 INSA Lyon, CoReNum, ENS-Lyon
  * 
  * This file is part of libcrn.
  * 
@@ -46,19 +46,11 @@ namespace crn
 			MultivariateGaussianPDF(const MultivariateGaussianPDF &) = default;
 			MultivariateGaussianPDF(MultivariateGaussianPDF &&) = default;
 
-			/*! \brief Clones the model */
-			virtual UObject Clone() const override { return std::make_unique<MultivariateGaussianPDF>(*this); }
-			
 			/*! \brief Destructor */
 			virtual ~MultivariateGaussianPDF() override;
 
 			MultivariateGaussianPDF& operator=(const MultivariateGaussianPDF&) = default;
 			MultivariateGaussianPDF& operator=(MultivariateGaussianPDF&&) = default;
-
-			/*! \brief This is a Clonable object */
-			virtual Protocol GetClassProtocols() const noexcept override { return Protocol::Clonable; }
-			/*! \brief Returns the name of the class */
-			virtual const String& GetClassName() const override { static const String cn(U"MultivariateGaussianPDF"); return cn; }
 
 			/*! \brief Returns the number of features */
 			size_t GetDimension() const noexcept { return dimension; }
@@ -84,7 +76,7 @@ namespace crn
 			bool IsValid() const;
 			
 			/*! \brief Dumps a summary to a string */
-			virtual String ToString() const override;
+			String ToString() const;
 			        
 		private:
 			size_t dimension; /*!< the dimension of the data */
@@ -96,8 +88,12 @@ namespace crn
 			
 			/*! \brief Internal */
 			void updateAuxiliaryAttributes();
+
+			CRN_DECLARE_CLASS_CONSTRUCTOR(MultivariateGaussianPDF)
 	};
-    
+
+	template<> struct IsClonable<MultivariateGaussianPDF> : public std::true_type {};
+   
 }
 
 #endif

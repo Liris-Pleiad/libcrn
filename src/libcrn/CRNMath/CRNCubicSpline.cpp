@@ -20,6 +20,7 @@
  */
 
 #include <CRNMath/CRNCubicSpline.h>
+#include <CRNProtocols.h>
 
 using namespace crn;
 
@@ -100,3 +101,6 @@ double CubicSpline::operator[](double x) const
 	return a + dx * (b + dx * (c + dx * d));
 }
 
+CRN_BEGIN_CLASS_CONSTRUCTOR(CubicSpline)
+	Cloner::Register<CubicSpline>();
+CRN_END_CLASS_CONSTRUCTOR(CubicSpline)

@@ -1,4 +1,4 @@
-/* Copyright 2008-2016 INSA Lyon, CoReNum
+/* Copyright 2008-2016 INSA Lyon, CoReNum, ENS-Lyon
  * 
  * This file is part of libcrn.
  * 
@@ -36,11 +36,11 @@ using namespace crn;
  *
  * \param[in]	el	the XML element to read
  */
-void Point2DDouble::deserialize(xml::Element &el)
+void Point2DDouble::Deserialize(xml::Element &el)
 {
-	if (el.GetName() != GetClassName().CStr())
+	if (el.GetName() != "Point2DDouble")
 	{
-		throw ExceptionInvalidArgument(StringUTF8("bool Point2DDouble::deserialize(xml::Element &el): ") + 
+		throw ExceptionInvalidArgument(StringUTF8("void Point2DDouble::Deserialize(xml::Element &el): ") + 
 				_("Wrong XML element."));
 	}
 
@@ -56,9 +56,9 @@ void Point2DDouble::deserialize(xml::Element &el)
  * \param[in]	parent	the element in which the new element will be stored
  * \return	the newly created element
  */
-xml::Element Point2DDouble::serialize(xml::Element &parent) const
+xml::Element Point2DDouble::Serialize(xml::Element &parent) const
 {
-	xml::Element el(parent.PushBackElement(GetClassName().CStr()));
+	xml::Element el(parent.PushBackElement("Point2DDouble"));
 
 	el.SetAttribute("x", X);
 	el.SetAttribute("y", Y);
@@ -81,38 +81,8 @@ Point2DDouble Point2DDouble::MakeRotation(Angle<Radian> theta) const
 	return Point2DDouble(X * cos_theta - Y * sin_theta, X * sin_theta + Y * cos_theta);	
 }
 
-/*!
- * Perform plan rotation for many points
- *
- * \param[in]	P	a set of points to rotate
- * \param[in]	theta	the rotation angle (in radian)
- *
- * \return the new point
- */
-std::vector<Point2DDouble> Point2DDouble::MakeRotation(std::vector<Point2DDouble> P, Angle<Radian> theta)
-{
-	double cos_theta = theta.Cos();
-	double sin_theta = theta.Sin();	
-	
-	std::vector<Point2DDouble> Q;
-
-	if (!P.empty())
-	{
-		
-		for (auto pt : P)
-		{
-			
-			double x = pt.X;
-			double y = pt.Y;
-			
-			Q.push_back(Point2DDouble(x * cos_theta - y * sin_theta, x * sin_theta + y * cos_theta));
-		}		
-	}
-	
-	return Q;
-}
-
 CRN_BEGIN_CLASS_CONSTRUCTOR(Point2DDouble)
 	CRN_DATA_FACTORY_REGISTER(U"Point2DDouble", Point2DDouble)
+	Cloner::Register<Point2DDouble>();
 CRN_END_CLASS_CONSTRUCTOR(Point2DDouble)
 

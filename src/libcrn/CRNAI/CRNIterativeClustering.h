@@ -39,7 +39,16 @@ namespace crn
 	 * \version 0.1
 	 * \ingroup cluster
 	 */
-	template<typename T> struct IterativeClustering
+	template<
+		typename T,
+		typename std::enable_if<
+			// operator=
+			std::is_copy_assignable<T>::value &&
+			// operator<
+			traits::HasLT<T>::value
+			, int>::type = 0
+		> 
+	struct IterativeClustering
 	{
 		public:
 			IterativeClustering() = default;
@@ -51,7 +60,7 @@ namespace crn
 			/*! \brief Gets the current clusters
 			 * \return	a vector of clusters
 			 */
-			inline const std::vector<std::set<T> >& GetClusters() const { return clusters; }
+			inline const std::vector<std::set<T>>& GetClusters() const { return clusters; }
 
 			enum class Operation { None, Create, Add, Merge };
 
@@ -62,10 +71,10 @@ namespace crn
 			 */
 			Operation Associate(const T &v1, const T &v2)
 			{
-				Operation ret = Operation::None;
-				size_t found;
-				T leftover;
-				for (size_t cluster = 0; cluster < clusters.size(); ++cluster)
+				auto ret = Operation::None;
+				auto found = size_t{0};
+				auto leftover = v1;
+				for (auto cluster = size_t(0); cluster < clusters.size(); ++cluster)
 				{ // for each cluster
 					if (clusters[cluster].find(v1) != clusters[cluster].end())
 					{ // found v1
@@ -100,7 +109,7 @@ namespace crn
 					return Operation::Create;
 				}
 				// check if we need to merge
-				for (size_t cluster = found + 1; cluster < clusters.size(); ++cluster)
+				for (auto cluster = found + 1; cluster < clusters.size(); ++cluster)
 				{
 					if (clusters[cluster].find(leftover) != clusters[cluster].end())
 					{ // merge
@@ -118,11 +127,11 @@ namespace crn
 			 */
 			crn::String ToString() const
 			{
-				crn::String s;
-				for (const std::set<T> &c : clusters)
+				auto s = crn::String{};
+				for (const auto &c : clusters)
 				{
 					s += U"{ ";
-					for (const T& v : c)
+					for (const auto& v : c)
 					{
 						s += v;
 						s += U" ";
@@ -133,7 +142,7 @@ namespace crn
 			}
 
 		private:
-			std::vector<std::set<T> > clusters; /*!< the clusters */
+			std::vector<std::set<T>> clusters; /*!< the clusters */
 	};
 
 }

@@ -1,4 +1,4 @@
-/* Copyright 2008-2016 INSA Lyon, CoReNum
+/* Copyright 2008-2016 INSA Lyon, CoReNum, ENS-Lyon
  * 
  * This file is part of libcrn.
  * 
@@ -32,39 +32,25 @@ using namespace crn;
 /*!
  * Default constructor
  */
-Stroke::Stroke():
-	points(std::make_shared<Vector>()),
-	bbox(nullptr)
-{
-}
-
+Stroke::Stroke() = default;
 /*!
  * Destructor
  */
-Stroke::~Stroke()
+Stroke::~Stroke() = default;
+
+Stroke::Stroke(const Stroke &other):
+	points(other.points)
 {
+	if (other.bbox)
+		bbox = CloneAs<Rect>(*other.bbox);
 }
 
-/*!
- * Dumps to a string
- * \return	a string containing the points' coordinates
- */
-String Stroke::ToString() const
+Stroke& Stroke::operator=(const Stroke &other)
 {
-	return points->ToString();
-}
-
-/*!
- * Clone the stroke
- *
- * \return	a new stroke
- */
-UObject Stroke::Clone() const
-{
-	UStroke s(std::make_unique<Stroke>());
-	for (size_t tmp = 0; tmp < points->Size(); tmp++)
-		s->points->PushBack((*points)[tmp]->Clone());
-	return std::forward<UStroke>(s);
+	points = other.points;
+	if (other.bbox)
+		bbox = CloneAs<Rect>(*other.bbox);
+	return *this;
 }
 
 /*! 
@@ -75,23 +61,22 @@ UObject Stroke::Clone() const
  *
  * \param[in]	el	the XML element to read
  */
-void Stroke::deserialize(xml::Element &el)
+void Stroke::Deserialize(xml::Element &el)
 {
-	if (el.GetName() != GetClassName().CStr())
+	if (el.GetName() != "Stroke")
 	{
-		throw ExceptionInvalidArgument(StringUTF8("bool Stroke::deserialize(xml::Element &el): ") + 
+		throw ExceptionInvalidArgument(StringUTF8("void Stroke::Deserialize(xml::Element &el): ") + 
 				_("Wrong XML element."));
 	}
-	points->Clear();
+	points.clear();
 	bbox = nullptr;
 	xml::Node n(el.GetFirstChild());
 	if (!n)
 		return; // no content
 	xml::Text t(n.AsText()); // may throw
-	const std::vector<String> pts = String(t.GetValue()).Split(U" \n\r\t");
+	const auto pts = String(t.GetValue()).Split(U" \n\r\t");
 	for (size_t tmp = 0; tmp < pts.size() / 2; ++tmp)
 		AddPoint(Point2DInt(pts[tmp + tmp].ToInt(), pts[tmp + tmp + 1].ToInt()));
-
 }
 
 /*! 
@@ -100,16 +85,15 @@ void Stroke::deserialize(xml::Element &el)
  * \param[in]	parent	the element in which the new element will be stored
  * \return	the newly created element
  */
-xml::Element Stroke::serialize(xml::Element &parent) const
+xml::Element Stroke::Serialize(xml::Element &parent) const
 {
-	xml::Element el(parent.PushBackElement(GetClassName().CStr()));
+	xml::Element el(parent.PushBackElement("Stroke"));
 	StringUTF8 pts;
-	for (Vector::const_iterator it = points->begin(); it != points->end(); ++it)
+	for (const auto &p : points)
 	{
-		SCPoint2DInt p(std::static_pointer_cast<const Point2DInt>(*it));
-		pts += p->X;
+		pts += p.X;
 		pts += " ";
-		pts += p->Y;
+		pts += p.Y;
 		pts += " ";
 	}
 	el.PushBackText(pts);
@@ -123,19 +107,7 @@ xml::Element Stroke::serialize(xml::Element &parent) const
  */
 void Stroke::AddPoint(const Point2DInt &p)
 {
-	points->PushBack(p.Clone());
-	bbox = nullptr;
-}
-
-/*! 
- * Adds a point to the stroke keeping reference to the object. 
- * The object will be automatically destroyed when the stoke is destroyed.
- *
- *  \param[in]	p	the point to add
- */
-void Stroke::AddAndKeepPoint(const SPoint2DInt &p)
-{
-	points->PushBack(p);
+	points.push_back(p);
 	bbox = nullptr;
 }
 
@@ -152,18 +124,18 @@ void Stroke::MergeAtEnd(const Stroke &str)
 	if (&str == this)
 		throw ExceptionInvalidArgument(_("Invalid stroke"));
 
-	SPoint2DInt p = std::static_pointer_cast<Point2DInt>(points->Back());
-	int offx = p->X;
-	int offy = p->Y;
-	p = std::static_pointer_cast<Point2DInt>(str.points->Front());
-	offx -= p->X;
-	offy -= p->Y;
-	for (size_t tmp = 1; tmp < str.points->Size(); tmp++)
+	auto p = points.back();
+	int offx = p.X;
+	int offy = p.Y;
+	p = str.points.front();
+	offx -= p.X;
+	offy -= p.Y;
+	for (size_t tmp = 1; tmp < str.points.size(); tmp++)
 	{
-		p = str.points->At(tmp)->CloneAs<Point2DInt>();
-		p->X += offx;
-		p->Y += offy;
-		AddAndKeepPoint(p);
+		p = str.points[tmp];
+		p.X += offx;
+		p.Y += offy;
+		AddPoint(p);
 	}
  
 	bbox = nullptr;
@@ -189,12 +161,12 @@ void Stroke::MergeWithXInterpolation(const Stroke &str, unsigned int step)
 					"const Stroke &str, double step): ") + 
 				_("Null step."));
 	}
-	SPoint2DInt p = std::static_pointer_cast<Point2DInt>(points->Back());
-	int bx = p->X;
-	double by = p->Y;
-	p = std::static_pointer_cast<Point2DInt>(str.points->Front());
-	int ex = p->X;
-	double ey = p->Y;
+	auto p = points.back();
+	int bx = p.X;
+	double by = p.Y;
+	p = str.points.front();
+	int ex = p.X;
+	double ey = p.Y;
 
 	if (Abs(ex - bx) > int(step))
 	{
@@ -218,10 +190,9 @@ void Stroke::MergeWithXInterpolation(const Stroke &str, unsigned int step)
 		}
 	}
 
-	for (size_t tmp = 0; tmp < str.points->Size(); tmp++)
+	for (const auto &p : str.points)
 	{
-		p = std::static_pointer_cast<Point2DInt>(str.points->At(tmp));
-		AddPoint(*p);
+		AddPoint(p);
 	}
 	bbox = nullptr;
 }
@@ -235,12 +206,12 @@ void Stroke::MergeWithXInterpolation(const Stroke &str, unsigned int step)
  * \param[in]	index	the index of the point
  * \return	a pointer to the point or nullptr
  */
-SPoint2DInt Stroke::GetPoint(size_t index)
+Point2DInt& Stroke::GetPoint(size_t index)
 {
-	if (index >= points->Size())
-		throw ExceptionDomain(StringUTF8("SPoint2DInt& Stroke::GetPoint(int index): ") + 
+	if (index >= points.size())
+		throw ExceptionDomain(StringUTF8("Point2DInt& Stroke::GetPoint(int index): ") + 
 				_("index out of range."));
-	return std::static_pointer_cast<Point2DInt>(points->At(index));
+	return points[index];
 }
 
 /*****************************************************************************/
@@ -252,12 +223,12 @@ SPoint2DInt Stroke::GetPoint(size_t index)
  * \param[in]	index	the index of the point
  * \return	a pointer to the point or nullptr
  */
-SPoint2DInt Stroke::GetPoint(size_t index) const
+const Point2DInt& Stroke::GetPoint(size_t index) const
 {
-	if (index >= points->Size())
+	if (index >= points.size())
 		throw ExceptionDomain(StringUTF8("SPoint2DInt& Stroke::GetPoint(int index) const: ") + 
 				_("index out of range."));
-	return std::static_pointer_cast<Point2DInt>(points->At(index));
+	return points[index];
 }
 
 /*****************************************************************************/
@@ -271,10 +242,10 @@ SPoint2DInt Stroke::GetPoint(size_t index) const
  */
 double Stroke::GetFirstYAtX(double x) const
 {
-	for (const_iterator it = begin(); it != end(); ++it)
-		if (it->X == x)
-			return it->Y;
-	throw ExceptionDomain(StringUTF8("Double Stroke::GetFirstYAtX(double x) const:") + 
+	for (const auto &p : points)
+		if (p.X == x)
+			return p.Y;
+	throw ExceptionDomain(StringUTF8("double Stroke::GetFirstYAtX(double x) const:") + 
 			_("Cannot reach abscissa."));
 }
 
@@ -286,20 +257,20 @@ double Stroke::GetFirstYAtX(double x) const
  */
 Rect Stroke::GetBBox() const
 {
-	if (points->Size() > 0)
+	if (points.size() > 0)
 	{
 		// is the bbox already computed?
 		if (bbox)
 			return *bbox;
 		// else update bbox
-		SPoint2DInt p = std::static_pointer_cast<Point2DInt>(points->Front());
-		Rect r(p->X, p->Y, p->X, p->Y);
-		for (size_t tmp = 1; tmp < points->Size(); tmp++)
+		auto fp = points.front();
+		Rect r(fp.X, fp.Y, fp.X, fp.Y);
+		for (size_t tmp = 1; tmp < points.size(); tmp++)
 		{
-			p = std::static_pointer_cast<Point2DInt>(points->At(tmp));
-			r |= Rect(p->X, p->Y, p->X, p->Y);
+			const auto &p = points[tmp];
+			r |= Rect(p.X, p.Y, p.X, p.Y);
 		}
-		bbox = r.CloneAs<Rect>(); // store to prevent recomputing
+		bbox = CloneAs<Rect>(r); // store to prevent recomputing
 		return r;
 	}
 	else
@@ -313,17 +284,17 @@ Rect Stroke::GetBBox() const
  * \param[in]	rect	the bounding box of the resulting stroke
  * \return	a new stroke
  */
-UStroke Stroke::MakeIntersection(const Rect &rect) const
+Stroke Stroke::MakeIntersection(const Rect &rect) const
 {
-	UStroke s = std::make_unique<Stroke>();
-	for (const_iterator it = begin(); it != end(); ++it)
+	auto s = Stroke();
+	for (const auto &p : points)
 	{
-		if (rect.Contains((int)it->X, (int)it->Y))
+		if (rect.Contains(p.X, p.Y))
 		{
-			s->AddPoint(**it);
+			s.AddPoint(p);
 		}
 	}
-	return std::forward<UStroke>(s);
+	return s;
 }
 
 /*****************************************************************************/
@@ -333,26 +304,27 @@ UStroke Stroke::MakeIntersection(const Rect &rect) const
  * \param[in]	rect	the bounding box of the resulting stroke
  * \return	a new stroke
  */
-UStroke Stroke::MakeFirstIntersection(const Rect &rect) const
+Stroke Stroke::MakeFirstIntersection(const Rect &rect) const
 {
-	UStroke s = std::make_unique<Stroke>();
-	bool filling = false;
-	for (const_iterator it = begin(); it != end(); ++it)
+	auto s = Stroke();
+	auto filling = false;
+	for (const auto &p : points)
 	{
-		if (rect.Contains((int)it->X, (int)it->Y))
+		if (rect.Contains(p.X, p.Y))
 		{
 			filling = true;
-			s->AddPoint(**it);
+			s.AddPoint(p);
 		}
 		else if (filling)
 		{ // stop after the first intersection
 			break;
 		}
 	}
-	return std::forward<UStroke>(s);
+	return s;
 }
 
 CRN_BEGIN_CLASS_CONSTRUCTOR(Stroke)
 	CRN_DATA_FACTORY_REGISTER(U"Stroke", Stroke)
+	Cloner::Register<Stroke>();
 CRN_END_CLASS_CONSTRUCTOR(Stroke)
 

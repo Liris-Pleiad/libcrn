@@ -27,7 +27,7 @@
 
 using namespace GtkCRN;
 
-const crn::String Image::selection_overlay(U" 月 سِمسِم coucou");
+
 int Image::selection_margin(5);
 
 /*! Constructor */
@@ -126,8 +126,8 @@ Image::Image():
 	image_actions->add(Gtk::Action::create("image-zoom-fit", Gtk::Stock::ZOOM_FIT), sigc::mem_fun(this, &Image::zoom_fit));
 	image_actions->add(Gtk::Action::create("image-clear-user-selection", Gtk::Stock::CLEAR, _("_Clear User Selection"), _("Clear User Selection")), sigc::mem_fun(this, &Image::clear_selection));
 
-	overlays[selection_overlay].config.moveable = true;
-	overlays[selection_overlay].config.editable = true;
+	overlays[selection_overlay()].config.moveable = true;
+	overlays[selection_overlay()].config.editable = true;
 }
 
 /*! Destructor */
@@ -360,13 +360,13 @@ bool Image::mouse_motion(GdkEventMotion* ev)
 								int(crn::Min(click_ref.Y, ev->y) / zoom) + pos.Y,
 								int(crn::Max(click_ref.X, ev->x) / zoom) + pos.X,
 								int(crn::Max(click_ref.Y, ev->y) / zoom) + pos.Y);
-						if (!overlays[selection_overlay].config.can_jut_out)
+						if (!overlays[selection_overlay()].config.can_jut_out)
 							newsel &= image_bounds;
-						auto r = dynamic_cast<Rectangle*>(overlays[selection_overlay].items[selection_overlay].get());
+						auto r = dynamic_cast<Rectangle*>(overlays[selection_overlay()].items[selection_overlay()].get());
 						if (r)
 							r->rect = newsel;
 						else
-							overlays[selection_overlay].items[selection_overlay].reset(new Rectangle(newsel));
+							overlays[selection_overlay()].items[selection_overlay()].reset(new Rectangle(newsel));
 						need_redraw = true;
 					}
 					break;
@@ -374,19 +374,19 @@ bool Image::mouse_motion(GdkEventMotion* ev)
 					{
 						int x = int(ev->x / zoom + pos.X);
 						int y = int(ev->y / zoom + pos.Y);
-						if (!overlays[selection_overlay].config.can_jut_out)
+						if (!overlays[selection_overlay()].config.can_jut_out)
 						{
 							x = crn::Cap(x, 0, image_bounds.GetRight());
 							y = crn::Cap(y, 0, image_bounds.GetBottom());
 						}
-						auto pt = dynamic_cast<crn::Point2DInt*>(overlays[selection_overlay].items[selection_overlay].get());
+						auto pt = dynamic_cast<crn::Point2DInt*>(overlays[selection_overlay()].items[selection_overlay()].get());
 						if (pt)
 						{
 							pt->X = x;
 							pt->Y = y;
 						}
 						else
-							overlays[selection_overlay].items[selection_overlay].reset(new Point(crn::Point2DInt(x, y)));
+							overlays[selection_overlay()].items[selection_overlay()].reset(new Point(crn::Point2DInt(x, y)));
 						need_redraw = true;
 					}
 					break;
@@ -394,19 +394,19 @@ bool Image::mouse_motion(GdkEventMotion* ev)
 					{
 						int x = int(ev->x / zoom + pos.X);
 						int y = int(ev->y / zoom + pos.Y);
-						if (!overlays[selection_overlay].config.can_jut_out)
+						if (!overlays[selection_overlay()].config.can_jut_out)
 						{
 							x = crn::Cap(x, 0, image_bounds.GetRight());
 							y = crn::Cap(y, 0, image_bounds.GetBottom());
 						}
-						auto li = dynamic_cast<Line*>(overlays[selection_overlay].items[selection_overlay].get());
+						auto li = dynamic_cast<Line*>(overlays[selection_overlay()].items[selection_overlay()].get());
 						if (li)
 						{
 							li->p2.X = x;
 							li->p2.Y = y;
 						}
 						else
-							overlays[selection_overlay].items[selection_overlay].reset(new Line(crn::Point2DInt(x,y), crn::Point2DInt(x,y)));
+							overlays[selection_overlay()].items[selection_overlay()].reset(new Line(crn::Point2DInt(x,y), crn::Point2DInt(x,y)));
 						need_redraw = true;
 					}
 					break;
@@ -1417,29 +1417,29 @@ bool Image::button_clicked(GdkEventButton *ev)
 								case MouseMode::NONE:
 									{
 										// no selection under the mouse pointer, so we start a new user selection
-										if (!overlays[selection_overlay].config.can_jut_out && ((x > image_bounds.GetRight() || (y > image_bounds.GetBottom()))))
+										if (!overlays[selection_overlay()].config.can_jut_out && ((x > image_bounds.GetRight() || (y > image_bounds.GetBottom()))))
 											break; // cannot select out of the image
 										switch (selection_type)
 										{
 											case Overlay::Rectangle:
-												add_overlay_item(selection_overlay, selection_overlay, crn::Rect(x, y));
+												add_overlay_item(selection_overlay(), selection_overlay(), crn::Rect(x, y));
 												mouse_mode = MouseMode::DRAW;
-												selected_overlay = selection_overlay;
-												selected_overlay_item = selection_overlay;
+												selected_overlay = selection_overlay();
+												selected_overlay_item = selection_overlay();
 												need_redraw = true;
 												break;
 											case Overlay::Point:
-												add_overlay_item(selection_overlay, selection_overlay, crn::Point2DInt(x, y));
+												add_overlay_item(selection_overlay(), selection_overlay(), crn::Point2DInt(x, y));
 												mouse_mode = MouseMode::DRAW;
-												selected_overlay = selection_overlay;
-												selected_overlay_item = selection_overlay;
+												selected_overlay = selection_overlay();
+												selected_overlay_item = selection_overlay();
 												need_redraw = true;
 												break;
 											case Overlay::Line:
-												add_overlay_item(selection_overlay, selection_overlay, crn::Point2DInt(x, y), crn::Point2DInt(x, y));
+												add_overlay_item(selection_overlay(), selection_overlay(), crn::Point2DInt(x, y), crn::Point2DInt(x, y));
 												mouse_mode = MouseMode::DRAW;
-												selected_overlay = selection_overlay;
-												selected_overlay_item = selection_overlay;
+												selected_overlay = selection_overlay();
+												selected_overlay_item = selection_overlay();
 												need_redraw = true;
 												break;
 										}
@@ -2110,7 +2110,7 @@ void Image::remove_overlay_item(const crn::String &overlay_id, const crn::String
 void Image::clear_overlays()
 {
 	for (std::map<crn::String, Overlay_internal>::iterator it = overlays.begin(); it != overlays.end(); ++it)
-		if (it->first != selection_overlay)
+		if (it->first != selection_overlay())
 			clear_overlay(it->first);
 	movePoint = nullptr;
 }
@@ -2134,7 +2134,7 @@ void Image::clear_overlay(const crn::String &id)
  */
 bool Image::has_selection() const
 {
-	std::map<crn::String, Overlay_internal>::const_iterator it(overlays.find(selection_overlay));
+	std::map<crn::String, Overlay_internal>::const_iterator it(overlays.find(selection_overlay()));
 	if (it != overlays.end())
 		return !it->second.items.empty();
 	else
@@ -2144,7 +2144,13 @@ bool Image::has_selection() const
 /*! Clears the mouse selection */
 void Image::clear_selection()
 {
-	clear_overlay(selection_overlay);
+	clear_overlay(selection_overlay());
+}
+
+const crn::String& Image::selection_overlay()
+{
+	static const crn::String s(U" 月 سِمسِم coucou");
+	return s;
 }
 
 /*! Gets the mouse selection as a rectangle
@@ -2154,10 +2160,10 @@ void Image::clear_selection()
  */
 const crn::Rect& Image::get_selection_as_rect() const
 {
-	std::map<crn::String, Overlay_internal>::const_iterator lit(overlays.find(selection_overlay));
+	std::map<crn::String, Overlay_internal>::const_iterator lit(overlays.find(selection_overlay()));
 	if (lit == overlays.end())
 		throw crn::ExceptionNotFound(_("No selection found."));
-	std::map<crn::String, std::unique_ptr<OverlayItem>>::const_iterator it(lit->second.items.find(selection_overlay));
+	std::map<crn::String, std::unique_ptr<OverlayItem>>::const_iterator it(lit->second.items.find(selection_overlay()));
 	if (it == lit->second.items.end())
 		throw crn::ExceptionNotFound(_("No selection found."));
 	const std::unique_ptr<OverlayItem>& item(it->second);
@@ -2176,10 +2182,10 @@ const crn::Rect& Image::get_selection_as_rect() const
  */
 const crn::Point2DInt& Image::get_selection_as_point() const
 {
-	std::map<crn::String, Overlay_internal>::const_iterator lit(overlays.find(selection_overlay));
+	std::map<crn::String, Overlay_internal>::const_iterator lit(overlays.find(selection_overlay()));
 	if (lit == overlays.end())
 		throw crn::ExceptionNotFound(_("No selection found."));
-	std::map<crn::String, std::unique_ptr<OverlayItem>>::const_iterator it(lit->second.items.find(selection_overlay));
+	std::map<crn::String, std::unique_ptr<OverlayItem>>::const_iterator it(lit->second.items.find(selection_overlay()));
 	if (it == lit->second.items.end())
 		throw crn::ExceptionNotFound(_("No selection found."));
 	const std::unique_ptr<OverlayItem>& item(it->second);
@@ -2198,10 +2204,10 @@ const crn::Point2DInt& Image::get_selection_as_point() const
  */
 std::pair<crn::Point2DInt, crn::Point2DInt> Image::get_selection_as_line() const
 {
-	std::map<crn::String, Overlay_internal>::const_iterator lit(overlays.find(selection_overlay));
+	std::map<crn::String, Overlay_internal>::const_iterator lit(overlays.find(selection_overlay()));
 	if (lit == overlays.end())
 		throw crn::ExceptionNotFound(_("No selection found."));
-	std::map<crn::String, std::unique_ptr<OverlayItem>>::const_iterator it(lit->second.items.find(selection_overlay));
+	std::map<crn::String, std::unique_ptr<OverlayItem>>::const_iterator it(lit->second.items.find(selection_overlay()));
 	if (it == lit->second.items.end())
 		throw crn::ExceptionNotFound(_("No selection found."));
 	const std::unique_ptr<OverlayItem>& item(it->second);
@@ -2219,7 +2225,7 @@ std::pair<crn::Point2DInt, crn::Point2DInt> Image::get_selection_as_line() const
  */
 void Image::set_selection(const crn::Rect &r)
 {
-	std::unique_ptr<OverlayItem>& item( overlays[selection_overlay].items[selection_overlay]);
+	std::unique_ptr<OverlayItem>& item( overlays[selection_overlay()].items[selection_overlay()]);
 
 	Rectangle * rec = dynamic_cast<Rectangle*>(item.get());
 	if(rec != nullptr)
@@ -2227,7 +2233,7 @@ void Image::set_selection(const crn::Rect &r)
 	else
 		throw crn::ExceptionInvalidArgument(_("The selection is not a rectangle."));
 
-	overlay_changed.emit(selection_overlay, selection_overlay, mouse_mode);
+	overlay_changed.emit(selection_overlay(), selection_overlay(), mouse_mode);
 }
 
 /*! Sets the mouse selection
@@ -2236,7 +2242,7 @@ void Image::set_selection(const crn::Rect &r)
  */
 void Image::set_selection(const crn::Point2DInt &p)
 {
-	std::unique_ptr<OverlayItem>& item( overlays[selection_overlay].items[selection_overlay]);
+	std::unique_ptr<OverlayItem>& item( overlays[selection_overlay()].items[selection_overlay()]);
 
 	Point * po = dynamic_cast<Point*>(item.get());
 	if(po != nullptr)
@@ -2244,7 +2250,7 @@ void Image::set_selection(const crn::Point2DInt &p)
 	else
 		throw crn::ExceptionInvalidArgument(_("The selection is not a point."));
 
-	overlay_changed.emit(selection_overlay, selection_overlay, mouse_mode);
+	overlay_changed.emit(selection_overlay(), selection_overlay(), mouse_mode);
 }
 
 /*! Sets the mouse selection
@@ -2254,7 +2260,7 @@ void Image::set_selection(const crn::Point2DInt &p)
  */
 void Image::set_selection(const crn::Point2DInt &p1, const crn::Point2DInt &p2)
 {
-	std::unique_ptr<OverlayItem>& item( overlays[selection_overlay].items[selection_overlay]);
+	std::unique_ptr<OverlayItem>& item( overlays[selection_overlay()].items[selection_overlay()]);
 
 	Line * li = dynamic_cast<Line*>(item.get());
 	if(li != nullptr)
@@ -2265,7 +2271,7 @@ void Image::set_selection(const crn::Point2DInt &p1, const crn::Point2DInt &p2)
 	else
 		throw crn::ExceptionInvalidArgument(_("The selection is not a line."));
 
-	overlay_changed.emit(selection_overlay, selection_overlay, mouse_mode);
+	overlay_changed.emit(selection_overlay(), selection_overlay(), mouse_mode);
 }
 
 /*! Shows or hides an overlay
@@ -2374,6 +2380,11 @@ bool Image::refresh()
 			cc->paint();
 #else /* CRN_USING_GTKMM3 */
 			Cairo::RefPtr<Cairo::Context> cc = pm->create_cairo_context();
+			if (!cc)
+			{
+				std::cerr << "cannot create cairo context to refresh image" << std::endl; // XXX
+				return true;
+			}
 #endif /* CRN_USING_GTKMM3 */
 			crn::Rect screen(0, 0, dispw, disph);
 			if (!screen.IsValid())

@@ -106,7 +106,11 @@ static std::pair<bool, String> save_png_libpng(const Path &filename, const Image
 	row_pointers = (png_bytep*)malloc(sizeof(png_byte*) * height);
 	for (int i = 0; i < height ; ++i)
 	{
+#if (PNG_LIBPNG_VER > 10300)
+		row_pointers[i] = (png_bytep)calloc(1, png_get_rowbytes(png_ptr, info_ptr));
+#else
 		row_pointers[i] = (png_bytep)calloc(1, info_ptr->rowbytes);
+#endif
 	}
 
 	/* Conversion */

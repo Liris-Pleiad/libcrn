@@ -1,4 +1,4 @@
-/* Copyright 2011-2012 CoReNum, INSA-Lyon
+/* Copyright 2011-2016 CoReNum, INSA-Lyon, ENS-Lyon
  * 
  * This file is part of libcrn.
  * 
@@ -33,11 +33,11 @@ using namespace crn::PDF;
  * \throws	ExceptionNotFound	attribute not found
  * \throws	ExceptionDomain	wrong attribute
  */
-void Attributes::deserialize(xml::Element &el)
+void Attributes::Deserialize(xml::Element &el)
 {
-	if (el.GetName() != GetClassName().CStr())
+	if (el.GetName() != "PDFAttributes")
 	{
-		throw ExceptionInvalidArgument(StringUTF8("bool PDFAttributes::deserialize(xml::Element &el): ") + 
+		throw ExceptionInvalidArgument(StringUTF8("void PDFAttributes::Deserialize(xml::Element &el): ") + 
 				_("Wrong XML element."));
 	}
 	bool lc = el.GetAttribute<bool>("lossy_compression", false); // may throw
@@ -66,9 +66,9 @@ void Attributes::deserialize(xml::Element &el)
 	copyable = cop;
 }
 
-xml::Element Attributes::serialize(xml::Element &parent) const
+xml::Element Attributes::Serialize(xml::Element &parent) const
 {
-	xml::Element el(parent.PushBackElement(GetClassName().CStr()));
+	xml::Element el(parent.PushBackElement("PDFAttributes"));
 	el.SetAttribute("lossy_compression", lossy_compression ? 1 : 0);
 	el.SetAttribute("jpeg_qual", jpeg_qual);
 	el.SetAttribute("layout", int(layout));
@@ -86,6 +86,7 @@ xml::Element Attributes::serialize(xml::Element &parent) const
 
 CRN_BEGIN_CLASS_CONSTRUCTOR(Attributes)
 	CRN_DATA_FACTORY_REGISTER(U"PDFAttributes", Attributes)
+	Cloner::Register<Attributes>();
 CRN_END_CLASS_CONSTRUCTOR(Attributes)
 
 

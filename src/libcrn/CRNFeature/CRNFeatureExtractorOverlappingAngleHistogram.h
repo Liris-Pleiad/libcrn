@@ -1,4 +1,4 @@
-/* Copyright 2012-2014 INSA-Lyon
+/* Copyright 2012-2016 INSA-Lyon, ENS-Lyon
  * 
  * This file is part of libcrn.
  * 
@@ -56,7 +56,7 @@ namespace crn
 			virtual ~FeatureExtractorOverlappingAngleHistogram() override {}
 
 			/*! \brief Returns the id of the class */
-			virtual const String& GetClassName() const override { static const String cn(U"FeatureExtractorOverlappingAngleHistogram"); return cn; }
+			virtual StringUTF8 GetClassName() const override { return "FeatureExtractorOverlappingAngleHistogram"; }
 
 			/*! \brief Returns a CRNPROTOCOL_FEATURE object computed from a block */
 			virtual SObject Extract(Block &b) override;
@@ -78,6 +78,7 @@ namespace crn
 		CRN_DECLARE_CLASS_CONSTRUCTOR(FeatureExtractorOverlappingAngleHistogram)
 		CRN_SERIALIZATION_CONSTRUCTOR(FeatureExtractorOverlappingAngleHistogram)
 	};
+	template<> struct IsSerializable<FeatureExtractorOverlappingAngleHistogram> : public std::true_type {};
 
 	CRN_ALIAS_SMART_PTR(FeatureExtractorOverlappingAngleHistogram)
 }

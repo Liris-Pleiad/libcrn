@@ -10,4 +10,5 @@ include_directories("${PROJECT_SOURCE_DIR}/src/libcrn")
 # create estiamteStrokes
 add_executable(estimateStrokes estimateStrokes.cpp)
 # add dependencies
-target_link_libraries(estimateStrokes libcrn)
+target_link_libraries(estimateStrokes crn)
+

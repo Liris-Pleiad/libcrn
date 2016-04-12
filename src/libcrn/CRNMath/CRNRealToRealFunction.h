@@ -1,4 +1,4 @@
-/* Copyright 2008-2015 INSA Lyon, CoReNum, Université Paris Descartes
+/* Copyright 2008-2016 INSA Lyon, CoReNum, Université Paris Descartes, ENS-Lyon
  * 
  * This file is part of libcrn.
  * 
@@ -48,19 +48,12 @@ namespace crn
 			RealToRealFunction(double l, double u);
 			RealToRealFunction(const RealToRealFunction& F);
 			RealToRealFunction(RealToRealFunction&&) = default;
-			/*! \brief Clones the function */
-			virtual UObject Clone() const override { return std::make_unique<RealToRealFunction>(*this); }
 
 			/*! \brief Destructor */
 			virtual ~RealToRealFunction() override;
 
 			RealToRealFunction& operator=(const RealToRealFunction&) = delete;
 			RealToRealFunction& operator=(RealToRealFunction&&) = default;
-
-			/*! \brief Returns the id of the class */
-			virtual Protocol GetClassProtocols() const noexcept override { return Protocol::Clonable; }
-			/*! \brief Returns the name of the class */
-			virtual const String& GetClassName() const override { static const String cn(U"RealToRealFunction"); return cn; }
 
 			/*! \brief Returns the beginning of the definition interval */
 			double GetLeftEndpoint() const noexcept { return left_endpoint; }
@@ -94,7 +87,9 @@ namespace crn
 			double left_endpoint; /*!< left extrema of the function */
 			double right_endpoint; /*!< right extrema of the function */
 
+			CRN_DECLARE_CLASS_CONSTRUCTOR(RealToRealFunction)
 	};
+	template<> struct IsClonable<RealToRealFunction> : public std::true_type {};
 
 }
 #endif

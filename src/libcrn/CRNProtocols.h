@@ -1,4 +1,4 @@
-/* Copyright 2006-2014 Yann LEYDIER, INSA-Lyon
+/* Copyright 2006-2016 Yann LEYDIER, INSA-Lyon, ENS-Lyon
  * 
  * This file is part of libcrn.
  * 
@@ -23,52 +23,135 @@
 #define CRNPROTOCOLS
 
 #include <CRNType.h>
+#include <CRNObject.h>
+#include <CRNMath/CRNMath.h>
+#include <unordered_map>
+#include <typeinfo>
+#include <typeindex>
+#include <CRNUtils/CRNXml.h>
 
 /*! \addtogroup base */
 /*@{*/
 namespace crn
 {
-	enum class Protocol: uint32_t { 
-		// *** Base classes
-		// -> Object
-		Object = 1 << 30,
-		// with distance
-		Metric = (1<<29)|Object,
-		// with order
-		POSet = (1<<28)|Object,
-		// with addition
-		Magma = (1<<27)|Object,
-		// with subtraction
-		Group = (1<<26)|Magma,
-		// with internal product
-		Ring = (1<<25)|Group,
-		// with external product
-		VectorOverR = (1<<24)|Group,
-		// with both products
-		Algebra = Ring|VectorOverR,
-		// with division
-		Field = (1<<23)|Ring,
-		// with serialization (is also savable IF complex)
-		Serializable = (1<<22)|(1<<19)|Object,
-		// with cloning
-		Clonable = (1<<21)|Object,
-
-		// -> ComplexObject
-		ComplexObject = (1<<20)|Object,
-		// with file saving
-		Savable = (1<<19)|ComplexObject,
-
-		// -> Pixel
-		Pixel = (1<<18)|Clonable|Metric|VectorOverR|POSet|Serializable,
-		// -> Image
-		Image = (1<<17)|Clonable|ComplexObject,
-
-		// *** Composed virtual categories
-		// -> Feature
-		Feature = Serializable|Metric|Clonable
+	class Serializer
+	{
+		public:
+			static void Deserialize(Object &obj, xml::Element &el)
+			{
+				const auto id = std::type_index{typeid(obj)};
+				const auto it = getInstance().serializers.find(id);
+				if (it == getInstance().serializers.end())
+					throw ExceptionProtocol{id.name() + StringUTF8(": not a serializable object.")};
+				it->second->Deserialize(obj, el);
+			}
+			static xml::Element Serialize(const Object &obj, xml::Element &el)
+			{
+				const auto id = std::type_index{typeid(obj)};
+				const auto it = getInstance().serializers.find(id);
+				if (it == getInstance().serializers.end())
+					throw ExceptionProtocol{id.name() + StringUTF8(": not a serializable object.")};
+				return it->second->Serialize(obj, el);
+			}
+			template<typename T> static void Register()
+			{
+				getInstance().serializers.emplace(typeid(T), std::make_unique<serializerImpl<T>>());
+			}
+		private:
+			Serializer() {}
+			static Serializer& getInstance();
+			struct serializer
+			{
+				virtual void Deserialize(Object &obj, xml::Element &el) = 0;
+				virtual xml::Element Serialize(const Object &obj, xml::Element &parent) = 0;
+			};
+			template<typename T> struct serializerImpl: public serializer
+			{
+				virtual void Deserialize(Object &obj, xml::Element &el) override
+				{
+					static_cast<T&>(obj).Deserialize(el);
+				}
+				virtual xml::Element Serialize(const Object &obj, xml::Element &parent) override
+				{
+					return static_cast<const T&>(obj).Serialize(parent);
+				}
+			};
+			std::unordered_map<std::type_index, std::unique_ptr<serializer>> serializers;
 	};
+
+	class Cloner
+	{
+		public:
+			static UObject Clone(const Object &obj)
+			{
+				const auto id = std::type_index{typeid(obj)};
+				const auto it = getInstance().cloners.find(id);
+				if (it == getInstance().cloners.end())
+					throw ExceptionProtocol{id.name() + StringUTF8(": not a clonable object.")};
+				return it->second->Clone(obj);
+			}
+			template<typename T> static void Register()
+			{
+				getInstance().cloners.emplace(typeid(T), std::make_unique<clonerImpl<T>>());
+			}
+
+			static std::string GetClasses()
+			{
+				auto s = std::string{};
+				for (const auto &c : getInstance().cloners)
+				{
+					s += c.first.name();
+					s += " ";
+				}
+				return s;
+			}
+		private:
+			Cloner() {}
+			static Cloner& getInstance();
+			struct cloner
+			{
+				virtual UObject Clone(const Object &o) const = 0;
+			};
+			template<typename T> struct clonerImpl: public cloner
+			{
+				virtual UObject Clone(const Object &o) const override { return std::make_unique<T>(static_cast<const T&>(o)); }
+			};
+			std::unordered_map<std::type_index, std::unique_ptr<cloner>> cloners;
+	};
+
+	class Ruler
+	{
+		public:
+			static double Distance(const Object &o1, const Object &o2)
+			{
+				const auto id1 = std::type_index{typeid(o1)};
+				const auto id2 = std::type_index{typeid(o2)};
+				if (id1 != id2)
+					throw ExceptionDomain{"Cannot compute distance between objects of different classes."};
+				const auto it = getInstance().rulers.find(id1);
+				if (it == getInstance().rulers.end())
+					throw ExceptionProtocol{id1.name() + StringUTF8(": not a metric object.")};
+				return it->second->Distance(o1, o2);
+			}
+			template<typename T> static void Register()
+			{
+				getInstance().rulers.emplace(typeid(T), std::make_unique<rulerImpl<T>>());
+			}
+		private:
+			Ruler() {}
+			static Ruler& getInstance();
+			struct ruler
+			{
+				virtual double Distance(const Object &o1, const Object &o2) const = 0;
+			};
+			template<typename T> struct rulerImpl: public ruler
+			{
+				virtual double Distance(const Object &o1, const Object &o2) const override { return Distance(static_cast<const T&>(o1), static_cast<const T&>(o2)); }
+			};
+			std::unordered_map<std::type_index, std::unique_ptr<ruler>> rulers;
+	};
+
 }
-CRN_DECLARE_ENUM_OPERATORS(crn::Protocol)
 /*@}*/
 #endif
 

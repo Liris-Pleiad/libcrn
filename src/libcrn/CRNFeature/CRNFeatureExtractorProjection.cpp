@@ -1,4 +1,4 @@
-/* Copyright 2007-2015 Yann LEYDIER, INSA-Lyon
+/* Copyright 2007-2016 Yann LEYDIER, INSA-Lyon, ENS-Lyon
  * 
  * This file is part of libcrn.
  * 
@@ -79,7 +79,7 @@ SObject FeatureExtractorProjection::Extract(Block &b)
 			hp.Resize(size);
 		// append
 		if (!h)
-			h = hp.CloneAs<Histogram>();
+			h = CloneAs<Histogram>(hp);
 		else
 			h->Append(hp);
 	}
@@ -101,7 +101,7 @@ SObject FeatureExtractorProjection::Extract(Block &b)
 			hp.Resize(size);
 		// append
 		if (!h)
-			h = hp.CloneAs<Histogram>();
+			h = CloneAs<Histogram>(hp);
 		else
 			h->Append(hp);
 	}
@@ -118,7 +118,7 @@ SObject FeatureExtractorProjection::Extract(Block &b)
  */
 void FeatureExtractorProjection::deserialize(xml::Element &el)
 {
-	if (el.GetName() != GetClassName().CStr())
+	if (el.GetName() != GetClassName())
 	{
 		throw ExceptionInvalidArgument(StringUTF8("bool FeatureExtractorProjection::deserialize("
 					"xml::Element &el): ") + _("Wrong XML element."));
@@ -137,7 +137,7 @@ void FeatureExtractorProjection::deserialize(xml::Element &el)
  */
 xml::Element FeatureExtractorProjection::serialize(xml::Element &parent) const
 {
-	xml::Element el(parent.PushBackElement(GetClassName().CStr()));
+	xml::Element el(parent.PushBackElement(GetClassName()));
 	el.SetAttribute("directions", int(dirs));
 	el.SetAttribute("size", size);
 	el.SetAttribute("maxval", maxval);

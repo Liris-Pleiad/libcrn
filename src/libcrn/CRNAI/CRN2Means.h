@@ -1,4 +1,4 @@
-/* Copyright 2013-2015 INSA-Lyon
+/* Copyright 2013-2016 INSA-Lyon, ENS-Lyon
  * 
  * This file is part of libcrn.
  * 
@@ -43,11 +43,21 @@ namespace crn
 	 * \version 0.1
 	 * \ingroup cluster
 	 */
-	template<typename ITER> 
+	template<
+		typename ITER, 
+		typename std::enable_if<
+			// can copy
+			std::is_copy_assignable<typename std::iterator_traits<ITER>::value_type>::value &&
+			// can assign 0
+			std::is_assignable<typename std::add_lvalue_reference<typename std::decay<typename std::iterator_traits<ITER>::value_type>::type>::type, int>::value && 
+			// operator<
+			traits::HasLT<typename std::iterator_traits<ITER>::value_type>::value && 
+			// operators +, -, *(double)
+			IsVectorOverR<typename std::iterator_traits<ITER>::value_type>::value ,
+			int>::type = 0
+		>
 		std::pair<typename std::iterator_traits<ITER>::value_type, typename std::iterator_traits<ITER>::value_type> 
 		TwoMeans(ITER beg, ITER en, double stop_crit = 0.00001)
-			noexcept(std::is_nothrow_constructible<typename std::iterator_traits<ITER>::value_type>::value 
-					&& std::is_nothrow_copy_assignable<typename std::iterator_traits<ITER>::value_type>::value)
 	{
 		using datatype = typename std::iterator_traits<ITER>::value_type;
 		using dectype = DecimalType<datatype>;
@@ -81,9 +91,9 @@ namespace crn
 				}
 			}
 			if (n1)
-				s1 = datatype(s1 / double(n1));
+				s1 = datatype(s1 * (1.0 / double(n1)));
 			if (n2)
-				s2 = datatype(s2 / double(n2));
+				s2 = datatype(s2 * (1.0 / double(n2)));
 			cont = double(Abs(dectype(p1) - s1) + Abs(dectype(p2) - s2)) > stop_crit;
 			p1 = datatype(s1);
 			p2 = datatype(s2);

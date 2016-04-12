@@ -1,4 +1,4 @@
-/* Copyright 2006-2014 Yann LEYDIER, CoReNum, INSA-Lyon
+/* Copyright 2006-2016 Yann LEYDIER, CoReNum, INSA-Lyon, ENS-Lyon
  * 
  * This file is part of libcrn.
  * 
@@ -48,7 +48,7 @@ namespace crn
 	 * \version 0.5
 	 * \ingroup	diff
 	 */
-	class Differential: public ComplexObject
+	class Differential
 	{
 		public:
 			enum class RGBProjection { ABSMAX, SUM };
@@ -84,17 +84,12 @@ namespace crn
 			static Differential NewHalfDiffAbsMin(const ImageDoubleGray &src);
 
 			/*! \brief Destructor */
-			virtual ~Differential() override { }
+			~Differential() = default;
 
 			Differential(const Differential &) = delete;
 			Differential(Differential &&) = default;
 			Differential& operator=(const Differential &) = delete;
 			Differential& operator=(Differential &&) = default;
-
-			/*! \brief This is a ComplexObject */
-			virtual Protocol GetClassProtocols() const noexcept override { return Protocol::ComplexObject; }
-			/*! \brief Returns the id of the class */
-			virtual const String& GetClassName() const override { static const String cn(U"Differential"); return cn; }
 
 			/*! \brief Returns a reference to the internal x derivate */
 			ImageDoubleGray& GetLx() noexcept { return lx; }

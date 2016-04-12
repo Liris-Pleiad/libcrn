@@ -24,6 +24,7 @@
 
 #include <iterator>
 #include <type_traits>
+#include <memory>
 
 #if __APPLE__
 #	if	defined(__clang__) && (__clang_major__ < 7)
@@ -35,6 +36,138 @@ namespace crn
 {
 	/*! \addtogroup base */
 	/*@{*/
+	namespace traits
+	{
+		struct DummyType {};
+		template<typename T> DummyType operator<(const T &, const T &) { return DummyType{}; }
+		template<typename T> DummyType operator>(const T &, const T &) { return DummyType{}; }
+		template<typename T> DummyType operator<=(const T &, const T &) { return DummyType{}; }
+		template<typename T> DummyType operator>=(const T &, const T &) { return DummyType{}; }
+
+		template<typename T> struct HasLT :
+			public std::integral_constant<
+			bool,
+			!std::is_same<
+			DummyType,
+			decltype(std::declval<T const&>() < std::declval<T const&>())
+			>::value
+			>
+		{};
+		template<typename T> struct HasGT :
+			public std::integral_constant<
+			bool,
+			!std::is_same<
+			DummyType,
+			decltype(std::declval<T const&>() > std::declval<T const&>())
+			>::value
+			>
+		{};
+		template<typename T> struct HasLE :
+			public std::integral_constant<
+			bool,
+			!std::is_same<
+			DummyType,
+			decltype(std::declval<T const&>() <= std::declval<T const&>())
+			>::value
+			>
+		{};
+		template<typename T> struct HasGE :
+			public std::integral_constant<
+			bool,
+			!std::is_same<
+			DummyType,
+			decltype(std::declval<T const&>() >= std::declval<T const&>())
+			>::value
+			>
+		{};
+
+		template<typename T> DummyType operator+(const T &, const T &) { return DummyType{}; }
+		template<typename T> DummyType operator==(const T &, const T &) { return DummyType{}; }
+
+		template<typename T> struct HasPlus :
+			public std::integral_constant<
+			bool,
+			!std::is_same<
+			DummyType,
+			decltype(std::declval<T const&>() + std::declval<T const&>())
+			>::value
+			>
+		{};
+		template<typename T> struct HasEquals :
+			public std::integral_constant<
+			bool,
+			!std::is_same<
+			DummyType,
+			decltype(std::declval<T const&>() == std::declval<T const&>())
+			>::value
+			>
+		{};
+
+		template<typename T> DummyType operator-(const T &, const T &) { return DummyType{}; }
+
+		template<typename T> struct HasMinus :
+			public std::integral_constant<
+			bool,
+			!std::is_same<
+			DummyType,
+			decltype(std::declval<T const&>() - std::declval<T const&>())
+			>::value
+			>
+		{};
+
+		template<typename T> DummyType operator*(const T &, const T &) { return DummyType{}; }
+
+		template<typename T> struct HasInnerMult :
+			public std::integral_constant<
+			bool,
+			!std::is_same<
+			DummyType,
+			decltype(std::declval<T const&>() * std::declval<T const&>())
+			>::value
+			>
+		{};
+
+		struct doubleWrapper { doubleWrapper(double) {} };
+		template<typename T> DummyType operator*(const T &, doubleWrapper) { return DummyType{}; }
+		template<typename T> DummyType operator*(doubleWrapper, const T &) { return DummyType{}; }
+
+		template<typename T> struct HasRightOuterMult :
+			public std::integral_constant<
+			bool,
+			!std::is_same<
+			DummyType,
+			decltype(std::declval<T const&>() * 0.0)
+			>::value
+			>
+		{};
+		template<typename T> struct HasLeftOuterMult :
+			public std::integral_constant<
+			bool,
+			!std::is_same<
+			DummyType,
+			decltype(0.0 * std::declval<T const&>())
+			>::value
+			>
+		{};
+
+		template<typename T> DummyType operator/(const T &, const T &) { return DummyType{}; }
+
+		template<typename T> struct HasDivide :
+			public std::integral_constant<
+			bool,
+			!std::is_same<
+			DummyType,
+			decltype(std::declval<T const&>() / std::declval<T const&>())
+			>::value
+			>
+		{};
+
+		template<typename T> struct IsDereferenceable : public std::false_type {};
+		template<typename T> struct IsDereferenceable<T*> : public std::true_type {};
+		template<typename T> struct IsDereferenceable<std::shared_ptr<T>> : public std::true_type {};
+		template<typename T> struct IsDereferenceable<std::unique_ptr<T>> : public std::true_type {};
+
+	}
 
 	/*! \brief A class containing informations on a type
 	 *
@@ -43,15 +176,48 @@ namespace crn
 	template<typename T> struct TypeInfo
 	{
 		/*! \brief A safe type to compute a sum (e.g.: a larger integer type) */
-		using SumType = decltype(T{} + T{});
+		using SumType = decltype(std::declval<T>() + std::declval<T>());
 		/*! \brief A safe type to compute a difference (e.g.: a signed type) */
-		using DiffType = decltype(T{} - T{});
+		using DiffType = decltype(std::declval<T>() - std::declval<T>());
 		/*! \brief A safe type to compute a difference (e.g.: a signed type) */
 		using DecimalType = typename std::common_type<T, double>::type;
 	};
 	template<typename T> using SumType = typename TypeInfo<T>::SumType;
 	template<typename T> using DiffType = typename TypeInfo<T>::DiffType;
 	template<typename T> using DecimalType = typename TypeInfo<T>::DecimalType;
+
+	template<
+		typename P, 
+		typename std::enable_if<traits::IsDereferenceable<P>::value, int>::type = 0
+		> 
+	typename std::pointer_traits<P>::element_type& Dereference(const P &p) { return *p; }
+
+	template<
+		typename P, 
+		typename std::enable_if<!traits::IsDereferenceable<P>::value, int>::type = 0
+		> 
+	const P& Dereference(const P &p) { return p; }
+	
+	template<
+		typename P, 
+		typename std::enable_if<!traits::IsDereferenceable<P>::value, int>::type = 0
+		> 
+	P& Dereference(P &p) { return p; }
+
+	/*! \brief	Returns an object of the same type that represents 0 */
+	template<
+		typename T, 
+		typename std::enable_if<std::is_constructible<T, int>::value, int>::type = 0
+		> 
+	T Zero(const T &) { return T(0); }
+	/*! \brief	Returns an object of the same type that represents 0 */
+	template<
+		typename T, 
+		typename std::enable_if<
+			!std::is_constructible<T, int>::value && traits::HasMinus<T>::value,
+	 		int>::type = 0
+		> 
+	T Zero(const T &val) { return T(val - val); }
 
 	/*! \brief A class that represents scalar values in [[b, e[[ */
 	template<typename S> class ScalarRange
@@ -131,7 +297,6 @@ namespace crn
 		return static_cast<inner>(e) == inner{0};\
 	}
 
-#include <memory>
 #define CRN_ALIAS_SMART_PTR(classname)\
 	using S##classname = std::shared_ptr<classname>;\
 	using SC##classname = std::shared_ptr<const classname>;\
@@ -157,11 +322,19 @@ namespace std
 
 namespace crn
 {
-	template<typename T> inline std::shared_ptr<T> MoveShared(T &&v, typename std::enable_if<!std::is_lvalue_reference<T>::value>::type *dummy = nullptr)
+	template<
+		typename T,
+		typename std::enable_if<!std::is_lvalue_reference<T>::value, int>::type = 0
+		> 
+	inline std::shared_ptr<T> MoveShared(T &&v)
 	{
 		return std::make_shared<T>(std::move(v));
 	}
-	template<typename T> inline std::unique_ptr<T> MoveUnique(T &&v, typename std::enable_if<!std::is_lvalue_reference<T>::value>::type *dummy = nullptr)
+	template<
+		typename T,
+		typename std::enable_if<!std::is_lvalue_reference<T>::value, int>::type = 0
+		>
+	inline std::unique_ptr<T> MoveUnique(T &&v)
 	{
 		return std::make_unique<T>(std::move(v));
 	}

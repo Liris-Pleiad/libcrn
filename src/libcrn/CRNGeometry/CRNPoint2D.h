@@ -1,4 +1,4 @@
-/* Copyright 2008-2014 INSA Lyon, CoReNum
+/* Copyright 2008-2016 INSA Lyon, CoReNum, ENS-Lyon
  * 
  * This file is part of libcrn.
  * 
@@ -55,44 +55,25 @@ namespace crn
 			Point2D(const Point2D &) = default;
 			Point2D(Point2D &&) = default;
 			/*! \brief Destructor */
-			virtual ~Point2D() override {}
+			virtual ~Point2D() override = default;
 
-			const String& GetClassName() const override { static const String cn(U"Point2D<T>"); return cn; }
-			/*! \brief This is a Metric and VectorOverR object */
-			virtual Protocol GetClassProtocols() const noexcept override { return crn::Protocol::Metric|crn::Protocol::VectorOverR; } 
-			
 			/*! \brief Converts object to string */
-			virtual String ToString() const override;
+			String ToString() const { return String(U'(') + X + String(U" × ") + Y + String(U')'); }
 
 			value_type X, Y; /*!< The coordinates */
 
 			/*! \brief Converts to another type of Point */
 			template<typename U> Point2D<U> Convert() const noexcept(noexcept(U{X})) { return Point2D<U>(U(X), U(Y)); }
 
-			inline Point2D& operator=(const Point2D &) = default;
-			inline Point2D& operator=(Point2D &&) = default;
-			/*! \brief Translation */
-			inline const Point2D<T>& operator+=(const Point2D<T> &p) { add(p); return *this; }
-			/*! \brief Addition */
-			inline Point2D<T> operator+(const Point2D<T> &p) const { Point2D<T> np(*this); np.add(p); return np; }
-			/*! \brief Equality */
-			inline bool operator==(const Point2D<T> &p) const { return equals(p); }
-			/*! \brief Translation */
-			inline const Point2D<T>& operator-=(const Point2D<T> &p) { sub(p); return *this; }
-			/*! \brief Subtraction */
-			inline Point2D<T> operator-(const Point2D<T> &p) const { Point2D<T> np(*this); np.sub(p); return np; }
-			/*! \brief Homothetic transform */
-			inline const Point2D<T>& operator*=(double d) { Mult(d); return *this; }
-			/*! \brief Multiplication */
-			inline Point2D<T> operator*(double d) { Point2D<T> np(*this); np.Mult(d); return np; }
-			/*! \brief Homothetic transform */
-			inline const Point2D<T>& operator/=(double d) { Mult(1/d); return *this; }
-			/*! \brief Division */
-			inline Point2D<T> operator/(double d) { Point2D<T> np(*this); np.Mult(1/d); return np; }
+			Point2D& operator=(const Point2D &) = default;
+			Point2D& operator=(Point2D &&) = default;
 
-			/*! \brief Multiply by a real */
-			virtual void Mult(double m) override;
-				
+			bool operator==(const Point2D &p) const noexcept { return (X == p.X) && (Y == p.Y); }
+			/*! \brief Translation */
+			Point2D<T>& operator+=(const Point2D<T> &p) noexcept { X += p.X; Y += p.Y; return *this; }
+			/*! \brief Translation */
+			Point2D<T>& operator-=(const Point2D<T> &p) noexcept { X -= p.X; Y -= p.Y; return *this; }
+
 			/*! \brief Functor to compare points */
 			struct Comparer
 			{
@@ -116,23 +97,27 @@ namespace crn
 				private:
 					Direction direction; /*!< direction of the sort */
 			};
-		private:
-			/*! \brief Distance between two points. */
-			virtual double distance(const Object &obj) const override;
-			/*! \brief Unsafe method to add a 2D vector. */
-			virtual void add(const Object &v) override;
-			/*! \brief Unsafe method to test the equality of two 2D points. */
-			virtual bool equals(const Object &v) const override;
-			/*! \brief Unsafe method to subtract a 2D vector. */
-			virtual void sub(const Object &v) override;
-			/*! \brief Unsafe method to compute a sum of 2D vectors. */
-			virtual UObject sum(const std::vector<std::pair<const Object*, double> > &plist) const override;
-			/*! \brief Unsafe Method to compute a mean of 2D vectors. */
-			virtual UObject mean(const std::vector<std::pair<const Object*, double> > &plist) const override;
-			
 	};
+
+	template<typename T> double Distance(const Point2D<T> &p1, const Point2D<T> &p2, DistanceType dt = DistanceType::EUCLIDEAN)
+	{
+		switch (dt)
+		{
+			case DistanceType::D4:
+				return Abs(p1.X - p2.X) + Abs(p1.Y - p2.Y);
+			case DistanceType::D8:
+				return Max(Abs(p1.X - p2.X), Abs(p1.Y - p2.Y));
+			case DistanceType::EUCLIDEAN:
+				return sqrt(Sqr(p1.X - p2.X) + Sqr(p1.Y - p2.Y));
+			default:
+				throw ExceptionInvalidArgument("double Distance(const Point2D<T>&, const Point2D<T>&, DistanceType): invalid distance type.");
+		}
+	}
 }
 
-#include <CRNGeometry/CRNPoint2D.hpp>
+template<typename T> crn::Point2D<T> operator+(crn::Point2D<T> p1, const crn::Point2D<T> &p2) noexcept { return p1 += p2; }
+template<typename T> crn::Point2D<T> operator-(crn::Point2D<T> p1, const crn::Point2D<T> &p2) noexcept { return p1 -= p2; }
+template<typename T> crn::Point2D<double> operator*(double d, const crn::Point2D<T> &p) noexcept { return {p.X * d, p.Y * d}; }
+template<typename T> crn::Point2D<double> operator*(const crn::Point2D<T> &p, double d) noexcept { return {p.X * d, p.Y * d}; }
 
 #endif

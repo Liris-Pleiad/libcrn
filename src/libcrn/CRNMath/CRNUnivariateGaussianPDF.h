@@ -1,4 +1,4 @@
-/* Copyright 2008-2015 INSA Lyon, CoReNum
+/* Copyright 2008-2016 INSA Lyon, CoReNum, ENS-Lyon
  * 
  * This file is part of libcrn.
  * 
@@ -52,13 +52,6 @@ namespace crn
 			UnivariateGaussianPDF& operator=(const UnivariateGaussianPDF&) = default;
 			UnivariateGaussianPDF& operator=(UnivariateGaussianPDF&&) = default;
 
-			/*! \brief This is a Clonable object */
-			virtual Protocol GetClassProtocols() const noexcept override { return crn::Protocol::Clonable | crn::Protocol::Serializable; }
-			/*! \brief Returns the name of the class */
-			virtual const String& GetClassName() const override { static const String cn(U"UnivariateGaussianPDF"); return cn; }
-			/*! \brief Clones the model */
-			virtual UObject Clone() const override { return std::make_unique<UnivariateGaussianPDF>(*this); }
-
 			/*! \brief Returns the mean of a given density function */
 			double GetMean() const noexcept { return mean; }
 			/*! \brief Sets the mean of a given density function */
@@ -76,7 +69,7 @@ namespace crn
 			double ValueAt(const double x) const;
 
 			/*! \brief Dumps a summary to a string */
-			virtual String ToString() const override;
+			String ToString() const;
 
 			/*! \brief Estimates intersection point between with another PDF, using trinom solving */
 			double IntersectionAbscissa(const UnivariateGaussianPDF &pdf) const;
@@ -86,10 +79,10 @@ namespace crn
 			/*! \brief Creates a data sample following the PDF's probability law */
 			std::vector<double> MakeRandomSample(size_t n = 1, size_t m = 100, bool reseed = true) const;
 
-		private:
-			void deserialize(xml::Element &el) override;
-			xml::Element serialize(xml::Element &parent) const override;
+			void Deserialize(xml::Element &el);
+			xml::Element Serialize(xml::Element &parent) const;
 
+		private:
 			double mean; /*!< the mean of the Gaussian */
 			double variance; /*!< the variance of the Gaussian */
 			double scaleFactor; /*!< internal temporary data */
@@ -100,6 +93,8 @@ namespace crn
 			CRN_DECLARE_CLASS_CONSTRUCTOR(UnivariateGaussianPDF)
 			CRN_SERIALIZATION_CONSTRUCTOR(UnivariateGaussianPDF)
 	};
+	template<> struct IsSerializable<UnivariateGaussianPDF> : public std::true_type {};
+	template<> struct IsClonable<UnivariateGaussianPDF> : public std::true_type {};
 
 	CRN_ALIAS_SMART_PTR(UnivariateGaussianPDF)
 }

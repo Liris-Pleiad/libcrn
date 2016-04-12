@@ -1,4 +1,4 @@
-/* Copyright 2006-2014 Yann LEYDIER, CoReNum, INSA-Lyon
+/* Copyright 2006-2016 Yann LEYDIER, CoReNum, INSA-Lyon, ENS-Lyon
  * 
  * This file is part of libcrn.
  * 
@@ -55,19 +55,10 @@ namespace crn
 			Prop3(int val) noexcept;
 			constexpr Prop3(const Prop3 &) = default;
 			constexpr Prop3(Prop3 &&) = default;
-			/*! \brief Destructor */
-			virtual ~Prop3() override {}
+			~Prop3() = default;
 
 			Prop3& operator=(const Prop3 &) = default;
 			Prop3& operator=(Prop3 &&) = default;
-
-			/*! \brief This is a Serializable object */
-			virtual Protocol GetClassProtocols() const noexcept override { return crn::Protocol::Serializable|crn::Protocol::Clonable; }
-			/*! \brief Returns the id of the class */
-			virtual const String& GetClassName() const override { static const String cn(U"Prop3"); return cn; }
-
-			/*! \brief Creates another Prop3 from this one */
-			virtual UObject Clone() const override { return std::make_unique<Prop3>(*this); }
 
 			/*! \brief Logical OR operator */
 			Prop3 operator|(const Prop3 &prop) const noexcept;
@@ -91,7 +82,7 @@ namespace crn
 			bool IsUnknown() const noexcept { if (value == Prop3::UNKNOWN) return true; else return false; }
 
 			/*! \brief Dumps value to a string */
-			virtual String ToString() const override;
+			String ToString() const;
 			/*! \brief Returns the internal integer value */
 			int GetValue() const noexcept { return value; }
 
@@ -100,17 +91,19 @@ namespace crn
 			static const Prop3 False; /*!< False constant */
 			static const Prop3 Unknown; /*!< Unknown constant */
 
-		private:
 			/*! \brief Initializes the object from an XML element. Unsafe. */
-			virtual void deserialize(xml::Element &el) override;
+			void Deserialize(xml::Element &el);
 			/*! \brief Dumps the object to an XML element. Unsafe. */
-			virtual xml::Element serialize(xml::Element &parent) const override;
+			xml::Element Serialize(xml::Element &parent) const;
 
+		private:
 			int value; /*!< internal value */
 
 		CRN_DECLARE_CLASS_CONSTRUCTOR(Prop3)
 		CRN_SERIALIZATION_CONSTRUCTOR(Prop3)
 	};
+	template<> struct IsSerializable<Prop3> : public std::true_type {};
+	template<> struct IsClonable<Prop3> : public std::true_type {};
 
 	CRN_ALIAS_SMART_PTR(Prop3)
 }

@@ -1,4 +1,4 @@
-/* Copyright 2006-2014 Yann LEYDIER, CoReNum, INSA-Lyon
+/* Copyright 2006-2016 Yann LEYDIER, CoReNum, INSA-Lyon, ENS-Lyon
  * 
  * This file is part of libcrn.
  * 
@@ -40,7 +40,7 @@ namespace crn
 	 * \version 0.3
 	 * \ingroup io
 	 */
-	class TextFile: public ComplexObject
+	class TextFile
 	{
 		public:
 			/*! \brief Allowed text encoding */
@@ -53,15 +53,10 @@ namespace crn
 			TextFile(const TextFile&) = delete;
 			TextFile(TextFile&&) = default;
 			/*! \brief Destructor */
-			virtual ~TextFile() override;
+			~TextFile() = default;
 
 			TextFile& operator=(const TextFile&) = delete;
 			TextFile& operator=(TextFile&&) = default;
-
-			/*! \brief Returns the name of the class */
-			virtual Protocol GetClassProtocols() const noexcept override { return Protocol::ComplexObject; }
-			/*! \brief Returns the name of the class */
-			virtual const String& GetClassName() const override { static const String cn(U"TextFile"); return cn; }
 
 			/*! \brief Saves a file with the same encoding as when loaded */
 			void Save(const Path &fname);

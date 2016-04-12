@@ -1,4 +1,4 @@
-/* Copyright 2012-2014 CoReNum
+/* Copyright 2012-2016 CoReNum, ENS-Lyon
  * 
  * This file is part of libcrn.
  * 
@@ -61,10 +61,6 @@ namespace crn
 			LinearInterpolation& operator=(const LinearInterpolation&) = default;
 			LinearInterpolation& operator=(LinearInterpolation&&) = default;
 
-			virtual const String& GetClassName() const override { static const String cn(U"LinearInterpolation"); return cn; }
-			virtual Protocol GetClassProtocols() const noexcept override { return Protocol::Clonable | Protocol::Serializable; }
-			virtual UObject Clone() const override { return std::make_unique<LinearInterpolation>(*this); }
-
 			/*! \brief Gets ordinate at x */
 			virtual double operator[](double x) const override;
 			/*! \brief Gets ordinate at x */
@@ -72,6 +68,9 @@ namespace crn
 
 			/*! \brief Access to the sorted control point */
 			const std::vector<crn::Point2DDouble>& GetData() const noexcept { return data; }
+
+			void Deserialize(xml::Element &el);
+			xml::Element Serialize(xml::Element &parent) const;
 
 		private:
 			/*! \brief Converts any Point2D to Point2DDouble */
@@ -84,14 +83,13 @@ namespace crn
 			template<typename T, typename Y> Point2DDouble makePoint(const std::pair<T, Y> &p)
 			{ return crn::Point2DDouble(double(p.first), double(p.second)); }
 			
-			virtual void deserialize(xml::Element &el) override;
-			virtual xml::Element serialize(xml::Element &parent) const override;
-
 			std::vector<crn::Point2DDouble> data; /*!< the points */
 
 		CRN_DECLARE_CLASS_CONSTRUCTOR(LinearInterpolation)			
 		CRN_SERIALIZATION_CONSTRUCTOR(LinearInterpolation)			
 	};
+	template<> struct IsSerializable<LinearInterpolation> : public std::true_type {};
+	template<> struct IsClonable<LinearInterpolation> : public std::true_type {};
 
 	CRN_ALIAS_SMART_PTR(LinearInterpolation)
 }

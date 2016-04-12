@@ -1,4 +1,4 @@
-/* Copyright 2006-2016 INSA Lyon, CoReNum
+/* Copyright 2006-2016 INSA Lyon, CoReNum, ENS-Lyon
  * 
  * This file is part of libcrn.
  * 
@@ -49,7 +49,7 @@ namespace crn
 	 * \ingroup document
 	 */
 
-	class Block: public ComplexObject
+	class Block: public Savable
 	{
 		public:
 			/*! \brief Top block creator */
@@ -63,11 +63,6 @@ namespace crn
 			Block& operator=(const Block&) = delete;
 			Block(Block&&) = delete;
 			Block& operator=(Block&&) = delete;
-
-			/*! \brief Returns the id of the class */
-			virtual const String& GetClassName() const override { static const String cn(U"Block"); return cn; }
-			/*! \brief This is is a ComplexObject */
-			virtual Protocol GetClassProtocols() const noexcept override { return Protocol::ComplexObject; }
 
 			/*! \brief Sets the default filename of the block */
 			void SetFilename(const Path &nam) { setFilename(nam); }

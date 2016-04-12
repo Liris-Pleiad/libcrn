@@ -1,4 +1,4 @@
-/* Copyright 2006-2016 Yann LEYDIER, CoReNum, INSA-Lyon
+/* Copyright 2006-2016 Yann LEYDIER, CoReNum, INSA-Lyon, ENS-Lyon
  * 
  * This file is part of libcrn.
  * 
@@ -32,25 +32,25 @@ using namespace crn;
  * Default constructor
  * \param[in]	protos	the mandatory protocols for the contents
  */
-Map::Map(Protocol protos):
-	protocols(protos)
-{
-}
+Map::Map() = default;
 
 /*!
  * Destructor
  */
-Map::~Map()
+Map::~Map() = default;
+
+Map::Map(const Map &other)
 {
+	for (const auto &p : other)
+		data.emplace(p.first, Clone(*p.second));
 }
 
-/*!
- * Returns the protocols supported by the container depending on its contents.
- * \return the protocols supported by the container.
- */
-Protocol Map::GetClassProtocols() const noexcept
+Map& Map::operator=(const Map &other)
 {
-	return protocols & (crn::Protocol::Object|crn::Protocol::Clonable|crn::Protocol::Serializable);
+	data.clear();
+	for (const auto &p : other)
+		data.emplace(p.first, Clone(*p.second));
+	return *this;
 }
 
 /*!
@@ -87,19 +87,12 @@ SCObject Map::Get(const String &s) const
 /*!
  * Adds an object
  *
- * \throw	ExceptionProtocol	value does not conform to protocols
- *
  * \param[in]	key	the key of the object to add
  * \param[in]	value	the object to add
  */
 void Map::Set(const String &key, SObject value)
 {
-	if (checkProtocols(*value.get()))
-	{
-		data[key] = value;
-	}
-	else
-		throw ExceptionProtocol(_("Value object does not conform to the map's protocols."));
+	data[key] = value;
 }
 
 /*!
@@ -182,45 +175,6 @@ void Map::Remove(iterator first, iterator end_)
 	throw ExceptionInvalidArgument(_("End iterator is before first."));
 }
 
-/*!
- * Dumps the contents to a string
- * \return	a string representing the contents of the container
- */
-String Map::ToString() const
-{
-	String s = GetClassName();
-	s += " { ";
-	for (auto it = begin(); it != end(); ++it)
-	{
-		s += String(U"[") + it->first + U"]";
-		s += it->second->ToString();
-		auto nit(it);
-		++nit;
-		if (nit != end())
-			s += ", ";
-	}
-	s += " }";
-	return s;
-}
-
-/*!
- * Clones the container and its contents if applicable. 
- * \throws	ExceptionProtocol	the content of the map is not clonable
- *
- * \return	the cloned container
- */
-UObject Map::Clone() const
-{
-	if (!(protocols & crn::Protocol::Clonable))
-		throw ExceptionProtocol(_("This map does not contain clonable objects."));
-
-	UMap m = std::make_unique<Map>(protocols);
-	m->SetName(GetName());
-	for (const auto & elem : *this)
-		m->Set(elem.first, elem.second->Clone());
-	return std::forward<UMap>(m);
-}
-
 /*****************************************************************************/
 /*!
  * Unsafe load
@@ -231,16 +185,13 @@ UObject Map::Clone() const
  * \param[in]	el	the element to load
  * \return true if success, false else
  */
-void Map::deserialize(xml::Element &el)
+void Map::Deserialize(xml::Element &el)
 {
-	if (!(protocols & crn::Protocol::Serializable))
-		throw ExceptionProtocol(_("This map does not contain serializable objects."));
-	if (el.GetValue() != GetClassName().CStr())
+	if (el.GetValue() != "Map")
 	{
-		throw ExceptionInvalidArgument(StringUTF8("bool Map::deserialize(xml::Element *el): ") + 
+		throw ExceptionInvalidArgument(StringUTF8("void Map::Deserialize(xml::Element *el): ") + 
 				_("Wrong XML element."));
 	}
-	protocols = Protocol(el.GetAttribute<int>("protocols"));
 	Clear();
 	for (xml::Element te = el.BeginElement(); te != el.EndElement(); ++te)
 	{
@@ -253,7 +204,7 @@ void Map::deserialize(xml::Element &el)
 		catch (std::exception &e)
 		{
 			// XXX throw?
-			CRNWarning(String(U"bool Map::deserialize(xml::Element &el): ") + 
+			CRNWarning(String(U"void Map::Deserialize(xml::Element &el): ") + 
 				String(_("Cannot deserialize: ")) + te.GetValue() + String(_(" because ")) + e.what());
 		}
 	}
@@ -267,15 +218,12 @@ void Map::deserialize(xml::Element &el)
  * \param[in]	parent	the parent element to which we will add the new element
  * \return The newly created element
  */
-xml::Element Map::serialize(xml::Element &parent) const
+xml::Element Map::Serialize(xml::Element &parent) const
 {
-	if (!(protocols & crn::Protocol::Serializable))
-		throw ExceptionProtocol(_("This map does not contain serializable objects."));
-	xml::Element el(parent.PushBackElement(GetClassName().CStr()));
-	el.SetAttribute("protocols", int(protocols));
+	xml::Element el(parent.PushBackElement("Map"));
 	for (const auto & elem : *this)
 	{
-		xml::Element te = elem.second->Serialize(el);
+		xml::Element te = crn::Serialize(*elem.second, el);
 		te.SetAttribute("key", elem.first.CStr());
 	}
 
@@ -330,44 +278,29 @@ String Map::LastKey() const
 void Map::Swap(Map &other) noexcept
 {
 	data.swap(other.data);
-	std::swap(protocols, other.protocols);
 }
 
-/*! 
- * Checks if the protocols are compatible with the object's constraints
- *
- * \param[in]  obj  the object to check
- * \return true if the protocols are compatible with the constraints, false else
- */
-bool Map::checkProtocols(const Object &obj)
+void Map::Load(const Path &fname)
 {
-	if ((obj.GetClassProtocols() & protocols) == protocols)
-	{
-		return true;
-	}
-	try
-	{
-		const Map &m = static_cast<const Map&>(obj);
-		if ((m.protocols & protocols) == protocols)
-		{
-			return true;
-		}
-	}
-	catch (...) { }
-	try
-	{
-		const Vector &v = static_cast<const Vector&>(obj);
-		if ((v.GetContentProtocols() & protocols) == protocols)
-		{
-			return true;
-		}
-	}
-	catch (...) { }
-	return false;
+	auto xdoc = xml::Document(fname); // may throw
+	auto root = xdoc.GetRoot();
+	if (!root)
+		throw ExceptionNotFound{StringUTF8("void Map::Load(const Path &): ") + 
+				_("Cannot find root element.")};
+	auto el = root.GetFirstChildElement();
+	Deserialize(el); // may throw
+}
+
+void Map::Save(const Path &fname) const
+{
+	auto doc = xml::Document(fname);
+	auto root = doc.PushBackElement("ComplexObject");
+	Serialize(root);
 }
 
 CRN_BEGIN_CLASS_CONSTRUCTOR(Map)
 	CRN_DATA_FACTORY_REGISTER(U"Map", Map)
+	Cloner::Register<Map>();
 CRN_END_CLASS_CONSTRUCTOR(Map)
 
 

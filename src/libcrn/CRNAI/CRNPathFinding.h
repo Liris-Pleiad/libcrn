@@ -22,6 +22,7 @@
 #ifndef CRNPathFinding_HEADER
 #define CRNPathFinding_HEADER
 
+#include <CRNType.h>
 #include <memory>
 #include <vector>
 #include <list>
@@ -56,7 +57,14 @@ namespace crn
 	 * \version 0.1
 	 * \ingroup ai
 	 */
-	template<typename Node, typename StepCostFunc, typename DistanceEstimationFunc, typename NeighborFunc> std::vector<Node> AStar(const Node &first, const Node &last, const StepCostFunc &stepcost, const DistanceEstimationFunc &heuristic, const NeighborFunc &get_neighbors)
+	template<
+		typename Node, 
+		typename StepCostFunc,
+		typename DistanceEstimationFunc,
+		typename NeighborFunc,
+		typename std::enable_if<!traits::HasLT<Node>::value, int>::type = 0
+		>
+	std::vector<Node> AStar(const Node &first, const Node &last, const StepCostFunc &stepcost, const DistanceEstimationFunc &heuristic, const NeighborFunc &get_neighbors)
 	{
 		using NodePtr = std::shared_ptr<AStarNode<Node>>;
 		std::vector<NodePtr> openset;
@@ -135,6 +143,123 @@ namespace crn
 		throw ExceptionNotFound{"AStar(): No path found."};
 	}
 
+	/*! \brief	A node in an A* graph */
+	template<typename Node> struct AStarNodeC
+	{
+		/*! \brief	Constructor */
+		AStarNodeC():cumulCost(0), distToEnd(0), totalCost(0) { }
+		Node node; /*!< The content of the node */
+		double cumulCost; /*!< The cumulated cost to the node */
+		double distToEnd; /*!< The estimated distance to the end of the path */
+		double totalCost; /*!< The cumulated cost + the cost of the estimated distance to the end */
+		std::weak_ptr<AStarNodeC<Node>> parent; /*!< Back reference to the parent node */
+		struct CMP
+		{
+			bool operator()(const std::shared_ptr<AStarNodeC> &n1, const std::shared_ptr<AStarNodeC> &n2) const { return n1->node < n2->node; }
+		};
+	};
+
+	/*! \brief A* path finding for comparable data
+	 *
+	 * Searches the best path between two comparable nodes with a heuristic.
+	 *
+	 * \param[in]	first	start node
+	 * \param[in]	last	end node
+	 * \param[in]	stepcost	computes the cost from a node to one of its neighbors: double stepcost(const Node&, const Node&)
+	 * \param[in]	heuristic	estimates the cost from a node to another: double heuristic(const Node&, const Node&)
+	 * \param[in]	get_neighbors	returns the list of neighbors to a node: std::vector<Node> get_neighbors(const Node&)
+	 * \return	a vector of Nodes containing the shortest path or an empty vector if no path was found.
+	 *
+	 * \author Yann LEYDIER
+	 * \date	June 2012
+	 * \version 0.1
+	 * \ingroup ai
+	 */
+	template<
+		typename Node,
+		typename StepCostFunc,
+		typename DistanceEstimationFunc,
+		typename NeighborFunc,
+		typename std::enable_if<traits::HasLT<Node>::value, int>::type = 0
+		>
+	std::vector<Node> AStar(const Node &first, const Node &last, const StepCostFunc &stepcost, const DistanceEstimationFunc &heuristic, const NeighborFunc &get_neighbors)
+	{
+		using NodePtr = std::shared_ptr<AStarNodeC<Node>>;
+		const auto comparer = typename AStarNodeC<Node>::CMP{};
+		auto openset = std::set<NodePtr, typename AStarNodeC<Node>::CMP>(comparer);
+		auto closeset = std::set<NodePtr, typename AStarNodeC<Node>::CMP>(comparer);
+		// fist node
+		auto n = std::make_shared<AStarNodeC<Node>>();
+		n->node = first;
+		n->distToEnd = heuristic(n->node, last);
+		n->totalCost = n->distToEnd;
+		openset.insert(std::move(n));
+		while (!openset.empty())
+		{
+			// pick up the node with lowest cost
+			auto minit = std::min_element(openset.begin(), openset.end(), [](const NodePtr &n1, const NodePtr &n2){ return n1->cumulCost < n2->cumulCost; });
+			auto currentnode = *minit;
+			openset.erase(minit);
+			closeset.insert(currentnode);
+			if (currentnode->node == last)
+			{ // destination reached!
+				auto path = std::vector<Node>{};
+				// fill the path
+				while (currentnode)
+				{
+					path.push_back(currentnode->node);
+					currentnode = currentnode->parent.lock();
+				}
+				return std::vector<Node>(path.rbegin(), path.rend());
+			}
+			else
+			{
+				// compute neighbors
+				auto neighbors = get_neighbors(currentnode->node);
+				for (auto &&neigh : neighbors)
+				{ // for each neighbor
+					auto nn = std::make_shared<AStarNodeC<Node>>();
+					nn->node = std::move(neigh);
+					const double newcost = currentnode->cumulCost + stepcost(currentnode->node, nn->node);
+					// check if present in open set
+					auto openit = openset.find(nn);
+					if (openit != openset.end())
+					{ // found in open set
+						if ((*openit)->cumulCost <= newcost)
+							continue; // previous occurrence was better
+						else
+						{ // update
+							nn = *openit;
+							openset.erase(openit);
+						}
+					}
+					else
+					{
+						// check if present in close set
+						auto closeit = closeset.find(nn);
+						if (closeit != closeset.end())
+						{ // found in close set
+							if ((*closeit)->cumulCost <= newcost)
+								continue; // previous pass was better
+							else
+							{ // need to pass on it again
+								nn = *closeit;
+								closeset.erase(closeit);
+							}
+						}
+					}
+					// set the new candidate node
+					nn->cumulCost = newcost;
+					nn->distToEnd = heuristic(nn->node, last);
+					nn->totalCost = newcost + nn->distToEnd;
+					nn->parent = currentnode;
+					openset.insert(std::move(nn));
+				} // for each neighbor
+			} // not end node
+		} // while there are candidate nodes left
+		throw ExceptionNotFound{"AStar(): No path found."};
+	}
+	
 }
 
 #endif

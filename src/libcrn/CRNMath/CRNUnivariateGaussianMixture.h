@@ -1,4 +1,4 @@
-/* Copyright 2008-2015 INSA Lyon, CoReNum
+/* Copyright 2008-2016 INSA Lyon, CoReNum, ENS-Lyon
  * 
  * This file is part of libcrn.
  * 
@@ -50,44 +50,36 @@ namespace crn
 			UnivariateGaussianMixture(){}
 			UnivariateGaussianMixture(const UnivariateGaussianMixture& m) = default;
 			UnivariateGaussianMixture(UnivariateGaussianMixture&&) = default;
-            /*!
-             * Create a gaussian mixture to model a given set of data
-             *
-             * \param[in] 	it_begin	iterator pointing to first pair of input data
-             * \param[in] 	it_end      ending iterator
-             * \param[in] 	nbSeeds		the number of density functions
-             *
-             * \return	the inferred gaussian mixture model
-             */
-            template<typename ITER> UnivariateGaussianMixture(ITER it_begin, ITER it_end, size_t nb_seeds = 2)
-            {
-                if (nb_seeds == 1)
-                {
-                    auto mvd = MeanVarDev(it_begin, it_end);
-                    
-                    AddMember(UnivariateGaussianPDF(std::get<0>(mvd), std::get<1>(mvd)), 1.0);
-                }
-                else
-                    EM(it_begin, it_end, (unsigned int)(nb_seeds));
-            }
-        
-			/*! \brief Clones the model */
-			virtual UObject Clone() const override { return std::make_unique<UnivariateGaussianMixture>(*this); }
-			
+			/*!
+			 * Create a gaussian mixture to model a given set of data
+			 *
+			 * \param[in] 	it_begin	iterator pointing to first pair of input data
+			 * \param[in] 	it_end      ending iterator
+			 * \param[in] 	nbSeeds		the number of density functions
+			 *
+			 * \return	the inferred gaussian mixture model
+			 */
+			template<typename ITER> UnivariateGaussianMixture(ITER it_begin, ITER it_end, size_t nb_seeds = 2)
+			{
+				if (nb_seeds == 1)
+				{
+					auto mvd = MeanVarDev(it_begin, it_end);
+
+					AddMember(UnivariateGaussianPDF(std::get<0>(mvd), std::get<1>(mvd)), 1.0);
+				}
+				else
+					EM(it_begin, it_end, (unsigned int)(nb_seeds));
+			}
+
 			/*! \brief Destructor */
 			virtual ~UnivariateGaussianMixture() override;
 
 			UnivariateGaussianMixture& operator=(const UnivariateGaussianMixture&) = delete;
 			UnivariateGaussianMixture& operator=(UnivariateGaussianMixture&&) = default;
-			
-			/*! \brief Returns the id of the class */
-			virtual Protocol GetClassProtocols() const noexcept override { return crn::Protocol::Clonable | crn::Protocol::Serializable; }
-			/*! \brief Returns the name of the class */
-			virtual const String& GetClassName() const override { static const String cn(U"Univariate_Gaussian_Mixture"); return cn; }
 
 			/*! \brief Returns the number of density functions */
 			size_t GetNbMembers() const noexcept { return members.size(); }
-			
+
 			/*! \brief Returns the weight of a given density function */
 			double GetWeight(size_t k) const;
 			/*! \brief Returns a given density function */
@@ -96,7 +88,7 @@ namespace crn
 			double GetMean(size_t k) const;
 			/*! \brief Returns the variance of a given density function */
 			double GetVariance(size_t k) const;
-			
+
 			/*! \brief Adds a density function */
 			void AddMember(UnivariateGaussianPDF pdf, double Weight);
 			/*! \brief Replaces a given density function and its weight */
@@ -121,7 +113,7 @@ namespace crn
 			template<typename ITER> unsigned int EM(ITER it_begin, ITER it_end, size_t nbSeeds = 2, double epsilon = std::numeric_limits<double>::epsilon(), size_t maximalIterations = 100);
 
 			/*! \brief Dumps a summary of the mixture to a string */
-			virtual String ToString() const override;
+			String ToString() const;
 			/*! \brief Dumps a summary of one element of the mixture to a string */
 			String ToString(size_t k) const;
 
@@ -140,21 +132,22 @@ namespace crn
 			/*! \brief Creates a data sample following the mixture's probability law */
 			std::vector<double> MakeRandomSample(size_t n = 1, size_t m = 100, bool reseed = true) const;
 
+			void Deserialize(xml::Element &el);
+			xml::Element Serialize(xml::Element &parent) const;
+
 		private:
 			/*! \brief Checks if an index is valid */
 			bool isValidMemberIndex(size_t k) const { return k < members.size(); }
-
-			void deserialize(xml::Element &el) override;
-			xml::Element serialize(xml::Element &parent) const override;
 
 			std::vector<std::pair<UnivariateGaussianPDF, double>> members; /*!< the PDFs and their weights */
 
 			CRN_DECLARE_CLASS_CONSTRUCTOR(UnivariateGaussianMixture)
 			CRN_SERIALIZATION_CONSTRUCTOR(UnivariateGaussianMixture)
 	};
+	template<> struct IsSerializable<UnivariateGaussianMixture> : public std::true_type {};
+	template<> struct IsClonable<UnivariateGaussianMixture> : public std::true_type {};
 
 	CRN_ALIAS_SMART_PTR(UnivariateGaussianMixture)
-
 
 	/*!
 	 * Maximum log-likelihood estimator

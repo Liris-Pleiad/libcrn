@@ -112,11 +112,19 @@ static std::pair<bool, String> save_png_libpng(const Path &filename, const Image
 	row_pointers = (png_bytep*)malloc(sizeof(png_byte*) * height);
 	for (int i = 0; i < height ; ++i)
 	{
+#if (PNG_LIBPNG_VER > 10300)
+		row_pointers[i] = (png_bytep)calloc(1, png_get_rowbytes(png_ptr, info_ptr));
+#else
 		row_pointers[i] = (png_bytep)calloc(1, info_ptr->rowbytes);
+#endif
 	}
 
 	/* Conversion */
+#if (PNG_LIBPNG_VER > 10300)
+	int channels = png_get_channels(png_ptr, info_ptr);
+#else
 	int channels = info_ptr->channels;
+#endif
 	for (int y = 0; y < height; y++)
 		for (int x = 0; x < width; x++)
 		{

@@ -1,4 +1,4 @@
-/* Copyright 2006-2014 INSA Lyon, CoReNum
+/* Copyright 2006-2016 INSA Lyon, CoReNum, ENS-Lyon
  * 
  * This file is part of libcrn.
  * 
@@ -33,7 +33,7 @@ const StringUTF8 USERDATA_NAME("userdata");
  * Default constructor
  * \param[in]	s	the name of the object
  */
-ComplexObject::ComplexObject(const String &s):
+Savable::Savable(const String &s):
 	name(s),
 	user_data(nullptr),
 	filelock(std::make_unique<std::mutex>()),
@@ -44,23 +44,12 @@ ComplexObject::ComplexObject(const String &s):
 /*!
  * Destructor. Frees the user data.
  */
-ComplexObject::~ComplexObject()
+Savable::~Savable()
 { 
 }
 
-ComplexObject::ComplexObject(ComplexObject&&) noexcept = default;
-ComplexObject& ComplexObject::operator=(ComplexObject&&c) = default;
-
-/*****************************************************************************/
-/*!
- * Converts object to string
- *
- * \return	The string corresponding to the object
- */
-String ComplexObject::ToString() const
-{
-	return GetClassName() + "::" + GetName();
-}
+Savable::Savable(Savable&&) noexcept = default;
+Savable& Savable::operator=(Savable&&c) = default;
 
 /*****************************************************************************/
 /*!
@@ -69,7 +58,7 @@ String ComplexObject::ToString() const
  * \param[in]	key	The data key
  * \return	true if the key exists, false else
  */
-bool ComplexObject::IsUserData(const String &key) const
+bool Savable::IsUserData(const String &key) const
 {
 	if (!user_data) 
 		return false;
@@ -86,7 +75,7 @@ bool ComplexObject::IsUserData(const String &key) const
  * \param[in]	key	The data key
  * \return	the value or nullptr if key does not exist
  */
-SObject ComplexObject::GetUserData(const String &key)
+SObject Savable::GetUserData(const String &key)
 {
 	if (!user_data)
 		return nullptr;
@@ -103,7 +92,7 @@ SObject ComplexObject::GetUserData(const String &key)
  * \param[in]	value	The value to search
  * \return	The key corresponding to the value, or "" if not found
  */
-String ComplexObject::GetUserDataKey(const SObject &value) const
+String Savable::GetUserDataKey(const SObject &value) const
 {
 	if (!user_data)
 		return U"";
@@ -122,7 +111,7 @@ String ComplexObject::GetUserDataKey(const SObject &value) const
  * \param[in]	key	The data key
  * \return	the value or nullptr if key does not exist
  */
-const SObject ComplexObject::GetUserData(const String &key) const
+const SObject Savable::GetUserData(const String &key) const
 {
 	if (!user_data)
 		return nullptr;
@@ -140,7 +129,7 @@ const SObject ComplexObject::GetUserData(const String &key) const
  *
  * \param[in]	key	The data key
  */
-void ComplexObject::DeleteUserData(const String &key)
+void Savable::DeleteUserData(const String &key)
 {
 	if (!user_data)
 		throw ExceptionNotFound(_("No user data to remove."));
@@ -153,17 +142,17 @@ void ComplexObject::DeleteUserData(const String &key)
  * \param[in]	key	the (unique) key of the data
  * \param[in]	value	the data to add
  */
-void ComplexObject::SetUserData(const String &key, SObject value)
+void Savable::SetUserData(const String &key, SObject value)
 {
 	if (!user_data)
-		user_data.reset(new Map(Protocol::Serializable));
+		user_data.reset(new Map());
 	user_data->Set(key, value);
 }
 
 /*! 
  * Deletes all user data entries
  */
-void ComplexObject::ClearUserData()
+void Savable::ClearUserData()
 {
 	if (user_data)
 		user_data->Clear();
@@ -178,7 +167,7 @@ void ComplexObject::ClearUserData()
  * \param[in]	s	the name of the object
  * \param[in]	fname	the file name
  */
-ComplexObject::ComplexObject(const String &s, const Path &fname):
+Savable::Savable(const String &s, const Path &fname):
 	name(s),
 	user_data(nullptr),
 	filename(fname)
@@ -195,7 +184,7 @@ ComplexObject::ComplexObject(const String &s, const Path &fname):
  *
  * \param[in]	fname	the file name
  */
-void ComplexObject::Load(const Path &fname)
+void Savable::Load(const Path &fname)
 {
 	std::lock_guard<std::mutex> lock(*filelock);
 	Path fn;
@@ -215,7 +204,7 @@ void ComplexObject::Load(const Path &fname)
  *
  * \param[in]	fname	the file name
  */
-void ComplexObject::Save(const Path &fname)
+void Savable::Save(const Path &fname)
 {
 	std::lock_guard<std::mutex> lock(*filelock);
 	Path fn;
@@ -234,7 +223,7 @@ void ComplexObject::Save(const Path &fname)
  * \throws	ExceptionIO	cannot write file
  * \throws	ExceptionProtocol	save unimplemented
  */
-void ComplexObject::Save()
+void Savable::Save()
 {
 	if (filename.IsEmpty())
 		return throw ExceptionUninitialized(_("Cannot save an object with no filename."));
@@ -248,7 +237,7 @@ void ComplexObject::Save()
  *
  * \return	the absolute file name
  */
-Path ComplexObject::completeFilename(const Path &fn) const
+Path Savable::completeFilename(const Path &fn) const
 {
 	return fn;
 }
@@ -265,22 +254,9 @@ Path ComplexObject::completeFilename(const Path &fn) const
  *
  * \return	true if success, false else.
  */
-void ComplexObject::load(const Path &fname)
+void Savable::load(const Path &fname)
 {
-	if (this->Implements(Protocol::Serializable))
-	{
-		filename = fname;
-		xml::Document doc(fname); // may throw
-		xml::Element root(doc.GetRoot()); // may throw
-		xml::Element obj = root.GetFirstChildElement();
-		if (!obj)
-			throw ExceptionNotFound();
-		Deserialize(obj);
-	}
-	else
-	{
-		throw ExceptionProtocol(StringUTF8("load() not implemented in ") + GetClassName().CStr());
-	}
+	throw ExceptionProtocol(StringUTF8("load() not implemented in ") + typeid(*this).name());
 }
 
 /*!
@@ -291,24 +267,9 @@ void ComplexObject::load(const Path &fname)
  *
  * \param[in]	fname	the file name
  */
-void ComplexObject::save(const Path &fname)
+void Savable::save(const Path &fname)
 {
-	if (this->Implements(Protocol::Serializable))
-	{
-		filename = fname;
-
-		xml::Document doc;
-		doc.PushBackComment("lib ComplexObject file");
-		xml::Element root(doc.PushBackElement("ComplexObject"));
-
-		Serialize(root);
-
-		doc.Save(fname); // may throw
-	}
-	else
-	{
-		throw ExceptionProtocol(StringUTF8("save() not implemented in ") + GetClassName().CStr());
-	}
+	throw ExceptionProtocol(StringUTF8("save() not implemented in ") + typeid(*this).name());
 }
 
 /*****************************************************************************/
@@ -317,7 +278,7 @@ void ComplexObject::save(const Path &fname)
  *
  * \param[in]	el	the element that contains the serialized object
  */
-void ComplexObject::deserialize_internal_data(xml::Element &el)
+void Savable::deserialize_internal_data(xml::Element &el)
 {
 	// read name if any
 	const StringUTF8 nam = el.GetAttribute<StringUTF8>("name");
@@ -331,7 +292,7 @@ void ComplexObject::deserialize_internal_data(xml::Element &el)
 		{ // found the user data
 			if (!user_data)
 			{ // create the object if needed
-				user_data.reset(new Map(Protocol::Serializable));
+				user_data.reset(new Map());
 			}
 			else
 			{ // clear the current user data if needed
@@ -351,7 +312,7 @@ void ComplexObject::deserialize_internal_data(xml::Element &el)
  *
  * \param[in]	el	the element that contains the serialized object
  */
-void ComplexObject::serialize_internal_data(xml::Element &el) const
+void Savable::serialize_internal_data(xml::Element &el) const
 {
 	el.SetAttribute("name", name.CStr());
 	if (user_data)

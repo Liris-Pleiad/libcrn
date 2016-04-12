@@ -1,4 +1,4 @@
-/* Copyright 2014 INSA-Lyon
+/* Copyright 2014-2016 INSA-Lyon, ENS-Lyon
  * 
  * This file is part of libcrn.
  * 
@@ -100,7 +100,7 @@ namespace crn
 				if (row.size() != nelem)
 					throw ExceptionDimension("kmedoids::Run(): The distance matrix is not square.");
 			// init
-			std::vector<size_t> medoids = init(distmat);
+			auto medoids = init(distmat);
 			const auto k = medoids.size();
 			/*
 			std::cout << "init: ";
@@ -118,11 +118,11 @@ namespace crn
 				distsum = 0.0;
 				// classification
 				std::vector<std::multimap<double, size_t>>(k).swap(clusters);
-				for (size_t o = 0; o < nelem; ++o)
+				for (auto o = size_t(0); o < nelem; ++o)
 				{
 					auto ndist = std::numeric_limits<double>::max();
 					auto nclass = size_t{0};
-					for (size_t m = 0; m < k; ++m)
+					for (auto m = size_t(0); m < k; ++m)
 						if (distmat[o][medoids[m]] < ndist)
 						{
 							ndist = distmat[o][medoids[m]];
@@ -138,7 +138,7 @@ namespace crn
 					break;
 			}
 			auto classnum = std::vector<size_t>(nelem, 0);
-			for (size_t c = 0; c < k; ++c)
+			for (auto c = size_t(0); c < k; ++c)
 				for (const auto &o : clusters[c])
 					classnum[o.second] = c;
 			return std::make_tuple(std::move(classnum), std::move(clusters), std::move(medoids));

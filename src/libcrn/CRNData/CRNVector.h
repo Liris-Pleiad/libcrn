@@ -1,4 +1,4 @@
-/* Copyright 2006-2016 Yann LEYDIER, INSA-Lyon, CoReNum, Université Paris Descartes
+/* Copyright 2006-2016 Yann LEYDIER, INSA-Lyon, CoReNum, Université Paris Descartes, ENS-Lyon
  * 
  * This file is part of libcrn.
  * 
@@ -39,59 +39,50 @@ namespace crn
 	 * \version 0.3
 	 * \ingroup containers
 	 */
-	class Vector: public ComplexObject
+	class Vector: public Object
 	{
 		public:
 			/*! \brief Default constructor */
-			Vector(Protocol protos = Protocol::Object);
+			Vector();
 			/*! \brief Constructor from a std::vector containing data that can be casted or converted to SObject 
 			 * \param[in]	vec	a vector of objects than can be converted to SObject
 			 * \param[in]	protos	the protocols that must be met by the elements of the vector
 			 */
-			template<typename T> Vector(std::vector<T> &vec, Protocol protos = Protocol::Object):
-				protocols(protos)
-			{
-				for (typename std::vector<T>::iterator it = vec.begin(); it != vec.end(); ++it)
-				{
-					SObject o(Data::ToCRN(*it));
-					if (!o->Implements(protocols))
-						throw ExceptionProtocol("Vector(std::vector): incompatible protocols");
-					data.push_back(o);
-				}
-			}
+			// XXX TODO
+			//template<typename T> Vector(std::vector<T> &vec, Protocol protos = Protocol::Object):
+				//protocols(protos)
+			//{
+				//for (typename std::vector<T>::iterator it = vec.begin(); it != vec.end(); ++it)
+				//{
+					//SObject o(Data::ToCRN(*it));
+					//if (!o->Implements(protocols))
+						//throw ExceptionProtocol("Vector(std::vector): incompatible protocols");
+					//data.push_back(o);
+				//}
+			//}
 			/*! \brief Constructor from iterators pointing to data that can be casted or converted to SObject
 			 * \param[in]	begin_it	first iterator on objects than can be converted to SObject
 			 * \param[in]	end_it	end iterator
 			 * \param[in]	protos	the protocols that must be met by the elements of the vector
 			 */
-			template<typename IT> Vector(const IT &begin_it, const IT &end_it, Protocol protos = Protocol::Object):
-				protocols(protos)
-			{
-				for (IT it = begin_it; it != end_it; ++it)
-				{
-					SObject o(Data::ToCRN(*it));
-					if (!o->Implements(protocols))
-						throw ExceptionProtocol("Vector(IT begin, IT end): incompatible protocols");
-					data.push_back(o);
-				}
-			}
+			//template<typename IT> Vector(const IT &begin_it, const IT &end_it, Protocol protos = Protocol::Object):
+				//protocols(protos)
+			//{
+				//for (IT it = begin_it; it != end_it; ++it)
+				//{
+					//SObject o(Data::ToCRN(*it));
+					//if (!o->Implements(protocols))
+						//throw ExceptionProtocol("Vector(IT begin, IT end): incompatible protocols");
+					//data.push_back(o);
+				//}
+			//}
 			/*! \brief Destructor */
 			virtual ~Vector() override;
 
-			Vector(const Vector &) = delete;
+			Vector(const Vector &);
 			Vector(Vector &&) = default;
-			Vector& operator=(const Vector &) = delete;
+			Vector& operator=(const Vector &);
 			Vector& operator=(Vector &&) = default;
-
-			/*! \brief The protocols of this object depend on its contents */
-			virtual Protocol GetClassProtocols() const noexcept override;
-			/*! \brief Returns the protocol constraints on its contents */
-			Protocol GetContentProtocols() const noexcept { return protocols; }
-			/*! \brief Returns the id of the class */
-			virtual const String& GetClassName() const override { static const String cn(U"Vector"); return cn; }
-
-			/*! \brief Clones the container and its contents if applicable */
-			virtual UObject Clone() const override;
 
 			/*! \brief Returns the number of data objects in the vector */
 			size_t Size() const noexcept { return data.size(); }
@@ -118,9 +109,9 @@ namespace crn
 			/*! \brief Checks of the object is in the vector */
 			bool Contains(const SCObject &o) const;
 			/*! \brief Adds an object at the end of the vector */
-			void PushBack(SObject d);
+			void PushBack(const SObject &d);
 			/*! \brief Inserts an object at a given position */
-			void Insert(SObject d, size_t pos);
+			void Insert(const SObject &d, size_t pos);
 
 			/*! \brief Reorders the elements */
 			void ReorderFrom(const std::vector<size_t> &from);
@@ -135,9 +126,6 @@ namespace crn
 			void Remove(const SCObject &obj);
 			/*! \brief Empties the vector */
 			void Clear() noexcept { data.clear(); }
-
-			/*! \brief Dumps the contents to a string */
-			virtual String ToString() const override;
 
 #include <CRNData/CRNVectorIterator.h>
 			/*! \brief Returns an iterator to the first element */
@@ -184,35 +172,35 @@ namespace crn
 			/*! \brief Gets the inner data */
 			std::vector<SObject> Std() && { return std::move(data); }
 
-			/*! \brief Sorts the list using the POSET protocol if applicable */
-			void Sort();
 			/*! \brief Swaps contents with another vector */
 			void Swap(Vector &other) noexcept;
 
 			/*! \brief Optimizes the memory usage */
 			void ShrinkToFit();
 
-		private:
-			/*! \brief Checks if the protocols are compatible with the object's constraints */
-			bool checkProtocols(const Object &obj);
 			/*! \brief Reads from an XML node if applicable */
-			virtual void deserialize(xml::Element &el) override;
+			void Deserialize(xml::Element &el);
 			/*! \brief Dumps to an XML node if applicable */
-			virtual xml::Element serialize(xml::Element &parent) const override;
-			/*! \brief Distance to another vector if applicable */
-			double distance(const Object &obj) const override;
+			xml::Element Serialize(xml::Element &parent) const;
+		private:
+			virtual std::string getClassName() const { return "Vector"; }
 
 			std::vector<SObject> data; /*!< internal data storage */
-			Protocol protocols; /*!< Mandatory protocols for the contents */
 
 		CRN_DECLARE_CLASS_CONSTRUCTOR(Vector)
-		public: Vector(xml::Element &el):protocols(Protocol::Serializable) { Deserialize(el); }
+		public: Vector(xml::Element &el) { Deserialize(el); }
 	};
+	template<> struct IsSerializable<Vector> : public std::true_type {};
+	template<> struct IsClonable<Vector> : public std::true_type {};
+	template<> struct IsMetric<Vector> : public std::true_type {};
+
+	/*! \brief Distance between two vectors */
+	double Distance(const Vector &v1, const Vector &v2);
 
 	/*! \brief Size of a vector */
 	inline size_t Size(const Vector &v) noexcept { return v.Size(); }
 	/*! \brief Swaps two vectors */
-	inline void swap(Vector &v1, Vector &v2) noexcept { v1.Swap(v2); }
+	inline void Swap(Vector &v1, Vector &v2) noexcept { v1.Swap(v2); }
 }
 CRN_ADD_RANGED_FOR_TO_POINTERS(crn::Vector)
 CRN_ADD_RANGED_FOR_TO_CONST_POINTERS(crn::Vector)

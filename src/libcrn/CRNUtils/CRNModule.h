@@ -25,7 +25,7 @@
 #include <CRNString.h>
 #include <CRNIO/CRNIO.h>
 
-#ifdef CRN_PF_WIN32
+#ifdef _MSC_VER
 #	include <windows.h>
 // this is insane!!!
 #	undef GetClassName
@@ -58,7 +58,7 @@
 #	define RTLD_GLOBAL 4
 #else
 #	include <dlfcn.h>
-#endif /* CRN_PF_WIN32 */
+#endif /* _MSC_VER */
 
 /*! \defgroup module Dynamically loaded modules 
  * \ingroup	utils */

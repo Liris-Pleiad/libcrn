@@ -270,9 +270,9 @@ namespace crn
 	 * \param[in]	x	the beginning abscissa
 	 * \param[in]	y	the beginning ordinate
 	 * \param[in]	val	the value used to fill
-	 * \param[in]	dist	the distance to use (Distance::D4 or Distance::D8)
+	 * \param[in]	dist	the distance to use (DistanceType::D4 or DistanceType::D8)
 	 */
-	template<typename T> void Image<T>::FloodFill(size_t x, size_t y, const pixel_type &val, crn::Distance dist)
+	template<typename T> void Image<T>::FloodFill(size_t x, size_t y, const pixel_type &val, crn::DistanceType dist)
 	{
 		if ((x >= width) || (y >= height))
 			throw crn::ExceptionDomain("Image::FloodFill(): Coordinates out of bounds.");
@@ -281,7 +281,7 @@ namespace crn
 		if (oldval == val)
 			return; // do not fill twice
 		pixels[offset] = val;
-		if ((dist == crn::Distance::D4) || (dist == crn::Distance::D8))
+		if ((dist == crn::DistanceType::D4) || (dist == crn::DistanceType::D8))
 		{
 			if (x > 0)
 				if (pixels[offset - 1] == oldval)
@@ -296,7 +296,7 @@ namespace crn
 				if (pixels[offset + width] == oldval)
 					FloodFill(x, y + 1, val, dist);
 		}
-		if (dist == crn::Distance::D8)
+		if (dist == crn::DistanceType::D8)
 		{
 			if ((x > 0) && (y > 0))
 				if (pixels[offset - 1 - width] == oldval)
@@ -322,9 +322,9 @@ namespace crn
 	 * \param[in]  x  the beginning abscissa
 	 * \param[in]  y  the beginning ordinate
 	 * \param[in]  val  the value used to fill
-	 * \param[in]  dist  the distance to use (Distance::D4 or Distance::D8)
+	 * \param[in]  dist  the distance to use (DistanceType::D4 or DistanceType::D8)
 	 */
-	template<typename T> void Image<T>::ScanFill(size_t x, size_t y, const pixel_type &val, crn::Distance dist)
+	template<typename T> void Image<T>::ScanFill(size_t x, size_t y, const pixel_type &val, crn::DistanceType dist)
 	{
 		if ((x >= width) || (y >= height))
 			throw crn::ExceptionDomain("Image::ScanFill(): Coordinates out of bounds.");
@@ -370,7 +370,7 @@ namespace crn
 						todo.emplace_back(pos.first - 1, std::make_pair(bx, ex));
 						checklimitup = ex;
 					}
-					if (dist == crn::Distance::D8)
+					if (dist == crn::DistanceType::D8)
 					{
 						// look up-left (only for the first pixel of the stream)
 						if ((tx == pos.second.first) && (tx > 0) && (tx - 1 >= checklimitup))
@@ -427,7 +427,7 @@ namespace crn
 						todo.emplace_back(pos.first + 1, std::make_pair(bx, ex));
 						checklimitdown = ex;
 					}
-					if (dist == crn::Distance::D8)
+					if (dist == crn::DistanceType::D8)
 					{
 						// look up-left (only for the first pixel of the stream)
 						if ((tx == pos.second.first) && (tx > 0) && (tx - 1 >= checklimitdown))
@@ -1322,51 +1322,68 @@ namespace crn
             }
         }
 	}
+}
 
-	template<typename T1, typename T2> Image<SumType<typename std::common_type<T1, T2>::type>> operator+(const Image<T1> &i1, const Image<T2> &i2)
-	{
-		if ((i1.GetWidth() != i2.GetWidth()) || (i1.GetHeight() != i2.GetHeight()))
-			throw ExceptionDimension("operator+(Image, Image): images do not have the same sizes.");
-		using R = SumType<typename std::common_type<T1, T2>::type>;
-		auto res = Image<R>{i1.GetWidth(), i1.GetHeight()};
-		for (auto i : Range(i1))
-			res.At(i) = R(i1.At(i)) + R(i2.At(i));
-		return res;
-	}
+template<typename T1, typename T2> crn::Image<crn::SumType<typename std::common_type<T1, T2>::type>> operator+(const crn::Image<T1> &i1, const crn::Image<T2> &i2)
+{
+	if ((i1.GetWidth() != i2.GetWidth()) || (i1.GetHeight() != i2.GetHeight()))
+		throw crn::ExceptionDimension("operator+(Image, Image): images do not have the same sizes.");
+	using R = crn::SumType<typename std::common_type<T1, T2>::type>;
+	auto res = crn::Image<R>{i1.GetWidth(), i1.GetHeight()};
+	for (auto i : crn::Range(i1))
+		res.At(i) = R(i1.At(i)) + R(i2.At(i));
+	return res;
+}
+
+template<typename T1, typename T2> crn::Image<crn::DiffType<typename std::common_type<T1, T2>::type>> operator-(const crn::Image<T1> &i1, const crn::Image<T2> &i2)
+{
+	if ((i1.GetWidth() != i2.GetWidth()) || (i1.GetHeight() != i2.GetHeight()))
+		throw crn::ExceptionDimension("operator-(Image, Image): images do not have the same sizes.");
+	using R = crn::DiffType<typename std::common_type<T1, T2>::type>;
+	auto res = crn::Image<R>{i1.GetWidth(), i1.GetHeight()};
+	for (auto i : crn::Range(i1))
+		res.At(i) = R(i1.At(i)) - R(i2.At(i));
+	return res;
+}
+
+template<typename T1, typename T2> crn::Image<crn::SumType<typename std::common_type<T1, T2>::type>> operator*(const crn::Image<T1> &i1, const crn::Image<T2> &i2)
+{
+	if ((i1.GetWidth() != i2.GetWidth()) || (i1.GetHeight() != i2.GetHeight()))
+		throw crn::ExceptionDimension("operator*(Image, Image): images do not have the same sizes.");
+	using R = crn::SumType<typename std::common_type<T1, T2>::type>;
+	auto res = crn::Image<R>{i1.GetWidth(), i1.GetHeight()};
+	for (auto i : crn::Range(i1))
+		res.At(i) = R(i1.At(i)) * R(i2.At(i));
+	return res;
+}
+
+template<typename T> crn::Image<crn::SumType<typename std::common_type<T, double>::type>> operator*(double d, const crn::Image<T> &i)
+{
+	using R = crn::SumType<typename std::common_type<T, double>::type>;
+	auto res = crn::Image<R>{i.GetWidth(), i.GetHeight()};
+	for (auto tmp : crn::Range(i))
+		res.At(tmp) = R(i.At(tmp)) * R(d);
+	return res;
+}
+
+template<typename T> crn::Image<crn::SumType<typename std::common_type<T, double>::type>> operator*(const crn::Image<T> &i, double d)
+{
+	return d * i;
+}
+
+template<typename T1, typename T2> crn::Image<crn::SumType<typename std::common_type<T1, T2>::type>> operator/(const crn::Image<T1> &i1, const crn::Image<T2> &i2)
+{
+	if ((i1.GetWidth() != i2.GetWidth()) || (i1.GetHeight() != i2.GetHeight()))
+		throw crn::ExceptionDimension("operator/(Image, Image): images do not have the same sizes.");
+	using R = crn::SumType<typename std::common_type<T1, T2>::type>;
+	auto res = crn::Image<R>{i1.GetWidth(), i1.GetHeight()};
+	for (auto i : Range(i1))
+		res.At(i) = R(i1.At(i)) / R(i2.At(i));
+	return res;
+}
 	
-	template<typename T1, typename T2> Image<DiffType<typename std::common_type<T1, T2>::type>> operator-(const Image<T1> &i1, const Image<T2> &i2)
-	{
-		if ((i1.GetWidth() != i2.GetWidth()) || (i1.GetHeight() != i2.GetHeight()))
-			throw ExceptionDimension("operator-(Image, Image): images do not have the same sizes.");
-		using R = DiffType<typename std::common_type<T1, T2>::type>;
-		auto res = Image<R>{i1.GetWidth(), i1.GetHeight()};
-		for (auto i : Range(i1))
-			res.At(i) = R(i1.At(i)) - R(i2.At(i));
-		return res;
-	}
-	
-	template<typename T1, typename T2> Image<SumType<typename std::common_type<T1, T2>::type>> operator*(const Image<T1> &i1, const Image<T2> &i2)
-	{
-		if ((i1.GetWidth() != i2.GetWidth()) || (i1.GetHeight() != i2.GetHeight()))
-			throw ExceptionDimension("operator*(Image, Image): images do not have the same sizes.");
-		using R = SumType<typename std::common_type<T1, T2>::type>;
-		auto res = Image<R>{i1.GetWidth(), i1.GetHeight()};
-		for (auto i : Range(i1))
-			res.At(i) = R(i1.At(i)) * R(i2.At(i));
-		return res;
-	}
-	
-	template<typename T1, typename T2> Image<SumType<typename std::common_type<T1, T2>::type>> operator/(const Image<T1> &i1, const Image<T2> &i2)
-	{
-		if ((i1.GetWidth() != i2.GetWidth()) || (i1.GetHeight() != i2.GetHeight()))
-			throw ExceptionDimension("operator/(Image, Image): images do not have the same sizes.");
-		using R = SumType<typename std::common_type<T1, T2>::type>;
-		auto res = Image<R>{i1.GetWidth(), i1.GetHeight()};
-		for (auto i : Range(i1))
-			res.At(i) = R(i1.At(i)) / R(i2.At(i));
-		return res;
-	}
-	
+namespace crn
+{
 	/**************************************************************************************
 	 * Characterization
 	 *************************************************************************************/

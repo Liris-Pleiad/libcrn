@@ -1,4 +1,4 @@
-/* Copyright 2013-2014 INSA Lyon
+/* Copyright 2013-2016 INSA Lyon, ENS-Lyon
  * 
  * This file is part of libcrn.
  * 
@@ -54,12 +54,11 @@ namespace crn
 									
 			value_type X, Y, Z; /*!< The coordinates */
 
-			inline Point3D& operator=(const Point3D &) = default;
-			inline Point3D& operator=(Point3D &&) = default;
+			Point3D& operator=(const Point3D &) = default;
+			Point3D& operator=(Point3D &&) = default;
 			/*! \brief Equality */
-			inline bool operator==(const Point3D &p) const { return (X == p.X) && (Y == p.Y) && (Z == p.Z); }
+			bool operator==(const Point3D &p) const noexcept { return (X == p.X) && (Y == p.Y) && (Z == p.Z); }
 
-			
 			/*! \brief Functor to sort rectangles regarding directions */
 			/*!
 			 * Functor to sort rectangles considering directions

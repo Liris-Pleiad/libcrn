@@ -1,4 +1,4 @@
-/* Copyright 2010-2016 CoReNum, INSA-Lyon
+/* Copyright 2010-2016 CoReNum, INSA-Lyon, ENS-lyon
  *
  * This file is part of libcrn.
  *
@@ -25,6 +25,7 @@
 #include <CRNData/CRNReal.h>
 #include <CRNException.h>
 #include <CRNIO/CRNIO.h>
+#include <CRNUtils/CRNXml.h>
 #include <CRNi18n.h>
 #ifdef _MSC_VER
 #	include <direct.h> // for getcwd
@@ -41,8 +42,7 @@ using namespace crn;
  */
 ConfigurationFile::ConfigurationFile(const String &application_name, const StringUTF8 &file_name):
 	appname(application_name),
-	filename(file_name),
-	data(std::make_shared<Map>(Protocol::Serializable))
+	filename(file_name)
 {
 	if (file_name.IsEmpty())
 		filename = application_name.CStr();
@@ -66,7 +66,7 @@ Path ConfigurationFile::Load()
 	files.push_back("_" + filename + ".xml");
 	files.push_back("." + filename + ".xml");
 
-	data->Clear();
+	data.Clear();
 	for (auto idir = dirs.begin(); (idir != dirs.end()); ++idir)
 	{
 		for (auto ifn = files.begin(); (ifn != files.end()); ++ifn)
@@ -77,7 +77,7 @@ Path ConfigurationFile::Load()
 			CRNdout << confname.CStr() << std::endl;
 			try
 			{
-				data->Load(confname);
+				data.Load(confname);
 				CRNdout << "Configuration loaded from: " << confname.CStr() << std::endl;
 				return confname;
 			}
@@ -96,7 +96,7 @@ Path ConfigurationFile::Save()
 	Path fname(GetUserDirectory() / filename + ".xml");
 	try
 	{
-		data->Save(fname);
+		data.Save(fname);
 		return fname;
 	}
 	catch (...)
@@ -111,7 +111,7 @@ Path ConfigurationFile::Save()
  */
 SObject& ConfigurationFile::operator[](const String &key)
 {
-	return (*data)[key];
+	return data[key];
 }
 
 /*! Gets a value
@@ -120,8 +120,8 @@ SObject& ConfigurationFile::operator[](const String &key)
  */
 SObject ConfigurationFile::GetData(const String &key)
 {
-	auto it(data->Find(key));
-	if (it != data->end())
+	auto it(data.Find(key));
+	if (it != data.end())
 		return it->second;
 	else
 		return nullptr;
@@ -133,8 +133,8 @@ SObject ConfigurationFile::GetData(const String &key)
  */
 SCObject ConfigurationFile::GetData(const String &key) const
 {
-	Map::const_iterator it(data->Find(key));
-	if (it != data->end())
+	Map::const_iterator it(data.Find(key));
+	if (it != data.end())
 		return it->second;
 	else
 		return nullptr;
@@ -199,9 +199,9 @@ Prop3 ConfigurationFile::GetProp3(const String &key) const
  */
 int ConfigurationFile::GetInt(const String &key) const
 {
-	SCInt val(std::dynamic_pointer_cast<const Int>(GetData(key)));
+	auto val = std::dynamic_pointer_cast<const Int>(GetData(key));
 	if (val)
-		return val->GetValue();
+		return *val;
 	throw ExceptionInvalidArgument(key.CStr() + StringUTF8(_(" is not an int.")));
 }
 
@@ -212,9 +212,9 @@ int ConfigurationFile::GetInt(const String &key) const
  */
 double ConfigurationFile::GetDouble(const String &key) const
 {
-	SCReal val(std::dynamic_pointer_cast<const Real>(GetData(key)));
+	auto val = std::dynamic_pointer_cast<const Real>(GetData(key));
 	if (val)
-		return val->GetValue();
+		return *val;
 	throw ExceptionInvalidArgument(key.CStr() + StringUTF8(_(" is not a double.")));
 }
 
@@ -223,7 +223,7 @@ double ConfigurationFile::GetDouble(const String &key) const
  */
 Path ConfigurationFile::GetUserDirectory() const
 {
-#ifdef CRN_PF_WIN32
+#ifdef _MSC_VER
 	crn::Path p(getenv("APPDATA"));
 #else
 	crn::Path p(getenv("HOME"));

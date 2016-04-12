@@ -1,4 +1,4 @@
-/* Copyright 2010-2014 CoReNum, INSA-Lyon
+/* Copyright 2010-2016 CoReNum, INSA-Lyon, ENS-Lyon
  * 
  * This file is part of libcrn.
  * 
@@ -37,17 +37,20 @@ namespace crn
 	 *
 	 * All derived class must initialize with CRN_DATA_FACTORY_REGISTER(classname)!
 	 */
-	class Action: public ComplexObject
+	class Action: public Object
 	{
 		public:
 			/*! \brief	Destructor */
 			virtual ~Action() override { }
-			/*! \brief	The class is serializable */
-			virtual Protocol GetClassProtocols() const noexcept override { return Protocol::Serializable; }
+			virtual StringUTF8 GetClassName() const = 0;
 
-		private:
-			virtual void deserialize(xml::Element &el) override;
-			virtual xml::Element serialize(xml::Element &parent) const override;
+			void Deserialize(xml::Element &el);
+			xml::Element Serialize(xml::Element &parent) const;
+
+			crn::Map UserData;
+		protected:
+			virtual void deserialize(xml::Element &el);
+			virtual xml::Element serialize(xml::Element &parent) const;
 	};
 	/*@}*/
 
@@ -78,7 +81,7 @@ namespace crn
 
 		private:
 			/*! \brief Default constructor */
-			DefaultAction():actions(Protocol::Serializable) {}
+			DefaultAction():actions() {}
 			Map actions; /*!< the set of actions */
 			/*! \brief Singleton instance */
 			static DefaultAction& getInstance();

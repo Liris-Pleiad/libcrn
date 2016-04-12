@@ -1,0 +1,70 @@
+# Findcrn
+# --------
+#
+# Findcrn.cmake
+#
+
+find_path(CRN_INCLUDE_DIR CRN.h
+	HINTS
+		${LIBCRN_HINTS}/@LIBCRN_INCLUDE_INSTALL@
+	PATHS
+		/usr/@LIBCRN_INCLUDE_INSTALL@
+		/usr/local/@LIBCRN_INCLUDE_INSTALL@
+		$ENV{LIBCRN_PATH}/@LIBCRN_INCLUDE_INSTALL@
+)
+
+find_library(CRN_LIBRARY NAME libcrn@CRNLIB_EXT@
+	HINTS
+		${LIBCRN_HINTS}
+	PATHS
+		/usr/lib
+		/usr/local/lib
+		$ENV{LIBCRN_PATH}/lib
+)
+
+find_library(CRN_LIBRARY_DEBUG NAME libcrn-d@CRNLIB_EXT@
+	HINTS
+		${LIBCRN_HINTS}
+	PATHS
+		/usr/lib
+		/usr/local/lib
+		$ENV{LIBCRN_PATH}/lib
+)
+if(NOT "${CRN_LIBRARY_DEBUG_FOUND}" STREQUAL "${CRN_LIBRARY_DEBUG_FOUND}-NOTFOUND")
+	set(CRN_LIBRARY "optimized;${CRN_LIBRARY};debug;${CRN_LIBRARY_DEBUG}")
+endif()
+
+include(FindPackageHandleStandardArgs)
+# handle the QUIETLY and REQUIRED arguments and set LIBCRN_FOUND to TRUE
+# if all listed variables are TRUE
+find_package_handle_standard_args(CRN DEFAULT_MSG CRN_LIBRARY CRN_INCLUDE_DIR)
+
+mark_as_advanced(CRN_INCLUDE_DIR CRN_LIBRARY)
+
+find_package(Iconv REQUIRED)
+
+@FINDLIBCRN_DEPS@
+
+if(FINDLIBCRN_INTL)
+	find_package(Intl REQUIRED)
+endif()
+
+if(FINDLIBCRN_PNG)
+	find_package(PNG REQUIRED)
+endif()
+
+if(FINDLIBCRN_JPEG)
+	find_package(JPEG REQUIRED)
+endif()
+
+if(FINDLIBCRN_GTK2)
+	find_package(GTK2 2.22 REQUIRED gtk)
+endif()
+
+if(FINDLIBCRN_GDIPLUS)
+	set(GDIPLUS_LIBRARIES "gdiplus.lib")
+endif()
+
+set(CRN_LIBRARIES ${ICONV_LIBRARIES} ${Intl_LIBRARIES} ${PNG_LIBRARIES} ${JPEG_LIBRARIES} ${GTK2_LIBRARIES} ${GDIPLUS_LIBRARIES} ${CRN_LIBRARY})
+set(CRN_INCLUDE_DIRS ${CRN_INCLUDE_DIR} ${ICONV_INCLUDE_DIRS} ${Intl_INCLUDE_DIRS} ${PNG_INCLUDE_DIRS} ${JPEG_INCLUDE_DIRS} ${GTK2_INCLUDE_DIRS})
+

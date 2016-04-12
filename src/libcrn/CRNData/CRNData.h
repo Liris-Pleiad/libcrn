@@ -1,4 +1,4 @@
-/* Copyright 2009-2015 INSA Lyon, Université Paris-Descartes
+/* Copyright 2009-2016 INSA Lyon, Université Paris-Descartes, ENS-Lyon
  * 
  * This file is part of libcrn.
  * 
@@ -51,6 +51,7 @@ namespace crn
 		UPath ToCRN(const Path &str);
 		/*! \brief Converts a Prop3 to CRN data */
 		UProp3 ToCRN(const Prop3 &val);
+
 		/*! \brief Converts a shared pointer to CRN data */
 		template<typename T> inline SObject ToCRN(std::shared_ptr<T> ptr)
 		{
@@ -63,18 +64,18 @@ namespace crn
 		/*! \brief Converts a pointer to CRN data (fails in not a Clonable object) */
 		template<typename T> inline UObject ToCRN(const T* ptr)
 		{
-			return ptr->Clone();
+			return Clone(*ptr);
 		}
 
 		/*! \brief Converts an object to CRN data (fails in not a Clonable object) */
 		template<typename T> inline UObject ToCRN(const T &obj)
 		{
-			return obj.Clone();
+			return Clone(obj);
 		}
 		/*! \brief Converts from a CRN object to another type */
 		template<typename T> inline T Convert(const Object &obj)
 		{
-			return Convert<T>(&obj);
+			throw ExceptionInvalidArgument("T Convert(const Object &obj): no way to convert object to T.");
 		}
 		/*! \brief Converts from a CRN object to int
 		 * \throws	ExceptionInvalidArgument	impossible to convert
@@ -85,7 +86,7 @@ namespace crn
 		{
 			const Int *i = dynamic_cast<const Int*>(&obj);
 			if (i)
-				return i->GetValue();
+				return int(*i);
 			const String *s = dynamic_cast<const String*>(&obj);
 			if (s)
 				return s->ToInt();
@@ -118,10 +119,10 @@ namespace crn
 		{
 			const Int *i = dynamic_cast<const Int*>(&obj);
 			if (i)
-				return i->GetValue();
+				return int(*i);
 			const Real *r = dynamic_cast<const Real*>(&obj);
 			if (r)
-				return r->GetValue();
+				return *r;
 			const String *s = dynamic_cast<const String*>(&obj);
 			if (s)
 				return s->ToDouble();
@@ -136,7 +137,19 @@ namespace crn
 		 */
 		template<> inline String Convert(const Object &obj)
 		{
-			return obj.ToString();
+			const Int *i = dynamic_cast<const Int*>(&obj);
+			if (i)
+				return int(*i);
+			const Real *r = dynamic_cast<const Real*>(&obj);
+			if (r)
+				return double(*r);
+			const String *s = dynamic_cast<const String*>(&obj);
+			if (s)
+				return *s;
+			const StringUTF8 *su = dynamic_cast<const StringUTF8*>(&obj);
+			if (su) // works for StringUTF8 and Path
+				return *su;
+			throw ExceptionInvalidArgument("Cannot convert between these types.");
 		}
 		/*! \brief Converts from a CRN object to StringUTF8
 		 * \param[in]	obj	an object to convert
@@ -144,7 +157,19 @@ namespace crn
 		 */
 		template<> inline StringUTF8 Convert(const Object &obj)
 		{
-			return obj.ToString().CStr();
+			const Int *i = dynamic_cast<const Int*>(&obj);
+			if (i)
+				return int(*i);
+			const Real *r = dynamic_cast<const Real*>(&obj);
+			if (r)
+				return double(*r);
+			const String *s = dynamic_cast<const String*>(&obj);
+			if (s)
+				return s->CStr();
+			const StringUTF8 *su = dynamic_cast<const StringUTF8*>(&obj);
+			if (su) // works for StringUTF8 and Path
+				return *su;
+			throw ExceptionInvalidArgument("Cannot convert between these types.");
 		}
 		/*! \brief Converts from a CRN object to Path
 		 * \param[in]	obj	an object to convert
@@ -152,7 +177,16 @@ namespace crn
 		 */
 		template<> inline Path Convert(const Object &obj)
 		{
-			return obj.ToString().CStr();
+			const Int *i = dynamic_cast<const Int*>(&obj);
+			if (i)
+				return int(*i);
+			const String *s = dynamic_cast<const String*>(&obj);
+			if (s)
+				return s->CStr();
+			const StringUTF8 *su = dynamic_cast<const StringUTF8*>(&obj);
+			if (su) // works for StringUTF8 and Path
+				return *su;
+			throw ExceptionInvalidArgument("Cannot convert between these types.");
 		}
 		/*! \brief Converts from a CRN object to Prop3
 		 * \throws	ExceptionInvalidArgument	impossible to convert
@@ -175,7 +209,7 @@ namespace crn
 		{
 			const Int *i = dynamic_cast<const Int*>(&obj);
 			if (i)
-				return i->GetValue() != 0;
+				return *i != 0;
 			const Prop3 *p = dynamic_cast<const Prop3*>(&obj);
 			if (p)
 				return p->IsTrue();

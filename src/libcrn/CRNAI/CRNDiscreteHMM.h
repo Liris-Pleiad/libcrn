@@ -1,4 +1,4 @@
-/* Copyright 2008-2014 INSA Lyon, CoReNum
+/* Copyright 2008-2016 INSA Lyon, CoReNum, ENS-Lyon
  * 
  * This file is part of libcrn.
  * 
@@ -35,7 +35,7 @@ namespace crn
 	 * 
 	 * \author 	Jean DUONG
 	 * \date	September 2008
-	 * \version	0.2
+	 * \version	0.3
 	 * \ingroup math
 	 */
 	class DiscreteHMM: public Object
@@ -53,16 +53,11 @@ namespace crn
 			DiscreteHMM(DiscreteHMM&&) noexcept;
 			DiscreteHMM& operator=(DiscreteHMM&&) noexcept;
 
-			/*! \brief Clones the model */
-			virtual UObject Clone() const override { return std::make_unique<DiscreteHMM>(*this); }
-
 			/*! \brief Destructor */
 			virtual ~DiscreteHMM() override;
 
-			/*! \brief Returns the id of the class */
-			virtual Protocol GetClassProtocols() const noexcept override { return Protocol::Clonable; }
-			/*! \brief Returns the name of the class */
-			virtual const String& GetClassName() const override { static const String cn(U"DiscreteHMM"); return cn; }
+			/*! \brief Tests the equality of two models */
+			bool operator==(const DiscreteHMM &other) const;
 
 			/*! \brief Returns the number of states */
 			size_t GetNbStates() const noexcept { return nbStates; }
@@ -86,7 +81,7 @@ namespace crn
 			/*! \brief Checks if the model is valid */
 			bool IsValid() const;
 			/*! \brief Dumps a summary to a string */
-			virtual String ToString() const override;
+			String ToString() const;
 
 			/*! \brief Returns the a priori probability of an observed sequence */
 			double SequenceProbability(const MatrixInt& observed) const;
@@ -98,9 +93,6 @@ namespace crn
 			void BaumWelchMultiple(const MatrixInt& observationSet, size_t maxIter);
 
 		private:
-			/*! \brief Tests the equality of two models */
-			bool equals(const Object &obj) const override;
-			
 			/*! \brief Internal */
 			UMatrixDouble alpha(const MatrixInt& observed) const;
 			/*! \brief Internal */
@@ -113,7 +105,10 @@ namespace crn
 			SSquareMatrixDouble stateTransitionProbability; /*!< The state transition probability matrix */
 			SMatrixDouble stateGivenSymbolProbability; /*!< The state given symbol probability matrix */
 			SMatrixDouble firstStateProbability; /*!< The first state probability matrix */
+			
+			CRN_DECLARE_CLASS_CONSTRUCTOR(DiscreteHMM)
 	};
+	template<> struct IsClonable<DiscreteHMM> : public std::true_type {};
 
 	CRN_ALIAS_SMART_PTR(DiscreteHMM)
 }

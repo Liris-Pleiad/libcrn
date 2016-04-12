@@ -1,4 +1,4 @@
-/* Copyright 2009 INSA Lyon
+/* Copyright 2016 ENS-Lyon
  * 
  * This file is part of libcrn.
  * 
@@ -15,20 +15,10 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with libcrn.  If not, see <http://www.gnu.org/licenses/>.
  * 
- * file: CRNkMeansPtr.h
+ * file: main.cpp
  * \author Yann LEYDIER
  */
 
-#ifndef CRNkMeansPtrh_HEADER
-#define CRNkMeansPtrh_HEADER
-
-#include <CRNType.h>
-namespace crn
-{
-	class kMeans;
-	CRN_ALIAS_SMART_PTR(kMeans)
-}
-
-#endif
-
+#define CATCH_CONFIG_MAIN  // This tells Catch to provide a main()
+#include "catch.hpp"
 

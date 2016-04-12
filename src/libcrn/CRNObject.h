@@ -1,4 +1,4 @@
-/* Copyright 2006-2014 Yann LEYDIER, CoReNum, INSA-Lyon
+/* Copyright 2006-2016 Yann LEYDIER, CoReNum, INSA-Lyon, ENS-Lyon
  * 
  * This file is part of libcrn.
  * 
@@ -23,8 +23,6 @@
 #define CRNOBJECT_HEADER
 
 #include <CRN.h>
-#include <vector>
-#include <CRNProtocols.h>
 
 namespace crn
 {
@@ -33,194 +31,116 @@ namespace crn
 }
 namespace crn
 {
-	class String;
+	/*! \defgroup base Base classes */
+	class Object
+	{
+		public:
+			virtual ~Object() = default;
+		protected:
+	};
+
+	/*! \brief Clones an object if possible */
+	UObject Clone(const Object &obj);
+	class Int;
+	std::unique_ptr<Int> Clone(int i);
+	class Real;
+	std::unique_ptr<Real> Clone(double d);
 	class Prop3;
+	std::unique_ptr<Prop3> Clone(bool b);
+
+	template<typename T> inline std::unique_ptr<T> CloneAs(const Object &obj) { return std::unique_ptr<T>(dynamic_cast<T*>(Clone(obj).release())); }
+
 	namespace xml
 	{
 		class Element;
 	}
+	/*! \brief Reads an object from XML if possible */
+	void Deserialize(Object &obj, xml::Element &el);
+	/*! \brief Writes an object to XML if possible */
+	xml::Element Serialize(const Object &obj, xml::Element &parent);
 
-	/*! \defgroup base Base classes */
-	
-	/****************************************************************************/
-	/*! \brief base abstract class
-	 *
-	 * The base abstract class from which all classes must inherit.
-	 * 
-	 * All derived classes must define:
-	 * 
-	 * 	- virtual const crn::String& GetClassName() const
-	 * 	- virtual unsigned int GetClassProtocols() const
-	 *
-	 * This class offers several protocols. If a protocol's
-	 * method is called without having been implemented, an exception will be
-	 * thrown. The overloadable methods are the following (in parenthesis, the
-	 * corresponding flag in CRNProtocols.h):
-	 * 
-	 * 	- Clonable (crn::protocol::Clonable)
-	 * 		- SObject Clone() const
-	 * 	- Serializable (crn::protocol::Serializable)
-	 * 		- void deserialize(xml::Element &el)
-	 * 		- xml::Element serialize(xml::Element &parent) const
-	 * 	- Metric (crn::protocol::Metric)
-	 * 		- double distance(const Object &obj) const
-	 * 	- Magma (crn::protocol::Magma)
-	 * 		- void add(const Object &v)
-	 * 		- bool equals(const Object &v) const
-	 * 	- Group (crn::protocol::Group)
-	 * 		- void sub(const Object &v)
-	 * 	- Vector over IR (crn::protocol::VectorOverR)
-	 * 		- void Mult(double m)
-	 * 		- SObject sum(const vector&lt;pair&lt;const Object*, double&gt; &gt; &amp;plist) const
-	 * 		- SObject mean(const vector&lt;pair&lt;const Object*, double&gt; &gt; &amp;plist) const
-	 * 	- Ring (crn::protocol::Ring)
-	 * 		- void mult(const Object &obj)
-	 * 		- If the object is also a vector over IR, add "using Object::Mult;" before overloading Mult.
-	 * 	- Field (crn::protocol::Field)
-	 * 		- void div(const Object &obj)
-	 * 	- POSet (crn::protocol::POSet)
-	 * 		- Prop3 ge(const Object &l)
-	 * 		- Prop3 le(const Object &l)
-	 *
-	 * \author 	Yann LEYDIER
-	 * \date		February 2007
-	 * \version 0.4
-	 * \ingroup base
+	/*! \brief Distance between two objects */
+	double Distance(const Object &o1, const Object &o2);
+	// see CRNMath.h for Distance between numbers
+
+	/*! Has:
+	 * - Prop3 operator<(T, T)
+	 * - Prop3 operator<=(T, T)
+	 * - Prop3 operator>(T, T)
+	 * - Prop3 operator>=(T, T)
 	 */
-	class Object
-	{
-		/**************************************************************************/
-		/* Object interface                                                       */
-		/**************************************************************************/
-		public:
-			virtual ~Object() {}
+	template<typename T> struct IsPOSet: public std::integral_constant<bool, traits::HasLT<T>::value && traits::HasGT<T>::value && traits::HasLE<T>::value && traits::HasGE<T>::value> {};
 
-			/*! \brief Returns the name of the class */
-			virtual const String& GetClassName() const = 0;
-			/*! \brief Returns the id of the class */
-			virtual Protocol GetClassProtocols() const noexcept = 0;
-			/*! \brief Checks if a protocol is implemented */
-			bool Implements(Protocol classid) const noexcept { if ((GetClassProtocols() & classid) == classid) return true; else return false; }
+	// Metric objects
+	/*! Has:
+	 * - Distance(T, T)
+	 */
+	template<typename T> struct IsMetric: public std::integral_constant<bool, std::is_arithmetic<T>::value>{};
 
-			/*! \brief Converts object to string */
-			virtual String ToString() const;
+	/*! Has:
+	 * - operator+(T, T)
+	 * - operator==(T, T)
+	 */
+	template<typename T> struct IsMagma: public std::integral_constant<bool, traits::HasEquals<T>::value && traits::HasPlus<T>::value> {};
 
-		/**************************************************************************/
-		/* Clonable protocol                                                      */
-		/**************************************************************************/
-		public:
-			/*!\brief Creates a new object, copied from this */
-			virtual UObject Clone() const;
-			template<typename T> inline std::unique_ptr<T> CloneAs() const { return std::unique_ptr<T>(dynamic_cast<T*>(Clone().release())); }
+	/*! Has:
+	 * - operator+(T, T)
+	 * - operator-(T, T)
+	 */
+	template<typename T> struct IsGroup: public std::integral_constant<bool, IsMagma<T>::value && traits::HasMinus<T>::value> {};
 
-		/**************************************************************************/
-		/* Serializable protocol                                                  */
-		/**************************************************************************/
-		public:
-			/*! \brief Initializes the object from an XML element. Safe. */
-			void Deserialize(xml::Element &el);
-			/*! \brief Dumps the object to an XML element. Safe. */
-			xml::Element Serialize(xml::Element &parent) const;
-		private:
-			/*! \brief Initializes the object from an XML element. Unsafe. */
-			virtual void deserialize(xml::Element &el);
-			/*! \brief Dumps the object to an XML element. Unsafe. */
-			virtual xml::Element serialize(xml::Element &parent) const;
-			/*! \brief Initializes some internal data from an XML element. */
-			virtual void deserialize_internal_data(xml::Element &el);
-			/*! \brief Dumps some internal data to an XML element. */
-			virtual void serialize_internal_data(xml::Element &el) const;
+	/*! Has:
+	 * - operator+(T, T)
+	 * - operator-(T, T)
+	 * - operator*(T, T)
+	 */
+	template<typename T> struct IsRing: public std::integral_constant<bool, IsGroup<T>::value && traits::HasInnerMult<T>::value> {};
 
-		/**************************************************************************/
-		/* Metric protocol                                                        */
-		/**************************************************************************/
-		public:
-			/*! \brief Distance between two metric objects. Secure method. */
-			double Distance(const Object &obj) const;
-		private:
-			/*! \brief Distance between two metric objects. Insecure method to be provided. */
-			virtual double distance(const Object &obj) const;
-			
-		/**************************************************************************/
-		/* Magma protocol                                                         */
-		/**************************************************************************/
-		public:
-			/*! \brief Safe method to add an object */
-			void Add(const Object &v);
-			/*! \brief Safe method to test the equality of two vectors. */
-			bool Equals(const Object &v) const;
-		private:
-			/*! \brief Unsafe method to add an object. */
-			virtual void add(const Object &v);
-			/*! \brief Unsafe method to test the equality of two vectors. */
-			virtual bool equals(const Object &v) const;
-				
-		/**************************************************************************/
-		/* Group protocol                                                         */
-		/**************************************************************************/
-		public:
-			/*! \brief Safe method to subtract an object */
-			void Sub(const Object &v);
-		private:
-			/*! \brief Unsafe method to subtract an object. */
-			virtual void sub(const Object &v);
-				
-		/**************************************************************************/
-		/* Vector over IR protocol                                                */
-		/**************************************************************************/
-		public:	
-			/*! \brief Multiply by a real */
-			virtual void Mult(double m);
-			/*! \brief Safe method to compute a sum of vectors. */
-			UObject Sum(const std::vector<std::pair<const Object*, double> > &plist) const;
-			/*! \brief Sage method to compute a mean of vectors. */
-			UObject Mean(const std::vector<std::pair<const Object*, double> > &plist) const;
-		private:
-			/*! \brief Unsafe method to compute a sum of vectors. */
-			virtual UObject sum(const std::vector<std::pair<const Object*, double> > &plist) const;
-			/*! \brief Unsafe Method to compute a mean of vectors. */
-			virtual UObject mean(const std::vector<std::pair<const Object*, double> > &plist) const;
+	/*! Has:
+	 * - operator+(T, T)
+	 * - operator-(T, T)
+	 * - operator*(T, double)
+	 * - operator*(double, T)
+	 */
+	template<typename T> struct IsVectorOverR: public std::integral_constant<bool, IsGroup<T>::value && traits::HasRightOuterMult<T>::value && traits::HasLeftOuterMult<T>::value> {};
 
-		/**************************************************************************/
-		/* Ring protocol                                                          */
-		/**************************************************************************/
-		public:
-			/*! \brief Internal product. SAFE */
-			void Mult(const Object &obj);
-		private:
-			/*! \brief Internal product. UNSAFE */
-			virtual void mult(const Object &obj);
+	/*! Has:
+	 * - operator+(T, T)
+	 * - operator-(T, T)
+	 * - operator*(T, T)
+	 * - operator*(T, double)
+	 * - operator*(double, T)
+	 */
+	template<typename T> struct IsAlgebra: public std::integral_constant<bool, IsRing<T>::value && IsVectorOverR<T>::value> {};
 
-		/**************************************************************************/
-		/* Field protocol                                                         */
-		/**************************************************************************/
-		public:
-			/*! \brief Internal division. SAFE */
-			void Div(const Object &obj);
-		private:
-			/*! \brief Internal division. UNSAFE */
-			virtual void div(const Object &obj);
+	/*! Has:
+	 * - operator+(T, T)
+	 * - operator-(T, T)
+	 * - operator*(T, T)
+	 * - operator*(T, double)
+	 * - operator*(double, T)
+	 * - operator/(T, T)
+	 */
+	template<typename T> struct IsField: public std::integral_constant<bool, IsAlgebra<T>::value && traits::HasDivide<T>::value> {};
 
-		/**************************************************************************/
-		/* POSet protocol                                                         */
-		/**************************************************************************/
-		public:
-			/*! \brief SAFE Greater or Equal */
-			Prop3 GE(const Object &l) const;
-			/*! \brief SAFE Lower or Equal */
-			Prop3 LE(const Object &l) const;
-			/*! \brief Greater Than */
-			Prop3 GT(const Object &l) const;
-			/*! \brief Lower Than */
-			Prop3 LT(const Object &l) const;
-		private:
-			/*! \brief UNSAFE Greater or Equal */
-			virtual Prop3 ge(const Object &l) const;
-			/*! \brief UNSAFE Lower or Equal */
-			virtual Prop3 le(const Object &l) const;
-			
-	};
+	/*! Has:
+	 * - T::T(xml::Element &)
+	 * - Serialize(const T &, xml::Element &parent)
+	 * - Deserialize(T &, xml::Element &)
+	 */
+	template<typename T> struct IsSerializable: public std::false_type {};
 
+	/*! Has:
+	 * - T::Clone()
+	 */
+	template<typename T> struct IsClonable: public std::false_type {};
+
+	/*! Has:
+	 * - T::T(const Path &)
+	 * - Save(const T &, const Path &)
+	 * - Load(T &, const Path &)
+	 */
+	template<typename T> struct IsSavable: public std::false_type {};
 }
 
 /*! \brief	Defines a default constructor from xml element 
@@ -236,10 +156,10 @@ namespace crn
  * \ingroup	base
  */
 #define CRN_DECLARE_CLASS_CONSTRUCTOR(classname) public:\
-		static void Initialize();\
-	private:\
+	static void Initialize();\
+private:\
 struct Init { Init() { classname::Initialize(); } };\
-		static Init init;
+static Init init;
 
 /*! \brief Defines a class constructor
  *
@@ -248,20 +168,21 @@ struct Init { Init() { classname::Initialize(); } };\
  * \ingroup	base
  */
 #define CRN_BEGIN_CLASS_CONSTRUCTOR(classname) void classname::Initialize()\
+{\
+	static bool init_done = false;\
+	if (!init_done)\
 	{\
-		static bool init_done = false;\
-		if (!init_done)\
-		{\
-			init_done = true;
+		init_done = true;
 
-/*! \brief Defines a class constructor
- *
- * Defines a class constructor. Add this to a class definition file.
- * \param[in]	classname	the name of the current class
- * \ingroup	base
- */
+		/*! \brief Defines a class constructor
+		 *
+		 * Defines a class constructor. Add this to a class definition file.
+		 * \param[in]	classname	the name of the current class
+		 * \ingroup	base
+		 */
 #define CRN_END_CLASS_CONSTRUCTOR(classname) }\
-	}\
-	classname::Init classname::init;
+}\
+classname::Init classname::init;
 
 #endif
+

@@ -1,4 +1,4 @@
-/* Copyright 2006-2016 Yann LEYDIER, CoReNum, INSA-Lyon
+/* Copyright 2006-2016 Yann LEYDIER, CoReNum, INSA-Lyon, ENS-Lyon
  * 
  * This file is part of libcrn.
  * 
@@ -49,7 +49,7 @@ namespace crn
 	 * \version 0.2
 	 * \ingroup document
 	 */
-	class Document : public ComplexObject
+	class Document: public Savable
 	{
 		public:
 			/*! \brief Constructor */
@@ -61,11 +61,6 @@ namespace crn
 			Document& operator=(const Document &) = delete;
 			Document(Document &&) = default;
 			Document& operator=(Document &&) = default;
-
-			/*! \brief Returns the class name */
-			virtual const String& GetClassName() const override { static const String cn(U"Document"); return cn; }
-			/*! \brief This object is Savable */
-			virtual Protocol GetClassProtocols() const noexcept override { return Protocol::Savable; }
 
 			/*! \brief Sets the base name of the document if any */
 			void SetBasename(const Path &s) { basename = s; }

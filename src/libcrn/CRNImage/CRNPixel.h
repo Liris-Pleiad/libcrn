@@ -94,33 +94,37 @@ namespace crn
 		using DecimalType = pixel::RGB<typename TypeInfo<I>::DecimalType>;
 	};
 
-	template<typename T> constexpr crn::SumType<crn::pixel::RGB<T>> operator+(const crn::pixel::RGB<T> &p1, const crn::pixel::RGB<T> &p2)
+	namespace pixel
 	{
-		return crn::SumType<crn::pixel::RGB<T>>{p1.r + p2.r, p1.g + p2.g, p1.b + p2.b};
-	}
-	template<typename T> constexpr crn::DiffType<crn::pixel::RGB<T>> operator-(const crn::pixel::RGB<T> &p1, const crn::pixel::RGB<T> &p2)
-	{
-		return crn::DiffType<crn::pixel::RGB<T>>{p1.r - p2.r, p1.g - p2.g, p1.b - p2.b};
-	}
-	template<typename T> constexpr crn::DecimalType<crn::pixel::RGB<T>> operator*(const crn::pixel::RGB<T> &p, double d)
-	{
-		return crn::DecimalType<crn::pixel::RGB<T>>{p.r * d, p.g * d, p.b * d};
-	}
-	template<typename T> constexpr crn::DecimalType<crn::pixel::RGB<T>> operator*(double d, const crn::pixel::RGB<T> &p)
-	{
-		return crn::DecimalType<crn::pixel::RGB<T>>{p.r * d, p.g * d, p.b * d};
-	}
-	template<typename T> constexpr crn::DecimalType<crn::pixel::RGB<T>> operator/(const crn::pixel::RGB<T> &p, double d)
-	{
-		return crn::DecimalType<crn::pixel::RGB<T>>{p.r / d, p.g / d, p.b / d};
-	}
+		template<typename T> constexpr crn::SumType<crn::pixel::RGB<T>> operator+(const crn::pixel::RGB<T> &p1, const crn::pixel::RGB<T> &p2)
+		{
+			return crn::SumType<crn::pixel::RGB<T>>{p1.r + p2.r, p1.g + p2.g, p1.b + p2.b};
+		}
+		template<typename T> constexpr crn::DiffType<crn::pixel::RGB<T>> operator-(const crn::pixel::RGB<T> &p1, const crn::pixel::RGB<T> &p2)
+		{
+			return crn::DiffType<crn::pixel::RGB<T>>{p1.r - p2.r, p1.g - p2.g, p1.b - p2.b};
+		}
+		template<typename T> constexpr crn::DecimalType<crn::pixel::RGB<T>> operator*(const crn::pixel::RGB<T> &p, double d)
+		{
+			return crn::DecimalType<crn::pixel::RGB<T>>{p.r * d, p.g * d, p.b * d};
+		}
+		template<typename T> constexpr crn::DecimalType<crn::pixel::RGB<T>> operator*(double d, const crn::pixel::RGB<T> &p)
+		{
+			return crn::DecimalType<crn::pixel::RGB<T>>{p.r * d, p.g * d, p.b * d};
+		}
+		template<typename T> constexpr crn::DecimalType<crn::pixel::RGB<T>> operator/(const crn::pixel::RGB<T> &p, double d)
+		{
+			return crn::DecimalType<crn::pixel::RGB<T>>{p.r / d, p.g / d, p.b / d};
+		}
 
-	template<typename T> crn::SumType<T> Abs(const crn::pixel::RGB<T> &p)
-	{
-		return crn::Abs(p.r) + crn::Abs(p.g) + crn::Abs(p.b);
-	}
-	/*@}*/
+		template<typename T> crn::SumType<T> Abs(const crn::pixel::RGB<T> &p)
+		{
+			return crn::Abs(p.r) + crn::Abs(p.g) + crn::Abs(p.b);
+		}
+	} // namespace pixel
+
 } // namespace crn
+/*@}*/
 
 namespace std
 {
@@ -274,9 +278,8 @@ namespace crn
 					g = T(v1);
 					b = T(v2);
 			}
-
 		}
-	} // pixel
+	} // namespace pixel
 
 	template<> struct TypeInfo<pixel::HSV>
 	{
@@ -285,28 +288,31 @@ namespace crn
 		using DecimalType = pixel::RGB<double>;
 	};
 
-	inline crn::SumType<crn::pixel::HSV> operator+(const crn::pixel::HSV &p1, const crn::pixel::HSV &p2)
+	namespace pixel
 	{
-		return pixel::RGB<uint8_t>(p1) + pixel::RGB<uint8_t>(p2);
-	}
-	inline crn::DiffType<crn::pixel::HSV> operator-(const crn::pixel::HSV &p1, const crn::pixel::HSV &p2)
-	{
-		return pixel::RGB<uint8_t>(p1) - pixel::RGB<uint8_t>(p2);
-	}
-	inline crn::DecimalType<crn::pixel::HSV> operator*(const crn::pixel::HSV &p, double d)
-	{
-		return pixel::RGB<uint8_t>(p) * d;
-	}
-	inline crn::DecimalType<crn::pixel::HSV> operator*(double d, const crn::pixel::HSV &p)
-	{
-		return pixel::RGB<uint8_t>(p) * d;
-	}
-	inline crn::DecimalType<crn::pixel::HSV> operator/(const crn::pixel::HSV &p, double d)
-	{
-		return pixel::RGB<uint8_t>(p) / d;
-	}
-	/*@}*/
-} // crn
+		inline crn::SumType<crn::pixel::HSV> operator+(const crn::pixel::HSV &p1, const crn::pixel::HSV &p2)
+		{
+			return crn::pixel::RGB<uint8_t>(p1) + crn::pixel::RGB<uint8_t>(p2);
+		}
+		inline crn::DiffType<crn::pixel::HSV> operator-(const crn::pixel::HSV &p1, const crn::pixel::HSV &p2)
+		{
+			return crn::pixel::RGB<uint8_t>(p1) - crn::pixel::RGB<uint8_t>(p2);
+		}
+		inline crn::DecimalType<crn::pixel::HSV> operator*(const crn::pixel::HSV &p, double d)
+		{
+			return crn::pixel::RGB<uint8_t>(p) * d;
+		}
+		inline crn::DecimalType<crn::pixel::HSV> operator*(double d, const crn::pixel::HSV &p)
+		{
+			return crn::pixel::RGB<uint8_t>(p) * d;
+		}
+		inline crn::DecimalType<crn::pixel::HSV> operator/(const crn::pixel::HSV &p, double d)
+		{
+			return crn::pixel::RGB<uint8_t>(p) / d;
+		}
+	} // namespace pixel
+} // namespace crn
+/*@}*/
 
 /*************************************************************
  * 2D Cartesian vector
@@ -351,28 +357,31 @@ namespace crn
 		using DecimalType = pixel::Cart2D<typename TypeInfo<I>::DecimalType>;
 	};
 
-	template<typename T> constexpr crn::SumType<crn::pixel::Cart2D<T>> operator+(const crn::pixel::Cart2D<T> &p1, const crn::pixel::Cart2D<T> &p2)
+	namespace pixel
 	{
-		return crn::SumType<crn::pixel::Cart2D<T>>{p1.x + p2.x, p1.y + p2.y};
-	}
-	template<typename T> constexpr crn::DiffType<crn::pixel::Cart2D<T>> operator-(const crn::pixel::Cart2D<T> &p1, const crn::pixel::Cart2D<T> &p2)
-	{
-		return crn::DiffType<crn::pixel::Cart2D<T>>{p1.x - p2.x, p1.y - p2.y};
-	}
-	template<typename T> constexpr crn::DecimalType<crn::pixel::Cart2D<T>> operator*(const crn::pixel::Cart2D<T> &p, double d)
-	{
-		return crn::DecimalType<crn::pixel::Cart2D<T>>{p.x * d, p.y * d};
-	}
-	template<typename T> constexpr crn::DecimalType<crn::pixel::Cart2D<T>> operator*(double d, const crn::pixel::Cart2D<T> &p)
-	{
-		return crn::DecimalType<crn::pixel::Cart2D<T>>{p.x * d, p.y * d};
-	}
-	template<typename T> constexpr crn::DecimalType<crn::pixel::Cart2D<T>> operator/(const crn::pixel::Cart2D<T> &p, double d)
-	{
-		return crn::DecimalType<crn::pixel::Cart2D<T>>{p.x / d, p.y / d};
-	}
-	/*@}*/
+		template<typename T> constexpr crn::SumType<crn::pixel::Cart2D<T>> operator+(const crn::pixel::Cart2D<T> &p1, const crn::pixel::Cart2D<T> &p2)
+		{
+			return crn::SumType<crn::pixel::Cart2D<T>>{p1.x + p2.x, p1.y + p2.y};
+		}
+		template<typename T> constexpr crn::DiffType<crn::pixel::Cart2D<T>> operator-(const crn::pixel::Cart2D<T> &p1, const crn::pixel::Cart2D<T> &p2)
+		{
+			return crn::DiffType<crn::pixel::Cart2D<T>>{p1.x - p2.x, p1.y - p2.y};
+		}
+		template<typename T> constexpr crn::DecimalType<crn::pixel::Cart2D<T>> operator*(const crn::pixel::Cart2D<T> &p, double d)
+		{
+			return crn::DecimalType<crn::pixel::Cart2D<T>>{p.x * d, p.y * d};
+		}
+		template<typename T> constexpr crn::DecimalType<crn::pixel::Cart2D<T>> operator*(double d, const crn::pixel::Cart2D<T> &p)
+		{
+			return crn::DecimalType<crn::pixel::Cart2D<T>>{p.x * d, p.y * d};
+		}
+		template<typename T> constexpr crn::DecimalType<crn::pixel::Cart2D<T>> operator/(const crn::pixel::Cart2D<T> &p, double d)
+		{
+			return crn::DecimalType<crn::pixel::Cart2D<T>>{p.x / d, p.y / d};
+		}
+	} // namespace pixel
 } // namespace crn
+/*@}*/
 
 #include <CRNMath/CRNMath.h>
 
@@ -415,7 +424,6 @@ namespace crn
 			x(T(p.rho * Cos(p.theta))),
 			y(T(p.rho * Sin(p.theta)))
 		{ }
-
 	} // namespace pixel
 
 	template<typename I, typename J> struct TypeInfo<pixel::Polar2D<I, J>>
@@ -425,28 +433,31 @@ namespace crn
 		using DecimalType = pixel::Polar2D<typename TypeInfo<I>::DecimalType, J>;
 	};
 
-	template<typename R, typename T> constexpr crn::SumType<crn::pixel::Polar2D<R, T>> operator+(const crn::pixel::Polar2D<R, T> &p1, const crn::pixel::Polar2D<R, T> &p2)
+	namespace pixel
 	{
-		return crn::TypeInfo<crn::pixel::Polar2D<R, T>>{crn::pixel::Cart2D<double>{p1} + crn::pixel::Cart2D<double>{p2}};
-	}
-	template<typename R, typename T> constexpr crn::DiffType<crn::pixel::Polar2D<R, T>> operator-(const crn::pixel::Polar2D<R, T> &p1, const crn::pixel::Polar2D<R, T> &p2)
-	{
-		return crn::DiffType<crn::pixel::Polar2D<R, T>>{crn::pixel::Cart2D<double>{p1} - crn::pixel::Cart2D<double>{p2}};
-	}
-	template<typename R, typename T> constexpr crn::DecimalType<crn::pixel::Polar2D<R, T>> operator*(const crn::pixel::Polar2D<R, T> &p, double d)
-	{
-		return crn::DecimalType<crn::pixel::Polar2D<R, T>>{p.rho * d, p.theta};
-	}
-	template<typename R, typename T> constexpr crn::DecimalType<crn::pixel::Polar2D<R, T>> operator*(double d, const crn::pixel::Polar2D<R, T> &p)
-	{
-		return crn::DecimalType<crn::pixel::Polar2D<R, T>>{p.rho * d, p.theta};
-	}
-	template<typename R, typename T> constexpr crn::DecimalType<crn::pixel::Polar2D<R, T>> operator/(const crn::pixel::Polar2D<R, T> &p, double d)
-	{
-		return crn::DecimalType<crn::pixel::Polar2D<R, T>>{p.rho / d, p.theta};
-	}
-	/*@}*/
+		template<typename R, typename T> constexpr crn::SumType<crn::pixel::Polar2D<R, T>> operator+(const crn::pixel::Polar2D<R, T> &p1, const crn::pixel::Polar2D<R, T> &p2)
+		{
+			return crn::TypeInfo<crn::pixel::Polar2D<R, T>>{crn::pixel::Cart2D<double>{p1} + crn::pixel::Cart2D<double>{p2}};
+		}
+		template<typename R, typename T> constexpr crn::DiffType<crn::pixel::Polar2D<R, T>> operator-(const crn::pixel::Polar2D<R, T> &p1, const crn::pixel::Polar2D<R, T> &p2)
+		{
+			return crn::DiffType<crn::pixel::Polar2D<R, T>>{crn::pixel::Cart2D<double>{p1} - crn::pixel::Cart2D<double>{p2}};
+		}
+		template<typename R, typename T> constexpr crn::DecimalType<crn::pixel::Polar2D<R, T>> operator*(const crn::pixel::Polar2D<R, T> &p, double d)
+		{
+			return crn::DecimalType<crn::pixel::Polar2D<R, T>>{p.rho * d, p.theta};
+		}
+		template<typename R, typename T> constexpr crn::DecimalType<crn::pixel::Polar2D<R, T>> operator*(double d, const crn::pixel::Polar2D<R, T> &p)
+		{
+			return crn::DecimalType<crn::pixel::Polar2D<R, T>>{p.rho * d, p.theta};
+		}
+		template<typename R, typename T> constexpr crn::DecimalType<crn::pixel::Polar2D<R, T>> operator/(const crn::pixel::Polar2D<R, T> &p, double d)
+		{
+			return crn::DecimalType<crn::pixel::Polar2D<R, T>>{p.rho / d, p.theta};
+		}
+	} // namespace pixel
 } // namespace crn
+/*@}*/
 
 /*************************************************************
  * XYZ real values from CIE 1931 model. Observer. = 2°, Illuminant = D65
@@ -459,7 +470,7 @@ namespace crn
 	{
 		struct Lab;
 		struct Luv;
-				
+
 		struct XYZ
 		{
 			constexpr XYZ() {}
@@ -500,7 +511,7 @@ namespace crn
 		}
 	}
 	/*@}*/
-	
+
 } // namespace crn
 
 /*************************************************************
@@ -518,12 +529,12 @@ namespace crn
 			constexpr YUV() {}
 			constexpr YUV(double y_, double u_ = 0.0, double v_ = 0.0): y(y_), u(u_), v(v_) {}
 			YUV(const RGB<uint8_t> &p);
-			
+
 			constexpr bool operator==(const YUV &other) const noexcept { return (y == other.y) && (u == other.u) && (v == other.v); }
 			constexpr bool operator!=(const YUV &other) const noexcept { return !(*this == other); }
 			YUV& operator+=(const YUV &other) { y += other.y; u += other.u; v += other.v; return *this; }
 			YUV& operator-=(const YUV &other) { y -= other.y; u -= other.u; v -= other.v; return *this; }
-			
+
 			double y = 0.0, u = 0.0, v = 0.0;
 		};
 
@@ -532,43 +543,44 @@ namespace crn
 			auto var_R = val.y + 1.13983 * val.v;
 			auto var_G = val.y - 0.39465 * val.u - 0.58060 * val.v;
 			auto var_B = val.y + 2.03211 * val.u;
-			
+
 			r = T(Cap((int)(var_R * 255), 0, 255));
 			g = T(Cap((int)(var_G * 255), 0, 255));
 			b = T(Cap((int)(var_B * 255), 0, 255));
 		}
-	}
-	/*@}*/
-	
+	} // namespace pixel
+
 	template<> struct TypeInfo<pixel::YUV>
 	{
 		using SumType = pixel::YUV;
 		using DiffType = pixel::YUV;
 		using DecimalType = pixel::YUV;
 	};
-	
-	constexpr crn::pixel::YUV operator+(const crn::pixel::YUV &p1, const crn::pixel::YUV &p2)
-	{
-		return crn::pixel::YUV{p1.y - p2.y, p1.u - p2.u, p1.v - p2.v};
-	}
-	constexpr crn::pixel::YUV operator-(const crn::pixel::YUV &p1, const crn::pixel::YUV &p2)
-	{
-		return crn::pixel::YUV{p1.y - p2.y, p1.u - p2.u, p1.v - p2.v};
-	}
-	constexpr crn::pixel::YUV operator*(const crn::pixel::YUV &p, double d)
-	{
-		return crn::pixel::YUV{p.y * d, p.u * d, p.v * d};
-	}
-	constexpr crn::pixel::YUV operator*(double d, const crn::pixel::YUV &p)
-	{
-		return crn::pixel::YUV{p.y * d, p.u * d, p.v * d};
-	}
-	constexpr crn::pixel::YUV operator/(const crn::pixel::YUV &p, double d)
-	{
-		return crn::pixel::YUV{p.y / d, p.u / d, p.v / d};
-	}
-	
 
+	namespace pixel
+	{
+		constexpr crn::pixel::YUV operator+(const crn::pixel::YUV &p1, const crn::pixel::YUV &p2)
+		{
+			return crn::pixel::YUV{p1.y - p2.y, p1.u - p2.u, p1.v - p2.v};
+		}
+		constexpr crn::pixel::YUV operator-(const crn::pixel::YUV &p1, const crn::pixel::YUV &p2)
+		{
+			return crn::pixel::YUV{p1.y - p2.y, p1.u - p2.u, p1.v - p2.v};
+		}
+		constexpr crn::pixel::YUV operator*(const crn::pixel::YUV &p, double d)
+		{
+			return crn::pixel::YUV{p.y * d, p.u * d, p.v * d};
+		}
+		constexpr crn::pixel::YUV operator*(double d, const crn::pixel::YUV &p)
+		{
+			return crn::pixel::YUV{p.y * d, p.u * d, p.v * d};
+		}
+		constexpr crn::pixel::YUV operator/(const crn::pixel::YUV &p, double d)
+		{
+			return crn::pixel::YUV{p.y / d, p.u / d, p.v / d};
+		}
+	} // namespace pixel
+	/*@}*/
 } // namespace crn
 
 /*************************************************************
@@ -588,7 +600,8 @@ namespace crn
 
 			Lab& operator+=(const Lab &p)
 			{
-				*this = XYZ{RGB8{RGB8(*this) + RGB8(p)}};
+				const auto s = RGB8(*this) + RGB8(p);
+				*this = XYZ{RGB8{s}};
 				return *this;
 			}
 
@@ -599,25 +612,26 @@ namespace crn
 		{
 			*this = XYZ(val);
 		}
-	}
-	/*@}*/
-	inline crn::pixel::Lab operator+(const crn::pixel::Lab &p1, const crn::pixel::Lab &p2)
-	{
-		return pixel::Lab{ pixel::RGB8{pixel::RGB8(p1) + pixel::RGB8(p2)} };
-	}
-	inline crn::pixel::Lab operator-(const crn::pixel::Lab &p1, const crn::pixel::Lab &p2)
-	{
-		return pixel::Lab{ pixel::RGB8{pixel::RGB8(p1) - pixel::RGB8(p2)} };
-	}
-	inline crn::pixel::Lab operator*(double d, const crn::pixel::Lab &p)
-	{
-		return pixel::Lab{ p.l * d, p.a, p.b };
-	}
-	inline crn::pixel::Lab operator/(const crn::pixel::Lab &p, double d)
-	{
-		return pixel::Lab{ p.l / d, p.a, p.b };
-	}
+
+		inline crn::pixel::Lab operator+(const crn::pixel::Lab &p1, const crn::pixel::Lab &p2)
+		{
+			return crn::pixel::Lab{ crn::pixel::RGB8{crn::pixel::RGB8(p1) + crn::pixel::RGB8(p2)} };
+		}
+		inline crn::pixel::Lab operator-(const crn::pixel::Lab &p1, const crn::pixel::Lab &p2)
+		{
+			return crn::pixel::Lab{ crn::pixel::RGB8{crn::pixel::RGB8(p1) - crn::pixel::RGB8(p2)} };
+		}
+		inline crn::pixel::Lab operator*(double d, const crn::pixel::Lab &p)
+		{
+			return crn::pixel::Lab{ p.l * d, p.a, p.b };
+		}
+		inline crn::pixel::Lab operator/(const crn::pixel::Lab &p, double d)
+		{
+			return crn::pixel::Lab{ p.l / d, p.a, p.b };
+		}
+	} // namespace pixel
 } // namespace crn
+/*@}*/
 
 /*************************************************************
  * Luv real values from CIE 1976 L*u*v* model. Observer= 2°, Illuminant= D65
@@ -646,25 +660,25 @@ namespace crn
 		{
 			*this = XYZ(val);
 		}
-	}
-	/*@}*/
-	inline crn::pixel::Luv operator+(const crn::pixel::Luv &p1, const crn::pixel::Luv &p2)
-	{
-		return pixel::Luv{ pixel::RGB8{pixel::RGB8(p1) + pixel::RGB8(p2)} };
-	}
-	inline crn::pixel::Luv operator-(const crn::pixel::Luv &p1, const crn::pixel::Luv &p2)
-	{
-		return pixel::Luv{ pixel::RGB8{pixel::RGB8(p1) - pixel::RGB8(p2)} };
-	}
-	inline crn::pixel::Luv operator*(double d, const crn::pixel::Luv &p)
-	{
-		return pixel::Luv{ p.l * d, p.u, p.v };
-	}
-	inline crn::pixel::Luv operator/(const crn::pixel::Luv &p, double d)
-	{
-		return pixel::Luv{ p.l / d, p.u, p.v };
-	}
+		inline crn::pixel::Luv operator+(const crn::pixel::Luv &p1, const crn::pixel::Luv &p2)
+		{
+			return crn::pixel::Luv{ crn::pixel::RGB8{crn::pixel::RGB8(p1) + crn::pixel::RGB8(p2)} };
+		}
+		inline crn::pixel::Luv operator-(const crn::pixel::Luv &p1, const crn::pixel::Luv &p2)
+		{
+			return crn::pixel::Luv{ crn::pixel::RGB8{crn::pixel::RGB8(p1) - crn::pixel::RGB8(p2)} };
+		}
+		inline crn::pixel::Luv operator*(double d, const crn::pixel::Luv &p)
+		{
+			return crn::pixel::Luv{ p.l * d, p.u, p.v };
+		}
+		inline crn::pixel::Luv operator/(const crn::pixel::Luv &p, double d)
+		{
+			return crn::pixel::Luv{ p.l / d, p.u, p.v };
+		}
+	} // namespace pixel
 } // namespace crn
+/*@}*/
 
 #endif
 

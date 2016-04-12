@@ -1,4 +1,4 @@
-/* Copyright 2009-2015 Jean DUONG, CoReNum, INSA-Lyon, Université Paris Descartes
+/* Copyright 2009-2016 Jean DUONG, CoReNum, INSA-Lyon, Université Paris Descartes, ENS-Lyon
  * 
  * This file is part of libcrn.
  * 
@@ -53,14 +53,7 @@ namespace crn
 			PCA(const PCA&) = default;
 			PCA(PCA&&) = default;
 			/*! \brief Destructor */
-			virtual ~PCA() override {}
-
-			/*! \brief Returns the name of the class */
-			virtual const String& GetClassName() const override { static const String cn(U"Principal_Components_Analysis"); return cn; }
-			/*! \brief Returns the id of the class */
-			virtual Protocol GetClassProtocols() const noexcept override { return crn::Protocol::Clonable | crn::Protocol::Serializable; }
-
-			virtual UObject Clone() const override { return std::make_unique<PCA>(*this); }
+			virtual ~PCA() override = default;
 
 			PCA& operator=(const PCA&) = default;
 			PCA& operator=(PCA&&) = default;
@@ -88,9 +81,9 @@ namespace crn
 			/*! \brief Apply reverse transform to get given patterns' pre-images. */
 			std::vector<std::vector<double>> ReverseTransform(const std::vector< std::vector<double> > &data) const;
 
+			void Deserialize(xml::Element &el);
+			xml::Element Serialize(xml::Element &parent) const;
 		private:
-			void deserialize(xml::Element &el) override;
-			xml::Element serialize(xml::Element &parent) const override;
 
 			/*! \brief Optimized 2x2 correlation matrix diagonalization */
 			std::multimap<double, MatrixDouble> makeCorrelationSpectralEigensystem(double g) const;
@@ -103,6 +96,8 @@ namespace crn
 			CRN_DECLARE_CLASS_CONSTRUCTOR(PCA)
 		public : PCA(xml::Element& el):means(1,1),dimension(1),deviations(1,1){Deserialize(el);}
 	};
+	template<> struct IsSerializable<PCA> : public std::true_type {};
+	template<> struct IsClonable<PCA> : public std::true_type {};
 
 	CRN_ALIAS_SMART_PTR(PCA)
 

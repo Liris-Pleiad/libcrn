@@ -1,4 +1,4 @@
-/* Copyright 2008-2016 INSA Lyon, CoReNum
+/* Copyright 2008-2016 INSA-Lyon, CoReNum, ENS-Lyon
  * 
  * This file is part of libcrn.
  * 
@@ -737,11 +737,11 @@ String UnivariateGaussianMixture::ToString() const
  *
  * \param[in]	el	the element to load
  */
-void UnivariateGaussianMixture::deserialize(xml::Element &el)
+void UnivariateGaussianMixture::Deserialize(xml::Element &el)
 {
-	if (el.GetName() != GetClassName().CStr())
+	if (el.GetName() != "UnivariateGaussianMixture")
 	{
-		throw ExceptionInvalidArgument(StringUTF8("bool UnivariateGaussianMixture::deserialize(xml::Element &el): ") + 
+		throw ExceptionInvalidArgument(StringUTF8("void UnivariateGaussianMixture::Deserialize(xml::Element &el): ") + 
 				_("Wrong XML element."));
 	}
 	
@@ -768,9 +768,9 @@ void UnivariateGaussianMixture::deserialize(xml::Element &el)
  *
  * \return The newly created element
  */
-xml::Element UnivariateGaussianMixture::serialize(xml::Element &parent) const
+xml::Element UnivariateGaussianMixture::Serialize(xml::Element &parent) const
 {
-	xml::Element el(parent.PushBackElement(GetClassName().CStr()));
+	xml::Element el(parent.PushBackElement("UnivariateGaussianMixture"));
 	
 	for (auto & elem : members)
 	{
@@ -783,5 +783,6 @@ xml::Element UnivariateGaussianMixture::serialize(xml::Element &parent) const
 
 CRN_BEGIN_CLASS_CONSTRUCTOR(UnivariateGaussianMixture)
 	CRN_DATA_FACTORY_REGISTER(U"UnivariateGaussianMixture", UnivariateGaussianMixture)
+	Cloner::Register<UnivariateGaussianMixture>();
 CRN_END_CLASS_CONSTRUCTOR(UnivariateGaussianMixture)
 

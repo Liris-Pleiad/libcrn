@@ -1,4 +1,4 @@
-/* Copyright 2008-2015 INSA Lyon, CoReNum, Université Paris Descartes
+/* Copyright 2008-2016 INSA Lyon, CoReNum, Université Paris Descartes, ENS-Lyon
  * 
  * This file is part of libcrn.
  * 
@@ -24,6 +24,7 @@
 
 #include <CRNObject.h>
 #include <string>
+#include <vector>
 #include <sstream>
 #include <complex>
 #include <iomanip>
@@ -34,6 +35,7 @@
 namespace crn
 {
 	class StringUTF8;
+	class Prop3;
 
 	/*! \addtogroup string */
 	/*@{*/
@@ -61,8 +63,8 @@ namespace crn
 			/* Constructors                                                       */
 			/**********************************************************************/
 			/*! \brief Default constructor (empty string) */
-			String() {}
-			virtual ~String() override {}
+			String() = default;
+			virtual ~String() override = default;
 			/*! \brief Constructor from a std wide string */
 			String(const std::u32string &s):data(s) {}
 			/*! \brief Constructor from a std wide string */
@@ -111,18 +113,6 @@ namespace crn
 			String(String&&) = default;
 			String& operator=(String&&) = default;
 
-			/**********************************************************************/
-			/* Protocols                                                          */
-			/**********************************************************************/
-			/*! \brief This is a Clonable, Serializable, POSet and Metric object */
-			virtual Protocol GetClassProtocols() const noexcept override { return crn::Protocol::Clonable|crn::Protocol::Serializable|crn::Protocol::POSet|crn::Protocol::Metric; }
-			/*! \brief Returns the id of the class */
-			virtual const String& GetClassName() const override { static const String cn(U"String"); return cn; }
-			/*! \brief Copies to another string */
-			virtual String ToString() const override { return *this; }
-			/*! \brief Creates another string from this one */
-			virtual UObject Clone() const override { return std::make_unique<String>(*this); }
-			
 			/**********************************************************************/
 			/* Typecast methods                                                   */
 			/**********************************************************************/
@@ -267,20 +257,12 @@ long long ToLongLong() const { return convertTo<long long>(); }
 			/*! \brief Generates an almost unique id */
 			static String CreateUniqueId(size_t len = 8);
 
-		private:
-			// CRNPROTOCOL_SERIALIZABLE
 			/*! \brief Initializes the object from an XML element. Unsafe. */
-			virtual void deserialize(xml::Element &el) override;
+			void Deserialize(xml::Element &el);
 			/*! \brief Dumps the object to an XML element. Unsafe. */
-			virtual xml::Element serialize(xml::Element &parent) const override;
-			// CRNPROTOCOL_POSET
-			/*! \brief UNSAFE Greater or Equal */
-			virtual Prop3 ge(const Object &l) const override;
-			/*! \brief UNSAFE Lower or Equal */
-			virtual Prop3 le(const Object &l) const override;
-			// CRNPROTOCOL_METRIC
-			virtual double distance(const Object &obj) const override;
+			xml::Element Serialize(xml::Element &parent) const;
 
+		private:
 			/*! \brief Internal. */
 			template<typename T> T convertTo() const { std::stringstream ss(CStr()); T val; ss >> val; return val; }
 			/*! \brief Internal. */
@@ -292,6 +274,9 @@ long long ToLongLong() const { return convertTo<long long>(); }
 		CRN_DECLARE_CLASS_CONSTRUCTOR(String)
 		CRN_SERIALIZATION_CONSTRUCTOR(String)
 	};
+	template<> struct IsClonable<String> : public std::true_type {};
+	template<> struct IsSerializable<String> : public std::true_type {};
+	template<> struct IsMetric<String> : public std::true_type {};
 
 	/* \addtogroup string */
 	/*@{*/
@@ -302,16 +287,20 @@ long long ToLongLong() const { return convertTo<long long>(); }
 	inline bool operator!=(const String &s1, const String &s2) { return s1.Std() != s2.Std(); }
 	/*! \brief Compares two strings */
 	inline bool operator<(const String &s1, const String &s2) { return s1.Std() < s2.Std(); }
+	/*! \brief Compares two strings */
+	inline bool operator>(const String &s1, const String &s2) { return s1.Std() > s2.Std(); }
+	/*! \brief Compares two strings */
+	inline bool operator<=(const String &s1, const String &s2) { return s1.Std() <= s2.Std(); }
+	/*! \brief Compares two strings */
+	inline bool operator>=(const String &s1, const String &s2) { return s1.Std() >= s2.Std(); }
 	/*! \brief Adds two strings */
 	inline String operator+(const String &s1, const String &s2) { return String(s1.Std() + s2.Std()); }
 	
-	/*! \brief (almost) Universal conversion to String */
-	inline String ToString(const Object &obj) { return obj.ToString(); }
-	/*! \brief (almost) Universal conversion to String */
-	inline String ToString(const String &obj) { return obj; }
+	/*! \brief Distance between two strings */
+	inline double Distance(const String &s1, const String &s2) { return s1.EditDistance(s2); }
 
 	/*! \brief Swaps two strings */
-	inline void swap(String &s1, String &s2) noexcept { s1.Swap(s2); }
+	inline void Swap(String &s1, String &s2) noexcept { s1.Swap(s2); }
 
 	/*! \brief Size of a string */
 	inline size_t Size(const String &s) noexcept { return s.Size(); }

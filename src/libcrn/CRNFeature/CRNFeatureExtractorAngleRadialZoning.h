@@ -1,4 +1,4 @@
-/* Copyright 2012-2014 CoReNum, INSA-Lyon
+/* Copyright 2012-2016 CoReNum, INSA-Lyon, ENS-Lyon
  * 
  * This file is part of libcrn.
  * 
@@ -58,7 +58,7 @@ namespace crn
 			virtual ~FeatureExtractorAngleRadialZoning() override {}
 
 			/*! \brief Returns the id of the class */
-			virtual const String& GetClassName() const override { static const String cn(U"FeatureExtractorAngleRadialZoning"); return cn; }
+			virtual StringUTF8 GetClassName() const override { return "FeatureExtractorAngleRadialZoning"; }
 
 			/*! \brief Returns a CRNPROTOCOL_FEATURE object computed from a block */
 			virtual SObject Extract(Block &b) override;
@@ -82,6 +82,7 @@ namespace crn
 		CRN_DECLARE_CLASS_CONSTRUCTOR(FeatureExtractorAngleRadialZoning)
 		CRN_SERIALIZATION_CONSTRUCTOR(FeatureExtractorAngleRadialZoning)
 	};
+	template<> struct IsSerializable<FeatureExtractorAngleRadialZoning> : public std::true_type {};
 
 	CRN_ALIAS_SMART_PTR(FeatureExtractorAngleRadialZoning)
 }

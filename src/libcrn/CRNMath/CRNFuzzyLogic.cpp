@@ -1,4 +1,4 @@
-/* Copyright 2008-2015 INSA Lyon
+/* Copyright 2008-2016 INSA-Lyon, ENS-Lyon
  * 
  * This file is part of libcrn.
  * 
@@ -82,7 +82,7 @@ double FuzzyLogic::DefuzzificationCOG(double min, double max, const RealToRealFu
 
 	if (denominator != 0.0)
 	{
-		URealToRealFunction newF = f.CloneAs<RealToRealFunction>();
+		URealToRealFunction newF = CloneAs<RealToRealFunction>(f);
 
 		size_t n = newF->GetImageSize();
 		double x = 0.0;

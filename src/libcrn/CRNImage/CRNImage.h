@@ -1,4 +1,4 @@
-/* Copyright 2006-2015 Yann LEYDIER, INSA-Lyon, CoReNum
+/* Copyright 2006-2016 Yann LEYDIER, INSA-Lyon, CoReNum, ENS-Lyon
  * 
  * This file is part of libcrn.
  * 
@@ -43,11 +43,10 @@ namespace crn
 	class Point2DInt;
 
 	/*! \brief Base class for images */
-	class ImageBase: public Object
+	class ImageBase
 	{
 		public:
-			virtual Protocol GetClassProtocols() const noexcept override { return crn::Protocol::Clonable; }
-			virtual ~ImageBase() override;
+			virtual ~ImageBase();
 
 			/**************************************************************************************
 			 * Construction and copy
@@ -121,7 +120,6 @@ namespace crn
 	{
 		public:
 			using pixel_type = T;
-			virtual const String& GetClassName() const override { static const auto cn(U"Image<" + String(typeid(pixel_type).name()) + U">"); return cn; }
 			
 			/**************************************************************************************
 			 * Construction and copy
@@ -144,7 +142,7 @@ namespace crn
 			Image(Image &&img) = default;
 
 			/*! \brief Destructor */
-			virtual ~Image() override {}
+			virtual ~Image() override = default;
 
 			/*! \brief Copy operator */
 			Image& operator=(const Image &img) = default;
@@ -155,8 +153,6 @@ namespace crn
 			/*! \brief Move operator */
 			Image& operator=(Image &&img) = default;
 
-			/*! \brief Clones the image */
-			virtual UObject Clone() const override { return std::make_unique<Image>(*this); }
 			/*! \brief Swaps two images */
 			void Swap(Image &other)
 			{
@@ -236,9 +232,9 @@ namespace crn
 			template<typename Y> void Blit(const Image<Y> &src, Rect srczone, size_t dx, size_t dy);
 			
 			/*! \brief Flood fills a portion of the image */
-			void FloodFill(size_t x, size_t y, const pixel_type &val, crn::Distance dist = crn::Distance::D4);
+			void FloodFill(size_t x, size_t y, const pixel_type &val, crn::DistanceType dist = crn::DistanceType::D4);
 			/*! \brief Fills a portion of the image */
-			void ScanFill(size_t x, size_t y, const pixel_type &val, crn::Distance dist = crn::Distance::D4);
+			void ScanFill(size_t x, size_t y, const pixel_type &val, crn::DistanceType dist = crn::DistanceType::D4);
 
 			/*! \brief Draws a rectangle using a specified color */
 			void DrawRect(const Rect &r, pixel_type color, bool filled = false);
@@ -307,15 +303,19 @@ namespace crn
 	template<typename T> Image<T> Rotate270(const Image<T> &img);
 
 	template<typename T> inline auto Size(const Image<T> &img) noexcept(noexcept(img.Size())) -> decltype(img.Size()) { return img.Size(); }
-
-	template<typename T1, typename T2> Image<SumType<typename std::common_type<T1, T2>::type>> operator+(const Image<T1> &i1, const Image<T2> &i2);
-	template<typename T1, typename T2> Image<DiffType<typename std::common_type<T1, T2>::type>> operator-(const Image<T1> &i1, const Image<T2> &i2);
-	template<typename T1, typename T2> Image<SumType<typename std::common_type<T1, T2>::type>> operator*(const Image<T1> &i1, const Image<T2> &i2);
-	template<typename T1, typename T2> Image<SumType<typename std::common_type<T1, T2>::type>> operator/(const Image<T1> &i1, const Image<T2> &i2);
-
 	/*@}*/
-
 } // namespace crn
+
+/*! \addtogroup image */
+/*@{*/
+template<typename T1, typename T2> crn::Image<crn::SumType<typename std::common_type<T1, T2>::type>> operator+(const crn::Image<T1> &i1, const crn::Image<T2> &i2);
+template<typename T1, typename T2> crn::Image<crn::DiffType<typename std::common_type<T1, T2>::type>> operator-(const crn::Image<T1> &i1, const crn::Image<T2> &i2);
+template<typename T1, typename T2> crn::Image<crn::SumType<typename std::common_type<T1, T2>::type>> operator*(const crn::Image<T1> &i1, const crn::Image<T2> &i2);
+template<typename T> crn::Image<crn::SumType<typename std::common_type<T, double>::type>> operator*(double d, const crn::Image<T> &i);
+template<typename T> crn::Image<crn::SumType<typename std::common_type<T, double>::type>> operator*(const crn::Image<T> &i, double d);
+template<typename T1, typename T2> crn::Image<crn::SumType<typename std::common_type<T1, T2>::type>> operator/(const crn::Image<T1> &i1, const crn::Image<T2> &i2);
+/*@}*/
+
 #include <CRNImage/CRNImageFormats.h>
 
 namespace crn

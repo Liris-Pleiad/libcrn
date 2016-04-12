@@ -1,4 +1,4 @@
-/* Copyright 2008-2014 INSA Lyon, CoReNum
+/* Copyright 2008-2016 INSA Lyon, CoReNum, ENS-Lyon
  * 
  * This file is part of libcrn.
  * 
@@ -55,26 +55,17 @@ namespace crn
 			/*! \brief Rotation for single point */
 			Point2DDouble MakeRotation(Angle<Radian> theta) const;
 		
-			/*! \brief Rotation for many points */
-			static std::vector<Point2DDouble> MakeRotation(std::vector<Point2DDouble> P, Angle<Radian> theta);
-				
-			/*! \brief This is a Metric, VectorOverR, Serializable and Clonable object */
-			virtual Protocol GetClassProtocols() const noexcept override { return Point2D<double>::GetClassProtocols()|Protocol::Serializable|Protocol::Clonable; } 
-			/*! \brief Returns the id of the class */
-			virtual const String& GetClassName() const override { static const String cn(U"Point2DDouble"); return cn; }
-			
-			/*!\brief Creates a new object, copied from this */
-			virtual UObject Clone() const override { return std::make_unique<Point2DDouble>(X, Y); }
-
-		private:
 			/*! \brief Initializes the object from an XML element. Unsafe. */
-			virtual void deserialize(xml::Element &el) override;
+			void Deserialize(xml::Element &el);
 			/*! \brief Dumps the object to an XML element. Unsafe. */
-			virtual xml::Element serialize(xml::Element &parent) const override;
+			xml::Element Serialize(xml::Element &parent) const;
+		private:
 
 		CRN_DECLARE_CLASS_CONSTRUCTOR(Point2DDouble)
 		CRN_SERIALIZATION_CONSTRUCTOR(Point2DDouble)
 	};
+	template<> struct IsSerializable<Point2DDouble> : public std::true_type {};
+	template<> struct IsClonable<Point2DDouble> : public std::true_type {};
 
 	CRN_ALIAS_SMART_PTR(Point2DDouble)
 }

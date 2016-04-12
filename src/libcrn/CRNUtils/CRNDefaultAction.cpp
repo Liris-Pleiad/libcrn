@@ -25,14 +25,36 @@
 
 using namespace crn;
 
+void Action::Deserialize(xml::Element &el)
+{
+	deserialize(el);
+	for (auto sel = el.BeginElement(); sel != el.EndElement(); ++sel)
+		if (sel.GetAttribute<crn::StringUTF8>("role", false) == "userdata")
+		{
+			UserData.Deserialize(sel);
+			break;
+		}
+}
+xml::Element Action::Serialize(xml::Element &parent) const
+{
+	auto el = serialize(parent);
+	if (!UserData.IsEmpty())
+	{
+		auto mel = UserData.Serialize(el);
+		mel.SetAttribute("role", "userdata");
+	}
+	return el;
+}
+
 void Action::deserialize(xml::Element &el)
 {
+	if (el.GetName() != GetClassName())
+		throw ExceptionInvalidArgument(StringUTF8("void Action::Deserialize(xml::Element &el): ") + _("Wrong XML element."));
 }
 
 xml::Element Action::serialize(xml::Element &parent) const
 {
-	xml::Element el(parent.PushBackElement(GetClassName().CStr()));
-	return el;
+	return parent.PushBackElement(GetClassName());
 }
 
 /*! Singleton instance 

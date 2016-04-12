@@ -1,4 +1,4 @@
-/* Copyright 2009-2014 CoReNum, INSA-Lyon
+/* Copyright 2009-2016 CoReNum, INSA-Lyon, ENS-Lyon
  * 
  * This file is part of libcrn.
  * 
@@ -56,7 +56,7 @@ namespace crn
 			virtual ~BlockTreeExtractorWordsFromProjection() override {}
 
 			/*! \brief Returns the id of the class */
-			virtual const String& GetClassName() const override { static const String cn(U"BlockTreeExtractorWordsFromProjection"); return cn; }
+			virtual StringUTF8 GetClassName() const override { return "BlockTreeExtractorWordsFromProjection"; }
 
 			/*! \brief Returns the name of the tree that is extracted */
 			virtual String GetTreeName() override { return wordTreeName; }
@@ -75,6 +75,7 @@ namespace crn
 			CRN_DECLARE_CLASS_CONSTRUCTOR(BlockTreeExtractorWordsFromProjection)
 			CRN_SERIALIZATION_CONSTRUCTOR(BlockTreeExtractorWordsFromProjection)
 	};
+	template<> struct IsSerializable<BlockTreeExtractorWordsFromProjection> : public std::true_type {};
 
 	CRN_ALIAS_SMART_PTR(BlockTreeExtractorWordsFromProjection)
 }

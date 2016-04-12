@@ -1,4 +1,4 @@
-/* Copyright 2008-2015 INSA Lyon
+/* Copyright 2008-2016 INSA-Lyon, ENS-Lyon
  * 
  * This file is part of libcrn.
  * 
@@ -20,6 +20,7 @@
  */
 
 #include <CRNMath/CRNRealToRealFunction.h>
+#include <CRNProtocols.h>
 #include <CRNi18n.h>
 
 using namespace crn;
@@ -44,7 +45,7 @@ RealToRealFunction::RealToRealFunction(const RealToRealFunction& F)
 	left_endpoint = F.GetLeftEndpoint();
 	right_endpoint = F.GetRightEndpoint();
 
-	image = F.GetImage()->CloneAs<MatrixDouble>();
+	image = CloneAs<MatrixDouble>(*F.GetImage());
 }
 
 /*!
@@ -225,4 +226,7 @@ MatrixDouble RealToRealFunction::MakePreimage(double y) const
 	return P;
 }
 
+CRN_BEGIN_CLASS_CONSTRUCTOR(RealToRealFunction)
+	Cloner::Register<RealToRealFunction>();
+CRN_END_CLASS_CONSTRUCTOR(RealToRealFunction)
 

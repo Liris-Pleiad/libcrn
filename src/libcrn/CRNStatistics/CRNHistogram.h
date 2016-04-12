@@ -1,4 +1,4 @@
-/* Copyright 2006-2015 Yann LEYDIER, INSA-Lyon, CoReNum, Université Paris Descartes
+/* Copyright 2006-2016 Yann LEYDIER, INSA-Lyon, CoReNum, Université Paris Descartes, ENS-Lyon
  *
  * This file is part of libcrn.
  *
@@ -41,7 +41,7 @@ namespace crn
 	 * \version 0.1
 	 * \ingroup stats
 	 */
-	class Histogram: public ComplexObject
+	class Histogram: public Object
 	{
 		public:
 			enum class DesignHeuristic {CUSTOM, SQUARE_ROOT, STURGES, SCOTT, FREEDMAN};
@@ -151,15 +151,7 @@ namespace crn
 			Histogram& operator=(Histogram&&) = default;
 
 			/*! \brief Destructor */
-			virtual ~Histogram() override;
-
-			/*! \brief This is a Metric, Serializable and Clonable ComplexObject */
-			virtual Protocol GetClassProtocols() const noexcept override { return crn::Protocol::ComplexObject|crn::Protocol::Metric|crn::Protocol::Serializable|crn::Protocol::Clonable; }
-			/*! \brief Returns the id of the class */
-			virtual const String& GetClassName() const override { static const String cn(U"Histogram"); return cn; }
-
-			/*! \brief Creates a new instance of the same histogram */
-			virtual UObject Clone() const override { return std::make_unique<Histogram>(*this, 1u); }
+			~Histogram();
 
 			/*! \brief Returns the number of bins */
 			size_t Size() const noexcept {return bins.size();}
@@ -263,7 +255,7 @@ namespace crn
 			void Resize(size_t newsize);
 
 			/*! \brief Dumps bins to a string */
-			virtual String ToString() const override;
+			String ToString() const;
 
 			/*! \brief returns the histogram image */
 			ImageBW MakeImageBW(size_t height) const;
@@ -291,21 +283,24 @@ namespace crn
 
 			std::vector<unsigned int> Std() && { return std::move(bins); }
 
+			/*! \brief Initializes the object from an XML element. Unsafe. */
+			void Deserialize(xml::Element &el);
+			/*! \brief Dumps the object to an XML element. Unsafe. */
+			xml::Element Serialize(xml::Element &parent) const;
+
 		private:
 			using datatype = std::vector<unsigned int>; /*!< Inner data representation */
 			datatype bins; /*!< Classes for this histogram. */
 			unsigned int compression; /*!< Compression ratio for this histogram. */
 
-			/*! \brief Initializes the object from an XML element. Unsafe. */
-			virtual void deserialize(xml::Element &el) override;
-			/*! \brief Dumps the object to an XML element. Unsafe. */
-			virtual xml::Element serialize(xml::Element &parent) const override;
-			/*! \brief Distance between two metric objects. */
-			virtual double distance(const Object &obj) const override { return MinkowskiDistance((const Histogram&)obj, 1); }
-
 			CRN_DECLARE_CLASS_CONSTRUCTOR(Histogram)
 			CRN_SERIALIZATION_CONSTRUCTOR(Histogram)
 	};
+	template<> struct IsSerializable<Histogram> : public std::true_type {};
+	template<> struct IsClonable<Histogram> : public std::true_type {};
+	inline double Distance(const Histogram &h1, const Histogram &h2) { return h1.MinkowskiDistance(h2, 1); }
+	template<> struct IsMetric<Histogram> : public std::true_type {};
+
 
 	/*! \brief Size of an histogram */
 	inline size_t Size(const Histogram &h) noexcept { return h.Size(); }

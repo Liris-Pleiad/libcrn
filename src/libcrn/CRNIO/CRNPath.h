@@ -1,4 +1,4 @@
-/* Copyright 2010-2015 CoReNum, INSA-Lyon, Université Paris Descartes
+/* Copyright 2010-2016 CoReNum, INSA-Lyon, Université Paris Descartes, ENS-Lyon
  * 
  * This file is part of libcrn.
  * 
@@ -42,7 +42,7 @@ namespace crn
 			enum class Format
 			{
 				AUTO = 0, URI = 1, UNIX = 2, WINDOWS = 3,
-#ifdef CRN_PF_WIN32
+#ifdef _MSC_VER
 				LOCAL = 3
 #else
 				LOCAL = 2
@@ -75,15 +75,10 @@ namespace crn
 			Path(int i, Format fmt = Format::LOCAL):StringUTF8(i),format(fmt) { }	
 			/*! \brief Constructor from an xml element */
 			Path(xml::Element &el):format(Format::AUTO) { Deserialize(el); }
-			virtual ~Path() override {}
+			virtual ~Path() override = default;
 
 			Path& operator=(const Path&) = default;
 			Path& operator=(Path&&) = default;
-
-			/*! \brief Returns the id of the class */
-			virtual const String& GetClassName() const override;
-			/*! \brief Creates another string from this one */
-			virtual UObject Clone() const override { return std::make_unique<Path>(*this); }
 
 			/*! \brief Splits the string in multiple strings delimited by a set of separators */
 			std::vector<Path> Split(const StringUTF8 &sep) const;
@@ -161,11 +156,18 @@ namespace crn
 
 			/*! \brief Converts the path to the local format */
 			Path& ToLocal();
+
+			/*! \brief Initializes the object from an XML element. */
+			virtual void Deserialize(xml::Element &el) override;
+			/*! \brief Dumps the object to an XML element. */
+			virtual xml::Element Serialize(xml::Element &parent) const override;
 		private:
 			Format format;
 
 		CRN_DECLARE_CLASS_CONSTRUCTOR(Path)
 	};
+	template<> struct IsSerializable<Path> : public std::true_type {};
+	template<> struct IsClonable<Path> : public std::true_type {};
 
 	/*! \addtogroup string */
 	/*@{*/
@@ -176,7 +178,7 @@ namespace crn
 	/*! \brief Size of a path */
 	inline size_t Size(Path &p) noexcept { return p.Size(); }
 	/*! \brief Swaps two paths */
-	inline void swap(Path &p1, Path &p2) noexcept { p1.Swap(p2); }
+	inline void Swap(Path &p1, Path &p2) noexcept { p1.Swap(p2); }
 
 	namespace literals
 	{

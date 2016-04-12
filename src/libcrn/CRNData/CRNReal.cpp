@@ -1,4 +1,4 @@
-/* Copyright 2006-2016 Yann LEYDIER, CoReNum, INSA-Lyon
+/* Copyright 2006-2016 Yann LEYDIER, CoReNum, INSA-Lyon, ENS-lyon
  * 
  * This file is part of libcrn.
  * 
@@ -32,40 +32,17 @@ using namespace crn;
 
 /*****************************************************************************/
 /*!
- * Conversion to string
- *
- * \return	The string value
- */
-String Real::ToString() const
-{
-	return String(val);
-}
-
-/*****************************************************************************/
-/*!
- * Distance between two metric objects.
- *
- * \param[in]	obj	The object to compute the distance with
- * \return	The distance
- */
-double Real::distance(const Object &obj) const
-{
-	return Abs(val - static_cast<const Real&>(obj).val);
-}
-
-/*****************************************************************************/
-/*!
  * Unsafe load
  *
  * \throws	ExceptionInvalidArgument	not a Real
  *
  * \param[in]	el	the element to load
  */
-void Real::deserialize(xml::Element &el)
+void Real::Deserialize(xml::Element &el)
 {
-	if (el.GetValue() != GetClassName().CStr())
+	if (el.GetValue() != "Real")
 	{
-		throw ExceptionInvalidArgument(StringUTF8("void Real::deserialize(xml::Element &el): ") + 
+		throw ExceptionInvalidArgument(StringUTF8("void Real::Deserialize(xml::Element &el): ") + 
 				_("Wrong XML element."));
 	}
 	val = el.GetAttribute<double>("value");
@@ -78,90 +55,16 @@ void Real::deserialize(xml::Element &el)
  * \param[in]	parent	the parent element to which we will add the new element
  * \return The newly created element
  */
-xml::Element Real::serialize(xml::Element &parent) const
+xml::Element Real::Serialize(xml::Element &parent) const
 {
-	xml::Element el(parent.PushBackElement(GetClassName().CStr()));
+	xml::Element el(parent.PushBackElement("Real"));
 	el.SetAttribute("value", val);
 	return el;
 }
 
-/*! 
- * Unsafe method to compute a sum of vectors. 
- *
- * \param[in]	plist	a list of terms and coefficients
- * \return	the newly created object or nullptr if failed
- */
-UObject Real::sum(const std::vector<std::pair<const Object*, double> > &plist) const 
-{ 
-	double acc = 0;
-	for (auto & elem : plist)
-		acc += elem.second * ((const Real*)elem.first)->GetValue();
-	return std::make_unique<Real>(acc); 
-}
-
-/*! 
- * Unsafe Method to compute a mean of vectors. 
- *
- * \param[in]	plist	a list of terms and coefficients
- * \return	the newly created object or nullptr if failed
- */
-UObject Real::mean(const std::vector<std::pair<const Object*, double> > &plist) const
-{
-	UReal ans(static_cast<Real*>(sum(plist).release()));
-	double coeffs = 0;
-	for (auto & elem : plist)
-		coeffs += elem.second;
-	ans->Mult(1.0 / coeffs);
-	return std::forward<UReal>(ans);
-}
-
-/*! 
- * Unsafe internal product
- *
- * \param[in]	obj	the term
- */
-void Real::mult(const Object &obj)
-{
-	const Real &r = static_cast<const Real&>(obj);
-	val *= r.val;
-}
-
-/*! 
- * Unsafe internal division
- *
- * \param[in]	obj	the term
- */
-void Real::div(const Object &obj)
-{
-	const Real &r = static_cast<const Real&>(obj);
-	val /= r.val;
-}
-
-/*!
- * UNSAFE Greater or Equal
- *
- * \param[in]	l	the object to compare
- * \return	true if success, false else
- */
-Prop3 Real::ge(const Object &l) const
-{
-	const Real &r = static_cast<const Real&>(l);
-	return val >= r.val;
-}
-
-/*!
- * UNSAFE Lower or Equal 
- *
- * \param[in]	l	the object to compare
- * \return	true if success, false else
- */
-Prop3 Real::le(const Object &l) const
-{
-	const Real &r = static_cast<const Real&>(l);
-	return val <= r.val;
-}
-
 CRN_BEGIN_CLASS_CONSTRUCTOR(Real)
 	CRN_DATA_FACTORY_REGISTER(U"Real", Real)
+	Cloner::Register<Real>();
+	Ruler::Register<Real>();
 CRN_END_CLASS_CONSTRUCTOR(Real)
 
