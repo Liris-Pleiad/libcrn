@@ -84,7 +84,7 @@ endif()
 
 if(MSVC)
 	add_dependencies(crn gendef)
-	add_custom_command(TARGET crn PRE_LINK COMMAND ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/${CMAKE_CFG_INTDIR}/gendef 
+	add_custom_command(TARGET crn PRE_LINK COMMAND ${PROJECT_BINARY_DIR}/${CMAKE_CFG_INTDIR}/gendef 
 		${CMAKE_CURRENT_BINARY_DIR}/crn.def 
 		$<TARGET_FILE_NAME:crn> 
 		${CMAKE_CURRENT_BINARY_DIR}/crn.dir/${CMAKE_CFG_INTDIR}/*.obj)
