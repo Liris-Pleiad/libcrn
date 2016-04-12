@@ -37,6 +37,7 @@ if(GTK2_FOUND)
 	# Build
 	add_library(gtkcrnmm2 ${LIBGTKCRNMM_SRC} ${LIBGTKCRNMM_HEADER})
 	target_include_directories(gtkcrnmm2 PRIVATE "${PROJECT_BINARY_DIR}/include/libgtkcrnmm2")
+	target_include_directories(gtkcrnmm2 PRIVATE "${GTK2_INCLUDE_DIRS}")
 
 	if(MSVC)
 		add_dependencies(gtkcrnmm2 gendef)
@@ -71,6 +72,7 @@ if(GTK3_FOUND)
 	# Build
 	add_library(gtkcrnmm3 ${LIBGTKCRNMM_SRC} ${LIBGTKCRNMM_HEADER})
 	target_include_directories(gtkcrnmm3 PRIVATE "${PROJECT_BINARY_DIR}/include/libgtkcrnmm3")
+	target_include_directories(gtkcrnmm3 PRIVATE "${GTK3_INCLUDE_DIRS}")
 
 	if(MSVC)
 		add_dependencies(gtkcrnmm3 gendef)

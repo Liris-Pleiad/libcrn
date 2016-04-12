@@ -138,8 +138,8 @@ if(MSVC)
 	endif()
 
 	# set default search path to the binary kit
-	set(CMAKE_FIND_ROOT_PATH "${CMAKE_SOURCE_DIR}/gtkmm2formsvc14")
-	set(CMAKE_PREFIX_PATH "${CMAKE_SOURCE_DIR}/gtkmm2formsvc14")
+	#set(CMAKE_FIND_ROOT_PATH "${CMAKE_SOURCE_DIR}/gtkmm2formsvc14")
+	#set(CMAKE_PREFIX_PATH "${CMAKE_SOURCE_DIR}/gtkmm2formsvc14")
 
 endif()
 #------------------------------------------------------------------------------
@@ -186,6 +186,7 @@ if(Intl_FOUND AND Gettext_FOUND)
 endif()
 
 # Find Gtkmm2
+#set(GTK2_DEBUG on)
 find_package(GTK2 2.22 COMPONENTS gtk gtkmm)
 if(GTK2_FOUND)
 	if(Intl_FOUND AND Gettext_FOUND)
@@ -199,7 +200,7 @@ if(GTK2_FOUND)
 	set(CRN_USING_GDKPB on)
 endif()
 
-set(GTK3_DEBUG on)
+#set(GTK3_DEBUG on)
 find_package(GTK3 3.10 COMPONENTS gtk gtkmm)
 if(GTK3_FOUND)
 	if(Intl_FOUND AND Gettext_FOUND)
