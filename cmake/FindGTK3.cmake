@@ -237,6 +237,20 @@ function(_GTK3_FIND_INCLUDE_DIR _var _hdr)
         pango-1.0
         pangomm-1.4
         sigc++-2.0
+# for GTK3 on windows
+        glibmm
+        glib
+        atk
+        atkmm
+        cairomm
+        gdk-pixbuf
+        gdkmm
+        giomm
+        gtk
+        gtkmm
+        pango
+        pangomm
+        sigc++   
     )
 
     #
@@ -332,17 +346,23 @@ function(_GTK3_FIND_LIBRARY _var _lib _expand_vc _append_version)
         # Add vc80/vc90/vc100 midfixes
         if(MSVC80)
             set(_library   ${_library}-vc80)
+            set(_library_d ${_library}-d)
         elseif(MSVC90)
             set(_library   ${_library}-vc90)
+            set(_library_d ${_library}-d)
         elseif(MSVC10)
             set(_library ${_library}-vc100)
+            set(_library_d ${_library}-d)
         elseif(MSVC11)
             # Up to gtkmm-win 2.22.0-2 there are no vc110 libraries but vc100 can be used
             set(_library ${_library}-vc100)
+            set(_library_d ${_library}-d)
         elseif(MSVC14)
-            set(_library ${_library}-vc140)
+            #set(_library ${_library}-vc140)
+            set(_library_d ${_library}-d.dll)
+            set(_library ${_library}.dll)
         endif()
-        set(_library_d ${_library}-d)
+        
     endif()
 
     if(GTK3_DEBUG)
@@ -371,7 +391,7 @@ function(_GTK3_FIND_LIBRARY _var _lib _expand_vc _append_version)
 
     # For some silly reason the MSVC libraries use _ instead of .
     # in the version fields
-    if(_expand_vc AND MSVC)
+    if(0) #_expand_vc AND MSVC)
         set(_no_dots_lib_list)
         set(_no_dots_libd_list)
         foreach(_l ${_lib_list})
@@ -522,12 +542,13 @@ function(_GTK3_ADD_TARGET _var)
         # Do not create the target if dependencies are missing
         foreach(_dep ${_${_var}_GTK3_DEPENDS})
             if(NOT TARGET GTK3::${_dep})
+            message("Not adding ${_basename} because ${_dep} not found")
                 return()
             endif()
         endforeach()
 
         add_library(GTK3::${_basename} UNKNOWN IMPORTED)
-
+    
         if(GTK3_${_var}_LIBRARY_RELEASE)
             set_property(TARGET GTK3::${_basename} APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
             set_property(TARGET GTK3::${_basename}        PROPERTY IMPORTED_LOCATION_RELEASE "${GTK3_${_var}_LIBRARY_RELEASE}" )
@@ -665,48 +686,53 @@ foreach(_GTK3_component ${GTK3_FIND_COMPONENTS})
 
         _GTK3_FIND_INCLUDE_DIR(GLIB glib.h)
         _GTK3_FIND_INCLUDE_DIR(GLIBCONFIG glibconfig.h)
-        _GTK3_FIND_LIBRARY    (GLIB glib false true)
+        _GTK3_FIND_LIBRARY    (GLIB glib true true)
+        
         _GTK3_ADD_TARGET      (GLIB)
 
         _GTK3_FIND_INCLUDE_DIR(GOBJECT glib-object.h)
-        _GTK3_FIND_LIBRARY    (GOBJECT gobject false true)
+        _GTK3_FIND_LIBRARY    (GOBJECT gobject true true)
         _GTK3_ADD_TARGET      (GOBJECT GTK3_DEPENDS glib)
 
         _GTK3_FIND_INCLUDE_DIR(ATK atk/atk.h)
-        _GTK3_FIND_LIBRARY    (ATK atk false true)
+        _GTK3_FIND_LIBRARY    (ATK atk true true)
         _GTK3_ADD_TARGET      (ATK GTK3_DEPENDS gobject glib)
 
-        _GTK3_FIND_LIBRARY    (GIO gio false true)
+        _GTK3_FIND_LIBRARY    (GIO gio true true)
         _GTK3_ADD_TARGET      (GIO GTK3_DEPENDS gobject glib)
 
-        _GTK3_FIND_LIBRARY    (GTHREAD gthread false true)
+        _GTK3_FIND_LIBRARY    (GTHREAD gthread true true)
         _GTK3_ADD_TARGET      (GTHREAD GTK3_DEPENDS glib)
 
-        _GTK3_FIND_LIBRARY    (GMODULE gmodule false true)
+        _GTK3_FIND_LIBRARY    (GMODULE gmodule true true)
         _GTK3_ADD_TARGET      (GMODULE GTK3_DEPENDS glib)
 
         _GTK3_FIND_INCLUDE_DIR(GDK_PIXBUF gdk-pixbuf/gdk-pixbuf.h)
-        _GTK3_FIND_LIBRARY    (GDK_PIXBUF gdk_pixbuf false true)
+        if (UNIX)
+            _GTK3_FIND_LIBRARY    (GDK_PIXBUF gdk_pixbuf true true)
+        else()
+            _GTK3_FIND_LIBRARY    (GDK_PIXBUF gdk-pixbuf true true)
+        endif()
         _GTK3_ADD_TARGET      (GDK_PIXBUF GTK3_DEPENDS gobject glib)
 
         _GTK3_FIND_INCLUDE_DIR(CAIRO cairo.h)
-        _GTK3_FIND_LIBRARY    (CAIRO cairo false false)
+        _GTK3_FIND_LIBRARY    (CAIRO cairo true false)
         _GTK3_ADD_TARGET      (CAIRO)
 
         _GTK3_FIND_INCLUDE_DIR(PANGO pango/pango.h)
-        _GTK3_FIND_LIBRARY    (PANGO pango false true)
+        _GTK3_FIND_LIBRARY    (PANGO pango true true)
         _GTK3_ADD_TARGET      (PANGO GTK3_DEPENDS gobject glib)
 
-        _GTK3_FIND_LIBRARY    (PANGOCAIRO pangocairo false true)
+        _GTK3_FIND_LIBRARY    (PANGOCAIRO pangocairo true true)
         _GTK3_ADD_TARGET      (PANGOCAIRO GTK3_DEPENDS pango cairo gobject glib)
 
-        _GTK3_FIND_LIBRARY    (PANGOFT2 pangoft2 false true)
+        _GTK3_FIND_LIBRARY    (PANGOFT2 pangoft2 true true)
         _GTK3_ADD_TARGET      (PANGOFT2 GTK3_DEPENDS pango gobject glib
                                         OPTIONAL_INCLUDES ${FREETYPE_INCLUDE_DIR_ft2build} ${FREETYPE_INCLUDE_DIR_freetype2}
                                                           ${GTK3_FONTCONFIG_INCLUDE_DIR}
                                                           ${GTK3_X11_INCLUDE_DIR})
 
-        _GTK3_FIND_LIBRARY    (PANGOXFT pangoxft false true)
+        _GTK3_FIND_LIBRARY    (PANGOXFT pangoxft true true)
         _GTK3_ADD_TARGET      (PANGOXFT GTK3_DEPENDS pangoft2 pango gobject glib
                                         OPTIONAL_INCLUDES ${FREETYPE_INCLUDE_DIR_ft2build} ${FREETYPE_INCLUDE_DIR_freetype2}
                                                           ${GTK3_FONTCONFIG_INCLUDE_DIR}
@@ -735,16 +761,25 @@ foreach(_GTK3_component ${GTK3_FIND_COMPONENTS})
                 _GTK3_FIND_LIBRARY    (GTK gtk false true)
             endif()
         else()
-            _GTK3_FIND_LIBRARY    (GTK gtk-win32 false true)
+            _GTK3_FIND_LIBRARY    (GTK gtk true true)
         endif()
-        _GTK3_ADD_TARGET (GTK GTK3_DEPENDS gdk atk pangoft2 pango gdk_pixbuf gthread gobject glib
+        if(UNIX)
+            _GTK3_ADD_TARGET (GTK GTK3_DEPENDS gdk atk pangoft2 pango gdk_pixbuf gthread gobject glib
                               GTK3_OPTIONAL_DEPENDS gio pangocairo cairo)
+        else()
+            _GTK3_ADD_TARGET (GTK GTK3_DEPENDS gdk atk pango gdk_pixbuf gthread gobject glib
+                              GTK3_OPTIONAL_DEPENDS gio pangocairo cairo)
+        endif()
 
     elseif(_GTK3_component STREQUAL "gtkmm")
 
         _GTK3_FIND_INCLUDE_DIR(SIGC++ sigc++/sigc++.h)
         _GTK3_FIND_INCLUDE_DIR(SIGC++CONFIG sigc++config.h)
-        _GTK3_FIND_LIBRARY    (SIGC++ sigc true true)
+        if (UNIX)
+            _GTK3_FIND_LIBRARY    (SIGC++ sigc true true)
+        else()
+            _GTK3_FIND_LIBRARY    (SIGC++ sigc++ true true)
+        endif()
         _GTK3_ADD_TARGET      (SIGC++)
 
         _GTK3_FIND_INCLUDE_DIR(GLIBMM glibmm.h)
@@ -781,20 +816,36 @@ foreach(_GTK3_component ${GTK3_FIND_COMPONENTS})
         _GTK3_FIND_INCLUDE_DIR(GDKMM gdkmm.h)
         _GTK3_FIND_INCLUDE_DIR(GDKMMCONFIG gdkmmconfig.h)
         _GTK3_FIND_LIBRARY    (GDKMM gdkmm true true)
-        _GTK3_ADD_TARGET      (GDKMM GTK3_DEPENDS pangomm gtk glibmm sigc++ gdk atk pangoft2 gdk_pixbuf pango gobject glib
+        if(UNIX)
+            _GTK3_ADD_TARGET      (GDKMM GTK3_DEPENDS pangomm gtk glibmm sigc++ gdk atk pangoft2 gdk_pixbuf pango gobject glib
                                      GTK3_OPTIONAL_DEPENDS giomm cairomm gio pangocairo cairo
                                      OPTIONAL_INCLUDES ${FREETYPE_INCLUDE_DIR_ft2build} ${FREETYPE_INCLUDE_DIR_freetype2}
                                                        ${GTK3_FONTCONFIG_INCLUDE_DIR}
                                                        ${GTK3_X11_INCLUDE_DIR})
+        else()
+            _GTK3_ADD_TARGET      (GDKMM GTK3_DEPENDS pangomm gtk glibmm sigc++ gdk atk gdk_pixbuf pango gobject glib
+                                     GTK3_OPTIONAL_DEPENDS giomm cairomm gio pangocairo cairo
+                                     OPTIONAL_INCLUDES ${FREETYPE_INCLUDE_DIR_ft2build} ${FREETYPE_INCLUDE_DIR_freetype2}
+                                                       ${GTK3_FONTCONFIG_INCLUDE_DIR}
+                                                       ${GTK3_X11_INCLUDE_DIR})
+        endif()
 
         _GTK3_FIND_INCLUDE_DIR(GTKMM gtkmm.h)
         _GTK3_FIND_INCLUDE_DIR(GTKMMCONFIG gtkmmconfig.h)
         _GTK3_FIND_LIBRARY    (GTKMM gtkmm true true)
-        _GTK3_ADD_TARGET      (GTKMM GTK3_DEPENDS atkmm gdkmm pangomm gtk glibmm sigc++ gdk atk pangoft2 gdk_pixbuf pango gthread gobject glib
+        if(UNIX)
+            _GTK3_ADD_TARGET      (GTKMM GTK3_DEPENDS atkmm gdkmm pangomm gtk glibmm sigc++ gdk atk pangoft2 gdk_pixbuf pango gthread gobject glib
                                      GTK3_OPTIONAL_DEPENDS giomm cairomm gio pangocairo cairo
                                      OPTIONAL_INCLUDES ${FREETYPE_INCLUDE_DIR_ft2build} ${FREETYPE_INCLUDE_DIR_freetype2}
                                                        ${GTK3_FONTCONFIG_INCLUDE_DIR}
                                                        ${GTK3_X11_INCLUDE_DIR})
+        else()
+            _GTK3_ADD_TARGET      (GTKMM GTK3_DEPENDS atkmm gdkmm pangomm gtk glibmm sigc++ gdk atk gdk_pixbuf pango gthread gobject glib
+                                     GTK3_OPTIONAL_DEPENDS giomm cairomm gio pangocairo cairo
+                                     OPTIONAL_INCLUDES ${FREETYPE_INCLUDE_DIR_ft2build} ${FREETYPE_INCLUDE_DIR_freetype2}
+                                                       ${GTK3_FONTCONFIG_INCLUDE_DIR}
+                                                       ${GTK3_X11_INCLUDE_DIR})
+        endif()
 
     else()
         message(FATAL_ERROR "Unknown GTK3 component ${_component}")
