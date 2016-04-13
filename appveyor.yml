@@ -33,9 +33,9 @@ init:
 #  - msbuild /version
 #  - cmake --version
 #  - dir C:\Libraries
+#  - dir C:\Libraries\boost_1_59_0
 #  - dir C:\Qt
-#  - dir C:\Qt\5.5
-#  - set PATH=%QT5_DIR%\bin;%PATH%
+#  - dir C:\Qt\5.6
   - set APPVEYOR=TRUE
   - set CACHE=FALSE
 
