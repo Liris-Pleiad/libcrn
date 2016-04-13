@@ -13,12 +13,7 @@ os: Visual Studio 2015
 
 # environment variables
 environment:
-#  BOOST_ROOT: C:\Libraries\boost_1_59_0
-#
-  QT5_DIR: C:\Qt\5.4\msvc2013_64_opengl
-#  QT5_DIR: C:\Qt\5.5\msvc2013_64
-#
-#  CONFIG_QGL: Release
+  QT5_DIR: C:\Qt\5.6\msvc2015_64
 #
   KIT_ROOT: C:\local_vs2015_64
 
@@ -71,7 +66,7 @@ before_build:
   - IF %CACHE%==FALSE 7z x libiconv-1.14.rar > nul
 #
   - cd %APPVEYOR_BUILD_FOLDER%
-  - cmake . -G"Visual Studio 14 2015 Win64" -DICONV_INCLUDE_DIR=%KIT_ROOT%\libiconv-1.14\include -DICONV_LIBRARIES=%KIT_ROOT%\libiconv-1.14\lib\libiconv.lib
+  - cmake . -G"Visual Studio 14 2015 Win64" -DMSVC_KIT_ROOT=%KIT_ROOT%
 
 # to run your custom scripts instead of automatic MSBuild
 build_script:
