@@ -32,12 +32,17 @@ namespace GtkCRN
 	/*! \brief Main loop and context
 	 * \ingroup gtkcrn
 	 */
+#ifdef CRN_USING_GTKMM3
+	class Main : public Gtk::Application
+#else
 	class Main: public Gtk::Main
+#endif
 	{
+
 		public:
 			/*! \brief You have to create a Main object in the main function. */
 			Main(int &argc, char **&argv);
-			virtual ~Main() override {}
+			//virtual ~Main() override {}
 			/*! \brief Launches the application. */
 			void run_thread_safe();
 
@@ -46,9 +51,9 @@ namespace GtkCRN
 
 		private:
 			static bool init_done; /*!< is Gtk initialized? */
-			Glib::RefPtr<Gtk::IconFactory> iconfac; /*!< icon factory to handle libcrn's icons */
+			//Glib::RefPtr<Gtk::IconFactory> iconfac; /*!< icon factory to handle libcrn's icons */
 #ifdef CRN_USING_GTKMM3
-			std::vector<Glib::RefPtr<Gtk::IconSet>> icons; /*!< store for libcrn's icons */
+			//std::vector<Glib::RefPtr<Gtk::IconSet>> icons; /*!< store for libcrn's icons */
 #else /* CRN_USING_GTKMM3 */
 			std::vector<Gtk::IconSet> icons; /*!< store for libcrn's icons */
 #endif /* CRN_USING_GTKMM3 */

@@ -33,8 +33,9 @@ namespace GtkCRN
 	/*! \brief Displays a crn::Document
 	 * \ingroup	gtkcrn
 	 */
-	class Document: public Gtk::HPaned
+	class Document//: public Gtk::HPaned
 	{
+#if 0
 		public:
 			/*! \brief Constructor */
 			Document(bool show_views = true, bool show_tree = true);
@@ -318,6 +319,7 @@ namespace GtkCRN
 			Gtk::VPaned vpan;
 			Gtk::Frame tree_frame;
 			Gtk::HBox image_box;
+#endif
 	};
 }
 

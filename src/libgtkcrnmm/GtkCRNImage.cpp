@@ -27,12 +27,17 @@
 
 using namespace GtkCRN;
 
+#ifdef CRN_USING_GTKMM3
+#	define get_red_p get_red
+#	define get_green_p get_green
+#	define get_blue_p get_blue
+#endif
 
 int Image::selection_margin(5);
 
 /*! Constructor */
 Image::Image():
-	Table(3, 3, false),
+	//Grid(3, 3, false),
 	mouse_mode(MouseMode::NONE),
 	need_redraw(true),
 	need_recompute(false),
@@ -40,8 +45,8 @@ Image::Image():
 	disph(0),
 	zoom(1.0),
 	image_actions(Gtk::ActionGroup::create("image")),
-	selection_type(Overlay::None),
-#ifdef CRN_USING_GTKMM3
+	selection_type(Overlay::None)//,
+#ifdef CRN_USING_GTKMM3/*
 	scroll_cursor(Gdk::Cursor::create(Gdk::FLEUR)),
 	select_cursor(Gdk::Cursor::create(Gdk::CROSS)),
 	move_cursor(Gdk::Cursor::create(Gdk::HAND1)),
@@ -54,9 +59,9 @@ Image::Image():
 	drag_top_right_cursor(Gdk::Cursor::create(Gdk::TOP_RIGHT_CORNER)),
 	drag_top_cursor(Gdk::Cursor::create(Gdk::TOP_SIDE)),
 	drag_top_left_cursor(Gdk::Cursor::create(Gdk::TOP_LEFT_CORNER)),
-	user_cursor(Gdk::Cursor::create(Gdk::TARGET))
+	user_cursor(Gdk::Cursor::create(Gdk::TARGET))*/
 #else /* CRN_USING_GTKMM3 */
-	scroll_cursor(Gdk::FLEUR),
+	/*scroll_cursor(Gdk::FLEUR),
 	select_cursor(Gdk::CROSS),
 	move_cursor(Gdk::HAND1),
 	move_1_cursor(Gdk::FLEUR),
@@ -68,7 +73,7 @@ Image::Image():
 	drag_top_right_cursor(Gdk::TOP_RIGHT_CORNER),
 	drag_top_cursor(Gdk::TOP_SIDE),
 	drag_top_left_cursor(Gdk::TOP_LEFT_CORNER),
-	user_cursor(Gdk::TARGET)
+	user_cursor(Gdk::TARGET)*/
 #endif /* CRN_USING_GTKMM3 */
 {
 #ifdef CRN_USING_GTKMM3
@@ -87,7 +92,11 @@ Image::Image():
 	vruler.show();
 #endif /* CRN_USING_GTKMM3 */
 	//vruler.set_sensitive(false);
+#ifdef CRN_USING_GTKMM3
+	attach(da, 1, 2, 1, 2);
+#else
 	attach(da, 1, 2, 1, 2, Gtk::FILL | Gtk::EXPAND | Gtk::SHRINK, Gtk::FILL | Gtk::EXPAND | Gtk::SHRINK, 0, 0);
+#endif
 	da.add_events(Gdk::EXPOSURE_MASK | Gdk::STRUCTURE_MASK | Gdk::POINTER_MOTION_MASK | Gdk::BUTTON_MOTION_MASK | Gdk::BUTTON_PRESS_MASK | Gdk::BUTTON_RELEASE_MASK | Gdk::SCROLL_MASK);
 #ifdef CRN_USING_GTKMM3
 	da.signal_draw().connect(sigc::mem_fun(this, &Image::expose)); // redraw
@@ -101,17 +110,31 @@ Image::Image():
 	da.signal_scroll_event().connect(sigc::mem_fun(this, &Image::mouse_wheel));
 	da.show();
 	//da.set_sensitive(false);
+#ifdef CRN_USING_GTKMM3
+	hscrollbar.set_orientation(Gtk::Orientation::ORIENTATION_HORIZONTAL);
+#endif
 	hscrollbar.get_adjustment()->set_lower(0);
 	hscrollbar.get_adjustment()->set_step_increment(10);
 	hscrollbar.get_adjustment()->set_page_increment(100);
+#ifdef CRN_USING_GTKMM3
+	attach(hscrollbar, 1, 2, 2, 3);
+#else
 	attach(hscrollbar, 1, 2, 2, 3, Gtk::FILL, Gtk::FILL, 0, 0);
+#endif
 	hscrollbar.signal_value_changed().connect(sigc::mem_fun(this, &Image::scrolled));
 	hscrollbar.show();
 	//hscrollbar.set_sensitive(false);
+#ifdef CRN_USING_GTKMM3
+	vscrollbar.set_orientation(Gtk::Orientation::ORIENTATION_VERTICAL);
+#endif
 	vscrollbar.get_adjustment()->set_lower(0);
 	vscrollbar.get_adjustment()->set_step_increment(10);
 	vscrollbar.get_adjustment()->set_page_increment(100);
+#ifdef CRN_USING_GTKMM3
+	attach(vscrollbar, 2, 3, 1, 2);
+#else
 	attach(vscrollbar, 2, 3, 1, 2, Gtk::FILL, Gtk::FILL, 0, 0);
+#endif
 	vscrollbar.signal_value_changed().connect(sigc::mem_fun(this, &Image::scrolled));
 	vscrollbar.show();
 	//vscrollbar.set_sensitive(false);
@@ -120,12 +143,12 @@ Image::Image():
 	refresher = Glib::signal_timeout().connect(sigc::mem_fun(this, &Image::refresh), 100);
 
 	// actions
-	image_actions->add(Gtk::Action::create("image-zoom-in", Gtk::Stock::ZOOM_IN), sigc::mem_fun(this, &Image::zoom_in));
+	/*image_actions->add(Gtk::Action::create("image-zoom-in", Gtk::Stock::ZOOM_IN), sigc::mem_fun(this, &Image::zoom_in));
 	image_actions->add(Gtk::Action::create("image-zoom-out", Gtk::Stock::ZOOM_OUT), sigc::mem_fun(this, &Image::zoom_out));
 	image_actions->add(Gtk::Action::create("image-zoom-100", Gtk::Stock::ZOOM_100), sigc::mem_fun(this, &Image::zoom_100));
 	image_actions->add(Gtk::Action::create("image-zoom-fit", Gtk::Stock::ZOOM_FIT), sigc::mem_fun(this, &Image::zoom_fit));
 	image_actions->add(Gtk::Action::create("image-clear-user-selection", Gtk::Stock::CLEAR, _("_Clear User Selection"), _("Clear User Selection")), sigc::mem_fun(this, &Image::clear_selection));
-
+	*/
 	overlays[selection_overlay()].config.moveable = true;
 	overlays[selection_overlay()].config.editable = true;
 }

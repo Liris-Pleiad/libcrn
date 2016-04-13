@@ -32,30 +32,39 @@ const Glib::ustring PDFAttributes::openRight(N_("Tow pages, first on the right")
 
 /*! Constructor */
 PDFAttributes::PDFAttributes():
-	Gtk::Table(6, 4, false),
+	//Gtk::Table(6, 4, false),
 	lossy(_("Lossy image compression")),
 	copyable(_("Allow users to copy the content")),
 	printable(_("Allow users to print the document"))
 {
+#ifdef CRN_USING_GTKMM3
+	attach(*Gtk::manage(new Gtk::Label(_("Author"))), 0, 1, 0, 1);
+#else
 	attach(*Gtk::manage(new Gtk::Label(_("Author"))), 0, 1, 0, 1, Gtk::FILL, Gtk::FILL);
+#endif
 	author.set_text(attr.author.CStr());
 	author.signal_changed().connect(sigc::mem_fun(this, &PDFAttributes::on_author_changed));
+#ifdef CRN_USING_GTKMM3
+	attach(author, 1, 2, 0, 1);
+	attach(*Gtk::manage(new Gtk::Label(_("Title"))), 2, 3, 0, 1);
+#else
 	attach(author, 1, 2, 0, 1, Gtk::FILL|Gtk::EXPAND, Gtk::FILL);
 	attach(*Gtk::manage(new Gtk::Label(_("Title"))), 2, 3, 0, 1, Gtk::FILL, Gtk::FILL);
+#endif
 	title.set_text(attr.title.CStr());
 	title.signal_changed().connect(sigc::mem_fun(this, &PDFAttributes::on_title_changed));
-	attach(title, 3, 4, 0, 1, Gtk::FILL|Gtk::EXPAND, Gtk::FILL);
+	//attach(title, 3, 4, 0, 1, Gtk::FILL|Gtk::EXPAND, Gtk::FILL);
 
-	attach(*Gtk::manage(new Gtk::Label(_("Subject"))), 0, 1, 1, 2, Gtk::FILL, Gtk::FILL);
+	//attach(*Gtk::manage(new Gtk::Label(_("Subject"))), 0, 1, 1, 2, Gtk::FILL, Gtk::FILL);
 	subject.set_text(attr.subject.CStr());
 	subject.signal_changed().connect(sigc::mem_fun(this, &PDFAttributes::on_subject_changed));
-	attach(subject, 1, 2, 1, 2, Gtk::FILL|Gtk::EXPAND, Gtk::FILL);
-	attach(*Gtk::manage(new Gtk::Label(_("Keywords"))), 2, 3, 1, 2, Gtk::FILL, Gtk::FILL);
+	//attach(subject, 1, 2, 1, 2, Gtk::FILL|Gtk::EXPAND, Gtk::FILL);
+	//attach(*Gtk::manage(new Gtk::Label(_("Keywords"))), 2, 3, 1, 2, Gtk::FILL, Gtk::FILL);
 	keywords.set_text(attr.keywords.CStr());
 	keywords.signal_changed().connect(sigc::mem_fun(this, &PDFAttributes::on_keywords_changed));
-	attach(keywords, 3, 4, 1, 2, Gtk::FILL|Gtk::EXPAND, Gtk::FILL);
+	//attach(keywords, 3, 4, 1, 2, Gtk::FILL|Gtk::EXPAND, Gtk::FILL);
 
-	attach(*Gtk::manage(new Gtk::Label(_("Page layout"))), 0, 1, 2, 3, Gtk::FILL, Gtk::FILL);
+	//attach(*Gtk::manage(new Gtk::Label(_("Page layout"))), 0, 1, 2, 3, Gtk::FILL, Gtk::FILL);
 #ifdef CRN_USING_GTKMM3
 	layout.append(_(onePage.c_str()));
 	layout.append(_(continuous.c_str()));
@@ -69,34 +78,34 @@ PDFAttributes::PDFAttributes():
 #endif /* CRN_USING_GTKMM3 */
 	layout.set_active_text(layout2str(attr.layout));
 	layout.signal_changed().connect(sigc::mem_fun(this, &PDFAttributes::on_layout_changed));
-	attach(layout, 1, 4, 2, 3, Gtk::FILL|Gtk::EXPAND, Gtk::FILL);
+	//attach(layout, 1, 4, 2, 3, Gtk::FILL|Gtk::EXPAND, Gtk::FILL);
 
 	lossy.set_active(attr.lossy_compression);
 	lossy.signal_toggled().connect(sigc::mem_fun(this, &PDFAttributes::on_lossy_changed));
-	attach(lossy, 0, 2, 3, 4, Gtk::FILL|Gtk::EXPAND, Gtk::FILL);
-	attach(*Gtk::manage(new Gtk::Label(_("Quality"))), 2, 3, 3, 4, Gtk::FILL, Gtk::FILL);
+	//attach(lossy, 0, 2, 3, 4, Gtk::FILL|Gtk::EXPAND, Gtk::FILL);
+	//attach(*Gtk::manage(new Gtk::Label(_("Quality"))), 2, 3, 3, 4, Gtk::FILL, Gtk::FILL);
 	qual.set_digits(0);
 	qual.set_range(0, 100);
 	qual.set_increments(10, 15);
 	qual.set_value(attr.jpeg_qual);
 	qual.signal_changed().connect(sigc::mem_fun(this, &PDFAttributes::on_qual_changed));
-	attach(qual, 3, 4, 3, 4, Gtk::FILL|Gtk::EXPAND, Gtk::FILL);
+	//attach(qual, 3, 4, 3, 4, Gtk::FILL|Gtk::EXPAND, Gtk::FILL);
 
-	attach(*Gtk::manage(new Gtk::Label(_("Editor's password"))), 0, 1, 4, 5, Gtk::FILL, Gtk::FILL);
+	//attach(*Gtk::manage(new Gtk::Label(_("Editor's password"))), 0, 1, 4, 5, Gtk::FILL, Gtk::FILL);
 	owner_pass.set_visibility(false);
 	owner_pass.signal_changed().connect(sigc::mem_fun(this, &PDFAttributes::on_owner_pass_changed));
-	attach(owner_pass, 1, 2, 4, 5, Gtk::FILL|Gtk::EXPAND, Gtk::FILL);
-	attach(*Gtk::manage(new Gtk::Label(_("User's password"))), 2, 3, 4, 5, Gtk::FILL, Gtk::FILL);
+	//attach(owner_pass, 1, 2, 4, 5, Gtk::FILL|Gtk::EXPAND, Gtk::FILL);
+	//attach(*Gtk::manage(new Gtk::Label(_("User's password"))), 2, 3, 4, 5, Gtk::FILL, Gtk::FILL);
 	user_pass.set_visibility(false);
 	user_pass.signal_changed().connect(sigc::mem_fun(this, &PDFAttributes::on_user_pass_changed));
-	attach(user_pass, 3, 4, 4, 5, Gtk::FILL|Gtk::EXPAND, Gtk::FILL);
+	//attach(user_pass, 3, 4, 4, 5, Gtk::FILL|Gtk::EXPAND, Gtk::FILL);
 
 	copyable.set_active(attr.copyable);
 	copyable.signal_toggled().connect(sigc::mem_fun(this, &PDFAttributes::on_copyable_changed));
-	attach(copyable, 0, 2, 5, 6, Gtk::FILL|Gtk::EXPAND, Gtk::FILL);
+	//attach(copyable, 0, 2, 5, 6, Gtk::FILL|Gtk::EXPAND, Gtk::FILL);
 	printable.set_active(attr.printable);
 	printable.signal_toggled().connect(sigc::mem_fun(this, &PDFAttributes::on_printable_changed));
-	attach(printable, 2, 4, 5, 6, Gtk::FILL|Gtk::EXPAND, Gtk::FILL);
+	//attach(printable, 2, 4, 5, 6, Gtk::FILL|Gtk::EXPAND, Gtk::FILL);
 
 	if (!attr.lossy_compression)
 	{

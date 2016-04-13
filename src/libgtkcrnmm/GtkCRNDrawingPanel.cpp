@@ -33,7 +33,9 @@ DrawingPanel::DrawingPanel():
 	zoom(1.0),
 	actions(Gtk::ActionGroup::create("drawing panel"))
 {
+#ifdef CRN_USING_GTkMM3
 	bg_act = GtkCRN::ColorAction::create("drawing-panel-background", Gtk::Stock::SELECT_COLOR, _("_Background Color…"), _("Background Color"));
+#endif
 	actions->add(bg_act);
 	actions->get_action("drawing-panel-background")->set_short_label(_("Background"));
 	actions->get_action("drawing-panel-background")->set_is_important();
@@ -44,7 +46,9 @@ DrawingPanel::DrawingPanel():
 #endif /* CRN_USING_GTKMM3 */
 	bg_act->signal_changed().connect(sigc::mem_fun(this, &Gtk::Widget::queue_draw));
 
+#ifdef CRN_USING_GTkMM3
 	fg_act = GtkCRN::ColorAction::create("drawing-panel-foreground", Gtk::Stock::SELECT_COLOR, _("_Foreground Color…"), _("Foreground Color"));
+#endif
 	actions->add(fg_act);
 	actions->get_action("drawing-panel-foreground")->set_short_label(_("Foreground"));
 	actions->get_action("drawing-panel-foreground")->set_is_important();
@@ -55,10 +59,13 @@ DrawingPanel::DrawingPanel():
 #endif /* CRN_USING_GTKMM3 */
 	fg_act->signal_changed().connect(sigc::mem_fun(this, &Gtk::Widget::queue_draw));
 
-	actions->add(Gtk::Action::create("drawing-panel-clear", Gtk::Stock::CLEAR, _("_Clear"), _("Clear")), sigc::mem_fun(this, &DrawingPanel::clear));
+	//actions->add(Gtk::Action::create("drawing-panel-clear", Gtk::Stock::CLEAR, _("_Clear"), _("Clear")), sigc::mem_fun(this, &DrawingPanel::clear));
+	/*
 	actions->add(Gtk::Action::create("drawing-panel-thickness-plus", Gtk::StockID("gtk-crn-size-plus"), _("_Increase Thickness"), _("Increase Thickness")), sigc::bind(sigc::mem_fun(this, &DrawingPanel::modify_thickness), 0.1));
 	actions->add(Gtk::Action::create("drawing-panel-thickness-minus", Gtk::StockID("gtk-crn-size-minus"), _("_Decrease Thickness"), _("Decrease Thickness")), sigc::bind(sigc::mem_fun(this, &DrawingPanel::modify_thickness), -0.1));
-	thick_act = GtkCRN::ScaleAction::create("drawing-panel-thickness-set", Gtk::StockID(), _("Set _Thickness"), _("Set Thickness"));
+	*/
+	thick_act = GtkCRN::ScaleAction::create("drawing-panel-thickness-set", _("Set _Thickness"), _("Set Thickness"));
+
 	actions->add(thick_act);
 #ifdef CRN_USING_GTKMM3
 	thick_act->get_adjustment()->configure(thickness, 0.2, 20, 0.1, 1, 1);

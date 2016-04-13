@@ -24,7 +24,7 @@
 #include <GtkCRNApp.h>
 #include <gtkmm/scalebutton.h>
 #include <CRNi18n.h>
-
+#define get_vbox get_content_area // XXX
 using namespace GtkCRN;
 
 /*! Default constructor */
@@ -33,6 +33,7 @@ ColorAction::ColorAction()
 {
 }
 
+#ifndef CRN_USING_GTKMM3
 /*! Constructor 
  * \param[in]	name	the id of the action
  * \param[in]	stock_id	a Gtk::Stock item
@@ -42,7 +43,7 @@ ColorAction::ColorAction()
 ColorAction::ColorAction(const Glib::ustring& name, const Gtk::StockID& stock_id, const Glib::ustring& label, const Glib::ustring& tooltip):
 	Gtk::Action(name, stock_id, label, tooltip){
 }
-
+#endif
 /*! Constructor 
  * \param[in]	name	the id of the action
  * \param[in]	icon_name	an icon in the default path
@@ -69,8 +70,14 @@ Glib::RefPtr<ColorAction> ColorAction::create()
  */
 Glib::RefPtr<ColorAction> ColorAction::create(const Glib::ustring& name, const Glib::ustring& label, const Glib::ustring& tooltip)
 {
+#ifndef CRN_USING_GTKMM3
 	return Glib::RefPtr<ColorAction>(new ColorAction(name, Gtk::StockID(), label, tooltip));
+#else
+	return Glib::RefPtr<ColorAction>(new ColorAction(name, label, tooltip));
+#endif
 }
+
+#ifndef CRN_USING_GTKMM3
 
 /*! Creates a ColorAction
  * \param[in]	name	the id of the action
@@ -83,7 +90,7 @@ Glib::RefPtr<ColorAction> ColorAction::create(const Glib::ustring& name, const G
 {
 	return Glib::RefPtr<ColorAction>(new ColorAction(name, stock_id, label, tooltip));
 }
-
+#endif
 /*! Creates a ColorAction
  * \param[in]	name	the id of the action
  * \param[in]	icon_name	an icon in the default path
@@ -101,11 +108,14 @@ Glib::RefPtr<ColorAction> ColorAction::create_with_icon_name(const Glib::ustring
  */
 Gtk::Widget* ColorAction::create_menu_item_vfunc()
 {
+	/*
 	Gtk::MenuItem *it = new Gtk::ImageMenuItem;
 	it->signal_activate().connect(sigc::mem_fun(this, &ColorAction::dialog));
 	update_color.connect(sigc::bind(sigc::ptr_fun(&ColorAction::change_menu_color), it));
 	change_menu_color(color, it);
 	return it;
+	*/
+	return nullptr;
 }
 
 /*! Customizes tool items 
@@ -183,20 +193,20 @@ void ColorAction::change_menu_color(const Gdk::RGBA &col, Gtk::MenuItem* mit)
 void ColorAction::change_menu_color(const Gdk::Color &col, Gtk::MenuItem* mit)
 #endif /* CRN_USING_GTKMM3 */
 {
-	Gtk::ImageMenuItem *mi = dynamic_cast<Gtk::ImageMenuItem*>(mit);
-	if (mi)
+	//Gtk::ImageMenuItem *mi = dynamic_cast<Gtk::ImageMenuItem*>(mit);
+	//if (mi)
 	{
 		int w, h;
 		Gtk::IconSize::lookup(Gtk::ICON_SIZE_MENU, w, h);
 		Gtk::DrawingArea *da = Gtk::manage(new Gtk::DrawingArea);
 #ifdef CRN_USING_GTKMM3
-		da->override_background_color(col, Gtk::STATE_FLAG_NORMAL);
+		//da->override_background_color(col, Gtk::STATE_FLAG_NORMAL);
 #else /* CRN_USING_GTKMM3 */
 		da->modify_bg(Gtk::STATE_NORMAL, col);
 #endif /* CRN_USING_GTKMM3 */
 		da->set_size_request(w, h);
 		da->show();
-		mi->set_image(*da);
+		//mi->set_image(*da);
 	}
 }
 

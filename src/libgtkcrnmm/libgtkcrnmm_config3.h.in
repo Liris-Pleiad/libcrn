@@ -22,6 +22,8 @@
 #include <CRN.h>
 
 #define CRN_USING_GTKMM3
+#define GDKMM_DISABLE_DEPRECATED
+#define GTKMM_DISABLE_DEPRECATED
 
 #ifdef BUILD_LIBGTKCRNMM
 #	define GETTEXT_PACKAGE "libgtkcrnmm"

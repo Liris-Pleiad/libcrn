@@ -26,6 +26,10 @@
 #include <CRNIO/CRNIO.h>
 #include <CRNi18n.h>
 
+#ifdef CRN_USING_GTKMM3
+#	define get_vbox get_content_area // XXX
+#endif
+
 using namespace crn;
 using namespace GtkCRN;
 
@@ -38,10 +42,10 @@ App::App():
 	actions(Gtk::ActionGroup::create("GtkCRN::App actions"))	
 {
 	actions->add(Gtk::Action::create("app-file-menu", _("_File"), _("File")));
-	actions->add(Gtk::Action::create("app-quit", Gtk::Stock::QUIT), sigc::bind(sigc::hide_return(sigc::mem_fun(this, &App::ask_for_quit)), (GdkEventAny*)nullptr));
-	actions->add(Gtk::Action::create("app-help-menu", Gtk::StockID("corenum-icon-circle"), _("_?"), _("?")));
-	actions->add(Gtk::Action::create("app-help", Gtk::Stock::HELP), sigc::mem_fun(this, &App::help));
-	actions->add(Gtk::Action::create("app-about", Gtk::Stock::ABOUT), sigc::mem_fun(this, &App::about));
+	//actions->add(Gtk::Action::create("app-quit", Gtk::Stock::QUIT), sigc::bind(sigc::hide_return(sigc::mem_fun(this, &App::ask_for_quit)), (GdkEventAny*)nullptr));
+	//actions->add(Gtk::Action::create("app-help-menu", Gtk::StockID("corenum-icon-circle"), _("_?"), _("?")));
+	//actions->add(Gtk::Action::create("app-help", Gtk::Stock::HELP), sigc::mem_fun(this, &App::help));
+	//actions->add(Gtk::Action::create("app-about", Gtk::Stock::ABOUT), sigc::mem_fun(this, &App::about));
 	
 	ui_manager->insert_action_group(actions);
 
@@ -58,7 +62,7 @@ bool App::ask_for_quit(GdkEventAny* event)
 	Gtk::MessageDialog dial(*this, _("Are you sure you want to quit?"), false, Gtk::MESSAGE_QUESTION, Gtk::BUTTONS_YES_NO, true);
 	if (dial.run() == Gtk::RESPONSE_YES)
 	{
-		Gtk::Main::quit();
+		//Gtk::Main::quit();
 		return false;
 	}
 	return true;
@@ -85,12 +89,12 @@ Glib::ustring App::ask_for_string(const Glib::ustring &msg, const Glib::ustring 
 	ent.set_text(defval);
 	ent.show();
 	dial.get_vbox()->pack_start(ent, false, true, 2);
-	dial.add_button(Gtk::Stock::CANCEL, Gtk::RESPONSE_REJECT);
-	dial.add_button(Gtk::Stock::OK, Gtk::RESPONSE_ACCEPT);
+	//dial.add_button(Gtk::Stock::CANCEL, Gtk::RESPONSE_REJECT);
+	//dial.add_button(Gtk::Stock::OK, Gtk::RESPONSE_ACCEPT);
 	std::vector<int> altbut;
 	altbut.push_back(Gtk::RESPONSE_ACCEPT);
 	altbut.push_back(Gtk::RESPONSE_CANCEL);
-	dial.set_alternative_button_order_from_array(altbut);	
+	//dial.set_alternative_button_order_from_array(altbut);	
 	dial.set_default_response(Gtk::RESPONSE_ACCEPT);
 	if (dial.run() == Gtk::RESPONSE_ACCEPT)
 		return ent.get_text();

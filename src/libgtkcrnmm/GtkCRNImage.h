@@ -40,7 +40,11 @@ namespace GtkCRN
 	 * Selections are combinations of a label and/or a rectangle. They are stored in selection lists that define the colors and the behaviour of the selections.
 	 * \ingroup gtkcrn
 	 */
-	class Image: public Gtk::Table
+#ifdef CRN_USING_GTKMM3
+	class Image: public Gtk::Grid
+#else
+	class Image : public Gtk::Table
+#endif
 	{
 		public:
 			/*! \brief Constructor */
@@ -187,9 +191,15 @@ namespace GtkCRN
 			{
 				/*! \brief Default constructor */
 				OverlayConfig();
+#ifdef CRN_USING_GTKMM3
+				Gdk::RGBA color1; /*!< color of the line */
+				Gdk::RGBA color2; /*!< color of the background or handle points */
+				Gdk::RGBA text_color; /*!< color of the label */
+#else
 				Gdk::Color color1; /*!< color of the line */
 				Gdk::Color color2; /*!< color of the background or handle points */
 				Gdk::Color text_color; /*!< color of the label */
+#endif
 				bool show_labels; /*!< shall the labels be displayed? */
 				unsigned int text_size; /*!< size of the labels in pixels */
 				bool editable; /*!< can the items be modificated? */
@@ -327,8 +337,13 @@ namespace GtkCRN
 #else /* CRN_USING_GTKMM3 */
 			Glib::RefPtr<Gdk::GC> da_gc;
 #endif /* CRN_USING_GTKMM3 */
+#ifdef CRN_USING_GTKMM3
+			Gtk::Scrollbar hscrollbar;
+			Gtk::Scrollbar vscrollbar;
+#else
 			Gtk::HScrollbar hscrollbar;
 			Gtk::VScrollbar vscrollbar;
+#endif
 #ifdef CRN_USING_GTKMM3
 			Glib::RefPtr<Gdk::Cursor> scroll_cursor;
 			Glib::RefPtr<Gdk::Cursor> select_cursor;

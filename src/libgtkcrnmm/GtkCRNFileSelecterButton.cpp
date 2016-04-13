@@ -31,8 +31,8 @@ FileSelecterButton::FileSelecterButton(const crn::Path &p):
 {
 	Gtk::HBox *hbox = Gtk::manage(new Gtk::HBox);
 	add(*hbox);
-	hbox->pack_start(fname, true, true, 0);
-	hbox->pack_start(*Gtk::manage(new Gtk::Image(Gtk::Stock::OPEN, Gtk::ICON_SIZE_BUTTON)), false, true, 0);
+	//hbox->pack_start(fname, true, true, 0);
+	//hbox->pack_start(*Gtk::manage(new Gtk::Image(Gtk::Stock::OPEN, Gtk::ICON_SIZE_BUTTON)), false, true, 0);
 	signal_clicked().connect(sigc::mem_fun(this, &FileSelecterButton::on_click));
 	hbox->show_all();
 }

@@ -41,8 +41,10 @@ namespace GtkCRN
 			static Glib::RefPtr<ScaleAction> create();
 			/*! \brief Creates a ScaleAction */
 			static Glib::RefPtr<ScaleAction> create(const Glib::ustring& name, const Glib::ustring& label = Glib::ustring(), const Glib::ustring& tooltip = Glib::ustring());
+#ifndef CRN_USING_GTKMM3
 			/*! \brief Creates a ScaleAction */
 			static Glib::RefPtr<ScaleAction> create(const Glib::ustring& name, const Gtk::StockID& stock_id, const Glib::ustring& label = Glib::ustring(), const Glib::ustring& tooltip = Glib::ustring());
+#endif
 			/*! \brief Creates a ScaleAction */
 			static Glib::RefPtr<ScaleAction> create_with_icon_name(const Glib::ustring& name, const Glib::ustring& icon_name, const Glib::ustring& label, const Glib::ustring& tooltip);
 
@@ -67,7 +69,9 @@ namespace GtkCRN
 
 		protected:
 			ScaleAction();
+#ifndef CRN_USING_GTKMM3
 			ScaleAction(const Glib::ustring& name, const Gtk::StockID& stock_id = Gtk::StockID(), const Glib::ustring& label = Glib::ustring(), const Glib::ustring& tooltip = Glib::ustring());
+#endif
 			ScaleAction(const Glib::ustring& name, const Glib::ustring& icon_name, const Glib::ustring& label = Glib::ustring(), const Glib::ustring& tooltip = Glib::ustring());
 
 			virtual Gtk::Widget* create_menu_item_vfunc() override;

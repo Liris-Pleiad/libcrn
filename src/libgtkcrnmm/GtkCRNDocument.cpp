@@ -29,9 +29,9 @@
 #include <GtkCRNApp.h>
 #include <CRNIO/CRNFileShield.h>
 #include <GdkCRNPixbuf.h>
-
+#define get_vbox get_content_area // XXX
 using namespace GtkCRN;
-
+#if 0
 //////////////////////////////////////////////////////////////////////////////
 // C++ stuff
 //////////////////////////////////////////////////////////////////////////////
@@ -62,31 +62,32 @@ Document::Document(bool show_views, bool show_tree):
 	//////////////////////////////////
 	// views
 	views_actions->add(Gtk::Action::create("document-views-menu", _("_Views"), _("Views")));
-	views_actions->add(Gtk::Action::create("document-views-add", Gtk::StockID("gtk-crn-add-view"), _("_Add Views"), _("Add Views")), sigc::mem_fun(this, &Document::append_views_dialog));
-	views_actions->add(Gtk::Action::create("document-views-refresh", Gtk::Stock::REFRESH, _("_Refresh Views"), _("Refresh Views")), sigc::mem_fun(this, &Document::refresh_views));
+	//views_actions->add(Gtk::Action::create("document-views-add", Gtk::StockID("gtk-crn-add-view"), _("_Add Views"), _("Add Views")), sigc::mem_fun(this, &Document::append_views_dialog));
+	/*views_actions->add(Gtk::Action::create("document-views-refresh", Gtk::Stock::REFRESH, _("_Refresh Views"), _("Refresh Views")), sigc::mem_fun(this, &Document::refresh_views));
 	views_actions->add(Gtk::Action::create("document-views-select-first", Gtk::Stock::GOTO_FIRST, _("Select _First View"), _("Select First View")), sigc::mem_fun(this, &Document::select_first));
 	views_actions->add(Gtk::Action::create("document-views-select-previous", Gtk::Stock::GO_BACK, _("Select _Previous View"), _("Select Previous View")), sigc::mem_fun(this, &Document::select_previous));
 	views_actions->add(Gtk::Action::create("document-views-select-next", Gtk::Stock::GO_FORWARD, _("Select _Next View"), _("Select Next View")), sigc::mem_fun(this, &Document::select_next));
 	views_actions->add(Gtk::Action::create("document-views-select-last", Gtk::Stock::GOTO_LAST, _("Select _Last View"), _("Select Last View")), sigc::mem_fun(this, &Document::select_last));
 	views_actions->add(Gtk::Action::create("document-views-select-all", Gtk::Stock::SELECT_ALL, _("Select _All Views"), _("Select All Views")), sigc::mem_fun(this, &Document::select_all));
 	views_actions->add(Gtk::Action::create("document-views-select-none", Gtk::Stock::CLEAR, _("_Deselect Views"), _("Deselect Views")), sigc::mem_fun(this, &Document::deselect_all));
-	views_actions->add(Gtk::Action::create("document-views-select-even", Gtk::StockID("gtk-crn-even"), _("Select _Even Views"), _("Select _Even Views")), sigc::mem_fun(this, &Document::select_even));
-	views_actions->add(Gtk::Action::create("document-views-select-odd", Gtk::StockID("gtk-crn-odd"), _("Select _Odd Views"), _("Select _Odd Views")), sigc::mem_fun(this, &Document::select_odd));
-	views_actions->add(Gtk::Action::create("document-views-invert-selection", Gtk::StockID("gtk-crn-invert"), _("_Invert View Selection"), _("Invert View Selection")), sigc::mem_fun(this, &Document::invert_selection));
-	views_actions->add(Gtk::Action::create("document-views-remove", Gtk::StockID("gtk-crn-delete-view"), _("_Remove View Selection"), _("Remove View Selection")), sigc::mem_fun(this, &Document::delete_selection));
+	//views_actions->add(Gtk::Action::create("document-views-select-even", Gtk::StockID("gtk-crn-even"), _("Select _Even Views"), _("Select _Even Views")), sigc::mem_fun(this, &Document::select_even));
+	//views_actions->add(Gtk::Action::create("document-views-select-odd", Gtk::StockID("gtk-crn-odd"), _("Select _Odd Views"), _("Select _Odd Views")), sigc::mem_fun(this, &Document::select_odd));
+	//views_actions->add(Gtk::Action::create("document-views-invert-selection", Gtk::StockID("gtk-crn-invert"), _("_Invert View Selection"), _("Invert View Selection")), sigc::mem_fun(this, &Document::invert_selection));
+	//views_actions->add(Gtk::Action::create("document-views-remove", Gtk::StockID("gtk-crn-delete-view"), _("_Remove View Selection"), _("Remove View Selection")), sigc::mem_fun(this, &Document::delete_selection));
 #ifdef CRN_USING_HARU
 	views_actions->add(Gtk::Action::create("document-views-export-pdf", Gtk::Stock::CONVERT, _("_Export PDF"), _("Export PDF")), sigc::mem_fun(this, &Document::export_pdf));
 #endif
+*/
 	views_actions->set_sensitive(false);
-
+	/*
 	// tree
-	tree_actions->add(Gtk::Action::create("document-blocks-add", Gtk::StockID("gtk-crn-add-block"), _("_Add Subblock"), _("Add Subblock")), sigc::mem_fun(this, &Document::add_subblock));
+	//tree_actions->add(Gtk::Action::create("document-blocks-add", Gtk::StockID("gtk-crn-add-block"), _("_Add Subblock"), _("Add Subblock")), sigc::mem_fun(this, &Document::add_subblock));
 	tree_actions->get_action("document-blocks-add")->set_sensitive(false);
-	tree_actions->add(Gtk::Action::create("document-blocks-remove", Gtk::StockID("gtk-crn-delete-block"), _("_Remove Subblock"), _("Remove Subblock")), sigc::mem_fun(this, &Document::rem_subblock));
+	//tree_actions->add(Gtk::Action::create("document-blocks-remove", Gtk::StockID("gtk-crn-delete-block"), _("_Remove Subblock"), _("Remove Subblock")), sigc::mem_fun(this, &Document::rem_subblock));
 	tree_actions->get_action("document-blocks-remove")->set_sensitive(false);
 	tree_actions->add(Gtk::ToggleAction::create("document-blocks-show", Gtk::Stock::FIND, _("_Show/Hide Subblocks"), _("Show/Hide Subblocks"), true), sigc::mem_fun(this, &Document::show_hide_subblocks_on_image));
 	tree_actions->add(Gtk::Action::create("document-blocks-configure", Gtk::Stock::PROPERTIES, _("Subblocks _Settings"), _("Subblocks Settings")), sigc::mem_fun(this, &Document::configure_subblocks));
-
+	*/
 	//////////////////////////////////
 	// left side
 	//   atop
@@ -205,7 +206,7 @@ Document::View::View(const crn::String &id, crn::SDocument doc):
 	}
 	catch (...)
 	{
-		thumb.set(Gtk::Stock::MISSING_IMAGE, Gtk::ICON_SIZE_BUTTON);
+		//thumb.set(Gtk::Stock::MISSING_IMAGE, Gtk::ICON_SIZE_BUTTON);
 	}
 	thumb.show();
 	pack_start(thumb, FALSE, TRUE, 0);
@@ -536,12 +537,12 @@ void Document::append_views_dialog()
 #endif /* CRN_USING_GTKMM3 */
 	dial.set_filter(ff);
 	dial.set_select_multiple(true);
-	dial.add_button(Gtk::Stock::CANCEL, Gtk::RESPONSE_CANCEL);
-	dial.add_button(Gtk::Stock::ADD, Gtk::RESPONSE_ACCEPT);
+	//dial.add_button(Gtk::Stock::CANCEL, Gtk::RESPONSE_CANCEL);
+	//dial.add_button(Gtk::Stock::ADD, Gtk::RESPONSE_ACCEPT);
 	std::vector<int> altbut;
 	altbut.push_back(Gtk::RESPONSE_ACCEPT);
 	altbut.push_back(Gtk::RESPONSE_CANCEL);
-	dial.set_alternative_button_order_from_array(altbut);
+	//dial.set_alternative_button_order_from_array(altbut);
 	dial.set_default_response(Gtk::RESPONSE_ACCEPT);
 	dial.show();
 	int resp = dial.run();
@@ -727,12 +728,12 @@ void Document::add_subblock()
 	// create dialog
 	Gtk::Dialog dial(_("Add a subblock"), (Gtk::Window&)(*get_ancestor(GTK_TYPE_WINDOW)), true);
 	dial.set_position(Gtk::WIN_POS_CENTER_ON_PARENT);
-	dial.add_button(Gtk::Stock::CANCEL, Gtk::RESPONSE_CANCEL);
-	dial.add_button(Gtk::Stock::OK, Gtk::RESPONSE_ACCEPT);
+	//dial.add_button(Gtk::Stock::CANCEL, Gtk::RESPONSE_CANCEL);
+	//dial.add_button(Gtk::Stock::OK, Gtk::RESPONSE_ACCEPT);
 	std::vector<int> altbut;
 	altbut.push_back(Gtk::RESPONSE_ACCEPT);
 	altbut.push_back(Gtk::RESPONSE_CANCEL);
-	dial.set_alternative_button_order_from_array(altbut);
+	//dial.set_alternative_button_order_from_array(altbut);
 	dial.set_default_response(Gtk::RESPONSE_ACCEPT);
 	Gtk::Table tab(2, 2);
 	Gtk::Label lab1(_("Subblock tree"));
@@ -857,17 +858,18 @@ void Document::configure_subblocks()
 	// create dialog
 	Gtk::Dialog dial(_("Configure subblocks display"), (Gtk::Window&)(*get_ancestor(GTK_TYPE_WINDOW)), true);
 	dial.set_position(Gtk::WIN_POS_CENTER_ON_PARENT);
-	dial.add_button(Gtk::Stock::CANCEL, Gtk::RESPONSE_CANCEL);
-	dial.add_button(Gtk::Stock::OK, Gtk::RESPONSE_ACCEPT);
+	//dial.add_button(Gtk::Stock::CANCEL, Gtk::RESPONSE_CANCEL);
+	//dial.add_button(Gtk::Stock::OK, Gtk::RESPONSE_ACCEPT);
 	std::vector<int> altbut;
 	altbut.push_back(Gtk::RESPONSE_ACCEPT);
 	altbut.push_back(Gtk::RESPONSE_CANCEL);
-	dial.set_alternative_button_order_from_array(altbut);
+	//dial.set_alternative_button_order_from_array(altbut);
 	dial.set_default_response(Gtk::RESPONSE_ACCEPT);
 
 	Gtk::Table tab(4, 2);
 	Gtk::Label lab1(_("Frame color"));
 	tab.attach(lab1, 0, 1, 0, 1, Gtk::SHRINK, Gtk::SHRINK);
+#ifndef CRN_USING_GTKMM3 // XXX TODO
 	Gdk::Color color;
 	color.set_rgb(gushort(treecol1.r * 256), gushort(treecol1.g * 256), gushort(treecol1.b * 255));
 	Gtk::ColorButton cb1(color);
@@ -885,12 +887,13 @@ void Document::configure_subblocks()
 	Gtk::ColorButton cbt(color);
 	tab.attach(cbt, 1, 2, 3, 4, Gtk::SHRINK, Gtk::SHRINK);
 	tab.attach(lab3, 0, 1, 3, 4, Gtk::SHRINK, Gtk::SHRINK);
-
+#endif
 	tab.show_all();
 	dial.get_vbox()->pack_start(tab, true, true, 0);
 
 	if (dial.run() == Gtk::RESPONSE_ACCEPT)
 	{
+#ifndef CRN_USING_GTKMM3 // XXX TODO
 		set_show_subblock_labels(show_labels_cb.get_active());
 		color = cb1.get_color();
 		crn::pixel::RGB8 p1(uint8_t(color.get_red() / 256), uint8_t(color.get_green() / 256), uint8_t(color.get_blue() / 256));
@@ -899,6 +902,7 @@ void Document::configure_subblocks()
 		color = cbt.get_color();
 		crn::pixel::RGB8 pt(uint8_t(color.get_red() / 256), uint8_t(color.get_green() / 256), uint8_t(color.get_blue() / 256));
 		set_subblocks_colors(p1, p2, pt);
+#endif
 	}
 }
 
@@ -1056,3 +1060,4 @@ void Document::export_pdf()
 }
 #endif
 
+#endif

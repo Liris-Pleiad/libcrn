@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libcrn 3.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-04-01 17:00+0200\n"
+"POT-Creation-Date: 2016-04-13 12:17+0200\n"
 "PO-Revision-Date: 2015-11-24 13:55+0100\n"
 "Last-Translator: Yann LEYDIER <yann@leydier.info>\n"
 "Language-Team: English <>\n"
@@ -18,466 +18,458 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Generator: Gtranslator 2.91.6\n"
 
-#: /home/yleydier/prg/v4/libcrn/src/titus/titus.cpp:49
+#: C:/Users/noname/Desktop/libcrn.mtola/src/titus/titus.cpp:49
 msgid "Please select an image"
 msgstr "Please select an image"
 
-#: /home/yleydier/prg/v4/libcrn/src/titus/titus.cpp:62
+#: C:/Users/noname/Desktop/libcrn.mtola/src/titus/titus.cpp:63
+#: C:/Users/noname/Desktop/libcrn.mtola/src/titus/titus.cpp:65
 msgid "_Open image"
 msgstr "_Open image"
 
-#: /home/yleydier/prg/v4/libcrn/src/titus/titus.cpp:62
+#: C:/Users/noname/Desktop/libcrn.mtola/src/titus/titus.cpp:63
+#: C:/Users/noname/Desktop/libcrn.mtola/src/titus/titus.cpp:65
 msgid "Open image"
 msgstr "Open image"
 
-#: /home/yleydier/prg/v4/libcrn/src/titus/titus.cpp:63
-msgid "_Save image"
-msgstr "_Save image"
-
-#: /home/yleydier/prg/v4/libcrn/src/titus/titus.cpp:63
-msgid "Save image"
-msgstr "Save image"
-
-#: /home/yleydier/prg/v4/libcrn/src/titus/titus.cpp:67
-#: /home/yleydier/prg/v4/libcrn/src/titus/titus.cpp:87
-msgid "_RGB"
-msgstr "_RGB"
-
-#: /home/yleydier/prg/v4/libcrn/src/titus/titus.cpp:67
-msgid "Show RGB image"
-msgstr "Show RGB image"
-
-#: /home/yleydier/prg/v4/libcrn/src/titus/titus.cpp:69
-#: /home/yleydier/prg/v4/libcrn/src/titus/titus.cpp:105
-msgid "_Gray"
-msgstr "_Grey"
-
-#: /home/yleydier/prg/v4/libcrn/src/titus/titus.cpp:69
-msgid "Show Gray image"
-msgstr "Show Gray image"
-
-#: /home/yleydier/prg/v4/libcrn/src/titus/titus.cpp:71
-#: /home/yleydier/prg/v4/libcrn/src/titus/titus.cpp:124
-msgid "_BW"
-msgstr "_BW"
-
-#: /home/yleydier/prg/v4/libcrn/src/titus/titus.cpp:71
-msgid "Show BW image"
-msgstr "Show BW image"
-
-#: /home/yleydier/prg/v4/libcrn/src/titus/titus.cpp:73
-msgid "_Result"
-msgstr "_Result"
-
-#: /home/yleydier/prg/v4/libcrn/src/titus/titus.cpp:73
-msgid "Show result image"
-msgstr "Show result image"
-
-#: /home/yleydier/prg/v4/libcrn/src/titus/titus.cpp:77
+#: C:/Users/noname/Desktop/libcrn.mtola/src/titus/titus.cpp:81
 msgid "Gene_ric"
 msgstr "Gene_ric"
 
-#: /home/yleydier/prg/v4/libcrn/src/titus/titus.cpp:78
+#: C:/Users/noname/Desktop/libcrn.mtola/src/titus/titus.cpp:82
 msgid "_Gaussian blur"
 msgstr "_Gaussian blur"
 
-#: /home/yleydier/prg/v4/libcrn/src/titus/titus.cpp:79
+#: C:/Users/noname/Desktop/libcrn.mtola/src/titus/titus.cpp:83
 msgid "Gaussian blur along _x"
 msgstr "Gaussian blur along _x"
 
-#: /home/yleydier/prg/v4/libcrn/src/titus/titus.cpp:80
+#: C:/Users/noname/Desktop/libcrn.mtola/src/titus/titus.cpp:84
 msgid "Gaussian blur along _y"
 msgstr "Gaussian blur along _y"
 
-#: /home/yleydier/prg/v4/libcrn/src/titus/titus.cpp:81
+#: C:/Users/noname/Desktop/libcrn.mtola/src/titus/titus.cpp:85
 msgid "Gaussian _derivative along x"
 msgstr "Gaussian _derivative along x"
 
-#: /home/yleydier/prg/v4/libcrn/src/titus/titus.cpp:82
+#: C:/Users/noname/Desktop/libcrn.mtola/src/titus/titus.cpp:86
 msgid "Gaussian d_erivative along y"
 msgstr "Gaussian d_erivative along y"
 
-#: /home/yleydier/prg/v4/libcrn/src/titus/titus.cpp:83
+#: C:/Users/noname/Desktop/libcrn.mtola/src/titus/titus.cpp:87
 msgid "Gaussian _second derivative along x"
 msgstr "Gaussian _second derivative along x"
 
-#: /home/yleydier/prg/v4/libcrn/src/titus/titus.cpp:84
+#: C:/Users/noname/Desktop/libcrn.mtola/src/titus/titus.cpp:88
 msgid "Gaussian se_cond derivative along y"
 msgstr "Gaussian se_cond derivative along y"
 
-#: /home/yleydier/prg/v4/libcrn/src/titus/titus.cpp:88
+#: C:/Users/noname/Desktop/libcrn.mtola/src/titus/titus.cpp:91
+msgid "_RGB"
+msgstr "_RGB"
+
+#: C:/Users/noname/Desktop/libcrn.mtola/src/titus/titus.cpp:92
 msgid "_Red"
 msgstr "_Red"
 
-#: /home/yleydier/prg/v4/libcrn/src/titus/titus.cpp:89
+#: C:/Users/noname/Desktop/libcrn.mtola/src/titus/titus.cpp:93
 msgid "_Green"
 msgstr "_Green"
 
-#: /home/yleydier/prg/v4/libcrn/src/titus/titus.cpp:90
+#: C:/Users/noname/Desktop/libcrn.mtola/src/titus/titus.cpp:94
 msgid "_Blue"
 msgstr "_Blue"
 
-#: /home/yleydier/prg/v4/libcrn/src/titus/titus.cpp:91
+#: C:/Users/noname/Desktop/libcrn.mtola/src/titus/titus.cpp:95
 msgid "_Hue"
 msgstr "_Hue"
 
-#: /home/yleydier/prg/v4/libcrn/src/titus/titus.cpp:92
+#: C:/Users/noname/Desktop/libcrn.mtola/src/titus/titus.cpp:96
 msgid "_Saturation"
 msgstr "_Saturation"
 
-#: /home/yleydier/prg/v4/libcrn/src/titus/titus.cpp:93
+#: C:/Users/noname/Desktop/libcrn.mtola/src/titus/titus.cpp:97
 msgid "Pseudo s_aturation"
 msgstr "Pseudo s_aturation"
 
-#: /home/yleydier/prg/v4/libcrn/src/titus/titus.cpp:94
+#: C:/Users/noname/Desktop/libcrn.mtola/src/titus/titus.cpp:98
 msgid "_Value"
 msgstr "_Value"
 
-#: /home/yleydier/prg/v4/libcrn/src/titus/titus.cpp:95
+#: C:/Users/noname/Desktop/libcrn.mtola/src/titus/titus.cpp:99
 msgid "Luminance (_YUV)"
 msgstr "Luminance (_YUV)"
 
-#: /home/yleydier/prg/v4/libcrn/src/titus/titus.cpp:96
+#: C:/Users/noname/Desktop/libcrn.mtola/src/titus/titus.cpp:100
 msgid "Luminance (HS_L)"
 msgstr "Luminance (HS_L)"
 
-#: /home/yleydier/prg/v4/libcrn/src/titus/titus.cpp:97
+#: C:/Users/noname/Desktop/libcrn.mtola/src/titus/titus.cpp:101
 msgid "Pseudo l_uminance"
 msgstr "Pseudo l_uminance"
 
-#: /home/yleydier/prg/v4/libcrn/src/titus/titus.cpp:99
+#: C:/Users/noname/Desktop/libcrn.mtola/src/titus/titus.cpp:103
 msgid "_Saturate"
 msgstr "_Saturate"
 
-#: /home/yleydier/prg/v4/libcrn/src/titus/titus.cpp:100
+#: C:/Users/noname/Desktop/libcrn.mtola/src/titus/titus.cpp:104
 msgid "Edge _preserving filter"
 msgstr "Edge _preserving filter"
 
-#: /home/yleydier/prg/v4/libcrn/src/titus/titus.cpp:102
-#: /home/yleydier/prg/v4/libcrn/src/titus/titus.cpp:121
-#: /home/yleydier/prg/v4/libcrn/src/titus/titus.cpp:134
+#: C:/Users/noname/Desktop/libcrn.mtola/src/titus/titus.cpp:106
+#: C:/Users/noname/Desktop/libcrn.mtola/src/titus/titus.cpp:125
+#: C:/Users/noname/Desktop/libcrn.mtola/src/titus/titus.cpp:138
 msgid "_Differential"
 msgstr "_Differential"
 
-#: /home/yleydier/prg/v4/libcrn/src/titus/titus.cpp:106
+#: C:/Users/noname/Desktop/libcrn.mtola/src/titus/titus.cpp:109
+msgid "_Gray"
+msgstr "_Grey"
+
+#: C:/Users/noname/Desktop/libcrn.mtola/src/titus/titus.cpp:110
 msgid "To _RGB"
 msgstr "To _RGB"
 
-#: /home/yleydier/prg/v4/libcrn/src/titus/titus.cpp:107
+#: C:/Users/noname/Desktop/libcrn.mtola/src/titus/titus.cpp:111
 msgid "_Threshold"
 msgstr "_Threshold"
 
-#: /home/yleydier/prg/v4/libcrn/src/titus/titus.cpp:108
+#: C:/Users/noname/Desktop/libcrn.mtola/src/titus/titus.cpp:112
 msgid "_Fisher"
 msgstr "_Fisher"
 
-#: /home/yleydier/prg/v4/libcrn/src/titus/titus.cpp:109
+#: C:/Users/noname/Desktop/libcrn.mtola/src/titus/titus.cpp:113
 msgid "_Entropy"
 msgstr "_Entropy"
 
-#: /home/yleydier/prg/v4/libcrn/src/titus/titus.cpp:110
+#: C:/Users/noname/Desktop/libcrn.mtola/src/titus/titus.cpp:114
 msgid "_Otsu"
 msgstr "_Otsu"
 
-#: /home/yleydier/prg/v4/libcrn/src/titus/titus.cpp:111
+#: C:/Users/noname/Desktop/libcrn.mtola/src/titus/titus.cpp:115
 msgid "_Niblack"
 msgstr "_Niblack"
 
-#: /home/yleydier/prg/v4/libcrn/src/titus/titus.cpp:112
+#: C:/Users/noname/Desktop/libcrn.mtola/src/titus/titus.cpp:116
 msgid "_Sauvola"
 msgstr "_Sauvola"
 
-#: /home/yleydier/prg/v4/libcrn/src/titus/titus.cpp:113
+#: C:/Users/noname/Desktop/libcrn.mtola/src/titus/titus.cpp:117
 msgid "_k means histogram"
 msgstr "_k means histogram"
 
-#: /home/yleydier/prg/v4/libcrn/src/titus/titus.cpp:114
+#: C:/Users/noname/Desktop/libcrn.mtola/src/titus/titus.cpp:118
 msgid "Local m_in"
 msgstr "Local m_in"
 
-#: /home/yleydier/prg/v4/libcrn/src/titus/titus.cpp:115
+#: C:/Users/noname/Desktop/libcrn.mtola/src/titus/titus.cpp:119
 msgid "Local m_ax"
 msgstr "Local m_ax"
 
-#: /home/yleydier/prg/v4/libcrn/src/titus/titus.cpp:117
+#: C:/Users/noname/Desktop/libcrn.mtola/src/titus/titus.cpp:121
 msgid "_Strokes statistics"
 msgstr "_Strokes statistics"
 
-#: /home/yleydier/prg/v4/libcrn/src/titus/titus.cpp:118
+#: C:/Users/noname/Desktop/libcrn.mtola/src/titus/titus.cpp:122
 msgid "_Histogram"
 msgstr "_Histogram"
 
-#: /home/yleydier/prg/v4/libcrn/src/titus/titus.cpp:119
+#: C:/Users/noname/Desktop/libcrn.mtola/src/titus/titus.cpp:123
 msgid "_Radial histogram"
 msgstr "_Radial histogram"
 
-#: /home/yleydier/prg/v4/libcrn/src/titus/titus.cpp:125
+#: C:/Users/noname/Desktop/libcrn.mtola/src/titus/titus.cpp:128
+msgid "_BW"
+msgstr "_BW"
+
+#: C:/Users/noname/Desktop/libcrn.mtola/src/titus/titus.cpp:129
 msgid "To _gray"
 msgstr "To _grey"
 
-#: /home/yleydier/prg/v4/libcrn/src/titus/titus.cpp:126
+#: C:/Users/noname/Desktop/libcrn.mtola/src/titus/titus.cpp:130
 msgid "_Left profile"
 msgstr "_Left profile"
 
-#: /home/yleydier/prg/v4/libcrn/src/titus/titus.cpp:127
+#: C:/Users/noname/Desktop/libcrn.mtola/src/titus/titus.cpp:131
 msgid "_Right profile"
 msgstr "_Right profile"
 
-#: /home/yleydier/prg/v4/libcrn/src/titus/titus.cpp:128
+#: C:/Users/noname/Desktop/libcrn.mtola/src/titus/titus.cpp:132
 msgid "_Top profile"
 msgstr "_Top profile"
 
-#: /home/yleydier/prg/v4/libcrn/src/titus/titus.cpp:129
+#: C:/Users/noname/Desktop/libcrn.mtola/src/titus/titus.cpp:133
 msgid "_Bottom profile"
 msgstr "_Bottom profile"
 
-#: /home/yleydier/prg/v4/libcrn/src/titus/titus.cpp:130
+#: C:/Users/noname/Desktop/libcrn.mtola/src/titus/titus.cpp:134
 msgid "_Horizontal projection"
 msgstr "_Horizontal projection"
 
-#: /home/yleydier/prg/v4/libcrn/src/titus/titus.cpp:131
+#: C:/Users/noname/Desktop/libcrn.mtola/src/titus/titus.cpp:135
 msgid "_Vertical projection"
 msgstr "_Vertical projection"
 
-#: /home/yleydier/prg/v4/libcrn/src/titus/titus.cpp:135
+#: C:/Users/noname/Desktop/libcrn.mtola/src/titus/titus.cpp:139
 msgid "_Diffuse"
 msgstr "_Diffuse"
 
-#: /home/yleydier/prg/v4/libcrn/src/titus/titus.cpp:136
+#: C:/Users/noname/Desktop/libcrn.mtola/src/titus/titus.cpp:140
 msgid "Gradient (_grayscale)"
 msgstr "Gradient (_grayscale)"
 
-#: /home/yleydier/prg/v4/libcrn/src/titus/titus.cpp:137
+#: C:/Users/noname/Desktop/libcrn.mtola/src/titus/titus.cpp:141
 msgid "Gradient (_RGB)"
 msgstr "Gradient (_RGB)"
 
-#: /home/yleydier/prg/v4/libcrn/src/titus/titus.cpp:138
+#: C:/Users/noname/Desktop/libcrn.mtola/src/titus/titus.cpp:142
 msgid "Gradient _module"
 msgstr "Gradient _module"
 
-#: /home/yleydier/prg/v4/libcrn/src/titus/titus.cpp:140
+#: C:/Users/noname/Desktop/libcrn.mtola/src/titus/titus.cpp:144
 msgid "_Divergence"
 msgstr "_Divergence"
 
-#: /home/yleydier/prg/v4/libcrn/src/titus/titus.cpp:141
+#: C:/Users/noname/Desktop/libcrn.mtola/src/titus/titus.cpp:145
 msgid "_Laplacian"
 msgstr "_Laplacian"
 
-#: /home/yleydier/prg/v4/libcrn/src/titus/titus.cpp:142
+#: C:/Users/noname/Desktop/libcrn.mtola/src/titus/titus.cpp:146
 msgid "_Edge"
 msgstr "_Edge"
 
-#: /home/yleydier/prg/v4/libcrn/src/titus/titus.cpp:143
+#: C:/Users/noname/Desktop/libcrn.mtola/src/titus/titus.cpp:147
 msgid "_Corner"
 msgstr "_Corner"
 
-#: /home/yleydier/prg/v4/libcrn/src/titus/titus.cpp:144
+#: C:/Users/noname/Desktop/libcrn.mtola/src/titus/titus.cpp:148
 msgid "Kappa _1"
 msgstr "Kappa _1"
 
-#: /home/yleydier/prg/v4/libcrn/src/titus/titus.cpp:145
+#: C:/Users/noname/Desktop/libcrn.mtola/src/titus/titus.cpp:149
 msgid "Kappa _2"
 msgstr "Kappa _2"
 
-#: /home/yleydier/prg/v4/libcrn/src/titus/titus.cpp:146
+#: C:/Users/noname/Desktop/libcrn.mtola/src/titus/titus.cpp:150
 msgid "_Hessian corner"
 msgstr "_Hessian corner"
 
-#: /home/yleydier/prg/v4/libcrn/src/titus/titus.cpp:148
+#: C:/Users/noname/Desktop/libcrn.mtola/src/titus/titus.cpp:152
 msgid "_Isophote curvature"
 msgstr "_Isophote curvature"
 
-#: /home/yleydier/prg/v4/libcrn/src/titus/titus.cpp:149
+#: C:/Users/noname/Desktop/libcrn.mtola/src/titus/titus.cpp:153
 msgid "_Flowline curvature"
 msgstr "_Flowline curvature"
 
-#: /home/yleydier/prg/v4/libcrn/src/titus/titus.cpp:150
+#: C:/Users/noname/Desktop/libcrn.mtola/src/titus/titus.cpp:154
 msgid "_Gaussian curvature"
 msgstr "_Gaussian curvature"
 
-#: /home/yleydier/prg/v4/libcrn/src/titus/titus.cpp:151
+#: C:/Users/noname/Desktop/libcrn.mtola/src/titus/titus.cpp:155
 msgid "G_radient curvature"
 msgstr "G_radient curvature"
 
-#: /home/yleydier/prg/v4/libcrn/src/titus/titus.cpp:153
+#: C:/Users/noname/Desktop/libcrn.mtola/src/titus/titus.cpp:157
 msgid "L_x"
 msgstr "L_x"
 
-#: /home/yleydier/prg/v4/libcrn/src/titus/titus.cpp:154
+#: C:/Users/noname/Desktop/libcrn.mtola/src/titus/titus.cpp:158
 msgid "L_y"
 msgstr "L_y"
 
-#: /home/yleydier/prg/v4/libcrn/src/titus/titus.cpp:155
+#: C:/Users/noname/Desktop/libcrn.mtola/src/titus/titus.cpp:159
 msgid "L_xx"
 msgstr "L_xx"
 
-#: /home/yleydier/prg/v4/libcrn/src/titus/titus.cpp:156
+#: C:/Users/noname/Desktop/libcrn.mtola/src/titus/titus.cpp:160
 msgid "L_xy"
 msgstr "L_xy"
 
-#: /home/yleydier/prg/v4/libcrn/src/titus/titus.cpp:157
+#: C:/Users/noname/Desktop/libcrn.mtola/src/titus/titus.cpp:161
 msgid "L_yy"
 msgstr "L_yy"
 
-#: /home/yleydier/prg/v4/libcrn/src/titus/titus.cpp:158
+#: C:/Users/noname/Desktop/libcrn.mtola/src/titus/titus.cpp:162
 msgid "L_w"
 msgstr "L_w"
 
-#: /home/yleydier/prg/v4/libcrn/src/titus/titus.cpp:159
+#: C:/Users/noname/Desktop/libcrn.mtola/src/titus/titus.cpp:163
 msgid "L_vv"
 msgstr "L_vv"
 
-#: /home/yleydier/prg/v4/libcrn/src/titus/titus.cpp:160
+#: C:/Users/noname/Desktop/libcrn.mtola/src/titus/titus.cpp:164
 msgid "L_vw"
 msgstr "L_vw"
 
-#: /home/yleydier/prg/v4/libcrn/src/titus/titus.cpp:161
+#: C:/Users/noname/Desktop/libcrn.mtola/src/titus/titus.cpp:165
 msgid "L_ww"
 msgstr "L_ww"
 
-#: /home/yleydier/prg/v4/libcrn/src/titus/titus.cpp:358
+#: C:/Users/noname/Desktop/libcrn.mtola/src/titus/titus.cpp:370
 msgid "Invalid image file."
 msgstr "Invalid image file."
 
-#: /home/yleydier/prg/v4/libcrn/src/titus/titus.cpp:371
+#: C:/Users/noname/Desktop/libcrn.mtola/src/titus/titus.cpp:383
 msgid "Select a PNG image to export…"
 msgstr "Select a PNG image to export…"
 
-#: /home/yleydier/prg/v4/libcrn/src/titus/titus.cpp:483
+#: C:/Users/noname/Desktop/libcrn.mtola/src/titus/titus.cpp:495
 msgid "Testing tool for libcrn functions"
 msgstr "Testing tool for libcrn functions"
 
-#: /home/yleydier/prg/v4/libcrn/src/titus/titus.cpp:485
+#: C:/Users/noname/Desktop/libcrn.mtola/src/titus/titus.cpp:497
 msgid "http://www.corenum.com/knowledge/libcrn.html"
 msgstr "http://www.corenum.com/knowledge/libcrn.html"
 
-#: /home/yleydier/prg/v4/libcrn/src/titus/titus.cpp:495
+#: C:/Users/noname/Desktop/libcrn.mtola/src/titus/titus.cpp:507
 msgid "Gaussian blur"
 msgstr "Gaussian blur"
 
-#: /home/yleydier/prg/v4/libcrn/src/titus/titus.cpp:497
-#: /home/yleydier/prg/v4/libcrn/src/titus/titus.cpp:529
-#: /home/yleydier/prg/v4/libcrn/src/titus/titus.cpp:562
-#: /home/yleydier/prg/v4/libcrn/src/titus/titus.cpp:596
-#: /home/yleydier/prg/v4/libcrn/src/titus/titus.cpp:632
-#: /home/yleydier/prg/v4/libcrn/src/titus/titus.cpp:669
-#: /home/yleydier/prg/v4/libcrn/src/titus/titus.cpp:705
-#: /home/yleydier/prg/v4/libcrn/src/titus/titus.cpp:813
-#: /home/yleydier/prg/v4/libcrn/src/titus/titus.cpp:950
+#: C:/Users/noname/Desktop/libcrn.mtola/src/titus/titus.cpp:509
+#: C:/Users/noname/Desktop/libcrn.mtola/src/titus/titus.cpp:541
+#: C:/Users/noname/Desktop/libcrn.mtola/src/titus/titus.cpp:574
+#: C:/Users/noname/Desktop/libcrn.mtola/src/titus/titus.cpp:608
+#: C:/Users/noname/Desktop/libcrn.mtola/src/titus/titus.cpp:644
+#: C:/Users/noname/Desktop/libcrn.mtola/src/titus/titus.cpp:681
+#: C:/Users/noname/Desktop/libcrn.mtola/src/titus/titus.cpp:717
+#: C:/Users/noname/Desktop/libcrn.mtola/src/titus/titus.cpp:825
+#: C:/Users/noname/Desktop/libcrn.mtola/src/titus/titus.cpp:962
 msgid "Sigma"
 msgstr "Sigma"
 
-#: /home/yleydier/prg/v4/libcrn/src/titus/titus.cpp:527
+#: C:/Users/noname/Desktop/libcrn.mtola/src/titus/titus.cpp:539
 msgid "Gaussian blur along x"
 msgstr "Gaussian blur along x"
 
-#: /home/yleydier/prg/v4/libcrn/src/titus/titus.cpp:560
+#: C:/Users/noname/Desktop/libcrn.mtola/src/titus/titus.cpp:572
 msgid "Gaussian blur along y"
 msgstr "Gaussian blur along y"
 
-#: /home/yleydier/prg/v4/libcrn/src/titus/titus.cpp:594
+#: C:/Users/noname/Desktop/libcrn.mtola/src/titus/titus.cpp:606
 msgid "Gaussian derivative along x"
 msgstr "Gaussian derivative along x"
 
-#: /home/yleydier/prg/v4/libcrn/src/titus/titus.cpp:630
+#: C:/Users/noname/Desktop/libcrn.mtola/src/titus/titus.cpp:642
 msgid "Gaussian derivative along y"
 msgstr "Gaussian derivative along y"
 
-#: /home/yleydier/prg/v4/libcrn/src/titus/titus.cpp:667
+#: C:/Users/noname/Desktop/libcrn.mtola/src/titus/titus.cpp:679
 msgid "Gaussian second derivative along x"
 msgstr "Gaussian second derivative along x"
 
-#: /home/yleydier/prg/v4/libcrn/src/titus/titus.cpp:703
+#: C:/Users/noname/Desktop/libcrn.mtola/src/titus/titus.cpp:715
 msgid "Gaussian second derivative along y"
 msgstr "Gaussian second derivative along y"
 
-#: /home/yleydier/prg/v4/libcrn/src/titus/titus.cpp:798
+#: C:/Users/noname/Desktop/libcrn.mtola/src/titus/titus.cpp:810
 msgid "Edge preserving filter"
 msgstr "Edge preserving filter"
 
-#: /home/yleydier/prg/v4/libcrn/src/titus/titus.cpp:800
+#: C:/Users/noname/Desktop/libcrn.mtola/src/titus/titus.cpp:812
 msgid "# iterations"
 msgstr "# iterations"
 
-#: /home/yleydier/prg/v4/libcrn/src/titus/titus.cpp:802
+#: C:/Users/noname/Desktop/libcrn.mtola/src/titus/titus.cpp:814
 msgid "Maximal distance between colors of a same class"
 msgstr "Maximal distance between colors of a same class"
 
-#: /home/yleydier/prg/v4/libcrn/src/titus/titus.cpp:811
-#: /home/yleydier/prg/v4/libcrn/src/titus/titus.cpp:948
-#: /home/yleydier/prg/v4/libcrn/src/titus/titus.cpp:1006
+#: C:/Users/noname/Desktop/libcrn.mtola/src/titus/titus.cpp:823
+#: C:/Users/noname/Desktop/libcrn.mtola/src/titus/titus.cpp:960
+#: C:/Users/noname/Desktop/libcrn.mtola/src/titus/titus.cpp:1018
 msgid "Differential"
 msgstr "Differential"
 
-#: /home/yleydier/prg/v4/libcrn/src/titus/titus.cpp:831
-#: /home/yleydier/prg/v4/libcrn/src/titus/titus.cpp:833
+#: C:/Users/noname/Desktop/libcrn.mtola/src/titus/titus.cpp:843
+#: C:/Users/noname/Desktop/libcrn.mtola/src/titus/titus.cpp:845
 msgid "Threshold"
 msgstr "Threshold"
 
-#: /home/yleydier/prg/v4/libcrn/src/titus/titus.cpp:857
+#: C:/Users/noname/Desktop/libcrn.mtola/src/titus/titus.cpp:869
 msgid "Niblack"
 msgstr "Niblack"
 
-#: /home/yleydier/prg/v4/libcrn/src/titus/titus.cpp:859
-#: /home/yleydier/prg/v4/libcrn/src/titus/titus.cpp:872
+#: C:/Users/noname/Desktop/libcrn.mtola/src/titus/titus.cpp:871
+#: C:/Users/noname/Desktop/libcrn.mtola/src/titus/titus.cpp:884
 msgid "Half window"
 msgstr "Half window"
 
-#: /home/yleydier/prg/v4/libcrn/src/titus/titus.cpp:861
-#: /home/yleydier/prg/v4/libcrn/src/titus/titus.cpp:874
+#: C:/Users/noname/Desktop/libcrn.mtola/src/titus/titus.cpp:873
+#: C:/Users/noname/Desktop/libcrn.mtola/src/titus/titus.cpp:886
 msgid "k"
 msgstr "k"
 
-#: /home/yleydier/prg/v4/libcrn/src/titus/titus.cpp:870
+#: C:/Users/noname/Desktop/libcrn.mtola/src/titus/titus.cpp:882
 msgid "Sauvola"
 msgstr "Sauvola"
 
-#: /home/yleydier/prg/v4/libcrn/src/titus/titus.cpp:883
+#: C:/Users/noname/Desktop/libcrn.mtola/src/titus/titus.cpp:895
 msgid "k means histogram"
 msgstr "k means histogram"
 
-#: /home/yleydier/prg/v4/libcrn/src/titus/titus.cpp:885
+#: C:/Users/noname/Desktop/libcrn.mtola/src/titus/titus.cpp:897
 msgid "Number of classes"
 msgstr "Number of classes"
 
-#: /home/yleydier/prg/v4/libcrn/src/titus/titus.cpp:887
+#: C:/Users/noname/Desktop/libcrn.mtola/src/titus/titus.cpp:899
 msgid "Number of black classes"
 msgstr "Number of black classes"
 
-#: /home/yleydier/prg/v4/libcrn/src/titus/titus.cpp:897
+#: C:/Users/noname/Desktop/libcrn.mtola/src/titus/titus.cpp:909
 msgid ""
 "The number of black classes must be lower than the total number of classes."
 msgstr ""
 "The number of black classes must be lower than the total number of classes."
 
-#: /home/yleydier/prg/v4/libcrn/src/titus/titus.cpp:903
+#: C:/Users/noname/Desktop/libcrn.mtola/src/titus/titus.cpp:915
 msgid "Local min"
 msgstr "Local min"
 
-#: /home/yleydier/prg/v4/libcrn/src/titus/titus.cpp:905
-#: /home/yleydier/prg/v4/libcrn/src/titus/titus.cpp:916
+#: C:/Users/noname/Desktop/libcrn.mtola/src/titus/titus.cpp:917
+#: C:/Users/noname/Desktop/libcrn.mtola/src/titus/titus.cpp:928
 msgid "Radius"
 msgstr "Radius"
 
-#: /home/yleydier/prg/v4/libcrn/src/titus/titus.cpp:914
+#: C:/Users/noname/Desktop/libcrn.mtola/src/titus/titus.cpp:926
 msgid "Local max"
 msgstr "Local max"
 
-#: /home/yleydier/prg/v4/libcrn/src/titus/titus.cpp:927
+#: C:/Users/noname/Desktop/libcrn.mtola/src/titus/titus.cpp:939
 msgid "Strokes width: "
 msgstr "Strokes width: "
 
-#: /home/yleydier/prg/v4/libcrn/src/titus/titus.cpp:930
+#: C:/Users/noname/Desktop/libcrn.mtola/src/titus/titus.cpp:942
 msgid "Strokes height: "
 msgstr "Strokes height: "
 
-#: /home/yleydier/prg/v4/libcrn/src/titus/titus.cpp:1008
+#: C:/Users/noname/Desktop/libcrn.mtola/src/titus/titus.cpp:1020
 msgid "Number of iterations"
 msgstr "Number of iterations"
 
-#: /home/yleydier/prg/v4/libcrn/src/titus/titus.cpp:1010
+#: C:/Users/noname/Desktop/libcrn.mtola/src/titus/titus.cpp:1022
 msgid "Max divergence to allow modification of a pixel"
 msgstr "Max divergence to allow modification of a pixel"
+
+#~ msgid "_Save image"
+#~ msgstr "_Save image"
+
+#~ msgid "Save image"
+#~ msgstr "Save image"
+
+#~ msgid "Show RGB image"
+#~ msgstr "Show RGB image"
+
+#~ msgid "Show Gray image"
+#~ msgstr "Show Gray image"
+
+#~ msgid "Show BW image"
+#~ msgstr "Show BW image"
+
+#~ msgid "_Result"
+#~ msgstr "_Result"
+
+#~ msgid "Show result image"
+#~ msgstr "Show result image"
 
 #~ msgid "invalid index."
 #~ msgstr "invalid index."
@@ -2625,11 +2617,11 @@ msgstr "Max divergence to allow modification of a pixel"
 #~ msgstr "Strokes height > 50 or null."
 
 #~ msgid ""
-#~ "Cannot allocate pixels. Probably wrong image dimensions, or "
-#~ "allocateSize() was not overloaded properly."
+#~ "Cannot allocate pixels. Probably wrong image dimensions, or allocateSize"
+#~ "() was not overloaded properly."
 #~ msgstr ""
-#~ "Cannot allocate pixels. Probably wrong image dimensions, or "
-#~ "allocateSize() was not overloaded properly."
+#~ "Cannot allocate pixels. Probably wrong image dimensions, or allocateSize"
+#~ "() was not overloaded properly."
 
 #~ msgid ""
 #~ "Cannot allocate pixels. Probably wrong image dimensions, allocateSize() "

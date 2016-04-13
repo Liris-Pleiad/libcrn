@@ -52,6 +52,11 @@ if(GTK2_FOUND)
 	target_link_libraries(gtkcrnmm2 crn)
 	target_link_libraries(gtkcrnmm2 GTK2::gtkmm)
 
+	if(CRN_USING_LIBINTL OR CRN_USING_GLIB_INTL)
+		include_directories(${Intl_INCLUDE_DIRS})
+		target_link_libraries(gtkcrnmm2	${Intl_LIBRARIES})
+	endif()
+
 	# Install
 	# - binaries
 	install(TARGETS gtkcrnmm2 RUNTIME DESTINATION "${RUNTIME_INSTALL_PATH}" COMPONENT bin  LIBRARY DESTINATION "${LIBRARY_INSTALL_PATH}" COMPONENT bin ARCHIVE DESTINATION "${ARCHIVE_INSTALL_PATH}" COMPONENT bin)
@@ -85,6 +90,10 @@ if(GTK3_FOUND)
 	# Dependencies
 	target_link_libraries(gtkcrnmm3 GTK3::gtkmm)
 	target_link_libraries(gtkcrnmm3 crn)
+	if(CRN_USING_LIBINTL OR CRN_USING_GLIB_INTL)
+		include_directories(${Intl_INCLUDE_DIRS})
+		target_link_libraries(gtkcrnmm3	${Intl_LIBRARIES})
+	endif()
 	# Install
 	# - binaries
 	install(TARGETS gtkcrnmm3 RUNTIME DESTINATION "${RUNTIME_INSTALL_PATH}" COMPONENT bin  LIBRARY DESTINATION "${LIBRARY_INSTALL_PATH}" COMPONENT bin ARCHIVE DESTINATION "${ARCHIVE_INSTALL_PATH}" COMPONENT bin)

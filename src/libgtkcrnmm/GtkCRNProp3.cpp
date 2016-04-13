@@ -53,13 +53,14 @@ void Prop3::set_image()
 	switch (prop.GetValue())
 	{
 		case TRUE:
-			img.set(Gtk::Stock::YES, size);
+			//img.set(Gtk::Stock::YES, size);
 			break;
 		case FALSE:
-			img.set(Gtk::Stock::NO, size);
+			//img.set(Gtk::Stock::NO, size);
 			break;
 		default:
-			img.set(Gtk::Stock::DIALOG_QUESTION, size);
+			//img.set(Gtk::Stock::DIALOG_QUESTION, size);
+			;
 	}
 }
 

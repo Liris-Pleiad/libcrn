@@ -26,7 +26,7 @@
 #include <CRNIO/CRNIO.h>
 #include <CRNMath/CRNMath.h>
 #include <CRNData/CRNForeach.h>
-
+#define get_vbox get_content_area // XXX
 using namespace GtkCRN;
 
 const crn::String SelectionBox::reorderKey(U"GtkCRN::SelectionBox::Reorder");
@@ -592,8 +592,8 @@ SelectionBox::Element::Element(Gtk::Widget &w, SelectionBox *const sb):
 #ifdef CRN_USING_GTKMM3
 	Gdk::RGBA bgcol;
 	get_style_property("theme-bg-color", bgcol); // XXX
-	tb.override_background_color(bgcol, Gtk::STATE_FLAG_ACTIVE);
-	tb.override_background_color(bgcol, Gtk::STATE_FLAG_PRELIGHT);
+	//tb.override_background_color(bgcol, Gtk::STATE_FLAG_ACTIVE);
+	//tb.override_background_color(bgcol, Gtk::STATE_FLAG_PRELIGHT);
 #else
 	crn::String colors(Gtk::Settings::get_default()->property_gtk_color_scheme().get_value().c_str());
 	if (colors.IsNotEmpty())

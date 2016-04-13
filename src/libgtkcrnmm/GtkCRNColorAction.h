@@ -40,8 +40,10 @@ namespace GtkCRN
 			static Glib::RefPtr<ColorAction> create();
 			/*! \brief Creates ColorAction */
 			static Glib::RefPtr<ColorAction> create(const Glib::ustring& name, const Glib::ustring& label=Glib::ustring(), const Glib::ustring& tooltip=Glib::ustring());
+#ifndef CRN_USING_GTKMM3
 			/*! \brief Creates ColorAction */
 			static Glib::RefPtr<ColorAction> create(const Glib::ustring& name, const Gtk::StockID& stock_id, const Glib::ustring& label=Glib::ustring(), const Glib::ustring& tooltip=Glib::ustring());
+#endif
 			/*! \brief Creates ColorAction */
 			static Glib::RefPtr<ColorAction> create_with_icon_name(const Glib::ustring& name, const Glib::ustring& icon_name, const Glib::ustring& label, const Glib::ustring& tooltip);
 
@@ -67,8 +69,11 @@ namespace GtkCRN
 		protected:
 			/*! \brief Default constructor */
 			ColorAction();
+#ifndef CRN_USING_GTKMM3
+
 			/*! \brief Constructor */
 			ColorAction(const Glib::ustring& name, const Gtk::StockID& stock_id=Gtk::StockID(), const Glib::ustring& label=Glib::ustring(), const Glib::ustring& tooltip=Glib::ustring());
+#endif
 			/*! \brief Constructor */
 			ColorAction(const Glib::ustring& name, const Glib::ustring& icon_name, const Glib::ustring& label=Glib::ustring(), const Glib::ustring& tooltip=Glib::ustring());
 

@@ -54,14 +54,18 @@ Gtk::Widget* GtkCRN::create_widget_from_object(const crn::Object *obj)
 		else
 		{
 			Gtk::Expander *expander = new Gtk::Expander("Map");
+#ifdef CRN_USING_GTKMM3
+			Gtk::Grid *tab = Gtk::manage(new Gtk::Grid);
+#else
 			Gtk::Table *tab = Gtk::manage(new Gtk::Table(int(m->Size()), 2));
-			tab->set_col_spacings(4);
+#endif
+			//tab->set_col_spacings(4);
 			expander->add(*tab);
 			int row = 0;
 			for (crn::Map::const_iterator it = m->begin(); it != m->end(); ++it)
 			{
-				tab->attach(*Gtk::manage(new Gtk::Label(it->first.CStr())), 0, 1, row, row + 1, Gtk::FILL, Gtk::FILL);
-				tab->attach(*Gtk::manage(create_widget_from_object(it->second.get())), 1, 2, row, row + 1, Gtk::FILL|Gtk::EXPAND, Gtk::FILL);
+				//tab->attach(*Gtk::manage(new Gtk::Label(it->first.CStr())), 0, 1, row, row + 1, Gtk::FILL, Gtk::FILL);
+				//tab->attach(*Gtk::manage(create_widget_from_object(it->second.get())), 1, 2, row, row + 1, Gtk::FILL|Gtk::EXPAND, Gtk::FILL);
 				row += 1;
 			}
 			tab->show_all();

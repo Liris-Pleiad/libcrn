@@ -200,7 +200,7 @@ if(GTK2_FOUND)
 	set(CRN_USING_GDKPB on)
 endif()
 
-set(GTK3_DEBUG on)
+#set(GTK3_DEBUG on)
 find_package(GTK3 3.10 COMPONENTS gtk gtkmm)
 if(GTK3_FOUND)
 	if(Intl_FOUND AND Gettext_FOUND)

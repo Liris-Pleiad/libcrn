@@ -31,7 +31,11 @@ namespace GtkCRN
 	/*! \brief Configuration widget for crn::PDFAttributes
 	 * \ingroup	gtkcrn
 	 */
-	class PDFAttributes: public Gtk::Table
+#ifdef CRN_USING_GTKMM3
+	class PDFAttributes: public Gtk::Grid
+#else
+	class PDFAttributes : public Gtk::Table
+#endif
 	{
 		public:
 			/*! \brief Constructor */

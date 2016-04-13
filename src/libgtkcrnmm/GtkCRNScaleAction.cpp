@@ -25,6 +25,10 @@
 #include <GtkCRNApp.h>
 #include <CRNi18n.h>
 
+#ifdef CRN_USING_GTKMM3
+#	define get_vbox get_content_area // XXX
+#endif
+
 using namespace GtkCRN;
 
 /*! Default constructor */
@@ -37,7 +41,7 @@ ScaleAction::ScaleAction():
 #endif /* CRN_USING_GTKMM3 */
 {
 }
-
+#ifndef CRN_USING_GTKMM3
 /*! Constructor 
  * \param[in]	name	the id of the action
  * \param[in]	stock_id	a Gtk::Stock item
@@ -46,14 +50,15 @@ ScaleAction::ScaleAction():
  */
 ScaleAction::ScaleAction(const Glib::ustring& name, const Gtk::StockID& stock_id, const Glib::ustring& label, const Glib::ustring& tooltip):
 	Gtk::Action(name, stock_id, label, tooltip),
-#ifdef CRN_USING_GTKMM3
-	adj(Gtk::Adjustment::create(50, 0, 100)),
-#else /* CRN_USING_GTKMM3 */
+//#ifdef CRN_USING_GTKMM3
+//	adj(Gtk::Adjustment::create(50, 0, 100)),
+//#else /* CRN_USING_GTKMM3 */
 	adj(50, 0, 100),
-#endif /* CRN_USING_GTKMM3 */
+//#endif /* CRN_USING_GTKMM3 */
 	lab(label)
 {
 }
+#endif
 
 /*! Constructor 
  * \param[in]	name	the id of the action
@@ -96,9 +101,13 @@ Glib::RefPtr<ScaleAction> ScaleAction::create()
  */
 Glib::RefPtr<ScaleAction> ScaleAction::create(const Glib::ustring& name, const Glib::ustring& label, const Glib::ustring& tooltip)
 {
+#ifndef CRN_USING_GTKMM3
 	return Glib::RefPtr<ScaleAction>(new ScaleAction(name, Gtk::StockID(), label, tooltip));
+#else
+	return Glib::RefPtr<ScaleAction>(new ScaleAction(name, label, tooltip));
+#endif
 }
-
+#ifndef CRN_USING_GTKMM3
 /*! Creates a ScaleAction
  * \param[in]	name	the id of the action
  * \param[in]	stock_id	a Gtk::Stock item
@@ -110,6 +119,7 @@ Glib::RefPtr<ScaleAction> ScaleAction::create(const Glib::ustring& name, const G
 {
 	return Glib::RefPtr<ScaleAction>(new ScaleAction(name, stock_id, label, tooltip));
 }
+#endif
 
 /*! Creates a ScaleAction
  * \param[in]	name	the id of the action
@@ -153,13 +163,17 @@ void ScaleAction::dialog()
 	else
 		dial.set_position(Gtk::WIN_POS_CENTER);
 	dial.set_position(Gtk::WIN_POS_CENTER);
-	dial.add_button(Gtk::Stock::APPLY, Gtk::RESPONSE_ACCEPT);
+	//dial.add_button(Gtk::Stock::APPLY, Gtk::RESPONSE_ACCEPT);
 	dial.set_default_response(Gtk::RESPONSE_ACCEPT);
 	Gtk::HBox hbox;
 	dial.get_vbox()->pack_start(hbox, false, true, 0);
 	Gtk::Label label(lab, true);
 	hbox.pack_start(label, false, true, 2);
+#ifdef CRN_USING_GTKMM3
+	Gtk::Scale scale(adj);
+#else
 	Gtk::HScale scale(adj);
+#endif
 	scale.set_value_pos(Gtk::POS_LEFT);
 	scale.set_size_request(200);
 	hbox.pack_start(scale, true, true, 2);

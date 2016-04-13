@@ -24,6 +24,10 @@
 #include <GtkCRNApp.h>
 #include <CRNi18n.h>
 
+#ifdef CRN_USING_GTKMM3
+#	define get_vbox get_content_area // XXX
+#endif
+
 using namespace GtkCRN;
 
 /*! Constructor 
@@ -50,12 +54,12 @@ FileSelecterDialog::FileSelecterDialog(const crn::Path &p, Gtk::Window *parent):
 		else
 			set_position(Gtk::WIN_POS_CENTER);
 	}
-	add_button(Gtk::Stock::CANCEL, Gtk::RESPONSE_CANCEL);
-	add_button(Gtk::Stock::OK, Gtk::RESPONSE_ACCEPT);
+	//add_button(Gtk::Stock::CANCEL, Gtk::RESPONSE_CANCEL);
+	//add_button(Gtk::Stock::OK, Gtk::RESPONSE_ACCEPT);
 	std::vector<int> altbut;
 	altbut.push_back(Gtk::RESPONSE_ACCEPT);
 	altbut.push_back(Gtk::RESPONSE_CANCEL);
-	set_alternative_button_order_from_array(altbut);	
+	//set_alternative_button_order_from_array(altbut);	
 	set_default_response(Gtk::RESPONSE_ACCEPT);
 	fsel.show();
 	fsel.signal_selection_activated().connect(sigc::mem_fun(this, &FileSelecterDialog::on_file_activated));

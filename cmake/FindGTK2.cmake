@@ -295,6 +295,7 @@ function(_GTK2_FIND_INCLUDE_DIR _var _hdr)
             [HKEY_LOCAL_MACHINE\\SOFTWARE\\gtkmm\\2.4;Path]/lib
         PATH_SUFFIXES
             ${_suffixes}
+        NO_SYSTEM_ENVIRONMENT_PATH
     )
     mark_as_advanced(GTK2_${_var}_INCLUDE_DIR)
 
@@ -407,6 +408,7 @@ function(_GTK2_FIND_LIBRARY _var _lib _expand_vc _append_version)
             $ENV{GTKMM_BASEPATH}/lib
             [HKEY_CURRENT_USER\\SOFTWARE\\gtkmm\\2.4;Path]/lib
             [HKEY_LOCAL_MACHINE\\SOFTWARE\\gtkmm\\2.4;Path]/lib
+        NO_SYSTEM_ENVIRONMENT_PATH
         )
 
     if(_expand_vc AND MSVC)
@@ -423,6 +425,7 @@ function(_GTK2_FIND_LIBRARY _var _lib _expand_vc _append_version)
 							$ENV{GTKMM_BASEPATH}/lib
 							[HKEY_CURRENT_USER\\SOFTWARE\\gtkmm\\2.4;Path]/lib
 							[HKEY_LOCAL_MACHINE\\SOFTWARE\\gtkmm\\2.4;Path]/lib
+                        NO_SYSTEM_ENVIRONMENT_PATH
 					)
     endif()
 

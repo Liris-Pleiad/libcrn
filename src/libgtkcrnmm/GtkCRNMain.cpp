@@ -48,8 +48,13 @@ const char *HOMEPATH = "HOME";
 bool Main::init_done(false);
 
 Main::Main(int &argc, char **&argv):
-	Gtk::Main(argc, argv),
-	iconfac(Gtk::IconFactory::create())
+#ifdef CRN_USING_GTKMM3
+	Gtk::Application(argc, argv)
+#else
+	Gtk::Main(argc, argv)
+#endif
+	/*,
+	iconfac(Gtk::IconFactory::create())*/
 {
 	if (!init_done)
 	{
@@ -153,11 +158,11 @@ Main::Main(int &argc, char **&argv):
 			if (pb)
 			{
 #ifdef CRN_USING_GTKMM3
-				icons.push_back(Gtk::IconSet::create(pb));
+				//icons.push_back(Gtk::IconSet::create(pb));
 #else /* CRN_USING_GTKMM3 */
 				icons.push_back(Gtk::IconSet(pb));
 #endif /* CRN_USING_GTKMM3 */
-				iconfac->add(Gtk::StockID(iconlist[tmp].name), icons.back());
+				//iconfac->add(Gtk::StockID(iconlist[tmp].name), icons.back());
 			}
 		}
 		catch (...)
@@ -165,37 +170,37 @@ Main::Main(int &argc, char **&argv):
 			CRNError("libgtkcrnmm: Missing file: " + basedir + iconlist[tmp].file);
 		}
 	}
-	Glib::RefPtr<Gdk::Pixbuf> pb(Gdk::Pixbuf::create_from_inline(sizeof(logo64), logo64));
+	Glib::RefPtr<Gdk::Pixbuf> pb; // (Gdk::Pixbuf::create_from_inline(sizeof(logo64), logo64));
 	if (pb)
 	{
 #ifdef CRN_USING_GTKMM3
-		icons.push_back(Gtk::IconSet::create(pb));
+		//icons.push_back(Gtk::IconSet::create(pb));
 #else /* CRN_USING_GTKMM3 */
 		icons.push_back(Gtk::IconSet(pb));
 #endif /* CRN_USING_GTKMM3 */
-		iconfac->add(Gtk::StockID("corenum-logo"), icons.back());
+		//iconfac->add(Gtk::StockID("corenum-logo"), icons.back());
 	}
-	pb = Gdk::Pixbuf::create_from_inline(sizeof(icon64), icon64);
+	//pb = Gdk::Pixbuf::create_from_inline(sizeof(icon64), icon64);
 	if (pb)
 	{
 #ifdef CRN_USING_GTKMM3
-		icons.push_back(Gtk::IconSet::create(pb));
+		//icons.push_back(Gtk::IconSet::create(pb));
 #else /* CRN_USING_GTKMM3 */
 		icons.push_back(Gtk::IconSet(pb));
 #endif /* CRN_USING_GTKMM3 */
-		iconfac->add(Gtk::StockID("corenum-icon"), icons.back());
+		//iconfac->add(Gtk::StockID("corenum-icon"), icons.back());
 	}
-	pb = Gdk::Pixbuf::create_from_inline(sizeof(icon64circle), icon64circle);
+	//pb = Gdk::Pixbuf::create_from_inline(sizeof(icon64circle), icon64circle);
 	if (pb)
 	{
 #ifdef CRN_USING_GTKMM3
-		icons.push_back(Gtk::IconSet::create(pb));
+		//icons.push_back(Gtk::IconSet::create(pb));
 #else /* CRN_USING_GTKMM3 */
 		icons.push_back(Gtk::IconSet(pb));
 #endif /* CRN_USING_GTKMM3 */
-		iconfac->add(Gtk::StockID("corenum-icon-circle"), icons.back());
+		//iconfac->add(Gtk::StockID("corenum-icon-circle"), icons.back());
 	}
-	iconfac->add_default();
+	//iconfac->add_default();
 	Gtk::IconTheme::get_default()->append_search_path(Config::GetStaticDataPath().CStr());
 }
 

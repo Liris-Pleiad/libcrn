@@ -170,6 +170,32 @@ ImageRGB GdkCRN::CRNImageFromPixbuf(const Glib::RefPtr<Gdk::Pixbuf> &pb)
 	return imgrgb;
 }
 
+#ifdef CRN_USING_GTKMM3
+/*!
+* Creates a Gdk::Color from a crn::pixel::RGB8
+*
+* \param[in]  p  the pixel to convert
+* \return  a Gdk::Color
+*/
+Gdk::RGBA GdkCRN::ColorFromCRNPixel(const crn::pixel::RGB8 &p)
+{
+	Gdk::RGBA col;
+	col.set_rgba(p.r / 255.0, p.g / 255.0, p.b / 255.0);
+	return col;
+}
+
+/*!
+* Creates a crn::pixel::RGB8 from a Gdk::Color
+*
+* \param[in]  color  the color to convert
+* \return  a crn::pixel::RGB8
+*/
+crn::pixel::RGB8 GdkCRN::CRNPixelRGBFromGdkColor(const Gdk::RGBA &color)
+{
+	return crn::pixel::RGB8(uint8_t(color.get_red() * 255), uint8_t(color.get_green() * 255), uint8_t(color.get_blue() * 255));
+}
+
+#else
 /*!
  * Creates a Gdk::Color from a crn::pixel::RGB8
  *
@@ -193,4 +219,4 @@ crn::pixel::RGB8 GdkCRN::CRNPixelRGBFromGdkColor(const Gdk::Color &color)
 {
 	return crn::pixel::RGB8(uint8_t(color.get_red_p() * 255), uint8_t(color.get_green_p() * 255), uint8_t(color.get_blue_p() * 255));
 }
-
+#endif
