@@ -33,12 +33,14 @@ DrawingPanel::DrawingPanel():
 	zoom(1.0),
 	actions(Gtk::ActionGroup::create("drawing panel"))
 {
-#ifdef CRN_USING_GTkMM3
+#ifndef CRN_USING_GTKMM3
 	bg_act = GtkCRN::ColorAction::create("drawing-panel-background", Gtk::Stock::SELECT_COLOR, _("_Background Color…"), _("Background Color"));
 #endif
 	actions->add(bg_act);
+#ifndef CRN_USING_GTKMM3
 	actions->get_action("drawing-panel-background")->set_short_label(_("Background"));
 	actions->get_action("drawing-panel-background")->set_is_important();
+#endif
 #ifdef CRN_USING_GTKMM3
 	bg_act->set_color(Gdk::RGBA("white"));
 #else /* CRN_USING_GTKMM3 */
@@ -46,12 +48,14 @@ DrawingPanel::DrawingPanel():
 #endif /* CRN_USING_GTKMM3 */
 	bg_act->signal_changed().connect(sigc::mem_fun(this, &Gtk::Widget::queue_draw));
 
-#ifdef CRN_USING_GTkMM3
+#ifndef CRN_USING_GTKMM3
 	fg_act = GtkCRN::ColorAction::create("drawing-panel-foreground", Gtk::Stock::SELECT_COLOR, _("_Foreground Color…"), _("Foreground Color"));
 #endif
 	actions->add(fg_act);
+#ifndef CRN_USING_GTKMM3
 	actions->get_action("drawing-panel-foreground")->set_short_label(_("Foreground"));
 	actions->get_action("drawing-panel-foreground")->set_is_important();
+#endif
 #ifdef CRN_USING_GTKMM3
 	fg_act->set_color(Gdk::RGBA("black"));
 #else /* CRN_USING_GTKMM3 */

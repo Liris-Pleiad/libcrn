@@ -41,7 +41,7 @@ App::App():
 	ui_manager(Gtk::UIManager::create()),
 	actions(Gtk::ActionGroup::create("GtkCRN::App actions"))	
 {
-	actions->add(Gtk::Action::create("app-file-menu", _("_File"), _("File")));
+	//actions->add(Gtk::Action::create("app-file-menu", _("_File"), _("File")));
 	//actions->add(Gtk::Action::create("app-quit", Gtk::Stock::QUIT), sigc::bind(sigc::hide_return(sigc::mem_fun(this, &App::ask_for_quit)), (GdkEventAny*)nullptr));
 	//actions->add(Gtk::Action::create("app-help-menu", Gtk::StockID("corenum-icon-circle"), _("_?"), _("?")));
 	//actions->add(Gtk::Action::create("app-help", Gtk::Stock::HELP), sigc::mem_fun(this, &App::help));

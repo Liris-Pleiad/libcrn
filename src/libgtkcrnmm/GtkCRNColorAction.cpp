@@ -50,8 +50,12 @@ ColorAction::ColorAction(const Glib::ustring& name, const Gtk::StockID& stock_id
  * \param[in]	label	the label of the action
  * \param[in]	tooltip	the tooltip of the action
  */
-ColorAction::ColorAction(const Glib::ustring& name, const Glib::ustring& icon_name, const Glib::ustring& label, const Glib::ustring& tooltip):
-	Gtk::Action(name, icon_name, label, tooltip){
+ColorAction::ColorAction(const Glib::ustring& name, const Glib::ustring& icon_name, const Glib::ustring& label, const Glib::ustring& tooltip)
+#ifndef CRN_USING_GTKMM3
+	:
+	Gtk::Action(name, icon_name, label, tooltip)
+#endif
+{
 }
 
 /*! Creates a blank ColorAction 

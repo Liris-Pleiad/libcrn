@@ -67,10 +67,10 @@ ScaleAction::ScaleAction(const Glib::ustring& name, const Gtk::StockID& stock_id
  * \param[in]	tooltip	the tooltip of the action
  */
 ScaleAction::ScaleAction(const Glib::ustring& name, const Glib::ustring& icon_name, const Glib::ustring& label, const Glib::ustring& tooltip):
-	Gtk::Action(name, icon_name, label, tooltip),
 #ifdef CRN_USING_GTKMM3
 	adj(Gtk::Adjustment::create(50, 0, 100)),
 #else /* CRN_USING_GTKMM3 */
+	Gtk::Action(name, icon_name, label, tooltip),
 	adj(50, 0, 100),
 #endif /* CRN_USING_GTKMM3 */
 	lab(label)

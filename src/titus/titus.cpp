@@ -60,7 +60,7 @@ class Titus: public GtkCRN::App
 
 			// file menu
 #ifdef CRN_USING_GTKMM3
-			actions->add(Gtk::Action::create("open-image", _("_Open image"), _("Open image")), sigc::mem_fun(this, &Titus::open_image));
+			//actions->add(Gtk::Action::create("open-image", _("_Open image"), _("Open image")), sigc::mem_fun(this, &Titus::open_image));
 #else
 			actions->add(Gtk::Action::create("open-image", Gtk::Stock::OPEN, _("_Open image"), _("Open image")), sigc::mem_fun(this, &Titus::open_image));
 #endif
@@ -78,6 +78,7 @@ class Titus: public GtkCRN::App
 			//Glib::RefPtr<Gtk::RadioAction>::cast_dynamic(actions->get_action("show-other"))->signal_toggled().connect(sigc::mem_fun(this, &Titus::on_image_toggled));
 
 			// generic menu
+#ifndef CRN_USING_GTKMM3
 			actions->add(Gtk::Action::create("generic-menu", _("Gene_ric")));
 			actions->add(Gtk::Action::create("generic-blur", _("_Gaussian blur")), sigc::mem_fun(this, &Titus::generic_blur));
 			actions->add(Gtk::Action::create("generic-blur-x", _("Gaussian blur along _x")), sigc::mem_fun(this, &Titus::generic_blur_x));
@@ -163,7 +164,7 @@ class Titus: public GtkCRN::App
 			actions->add(Gtk::Action::create("diff-lvv", _("L_vv")), sigc::mem_fun(this, &Titus::diff_lvv));
 			actions->add(Gtk::Action::create("diff-lvw", _("L_vw")), sigc::mem_fun(this, &Titus::diff_lvw));
 			actions->add(Gtk::Action::create("diff-lww", _("L_ww")), sigc::mem_fun(this, &Titus::diff_lww));
-
+#endif
 			ui_manager->insert_action_group(img.get_actions());
 			add_accel_group(ui_manager->get_accel_group());
 

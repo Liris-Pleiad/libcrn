@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libcrn 3.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-04-13 12:24+0200\n"
+"POT-Creation-Date: 2016-04-13 14:21+0200\n"
 "PO-Revision-Date: 2015-11-24 13:57+0100\n"
 "Last-Translator: Yann LEYDIER <yann@leydier.info>\n"
 "Language-Team: French <>\n"
@@ -18,70 +18,104 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Generator: Gtranslator 2.91.6\n"
 
-#: C:/Users/noname/Desktop/libcrn.mtola/src/libgtkcrnmm/GdkCRNPixbuf.cpp:117
-msgid "unsupported pixel format."
-msgstr "le format de l'image n'est pas géré."
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNPDFAttributes.cpp:28
+msgid "Single pages"
+msgstr "Pages simples"
 
-#: C:/Users/noname/Desktop/libcrn.mtola/src/libgtkcrnmm/GdkCRNPixbuf.cpp:151
-msgid "Null pixbuf given."
-msgstr "Pixbuf nul."
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNPDFAttributes.cpp:29
+msgid "Continuous pages"
+msgstr "Pages continues"
 
-#: C:/Users/noname/Desktop/libcrn.mtola/src/libgtkcrnmm/GtkCRNApp.cpp:44
-msgid "_File"
-msgstr "_Fichier"
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNPDFAttributes.cpp:30
+msgid "Two pages, first on the left"
+msgstr "Deux pages, première à gauche"
 
-#: C:/Users/noname/Desktop/libcrn.mtola/src/libgtkcrnmm/GtkCRNApp.cpp:44
-msgid "File"
-msgstr "Fichier"
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNPDFAttributes.cpp:31
+msgid "Tow pages, first on the right"
+msgstr "Deux pages, première à droite"
 
-#: C:/Users/noname/Desktop/libcrn.mtola/src/libgtkcrnmm/GtkCRNApp.cpp:62
-msgid "Are you sure you want to quit?"
-msgstr "Êtes-vous sûr vouloir quitter l'application ?"
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNPDFAttributes.cpp:36
+msgid "Lossy image compression"
+msgstr "Compression d'image avec pertes"
 
-#: C:/Users/noname/Desktop/libcrn.mtola/src/libgtkcrnmm/GtkCRNApp.cpp:144
-msgid "Advanced details"
-msgstr "Détails"
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNPDFAttributes.cpp:37
+msgid "Allow users to copy the content"
+msgstr "Autoriser les utilisateurs à copier le contenu"
 
-#: C:/Users/noname/Desktop/libcrn.mtola/src/libgtkcrnmm/GtkCRNApp.cpp:173
-msgid "Unhandled exception caught."
-msgstr "Exception non gérée."
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNPDFAttributes.cpp:38
+msgid "Allow users to print the document"
+msgstr "Autoriser les utilisateurs à imprimer le document"
 
-#: C:/Users/noname/Desktop/libcrn.mtola/src/libgtkcrnmm/GtkCRNConfigElement.cpp:38
-msgid "The element was not initialized."
-msgstr "L'élément n'est pas initialisé."
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNPDFAttributes.cpp:41
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNPDFAttributes.cpp:43
+msgid "Author"
+msgstr "Auteur"
 
-#: C:/Users/noname/Desktop/libcrn.mtola/src/libgtkcrnmm/GtkCRNDocument.cpp:46
-#: C:/Users/noname/Desktop/libcrn.mtola/src/libgtkcrnmm/GtkCRNDocument.cpp:64
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNPDFAttributes.cpp:49
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNPDFAttributes.cpp:52
+msgid "Title"
+msgstr "Titre"
+
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNPDFAttributes.cpp:236
+msgid "JPEG quality must be between 0 and 100."
+msgstr "La qualité de compression JPEG doit se situer entre 0 et 100."
+
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNProp3.cpp:81
+msgid "null event."
+msgstr "événement nul."
+
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNProgressWindow.cpp:106
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNProgressWindow.cpp:121
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNSelectionBox.cpp:748
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNSelectionBox.cpp:764
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNSelectionBox.cpp:802
+msgid "index out of bounds."
+msgstr "Index hors limites."
+
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNObject.cpp:41
+msgid "null object"
+msgstr "objet nul"
+
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNFileSelecter.cpp:47
+msgid "Filename"
+msgstr "Nom de fichier"
+
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNSelectionBox.cpp:63
+msgid "GtkCRN::SelectionBox: Invalid orientation."
+msgstr "GtkCRN::SelectionBox: Orientation non valide."
+
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNDocument.cpp:46
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNDocument.cpp:64
 msgid "Views"
 msgstr "Vues"
 
-#: C:/Users/noname/Desktop/libcrn.mtola/src/libgtkcrnmm/GtkCRNDocument.cpp:58
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNDocument.cpp:58
 msgid "Blocks"
 msgstr "Blocs"
 
-#: C:/Users/noname/Desktop/libcrn.mtola/src/libgtkcrnmm/GtkCRNDocument.cpp:64
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNDocument.cpp:64
 msgid "_Views"
 msgstr "_Vues"
 
-#: C:/Users/noname/Desktop/libcrn.mtola/src/libgtkcrnmm/GtkCRNDocument.cpp:130
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNDocument.cpp:130
 msgid "Block name"
 msgstr "Nom du bloc"
 
-#: C:/Users/noname/Desktop/libcrn.mtola/src/libgtkcrnmm/GtkCRNDocument.cpp:131
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNDocument.cpp:131
 msgid "Coordinates"
 msgstr "Coordonnées"
 
-#: C:/Users/noname/Desktop/libcrn.mtola/src/libgtkcrnmm/GtkCRNDocument.cpp:231
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNDocument.cpp:231
 msgid "Inexistent view"
 msgstr "Vue inexistante"
 
-#: C:/Users/noname/Desktop/libcrn.mtola/src/libgtkcrnmm/GtkCRNDocument.cpp:252
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNDocument.cpp:252
 msgid "The document was never saved. It is impossible to generate thumbnails."
 msgstr ""
 "Le document n'a jamais été sauvegardé. Il est impossible de générer les "
 "imagettes."
 
-#: C:/Users/noname/Desktop/libcrn.mtola/src/libgtkcrnmm/GtkCRNDocument.cpp:265
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNDocument.cpp:265
 #, c-format
 msgid ""
 "%i error(s) occurred during the generation of the thumbnails. Some images "
@@ -90,226 +124,190 @@ msgstr ""
 "il y a eu %i erreur(s) durant la génération des imagettes. Certaines images "
 "sont possiblement défectueuses."
 
-#: C:/Users/noname/Desktop/libcrn.mtola/src/libgtkcrnmm/GtkCRNDocument.cpp:289
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNDocument.cpp:289
 msgid "Refresh"
 msgstr "Rafraîchir"
 
-#: C:/Users/noname/Desktop/libcrn.mtola/src/libgtkcrnmm/GtkCRNDocument.cpp:290
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNDocument.cpp:290
 msgid "Loading view"
 msgstr "Chargement de la vue"
 
-#: C:/Users/noname/Desktop/libcrn.mtola/src/libgtkcrnmm/GtkCRNDocument.cpp:529
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNDocument.cpp:529
 msgid "Please select views to add"
 msgstr "Veuillez sélectionner les vues à ajouter"
 
-#: C:/Users/noname/Desktop/libcrn.mtola/src/libgtkcrnmm/GtkCRNDocument.cpp:729
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNDocument.cpp:729
 msgid "Add a subblock"
 msgstr "Ajouter un sous-bloc"
 
-#: C:/Users/noname/Desktop/libcrn.mtola/src/libgtkcrnmm/GtkCRNDocument.cpp:739
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNDocument.cpp:739
 msgid "Subblock tree"
 msgstr "Arbre de sous-blocs"
 
-#: C:/Users/noname/Desktop/libcrn.mtola/src/libgtkcrnmm/GtkCRNDocument.cpp:741
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNDocument.cpp:741
 msgid "New subblock's name"
 msgstr "Nom du nouveau sous-bloc"
 
-#: C:/Users/noname/Desktop/libcrn.mtola/src/libgtkcrnmm/GtkCRNDocument.cpp:761
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNDocument.cpp:761
 msgid "New subblock"
 msgstr "Nouveau sous-bloc"
 
-#: C:/Users/noname/Desktop/libcrn.mtola/src/libgtkcrnmm/GtkCRNDocument.cpp:779
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNDocument.cpp:779
 msgid "Cannot add such selection to the subblock tree."
 msgstr "Impossible d'ajouter cette sélection à l'arbre de sous-blocs."
 
-#: C:/Users/noname/Desktop/libcrn.mtola/src/libgtkcrnmm/GtkCRNDocument.cpp:859
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNDocument.cpp:859
 msgid "Configure subblocks display"
 msgstr "Configurer l'affichage des sous-blocs"
 
-#: C:/Users/noname/Desktop/libcrn.mtola/src/libgtkcrnmm/GtkCRNDocument.cpp:870
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNDocument.cpp:870
 msgid "Frame color"
 msgstr "Couleur du cadre"
 
-#: C:/Users/noname/Desktop/libcrn.mtola/src/libgtkcrnmm/GtkCRNDocument.cpp:877
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNDocument.cpp:877
 msgid "Fill color"
 msgstr "Couleur de remplissage"
 
-#: C:/Users/noname/Desktop/libcrn.mtola/src/libgtkcrnmm/GtkCRNDocument.cpp:882
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNDocument.cpp:882
 msgid "Show subblock _labels"
 msgstr "Montrer les _étiquettes des sous-blocs"
 
-#: C:/Users/noname/Desktop/libcrn.mtola/src/libgtkcrnmm/GtkCRNDocument.cpp:885
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNDocument.cpp:885
 msgid "Label color"
 msgstr "Couleur des étiquettes"
 
-#: C:/Users/noname/Desktop/libcrn.mtola/src/libgtkcrnmm/GtkCRNDocument.cpp:1025
-#: C:/Users/noname/Desktop/libcrn.mtola/src/libgtkcrnmm/GtkCRNDocument.cpp:1054
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNDocument.cpp:1025
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNDocument.cpp:1054
 msgid "Export PDF"
 msgstr "Exporter un PDF"
 
-#: C:/Users/noname/Desktop/libcrn.mtola/src/libgtkcrnmm/GtkCRNDocument.cpp:1055
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNDocument.cpp:1055
 msgid "Writing image"
 msgstr "Écriture de l'image"
 
-#: C:/Users/noname/Desktop/libcrn.mtola/src/libgtkcrnmm/GtkCRNDrawingPanel.cpp:37
-msgid "_Background Color…"
-msgstr "Couleur du _Fond"
-
-#: C:/Users/noname/Desktop/libcrn.mtola/src/libgtkcrnmm/GtkCRNDrawingPanel.cpp:37
-msgid "Background Color"
-msgstr "Couleur du Fond"
-
-#: C:/Users/noname/Desktop/libcrn.mtola/src/libgtkcrnmm/GtkCRNDrawingPanel.cpp:40
-msgid "Background"
-msgstr "Fond"
-
-#: C:/Users/noname/Desktop/libcrn.mtola/src/libgtkcrnmm/GtkCRNDrawingPanel.cpp:50
-msgid "_Foreground Color…"
-msgstr "Couleur des Fo_rmes…"
-
-#: C:/Users/noname/Desktop/libcrn.mtola/src/libgtkcrnmm/GtkCRNDrawingPanel.cpp:50
-msgid "Foreground Color"
-msgstr "Couleur des Formes"
-
-#: C:/Users/noname/Desktop/libcrn.mtola/src/libgtkcrnmm/GtkCRNDrawingPanel.cpp:53
-msgid "Foreground"
-msgstr "Formes"
-
-#: C:/Users/noname/Desktop/libcrn.mtola/src/libgtkcrnmm/GtkCRNDrawingPanel.cpp:67
-msgid "Set _Thickness"
-msgstr "Changer l'_Épaisseur"
-
-#: C:/Users/noname/Desktop/libcrn.mtola/src/libgtkcrnmm/GtkCRNDrawingPanel.cpp:67
-msgid "Set Thickness"
-msgstr "Changer l'Épaisseur"
-
-#: C:/Users/noname/Desktop/libcrn.mtola/src/libgtkcrnmm/GtkCRNDrawingPanel.cpp:106
-#: C:/Users/noname/Desktop/libcrn.mtola/src/libgtkcrnmm/GtkCRNImage.cpp:216
-msgid "null or negative zoom value."
-msgstr "valeur de zoom nulle ou négative."
-
-#: C:/Users/noname/Desktop/libcrn.mtola/src/libgtkcrnmm/GtkCRNFileSelecter.cpp:47
-msgid "Filename"
-msgstr "Nom de fichier"
-
-#: C:/Users/noname/Desktop/libcrn.mtola/src/libgtkcrnmm/GtkCRNFileSelecterDialog.cpp:38
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNFileSelecterDialog.cpp:38
 msgid "File selection"
 msgstr "Sélection de fichier"
 
-#: C:/Users/noname/Desktop/libcrn.mtola/src/libgtkcrnmm/GtkCRNImage.cpp:1957
-msgid "Cannot set selection type to Text."
-msgstr "Le type de sélection ne peut pas être Text."
-
-#: C:/Users/noname/Desktop/libcrn.mtola/src/libgtkcrnmm/GtkCRNImage.cpp:1959
-msgid "Cannot set selection type to Polygon."
-msgstr "Le type de sélection ne peut pas être Polygone."
-
-#: C:/Users/noname/Desktop/libcrn.mtola/src/libgtkcrnmm/GtkCRNImage.cpp:2046
-#: C:/Users/noname/Desktop/libcrn.mtola/src/libgtkcrnmm/GtkCRNImage.cpp:2064
-msgid "The polygon must have more than two points."
-msgstr "Le polygone doit avoir plus de deux points."
-
-#: C:/Users/noname/Desktop/libcrn.mtola/src/libgtkcrnmm/GtkCRNImage.cpp:2082
-#: C:/Users/noname/Desktop/libcrn.mtola/src/libgtkcrnmm/GtkCRNImage.cpp:2100
-#: C:/Users/noname/Desktop/libcrn.mtola/src/libgtkcrnmm/GtkCRNImage.cpp:2117
-msgid "Overlay not found."
-msgstr "Surouche introuvable."
-
-#: C:/Users/noname/Desktop/libcrn.mtola/src/libgtkcrnmm/GtkCRNImage.cpp:2085
-#: C:/Users/noname/Desktop/libcrn.mtola/src/libgtkcrnmm/GtkCRNImage.cpp:2103
-#: C:/Users/noname/Desktop/libcrn.mtola/src/libgtkcrnmm/GtkCRNImage.cpp:2120
-msgid "Overlay item not found."
-msgstr "Objet de surcouche introuvable."
-
-#: C:/Users/noname/Desktop/libcrn.mtola/src/libgtkcrnmm/GtkCRNImage.cpp:2188
-#: C:/Users/noname/Desktop/libcrn.mtola/src/libgtkcrnmm/GtkCRNImage.cpp:2191
-#: C:/Users/noname/Desktop/libcrn.mtola/src/libgtkcrnmm/GtkCRNImage.cpp:2210
-#: C:/Users/noname/Desktop/libcrn.mtola/src/libgtkcrnmm/GtkCRNImage.cpp:2213
-#: C:/Users/noname/Desktop/libcrn.mtola/src/libgtkcrnmm/GtkCRNImage.cpp:2232
-#: C:/Users/noname/Desktop/libcrn.mtola/src/libgtkcrnmm/GtkCRNImage.cpp:2235
-msgid "No selection found."
-msgstr "Pas de sélection."
-
-#: C:/Users/noname/Desktop/libcrn.mtola/src/libgtkcrnmm/GtkCRNImage.cpp:2198
-#: C:/Users/noname/Desktop/libcrn.mtola/src/libgtkcrnmm/GtkCRNImage.cpp:2257
-msgid "The selection is not a rectangle."
-msgstr "La sélection n'est pas un rectangle."
-
-#: C:/Users/noname/Desktop/libcrn.mtola/src/libgtkcrnmm/GtkCRNImage.cpp:2220
-#: C:/Users/noname/Desktop/libcrn.mtola/src/libgtkcrnmm/GtkCRNImage.cpp:2274
-msgid "The selection is not a point."
-msgstr "La sélection n'est pas un point."
-
-#: C:/Users/noname/Desktop/libcrn.mtola/src/libgtkcrnmm/GtkCRNImage.cpp:2242
-#: C:/Users/noname/Desktop/libcrn.mtola/src/libgtkcrnmm/GtkCRNImage.cpp:2295
-msgid "The selection is not a line."
-msgstr "La sélection n'est pas une ligne."
-
-#: C:/Users/noname/Desktop/libcrn.mtola/src/libgtkcrnmm/GtkCRNMain.cpp:97
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNMain.cpp:97
 msgid "Using default language."
 msgstr "Langue française sélectionnée."
 
-#: C:/Users/noname/Desktop/libcrn.mtola/src/libgtkcrnmm/GtkCRNObject.cpp:41
-msgid "null object"
-msgstr "objet nul"
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GdkCRNPixbuf.cpp:117
+msgid "unsupported pixel format."
+msgstr "le format de l'image n'est pas géré."
 
-#: C:/Users/noname/Desktop/libcrn.mtola/src/libgtkcrnmm/GtkCRNPDFAttributes.cpp:28
-msgid "Single pages"
-msgstr "Pages simples"
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GdkCRNPixbuf.cpp:151
+msgid "Null pixbuf given."
+msgstr "Pixbuf nul."
 
-#: C:/Users/noname/Desktop/libcrn.mtola/src/libgtkcrnmm/GtkCRNPDFAttributes.cpp:29
-msgid "Continuous pages"
-msgstr "Pages continues"
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNConfigElement.cpp:38
+msgid "The element was not initialized."
+msgstr "L'élément n'est pas initialisé."
 
-#: C:/Users/noname/Desktop/libcrn.mtola/src/libgtkcrnmm/GtkCRNPDFAttributes.cpp:30
-msgid "Two pages, first on the left"
-msgstr "Deux pages, première à gauche"
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNApp.cpp:62
+msgid "Are you sure you want to quit?"
+msgstr "Êtes-vous sûr vouloir quitter l'application ?"
 
-#: C:/Users/noname/Desktop/libcrn.mtola/src/libgtkcrnmm/GtkCRNPDFAttributes.cpp:31
-msgid "Tow pages, first on the right"
-msgstr "Deux pages, première à droite"
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNApp.cpp:144
+msgid "Advanced details"
+msgstr "Détails"
 
-#: C:/Users/noname/Desktop/libcrn.mtola/src/libgtkcrnmm/GtkCRNPDFAttributes.cpp:36
-msgid "Lossy image compression"
-msgstr "Compression d'image avec pertes"
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNApp.cpp:173
+msgid "Unhandled exception caught."
+msgstr "Exception non gérée."
 
-#: C:/Users/noname/Desktop/libcrn.mtola/src/libgtkcrnmm/GtkCRNPDFAttributes.cpp:37
-msgid "Allow users to copy the content"
-msgstr "Autoriser les utilisateurs à copier le contenu"
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNDrawingPanel.cpp:37
+msgid "_Background Color…"
+msgstr "Couleur du _Fond"
 
-#: C:/Users/noname/Desktop/libcrn.mtola/src/libgtkcrnmm/GtkCRNPDFAttributes.cpp:38
-msgid "Allow users to print the document"
-msgstr "Autoriser les utilisateurs à imprimer le document"
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNDrawingPanel.cpp:37
+msgid "Background Color"
+msgstr "Couleur du Fond"
 
-#: C:/Users/noname/Desktop/libcrn.mtola/src/libgtkcrnmm/GtkCRNPDFAttributes.cpp:41
-#: C:/Users/noname/Desktop/libcrn.mtola/src/libgtkcrnmm/GtkCRNPDFAttributes.cpp:43
-msgid "Author"
-msgstr "Auteur"
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNDrawingPanel.cpp:41
+msgid "Background"
+msgstr "Fond"
 
-#: C:/Users/noname/Desktop/libcrn.mtola/src/libgtkcrnmm/GtkCRNPDFAttributes.cpp:49
-#: C:/Users/noname/Desktop/libcrn.mtola/src/libgtkcrnmm/GtkCRNPDFAttributes.cpp:52
-msgid "Title"
-msgstr "Titre"
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNDrawingPanel.cpp:52
+msgid "_Foreground Color…"
+msgstr "Couleur des Fo_rmes…"
 
-#: C:/Users/noname/Desktop/libcrn.mtola/src/libgtkcrnmm/GtkCRNPDFAttributes.cpp:236
-msgid "JPEG quality must be between 0 and 100."
-msgstr "La qualité de compression JPEG doit se situer entre 0 et 100."
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNDrawingPanel.cpp:52
+msgid "Foreground Color"
+msgstr "Couleur des Formes"
 
-#: C:/Users/noname/Desktop/libcrn.mtola/src/libgtkcrnmm/GtkCRNProgressWindow.cpp:106
-#: C:/Users/noname/Desktop/libcrn.mtola/src/libgtkcrnmm/GtkCRNProgressWindow.cpp:121
-#: C:/Users/noname/Desktop/libcrn.mtola/src/libgtkcrnmm/GtkCRNSelectionBox.cpp:748
-#: C:/Users/noname/Desktop/libcrn.mtola/src/libgtkcrnmm/GtkCRNSelectionBox.cpp:764
-#: C:/Users/noname/Desktop/libcrn.mtola/src/libgtkcrnmm/GtkCRNSelectionBox.cpp:802
-msgid "index out of bounds."
-msgstr "Index hors limites."
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNDrawingPanel.cpp:56
+msgid "Foreground"
+msgstr "Formes"
 
-#: C:/Users/noname/Desktop/libcrn.mtola/src/libgtkcrnmm/GtkCRNProp3.cpp:81
-msgid "null event."
-msgstr "événement nul."
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNDrawingPanel.cpp:71
+msgid "Set _Thickness"
+msgstr "Changer l'_Épaisseur"
 
-#: C:/Users/noname/Desktop/libcrn.mtola/src/libgtkcrnmm/GtkCRNSelectionBox.cpp:63
-msgid "GtkCRN::SelectionBox: Invalid orientation."
-msgstr "GtkCRN::SelectionBox: Orientation non valide."
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNDrawingPanel.cpp:71
+msgid "Set Thickness"
+msgstr "Changer l'Épaisseur"
+
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNDrawingPanel.cpp:110
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNImage.cpp:216
+msgid "null or negative zoom value."
+msgstr "valeur de zoom nulle ou négative."
+
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNImage.cpp:1957
+msgid "Cannot set selection type to Text."
+msgstr "Le type de sélection ne peut pas être Text."
+
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNImage.cpp:1959
+msgid "Cannot set selection type to Polygon."
+msgstr "Le type de sélection ne peut pas être Polygone."
+
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNImage.cpp:2046
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNImage.cpp:2064
+msgid "The polygon must have more than two points."
+msgstr "Le polygone doit avoir plus de deux points."
+
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNImage.cpp:2082
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNImage.cpp:2100
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNImage.cpp:2117
+msgid "Overlay not found."
+msgstr "Surouche introuvable."
+
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNImage.cpp:2085
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNImage.cpp:2103
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNImage.cpp:2120
+msgid "Overlay item not found."
+msgstr "Objet de surcouche introuvable."
+
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNImage.cpp:2188
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNImage.cpp:2191
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNImage.cpp:2210
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNImage.cpp:2213
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNImage.cpp:2232
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNImage.cpp:2235
+msgid "No selection found."
+msgstr "Pas de sélection."
+
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNImage.cpp:2198
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNImage.cpp:2257
+msgid "The selection is not a rectangle."
+msgstr "La sélection n'est pas un rectangle."
+
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNImage.cpp:2220
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNImage.cpp:2274
+msgid "The selection is not a point."
+msgstr "La sélection n'est pas un point."
+
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNImage.cpp:2242
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNImage.cpp:2295
+msgid "The selection is not a line."
+msgstr "La sélection n'est pas une ligne."
+
+#~ msgid "_File"
+#~ msgstr "_Fichier"
+
+#~ msgid "File"
+#~ msgstr "Fichier"
 
 #~ msgid "Subject"
 #~ msgstr "Sujet"
@@ -1869,8 +1867,8 @@ msgstr "GtkCRN::SelectionBox: Orientation non valide."
 
 #~ msgid "The test image can't be loaded using crn::ImageRGB::NewFromFile(...)"
 #~ msgstr ""
-#~ "L'image de test ne peut pas être chargée avec crn::ImageRGB::NewFromFile"
-#~ "(...)"
+#~ "L'image de test ne peut pas être chargée avec crn::ImageRGB::"
+#~ "NewFromFile(...)"
 
 #~ msgid "The loaded png image differs from the generated test image."
 #~ msgstr "L'image PNG chargée diffère de l'image de test générée."
@@ -2615,8 +2613,8 @@ msgstr "GtkCRN::SelectionBox: Orientation non valide."
 #~ msgstr "Hauteur des traits > 50 ou nulle."
 
 #~ msgid ""
-#~ "Cannot allocate pixels. Probably wrong image dimensions, or allocateSize"
-#~ "() was not overloaded properly."
+#~ "Cannot allocate pixels. Probably wrong image dimensions, or "
+#~ "allocateSize() was not overloaded properly."
 #~ msgstr ""
 #~ "Impossible d'allouer les pixels. Les dimensions de l'image sont "
 #~ "probablement mauvaises, ou alors allocateSize() n'a pas été correctement "
