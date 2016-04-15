@@ -34,6 +34,8 @@ matrix:
 addons:
   apt:
     packages:
+      - libgtkmm-2.4-dev
+      - libgtkmm-3.0-dev
       - doxygen
       - graphviz
 
