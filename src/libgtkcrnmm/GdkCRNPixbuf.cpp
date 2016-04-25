@@ -1,4 +1,4 @@
-/* Copyright 2010-2015 CoReNum, INSA-Lyon
+/* Copyright 2010-2016 CoReNum, INSA-Lyon
  *
  * This file is part of libgtkcrnmm.
  *
@@ -220,3 +220,4 @@ crn::pixel::RGB8 GdkCRN::CRNPixelRGBFromGdkColor(const Gdk::Color &color)
 	return crn::pixel::RGB8(uint8_t(color.get_red_p() * 255), uint8_t(color.get_green_p() * 255), uint8_t(color.get_blue_p() * 255));
 }
 #endif
+

@@ -164,9 +164,10 @@ class Titus: public GtkCRN::App
 			actions->add(Gtk::Action::create("diff-lvv", _("L_vv")), sigc::mem_fun(this, &Titus::diff_lvv));
 			actions->add(Gtk::Action::create("diff-lvw", _("L_vw")), sigc::mem_fun(this, &Titus::diff_lvw));
 			actions->add(Gtk::Action::create("diff-lww", _("L_ww")), sigc::mem_fun(this, &Titus::diff_lww));
-#endif
+
 			ui_manager->insert_action_group(img.get_actions());
 			add_accel_group(ui_manager->get_accel_group());
+#endif
 
 			Glib::ustring ui_info =
 				"<ui>"
@@ -290,13 +291,17 @@ class Titus: public GtkCRN::App
 					"	</toolbar>"
 					"</ui>";
 */
+#ifndef CRN_USING_GTKMM3
 			ui_manager->add_ui_from_string(ui_info);
+#endif
 			Gtk::VBox *vbox = Gtk::manage(new Gtk::VBox());
 			vbox->show();
 			add(*vbox);
 
-			//vbox->pack_start(*ui_manager->get_widget("/MenuBar"), false, true, 0);
+#ifndef CRN_USING_GTKMM3
+			vbox->pack_start(*ui_manager->get_widget("/MenuBar"), false, true, 0);
 			vbox->pack_start(*ui_manager->get_widget("/ToolBar"), false, true, 0);
+#endif
 			vbox->pack_start(img, true, true, 0);
 			img.show();
 

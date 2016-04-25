@@ -26,8 +26,8 @@
 #include <CRNIO/CRNIO.h>
 #include <CRNi18n.h>
 
-#ifdef CRN_USING_GTKMM3
-#	define get_vbox get_content_area // XXX
+#ifndef CRN_USING_GTKMM3
+#	define get_content_area get_vbox
 #endif
 
 using namespace crn;
@@ -36,22 +36,33 @@ using namespace GtkCRN;
 //Gtk::Window* App::main_window(nullptr);
 Gtk::Window*& App::internal_main_window() { static Gtk::Window *main = nullptr; return main; }
 
+#ifdef CRN_USING_GTKMM3
 /*! Constructor. Creates Actions and adds them to UI manager. */
-App::App():
+App::App()
+{
+	add_action("app-quit", sigc::bind(sigc::hide_return(sigc::mem_fun(this, &App::ask_for_quit)), (GdkEventAny*)nullptr));
+	add_action("app-help", sigc::mem_fun(this, &App::help));
+	add_action("app-about", sigc::mem_fun(this, &App::about));
+
+	signal_delete_event().connect(sigc::mem_fun(this, &App::ask_for_quit));
+}
+#else
+/*! Constructor. Creates Actions and adds them to UI manager. */
+App::App() :
 	ui_manager(Gtk::UIManager::create()),
 	actions(Gtk::ActionGroup::create("GtkCRN::App actions"))	
 {
-	//actions->add(Gtk::Action::create("app-file-menu", _("_File"), _("File")));
-	//actions->add(Gtk::Action::create("app-quit", Gtk::Stock::QUIT), sigc::bind(sigc::hide_return(sigc::mem_fun(this, &App::ask_for_quit)), (GdkEventAny*)nullptr));
-	//actions->add(Gtk::Action::create("app-help-menu", Gtk::StockID("corenum-icon-circle"), _("_?"), _("?")));
-	//actions->add(Gtk::Action::create("app-help", Gtk::Stock::HELP), sigc::mem_fun(this, &App::help));
-	//actions->add(Gtk::Action::create("app-about", Gtk::Stock::ABOUT), sigc::mem_fun(this, &App::about));
+	actions->add(Gtk::Action::create("app-file-menu", _("_File"), _("File")));
+	actions->add(Gtk::Action::create("app-quit", Gtk::Stock::QUIT), sigc::bind(sigc::hide_return(sigc::mem_fun(this, &App::ask_for_quit)), (GdkEventAny*)nullptr));
+	actions->add(Gtk::Action::create("app-help-menu", Gtk::StockID("corenum-icon-circle"), _("_?"), _("?")));
+	actions->add(Gtk::Action::create("app-help", Gtk::Stock::HELP), sigc::mem_fun(this, &App::help));
+	actions->add(Gtk::Action::create("app-about", Gtk::Stock::ABOUT), sigc::mem_fun(this, &App::about));
 	
 	ui_manager->insert_action_group(actions);
 
 	signal_delete_event().connect(sigc::mem_fun(this, &App::ask_for_quit));
-
 }
+#endif
 
 /*! Callback for application quit event (overloadable)
  * \param[in]	event	only valid if the callback was called by the window manager
@@ -83,12 +94,12 @@ Glib::ustring App::ask_for_string(const Glib::ustring &msg, const Glib::ustring 
 	dial.set_position(Gtk::WIN_POS_CENTER_ON_PARENT);
 	Gtk::Label lab(msg);
 	lab.show();
-	dial.get_vbox()->pack_start(lab, false, true, 2);
+	dial.get_content_area()->pack_start(lab, false, true, 2);
 	Gtk::Entry ent;
 	ent.set_activates_default();
 	ent.set_text(defval);
 	ent.show();
-	dial.get_vbox()->pack_start(ent, false, true, 2);
+	dial.get_content_area()->pack_start(ent, false, true, 2);
 	//dial.add_button(Gtk::Stock::CANCEL, Gtk::RESPONSE_REJECT);
 	//dial.add_button(Gtk::Stock::OK, Gtk::RESPONSE_ACCEPT);
 	std::vector<int> altbut;
@@ -142,7 +153,7 @@ gboolean display_exception(exc_data *ex)
 	if (ex->stack.IsNotEmpty())
 	{
 		Gtk::Expander *expd = Gtk::manage(new Gtk::Expander(_("Advanced details")));
-		md.get_vbox()->pack_start(*expd, true, true, 0);
+		md.get_content_area()->pack_start(*expd, true, true, 0);
 		Gtk::ScrolledWindow *sw = Gtk::manage(new Gtk::ScrolledWindow);
 		expd->add(*sw);
 		Gtk::TextView *lab = Gtk::manage(new Gtk::TextView);

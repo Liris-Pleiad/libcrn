@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libcrn 3.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-04-13 14:21+0200\n"
+"POT-Creation-Date: 2016-04-25 11:23+0200\n"
 "PO-Revision-Date: 2015-11-24 13:55+0100\n"
 "Last-Translator: Yann LEYDIER <yann@leydier.info>\n"
 "Language-Team: English <>\n"
@@ -203,15 +203,31 @@ msgstr "Null pixbuf given."
 msgid "The element was not initialized."
 msgstr "The element was not initialized."
 
-#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNApp.cpp:62
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNApp.cpp:55
+msgid "_File"
+msgstr "_File"
+
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNApp.cpp:55
+msgid "File"
+msgstr "File"
+
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNApp.cpp:57
+msgid "_?"
+msgstr "_?"
+
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNApp.cpp:57
+msgid "?"
+msgstr "?"
+
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNApp.cpp:73
 msgid "Are you sure you want to quit?"
 msgstr "Are you sure you want to quit?"
 
-#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNApp.cpp:144
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNApp.cpp:155
 msgid "Advanced details"
 msgstr "Advanced details"
 
-#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNApp.cpp:173
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNApp.cpp:184
 msgid "Unhandled exception caught."
 msgstr "Unhandled exception caught."
 
@@ -300,12 +316,6 @@ msgstr "The selection is not a point."
 #: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNImage.cpp:2295
 msgid "The selection is not a line."
 msgstr "The selection is not a line."
-
-#~ msgid "_File"
-#~ msgstr "_File"
-
-#~ msgid "File"
-#~ msgstr "File"
 
 #~ msgid "Subject"
 #~ msgstr "Subject"
@@ -417,12 +427,6 @@ msgstr "The selection is not a line."
 
 #~ msgid "Subblocks Settings"
 #~ msgstr "Subblocks Settings"
-
-#~ msgid "_?"
-#~ msgstr "_?"
-
-#~ msgid "?"
-#~ msgstr "?"
 
 #~ msgid "_Clear"
 #~ msgstr "_Clear"
