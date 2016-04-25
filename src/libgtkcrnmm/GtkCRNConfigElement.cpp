@@ -82,11 +82,17 @@ ConfigElement::ConfigElement(crn::ConfigElement &el, bool differ):
 	{
 		if (el.HasMinValue() && el.HasMaxValue())
 		{ // has finite range, use a slider
-			/*Gtk::HScale *s = Gtk::manage(new Gtk::HScale(el.GetMinValue<int>(), el.GetMaxValue<int>() + 1, 1));
+#ifdef CRN_USING_GTKMM3
+			auto *s = Gtk::manage(new Gtk::Scale(Gtk::ORIENTATION_HORIZONTAL));
+			s->set_range(el.GetMinValue<int>(), el.GetMaxValue<int>() + 1);
+			s->set_increments(1, 1);
+#else
+			Gtk::HScale *s = Gtk::manage(new Gtk::HScale(el.GetMinValue<int>(), el.GetMaxValue<int>() + 1, 1));
+#endif
 			s->set_value(el.GetValue<int>());
 			s->signal_value_changed().connect(sigc::bind(sigc::mem_fun(this, &ConfigElement::on_range_changed), s));
 			s->show();
-			pack_start(*s, true, true, 2);*/
+			pack_start(*s, true, true, 2);
 		}
 		else
 		{ // has at least one infinite (maxed) bound, use a spin button
@@ -108,12 +114,18 @@ ConfigElement::ConfigElement(crn::ConfigElement &el, bool differ):
 	{
 		if (el.HasMinValue() && el.HasMaxValue())
 		{ // has finite range, use a slider
-			/*Gtk::HScale *s = Gtk::manage(new Gtk::HScale(el.GetMinValue<double>(), el.GetMaxValue<double>() + 0.01, 0.01));
+#ifdef CRN_USING_GTKMM3
+			auto *s = Gtk::manage(new Gtk::Scale(Gtk::ORIENTATION_HORIZONTAL));
+			s->set_range(el.GetMinValue<double>(), el.GetMaxValue<double>() + 0.01);
+			s->set_increments(0.01, 0.01);
+#else
+			Gtk::HScale *s = Gtk::manage(new Gtk::HScale(el.GetMinValue<double>(), el.GetMaxValue<double>() + 0.01, 0.01));
+#endif
 			s->set_digits(2);
 			s->set_value(el.GetValue<double>());
 			s->signal_value_changed().connect(sigc::bind(sigc::mem_fun(this, &ConfigElement::on_range_changed), s));
 			s->show();
-			pack_start(*s, true, true, 2);*/
+			pack_start(*s, true, true, 2);
 		}
 		else
 		{ // has at least one infinite (maxed) bound, use a spin button
