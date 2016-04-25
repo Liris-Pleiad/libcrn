@@ -34,6 +34,8 @@ matrix:
 addons:
   apt:
     packages:
+      - libgtkmm-2.4-dev
+      - libgtkmm-3.0-dev
       - doxygen
       - graphviz
 
@@ -42,6 +44,7 @@ install:
 #
 # osx :
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew update; fi
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install gtkmm gtkmm3; fi
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install doxygen graphviz; fi
 
 script:

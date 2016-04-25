@@ -16,6 +16,17 @@ environment:
   QT5_DIR: C:\Qt\5.6\msvc2015_64
 #
   KIT_ROOT: C:\local_vs2015_64
+#
+  matrix:
+  - B_USE_GTKMM2:   ON
+    B_USE_GTKMM3D:  OFF
+    B_USE_GTKMM3R:  OFF
+  - B_USE_GTKMM2:   OFF
+    B_USE_GTKMM3D:  ON
+    B_USE_GTKMM3R:  OFF
+  - B_USE_GTKMM2:   OFF
+    B_USE_GTKMM3D:  OFF
+    B_USE_GTKMM3R:  ON
 
 # this is how to allow failing jobs in the matrix
 matrix:
@@ -23,9 +34,9 @@ matrix:
 #  allow_failures:
 
 # build cache to preserve files/folders between builds
-cache:
+#cache:
 # - %KIT_ROOT% # don't work !?
-  - C:\local_vs2015_64
+#  - C:\local_vs2015_64 # cached folder size cannot exceed 500 MB, so OFF for the moment...
 
 # scripts that are called at very beginning, before repo cloning
 init:
@@ -33,9 +44,10 @@ init:
 #  - msbuild /version
 #  - cmake --version
 #  - dir C:\Libraries
+#  - dir C:\Libraries\boost_1_59_0
 #  - dir C:\Qt
-#  - dir C:\Qt\5.5
-#  - set PATH=%QT5_DIR%\bin;%PATH%
+#  - dir C:\Qt\5.6
+  - set PATH=%KIT_ROOT%\gettext;%PATH%
   - set APPVEYOR=TRUE
   - set CACHE=FALSE
 
@@ -62,11 +74,23 @@ before_build:
   - IF %CACHE%==FALSE mkdir %KIT_ROOT%
   - IF %CACHE%==FALSE cd %KIT_ROOT%
 # libiconv
-  - IF %CACHE%==FALSE curl -O https://download.gforge.liris.cnrs.fr/meppbin/windows/vs2015/PLEIAD/libiconv-1.14.rar
+  - IF %CACHE%==FALSE curl -s -O https://download.gforge.liris.cnrs.fr/meppbin/windows/vs2015/PLEIAD/packages/clean/libiconv-1.14.rar
   - IF %CACHE%==FALSE 7z x libiconv-1.14.rar > nul
+# bin_gettext
+  - IF %CACHE%==FALSE curl -s -O https://download.gforge.liris.cnrs.fr/meppbin/windows/vs2015/PLEIAD/packages/clean/bin_gettext.rar
+  - IF %CACHE%==FALSE 7z x bin_gettext.rar > nul
+# gtkmm2
+  - IF %CACHE%==FALSE curl -s -O https://download.gforge.liris.cnrs.fr/meppbin/windows/vs2015/PLEIAD/packages/clean/gtkmm2.7z
+  - IF %CACHE%==FALSE 7z x gtkmm2.7z > nul
+# gtkmm3_debug
+  - IF %CACHE%==FALSE curl -s -O https://download.gforge.liris.cnrs.fr/meppbin/windows/vs2015/PLEIAD/packages/clean/gtkmm3_debug.7z
+  - IF %CACHE%==FALSE 7z x gtkmm3_debug.7z > nul
+# gtkmm3_release
+  - IF %CACHE%==FALSE curl -s -O https://download.gforge.liris.cnrs.fr/meppbin/windows/vs2015/PLEIAD/packages/clean/gtkmm3_release.7z
+  - IF %CACHE%==FALSE 7z x gtkmm3_release.7z > nul
 #
   - cd %APPVEYOR_BUILD_FOLDER%
-  - cmake . -G"Visual Studio 14 2015 Win64" -DMSVC_KIT_ROOT=%KIT_ROOT%
+  - cmake . -G"Visual Studio 14 2015 Win64" -DMSVC_KIT_ROOT=%KIT_ROOT% -DWITH_GTKMM2=%B_USE_GTKMM2% -DWITH_GTKMM3_DEBUG=%B_USE_GTKMM3D% -DWITH_GTKMM3_RELEASE=%B_USE_GTKMM3R%
 
 # to run your custom scripts instead of automatic MSBuild
 build_script:
