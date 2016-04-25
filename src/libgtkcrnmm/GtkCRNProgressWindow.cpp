@@ -37,7 +37,7 @@ ProgressWindow::ProgressWindow(const Glib::ustring title, Gtk::Window *parent, b
 	terminate_on_exception(true),
 #ifdef CRN_USING_GTKMM3
 	vbox(Gtk::ORIENTATION_VERTICAL),
-	closebut("_Close") // TODO check if translation is needed of if the Gtk uses the "icon name"
+	closebut(_("_Close")) // TODO check if translation is needed of if the Gtk uses the "icon name"
 #else
 	closebut(Gtk::Stock::CLOSE)
 #endif

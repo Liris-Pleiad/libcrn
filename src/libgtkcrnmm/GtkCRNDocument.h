@@ -1,4 +1,4 @@
-/* Copyright 2010-2014 CoReNum, INSA-Lyon
+/* Copyright 2010-2016 CoReNum, INSA-Lyon
  * 
  * This file is part of libgtkcrnmm.
  * 
@@ -33,9 +33,13 @@ namespace GtkCRN
 	/*! \brief Displays a crn::Document
 	 * \ingroup	gtkcrn
 	 */
-	class Document//: public Gtk::HPaned
+	class Document: 
+#ifdef CRN_USING_GTKMM3
+		public Gtk::Paned
+#else
+		public Gtk::HPaned
+#endif
 	{
-#if 0
 		public:
 			/*! \brief Constructor */
 			Document(bool show_views = true, bool show_tree = true);
@@ -189,9 +193,9 @@ namespace GtkCRN
 			// Custom panels
 			//////////////////////////////////////////////////////////////////////////////
 			/*!< \brief Return the VBox on the left of the image */
-			Gtk::VBox& get_left_panel() { return left_box; }
+			Gtk::Box& get_left_panel() { return left_box; }
 			/*!< \brief Return the VBox on the right of the image */
-			Gtk::VBox& get_right_panel() { return right_box; }
+			Gtk::Box& get_right_panel() { return right_box; }
 
 		private:
 			//////////////////////////////////////////////////////////////////////////////
@@ -314,12 +318,16 @@ namespace GtkCRN
 			//////////////////////////////////////////////////////////////////////////////
 			// Layout widgets
 			//////////////////////////////////////////////////////////////////////////////
+#ifdef CRN_USING_GTKMM3
+			Gtk::Box left_box, right_box; /*!< boxes around the image */
+			Gtk::Paned vpan;
+			Gtk::Box image_box;
+#else
 			Gtk::VBox left_box, right_box; /*!< boxes around the image */
-			// useless references
 			Gtk::VPaned vpan;
-			Gtk::Frame tree_frame;
 			Gtk::HBox image_box;
 #endif
+			Gtk::Frame tree_frame;
 	};
 }
 
