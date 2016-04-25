@@ -35,32 +35,17 @@ DrawingPanel::DrawingPanel():
 {
 #ifndef CRN_USING_GTKMM3
 	bg_act = GtkCRN::ColorAction::create("drawing-panel-background", Gtk::Stock::SELECT_COLOR, _("_Background Color…"), _("Background Color"));
-#endif
 	actions->add(bg_act);
-#ifndef CRN_USING_GTKMM3
 	actions->get_action("drawing-panel-background")->set_short_label(_("Background"));
 	actions->get_action("drawing-panel-background")->set_is_important();
-#endif
-#ifdef CRN_USING_GTKMM3
-	bg_act->set_color(Gdk::RGBA("white"));
-#else /* CRN_USING_GTKMM3 */
 	bg_act->set_color(Gdk::Color("white"));
-#endif /* CRN_USING_GTKMM3 */
 	bg_act->signal_changed().connect(sigc::mem_fun(this, &Gtk::Widget::queue_draw));
 
-#ifndef CRN_USING_GTKMM3
 	fg_act = GtkCRN::ColorAction::create("drawing-panel-foreground", Gtk::Stock::SELECT_COLOR, _("_Foreground Color…"), _("Foreground Color"));
-#endif
 	actions->add(fg_act);
-#ifndef CRN_USING_GTKMM3
 	actions->get_action("drawing-panel-foreground")->set_short_label(_("Foreground"));
 	actions->get_action("drawing-panel-foreground")->set_is_important();
-#endif
-#ifdef CRN_USING_GTKMM3
-	fg_act->set_color(Gdk::RGBA("black"));
-#else /* CRN_USING_GTKMM3 */
 	fg_act->set_color(Gdk::Color("black"));
-#endif /* CRN_USING_GTKMM3 */
 	fg_act->signal_changed().connect(sigc::mem_fun(this, &Gtk::Widget::queue_draw));
 
 	//actions->add(Gtk::Action::create("drawing-panel-clear", Gtk::Stock::CLEAR, _("_Clear"), _("Clear")), sigc::mem_fun(this, &DrawingPanel::clear));
@@ -71,11 +56,7 @@ DrawingPanel::DrawingPanel():
 	thick_act = GtkCRN::ScaleAction::create("drawing-panel-thickness-set", _("Set _Thickness"), _("Set Thickness"));
 
 	actions->add(thick_act);
-#ifdef CRN_USING_GTKMM3
-	thick_act->get_adjustment()->configure(thickness, 0.2, 20, 0.1, 1, 1);
-#else /* CRN_USING_GTKMM3 */
 	thick_act->get_adjustment().configure(thickness, 0.2, 20, 0.1, 1, 1);
-#endif /* CRN_USING_GTKMM3 */
 	thick_act->signal_changed().connect(sigc::mem_fun(this, &DrawingPanel::on_thickness_set));
 
 	std::vector<Glib::ustring> icons;
@@ -85,6 +66,7 @@ DrawingPanel::DrawingPanel():
 	icons.push_back("line2");
 	icons.push_back("line3");
 	thick_act->set_icons(icons);
+#endif
 
 	add_events(Gdk::BUTTON_PRESS_MASK | Gdk::BUTTON_RELEASE_MASK | Gdk::BUTTON_MOTION_MASK);
 	signal_button_press_event().connect(sigc::mem_fun(this, &DrawingPanel::on_button_press));
@@ -125,49 +107,56 @@ void DrawingPanel::clear()
  */
 #ifdef CRN_USING_GTKMM3
 Gdk::RGBA DrawingPanel::get_background() const
+{
+}
 #else /* CRN_USING_GTKMM3 */
 Gdk::Color DrawingPanel::get_background() const
-#endif /* CRN_USING_GTKMM3 */
 {
 	return bg_act->get_color();
 }
+#endif /* CRN_USING_GTKMM3 */
 
 /*! Sets the background color
  * \param[in]	col	the new background color
  */
 #ifdef CRN_USING_GTKMM3
 void DrawingPanel::set_background(const Gdk::RGBA& col)
+{
+}
 #else /* CRN_USING_GTKMM3 */
 void DrawingPanel::set_background(const Gdk::Color& col)
-#endif /* CRN_USING_GTKMM3 */
 {
 	bg_act->set_color(col);
 }
+#endif /* CRN_USING_GTKMM3 */
 
 /*! Gets the foreground color
  * \return	the foreground color
  */
 #ifdef CRN_USING_GTKMM3
 Gdk::RGBA DrawingPanel::get_foreground() const
+{
+}
 #else /* CRN_USING_GTKMM3 */
 Gdk::Color DrawingPanel::get_foreground() const
-#endif /* CRN_USING_GTKMM3 */
 {
 	return fg_act->get_color();
 }
+#endif /* CRN_USING_GTKMM3 */
 
 /*! Sets the foreground color
  * \param[in]	col	the new foreground color
  */
 #ifdef CRN_USING_GTKMM3
 void DrawingPanel::set_foreground(const Gdk::RGBA& col)
+{
+}
 #else /* CRN_USING_GTKMM3 */
 void DrawingPanel::set_foreground(const Gdk::Color& col)
-#endif /* CRN_USING_GTKMM3 */
 {
 	fg_act->set_color(col);
 }
-
+#endif /* CRN_USING_GTKMM3 */
 
 /*! Renders the panel to a Pixbuf
  * \return	a Pixbuf containing what was drawn on the panel
@@ -201,14 +190,14 @@ Glib::RefPtr<Gdk::Pixbuf> DrawingPanel::create_image()
 	Cairo::RefPtr<Cairo::ImageSurface> surf(Cairo::ImageSurface::create(Cairo::FORMAT_RGB24, r, b));
 	Cairo::RefPtr<Cairo::Context> cr(Cairo::Context::create(surf));
 #ifdef CRN_USING_GTKMM3
-	Gdk::Cairo::set_source_rgba(cr, bg_act->get_color());
+	//Gdk::Cairo::set_source_rgba(cr, bg_act->get_color());
 #else /* CRN_USING_GTKMM3 */
 	cr->set_source_rgb(bg_act->get_color().get_red_p(), bg_act->get_color().get_green_p(), bg_act->get_color().get_blue_p());
 #endif /* CRN_USING_GTKMM3 */
 	cr->move_to(0, 0);
 	cr->paint();
 #ifdef CRN_USING_GTKMM3
-	Gdk::Cairo::set_source_rgba(cr, fg_act->get_color());
+	//Gdk::Cairo::set_source_rgba(cr, fg_act->get_color());
 #else /* CRN_USING_GTKMM3 */
 	cr->set_source_rgb(fg_act->get_color().get_red_p(), fg_act->get_color().get_green_p(), fg_act->get_color().get_blue_p());
 #endif /* CRN_USING_GTKMM3 */
@@ -245,14 +234,14 @@ bool DrawingPanel::draw()
 {
 	Cairo::RefPtr<Cairo::Context> cr = get_window()->create_cairo_context();
 #ifdef CRN_USING_GTKMM3
-	Gdk::Cairo::set_source_rgba(cr, bg_act->get_color());
+	//Gdk::Cairo::set_source_rgba(cr, bg_act->get_color());
 #else /* CRN_USING_GTKMM3 */
 	cr->set_source_rgb(bg_act->get_color().get_red_p(), bg_act->get_color().get_green_p(), bg_act->get_color().get_blue_p());
 #endif /* CRN_USING_GTKMM3 */
 	cr->move_to(0, 0);
 	cr->paint();
 #ifdef CRN_USING_GTKMM3
-	Gdk::Cairo::set_source_rgba(cr, fg_act->get_color());
+	//Gdk::Cairo::set_source_rgba(cr, fg_act->get_color());
 #else /* CRN_USING_GTKMM3 */
 	cr->set_source_rgb(fg_act->get_color().get_red_p(), fg_act->get_color().get_green_p(), fg_act->get_color().get_blue_p());
 #endif /* CRN_USING_GTKMM3 */
@@ -319,7 +308,7 @@ void DrawingPanel::modify_thickness(double val)
 	if (thickness <= 0)
 		thickness = 0.2;
 #ifdef CRN_USING_GTKMM3
-	thick_act->get_adjustment()->set_value(thickness);
+	//thick_act->get_adjustment()->set_value(thickness);
 #else /* CRN_USING_GTKMM3 */
 	thick_act->get_adjustment().set_value(thickness);
 #endif /* CRN_USING_GTKMM3 */
@@ -330,7 +319,7 @@ void DrawingPanel::modify_thickness(double val)
 void DrawingPanel::on_thickness_set()
 {
 #ifdef CRN_USING_GTKMM3
-	thickness = thick_act->get_adjustment()->get_value();
+	//thickness = thick_act->get_adjustment()->get_value();
 #else /* CRN_USING_GTKMM3 */
 	thickness = thick_act->get_adjustment().get_value();
 #endif /* CRN_USING_GTKMM3 */
