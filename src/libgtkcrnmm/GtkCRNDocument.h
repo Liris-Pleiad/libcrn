@@ -120,6 +120,27 @@ namespace GtkCRN
 			/*! \brief Signal when the selection is about to be deleted. Connect to bool on_delete_selection(const std::vector<crn::String> selected_views_ids) that will return true to allow the deletion, false to prevent it. */
 			sigc::signal<bool, const std::vector<crn::String> > signal_delete_selection() { return may_delete_selection; }
 
+#ifdef CRN_USING_GTKMM3
+			/*! \brief Gets the action group associated to views management
+			 *
+			 * Gets the action group associated to views management. Valid names are:
+			 *   - document-views-menu
+			 *   - document-views-add
+			 *   - document-views-refresh
+			 *   - document-views-select-first
+			 *   - document-views-select-previous
+			 *   - document-views-select-next
+			 *   - document-views-select-last
+			 *   - document-views-select-all
+			 *   - document-views-select-none
+			 *   - document-views-select-even
+			 *   - document-views-select-odd
+			 *   - document-views-invert-selection
+			 *   - document-views-remove
+			 *   - document-views-export-pdf
+			 */
+			Glib::RefPtr<Gio::SimpleActionGroup>& get_views_actions() { return views_actions;}
+#else
 			/*! \brief Gets the action group associated to views management
 			 *
 			 * Gets the action group associated to views management. Valid names are:
@@ -139,6 +160,7 @@ namespace GtkCRN
 			 *   - document-views-export-pdf
 			 */
 			Glib::RefPtr<Gtk::ActionGroup>& get_views_actions() { return views_actions;}
+#endif
 
 			//////////////////////////////////////////////////////////////////////////////
 			// Subblock tree
@@ -157,6 +179,17 @@ namespace GtkCRN
 			/*! \brief Is subblocks toolbar shown? */
 			bool get_show_subblocks_toolbar() const { return tree_buttons.get_visible(); }
 
+#ifdef CRN_USING_GTKMM3
+			/*! \brief Gets the action group associated to subblock management
+			 *
+			 * Gets the action group associated to subblock management. Valid names are:
+			 *   - document-blocks-add
+			 *   - document-blocks-remove
+			 *   - document-blocks-show
+			 *   - document-blocks-configure
+			 */
+			Glib::RefPtr<Gio::SimpleActionGroup>& get_subblock_actions() { return tree_actions;}
+#else
 			/*! \brief Gets the action group associated to subblock management
 			 *
 			 * Gets the action group associated to subblock management. Valid names are:
@@ -166,6 +199,7 @@ namespace GtkCRN
 			 *   - document-blocks-configure
 			 */
 			Glib::RefPtr<Gtk::ActionGroup>& get_subblock_actions() { return tree_actions;}
+#endif
 
 			//////////////////////////////////////////////////////////////////////////////
 			// Displayed image
@@ -213,7 +247,11 @@ namespace GtkCRN
 			// Views
 			//////////////////////////////////////////////////////////////////////////////
 			/*! \brief Generates the view caches for the document with a progress bar */
+#ifdef CRN_USING_GTKMM3
+			Glib::RefPtr<Gio::SimpleActionGroup> views_actions;
+#else
 			Glib::RefPtr<Gtk::ActionGroup> views_actions;
+#endif
 
 			/*! \brief Creates the thumbnails */
 			void create_view_cache(crn::Progress *pw);
@@ -268,7 +306,11 @@ namespace GtkCRN
 			Gtk::ScrolledWindow tree_sw; /*!< scrollbars around the subblock tree */
 			Gtk::VBox tree_box; /*!< box for the subblock tree */
 			Gtk::Toolbar tree_buttons; /*!< buttons to manage the subblocks */
+#ifdef CRN_USING_GTKMM3
+			Glib::RefPtr<Gio::SimpleActionGroup> tree_actions; /*!< actions on the subblocks that can be added to the UI by the user */
+#else
 			Glib::RefPtr<Gtk::ActionGroup> tree_actions; /*!< actions on the subblocks that can be added to the UI by the user */
+#endif
 
 			/*! \internal Gtk tree model to display the subblocks */
 			class SubblockColumns : public Gtk::TreeModelColumnRecord

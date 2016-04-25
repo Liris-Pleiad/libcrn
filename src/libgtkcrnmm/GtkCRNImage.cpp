@@ -46,7 +46,9 @@ Image::Image():
 	dispw(0),
 	disph(0),
 	zoom(1.0),
-#ifndef CRN_USING_GTKMM3
+#ifdef CRN_USING_GTKMM3
+	image_actions(Gio::SimpleActionGroup::create()),
+#else
 	image_actions(Gtk::ActionGroup::create("image")),
 #endif
 	selection_type(Overlay::None),
