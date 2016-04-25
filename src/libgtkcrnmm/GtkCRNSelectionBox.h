@@ -156,12 +156,6 @@ namespace GtkCRN
 					bool in;
 #ifdef CRN_USING_GTKMM3
 					Gdk::RGBA bg;
-#else /* CRN_USING_GTKMM3 */
-#ifdef __WIN32__XXX
-					bool on_mouse_enter(GdkEventCrossing* event);
-					bool on_mouse_leave(GdkEventCrossing* event);
-					std::pair<SelectionBox*, Element*> callback_data;
-#endif
 #endif /* CRN_USING_GTKMM3 */
 			};
 			DropZone first_drop_zone; /*!< a small rectangle zone at the beginning */
@@ -210,11 +204,6 @@ namespace GtkCRN
 
 			/*! \brief An object has been dropped on a target, we send the data */
 			void drop(Element *dropon, const Glib::RefPtr<Gdk::DragContext>& context, int, int, const Gtk::SelectionData& selection_data, guint, guint time);
-#ifdef CRN_USING_GTKMM3
-#ifdef __WIN32__XXX
-			static void windrop(GtkWidget *widget, GdkDragContext *context, gint x, gint y, GtkSelectionData *selection_data, guint target_type, guint time, std::pair<SelectionBox*, Element*> *el);
-#endif
-#endif /* CRN_USING_GTKMM3 */
 			/*! \brief An object has been dropped on a target, we send the data */
 #ifdef CRN_USING_GTKMM3
 			void dodrop(Element *dropon, const Gtk::SelectionData *selection_data, int info);

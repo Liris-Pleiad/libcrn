@@ -34,8 +34,13 @@ using namespace GtkCRN;
  */
 ProgressWindow::ProgressWindow(const Glib::ustring title, Gtk::Window *parent, bool auto_close):
 	autoclose(auto_close),
-	terminate_on_exception(true)/*,
-	closebut(Gtk::Stock::CLOSE)*/
+	terminate_on_exception(true),
+#ifdef CRN_USING_GTKMM3
+	vbox(Gtk::ORIENTATION_VERTICAL),
+	closebut("_Close") // TODO check if translation is needed of if the Gtk uses the "icon name"
+#else
+	closebut(Gtk::Stock::CLOSE)
+#endif
 {
 	set_title(title);
 	if (parent)
@@ -67,15 +72,17 @@ ProgressWindow::ProgressWindow(const Glib::ustring title, Gtk::Window *parent, b
 	if (!autoclose)
 	{
 #ifdef CRN_USING_GTKMM3
-		//Gtk::Alignment *al = Gtk::manage(new Gtk::Alignment(Gtk::ALIGN_END));
+		Gtk::Alignment *al = Gtk::manage(new Gtk::Alignment(Gtk::ALIGN_END));
+		vbox.pack_end(*al, false, false, 0);
+		Gtk::Box *hbox = Gtk::manage(new Gtk::Box(Gtk::ORIENTATION_HORIZONTAL));
 #else /* CRN_USING_GTKMM3 */
 		Gtk::Alignment *al = Gtk::manage(new Gtk::Alignment(Gtk::ALIGN_RIGHT));
-#endif /* CRN_USING_GTKMM3 */
-		/*vbox.pack_end(*al, false, false, 0);
+		vbox.pack_end(*al, false, false, 0);
 		Gtk::HBox *hbox = Gtk::manage(new Gtk::HBox());
+#endif /* CRN_USING_GTKMM3 */
 		al->add(*hbox);
 		hbox->pack_end(closebut, false, false, 0);
-		al->show_all();*/
+		al->show_all();
 	}
 	add(vbox);
 }

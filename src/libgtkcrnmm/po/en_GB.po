@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libcrn 3.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-04-25 11:43+0200\n"
+"POT-Creation-Date: 2016-04-25 14:18+0200\n"
 "PO-Revision-Date: 2015-11-24 13:55+0100\n"
 "Last-Translator: Yann LEYDIER <yann@leydier.info>\n"
 "Language-Team: English <>\n"
@@ -60,15 +60,15 @@ msgstr "Title"
 msgid "JPEG quality must be between 0 and 100."
 msgstr "JPEG quality must be between 0 and 100."
 
-#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNProp3.cpp:81
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNProp3.cpp:94
 msgid "null event."
 msgstr "null event."
 
-#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNProgressWindow.cpp:106
-#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNProgressWindow.cpp:121
-#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNSelectionBox.cpp:748
-#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNSelectionBox.cpp:764
-#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNSelectionBox.cpp:802
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNProgressWindow.cpp:113
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNProgressWindow.cpp:128
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNSelectionBox.cpp:708
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNSelectionBox.cpp:724
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNSelectionBox.cpp:762
 msgid "index out of bounds."
 msgstr "index out of bounds."
 

@@ -50,18 +50,31 @@ void Prop3::set_icon_size(Gtk::IconSize is)
 /*! Updates the icon */
 void Prop3::set_image()
 {
+#ifdef CRN_USING_GTKMM3
 	switch (prop.GetValue())
 	{
 		case TRUE:
-			//img.set(Gtk::Stock::YES, size);
+			img.set_from_icon_name("_Cancel", size);
 			break;
 		case FALSE:
-			//img.set(Gtk::Stock::NO, size);
+			img.set_from_icon_name("_OK", size);
 			break;
 		default:
-			//img.set(Gtk::Stock::DIALOG_QUESTION, size);
-			;
+			img.set_from_icon_name("dialog-question", size);
 	}
+#else
+	switch (prop.GetValue())
+	{
+		case TRUE:
+			img.set(Gtk::Stock::YES, size);
+			break;
+		case FALSE:
+			img.set(Gtk::Stock::NO, size);
+			break;
+		default:
+			img.set(Gtk::Stock::DIALOG_QUESTION, size);
+	}
+#endif
 }
 
 /*!
