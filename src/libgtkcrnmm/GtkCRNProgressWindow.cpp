@@ -72,17 +72,19 @@ ProgressWindow::ProgressWindow(const Glib::ustring title, Gtk::Window *parent, b
 	if (!autoclose)
 	{
 #ifdef CRN_USING_GTKMM3
-		Gtk::Alignment *al = Gtk::manage(new Gtk::Alignment(Gtk::ALIGN_END));
-		vbox.pack_end(*al, false, false, 0);
 		Gtk::Box *hbox = Gtk::manage(new Gtk::Box(Gtk::ORIENTATION_HORIZONTAL));
+		hbox->set_halign(Gtk::ALIGN_END);
+		vbox.pack_end(*hbox, false, false, 0);
+		hbox->pack_end(closebut, false, false, 0);
+		hbox->show_all();
 #else /* CRN_USING_GTKMM3 */
 		Gtk::Alignment *al = Gtk::manage(new Gtk::Alignment(Gtk::ALIGN_RIGHT));
 		vbox.pack_end(*al, false, false, 0);
 		Gtk::HBox *hbox = Gtk::manage(new Gtk::HBox());
-#endif /* CRN_USING_GTKMM3 */
 		al->add(*hbox);
 		hbox->pack_end(closebut, false, false, 0);
 		al->show_all();
+#endif /* CRN_USING_GTKMM3 */
 	}
 	add(vbox);
 }

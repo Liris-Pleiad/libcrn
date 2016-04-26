@@ -29,6 +29,7 @@
 #include <GtkCRNApp.h>
 #include <CRNIO/CRNFileShield.h>
 #include <GdkCRNPixbuf.h>
+#include <GtkCRNHelpers.h>
 
 #ifndef CRN_USING_GTKMM3
 #	define get_content_area get_vbox
@@ -88,7 +89,6 @@ Document::Document(bool show_views, bool show_tree):
 #	ifdef CRN_USING_HARU
 	views_actions->add_action("document-views-export-pdf", sigc::mem_fun(this, &Document::export_pdf));
 #	endif
-	// views_actions->set_sensitive(false); // TODO
 #else
 	views_actions->add(Gtk::Action::create("document-views-menu", _("_Views"), _("Views")));
 	views_actions->add(Gtk::Action::create("document-views-add", Gtk::StockID("gtk-crn-add-view"), _("_Add Views"), _("Add Views")), sigc::mem_fun(this, &Document::append_views_dialog));
@@ -106,24 +106,22 @@ Document::Document(bool show_views, bool show_tree):
 #	ifdef CRN_USING_HARU
 	views_actions->add(Gtk::Action::create("document-views-export-pdf", Gtk::Stock::CONVERT, _("_Export PDF"), _("Export PDF")), sigc::mem_fun(this, &Document::export_pdf));
 #	endif
-	views_actions->set_sensitive(false);
 #endif
+	disable_action_group(views_actions);
 	// tree
 #ifdef CRN_USING_GTKMM3
 	tree_actions->add_action("document-blocks-add", sigc::mem_fun(this, &Document::add_subblock));
-	Glib::RefPtr<Gio::SimpleAction>::cast_dynamic(tree_actions->lookup_action("document-blocks-add"))->set_enabled(false);
 	tree_actions->add_action("document-blocks-remove", sigc::mem_fun(this, &Document::rem_subblock));
-	Glib::RefPtr<Gio::SimpleAction>::cast_dynamic(tree_actions->lookup_action("document-blocks-remove"))->set_enabled(false);
 	tree_actions->add_action_bool("document-blocks-show", sigc::mem_fun(this, &Document::show_hide_subblocks_on_image));
 	tree_actions->add_action("document-blocks-configure", sigc::mem_fun(this, &Document::configure_subblocks));
 #else
 	tree_actions->add(Gtk::Action::create("document-blocks-add", Gtk::StockID("gtk-crn-add-block"), _("_Add Subblock"), _("Add Subblock")), sigc::mem_fun(this, &Document::add_subblock));
-	tree_actions->get_action("document-blocks-add")->set_sensitive(false);
 	tree_actions->add(Gtk::Action::create("document-blocks-remove", Gtk::StockID("gtk-crn-delete-block"), _("_Remove Subblock"), _("Remove Subblock")), sigc::mem_fun(this, &Document::rem_subblock));
-	tree_actions->get_action("document-blocks-remove")->set_sensitive(false);
 	tree_actions->add(Gtk::ToggleAction::create("document-blocks-show", Gtk::Stock::FIND, _("_Show/Hide Subblocks"), _("Show/Hide Subblocks"), true), sigc::mem_fun(this, &Document::show_hide_subblocks_on_image));
 	tree_actions->add(Gtk::Action::create("document-blocks-configure", Gtk::Stock::PROPERTIES, _("Subblocks _Settings"), _("Subblocks Settings")), sigc::mem_fun(this, &Document::configure_subblocks));
 #endif
+	disable_action(tree_actions, "document-blocks-add");
+	disable_action(tree_actions, "document-blocks-remove");
 
 	//////////////////////////////////
 	// left side
@@ -155,7 +153,36 @@ Document::Document(bool show_views, bool show_tree):
 	tree_box.set_homogeneous(false);
 	// buttons
 #ifdef CRN_USING_GTKMM3
-	// TODO
+	// TODO add icons
+	auto builder = Gtk::Builder::create_from_string(
+			"<interface>"
+			"	<object class='GtkToolButton' id='dbadd'>"
+			"		<attribute name='label' translatable='yes'>_Add subblock</attribute>"
+			"		<attribute name='action'>document-blocks-add</attribute>"
+			"	</object>"
+			"	<object class='GtkToolButton' id='dbrem'>"
+			"		<attribute name='label' translatable='yes'>_Remove subblock</attribute>"
+			"		<attribute name='action'>document-blocks-remove</attribute>"
+			"	</object>"
+			"	<object class='GtkToolButton' id='dbshow'>"
+			"		<attribute name='label' translatable='yes'>_Show/Hide Subblocks</attribute>"
+			"		<attribute name='action'>document-blocks-show</attribute>"
+			"	</object>"
+			"	<object class='GtkToolButton' id='dbconf'>"
+			"		<attribute name='label' translatable='yes'>Subblocks _Settings</attribute>"
+			"		<attribute name='action'>document-blocks-configure</attribute>"
+			"	</object>"
+			"</interface>"
+			);
+	Gtk::ToolItem *ti;
+	builder->get_widget("dbadd", ti);
+	tree_buttons.append(*Gtk::manage(ti));
+	builder->get_widget("dbrem", ti);
+	tree_buttons.append(*Gtk::manage(ti));
+	builder->get_widget("dbshow", ti);
+	tree_buttons.append(*Gtk::manage(ti));
+	builder->get_widget("dbconf", ti);
+	tree_buttons.append(*Gtk::manage(ti));
 #else
 	tree_buttons.append(*Gtk::manage(tree_actions->get_action("document-blocks-add")->create_tool_item()));
 	tree_buttons.append(*Gtk::manage(tree_actions->get_action("document-blocks-remove")->create_tool_item()));
@@ -224,22 +251,13 @@ void Document::set_document(const crn::SDocument &doc)
 	{
 		refresh_views();
 		set_sensitive(true);
-#ifdef CRN_USING_GTKMM3
-		// TODO
-		Glib::RefPtr<Gio::SimpleAction>::cast_dynamic(views_actions->lookup_action("document-views-remove"))->set_enabled(false);
-#else
-		views_actions->set_sensitive(true);
-		views_actions->get_action("document-views-remove")->set_sensitive(false);
-#endif
+		enable_action_group(views_actions);
+		disable_action(views_actions, "document-views-remove");
 	}
 	else
 	{
 		set_sensitive(false);
-#ifdef CRN_USING_GTKMM3
-		// TODO
-#else
-		views_actions->set_sensitive(false);
-#endif
+		disable_action_group(views_actions);
 	}
 }
 
@@ -459,11 +477,7 @@ void Document::on_view_selection_changed(Gtk::Widget *last_selected_widget, cons
 				lastselid = v->get_view_id();
 				current_block = crndoc->GetView(v->get_view_id());
 				load_tree(v->get_view_id());
-#ifdef CRN_USING_GTKMM3
-				Glib::RefPtr<Gio::SimpleAction>::cast_dynamic(views_actions->lookup_action("document-views-remove"))->set_enabled(true);
-#else
-				views_actions->get_action("document-views-remove")->set_sensitive(true);
-#endif
+				enable_action(views_actions, "document-views-remove");
 				selection_changed.emit(lastselid, selid);
 				return;
 			}
@@ -474,15 +488,9 @@ void Document::on_view_selection_changed(Gtk::Widget *last_selected_widget, cons
 	}
 	current_block = nullptr;
 	clear_tree();
-#ifdef CRN_USING_GTKMM3
-	Glib::RefPtr<Gio::SimpleAction>::cast_dynamic(tree_actions->lookup_action("document-blocks-add"))->set_enabled(false);
-	Glib::RefPtr<Gio::SimpleAction>::cast_dynamic(tree_actions->lookup_action("document-blocks-remove"))->set_enabled(false);
-	Glib::RefPtr<Gio::SimpleAction>::cast_dynamic(views_actions->lookup_action("document-views-remove"))->set_enabled(false);
-#else
-	tree_actions->get_action("document-blocks-add")->set_sensitive(false);
-	tree_actions->get_action("document-blocks-remove")->set_sensitive(false);
-	views_actions->get_action("document-views-remove")->set_sensitive(false);
-#endif
+	disable_action(tree_actions, "document-blocks-add");
+	disable_action(tree_actions, "document-blocks-remove");
+	disable_action(views_actions, "document-views-remove");
 	selection_changed.emit(lastselid, selid);
 }
 
@@ -752,38 +760,22 @@ void Document::subblock_selection_changed()
 			crn::Rect clip(blocksel->GetAbsoluteBBox());
 			Glib::RefPtr<Gdk::Pixbuf> pb2(Gdk::Pixbuf::create_subpixbuf(pb, clip.GetLeft(), clip.GetTop(), clip.GetWidth(), clip.GetHeight()));
 			img.set_pixbuf(pb2);
-#ifdef CRN_USING_GTKMM3
 			// set sensitive the add subblock button if there is a selection on the image
-			Glib::RefPtr<Gio::SimpleAction>::cast_dynamic(tree_actions->lookup_action("document-blocks-add"))->set_enabled(img.has_selection());
+			set_enable_action(tree_actions, "document-blocks-add", img.has_selection());
 			// set sensitive the remove subblock button if the selected row is not the first
-			Glib::RefPtr<Gio::SimpleAction>::cast_dynamic(tree_actions->lookup_action("document-blocks-remove"))->set_enabled(it != block_tree_store->children()[0]);
-#else
-			// set sensitive the add subblock button if there is a selection on the image
-			tree_actions->get_action("document-blocks-add")->set_sensitive(img.has_selection());
-			// set sensitive the remove subblock button if the selected row is not the first
-			tree_actions->get_action("document-blocks-remove")->set_sensitive(it != block_tree_store->children()[0]);
-#endif
+			set_enable_action(tree_actions, "document-blocks-remove", it != block_tree_store->children()[0]);
 		}
 		catch (...)
 		{ // invalid block id or cannot open image
 			img.set_pixbuf(Glib::RefPtr<Gdk::Pixbuf>(nullptr));
-#ifdef CRN_USING_GTKMM3
-			Glib::RefPtr<Gio::SimpleAction>::cast_dynamic(tree_actions->lookup_action("document-blocks-add"))->set_enabled(false);
-			Glib::RefPtr<Gio::SimpleAction>::cast_dynamic(tree_actions->lookup_action("document-blocks-remove"))->set_enabled(false);
-#else
-			tree_actions->get_action("document-blocks-add")->set_sensitive(false);
-			tree_actions->get_action("document-blocks-remove")->set_sensitive(false);
-#endif
+			disable_action(tree_actions, "document-blocks-add");
+			disable_action(tree_actions, "document-blocks-remove");
 		}
 	}
 	else
 	{
 		// set unsensitive the remove subblock button
-#ifdef CRN_USING_GTKMM3
-		Glib::RefPtr<Gio::SimpleAction>::cast_dynamic(tree_actions->lookup_action("document-blocks-remove"))->set_enabled(false);
-#else
-		tree_actions->get_action("document-blocks-remove")->set_sensitive(false);
-#endif
+		disable_action(tree_actions, "document-blocks-remove");
 	}
 	show_hide_subblocks_on_image();
 }
@@ -972,27 +964,45 @@ void Document::configure_subblocks()
 	dial.set_default_response(Gtk::RESPONSE_ACCEPT);
 
 	Gtk::Label lab1(_("Frame color"));
+	Gtk::Label lab2(_("Fill color"));
+	Gtk::CheckButton show_labels_cb(_("Show subblock _labels"));
+	show_labels_cb.set_active(show_subblock_labels);
+	Gtk::Label lab3(_("Label color"));
 #ifdef CRN_USING_GTKMM3
 	Gtk::Grid tab;
 	tab.attach(lab1, 0, 0, 1, 1);
+	Gdk::RGBA color;
+	color.set_rgba_u(gushort(treecol1.r * 256), gushort(treecol1.g * 256), gushort(treecol1.b * 255));
+	Gtk::ColorButton cb1(color);
+	tab.attach(cb1, 1, 0, 1, 1);
+
+	tab.attach(lab2, 0, 1, 1, 1);
+	color.set_rgba_u(gushort(treecol2.r * 256), gushort(treecol2.g * 256), gushort(treecol2.b * 255));
+	Gtk::ColorButton cb2(color);
+	tab.attach(cb2, 1, 1, 1, 1);
+	
+	tab.attach(show_labels_cb, 0, 2, 2, 1);
+
+	color.set_rgba_u(gushort(treetextcol.r * 256), gushort(treetextcol.g * 256), gushort(treetextcol.b * 255));
+	Gtk::ColorButton cbt(color);
+	tab.attach(cbt, 1, 3, 1, 1);
+	tab.attach(lab3, 0, 3, 1, 1);
 #else
 	Gtk::Table tab(4, 2);
 	tab.attach(lab1, 0, 1, 0, 1, Gtk::SHRINK, Gtk::SHRINK);
-#endif
-#ifndef CRN_USING_GTKMM3 // XXX TODO
+
 	Gdk::Color color;
 	color.set_rgb(gushort(treecol1.r * 256), gushort(treecol1.g * 256), gushort(treecol1.b * 255));
 	Gtk::ColorButton cb1(color);
 	tab.attach(cb1, 1, 2, 0, 1, Gtk::SHRINK, Gtk::SHRINK);
-	Gtk::Label lab2(_("Fill color"));
+
 	tab.attach(lab2, 0, 1, 1, 2, Gtk::SHRINK, Gtk::SHRINK);
 	color.set_rgb(gushort(treecol2.r * 256), gushort(treecol2.g * 256), gushort(treecol2.b * 255));
 	Gtk::ColorButton cb2(color);
 	tab.attach(cb2, 1, 2, 1, 2, Gtk::SHRINK, Gtk::SHRINK);
-	Gtk::CheckButton show_labels_cb(_("Show subblock _labels"));
-	show_labels_cb.set_active(show_subblock_labels);
+	
 	tab.attach(show_labels_cb, 0, 2, 2, 3, Gtk::SHRINK, Gtk::SHRINK);
-	Gtk::Label lab3(_("Label color"));
+
 	color.set_rgb(gushort(treetextcol.r * 256), gushort(treetextcol.g * 256), gushort(treetextcol.b * 255));
 	Gtk::ColorButton cbt(color);
 	tab.attach(cbt, 1, 2, 3, 4, Gtk::SHRINK, Gtk::SHRINK);
@@ -1003,16 +1013,26 @@ void Document::configure_subblocks()
 
 	if (dial.run() == Gtk::RESPONSE_ACCEPT)
 	{
-#ifndef CRN_USING_GTKMM3 // XXX TODO
 		set_show_subblock_labels(show_labels_cb.get_active());
+#ifdef CRN_USING_GTKMM3
+		color = cb1.get_rgba();
+#else
 		color = cb1.get_color();
-		crn::pixel::RGB8 p1(uint8_t(color.get_red() / 256), uint8_t(color.get_green() / 256), uint8_t(color.get_blue() / 256));
-		color = cb2.get_color();
-		crn::pixel::RGB8 p2(uint8_t(color.get_red() / 256), uint8_t(color.get_green() / 256), uint8_t(color.get_blue() / 256));
-		color = cbt.get_color();
-		crn::pixel::RGB8 pt(uint8_t(color.get_red() / 256), uint8_t(color.get_green() / 256), uint8_t(color.get_blue() / 256));
-		set_subblocks_colors(p1, p2, pt);
 #endif
+		auto p1 = GdkCRN::CRNPixelRGBFromGdkColor(color);
+#ifdef CRN_USING_GTKMM3
+		color = cb1.get_rgba();
+#else
+		color = cb2.get_color();
+#endif
+		auto p2 = GdkCRN::CRNPixelRGBFromGdkColor(color);
+#ifdef CRN_USING_GTKMM3
+		color = cb1.get_rgba();
+#else
+		color = cbt.get_color();
+#endif
+		auto pt = GdkCRN::CRNPixelRGBFromGdkColor(color);
+		set_subblocks_colors(p1, p2, pt);
 	}
 }
 
@@ -1062,11 +1082,7 @@ void Document::on_image_overlay_changed(crn::String overlay_id, crn::String over
 {
 	if (overlay_id == Image::selection_overlay())
 	{
-#ifdef CRN_USING_GTKMM3
-		Glib::RefPtr<Gio::SimpleAction>::cast_dynamic(tree_actions->lookup_action("document-blocks-add"))->set_enabled(overlay_item_id.IsNotEmpty());
-#else
-		tree_actions->get_action("document-blocks-add")->set_sensitive(overlay_item_id.IsNotEmpty());
-#endif
+		set_enable_action(tree_actions, "document-blocks-add", overlay_item_id.IsNotEmpty());
 	}
 }
 
