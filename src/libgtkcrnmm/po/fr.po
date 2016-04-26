@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libcrn 3.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-04-26 10:01+0200\n"
+"POT-Creation-Date: 2016-04-26 11:08+0200\n"
 "PO-Revision-Date: 2015-11-24 13:57+0100\n"
 "Last-Translator: Yann LEYDIER <yann@leydier.info>\n"
 "Language-Team: French <>\n"
@@ -194,8 +194,8 @@ msgid "_Export PDF"
 msgstr "_Exporter un PDF"
 
 #: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNDocument.cpp:107
-#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNDocument.cpp:1161
-#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNDocument.cpp:1195
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNDocument.cpp:1154
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNDocument.cpp:1188
 msgid "Export PDF"
 msgstr "Exporter un PDF"
 
@@ -273,7 +273,7 @@ msgstr "Veuillez sélectionner les vues à ajouter"
 #: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNDocument.cpp:609
 #: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNDocument.cpp:805
 #: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNDocument.cpp:954
-#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNDocument.cpp:1175
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNDocument.cpp:1168
 msgid "_Cancel"
 msgstr ""
 
@@ -326,12 +326,12 @@ msgstr "Montrer les _étiquettes des sous-blocs"
 msgid "Label color"
 msgstr "Couleur des étiquettes"
 
-#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNDocument.cpp:1176
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNDocument.cpp:1169
 #, fuzzy
 msgid "_Save"
 msgstr "Sauvegarder"
 
-#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNDocument.cpp:1196
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNDocument.cpp:1189
 msgid "Writing image"
 msgstr "Écriture de l'image"
 
@@ -355,19 +355,19 @@ msgstr "Pixbuf nul."
 msgid "The element was not initialized."
 msgstr "L'élément n'est pas initialisé."
 
-#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNApp.cpp:55
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNApp.cpp:54
 msgid "_File"
 msgstr "_Fichier"
 
-#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNApp.cpp:55
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNApp.cpp:54
 msgid "File"
 msgstr "Fichier"
 
-#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNApp.cpp:57
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNApp.cpp:56
 msgid "_?"
 msgstr "_?"
 
-#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNApp.cpp:57
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNApp.cpp:56
 msgid "?"
 msgstr "?"
 
@@ -375,11 +375,11 @@ msgstr "?"
 msgid "Are you sure you want to quit?"
 msgstr "Êtes-vous sûr vouloir quitter l'application ?"
 
-#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNApp.cpp:155
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNApp.cpp:163
 msgid "Advanced details"
 msgstr "Détails"
 
-#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNApp.cpp:184
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNApp.cpp:192
 msgid "Unhandled exception caught."
 msgstr "Exception non gérée."
 
@@ -420,10 +420,10 @@ msgstr "Changer l'Épaisseur"
 msgid "null or negative zoom value."
 msgstr "valeur de zoom nulle ou négative."
 
-#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNHelpers.cpp:53
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNHelpers.cpp:80
 #, fuzzy
-msgid "action not found"
-msgstr "Motif introuvable"
+msgid "not a ToggleAction."
+msgstr "ce n'est pas un vecteur colonne."
 
 #: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNImage.cpp:143
 msgid "_Clear User Selection"
@@ -481,6 +481,10 @@ msgstr "La sélection n'est pas un point."
 #: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNImage.cpp:2330
 msgid "The selection is not a line."
 msgstr "La sélection n'est pas une ligne."
+
+#, fuzzy
+#~ msgid "action not found"
+#~ msgstr "Motif introuvable"
 
 #~ msgid "Subject"
 #~ msgstr "Sujet"
@@ -764,9 +768,6 @@ msgstr "La sélection n'est pas une ligne."
 
 #~ msgid "FFT: signal size is not a power of 2."
 #~ msgstr "FFT : le signal n'a pas une taille puissance de 2."
-
-#~ msgid "not a column vector."
-#~ msgstr "ce n'est pas un vecteur colonne."
 
 #~ msgid "the matrix is not square."
 #~ msgstr "La matrice n'est pas carrée."

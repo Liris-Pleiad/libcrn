@@ -24,6 +24,7 @@
 
 #include <libgtkcrnmm_config.h>
 #include <gtkmm.h>
+#include <CRNException.h>
 
 namespace GtkCRN
 {
@@ -32,9 +33,32 @@ namespace GtkCRN
 	void enable_action_group(const Glib::RefPtr<Gio::SimpleActionGroup> &grp);
 	void disable_action_group(const Glib::RefPtr<Gio::SimpleActionGroup> &grp);
 
-	void set_enable_action(const Glib::RefPtr<Gio::SimpleActionGroup> &grp, const Glib::ustring &action, bool enabled);
-	void enable_action(const Glib::RefPtr<Gio::SimpleActionGroup> &grp, const Glib::ustring &action);
-	void disable_action(const Glib::RefPtr<Gio::SimpleActionGroup> &grp, const Glib::ustring &action);
+	template<typename ACTIONMAPPTR> void set_enable_action(const ACTIONMAPPTR &grp, const Glib::ustring &action, bool enabled)
+	{
+		auto act = Glib::RefPtr<Gio::SimpleAction>::cast_dynamic(grp->lookup_action(action));
+		if (act)
+			act->set_enabled(false);
+		else
+			throw crn::ExceptionNotFound("GtkCRN::set_enable_action(): action not found");
+	}
+
+	template<typename ACTIONMAPPTR> void enable_action(const ACTIONMAPPTR &grp, const Glib::ustring &action)
+	{
+		set_enable_action(grp, action, true);
+	}
+
+	template<typename ACTIONMAPPTR> void disable_action(const ACTIONMAPPTR &grp, const Glib::ustring &action)
+	{
+		set_enable_action(grp, action, false);
+	}
+
+	template<typename ACTIONMAPPTR> bool is_toggle_action_active(const ACTIONMAPPTR &grp, const Glib::ustring &action)
+	{
+		auto ok = false;
+		grp->lookup_action(action)->get_state(ok);
+		return ok;
+	}
+
 #else
 	void set_enable_action_group(const Glib::RefPtr<Gtk::ActionGroup> &grp, bool enabled);
 	void enable_action_group(const Glib::RefPtr<Gtk::ActionGroup> &grp);
@@ -43,6 +67,8 @@ namespace GtkCRN
 	void set_enable_action(const Glib::RefPtr<Gtk::ActionGroup> &grp, const Glib::ustring &action, bool enabled);
 	void enable_action(const Glib::RefPtr<Gtk::ActionGroup> &grp, const Glib::ustring &action);
 	void disable_action(const Glib::RefPtr<Gtk::ActionGroup> &grp, const Glib::ustring &action);
+
+	bool is_toggle_action_active(const Glib::RefPtr<Gtk::ActionGroup> &grp, const Glib::ustring &action);
 #endif
 };
 

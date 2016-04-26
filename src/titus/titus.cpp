@@ -34,10 +34,15 @@
 #include <GtkCRNImage.h>
 #include <CRNIO/CRNIO.h>
 #include <CRNConfig.h>
+#include <GtkCRNHelpers.h>
 #include <CRNi18n.h>
 
 #include <CRNUtils/CRNTimer.h>
 #include <iostream>
+
+#ifndef CRN_USING_GTKMM3
+#	define get_content_area get_vbox
+#endif
 
 using namespace crn;
 
@@ -58,27 +63,246 @@ class Titus: public GtkCRN::App
 			title += " © CoReNum";
 			set_title(title);
 
-			// file menu
 #ifdef CRN_USING_GTKMM3
-			//actions->add(Gtk::Action::create("open-image", _("_Open image"), _("Open image")), sigc::mem_fun(this, &Titus::open_image));
+			// file menu
+			add_action("open-image", sigc::mem_fun(this, &Titus::open_image));
+			add_action("save-image", sigc::mem_fun(this, &Titus::save_image));
+
+			// toolbar
+			add_action_radio_integer("show-image", sigc::mem_fun(this, &Titus::on_image_toggled), 0);
+
+			// generic menu
+			add_action("generic-blur", sigc::mem_fun(this, &Titus::generic_blur));
+			add_action("generic-blur-x", sigc::mem_fun(this, &Titus::generic_blur_x));
+			add_action("generic-blur-y", sigc::mem_fun(this, &Titus::generic_blur_y));
+			add_action("generic-deriv-x", sigc::mem_fun(this, &Titus::generic_deriv_x));
+			add_action("generic-deriv-y", sigc::mem_fun(this, &Titus::generic_deriv_y));
+			add_action("generic-2deriv-x", sigc::mem_fun(this, &Titus::generic_2deriv_x));
+			add_action("generic-2deriv-y", sigc::mem_fun(this, &Titus::generic_2deriv_y));
+
+			// rgb menu
+			add_action("rgb-red", sigc::mem_fun(this, &Titus::rgb_red));
+			add_action("rgb-green", sigc::mem_fun(this, &Titus::rgb_green));
+			add_action("rgb-blue", sigc::mem_fun(this, &Titus::rgb_blue));
+			add_action("rgb-hue", sigc::mem_fun(this, &Titus::rgb_hue));
+			add_action("rgb-saturation", sigc::mem_fun(this, &Titus::rgb_saturation));
+			add_action("rgb-pseudosaturation", sigc::mem_fun(this, &Titus::rgb_pseudosaturation));
+			add_action("rgb-value", sigc::mem_fun(this, &Titus::rgb_value));
+			add_action("rgb-y", sigc::mem_fun(this, &Titus::rgb_y));
+			add_action("rgb-l", sigc::mem_fun(this, &Titus::rgb_l));
+			add_action("rgb-lprime", sigc::mem_fun(this, &Titus::rgb_lprime));
+
+			add_action("rgb-saturate", sigc::mem_fun(this, &Titus::rgb_saturate));
+			add_action("rgb-edge-preserving-filter", sigc::mem_fun(this, &Titus::rgb_epf));
+
+			add_action("rgb-diff", sigc::mem_fun(this, &Titus::rgb_diff));
+
+			// gray menu
+			add_action("gray-to-rgb", sigc::mem_fun(this, &Titus::gray_to_rgb));
+			add_action("gray-threshold", sigc::mem_fun(this, &Titus::gray_threshold));
+			add_action("gray-fisher", sigc::mem_fun(this, &Titus::gray_fisher));
+			add_action("gray-entropy", sigc::mem_fun(this, &Titus::gray_entropy));
+			add_action("gray-otsu", sigc::mem_fun(this, &Titus::gray_otsu));
+			add_action("gray-niblack", sigc::mem_fun(this, &Titus::gray_niblack));
+			add_action("gray-sauvola", sigc::mem_fun(this, &Titus::gray_sauvola));
+			add_action("gray-kmh", sigc::mem_fun(this, &Titus::gray_kmh));
+			add_action("gray-lmin", sigc::mem_fun(this, &Titus::gray_lmin));
+			add_action("gray-lmax", sigc::mem_fun(this, &Titus::gray_lmax));
+
+			add_action("gray-strokes", sigc::mem_fun(this, &Titus::gray_strokes));
+			add_action("gray-histo", sigc::mem_fun(this, &Titus::gray_histogram));
+			add_action("gray-rhisto", sigc::mem_fun(this, &Titus::gray_rhistogram));
+
+			add_action("gray-diff", sigc::mem_fun(this, &Titus::gray_diff));
+
+			// bw menu
+			add_action("bw-to-gray", sigc::mem_fun(this, &Titus::bw_to_gray));
+			add_action("bw-leftprof", sigc::mem_fun(this, &Titus::bw_leftprof));
+			add_action("bw-rightprof", sigc::mem_fun(this, &Titus::bw_rightprof));
+			add_action("bw-topprof", sigc::mem_fun(this, &Titus::bw_topprof));
+			add_action("bw-bottomprof", sigc::mem_fun(this, &Titus::bw_bottomprof));
+			add_action("bw-hproj", sigc::mem_fun(this, &Titus::bw_hproj));
+			add_action("bw-vproj", sigc::mem_fun(this, &Titus::bw_vproj));
+
+			// differential menu
+			add_action("diff-diffuse", sigc::mem_fun(this, &Titus::diff_diffuse));
+			add_action("diff-gradgray", sigc::mem_fun(this, &Titus::diff_gradgray));
+			add_action("diff-gradrgb", sigc::mem_fun(this, &Titus::diff_gradrgb));
+			add_action("diff-gradmod", sigc::mem_fun(this, &Titus::diff_gradmod));
+
+			add_action("diff-div", sigc::mem_fun(this, &Titus::diff_div));
+			add_action("diff-laplacian", sigc::mem_fun(this, &Titus::diff_laplacian));
+			add_action("diff-edge", sigc::mem_fun(this, &Titus::diff_edge));
+			add_action("diff-corner", sigc::mem_fun(this, &Titus::diff_corner));
+			add_action("diff-k1", sigc::mem_fun(this, &Titus::diff_k1));
+			add_action("diff-k2", sigc::mem_fun(this, &Titus::diff_k2));
+			add_action("diff-hcorner", sigc::mem_fun(this, &Titus::diff_hcorner));
+
+			add_action("diff-iso", sigc::mem_fun(this, &Titus::diff_iso));
+			add_action("diff-flow", sigc::mem_fun(this, &Titus::diff_flow));
+			add_action("diff-gaussc", sigc::mem_fun(this, &Titus::diff_gaussc));
+			add_action("diff-gradc", sigc::mem_fun(this, &Titus::diff_gradc));
+
+			add_action("diff-lx", sigc::mem_fun(this, &Titus::diff_lx));
+			add_action("diff-ly", sigc::mem_fun(this, &Titus::diff_ly));
+			add_action("diff-lxx", sigc::mem_fun(this, &Titus::diff_lxx));
+			add_action("diff-lxy", sigc::mem_fun(this, &Titus::diff_lxy));
+			add_action("diff-lyy", sigc::mem_fun(this, &Titus::diff_lyy));
+			add_action("diff-lw", sigc::mem_fun(this, &Titus::diff_lw));
+			add_action("diff-lvv", sigc::mem_fun(this, &Titus::diff_lvv));
+			add_action("diff-lvw", sigc::mem_fun(this, &Titus::diff_lvw));
+			add_action("diff-lww", sigc::mem_fun(this, &Titus::diff_lww));
+
+			Glib::ustring ui_info =
+				"<interface>"
+				"	<menu id='MenuBar'>"
+				"		<submenu>"
+				"			<attribute name='label' translatable='yes'>_File</attribute>"
+				"			<section>"
+				"				<item>"
+				"					<attribute name='label' translatable='yes'>_Open</attribute>"
+				"					<attribute name='action'>open-image</attribute>"
+				"					<attribute name='accel'>&lt;Primary&gt;o</attribute>"
+				"				</item>"
+				"				<item>"
+				"					<attribute name='label' translatable='yes'>_Save</attribute>"
+				"					<attribute name='action'>save-image</attribute>"
+				"					<attribute name='accel'>&lt;Primary&gt;s</attribute>"
+				"				</item>"
+				"			</section>"
+				"			<section>"
+				"				<item>"
+				"					<attribute name='label' translatable='yes'>_Quit</attribute>"
+				"					<attribute name='action'>app-quit</attribute>"
+				"					<attribute name='accel'>&lt;Primary&gt;q</attribute>"
+				"				</item>"
+				"			</section>"
+				"		</submenu>"
+				/*
+				"		<menu action='generic-menu'>"
+				"			<menuitem action='generic-blur'/>"
+				"			<menuitem action='generic-blur-x'/>"
+				"			<menuitem action='generic-blur-y'/>"
+				"			<separator/>"
+				"			<menuitem action='generic-deriv-x'/>"
+				"			<menuitem action='generic-deriv-y'/>"
+				"			<menuitem action='generic-2deriv-x'/>"
+				"			<menuitem action='generic-2deriv-y'/>"
+				"		</menu>"
+				"		<menu action='rgb-menu'>"
+				"			<menuitem action='rgb-red'/>"
+				"			<menuitem action='rgb-green'/>"
+				"			<menuitem action='rgb-blue'/>"
+				"			<menuitem action='rgb-hue'/>"
+				"			<menuitem action='rgb-saturation'/>"
+				"			<menuitem action='rgb-pseudosaturation'/>"
+				"			<menuitem action='rgb-value'/>"
+				"			<menuitem action='rgb-y'/>"
+				"			<menuitem action='rgb-l'/>"
+				"			<menuitem action='rgb-lprime'/>"
+				"			<separator/>"
+				"			<menuitem action='rgb-saturate'/>"
+				"			<menuitem action='rgb-edge-preserving-filter'/>"
+				"			<separator/>"
+				"			<menuitem action='rgb-diff'/>"
+				"		</menu>"
+				"		<menu action='gray-menu'>"
+				"			<menuitem action='gray-to-rgb'/>"
+				"			<separator/>"
+				"			<menuitem action='gray-threshold'/>"
+				"			<menuitem action='gray-fisher'/>"
+				"			<menuitem action='gray-entropy'/>"
+				"			<menuitem action='gray-otsu'/>"
+				"			<menuitem action='gray-niblack'/>"
+				"			<menuitem action='gray-sauvola'/>"
+				"			<menuitem action='gray-kmh'/>"
+				"			<menuitem action='gray-lmin'/>"
+				"			<menuitem action='gray-lmax'/>"
+				"			<separator/>"
+				"			<menuitem action='gray-strokes'/>"
+				"			<menuitem action='gray-histo'/>"
+				"			<menuitem action='gray-rhisto'/>"
+				"			<separator/>"
+				"			<menuitem action='gray-diff'/>"
+				"		</menu>"
+				"		<menu action='bw-menu'>"
+				"			<menuitem action='bw-to-gray'/>"
+				"			<separator/>"
+				"			<menuitem action='bw-leftprof'/>"
+				"			<menuitem action='bw-rightprof'/>"
+				"			<menuitem action='bw-topprof'/>"
+				"			<menuitem action='bw-bottomprof'/>"
+				"			<menuitem action='bw-hproj'/>"
+				"			<menuitem action='bw-vproj'/>"
+				"		</menu>"
+				"		<menu action='diff-menu'>"
+				"			<menuitem action='diff-diffuse'/>"
+				"			<separator/>"
+				"			<menuitem action='diff-gradgray'/>"
+				"			<menuitem action='diff-gradrgb'/>"
+				"			<menuitem action='diff-gradmod'/>"
+				"			<separator/>"
+				"			<menuitem action='diff-div'/>"
+				"			<menuitem action='diff-laplacian'/>"
+				"			<menuitem action='diff-edge'/>"
+				"			<menuitem action='diff-corner'/>"
+				"			<menuitem action='diff-k1'/>"
+				"			<menuitem action='diff-k2'/>"
+				"			<menuitem action='diff-hcorner'/>"
+				"			<separator/>"
+				"			<menuitem action='diff-iso'/>"
+				"			<menuitem action='diff-flow'/>"
+				"			<menuitem action='diff-gaussc'/>"
+				"			<menuitem action='diff-gradc'/>"
+				"			<separator/>"
+				"			<menuitem action='diff-lx'/>"
+				"			<menuitem action='diff-ly'/>"
+				"			<menuitem action='diff-lxx'/>"
+				"			<menuitem action='diff-lxy'/>"
+				"			<menuitem action='diff-lyy'/>"
+				"			<menuitem action='diff-lw'/>"
+				"			<menuitem action='diff-lvv'/>"
+				"			<menuitem action='diff-lvw'/>"
+				"			<menuitem action='diff-lww'/>"
+				"		</menu>"
+				"		<menu action='app-help-menu'>"
+				"			<menuitem action='app-about'/>"
+				"		</menu>"
+				"	</menu>"
+				"	<toolbar name='ToolBar'>"
+				"		<toolitem action='open-image'/>"
+				"		<toolitem action='save-image'/>"
+				"		<separator/>"
+				"		<toolitem action='show-rgb'/>"
+				"		<toolitem action='show-gray'/>"
+				"		<toolitem action='show-bw'/>"
+				"		<toolitem action='show-other'/>"
+				"		<separator/>"
+				"		<toolitem action='image-zoom-in'/>"
+				"		<toolitem action='image-zoom-out'/>"
+				"		<toolitem action='image-zoom-100'/>"
+				"		<toolitem action='image-zoom-fit'/>"
+				"	</toolbar>"
+				*/
+				"</interface>";
+
 #else
+			// file menu
 			actions->add(Gtk::Action::create("open-image", Gtk::Stock::OPEN, _("_Open image"), _("Open image")), sigc::mem_fun(this, &Titus::open_image));
-#endif
-			//actions->add(Gtk::Action::create("save-image", Gtk::Stock::SAVE, _("_Save image"), _("Save image")), sigc::mem_fun(this, &Titus::save_image));
+			actions->add(Gtk::Action::create("save-image", Gtk::Stock::SAVE, _("_Save image"), _("Save image")), sigc::mem_fun(this, &Titus::save_image));
 
 			// toolbar
 			Gtk::RadioAction::Group g;
-			//actions->add(Gtk::RadioAction::create(g, "show-rgb", Gtk::StockID("gtk-crn-rgb"), _("_RGB"), _("Show RGB image")));
-			//Glib::RefPtr<Gtk::RadioAction>::cast_dynamic(actions->get_action("show-rgb"))->signal_toggled().connect(sigc::mem_fun(this, &Titus::on_image_toggled));
-			//actions->add(Gtk::RadioAction::create(g, "show-gray", Gtk::StockID("gtk-crn-gray"), _("_Gray"), _("Show Gray image")));
-			//Glib::RefPtr<Gtk::RadioAction>::cast_dynamic(actions->get_action("show-gray"))->signal_toggled().connect(sigc::mem_fun(this, &Titus::on_image_toggled));
-			//actions->add(Gtk::RadioAction::create(g, "show-bw", Gtk::StockID("gtk-crn-bw"), _("_BW"), _("Show BW image")));
-			//Glib::RefPtr<Gtk::RadioAction>::cast_dynamic(actions->get_action("show-bw"))->signal_toggled().connect(sigc::mem_fun(this, &Titus::on_image_toggled));
-			//actions->add(Gtk::RadioAction::create(g, "show-other", Gtk::StockID("gtk-crn-document"), _("_Result"), _("Show result image")));
-			//Glib::RefPtr<Gtk::RadioAction>::cast_dynamic(actions->get_action("show-other"))->signal_toggled().connect(sigc::mem_fun(this, &Titus::on_image_toggled));
+			actions->add(Gtk::RadioAction::create(g, "show-rgb", Gtk::StockID("gtk-crn-rgb"), _("_RGB"), _("Show RGB image")));
+			Glib::RefPtr<Gtk::RadioAction>::cast_dynamic(actions->get_action("show-rgb"))->signal_toggled().connect(sigc::mem_fun(this, &Titus::on_image_toggled));
+			actions->add(Gtk::RadioAction::create(g, "show-gray", Gtk::StockID("gtk-crn-gray"), _("_Gray"), _("Show Gray image")));
+			Glib::RefPtr<Gtk::RadioAction>::cast_dynamic(actions->get_action("show-gray"))->signal_toggled().connect(sigc::mem_fun(this, &Titus::on_image_toggled));
+			actions->add(Gtk::RadioAction::create(g, "show-bw", Gtk::StockID("gtk-crn-bw"), _("_BW"), _("Show BW image")));
+			Glib::RefPtr<Gtk::RadioAction>::cast_dynamic(actions->get_action("show-bw"))->signal_toggled().connect(sigc::mem_fun(this, &Titus::on_image_toggled));
+			actions->add(Gtk::RadioAction::create(g, "show-other", Gtk::StockID("gtk-crn-document"), _("_Result"), _("Show result image")));
+			Glib::RefPtr<Gtk::RadioAction>::cast_dynamic(actions->get_action("show-other"))->signal_toggled().connect(sigc::mem_fun(this, &Titus::on_image_toggled));
 
 			// generic menu
-#ifndef CRN_USING_GTKMM3
 			actions->add(Gtk::Action::create("generic-menu", _("Gene_ric")));
 			actions->add(Gtk::Action::create("generic-blur", _("_Gaussian blur")), sigc::mem_fun(this, &Titus::generic_blur));
 			actions->add(Gtk::Action::create("generic-blur-x", _("Gaussian blur along _x")), sigc::mem_fun(this, &Titus::generic_blur_x));
@@ -167,138 +391,129 @@ class Titus: public GtkCRN::App
 
 			ui_manager->insert_action_group(img.get_actions());
 			add_accel_group(ui_manager->get_accel_group());
-#endif
 
 			Glib::ustring ui_info =
 				"<ui>"
-				
+				"	<menubar name='MenuBar'>"
+				"		<menu action='app-file-menu'>"
+				"			<menuitem action='open-image'/>"
+				"			<menuitem action='save-image'/>"
+				"			<separator/>"
+				"			<menuitem action='app-quit'/>"
+				"		</menu>"
+				"		<menu action='generic-menu'>"
+				"			<menuitem action='generic-blur'/>"
+				"			<menuitem action='generic-blur-x'/>"
+				"			<menuitem action='generic-blur-y'/>"
+				"			<separator/>"
+				"			<menuitem action='generic-deriv-x'/>"
+				"			<menuitem action='generic-deriv-y'/>"
+				"			<menuitem action='generic-2deriv-x'/>"
+				"			<menuitem action='generic-2deriv-y'/>"
+				"		</menu>"
+				"		<menu action='rgb-menu'>"
+				"			<menuitem action='rgb-red'/>"
+				"			<menuitem action='rgb-green'/>"
+				"			<menuitem action='rgb-blue'/>"
+				"			<menuitem action='rgb-hue'/>"
+				"			<menuitem action='rgb-saturation'/>"
+				"			<menuitem action='rgb-pseudosaturation'/>"
+				"			<menuitem action='rgb-value'/>"
+				"			<menuitem action='rgb-y'/>"
+				"			<menuitem action='rgb-l'/>"
+				"			<menuitem action='rgb-lprime'/>"
+				"			<separator/>"
+				"			<menuitem action='rgb-saturate'/>"
+				"			<menuitem action='rgb-edge-preserving-filter'/>"
+				"			<separator/>"
+				"			<menuitem action='rgb-diff'/>"
+				"		</menu>"
+				"		<menu action='gray-menu'>"
+				"			<menuitem action='gray-to-rgb'/>"
+				"			<separator/>"
+				"			<menuitem action='gray-threshold'/>"
+				"			<menuitem action='gray-fisher'/>"
+				"			<menuitem action='gray-entropy'/>"
+				"			<menuitem action='gray-otsu'/>"
+				"			<menuitem action='gray-niblack'/>"
+				"			<menuitem action='gray-sauvola'/>"
+				"			<menuitem action='gray-kmh'/>"
+				"			<menuitem action='gray-lmin'/>"
+				"			<menuitem action='gray-lmax'/>"
+				"			<separator/>"
+				"			<menuitem action='gray-strokes'/>"
+				"			<menuitem action='gray-histo'/>"
+				"			<menuitem action='gray-rhisto'/>"
+				"			<separator/>"
+				"			<menuitem action='gray-diff'/>"
+				"		</menu>"
+				"		<menu action='bw-menu'>"
+				"			<menuitem action='bw-to-gray'/>"
+				"			<separator/>"
+				"			<menuitem action='bw-leftprof'/>"
+				"			<menuitem action='bw-rightprof'/>"
+				"			<menuitem action='bw-topprof'/>"
+				"			<menuitem action='bw-bottomprof'/>"
+				"			<menuitem action='bw-hproj'/>"
+				"			<menuitem action='bw-vproj'/>"
+				"		</menu>"
+				"		<menu action='diff-menu'>"
+				"			<menuitem action='diff-diffuse'/>"
+				"			<separator/>"
+				"			<menuitem action='diff-gradgray'/>"
+				"			<menuitem action='diff-gradrgb'/>"
+				"			<menuitem action='diff-gradmod'/>"
+				"			<separator/>"
+				"			<menuitem action='diff-div'/>"
+				"			<menuitem action='diff-laplacian'/>"
+				"			<menuitem action='diff-edge'/>"
+				"			<menuitem action='diff-corner'/>"
+				"			<menuitem action='diff-k1'/>"
+				"			<menuitem action='diff-k2'/>"
+				"			<menuitem action='diff-hcorner'/>"
+				"			<separator/>"
+				"			<menuitem action='diff-iso'/>"
+				"			<menuitem action='diff-flow'/>"
+				"			<menuitem action='diff-gaussc'/>"
+				"			<menuitem action='diff-gradc'/>"
+				"			<separator/>"
+				"			<menuitem action='diff-lx'/>"
+				"			<menuitem action='diff-ly'/>"
+				"			<menuitem action='diff-lxx'/>"
+				"			<menuitem action='diff-lxy'/>"
+				"			<menuitem action='diff-lyy'/>"
+				"			<menuitem action='diff-lw'/>"
+				"			<menuitem action='diff-lvv'/>"
+				"			<menuitem action='diff-lvw'/>"
+				"			<menuitem action='diff-lww'/>"
+				"		</menu>"
+				"		<menu action='app-help-menu'>"
+				"			<menuitem action='app-about'/>"
+				"		</menu>"
+				"	</menubar>"
 				"	<toolbar name='ToolBar'>"
 				"		<toolitem action='open-image'/>"
-
+				"		<toolitem action='save-image'/>"
+				"		<separator/>"
+				"		<toolitem action='show-rgb'/>"
+				"		<toolitem action='show-gray'/>"
+				"		<toolitem action='show-bw'/>"
+				"		<toolitem action='show-other'/>"
+				"		<separator/>"
+				"		<toolitem action='image-zoom-in'/>"
+				"		<toolitem action='image-zoom-out'/>"
+				"		<toolitem action='image-zoom-100'/>"
+				"		<toolitem action='image-zoom-fit'/>"
 				"	</toolbar>"
-				"</ui>";/*
-				"<ui>"
-					"	<menubar name='MenuBar'>"
-					"		<menu action='app-file-menu'>"
-					"			<menuitem action='open-image'/>"
-					"			<menuitem action='save-image'/>"
-					"			<separator/>"
-					"			<menuitem action='app-quit'/>"
-					"		</menu>"
-					"		<menu action='generic-menu'>"
-					"			<menuitem action='generic-blur'/>"
-					"			<menuitem action='generic-blur-x'/>"
-					"			<menuitem action='generic-blur-y'/>"
-					"			<separator/>"
-					"			<menuitem action='generic-deriv-x'/>"
-					"			<menuitem action='generic-deriv-y'/>"
-					"			<menuitem action='generic-2deriv-x'/>"
-					"			<menuitem action='generic-2deriv-y'/>"
-					"		</menu>"
-					"		<menu action='rgb-menu'>"
-					"			<menuitem action='rgb-red'/>"
-					"			<menuitem action='rgb-green'/>"
-					"			<menuitem action='rgb-blue'/>"
-					"			<menuitem action='rgb-hue'/>"
-					"			<menuitem action='rgb-saturation'/>"
-					"			<menuitem action='rgb-pseudosaturation'/>"
-					"			<menuitem action='rgb-value'/>"
-					"			<menuitem action='rgb-y'/>"
-					"			<menuitem action='rgb-l'/>"
-					"			<menuitem action='rgb-lprime'/>"
-					"			<separator/>"
-					"			<menuitem action='rgb-saturate'/>"
-					"			<menuitem action='rgb-edge-preserving-filter'/>"
-					"			<separator/>"
-					"			<menuitem action='rgb-diff'/>"
-					"		</menu>"
-					"		<menu action='gray-menu'>"
-					"			<menuitem action='gray-to-rgb'/>"
-					"			<separator/>"
-					"			<menuitem action='gray-threshold'/>"
-					"			<menuitem action='gray-fisher'/>"
-					"			<menuitem action='gray-entropy'/>"
-					"			<menuitem action='gray-otsu'/>"
-					"			<menuitem action='gray-niblack'/>"
-					"			<menuitem action='gray-sauvola'/>"
-					"			<menuitem action='gray-kmh'/>"
-					"			<menuitem action='gray-lmin'/>"
-					"			<menuitem action='gray-lmax'/>"
-					"			<separator/>"
-					"			<menuitem action='gray-strokes'/>"
-					"			<menuitem action='gray-histo'/>"
-					"			<menuitem action='gray-rhisto'/>"
-					"			<separator/>"
-					"			<menuitem action='gray-diff'/>"
-					"		</menu>"
-					"		<menu action='bw-menu'>"
-					"			<menuitem action='bw-to-gray'/>"
-					"			<separator/>"
-					"			<menuitem action='bw-leftprof'/>"
-					"			<menuitem action='bw-rightprof'/>"
-					"			<menuitem action='bw-topprof'/>"
-					"			<menuitem action='bw-bottomprof'/>"
-					"			<menuitem action='bw-hproj'/>"
-					"			<menuitem action='bw-vproj'/>"
-					"		</menu>"
-					"		<menu action='diff-menu'>"
-					"			<menuitem action='diff-diffuse'/>"
-					"			<separator/>"
-					"			<menuitem action='diff-gradgray'/>"
-					"			<menuitem action='diff-gradrgb'/>"
-					"			<menuitem action='diff-gradmod'/>"
-					"			<separator/>"
-					"			<menuitem action='diff-div'/>"
-					"			<menuitem action='diff-laplacian'/>"
-					"			<menuitem action='diff-edge'/>"
-					"			<menuitem action='diff-corner'/>"
-					"			<menuitem action='diff-k1'/>"
-					"			<menuitem action='diff-k2'/>"
-					"			<menuitem action='diff-hcorner'/>"
-					"			<separator/>"
-					"			<menuitem action='diff-iso'/>"
-					"			<menuitem action='diff-flow'/>"
-					"			<menuitem action='diff-gaussc'/>"
-					"			<menuitem action='diff-gradc'/>"
-					"			<separator/>"
-					"			<menuitem action='diff-lx'/>"
-					"			<menuitem action='diff-ly'/>"
-					"			<menuitem action='diff-lxx'/>"
-					"			<menuitem action='diff-lxy'/>"
-					"			<menuitem action='diff-lyy'/>"
-					"			<menuitem action='diff-lw'/>"
-					"			<menuitem action='diff-lvv'/>"
-					"			<menuitem action='diff-lvw'/>"
-					"			<menuitem action='diff-lww'/>"
-					"		</menu>"
-					"		<menu action='app-help-menu'>"
-					"			<menuitem action='app-about'/>"
-					"		</menu>"
-					"	</menubar>"
-					"	<toolbar name='ToolBar'>"
-					"		<toolitem action='open-image'/>"
-					"		<toolitem action='save-image'/>"
-					"		<separator/>"
-					"		<toolitem action='show-rgb'/>"
-					"		<toolitem action='show-gray'/>"
-					"		<toolitem action='show-bw'/>"
-					"		<toolitem action='show-other'/>"
-					"		<separator/>"
-					"		<toolitem action='image-zoom-in'/>"
-					"		<toolitem action='image-zoom-out'/>"
-					"		<toolitem action='image-zoom-100'/>"
-					"		<toolitem action='image-zoom-fit'/>"
-					"	</toolbar>"
-					"</ui>";
-*/
-#ifndef CRN_USING_GTKMM3
+				"</ui>";
 			ui_manager->add_ui_from_string(ui_info);
 #endif
 			Gtk::VBox *vbox = Gtk::manage(new Gtk::VBox());
 			vbox->show();
 			add(*vbox);
 
-#ifndef CRN_USING_GTKMM3
+#ifdef CRN_USING_GTKMM3
+#else
 			vbox->pack_start(*ui_manager->get_widget("/MenuBar"), false, true, 0);
 			vbox->pack_start(*ui_manager->get_widget("/ToolBar"), false, true, 0);
 #endif
@@ -316,12 +531,17 @@ class Titus: public GtkCRN::App
 #endif
 			fdial.set_filter(ff);
 			fdial.add_button("ok", Gtk::RESPONSE_ACCEPT);
-			//fdial.add_button(Gtk::Stock::CANCEL, Gtk::RESPONSE_CANCEL);
-			//fdial.add_button(Gtk::Stock::OPEN, Gtk::RESPONSE_ACCEPT);
+#ifdef CRN_USING_GTKMM3
+			fdial.add_button(_("_Cancel"), Gtk::RESPONSE_CANCEL);
+			fdial.add_button(_("_Open"), Gtk::RESPONSE_ACCEPT);
+#else
+			fdial.add_button(Gtk::Stock::CANCEL, Gtk::RESPONSE_CANCEL);
+			fdial.add_button(Gtk::Stock::OPEN, Gtk::RESPONSE_ACCEPT);
 			std::vector<int> altbut;
 			altbut.push_back(Gtk::RESPONSE_ACCEPT);
 			altbut.push_back(Gtk::RESPONSE_CANCEL);
-			//fdial.set_alternative_button_order_from_array(altbut);
+			fdial.set_alternative_button_order_from_array(altbut);
+#endif
 			fdial.set_default_response(Gtk::RESPONSE_ACCEPT);
 
 			show_image(NONE);
@@ -397,12 +617,17 @@ class Titus: public GtkCRN::App
 				ff.add_pixbuf_formats();
 #endif
 				dial->set_filter(ff);
-				//dial->add_button(Gtk::Stock::CANCEL, Gtk::RESPONSE_CANCEL);
-				//dial->add_button(Gtk::Stock::SAVE, Gtk::RESPONSE_ACCEPT);
+#ifdef CRN_USING_GTKMM3
+				dial->add_button(_("_Cancel"), Gtk::RESPONSE_CANCEL);
+				dial->add_button(_("_Save"), Gtk::RESPONSE_ACCEPT);
+#else
+				dial->add_button(Gtk::Stock::CANCEL, Gtk::RESPONSE_CANCEL);
+				dial->add_button(Gtk::Stock::SAVE, Gtk::RESPONSE_ACCEPT);
 				std::vector<int> altbut;
 				altbut.push_back(Gtk::RESPONSE_ACCEPT);
 				altbut.push_back(Gtk::RESPONSE_CANCEL);
-				//dial->set_alternative_button_order_from_array(altbut);
+				dial->set_alternative_button_order_from_array(altbut);
+#endif
 				dial->set_default_response(Gtk::RESPONSE_ACCEPT);
 			}
 			dial->set_current_name("export.png");
@@ -425,56 +650,109 @@ class Titus: public GtkCRN::App
 					break;
 				case RGB:
 					currimg = irgb;
-					//Glib::RefPtr<Gtk::RadioAction>::cast_dynamic(actions->get_action("show-rgb"))->set_active();
+#ifdef CRN_USING_GTKMM3
+#else
+					Glib::RefPtr<Gtk::RadioAction>::cast_dynamic(actions->get_action("show-rgb"))->set_active();
+#endif
 					break;
 				case GRAY:
 					currimg = igray;
-					//Glib::RefPtr<Gtk::RadioAction>::cast_dynamic(actions->get_action("show-gray"))->set_active();
+#ifdef CRN_USING_GTKMM3
+#else
+					Glib::RefPtr<Gtk::RadioAction>::cast_dynamic(actions->get_action("show-gray"))->set_active();
+#endif
 					break;
 				case BW:
 					currimg = ibw;
-					//Glib::RefPtr<Gtk::RadioAction>::cast_dynamic(actions->get_action("show-bw"))->set_active();
+#ifdef CRN_USING_GTKMM3
+#else
+					Glib::RefPtr<Gtk::RadioAction>::cast_dynamic(actions->get_action("show-bw"))->set_active();
+#endif
 					break;
 				default:
 					currimg = iother;
-					//Glib::RefPtr<Gtk::RadioAction>::cast_dynamic(actions->get_action("show-other"))->set_active();
+#ifdef CRN_USING_GTKMM3
+#else
+					Glib::RefPtr<Gtk::RadioAction>::cast_dynamic(actions->get_action("show-other"))->set_active();
+#endif
 			}
 			if (currimg)
 				img.set_pixbuf(GdkCRN::PixbufFromCRNImage(*currimg));
 			else
 				img.set_pixbuf(Glib::RefPtr<Gdk::Pixbuf>(nullptr));
 			refreshing = false;
-			/*actions->get_action("save-image")->set_sensitive(currimg != nullptr);
-			actions->get_action("generic-menu")->set_sensitive(mode != NONE);
-			actions->get_action("rgb-menu")->set_sensitive(irgb != nullptr);
-			actions->get_action("gray-menu")->set_sensitive(igray != nullptr);
-			actions->get_action("bw-menu")->set_sensitive(ibw != nullptr);
-			actions->get_action("diff-menu")->set_sensitive(diff != nullptr);
-			actions->get_action("show-rgb")->set_sensitive(irgb != nullptr);
-			actions->get_action("show-gray")->set_sensitive(igray != nullptr);
-			actions->get_action("show-bw")->set_sensitive(ibw != nullptr);
-			actions->get_action("show-other")->set_sensitive(iother != nullptr);*/
+
+#ifdef CRN_USING_GTKMM3
+			auto &a = this;
+#else
+			auto &a = actions;
+#endif
+			GtkCRN::set_enable_action(a, "save-image", currimg != nullptr);
+			GtkCRN::set_enable_action(a, "generic-menu", mode != NONE);
+			GtkCRN::set_enable_action(a, "rgb-menu", irgb != nullptr);
+			GtkCRN::set_enable_action(a, "gray-menu", igray != nullptr);
+			GtkCRN::set_enable_action(a, "bw-menu", ibw != nullptr);
+			GtkCRN::set_enable_action(a, "diff-menu", diff != nullptr);
+			GtkCRN::set_enable_action(a, "show-rgb", irgb != nullptr);
+			GtkCRN::set_enable_action(a, "show-gray", igray != nullptr);
+			GtkCRN::set_enable_action(a, "show-bw", ibw != nullptr);
+			GtkCRN::set_enable_action(a, "show-other", iother != nullptr);
 		}
+#ifdef CRN_USING_GTKMM3
+		void on_image_toggled(int id)
+		{
+			if (refreshing)
+				return;
+			switch (id)
+			{
+				case 0:
+					currimg = irgb;
+					current_image = RGB;
+					break;
+				case 1:
+					currimg = igray;
+					current_image = GRAY;
+					break;
+				case 2:
+					currimg = ibw;
+					current_image = BW;
+					break;
+				case 3:
+					currimg = iother;
+					img.set_pixbuf(GdkCRN::PixbufFromCRNImage(*iother));
+					current_image = OTHER;
+					break;
+				default:
+					currimg = nullptr;
+					current_image = NONE;
+			}
+			if (currimg)
+				img.set_pixbuf(GdkCRN::PixbufFromCRNImage(*currimg));
+			else
+				img.set_pixbuf(Glib::RefPtr<Gdk::Pixbuf>(nullptr));
+		}
+#else
 		void on_image_toggled()
 		{
+			auto &a = actions;
 			if (!refreshing)
-			{/*
-				if (Glib::RefPtr<Gtk::RadioAction>::cast_dynamic(actions->get_action("show-rgb"))->get_active())
-				{*/
+			{
+				if (GtkCRN::is_toggle_action_active(a, "show-rgb"))
+				{
 					currimg = irgb;
-					current_image = RGB;/*
+					current_image = RGB;
 				}
-				else if (Glib::RefPtr<Gtk::RadioAction>::cast_dynamic(actions->get_action("show-gray"))->get_active())
+				else if (GtkCRN::is_toggle_action_active(a, "show-gray"))
 				{
 					currimg = igray;
 					current_image = GRAY;
 				}
-				else if (Glib::RefPtr<Gtk::RadioAction>::cast_dynamic(actions->get_action("show-bw"))->get_active())
+				else if (GtkCRN::is_toggle_action_active(a, "show-bw"))
 				{
 					currimg = ibw;
 					current_image = BW;
 				}
-				else if (Glib::RefPtr<Gtk::RadioAction>::cast_dynamic(actions->get_action("show-other"))->get_active())
+				else if (GtkCRN::is_toggle_action_active(a, "show-other"))
 				{
 					currimg = iother;
 					img.set_pixbuf(GdkCRN::PixbufFromCRNImage(*iother));
@@ -484,13 +762,14 @@ class Titus: public GtkCRN::App
 				{
 					currimg = nullptr;
 					current_image = NONE;
-				}*/
+				}
 				if (currimg)
 					img.set_pixbuf(GdkCRN::PixbufFromCRNImage(*currimg));
 				else
 					img.set_pixbuf(Glib::RefPtr<Gdk::Pixbuf>(nullptr));
 			}
 		}
+#endif
 		virtual void about() override
 		{
 			Gtk::AboutDialog dial;
@@ -832,7 +1111,12 @@ class Titus: public GtkCRN::App
 			if (dial.run() == Gtk::RESPONSE_ACCEPT)
 			{
 				diff = std::make_unique<Differential>(Differential::NewGaussian(*irgb, Differential::RGBProjection::ABSMAX, sigma));
-				//actions->get_action("diff-menu")->set_sensitive(true);
+#ifdef CRN_USING_GTKMM3
+				auto &a = this;
+#else
+				auto &a = actions;
+#endif
+				GtkCRN::enable_action(a, "diff-menu");
 			}
 		}
 		////////////////////////////////////////////////////////////
@@ -969,7 +1253,12 @@ class Titus: public GtkCRN::App
 			if (dial.run() == Gtk::RESPONSE_ACCEPT)
 			{
 				diff = std::make_unique<Differential>(Differential::NewGaussian(*igray, sigma));
-				//actions->get_action("diff-menu")->set_sensitive(true);
+#ifdef CRN_USING_GTKMM3
+				auto &a = this;
+#else
+				auto &a = actions;
+#endif
+				GtkCRN::enable_action(a, "diff-menu");
 			}
 		}
 		////////////////////////////////////////////////////////////
@@ -1159,12 +1448,17 @@ class Titus: public GtkCRN::App
 				Gtk::Dialog(name, parent, true)
 		{
 			set_position(Gtk::WIN_POS_CENTER_ON_PARENT);
-			//add_button(Gtk::Stock::CANCEL, Gtk::RESPONSE_CANCEL);
-			//add_button(Gtk::Stock::OK, Gtk::RESPONSE_ACCEPT);
+#ifdef CRN_USING_GTKMM3
+			add_button(_("Cancel"), Gtk::RESPONSE_CANCEL);
+			add_button(_("OK"), Gtk::RESPONSE_ACCEPT);
+#else
+			add_button(Gtk::Stock::CANCEL, Gtk::RESPONSE_CANCEL);
+			add_button(Gtk::Stock::OK, Gtk::RESPONSE_ACCEPT);
 			std::vector<int> altbut;
 			altbut.push_back(Gtk::RESPONSE_ACCEPT);
 			altbut.push_back(Gtk::RESPONSE_CANCEL);
-			//set_alternative_button_order_from_array(altbut);
+			set_alternative_button_order_from_array(altbut);
+#endif
 			set_default_response(Gtk::RESPONSE_ACCEPT);
 			signal_response().connect(sigc::mem_fun(this, &ParameterDialog::set_values));
 
@@ -1189,7 +1483,7 @@ class Titus: public GtkCRN::App
 				scale->set_value(*val);
 				hbox->pack_start(*scale, true, true, 2);
 				hbox->show_all();
-				//get_vbox()->pack_start(*hbox, false, false, 2);
+				get_content_area()->pack_start(*hbox, false, false, 2);
 			}
 			void add_value(const Glib::ustring &name, double *val, double min, double max)
 			{
@@ -1203,7 +1497,7 @@ class Titus: public GtkCRN::App
 				spin->set_value(*val);
 				hbox->pack_start(*spin, true, true, 2);
 				hbox->show_all();
-				//get_vbox()->pack_start(*hbox, false, false, 2);
+				get_content_area()->pack_start(*hbox, false, false, 2);
 			}
 			void add_value(const Glib::ustring &name, bool *val)
 			{
@@ -1211,7 +1505,7 @@ class Titus: public GtkCRN::App
 				booleans[check] = val;
 				check->set_active(*val);
 				check->show();
-				//get_vbox()->pack_start(*check, true, false, 2);
+				get_content_area()->pack_start(*check, true, false, 2);
 			}
 
 		private:
@@ -1266,18 +1560,18 @@ int main(int argc, char *argv[])
 #ifdef CRN_USING_GTKMM3
 	auto gapp =
 		Gtk::Application::create(argc, argv,
-			"org.gtkmm.examples.base");
+				"org.libcrn.titus");
 #else
 	GtkCRN::Main kit(argc, argv);
 	GtkCRN::Main::SetDefaultExceptionHandler();
 #endif
 	Titus app;
+	GtkCRN::App::set_main_window(&app);
 #ifdef CRN_USING_GTKMM3
 	return gapp->run(app);
 #else
-	GtkCRN::App::set_main_window(&app);
 	app.show();
-	
+
 	kit.run_thread_safe();
 	return 0;
 #endif

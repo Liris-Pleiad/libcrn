@@ -20,7 +20,6 @@
  */
 
 #include <GtkCRNHelpers.h>
-#include <CRNException.h>
 #include <CRNStringUTF8.h>
 #include <CRNi18n.h>
 
@@ -43,26 +42,6 @@ void GtkCRN::disable_action_group(const Glib::RefPtr<Gio::SimpleActionGroup> &gr
 {
 	set_enable_action_group(grp, false);
 }
-
-void GtkCRN::set_enable_action(const Glib::RefPtr<Gio::SimpleActionGroup> &grp, const Glib::ustring &action, bool enabled)
-{
-	auto act = Glib::RefPtr<Gio::SimpleAction>::cast_dynamic(grp->lookup_action(action));
-	if (act)
-		act->set_enabled(false);
-	else
-		throw crn::ExceptionNotFound(crn::StringUTF8("GtkCRN::set_enable_action(): ") + _("action not found"));
-}
-
-void GtkCRN::enable_action(const Glib::RefPtr<Gio::SimpleActionGroup> &grp, const Glib::ustring &action)
-{
-	set_enable_action(grp, action, true);
-}
-
-void GtkCRN::disable_action(const Glib::RefPtr<Gio::SimpleActionGroup> &grp, const Glib::ustring &action)
-{
-	set_enable_action(grp, action, false);
-}
-
 #else
 void GtkCRN::set_enable_action_group(const Glib::RefPtr<Gtk::ActionGroup> &grp, bool enabled)
 {
@@ -81,7 +60,7 @@ void GtkCRN::disable_action_group(const Glib::RefPtr<Gtk::ActionGroup> &grp)
 
 void GtkCRN::set_enable_action(const Glib::RefPtr<Gtk::ActionGroup> &grp, const Glib::ustring &action, bool enabled)
 {
-	grp->get_action(action)->set_sensitive(false);
+	grp->get_action(action)->set_sensitive(enabled);
 }
 
 void GtkCRN::enable_action(const Glib::RefPtr<Gtk::ActionGroup> &grp, const Glib::ustring &action)
@@ -92,6 +71,14 @@ void GtkCRN::enable_action(const Glib::RefPtr<Gtk::ActionGroup> &grp, const Glib
 void GtkCRN::disable_action(const Glib::RefPtr<Gtk::ActionGroup> &grp, const Glib::ustring &action)
 {
 	set_enable_action(grp, action, false);
+}
+
+bool GtkCRN::is_toggle_action_active(const Glib::RefPtr<Gtk::ActionGroup> &grp, const Glib::ustring &action)
+{
+	auto act = Glib::RefPtr<Gtk::ToggleAction>::cast_dynamic(grp->get_action(action));
+	if (!act)
+		throw crn::ExceptionRuntime(crn::StringUTF8("GtkCRN::is_toggle_action_active(): ") + _("not a ToggleAction."));
+	return act->get_active();
 }
 
 #endif

@@ -1091,14 +1091,7 @@ void Document::show_hide_subblocks_on_image()
 {
 	// clear selections
 	img.clear_overlay(subblock_list_name);
-#ifdef CRN_USING_GTKMM3
-	bool ok = false;
-	tree_actions->lookup_action("document-blocks-show")->get_state(ok);
-	if (ok)
-#else
-	Glib::RefPtr<Gtk::ToggleAction> sa(Glib::RefPtr<Gtk::ToggleAction>::cast_dynamic(tree_actions->get_action("document-blocks-show")));
-	if (sa->get_active())
-#endif
+	if (is_toggle_action_active(tree_actions, "document-blocks-show"))
 	{ // must show subblocks
 		if (block_tree_view.get_selection()->count_selected_rows())
 		{ // a row is selected

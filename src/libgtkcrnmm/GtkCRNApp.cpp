@@ -33,7 +33,6 @@
 using namespace crn;
 using namespace GtkCRN;
 
-//Gtk::Window* App::main_window(nullptr);
 Gtk::Window*& App::internal_main_window() { static Gtk::Window *main = nullptr; return main; }
 
 #ifdef CRN_USING_GTKMM3
@@ -64,6 +63,7 @@ App::App() :
 }
 #endif
 
+#include <iostream>
 /*! Callback for application quit event (overloadable)
  * \param[in]	event	only valid if the callback was called by the window manager
  * \return	true to continue app, false after call to Gtk::Main::Quit
@@ -73,7 +73,15 @@ bool App::ask_for_quit(GdkEventAny* event)
 	Gtk::MessageDialog dial(*this, _("Are you sure you want to quit?"), false, Gtk::MESSAGE_QUESTION, Gtk::BUTTONS_YES_NO, true);
 	if (dial.run() == Gtk::RESPONSE_YES)
 	{
-		//Gtk::Main::quit();
+#ifdef CRN_USING_GTKMM3
+		auto app = get_application();
+		if (app)
+			app->quit();
+		else
+			exit(0);
+#else
+		Gtk::Main::quit();
+#endif
 		return false;
 	}
 	return true;
