@@ -22,6 +22,33 @@
 #define GETTEXT_PACKAGE "titus"
 #include <CRN.h>
 #include <GtkCRNMain.h>
+
+#ifdef CRN_USING_GTKMM3
+
+#include <gtkmm.h>
+#include <iostream>
+
+class App: public Gtk::ApplicationWindow
+{
+	public:
+		App()
+		{
+			add_action("act");
+			auto a = lookup_action("act");
+			std::cout << bool(a) << std::endl;
+		}
+	private:
+};
+
+int main(int argc, char *argv[])
+{
+	auto app = Gtk::Application::create(argc, argv, "test.gtk");
+	App win;
+	return app->run(win);
+}
+
+#else
+
 #include <GtkCRNApp.h>
 #include <GdkCRNPixbuf.h>
 #include <CRNImage/CRNImageRGB.h>
@@ -64,10 +91,11 @@ class Titus: public GtkCRN::App
 			set_title(title);
 
 #ifdef CRN_USING_GTKMM3
+			auto ag = Gio::SimpleActionGroup::create();
 			// file menu
-			add_action("open-image", sigc::mem_fun(this, &Titus::open_image));
-			add_action("save-image", sigc::mem_fun(this, &Titus::save_image));
-
+			ag->add_action("open-image", sigc::mem_fun(this, &Titus::open_image));
+			ag->add_action("save-image", sigc::mem_fun(this, &Titus::save_image));
+			insert_action_group("app", ag);
 			/*
 			// toolbar
 			add_action_radio_integer("show-image", sigc::mem_fun(this, &Titus::on_image_toggled), 0);
@@ -162,19 +190,19 @@ class Titus: public GtkCRN::App
 				"			<section>"
 				"				<item>"
 				"					<attribute name='label' translatable='yes'>_Open</attribute>"
-				"					<attribute name='action'>open-image</attribute>"
+				"					<attribute name='action'>app.open-image</attribute>"
 				"					<attribute name='accel'>&lt;Primary&gt;o</attribute>"
 				"				</item>"
 				"				<item>"
 				"					<attribute name='label' translatable='yes'>_Save</attribute>"
-				"					<attribute name='action'>save-image</attribute>"
+				"					<attribute name='action'>app.save-image</attribute>"
 				"					<attribute name='accel'>&lt;Primary&gt;s</attribute>"
 				"				</item>"
 				"			</section>"
 				"			<section>"
 				"				<item>"
 				"					<attribute name='label' translatable='yes'>_Quit</attribute>"
-				"					<attribute name='action'>app-quit</attribute>"
+				"					<attribute name='action'>app.app-quit</attribute>"
 				"					<attribute name='accel'>&lt;Primary&gt;q</attribute>"
 				"				</item>"
 				"			</section>"
@@ -1591,3 +1619,4 @@ int main(int argc, char *argv[])
 #endif
 }
 
+#endif
