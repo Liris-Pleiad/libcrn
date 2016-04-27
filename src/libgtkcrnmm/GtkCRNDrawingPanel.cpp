@@ -108,6 +108,7 @@ void DrawingPanel::clear()
 #ifdef CRN_USING_GTKMM3
 Gdk::RGBA DrawingPanel::get_background() const
 {
+	return Gdk::RGBA{}; // TODO
 }
 #else /* CRN_USING_GTKMM3 */
 Gdk::Color DrawingPanel::get_background() const
@@ -136,6 +137,7 @@ void DrawingPanel::set_background(const Gdk::Color& col)
 #ifdef CRN_USING_GTKMM3
 Gdk::RGBA DrawingPanel::get_foreground() const
 {
+	return Gdk::RGBA{}; // TODO
 }
 #else /* CRN_USING_GTKMM3 */
 Gdk::Color DrawingPanel::get_foreground() const
