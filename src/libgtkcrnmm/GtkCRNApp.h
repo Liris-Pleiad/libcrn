@@ -32,7 +32,7 @@ namespace GtkCRN
 	/*! \brief Base class to create an application
 	 * \ingroup gtkcrn
 	 */
-	class App: 
+	class App:
 #ifdef CRN_USING_GTKMM3
 		public Gtk::ApplicationWindow
 #else
@@ -77,7 +77,9 @@ namespace GtkCRN
 			/*! \brief Shows a dialog asking for a single string */
 			Glib::ustring ask_for_string(const Glib::ustring &msg, const Glib::ustring &defval = "");
 
-#ifndef CRN_USING_GTKMM3
+#ifdef CRN_USING_GTKMM3
+			Glib::RefPtr<Gio::SimpleActionGroup> actions;
+#else
 			Glib::RefPtr<Gtk::UIManager> ui_manager; /*!< add your action groups to the ui manager to easily create menus and toolbars */
 			Glib::RefPtr<Gtk::ActionGroup> actions; /*!< default actions */
 #endif

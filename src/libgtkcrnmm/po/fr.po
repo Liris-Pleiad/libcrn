@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libcrn 3.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-04-26 15:30+0200\n"
+"POT-Creation-Date: 2016-05-03 15:40+0200\n"
 "PO-Revision-Date: 2015-11-24 13:57+0100\n"
 "Last-Translator: Yann LEYDIER <yann@leydier.info>\n"
 "Language-Team: French <>\n"
@@ -274,6 +274,7 @@ msgstr "Veuillez sélectionner les vues à ajouter"
 #: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNDocument.cpp:805
 #: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNDocument.cpp:954
 #: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNDocument.cpp:1168
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNApp.cpp:113
 msgid "_Cancel"
 msgstr ""
 
@@ -287,6 +288,7 @@ msgstr "Ajouter un sous-bloc"
 
 #: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNDocument.cpp:806
 #: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNDocument.cpp:955
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNApp.cpp:114
 msgid "_OK"
 msgstr ""
 
@@ -355,31 +357,31 @@ msgstr "Pixbuf nul."
 msgid "The element was not initialized."
 msgstr "L'élément n'est pas initialisé."
 
-#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNApp.cpp:54
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNApp.cpp:59
 msgid "_File"
 msgstr "_Fichier"
 
-#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNApp.cpp:54
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNApp.cpp:59
 msgid "File"
 msgstr "Fichier"
 
-#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNApp.cpp:56
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNApp.cpp:61
 msgid "_?"
 msgstr "_?"
 
-#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNApp.cpp:56
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNApp.cpp:61
 msgid "?"
 msgstr "?"
 
-#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNApp.cpp:73
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNApp.cpp:78
 msgid "Are you sure you want to quit?"
 msgstr "Êtes-vous sûr vouloir quitter l'application ?"
 
-#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNApp.cpp:163
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNApp.cpp:169
 msgid "Advanced details"
 msgstr "Détails"
 
-#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNApp.cpp:192
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNApp.cpp:198
 msgid "Unhandled exception caught."
 msgstr "Exception non gérée."
 

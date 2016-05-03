@@ -23,58 +23,6 @@
 #include <CRN.h>
 #include <GtkCRNMain.h>
 
-#ifdef CRN_USING_GTKMM3
-
-#include <gtkmm.h>
-#include <iostream>
-
-class App: public Gtk::ApplicationWindow
-{
-	public:
-		App()
-		{/*
-			add_action("quit");
-		
-			// instanciate internal
-			try
-			{
-				auto builder = Gtk::Builder::create_from_string(
-					"<interface>"
-					"	<menu id='MenuBar'>"
-					"		<submenu>"
-					"			<attribute name='label' translatable='yes'>_File</attribute>"
-					"			<section>"
-					"				<item>"
-					"					<attribute name='label' translatable='yes'>_Quit</attribute>"
-					"					<attribute name='action'>quit</attribute>"
-					"				</item>"
-					"			</section>"
-					"		</submenu>"
-					"	</menu>"
-					"</interface>"
-				);
-				auto menumodel = Glib::RefPtr<Gio::Menu>::cast_dynamic(builder->get_object("MenuBar"));
-				auto *menu = new Gtk::MenuBar(menumodel);
-				add(*Gtk::manage(menu));
-				menu->show();
-			}
-			catch (Glib::Error &ex)
-			{
-				std::cout << "internal action instanciation: " << ex.what() << std::endl;
-			}*/
-		}
-	private:
-};
-
-int main(int argc, char *argv[])
-{
-	auto app = Gtk::Application::create(argc, argv, "test.gtk");
-	App win;
-	return app->run(win);
-}
-
-#else
-
 #include <GtkCRNApp.h>
 #include <GdkCRNPixbuf.h>
 #include <CRNImage/CRNImageRGB.h>
@@ -117,102 +65,105 @@ class Titus: public GtkCRN::App
 			set_title(title);
 
 #ifdef CRN_USING_GTKMM3
-			auto ag = Gio::SimpleActionGroup::create();
 			// file menu
-			ag->add_action("open-image", sigc::mem_fun(this, &Titus::open_image));
-			ag->add_action("save-image", sigc::mem_fun(this, &Titus::save_image));
-			insert_action_group("app", ag);
-			/*
+			actions->add_action("open-image", sigc::mem_fun(this, &Titus::open_image));
+			actions->add_action("save-image", sigc::mem_fun(this, &Titus::save_image));
 			// toolbar
-			add_action_radio_integer("show-image", sigc::mem_fun(this, &Titus::on_image_toggled), 0);
+			actions->add_action_radio_integer("show-image", sigc::mem_fun(this, &Titus::on_image_toggled), 0);
 
 			// generic menu
-			add_action("generic-blur", sigc::mem_fun(this, &Titus::generic_blur));
-			add_action("generic-blur-x", sigc::mem_fun(this, &Titus::generic_blur_x));
-			add_action("generic-blur-y", sigc::mem_fun(this, &Titus::generic_blur_y));
-			add_action("generic-deriv-x", sigc::mem_fun(this, &Titus::generic_deriv_x));
-			add_action("generic-deriv-y", sigc::mem_fun(this, &Titus::generic_deriv_y));
-			add_action("generic-2deriv-x", sigc::mem_fun(this, &Titus::generic_2deriv_x));
-			add_action("generic-2deriv-y", sigc::mem_fun(this, &Titus::generic_2deriv_y));
+			actions->add_action("generic-menu");
+			actions->add_action("generic-blur", sigc::mem_fun(this, &Titus::generic_blur));
+			actions->add_action("generic-blur-x", sigc::mem_fun(this, &Titus::generic_blur_x));
+			actions->add_action("generic-blur-y", sigc::mem_fun(this, &Titus::generic_blur_y));
+			actions->add_action("generic-deriv-x", sigc::mem_fun(this, &Titus::generic_deriv_x));
+			actions->add_action("generic-deriv-y", sigc::mem_fun(this, &Titus::generic_deriv_y));
+			actions->add_action("generic-2deriv-x", sigc::mem_fun(this, &Titus::generic_2deriv_x));
+			actions->add_action("generic-2deriv-y", sigc::mem_fun(this, &Titus::generic_2deriv_y));
 
 			// rgb menu
-			add_action("rgb-red", sigc::mem_fun(this, &Titus::rgb_red));
-			add_action("rgb-green", sigc::mem_fun(this, &Titus::rgb_green));
-			add_action("rgb-blue", sigc::mem_fun(this, &Titus::rgb_blue));
-			add_action("rgb-hue", sigc::mem_fun(this, &Titus::rgb_hue));
-			add_action("rgb-saturation", sigc::mem_fun(this, &Titus::rgb_saturation));
-			add_action("rgb-pseudosaturation", sigc::mem_fun(this, &Titus::rgb_pseudosaturation));
-			add_action("rgb-value", sigc::mem_fun(this, &Titus::rgb_value));
-			add_action("rgb-y", sigc::mem_fun(this, &Titus::rgb_y));
-			add_action("rgb-l", sigc::mem_fun(this, &Titus::rgb_l));
-			add_action("rgb-lprime", sigc::mem_fun(this, &Titus::rgb_lprime));
+			actions->add_action("rgb-menu");
+			actions->add_action("rgb-red", sigc::mem_fun(this, &Titus::rgb_red));
+			actions->add_action("rgb-green", sigc::mem_fun(this, &Titus::rgb_green));
+			actions->add_action("rgb-blue", sigc::mem_fun(this, &Titus::rgb_blue));
+			actions->add_action("rgb-hue", sigc::mem_fun(this, &Titus::rgb_hue));
+			actions->add_action("rgb-saturation", sigc::mem_fun(this, &Titus::rgb_saturation));
+			actions->add_action("rgb-pseudosaturation", sigc::mem_fun(this, &Titus::rgb_pseudosaturation));
+			actions->add_action("rgb-value", sigc::mem_fun(this, &Titus::rgb_value));
+			actions->add_action("rgb-y", sigc::mem_fun(this, &Titus::rgb_y));
+			actions->add_action("rgb-l", sigc::mem_fun(this, &Titus::rgb_l));
+			actions->add_action("rgb-lprime", sigc::mem_fun(this, &Titus::rgb_lprime));
 
-			add_action("rgb-saturate", sigc::mem_fun(this, &Titus::rgb_saturate));
-			add_action("rgb-edge-preserving-filter", sigc::mem_fun(this, &Titus::rgb_epf));
+			actions->add_action("rgb-saturate", sigc::mem_fun(this, &Titus::rgb_saturate));
+			actions->add_action("rgb-edge-preserving-filter", sigc::mem_fun(this, &Titus::rgb_epf));
 
-			add_action("rgb-diff", sigc::mem_fun(this, &Titus::rgb_diff));
+			actions->add_action("rgb-diff", sigc::mem_fun(this, &Titus::rgb_diff));
 
 			// gray menu
-			add_action("gray-to-rgb", sigc::mem_fun(this, &Titus::gray_to_rgb));
-			add_action("gray-threshold", sigc::mem_fun(this, &Titus::gray_threshold));
-			add_action("gray-fisher", sigc::mem_fun(this, &Titus::gray_fisher));
-			add_action("gray-entropy", sigc::mem_fun(this, &Titus::gray_entropy));
-			add_action("gray-otsu", sigc::mem_fun(this, &Titus::gray_otsu));
-			add_action("gray-niblack", sigc::mem_fun(this, &Titus::gray_niblack));
-			add_action("gray-sauvola", sigc::mem_fun(this, &Titus::gray_sauvola));
-			add_action("gray-kmh", sigc::mem_fun(this, &Titus::gray_kmh));
-			add_action("gray-lmin", sigc::mem_fun(this, &Titus::gray_lmin));
-			add_action("gray-lmax", sigc::mem_fun(this, &Titus::gray_lmax));
+			actions->add_action("gray-menu");
+			actions->add_action("gray-to-rgb", sigc::mem_fun(this, &Titus::gray_to_rgb));
+			actions->add_action("gray-threshold", sigc::mem_fun(this, &Titus::gray_threshold));
+			actions->add_action("gray-fisher", sigc::mem_fun(this, &Titus::gray_fisher));
+			actions->add_action("gray-entropy", sigc::mem_fun(this, &Titus::gray_entropy));
+			actions->add_action("gray-otsu", sigc::mem_fun(this, &Titus::gray_otsu));
+			actions->add_action("gray-niblack", sigc::mem_fun(this, &Titus::gray_niblack));
+			actions->add_action("gray-sauvola", sigc::mem_fun(this, &Titus::gray_sauvola));
+			actions->add_action("gray-kmh", sigc::mem_fun(this, &Titus::gray_kmh));
+			actions->add_action("gray-lmin", sigc::mem_fun(this, &Titus::gray_lmin));
+			actions->add_action("gray-lmax", sigc::mem_fun(this, &Titus::gray_lmax));
 
-			add_action("gray-strokes", sigc::mem_fun(this, &Titus::gray_strokes));
-			add_action("gray-histo", sigc::mem_fun(this, &Titus::gray_histogram));
-			add_action("gray-rhisto", sigc::mem_fun(this, &Titus::gray_rhistogram));
+			actions->add_action("gray-strokes", sigc::mem_fun(this, &Titus::gray_strokes));
+			actions->add_action("gray-histo", sigc::mem_fun(this, &Titus::gray_histogram));
+			actions->add_action("gray-rhisto", sigc::mem_fun(this, &Titus::gray_rhistogram));
 
-			add_action("gray-diff", sigc::mem_fun(this, &Titus::gray_diff));
+			actions->add_action("gray-diff", sigc::mem_fun(this, &Titus::gray_diff));
 
 			// bw menu
-			add_action("bw-to-gray", sigc::mem_fun(this, &Titus::bw_to_gray));
-			add_action("bw-leftprof", sigc::mem_fun(this, &Titus::bw_leftprof));
-			add_action("bw-rightprof", sigc::mem_fun(this, &Titus::bw_rightprof));
-			add_action("bw-topprof", sigc::mem_fun(this, &Titus::bw_topprof));
-			add_action("bw-bottomprof", sigc::mem_fun(this, &Titus::bw_bottomprof));
-			add_action("bw-hproj", sigc::mem_fun(this, &Titus::bw_hproj));
-			add_action("bw-vproj", sigc::mem_fun(this, &Titus::bw_vproj));
+			actions->add_action("bw-menu");
+			actions->add_action("bw-to-gray", sigc::mem_fun(this, &Titus::bw_to_gray));
+			actions->add_action("bw-leftprof", sigc::mem_fun(this, &Titus::bw_leftprof));
+			actions->add_action("bw-rightprof", sigc::mem_fun(this, &Titus::bw_rightprof));
+			actions->add_action("bw-topprof", sigc::mem_fun(this, &Titus::bw_topprof));
+			actions->add_action("bw-bottomprof", sigc::mem_fun(this, &Titus::bw_bottomprof));
+			actions->add_action("bw-hproj", sigc::mem_fun(this, &Titus::bw_hproj));
+			actions->add_action("bw-vproj", sigc::mem_fun(this, &Titus::bw_vproj));
 
 			// differential menu
-			add_action("diff-diffuse", sigc::mem_fun(this, &Titus::diff_diffuse));
-			add_action("diff-gradgray", sigc::mem_fun(this, &Titus::diff_gradgray));
-			add_action("diff-gradrgb", sigc::mem_fun(this, &Titus::diff_gradrgb));
-			add_action("diff-gradmod", sigc::mem_fun(this, &Titus::diff_gradmod));
+			actions->add_action("diff-menu");
+			actions->add_action("diff-diffuse", sigc::mem_fun(this, &Titus::diff_diffuse));
+			actions->add_action("diff-gradgray", sigc::mem_fun(this, &Titus::diff_gradgray));
+			actions->add_action("diff-gradrgb", sigc::mem_fun(this, &Titus::diff_gradrgb));
+			actions->add_action("diff-gradmod", sigc::mem_fun(this, &Titus::diff_gradmod));
 
-			add_action("diff-div", sigc::mem_fun(this, &Titus::diff_div));
-			add_action("diff-laplacian", sigc::mem_fun(this, &Titus::diff_laplacian));
-			add_action("diff-edge", sigc::mem_fun(this, &Titus::diff_edge));
-			add_action("diff-corner", sigc::mem_fun(this, &Titus::diff_corner));
-			add_action("diff-k1", sigc::mem_fun(this, &Titus::diff_k1));
-			add_action("diff-k2", sigc::mem_fun(this, &Titus::diff_k2));
-			add_action("diff-hcorner", sigc::mem_fun(this, &Titus::diff_hcorner));
+			actions->add_action("diff-div", sigc::mem_fun(this, &Titus::diff_div));
+			actions->add_action("diff-laplacian", sigc::mem_fun(this, &Titus::diff_laplacian));
+			actions->add_action("diff-edge", sigc::mem_fun(this, &Titus::diff_edge));
+			actions->add_action("diff-corner", sigc::mem_fun(this, &Titus::diff_corner));
+			actions->add_action("diff-k1", sigc::mem_fun(this, &Titus::diff_k1));
+			actions->add_action("diff-k2", sigc::mem_fun(this, &Titus::diff_k2));
+			actions->add_action("diff-hcorner", sigc::mem_fun(this, &Titus::diff_hcorner));
 
-			add_action("diff-iso", sigc::mem_fun(this, &Titus::diff_iso));
-			add_action("diff-flow", sigc::mem_fun(this, &Titus::diff_flow));
-			add_action("diff-gaussc", sigc::mem_fun(this, &Titus::diff_gaussc));
-			add_action("diff-gradc", sigc::mem_fun(this, &Titus::diff_gradc));
+			actions->add_action("diff-iso", sigc::mem_fun(this, &Titus::diff_iso));
+			actions->add_action("diff-flow", sigc::mem_fun(this, &Titus::diff_flow));
+			actions->add_action("diff-gaussc", sigc::mem_fun(this, &Titus::diff_gaussc));
+			actions->add_action("diff-gradc", sigc::mem_fun(this, &Titus::diff_gradc));
 
-			add_action("diff-lx", sigc::mem_fun(this, &Titus::diff_lx));
-			add_action("diff-ly", sigc::mem_fun(this, &Titus::diff_ly));
-			add_action("diff-lxx", sigc::mem_fun(this, &Titus::diff_lxx));
-			add_action("diff-lxy", sigc::mem_fun(this, &Titus::diff_lxy));
-			add_action("diff-lyy", sigc::mem_fun(this, &Titus::diff_lyy));
-			add_action("diff-lw", sigc::mem_fun(this, &Titus::diff_lw));
-			add_action("diff-lvv", sigc::mem_fun(this, &Titus::diff_lvv));
-			add_action("diff-lvw", sigc::mem_fun(this, &Titus::diff_lvw));
-			add_action("diff-lww", sigc::mem_fun(this, &Titus::diff_lww));
-*/
+			actions->add_action("diff-lx", sigc::mem_fun(this, &Titus::diff_lx));
+			actions->add_action("diff-ly", sigc::mem_fun(this, &Titus::diff_ly));
+			actions->add_action("diff-lxx", sigc::mem_fun(this, &Titus::diff_lxx));
+			actions->add_action("diff-lxy", sigc::mem_fun(this, &Titus::diff_lxy));
+			actions->add_action("diff-lyy", sigc::mem_fun(this, &Titus::diff_lyy));
+			actions->add_action("diff-lw", sigc::mem_fun(this, &Titus::diff_lw));
+			actions->add_action("diff-lvv", sigc::mem_fun(this, &Titus::diff_lvv));
+			actions->add_action("diff-lvw", sigc::mem_fun(this, &Titus::diff_lvw));
+			actions->add_action("diff-lww", sigc::mem_fun(this, &Titus::diff_lww));
+
 			Glib::ustring ui_info =
 				"<interface>"
 				"	<menu id='MenuBar'>"
 				"		<submenu>"
 				"			<attribute name='label' translatable='yes'>_File</attribute>"
+				"			<attribute name='action'>app.file-menu</attribute>"
 				"			<section>"
 				"				<item>"
 				"					<attribute name='label' translatable='yes'>_Open</attribute>"
@@ -228,40 +179,111 @@ class Titus: public GtkCRN::App
 				"			<section>"
 				"				<item>"
 				"					<attribute name='label' translatable='yes'>_Quit</attribute>"
-				"					<attribute name='action'>app.app-quit</attribute>"
+				"					<attribute name='action'>app.quit</attribute>"
 				"					<attribute name='accel'>&lt;Primary&gt;q</attribute>"
+				"				</item>"
+				"			</section>"
+				"		</submenu>"
+				"		<submenu>"
+				"			<attribute name='label' translatable='yes'>_Generic</attribute>"
+				"			<attribute name='action'>app.generic-menu</attribute>"
+				"			<section>"
+				"				<item>"
+				"					<attribute name='label' translatable='yes'>_Gaussian blur</attribute>"
+				"					<attribute name='action'>app.generic-blur</attribute>"
+				"				</item>"
+				"				<item>"
+				"					<attribute name='label' translatable='yes'>Gaussian blur along _x</attribute>"
+				"					<attribute name='action'>app.generic-blur-x</attribute>"
+				"				</item>"
+				"				<item>"
+				"					<attribute name='label' translatable='yes'>Gaussian blur along _y</attribute>"
+				"					<attribute name='action'>app.generic-blur-y</attribute>"
+				"				</item>"
+				"			</section>"
+				"			<section>"
+				"				<item>"
+				"					<attribute name='label' translatable='yes'>Gaussian _derivative along x</attribute>"
+				"					<attribute name='action'>app.generic-deriv-x</attribute>"
+				"				</item>"
+				"				<item>"
+				"					<attribute name='label' translatable='yes'>Gaussian d_erivative along y</attribute>"
+				"					<attribute name='action'>app.generic-deriv-y</attribute>"
+				"				</item>"
+				"				<item>"
+				"					<attribute name='label' translatable='yes'>Gaussian _second derivative along x</attribute>"
+				"					<attribute name='action'>app.generic-2deriv-x</attribute>"
+				"				</item>"
+				"				<item>"
+				"					<attribute name='label' translatable='yes'>Gaussian se_cond derivative along y</attribute>"
+				"					<attribute name='action'>app.generic-2deriv-y</attribute>"
+				"				</item>"
+				"			</section>"
+				"		</submenu>"
+				"		<submenu>"
+				"			<attribute name='label' translatable='yes'>_RGB</attribute>"
+				"			<attribute name='action'>app.rgb-menu</attribute>"
+				"			<section>"
+				"				<item>"
+				"					<attribute name='label' translatable='yes'>_Red</attribute>"
+				"					<attribute name='action'>app.rgb-red</attribute>"
+				"				</item>"
+				"				<item>"
+				"					<attribute name='label' translatable='yes'>_Green</attribute>"
+				"					<attribute name='action'>app.rgb-green</attribute>"
+				"				</item>"
+				"				<item>"
+				"					<attribute name='label' translatable='yes'>_Blue</attribute>"
+				"					<attribute name='action'>app.rgb-blue</attribute>"
+				"				</item>"
+				"				<item>"
+				"					<attribute name='label' translatable='yes'>_Hue</attribute>"
+				"					<attribute name='action'>app.rgb-hue</attribute>"
+				"				</item>"
+				"				<item>"
+				"					<attribute name='label' translatable='yes'>_Saturation</attribute>"
+				"					<attribute name='action'>app.rgb-saturation</attribute>"
+				"				</item>"
+				"				<item>"
+				"					<attribute name='label' translatable='yes'>Pseudo s_aturation</attribute>"
+				"					<attribute name='action'>app.rgb-pseudosaturation</attribute>"
+				"				</item>"
+				"				<item>"
+				"					<attribute name='label' translatable='yes'>_Value</attribute>"
+				"					<attribute name='action'>app.rgb-value</attribute>"
+				"				</item>"
+				"				<item>"
+				"					<attribute name='label' translatable='yes'>Luminance (_YUV)</attribute>"
+				"					<attribute name='action'>app.rgb-y</attribute>"
+				"				</item>"
+				"				<item>"
+				"					<attribute name='label' translatable='yes'>Luminance (HS_L)</attribute>"
+				"					<attribute name='action'>app.rgb-l</attribute>"
+				"				</item>"
+				"				<item>"
+				"					<attribute name='label' translatable='yes'>Pseudo l_uminance</attribute>"
+				"					<attribute name='action'>app.rgb-lprime</attribute>"
+				"				</item>"
+				"			</section>"
+				"			<section>"
+				"				<item>"
+				"					<attribute name='label' translatable='yes'>_Saturate</attribute>"
+				"					<attribute name='action'>app.rgb-saturate</attribute>"
+				"				</item>"
+				"				<item>"
+				"					<attribute name='label' translatable='yes'>Edge _preserving filter</attribute>"
+				"					<attribute name='action'>app.rgb-edge-preserving-filter</attribute>"
+				"				</item>"
+				"			</section>"
+				"			<section>"
+				"				<item>"
+				"					<attribute name='label' translatable='yes'>_Differential</attribute>"
+				"					<attribute name='action'>app.rgb-diff</attribute>"
 				"				</item>"
 				"			</section>"
 				"		</submenu>"
 				"	</menu>"
 				/*
-				"		<menu action='generic-menu'>"
-				"			<menuitem action='generic-blur'/>"
-				"			<menuitem action='generic-blur-x'/>"
-				"			<menuitem action='generic-blur-y'/>"
-				"			<separator/>"
-				"			<menuitem action='generic-deriv-x'/>"
-				"			<menuitem action='generic-deriv-y'/>"
-				"			<menuitem action='generic-2deriv-x'/>"
-				"			<menuitem action='generic-2deriv-y'/>"
-				"		</menu>"
-				"		<menu action='rgb-menu'>"
-				"			<menuitem action='rgb-red'/>"
-				"			<menuitem action='rgb-green'/>"
-				"			<menuitem action='rgb-blue'/>"
-				"			<menuitem action='rgb-hue'/>"
-				"			<menuitem action='rgb-saturation'/>"
-				"			<menuitem action='rgb-pseudosaturation'/>"
-				"			<menuitem action='rgb-value'/>"
-				"			<menuitem action='rgb-y'/>"
-				"			<menuitem action='rgb-l'/>"
-				"			<menuitem action='rgb-lprime'/>"
-				"			<separator/>"
-				"			<menuitem action='rgb-saturate'/>"
-				"			<menuitem action='rgb-edge-preserving-filter'/>"
-				"			<separator/>"
-				"			<menuitem action='rgb-diff'/>"
-				"		</menu>"
 				"		<menu action='gray-menu'>"
 				"			<menuitem action='gray-to-rgb'/>"
 				"			<separator/>"
@@ -604,7 +626,8 @@ class Titus: public GtkCRN::App
 #endif
 			fdial.set_default_response(Gtk::RESPONSE_ACCEPT);
 
-			show_image(NONE);
+			//show_image(NONE);
+			signal_realize().connect(sigc::bind(sigc::mem_fun(this, &Titus::show_image), NONE));
 		}
 		virtual ~Titus() override {}
 
@@ -742,26 +765,21 @@ class Titus: public GtkCRN::App
 				img.set_pixbuf(Glib::RefPtr<Gdk::Pixbuf>(nullptr));
 			refreshing = false;
 
-#ifdef CRN_USING_GTKMM3
-			auto a = this;
-#else
-			auto &a = actions;
-#endif
-			//GtkCRN::set_enable_action(a, "save-image", currimg != nullptr);
+			GtkCRN::set_enable_action(actions, "save-image", currimg != nullptr);
 #ifdef CRN_USING_GTKMM3
 			// TODO GtkCRN::set_enable_action(a, "show-image", irgb != nullptr);
 #else
-			GtkCRN::set_enable_action(a, "generic-menu", mode != NONE);
-			GtkCRN::set_enable_action(a, "rgb-menu", irgb != nullptr);
-			GtkCRN::set_enable_action(a, "gray-menu", igray != nullptr);
-			GtkCRN::set_enable_action(a, "bw-menu", ibw != nullptr);
-			GtkCRN::set_enable_action(a, "diff-menu", diff != nullptr);
-
-			GtkCRN::set_enable_action(a, "show-rgb", irgb != nullptr);
-			GtkCRN::set_enable_action(a, "show-gray", igray != nullptr);
-			GtkCRN::set_enable_action(a, "show-bw", ibw != nullptr);
-			GtkCRN::set_enable_action(a, "show-other", iother != nullptr);
+			GtkCRN::set_enable_action(actions, "show-rgb", irgb != nullptr);
+			GtkCRN::set_enable_action(actions, "show-gray", igray != nullptr);
+			GtkCRN::set_enable_action(actions, "show-bw", ibw != nullptr);
+			GtkCRN::set_enable_action(actions, "show-other", iother != nullptr);
 #endif
+			GtkCRN::set_enable_action(actions, "generic-menu", mode != NONE);
+			GtkCRN::set_enable_action(actions, "rgb-menu", irgb != nullptr);
+			GtkCRN::set_enable_action(actions, "gray-menu", igray != nullptr);
+			GtkCRN::set_enable_action(actions, "bw-menu", ibw != nullptr);
+			GtkCRN::set_enable_action(actions, "diff-menu", diff != nullptr);
+
 		}
 #ifdef CRN_USING_GTKMM3
 		void on_image_toggled(int id)
@@ -1176,12 +1194,7 @@ class Titus: public GtkCRN::App
 			if (dial.run() == Gtk::RESPONSE_ACCEPT)
 			{
 				diff = std::make_unique<Differential>(Differential::NewGaussian(*irgb, Differential::RGBProjection::ABSMAX, sigma));
-#ifdef CRN_USING_GTKMM3
-				auto a = this;
-#else
-				auto &a = actions;
-#endif
-				GtkCRN::enable_action(a, "diff-menu");
+				GtkCRN::enable_action(actions, "diff-menu");
 			}
 		}
 		////////////////////////////////////////////////////////////
@@ -1318,12 +1331,7 @@ class Titus: public GtkCRN::App
 			if (dial.run() == Gtk::RESPONSE_ACCEPT)
 			{
 				diff = std::make_unique<Differential>(Differential::NewGaussian(*igray, sigma));
-#ifdef CRN_USING_GTKMM3
-				auto a = this;
-#else
-				auto &a = actions;
-#endif
-				GtkCRN::enable_action(a, "diff-menu");
+				GtkCRN::enable_action(actions, "diff-menu");
 			}
 		}
 		////////////////////////////////////////////////////////////
@@ -1645,4 +1653,3 @@ int main(int argc, char *argv[])
 #endif
 }
 
-#endif

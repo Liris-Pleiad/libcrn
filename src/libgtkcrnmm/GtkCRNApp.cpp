@@ -37,11 +37,16 @@ Gtk::Window*& App::internal_main_window() { static Gtk::Window *main = nullptr; 
 
 #ifdef CRN_USING_GTKMM3
 /*! Constructor. Creates Actions and adds them to UI manager. */
-App::App()
+App::App():
+	actions(Gio::SimpleActionGroup::create())
 {
-	add_action("app-quit", sigc::bind(sigc::hide_return(sigc::mem_fun(this, &App::ask_for_quit)), (GdkEventAny*)nullptr));
-	add_action("app-help", sigc::mem_fun(this, &App::help));
-	add_action("app-about", sigc::mem_fun(this, &App::about));
+	actions->add_action("file-menu");
+	actions->add_action("quit", sigc::bind(sigc::hide_return(sigc::mem_fun(this, &App::ask_for_quit)), (GdkEventAny*)nullptr));
+	actions->add_action("help-menu");
+	actions->add_action("help", sigc::mem_fun(this, &App::help));
+	actions->add_action("about", sigc::mem_fun(this, &App::about));
+
+	signal_realize().connect(sigc::bind(sigc::mem_fun(this, &Gtk::Widget::insert_action_group), "app", actions));
 
 	signal_delete_event().connect(sigc::mem_fun(this, &App::ask_for_quit));
 }
@@ -74,11 +79,7 @@ bool App::ask_for_quit(GdkEventAny* event)
 	if (dial.run() == Gtk::RESPONSE_YES)
 	{
 #ifdef CRN_USING_GTKMM3
-		auto app = get_application();
-		if (app)
-			app->quit();
-		else
-			exit(0);
+		hide();
 #else
 		Gtk::Main::quit();
 #endif
@@ -108,12 +109,17 @@ Glib::ustring App::ask_for_string(const Glib::ustring &msg, const Glib::ustring 
 	ent.set_text(defval);
 	ent.show();
 	dial.get_content_area()->pack_start(ent, false, true, 2);
-	//dial.add_button(Gtk::Stock::CANCEL, Gtk::RESPONSE_REJECT);
-	//dial.add_button(Gtk::Stock::OK, Gtk::RESPONSE_ACCEPT);
+#ifdef CRN_USING_GTKMM3
+	dial.add_button(_("_Cancel"), Gtk::RESPONSE_REJECT);
+	dial.add_button(_("_OK"), Gtk::RESPONSE_ACCEPT);
+#else
+	dial.add_button(Gtk::Stock::CANCEL, Gtk::RESPONSE_REJECT);
+	dial.add_button(Gtk::Stock::OK, Gtk::RESPONSE_ACCEPT);
 	std::vector<int> altbut;
 	altbut.push_back(Gtk::RESPONSE_ACCEPT);
 	altbut.push_back(Gtk::RESPONSE_CANCEL);
-	//dial.set_alternative_button_order_from_array(altbut);	
+	dial.set_alternative_button_order_from_array(altbut);	
+#endif
 	dial.set_default_response(Gtk::RESPONSE_ACCEPT);
 	if (dial.run() == Gtk::RESPONSE_ACCEPT)
 		return ent.get_text();
