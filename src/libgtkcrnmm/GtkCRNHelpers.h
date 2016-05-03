@@ -35,11 +35,12 @@ namespace GtkCRN
 
 	template<typename ACTIONMAPPTR> void set_enable_action(const ACTIONMAPPTR &grp, const Glib::ustring &action, bool enabled)
 	{
-		auto act = Glib::RefPtr<Gio::SimpleAction>::cast_dynamic(grp->lookup_action(action));
+		auto obj = grp->lookup_action(action);
+		auto act = Glib::RefPtr<Gio::SimpleAction>::cast_dynamic(obj);
 		if (act)
-			act->set_enabled(false);
+			act->set_enabled(enabled);
 		else
-			throw crn::ExceptionNotFound("GtkCRN::set_enable_action(): action not found");
+			throw crn::ExceptionNotFound(("GtkCRN::set_enable_action(): action not found: " + action).c_str());
 	}
 
 	template<typename ACTIONMAPPTR> void enable_action(const ACTIONMAPPTR &grp, const Glib::ustring &action)

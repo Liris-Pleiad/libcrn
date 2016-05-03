@@ -22,6 +22,59 @@
 #define GETTEXT_PACKAGE "titus"
 #include <CRN.h>
 #include <GtkCRNMain.h>
+
+#ifdef CRN_USING_GTKMM3
+
+#include <gtkmm.h>
+#include <iostream>
+
+class App: public Gtk::ApplicationWindow
+{
+	public:
+		App()
+		{/*
+			add_action("quit");
+		
+			// instanciate internal
+			try
+			{
+				auto builder = Gtk::Builder::create_from_string(
+					"<interface>"
+					"	<menu id='MenuBar'>"
+					"		<submenu>"
+					"			<attribute name='label' translatable='yes'>_File</attribute>"
+					"			<section>"
+					"				<item>"
+					"					<attribute name='label' translatable='yes'>_Quit</attribute>"
+					"					<attribute name='action'>quit</attribute>"
+					"				</item>"
+					"			</section>"
+					"		</submenu>"
+					"	</menu>"
+					"</interface>"
+				);
+				auto menumodel = Glib::RefPtr<Gio::Menu>::cast_dynamic(builder->get_object("MenuBar"));
+				auto *menu = new Gtk::MenuBar(menumodel);
+				add(*Gtk::manage(menu));
+				menu->show();
+			}
+			catch (Glib::Error &ex)
+			{
+				std::cout << "internal action instanciation: " << ex.what() << std::endl;
+			}*/
+		}
+	private:
+};
+
+int main(int argc, char *argv[])
+{
+	auto app = Gtk::Application::create(argc, argv, "test.gtk");
+	App win;
+	return app->run(win);
+}
+
+#else
+
 #include <GtkCRNApp.h>
 #include <GdkCRNPixbuf.h>
 #include <CRNImage/CRNImageRGB.h>
@@ -64,10 +117,12 @@ class Titus: public GtkCRN::App
 			set_title(title);
 
 #ifdef CRN_USING_GTKMM3
+			auto ag = Gio::SimpleActionGroup::create();
 			// file menu
-			add_action("open-image", sigc::mem_fun(this, &Titus::open_image));
-			add_action("save-image", sigc::mem_fun(this, &Titus::save_image));
-
+			ag->add_action("open-image", sigc::mem_fun(this, &Titus::open_image));
+			ag->add_action("save-image", sigc::mem_fun(this, &Titus::save_image));
+			insert_action_group("app", ag);
+			/*
 			// toolbar
 			add_action_radio_integer("show-image", sigc::mem_fun(this, &Titus::on_image_toggled), 0);
 
@@ -152,7 +207,7 @@ class Titus: public GtkCRN::App
 			add_action("diff-lvv", sigc::mem_fun(this, &Titus::diff_lvv));
 			add_action("diff-lvw", sigc::mem_fun(this, &Titus::diff_lvw));
 			add_action("diff-lww", sigc::mem_fun(this, &Titus::diff_lww));
-
+*/
 			Glib::ustring ui_info =
 				"<interface>"
 				"	<menu id='MenuBar'>"
@@ -161,23 +216,24 @@ class Titus: public GtkCRN::App
 				"			<section>"
 				"				<item>"
 				"					<attribute name='label' translatable='yes'>_Open</attribute>"
-				"					<attribute name='action'>open-image</attribute>"
+				"					<attribute name='action'>app.open-image</attribute>"
 				"					<attribute name='accel'>&lt;Primary&gt;o</attribute>"
 				"				</item>"
 				"				<item>"
 				"					<attribute name='label' translatable='yes'>_Save</attribute>"
-				"					<attribute name='action'>save-image</attribute>"
+				"					<attribute name='action'>app.save-image</attribute>"
 				"					<attribute name='accel'>&lt;Primary&gt;s</attribute>"
 				"				</item>"
 				"			</section>"
 				"			<section>"
 				"				<item>"
 				"					<attribute name='label' translatable='yes'>_Quit</attribute>"
-				"					<attribute name='action'>app-quit</attribute>"
+				"					<attribute name='action'>app.app-quit</attribute>"
 				"					<attribute name='accel'>&lt;Primary&gt;q</attribute>"
 				"				</item>"
 				"			</section>"
 				"		</submenu>"
+				"	</menu>"
 				/*
 				"		<menu action='generic-menu'>"
 				"			<menuitem action='generic-blur'/>"
@@ -285,7 +341,7 @@ class Titus: public GtkCRN::App
 				"	</toolbar>"
 				*/
 				"</interface>";
-
+			builder = Gtk::Builder::create_from_string(ui_info);
 #else
 			// file menu
 			actions->add(Gtk::Action::create("open-image", Gtk::Stock::OPEN, _("_Open image"), _("Open image")), sigc::mem_fun(this, &Titus::open_image));
@@ -513,6 +569,10 @@ class Titus: public GtkCRN::App
 			add(*vbox);
 
 #ifdef CRN_USING_GTKMM3
+			auto menumodel = Glib::RefPtr<Gio::Menu>::cast_dynamic(builder->get_object("MenuBar"));
+			auto *menu = new Gtk::MenuBar(menumodel);
+			vbox->pack_start(*Gtk::manage(menu), false, true, 0);
+			menu->show();
 #else
 			vbox->pack_start(*ui_manager->get_widget("/MenuBar"), false, true, 0);
 			vbox->pack_start(*ui_manager->get_widget("/ToolBar"), false, true, 0);
@@ -683,20 +743,25 @@ class Titus: public GtkCRN::App
 			refreshing = false;
 
 #ifdef CRN_USING_GTKMM3
-			auto &a = this;
+			auto a = this;
 #else
 			auto &a = actions;
 #endif
-			GtkCRN::set_enable_action(a, "save-image", currimg != nullptr);
+			//GtkCRN::set_enable_action(a, "save-image", currimg != nullptr);
+#ifdef CRN_USING_GTKMM3
+			// TODO GtkCRN::set_enable_action(a, "show-image", irgb != nullptr);
+#else
 			GtkCRN::set_enable_action(a, "generic-menu", mode != NONE);
 			GtkCRN::set_enable_action(a, "rgb-menu", irgb != nullptr);
 			GtkCRN::set_enable_action(a, "gray-menu", igray != nullptr);
 			GtkCRN::set_enable_action(a, "bw-menu", ibw != nullptr);
 			GtkCRN::set_enable_action(a, "diff-menu", diff != nullptr);
+
 			GtkCRN::set_enable_action(a, "show-rgb", irgb != nullptr);
 			GtkCRN::set_enable_action(a, "show-gray", igray != nullptr);
 			GtkCRN::set_enable_action(a, "show-bw", ibw != nullptr);
 			GtkCRN::set_enable_action(a, "show-other", iother != nullptr);
+#endif
 		}
 #ifdef CRN_USING_GTKMM3
 		void on_image_toggled(int id)
@@ -1112,7 +1177,7 @@ class Titus: public GtkCRN::App
 			{
 				diff = std::make_unique<Differential>(Differential::NewGaussian(*irgb, Differential::RGBProjection::ABSMAX, sigma));
 #ifdef CRN_USING_GTKMM3
-				auto &a = this;
+				auto a = this;
 #else
 				auto &a = actions;
 #endif
@@ -1254,7 +1319,7 @@ class Titus: public GtkCRN::App
 			{
 				diff = std::make_unique<Differential>(Differential::NewGaussian(*igray, sigma));
 #ifdef CRN_USING_GTKMM3
-				auto &a = this;
+				auto a = this;
 #else
 				auto &a = actions;
 #endif
@@ -1532,6 +1597,9 @@ class Titus: public GtkCRN::App
 			std::map<Gtk::CheckButton*, bool*> booleans;
 	};
 
+#ifdef CRN_USING_GTKMM3
+		Glib::RefPtr<Gtk::Builder> builder;
+#endif
 		GtkCRN::Image img;
 		int current_image;
 		Gtk::FileChooserDialog fdial;
@@ -1577,3 +1645,4 @@ int main(int argc, char *argv[])
 #endif
 }
 
+#endif
