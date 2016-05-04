@@ -19,11 +19,13 @@
  * \author Yann LEYDIER
  */
 
-#include <libgtkcrnmm_config.h>
-#include <CRNi18n.h>
 #include <GtkCRNDrawingPanel.h>
+
+#ifndef CRN_USING_GTKMM3
+
 #include <CRNIO/CRNIO.h>
 #include <GdkCRNPixbuf.h>
+#include <CRNi18n.h>
 
 using namespace GtkCRN;
 
@@ -328,3 +330,4 @@ void DrawingPanel::on_thickness_set()
 	queue_draw();
 }
 
+#endif

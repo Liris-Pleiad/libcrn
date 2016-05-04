@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libcrn 3.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-05-04 09:42+0200\n"
+"POT-Creation-Date: 2016-05-04 14:17+0200\n"
 "PO-Revision-Date: 2015-11-24 13:57+0100\n"
 "Last-Translator: Yann LEYDIER <yann@leydier.info>\n"
 "Language-Team: French <>\n"
@@ -385,39 +385,39 @@ msgstr "Détails"
 msgid "Unhandled exception caught."
 msgstr "Exception non gérée."
 
-#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNDrawingPanel.cpp:37
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNDrawingPanel.cpp:39
 msgid "_Background Color…"
 msgstr "Couleur du _Fond"
 
-#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNDrawingPanel.cpp:37
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNDrawingPanel.cpp:39
 msgid "Background Color"
 msgstr "Couleur du Fond"
 
-#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNDrawingPanel.cpp:39
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNDrawingPanel.cpp:41
 msgid "Background"
 msgstr "Fond"
 
-#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNDrawingPanel.cpp:44
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNDrawingPanel.cpp:46
 msgid "_Foreground Color…"
 msgstr "Couleur des Fo_rmes…"
 
-#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNDrawingPanel.cpp:44
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNDrawingPanel.cpp:46
 msgid "Foreground Color"
 msgstr "Couleur des Formes"
 
-#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNDrawingPanel.cpp:46
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNDrawingPanel.cpp:48
 msgid "Foreground"
 msgstr "Formes"
 
-#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNDrawingPanel.cpp:56
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNDrawingPanel.cpp:58
 msgid "Set _Thickness"
 msgstr "Changer l'_Épaisseur"
 
-#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNDrawingPanel.cpp:56
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNDrawingPanel.cpp:58
 msgid "Set Thickness"
 msgstr "Changer l'Épaisseur"
 
-#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNDrawingPanel.cpp:92
+#: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNDrawingPanel.cpp:94
 #: /home/yleydier/prg/v4/libcrn/src/libgtkcrnmm/GtkCRNImage.cpp:209
 msgid "null or negative zoom value."
 msgstr "valeur de zoom nulle ou négative."

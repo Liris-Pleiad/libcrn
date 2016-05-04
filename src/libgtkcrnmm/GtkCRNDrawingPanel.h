@@ -23,6 +23,9 @@
 #define GtkCRNDrawingPanel_HEADER
 
 #include <libgtkcrnmm_config.h>
+
+#ifndef CRN_USING_GTKMM3
+
 #include <gtkmm.h>
 #include <CRNGeometry/CRNPoint2DDouble.h>
 #include <GtkCRNColorAction.h>
@@ -118,3 +121,4 @@ namespace GtkCRN
 
 #endif
 
+#endif

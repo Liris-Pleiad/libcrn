@@ -44,38 +44,6 @@ namespace crn
 		public:
 			/*! \brief Default constructor */
 			Vector();
-			/*! \brief Constructor from a std::vector containing data that can be casted or converted to SObject 
-			 * \param[in]	vec	a vector of objects than can be converted to SObject
-			 * \param[in]	protos	the protocols that must be met by the elements of the vector
-			 */
-			// XXX TODO
-			//template<typename T> Vector(std::vector<T> &vec, Protocol protos = Protocol::Object):
-				//protocols(protos)
-			//{
-				//for (typename std::vector<T>::iterator it = vec.begin(); it != vec.end(); ++it)
-				//{
-					//SObject o(Data::ToCRN(*it));
-					//if (!o->Implements(protocols))
-						//throw ExceptionProtocol("Vector(std::vector): incompatible protocols");
-					//data.push_back(o);
-				//}
-			//}
-			/*! \brief Constructor from iterators pointing to data that can be casted or converted to SObject
-			 * \param[in]	begin_it	first iterator on objects than can be converted to SObject
-			 * \param[in]	end_it	end iterator
-			 * \param[in]	protos	the protocols that must be met by the elements of the vector
-			 */
-			//template<typename IT> Vector(const IT &begin_it, const IT &end_it, Protocol protos = Protocol::Object):
-				//protocols(protos)
-			//{
-				//for (IT it = begin_it; it != end_it; ++it)
-				//{
-					//SObject o(Data::ToCRN(*it));
-					//if (!o->Implements(protocols))
-						//throw ExceptionProtocol("Vector(IT begin, IT end): incompatible protocols");
-					//data.push_back(o);
-				//}
-			//}
 			/*! \brief Destructor */
 			virtual ~Vector() override;
 

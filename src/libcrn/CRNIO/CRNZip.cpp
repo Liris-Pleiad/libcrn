@@ -1,4 +1,4 @@
-/* Copyright 2013-2014 INSA-Lyon, CoReNum
+/* Copyright 2013-2016 INSA-Lyon, CoReNum
  * 
  * This file is part of libcrn.
  * 
@@ -58,7 +58,7 @@ struct Zip::Impl
 					// do not throw because it is quite evil
 					CRNError(zip_strerror(zipfile));
 				}
-				/* TODO check if needed with mingw-w64
+				/* TODO check if needed
 #ifdef CRN_PF_MSVC
 				// remove read-only attribute...
 				SetFileAttributes(String(fname).CWStr(), FILE_ATTRIBUTE_NORMAL);
@@ -200,7 +200,7 @@ void Zip::Save()
 		{
 			throw ExceptionIO(zip_strerror(pimpl->zipfile));
 		}
-		/* TODO check if needed with mingw-w64!
+		/* TODO check if needed
 #ifdef CRN_PF_MSVC
 		// remove read-only attribute...
 		SetFileAttributes(String(pimpl->fname).CWStr(), FILE_ATTRIBUTE_NORMAL);
