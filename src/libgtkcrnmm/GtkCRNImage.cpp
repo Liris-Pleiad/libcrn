@@ -130,11 +130,11 @@ Image::Image():
 
 	// actions
 #ifdef CRN_USING_GTKMM3
-	image_actions->add_action("image-zoom-in", sigc::mem_fun(this, &Image::zoom_in));
-	image_actions->add_action("image-zoom-out", sigc::mem_fun(this, &Image::zoom_out));
-	image_actions->add_action("image-zoom-100", sigc::mem_fun(this, &Image::zoom_100));
-	image_actions->add_action("image-zoom-fit", sigc::mem_fun(this, &Image::zoom_fit));
-	image_actions->add_action("image-clear-user-selection", sigc::mem_fun(this, &Image::clear_selection));
+	image_actions->add_action("zoom-in", sigc::mem_fun(this, &Image::zoom_in));
+	image_actions->add_action("zoom-out", sigc::mem_fun(this, &Image::zoom_out));
+	image_actions->add_action("zoom-100", sigc::mem_fun(this, &Image::zoom_100));
+	image_actions->add_action("zoom-fit", sigc::mem_fun(this, &Image::zoom_fit));
+	image_actions->add_action("clear-user-selection", sigc::mem_fun(this, &Image::clear_selection));
 #else
 	image_actions->add(Gtk::Action::create("image-zoom-in", Gtk::Stock::ZOOM_IN), sigc::mem_fun(this, &Image::zoom_in));
 	image_actions->add(Gtk::Action::create("image-zoom-out", Gtk::Stock::ZOOM_OUT), sigc::mem_fun(this, &Image::zoom_out));

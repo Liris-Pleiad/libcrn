@@ -92,11 +92,11 @@ namespace GtkCRN
 			/*! \brief Creates a tool button connected to the zoom_fit method.
 			 *
 			 * Creates a tool button connected to the zoom_fit method. Valid names are:
-			 *   - image-zoom-in
-			 *   - image-zoom-out
-			 *   - image-zoom-100
-			 *   - image-zoom-fit
-			 *   - image-clear-user-selection
+			 *   - zoom-in
+			 *   - zoom-out
+			 *   - zoom-100
+			 *   - zoom-fit
+			 *   - clear-user-selection
 			 */
 			Glib::RefPtr<Gio::SimpleActionGroup> get_actions() { return image_actions; }
 #else
