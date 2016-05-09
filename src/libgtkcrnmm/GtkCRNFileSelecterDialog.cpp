@@ -1,4 +1,4 @@
-/* Copyright 2010-2013 CoReNum, INSA-Lyon
+/* Copyright 2010-2016 CoReNum, INSA-Lyon
  * 
  * This file is part of libgtkcrnmm.
  * 
@@ -24,8 +24,8 @@
 #include <GtkCRNApp.h>
 #include <CRNi18n.h>
 
-#ifdef CRN_USING_GTKMM3
-#	define get_vbox get_content_area // XXX
+#ifndef CRN_USING_GTKMM3
+#	define get_content_area get_vbox
 #endif
 
 using namespace GtkCRN;
@@ -63,7 +63,7 @@ FileSelecterDialog::FileSelecterDialog(const crn::Path &p, Gtk::Window *parent):
 	set_default_response(Gtk::RESPONSE_ACCEPT);
 	fsel.show();
 	fsel.signal_selection_activated().connect(sigc::mem_fun(this, &FileSelecterDialog::on_file_activated));
-	get_vbox()->pack_start(fsel, true, true, 0);
+	get_content_area()->pack_start(fsel, true, true, 0);
 	set_default_size(384, 512);
 }
 

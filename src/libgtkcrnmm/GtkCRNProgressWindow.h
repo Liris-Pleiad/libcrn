@@ -78,7 +78,11 @@ namespace GtkCRN
 
 			bool terminate_on_exception;
 
+#ifdef CRN_USING_GTKMM3
+			Gtk::Box vbox;
+#else
 			Gtk::VBox vbox;
+#endif
 			Gtk::Button closebut;
 
 			sigc::signal<void> done;

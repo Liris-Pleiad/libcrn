@@ -32,7 +32,12 @@ namespace GtkCRN
 	/*! \brief Base class to create an application
 	 * \ingroup gtkcrn
 	 */
-	class App: public Gtk::Window
+	class App:
+#ifdef CRN_USING_GTKMM3
+		public Gtk::ApplicationWindow
+#else
+		public Gtk::Window
+#endif
 	{
 		public:
 			/*! \brief Constructor. Creates Actions and adds them to UI manager.
@@ -72,8 +77,12 @@ namespace GtkCRN
 			/*! \brief Shows a dialog asking for a single string */
 			Glib::ustring ask_for_string(const Glib::ustring &msg, const Glib::ustring &defval = "");
 
+#ifdef CRN_USING_GTKMM3
+			Glib::RefPtr<Gio::SimpleActionGroup> actions;
+#else
 			Glib::RefPtr<Gtk::UIManager> ui_manager; /*!< add your action groups to the ui manager to easily create menus and toolbars */
 			Glib::RefPtr<Gtk::ActionGroup> actions; /*!< default actions */
+#endif
 
 			static Gtk::Window*& internal_main_window();
 	};

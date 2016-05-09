@@ -51,10 +51,9 @@ namespace GtkCRN
 
 		private:
 			static bool init_done; /*!< is Gtk initialized? */
-			//Glib::RefPtr<Gtk::IconFactory> iconfac; /*!< icon factory to handle libcrn's icons */
 #ifdef CRN_USING_GTKMM3
-			//std::vector<Glib::RefPtr<Gtk::IconSet>> icons; /*!< store for libcrn's icons */
 #else /* CRN_USING_GTKMM3 */
+			Glib::RefPtr<Gtk::IconFactory> iconfac; /*!< icon factory to handle libcrn's icons */
 			std::vector<Gtk::IconSet> icons; /*!< store for libcrn's icons */
 #endif /* CRN_USING_GTKMM3 */
 	};

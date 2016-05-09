@@ -26,7 +26,7 @@
 #include <CRNIO/CRNIO.h>
 #include <CRNMath/CRNMath.h>
 #include <CRNData/CRNForeach.h>
-#define get_vbox get_content_area // XXX
+
 using namespace GtkCRN;
 
 const crn::String SelectionBox::reorderKey(U"GtkCRN::SelectionBox::Reorder");
@@ -250,15 +250,21 @@ bool SelectionBox::keyevents(GdkEventKey *ev)
 	return false;
 }
 
+#ifdef CRN_USING_GTKMM3
 /*! An object has been dropped on a target, we send the data
  *
  * \param[in]	dropon	the element on which the drop was done
  * \param[in]	selection_data	the content of the drop in raw text
  * \param[in]	info	reorderId (current selection will be moved below dropon) or dropId (selection data contains a list of URIs)
  */
-#ifdef CRN_USING_GTKMM3
 void SelectionBox::dodrop(Element *dropon, const Gtk::SelectionData *selection_data, int info)
 #else /* CRN_USING_GTKMM3 */
+/*! An object has been dropped on a target, we send the data
+ *
+ * \param[in]	dropon	the element on which the drop was done
+ * \param[in]	selection_data	the content of the drop in raw text
+ * \param[in]	info	reorderId (current selection will be moved below dropon) or dropId (selection data contains a list of URIs)
+ */
 void SelectionBox::dodrop(Element *dropon, const GtkSelectionData *selection_data, int info)
 #endif /* CRN_USING_GTKMM3 */
 {
@@ -463,16 +469,6 @@ bool SelectionBox::autoscroll()
 	return true;
 }
 
-#ifdef CRN_USING_GTKMM3
-#ifdef __WIN32__XXX
-void SelectionBox::windrop(GtkWidget *widget, GdkDragContext *context, gint x, gint y, GtkSelectionData *selection_data, guint target_type, guint time, std::pair<SelectionBox*, Element*> *data)
-{
-	//el->selbox->drop(el, context, x, y, selection_data, target_type, time);
-	data->first->dodrop(data->second, selection_data, target_type);
-}
-#endif
-
-#endif /* CRN_USING_GTKMM3 */
 SelectionBox::DropZone::DropZone(const sigc::slot7<void, Element*, const Glib::RefPtr<Gdk::DragContext>&, int, int, const Gtk::SelectionData&, guint, guint> &dropfun, SelectionBox *sb, Element *el):in(false)
 {
 	show();
@@ -483,29 +479,13 @@ SelectionBox::DropZone::DropZone(const sigc::slot7<void, Element*, const Glib::R
 	drag_dest_set(tl, Gtk::DEST_DEFAULT_MOTION|Gtk::DEST_DEFAULT_DROP, Gdk::ACTION_COPY|Gdk::ACTION_MOVE);
 	//drag_dest_add_uri_targets();
 	//drag_dest_add_text_targets();
-#ifdef CRN_USING_GTKMM3
-#ifdef __WIN32__XXX
-	callback_data.first = sb;
-	callback_data.second = el;
-	g_signal_connect(G_OBJECT(gobj()), "drag-data-received", G_CALLBACK(SelectionBox::windrop), &callback_data);
-	CRNVerbose(int(el));
-#else
-#endif /* CRN_USING_GTKMM3 */
 	signal_drag_data_received().connect(sigc::bind<0>(dropfun, el));
-#ifdef CRN_USING_GTKMM3
-#endif
-#endif /* CRN_USING_GTKMM3 */
 	signal_drag_motion().connect(sigc::mem_fun(this, &DropZone::drag_motion));
 	signal_drag_leave().connect(sigc::mem_fun(this, &DropZone::drag_leave));
 #ifdef CRN_USING_GTKMM3
 	signal_draw().connect(sigc::mem_fun(this, &DropZone::expose));
 #else /* CRN_USING_GTKMM3 */
 	signal_expose_event().connect(sigc::mem_fun(this, &DropZone::expose));
-#ifdef __WIN32__XXX
-	add_events(Gdk::ENTER_NOTIFY_MASK | Gdk::LEAVE_NOTIFY_MASK);
-	signal_enter_notify_event().connect(sigc::mem_fun(this, &DropZone::on_mouse_enter));
-	signal_leave_notify_event().connect(sigc::mem_fun(this, &DropZone::on_mouse_leave));
-#endif
 #endif /* CRN_USING_GTKMM3 */
 	
 	set_size_request(10, 10);
@@ -518,7 +498,6 @@ bool SelectionBox::DropZone::drag_motion(const Glib::RefPtr<Gdk::DragContext>& c
 		in = true;
 #ifdef CRN_USING_GTKMM3
 		get_style_property("theme-fg-color", bg);
-		//get_window()->set_background(get_style()->get_fg(get_state()));
 #else /* CRN_USING_GTKMM3 */
 		get_window()->set_background(get_style()->get_fg(get_state()));
 #endif /* CRN_USING_GTKMM3 */
@@ -554,26 +533,6 @@ bool SelectionBox::DropZone::expose(GdkEventExpose *ev)
 	return true;
 }
 
-#ifdef CRN_USING_GTKMM3
-#ifdef __WIN32__XXX
-bool SelectionBox::DropZone::on_mouse_enter(GdkEventCrossing* event)
-{
-	in = true;
-	get_window()->set_background(get_style()->get_fg(get_state()));
-	queue_draw();
-	return false;
-}
-
-bool SelectionBox::DropZone::on_mouse_leave(GdkEventCrossing* event)
-{
-	in = false;
-	get_window()->set_background(get_style()->get_bg(get_state()));
-	queue_draw();
-	return false;
-}
-#endif
-
-#endif /* CRN_USING_GTKMM3 */
 SelectionBox::Element::Element(Gtk::Widget &w, SelectionBox *const sb):
 	widget(w),
 	dz(sigc::mem_fun(sb, &SelectionBox::drop), sb, this)
@@ -591,7 +550,8 @@ SelectionBox::Element::Element(Gtk::Widget &w, SelectionBox *const sb):
 	// make the color of the button more visible when selected
 #ifdef CRN_USING_GTKMM3
 	Gdk::RGBA bgcol;
-	get_style_property("theme-bg-color", bgcol); // XXX
+	get_style_property("theme-bg-color", bgcol);
+	// TODO
 	//tb.override_background_color(bgcol, Gtk::STATE_FLAG_ACTIVE);
 	//tb.override_background_color(bgcol, Gtk::STATE_FLAG_PRELIGHT);
 #else

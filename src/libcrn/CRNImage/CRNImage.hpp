@@ -1615,7 +1615,7 @@ namespace crn
 			auto srcrowoffset = row * src.GetWidth();
 			for (size_t x = 0; x < src.GetWidth(); ++x)
 			{ // scan original pixels
-				auto pix = src.At(x + srcrowoffset);
+				T pix = src.At(x + srcrowoffset); // do not use auto because of vector<bool>!
 				auto prevPix = DecimalType<T>(pix) * prevWeight;
 				// compute value to copy
 				auto tmp = DecimalType<T>(pix);
@@ -1667,7 +1667,7 @@ namespace crn
 			auto oldPrevPix = DecimalType<T>(bgColor) * prevWeight;
 			for (size_t y = 0; y < src.GetHeight(); ++y)
 			{ // scan original pixels
-				auto pix = src.At(col, y);
+				T pix = src.At(col, y); // do not use auto because of vector<bool>!
 				auto prevPix = DecimalType<T>(pix) * prevWeight;
 				// compute value to copy
 				auto tmp = DecimalType<T>(pix);

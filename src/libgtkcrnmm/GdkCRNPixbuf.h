@@ -1,4 +1,4 @@
-/* Copyright 2010-2015 CoReNum, INSA-Lyon
+/* Copyright 2010-2016 CoReNum, INSA-Lyon
  * 
  * This file is part of libgtkcrnmm.
  * 
@@ -40,6 +40,7 @@ namespace GdkCRN
 	/*! \brief Creates a crn::Image from a Gdk::Pixbuf 
 	 * \ingroup pixbuf */
 	 crn::ImageRGB CRNImageFromPixbuf(const Glib::RefPtr<Gdk::Pixbuf> &pb);
+
 #ifdef CRN_USING_GTKMM3
 	 /*! \brief Creates a Gdk::Color from a crn::Pixel
 	 * \ingroup pixbuf */

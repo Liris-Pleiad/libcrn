@@ -19,12 +19,15 @@
  * \author Yann LEYDIER
  */
 
+
 #include <GtkCRNColorAction.h>
+#ifndef CRN_USING_GTKMM3
+
 #include <CRNIO/CRNIO.h>
 #include <GtkCRNApp.h>
 #include <gtkmm/scalebutton.h>
 #include <CRNi18n.h>
-#define get_vbox get_content_area // XXX
+
 using namespace GtkCRN;
 
 /*! Default constructor */
@@ -33,7 +36,6 @@ ColorAction::ColorAction()
 {
 }
 
-#ifndef CRN_USING_GTKMM3
 /*! Constructor 
  * \param[in]	name	the id of the action
  * \param[in]	stock_id	a Gtk::Stock item
@@ -43,15 +45,16 @@ ColorAction::ColorAction()
 ColorAction::ColorAction(const Glib::ustring& name, const Gtk::StockID& stock_id, const Glib::ustring& label, const Glib::ustring& tooltip):
 	Gtk::Action(name, stock_id, label, tooltip){
 }
-#endif
+
 /*! Constructor 
  * \param[in]	name	the id of the action
  * \param[in]	icon_name	an icon in the default path
  * \param[in]	label	the label of the action
  * \param[in]	tooltip	the tooltip of the action
  */
-ColorAction::ColorAction(const Glib::ustring& name, const Glib::ustring& icon_name, const Glib::ustring& label, const Glib::ustring& tooltip):
-	Gtk::Action(name, icon_name, label, tooltip){
+ColorAction::ColorAction(const Glib::ustring& name, const Glib::ustring& icon_name, const Glib::ustring& label, const Glib::ustring& tooltip) :
+	Gtk::Action(name, icon_name, label, tooltip)
+{
 }
 
 /*! Creates a blank ColorAction 
@@ -70,14 +73,8 @@ Glib::RefPtr<ColorAction> ColorAction::create()
  */
 Glib::RefPtr<ColorAction> ColorAction::create(const Glib::ustring& name, const Glib::ustring& label, const Glib::ustring& tooltip)
 {
-#ifndef CRN_USING_GTKMM3
 	return Glib::RefPtr<ColorAction>(new ColorAction(name, Gtk::StockID(), label, tooltip));
-#else
-	return Glib::RefPtr<ColorAction>(new ColorAction(name, label, tooltip));
-#endif
 }
-
-#ifndef CRN_USING_GTKMM3
 
 /*! Creates a ColorAction
  * \param[in]	name	the id of the action
@@ -90,7 +87,7 @@ Glib::RefPtr<ColorAction> ColorAction::create(const Glib::ustring& name, const G
 {
 	return Glib::RefPtr<ColorAction>(new ColorAction(name, stock_id, label, tooltip));
 }
-#endif
+
 /*! Creates a ColorAction
  * \param[in]	name	the id of the action
  * \param[in]	icon_name	an icon in the default path
@@ -127,11 +124,7 @@ Gtk::Widget* ColorAction::create_tool_item_vfunc()
 	Gtk::ColorButton *cb = Gtk::manage(new Gtk::ColorButton(color));
 	cb->show();
 	cb->signal_color_set().connect(sigc::bind(sigc::mem_fun(this, &ColorAction::on_button), cb));
-#ifdef CRN_USING_GTKMM3
-	update_color.connect(sigc::mem_fun(cb, &Gtk::ColorButton::set_rgba));
-#else /* CRN_USING_GTKMM3 */
 	update_color.connect(sigc::mem_fun(cb, &Gtk::ColorButton::set_color));
-#endif /* CRN_USING_GTKMM3 */
 	it->add(*cb);
 	return it;
 }
@@ -139,11 +132,7 @@ Gtk::Widget* ColorAction::create_tool_item_vfunc()
 /*! Asks for a color */
 void ColorAction::dialog()
 {
-#ifdef CRN_USING_GTKMM3
-	Gtk::ColorChooserDialog dial;
-#else /* CRN_USING_GTKMM3 */
 	Gtk::ColorSelectionDialog dial;
-#endif /* CRN_USING_GTKMM3 */
 	Gtk::Window *mainwin = App::get_main_window();
 	if (mainwin)
 	{
@@ -155,19 +144,11 @@ void ColorAction::dialog()
 		dial.set_position(Gtk::WIN_POS_CENTER);
 	}
 	dial.set_modal(true);	
-#ifdef CRN_USING_GTKMM3
-	dial.set_rgba(color);
-#else /* CRN_USING_GTKMM3 */
 	dial.get_color_selection()->set_current_color(color);
-#endif /* CRN_USING_GTKMM3 */
 	dial.show();
 	if (dial.run() == Gtk::RESPONSE_OK)
 	{
-#ifdef CRN_USING_GTKMM3
-		set_color(dial.get_rgba());
-#else /* CRN_USING_GTKMM3 */
 		set_color(dial.get_color_selection()->get_current_color());
-#endif /* CRN_USING_GTKMM3 */
 	}
 }
 
@@ -176,50 +157,37 @@ void ColorAction::dialog()
  */
 void ColorAction::on_button(Gtk::ColorButton* but)
 {
-#ifdef CRN_USING_GTKMM3
-	set_color(but->get_rgba());
-#else /* CRN_USING_GTKMM3 */
 	set_color(but->get_color());
-#endif /* CRN_USING_GTKMM3 */
 }
 
 /*! Customizes a menu item
  * \param[in]	col	the new color
  * \param[in]	mit	the menu item to customize
  */
-#ifdef CRN_USING_GTKMM3
-void ColorAction::change_menu_color(const Gdk::RGBA &col, Gtk::MenuItem* mit)
-#else /* CRN_USING_GTKMM3 */
 void ColorAction::change_menu_color(const Gdk::Color &col, Gtk::MenuItem* mit)
-#endif /* CRN_USING_GTKMM3 */
 {
-	//Gtk::ImageMenuItem *mi = dynamic_cast<Gtk::ImageMenuItem*>(mit);
-	//if (mi)
+	Gtk::ImageMenuItem *mi = dynamic_cast<Gtk::ImageMenuItem*>(mit);
+	if (mi)
 	{
 		int w, h;
 		Gtk::IconSize::lookup(Gtk::ICON_SIZE_MENU, w, h);
 		Gtk::DrawingArea *da = Gtk::manage(new Gtk::DrawingArea);
-#ifdef CRN_USING_GTKMM3
-		//da->override_background_color(col, Gtk::STATE_FLAG_NORMAL);
-#else /* CRN_USING_GTKMM3 */
 		da->modify_bg(Gtk::STATE_NORMAL, col);
-#endif /* CRN_USING_GTKMM3 */
 		da->set_size_request(w, h);
 		da->show();
-		//mi->set_image(*da);
+		mi->set_image(*da);
 	}
 }
 
 /*! Sets the selected color 
  * \param[in]	col the new color
  */
-#ifdef CRN_USING_GTKMM3
-void ColorAction::set_color(const Gdk::RGBA &col)
-#else /* CRN_USING_GTKMM3 */
 void ColorAction::set_color(const Gdk::Color &col)
-#endif /* CRN_USING_GTKMM3 */
 {
 	color = col;
 	update_color.emit(color);
 	changed.emit();
 }
+
+#endif
+

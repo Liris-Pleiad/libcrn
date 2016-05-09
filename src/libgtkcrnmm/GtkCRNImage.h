@@ -40,10 +40,11 @@ namespace GtkCRN
 	 * Selections are combinations of a label and/or a rectangle. They are stored in selection lists that define the colors and the behaviour of the selections.
 	 * \ingroup gtkcrn
 	 */
+	class Image:
 #ifdef CRN_USING_GTKMM3
-	class Image: public Gtk::Grid
+		public Gtk::Grid
 #else
-	class Image : public Gtk::Table
+		public Gtk::Table
 #endif
 	{
 		public:
@@ -53,11 +54,9 @@ namespace GtkCRN
 			virtual ~Image() override;
 
 			/*! \brief Are the rulers visible? */
-#ifdef CRN_USING_GTKMM3
-			//void set_rulers_visible(bool is_visible);
-#else /* CRN_USING_GTKMM3 */
+#ifndef CRN_USING_GTKMM3
 			void set_rulers_visible(bool is_visible);
-#endif /* CRN_USING_GTKMM3 */
+#endif /* !CRN_USING_GTKMM3 */
 
 			/*! \brief Returns to offset of the image (at scale 1:1) */
 			const crn::Point2DInt& get_offset() { return pos; }
@@ -84,11 +83,23 @@ namespace GtkCRN
 
 			/*! \brief Sets the cursor in user mouse mode */
 #ifdef CRN_USING_GTKMM3
-			void set_user_cursor(const Glib::RefPtr<Gdk::Cursor> &cur);
+			void set_user_cursor(const Gdk::CursorType &cur);
 #else /* CRN_USING_GTKMM3 */
 			void set_user_cursor(const Gdk::Cursor &cur);
 #endif /* CRN_USING_GTKMM3 */
 
+#ifdef CRN_USING_GTKMM3
+			/*! \brief Creates a tool button connected to the zoom_fit method.
+			 *
+			 * Creates a tool button connected to the zoom_fit method. Valid names are:
+			 *   - zoom-in
+			 *   - zoom-out
+			 *   - zoom-100
+			 *   - zoom-fit
+			 *   - clear-user-selection
+			 */
+			Glib::RefPtr<Gio::SimpleActionGroup> get_actions() { return image_actions; }
+#else
 			/*! \brief Creates a tool button connected to the zoom_fit method.
 			 *
 			 * Creates a tool button connected to the zoom_fit method. Valid names are:
@@ -99,6 +110,8 @@ namespace GtkCRN
 			 *   - image-clear-user-selection
 			 */
 			Glib::RefPtr<Gtk::ActionGroup> get_actions() { return image_actions; }
+#endif
+
 			/*! \brief State of the mouse activity */
 			enum class MouseMode { NONE, SCROLL, DRAW, MOVE, STRETCH_LEFT, STRETCH_BOTTOM_LEFT, STRETCH_BOTTOM, STRETCH_BOTTOM_RIGHT, STRETCH_RIGHT, STRETCH_TOP_RIGHT, STRETCH_TOP, STRETCH_TOP_LEFT, MOVEPOINT, USER };
 			/*! \brief Returns the signal associated to changes in selections. Binds to void on_overlay_changed(crn::String overlay_id, crn::String overlay_item_id, GtkCRN::Image::MouseMode mm). */
@@ -303,7 +316,11 @@ namespace GtkCRN
 			double zoom; /*!< zoom factor (1.0 = 100%) */
 			Glib::RefPtr<Gdk::Pixbuf> buffer; /*!< cropped and scaled image to be displayed */
 			static int selection_margin; /*!< space around the selections border that is clickable */
+#ifdef CRN_USING_GTKMM3
+			Glib::RefPtr<Gio::SimpleActionGroup> image_actions; /*!< Public UI elements */
+#else
 			Glib::RefPtr<Gtk::ActionGroup> image_actions; /*!< Public UI elements */
+#endif
 			crn::Point2DInt *movePoint;
 
 			/*! \internal Overlay */
@@ -324,19 +341,14 @@ namespace GtkCRN
 			crn::String selected_overlay; /*!< probably useless */
 			crn::String selected_overlay_item; /*!< the user selection if it exists */
 
-#ifdef CRN_USING_GTKMM3
-			//Gtk::HRuler hruler;
-			//Gtk::VRuler vruler;
-#else /* CRN_USING_GTKMM3 */
+#ifndef CRN_USING_GTKMM3
 			Gtk::HRuler hruler;
 			Gtk::VRuler vruler;
-#endif /* CRN_USING_GTKMM3 */
+#endif /* !CRN_USING_GTKMM3 */
 			Gtk::DrawingArea da;
-#ifdef CRN_USING_GTKMM3
-			//Glib::RefPtr<Gdk::GC> da_gc;
-#else /* CRN_USING_GTKMM3 */
+#ifndef CRN_USING_GTKMM3
 			Glib::RefPtr<Gdk::GC> da_gc;
-#endif /* CRN_USING_GTKMM3 */
+#endif /* !CRN_USING_GTKMM3 */
 #ifdef CRN_USING_GTKMM3
 			Gtk::Scrollbar hscrollbar;
 			Gtk::Scrollbar vscrollbar;
@@ -345,20 +357,20 @@ namespace GtkCRN
 			Gtk::VScrollbar vscrollbar;
 #endif
 #ifdef CRN_USING_GTKMM3
-			Glib::RefPtr<Gdk::Cursor> scroll_cursor;
-			Glib::RefPtr<Gdk::Cursor> select_cursor;
-			Glib::RefPtr<Gdk::Cursor> move_cursor;
-			Glib::RefPtr<Gdk::Cursor> move_1_cursor;
-			Glib::RefPtr<Gdk::Cursor> drag_left_cursor;
-			Glib::RefPtr<Gdk::Cursor> drag_bottom_left_cursor;
-			Glib::RefPtr<Gdk::Cursor> drag_bottom_cursor;
-			Glib::RefPtr<Gdk::Cursor> drag_bottom_right_cursor;
-			Glib::RefPtr<Gdk::Cursor> drag_right_cursor;
-			Glib::RefPtr<Gdk::Cursor> drag_top_right_cursor;
-			Glib::RefPtr<Gdk::Cursor> drag_top_cursor;
-			Glib::RefPtr<Gdk::Cursor> drag_top_left_cursor;
-			Glib::RefPtr<Gdk::Cursor> user_cursor;
-#else /* CRN_USING_GTKMM3 */
+			Gdk::CursorType scroll_cursor;
+			Gdk::CursorType select_cursor;
+			Gdk::CursorType move_cursor;
+			Gdk::CursorType move_1_cursor;
+			Gdk::CursorType drag_left_cursor;
+			Gdk::CursorType drag_bottom_left_cursor;
+			Gdk::CursorType drag_bottom_cursor;
+			Gdk::CursorType drag_bottom_right_cursor;
+			Gdk::CursorType drag_right_cursor;
+			Gdk::CursorType drag_top_right_cursor;
+			Gdk::CursorType drag_top_cursor;
+			Gdk::CursorType drag_top_left_cursor;
+			Gdk::CursorType user_cursor;
+#else
 			Gdk::Cursor scroll_cursor;
 			Gdk::Cursor select_cursor;
 			Gdk::Cursor move_cursor;

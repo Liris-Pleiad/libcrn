@@ -9,7 +9,7 @@ libcrn is a document image processing library written in C++11 for Linux, Window
 ```
 mkdir buildand
 cd buildand
-ANDROID_NDK=path_to_ndk cmake -DCMAKE_TOOLCHAIN_FILE=../cmake/android/android.toolchain.cmake ..
+ANDROID_NDK=absolute_path_to_ndk cmake -DCMAKE_TOOLCHAIN_FILE=../cmake/android/android.toolchain.cmake -DANDROID_NATIVE_API_LEVEL=9 ..
 ```
 ### Run tests
 Launch an emulator.

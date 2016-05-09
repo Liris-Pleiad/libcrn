@@ -26,33 +26,49 @@
 #include <CRNIO/CRNIO.h>
 #include <CRNi18n.h>
 
-#ifdef CRN_USING_GTKMM3
-#	define get_vbox get_content_area // XXX
+#ifndef CRN_USING_GTKMM3
+#	define get_content_area get_vbox
 #endif
 
 using namespace crn;
 using namespace GtkCRN;
 
-//Gtk::Window* App::main_window(nullptr);
 Gtk::Window*& App::internal_main_window() { static Gtk::Window *main = nullptr; return main; }
 
+#ifdef CRN_USING_GTKMM3
 /*! Constructor. Creates Actions and adds them to UI manager. */
 App::App():
+	actions(Gio::SimpleActionGroup::create())
+{
+	actions->add_action("file-menu");
+	actions->add_action("quit", sigc::bind(sigc::hide_return(sigc::mem_fun(this, &App::ask_for_quit)), (GdkEventAny*)nullptr));
+	actions->add_action("help-menu");
+	actions->add_action("help", sigc::mem_fun(this, &App::help));
+	actions->add_action("about", sigc::mem_fun(this, &App::about));
+
+	signal_realize().connect(sigc::bind(sigc::mem_fun(this, &Gtk::Widget::insert_action_group), "app", actions));
+
+	signal_delete_event().connect(sigc::mem_fun(this, &App::ask_for_quit));
+}
+#else
+/*! Constructor. Creates Actions and adds them to UI manager. */
+App::App() :
 	ui_manager(Gtk::UIManager::create()),
 	actions(Gtk::ActionGroup::create("GtkCRN::App actions"))	
 {
 	actions->add(Gtk::Action::create("app-file-menu", _("_File"), _("File")));
-	//actions->add(Gtk::Action::create("app-quit", Gtk::Stock::QUIT), sigc::bind(sigc::hide_return(sigc::mem_fun(this, &App::ask_for_quit)), (GdkEventAny*)nullptr));
-	//actions->add(Gtk::Action::create("app-help-menu", Gtk::StockID("corenum-icon-circle"), _("_?"), _("?")));
-	//actions->add(Gtk::Action::create("app-help", Gtk::Stock::HELP), sigc::mem_fun(this, &App::help));
-	//actions->add(Gtk::Action::create("app-about", Gtk::Stock::ABOUT), sigc::mem_fun(this, &App::about));
+	actions->add(Gtk::Action::create("app-quit", Gtk::Stock::QUIT), sigc::bind(sigc::hide_return(sigc::mem_fun(this, &App::ask_for_quit)), (GdkEventAny*)nullptr));
+	actions->add(Gtk::Action::create("app-help-menu", Gtk::StockID("corenum-icon-circle"), _("_?"), _("?")));
+	actions->add(Gtk::Action::create("app-help", Gtk::Stock::HELP), sigc::mem_fun(this, &App::help));
+	actions->add(Gtk::Action::create("app-about", Gtk::Stock::ABOUT), sigc::mem_fun(this, &App::about));
 	
 	ui_manager->insert_action_group(actions);
 
 	signal_delete_event().connect(sigc::mem_fun(this, &App::ask_for_quit));
-
 }
+#endif
 
+#include <iostream>
 /*! Callback for application quit event (overloadable)
  * \param[in]	event	only valid if the callback was called by the window manager
  * \return	true to continue app, false after call to Gtk::Main::Quit
@@ -62,7 +78,11 @@ bool App::ask_for_quit(GdkEventAny* event)
 	Gtk::MessageDialog dial(*this, _("Are you sure you want to quit?"), false, Gtk::MESSAGE_QUESTION, Gtk::BUTTONS_YES_NO, true);
 	if (dial.run() == Gtk::RESPONSE_YES)
 	{
-		//Gtk::Main::quit();
+#ifdef CRN_USING_GTKMM3
+		hide();
+#else
+		Gtk::Main::quit();
+#endif
 		return false;
 	}
 	return true;
@@ -83,18 +103,23 @@ Glib::ustring App::ask_for_string(const Glib::ustring &msg, const Glib::ustring 
 	dial.set_position(Gtk::WIN_POS_CENTER_ON_PARENT);
 	Gtk::Label lab(msg);
 	lab.show();
-	dial.get_vbox()->pack_start(lab, false, true, 2);
+	dial.get_content_area()->pack_start(lab, false, true, 2);
 	Gtk::Entry ent;
 	ent.set_activates_default();
 	ent.set_text(defval);
 	ent.show();
-	dial.get_vbox()->pack_start(ent, false, true, 2);
-	//dial.add_button(Gtk::Stock::CANCEL, Gtk::RESPONSE_REJECT);
-	//dial.add_button(Gtk::Stock::OK, Gtk::RESPONSE_ACCEPT);
+	dial.get_content_area()->pack_start(ent, false, true, 2);
+#ifdef CRN_USING_GTKMM3
+	dial.add_button(_("_Cancel"), Gtk::RESPONSE_REJECT);
+	dial.add_button(_("_OK"), Gtk::RESPONSE_ACCEPT);
+#else
+	dial.add_button(Gtk::Stock::CANCEL, Gtk::RESPONSE_REJECT);
+	dial.add_button(Gtk::Stock::OK, Gtk::RESPONSE_ACCEPT);
 	std::vector<int> altbut;
 	altbut.push_back(Gtk::RESPONSE_ACCEPT);
 	altbut.push_back(Gtk::RESPONSE_CANCEL);
-	//dial.set_alternative_button_order_from_array(altbut);	
+	dial.set_alternative_button_order_from_array(altbut);	
+#endif
 	dial.set_default_response(Gtk::RESPONSE_ACCEPT);
 	if (dial.run() == Gtk::RESPONSE_ACCEPT)
 		return ent.get_text();
@@ -142,7 +167,7 @@ gboolean display_exception(exc_data *ex)
 	if (ex->stack.IsNotEmpty())
 	{
 		Gtk::Expander *expd = Gtk::manage(new Gtk::Expander(_("Advanced details")));
-		md.get_vbox()->pack_start(*expd, true, true, 0);
+		md.get_content_area()->pack_start(*expd, true, true, 0);
 		Gtk::ScrolledWindow *sw = Gtk::manage(new Gtk::ScrolledWindow);
 		expd->add(*sw);
 		Gtk::TextView *lab = Gtk::manage(new Gtk::TextView);

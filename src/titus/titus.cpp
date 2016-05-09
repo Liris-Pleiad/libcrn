@@ -22,6 +22,7 @@
 #define GETTEXT_PACKAGE "titus"
 #include <CRN.h>
 #include <GtkCRNMain.h>
+
 #include <GtkCRNApp.h>
 #include <GdkCRNPixbuf.h>
 #include <CRNImage/CRNImageRGB.h>
@@ -34,10 +35,15 @@
 #include <GtkCRNImage.h>
 #include <CRNIO/CRNIO.h>
 #include <CRNConfig.h>
+#include <GtkCRNHelpers.h>
 #include <CRNi18n.h>
 
 #include <CRNUtils/CRNTimer.h>
 #include <iostream>
+
+#ifndef CRN_USING_GTKMM3
+#	define get_content_area get_vbox
+#endif
 
 using namespace crn;
 
@@ -58,24 +64,634 @@ class Titus: public GtkCRN::App
 			title += " © CoReNum";
 			set_title(title);
 
-			// file menu
 #ifdef CRN_USING_GTKMM3
-			actions->add(Gtk::Action::create("open-image", _("_Open image"), _("Open image")), sigc::mem_fun(this, &Titus::open_image));
+			// file menu
+			actions->add_action("open-image", sigc::mem_fun(this, &Titus::open_image));
+			actions->add_action("save-image", sigc::mem_fun(this, &Titus::save_image));
+			// toolbar
+			actions->add_action_radio_integer("show-image", sigc::mem_fun(this, &Titus::on_image_toggled), 0);
+
+			// generic menu
+			actions->add_action("generic-menu");
+			actions->add_action("generic-blur", sigc::mem_fun(this, &Titus::generic_blur));
+			actions->add_action("generic-blur-x", sigc::mem_fun(this, &Titus::generic_blur_x));
+			actions->add_action("generic-blur-y", sigc::mem_fun(this, &Titus::generic_blur_y));
+			actions->add_action("generic-deriv-x", sigc::mem_fun(this, &Titus::generic_deriv_x));
+			actions->add_action("generic-deriv-y", sigc::mem_fun(this, &Titus::generic_deriv_y));
+			actions->add_action("generic-2deriv-x", sigc::mem_fun(this, &Titus::generic_2deriv_x));
+			actions->add_action("generic-2deriv-y", sigc::mem_fun(this, &Titus::generic_2deriv_y));
+
+			// rgb menu
+			actions->add_action("rgb-menu");
+			actions->add_action("rgb-red", sigc::mem_fun(this, &Titus::rgb_red));
+			actions->add_action("rgb-green", sigc::mem_fun(this, &Titus::rgb_green));
+			actions->add_action("rgb-blue", sigc::mem_fun(this, &Titus::rgb_blue));
+			actions->add_action("rgb-hue", sigc::mem_fun(this, &Titus::rgb_hue));
+			actions->add_action("rgb-saturation", sigc::mem_fun(this, &Titus::rgb_saturation));
+			actions->add_action("rgb-pseudosaturation", sigc::mem_fun(this, &Titus::rgb_pseudosaturation));
+			actions->add_action("rgb-value", sigc::mem_fun(this, &Titus::rgb_value));
+			actions->add_action("rgb-y", sigc::mem_fun(this, &Titus::rgb_y));
+			actions->add_action("rgb-l", sigc::mem_fun(this, &Titus::rgb_l));
+			actions->add_action("rgb-lprime", sigc::mem_fun(this, &Titus::rgb_lprime));
+
+			actions->add_action("rgb-saturate", sigc::mem_fun(this, &Titus::rgb_saturate));
+			actions->add_action("rgb-edge-preserving-filter", sigc::mem_fun(this, &Titus::rgb_epf));
+
+			actions->add_action("rgb-diff", sigc::mem_fun(this, &Titus::rgb_diff));
+
+			// gray menu
+			actions->add_action("gray-menu");
+			actions->add_action("gray-to-rgb", sigc::mem_fun(this, &Titus::gray_to_rgb));
+			actions->add_action("gray-threshold", sigc::mem_fun(this, &Titus::gray_threshold));
+			actions->add_action("gray-fisher", sigc::mem_fun(this, &Titus::gray_fisher));
+			actions->add_action("gray-entropy", sigc::mem_fun(this, &Titus::gray_entropy));
+			actions->add_action("gray-otsu", sigc::mem_fun(this, &Titus::gray_otsu));
+			actions->add_action("gray-niblack", sigc::mem_fun(this, &Titus::gray_niblack));
+			actions->add_action("gray-sauvola", sigc::mem_fun(this, &Titus::gray_sauvola));
+			actions->add_action("gray-kmh", sigc::mem_fun(this, &Titus::gray_kmh));
+			actions->add_action("gray-lmin", sigc::mem_fun(this, &Titus::gray_lmin));
+			actions->add_action("gray-lmax", sigc::mem_fun(this, &Titus::gray_lmax));
+
+			actions->add_action("gray-strokes", sigc::mem_fun(this, &Titus::gray_strokes));
+			actions->add_action("gray-histo", sigc::mem_fun(this, &Titus::gray_histogram));
+			actions->add_action("gray-rhisto", sigc::mem_fun(this, &Titus::gray_rhistogram));
+
+			actions->add_action("gray-diff", sigc::mem_fun(this, &Titus::gray_diff));
+
+			// bw menu
+			actions->add_action("bw-menu");
+			actions->add_action("bw-to-gray", sigc::mem_fun(this, &Titus::bw_to_gray));
+			actions->add_action("bw-leftprof", sigc::mem_fun(this, &Titus::bw_leftprof));
+			actions->add_action("bw-rightprof", sigc::mem_fun(this, &Titus::bw_rightprof));
+			actions->add_action("bw-topprof", sigc::mem_fun(this, &Titus::bw_topprof));
+			actions->add_action("bw-bottomprof", sigc::mem_fun(this, &Titus::bw_bottomprof));
+			actions->add_action("bw-hproj", sigc::mem_fun(this, &Titus::bw_hproj));
+			actions->add_action("bw-vproj", sigc::mem_fun(this, &Titus::bw_vproj));
+
+			// differential menu
+			actions->add_action("diff-menu");
+			actions->add_action("diff-diffuse", sigc::mem_fun(this, &Titus::diff_diffuse));
+			actions->add_action("diff-gradgray", sigc::mem_fun(this, &Titus::diff_gradgray));
+			actions->add_action("diff-gradrgb", sigc::mem_fun(this, &Titus::diff_gradrgb));
+			actions->add_action("diff-gradmod", sigc::mem_fun(this, &Titus::diff_gradmod));
+
+			actions->add_action("diff-div", sigc::mem_fun(this, &Titus::diff_div));
+			actions->add_action("diff-laplacian", sigc::mem_fun(this, &Titus::diff_laplacian));
+			actions->add_action("diff-edge", sigc::mem_fun(this, &Titus::diff_edge));
+			actions->add_action("diff-corner", sigc::mem_fun(this, &Titus::diff_corner));
+			actions->add_action("diff-k1", sigc::mem_fun(this, &Titus::diff_k1));
+			actions->add_action("diff-k2", sigc::mem_fun(this, &Titus::diff_k2));
+			actions->add_action("diff-hcorner", sigc::mem_fun(this, &Titus::diff_hcorner));
+
+			actions->add_action("diff-iso", sigc::mem_fun(this, &Titus::diff_iso));
+			actions->add_action("diff-flow", sigc::mem_fun(this, &Titus::diff_flow));
+			actions->add_action("diff-gaussc", sigc::mem_fun(this, &Titus::diff_gaussc));
+			actions->add_action("diff-gradc", sigc::mem_fun(this, &Titus::diff_gradc));
+
+			actions->add_action("diff-lx", sigc::mem_fun(this, &Titus::diff_lx));
+			actions->add_action("diff-ly", sigc::mem_fun(this, &Titus::diff_ly));
+			actions->add_action("diff-lxx", sigc::mem_fun(this, &Titus::diff_lxx));
+			actions->add_action("diff-lxy", sigc::mem_fun(this, &Titus::diff_lxy));
+			actions->add_action("diff-lyy", sigc::mem_fun(this, &Titus::diff_lyy));
+			actions->add_action("diff-lw", sigc::mem_fun(this, &Titus::diff_lw));
+			actions->add_action("diff-lvv", sigc::mem_fun(this, &Titus::diff_lvv));
+			actions->add_action("diff-lvw", sigc::mem_fun(this, &Titus::diff_lvw));
+			actions->add_action("diff-lww", sigc::mem_fun(this, &Titus::diff_lww));
+
+			Glib::ustring ui_info =
+				"<interface>"
+				"	<menu id='MenuBar'>"
+				"		<submenu>"
+				"			<attribute name='label' translatable='yes'>_File</attribute>"
+				"			<attribute name='action'>app.file-menu</attribute>"
+				"			<section>"
+				"				<item>"
+				"					<attribute name='label' translatable='yes'>_Open</attribute>"
+				"					<attribute name='action'>app.open-image</attribute>"
+				"					<attribute name='accel'>&lt;Primary&gt;o</attribute>"
+				"				</item>"
+				"				<item>"
+				"					<attribute name='label' translatable='yes'>_Save</attribute>"
+				"					<attribute name='action'>app.save-image</attribute>"
+				"					<attribute name='accel'>&lt;Primary&gt;s</attribute>"
+				"				</item>"
+				"			</section>"
+				"			<section>"
+				"				<item>"
+				"					<attribute name='label' translatable='yes'>_Quit</attribute>"
+				"					<attribute name='action'>app.quit</attribute>"
+				"					<attribute name='accel'>&lt;Primary&gt;q</attribute>"
+				"				</item>"
+				"			</section>"
+				"		</submenu>"
+				"		<submenu>"
+				"			<attribute name='label' translatable='yes'>_Generic</attribute>"
+				"			<attribute name='action'>app.generic-menu</attribute>"
+				"			<section>"
+				"				<item>"
+				"					<attribute name='label' translatable='yes'>_Gaussian blur</attribute>"
+				"					<attribute name='action'>app.generic-blur</attribute>"
+				"				</item>"
+				"				<item>"
+				"					<attribute name='label' translatable='yes'>Gaussian blur along _x</attribute>"
+				"					<attribute name='action'>app.generic-blur-x</attribute>"
+				"				</item>"
+				"				<item>"
+				"					<attribute name='label' translatable='yes'>Gaussian blur along _y</attribute>"
+				"					<attribute name='action'>app.generic-blur-y</attribute>"
+				"				</item>"
+				"			</section>"
+				"			<section>"
+				"				<item>"
+				"					<attribute name='label' translatable='yes'>Gaussian _derivative along x</attribute>"
+				"					<attribute name='action'>app.generic-deriv-x</attribute>"
+				"				</item>"
+				"				<item>"
+				"					<attribute name='label' translatable='yes'>Gaussian d_erivative along y</attribute>"
+				"					<attribute name='action'>app.generic-deriv-y</attribute>"
+				"				</item>"
+				"				<item>"
+				"					<attribute name='label' translatable='yes'>Gaussian _second derivative along x</attribute>"
+				"					<attribute name='action'>app.generic-2deriv-x</attribute>"
+				"				</item>"
+				"				<item>"
+				"					<attribute name='label' translatable='yes'>Gaussian se_cond derivative along y</attribute>"
+				"					<attribute name='action'>app.generic-2deriv-y</attribute>"
+				"				</item>"
+				"			</section>"
+				"		</submenu>"
+				"		<submenu>"
+				"			<attribute name='label' translatable='yes'>_RGB</attribute>"
+				"			<attribute name='action'>app.rgb-menu</attribute>"
+				"			<section>"
+				"				<item>"
+				"					<attribute name='label' translatable='yes'>_Red</attribute>"
+				"					<attribute name='action'>app.rgb-red</attribute>"
+				"				</item>"
+				"				<item>"
+				"					<attribute name='label' translatable='yes'>_Green</attribute>"
+				"					<attribute name='action'>app.rgb-green</attribute>"
+				"				</item>"
+				"				<item>"
+				"					<attribute name='label' translatable='yes'>_Blue</attribute>"
+				"					<attribute name='action'>app.rgb-blue</attribute>"
+				"				</item>"
+				"				<item>"
+				"					<attribute name='label' translatable='yes'>_Hue</attribute>"
+				"					<attribute name='action'>app.rgb-hue</attribute>"
+				"				</item>"
+				"				<item>"
+				"					<attribute name='label' translatable='yes'>_Saturation</attribute>"
+				"					<attribute name='action'>app.rgb-saturation</attribute>"
+				"				</item>"
+				"				<item>"
+				"					<attribute name='label' translatable='yes'>Pseudo s_aturation</attribute>"
+				"					<attribute name='action'>app.rgb-pseudosaturation</attribute>"
+				"				</item>"
+				"				<item>"
+				"					<attribute name='label' translatable='yes'>_Value</attribute>"
+				"					<attribute name='action'>app.rgb-value</attribute>"
+				"				</item>"
+				"				<item>"
+				"					<attribute name='label' translatable='yes'>Luminance (_YUV)</attribute>"
+				"					<attribute name='action'>app.rgb-y</attribute>"
+				"				</item>"
+				"				<item>"
+				"					<attribute name='label' translatable='yes'>Luminance (HS_L)</attribute>"
+				"					<attribute name='action'>app.rgb-l</attribute>"
+				"				</item>"
+				"				<item>"
+				"					<attribute name='label' translatable='yes'>Pseudo l_uminance</attribute>"
+				"					<attribute name='action'>app.rgb-lprime</attribute>"
+				"				</item>"
+				"			</section>"
+				"			<section>"
+				"				<item>"
+				"					<attribute name='label' translatable='yes'>_Saturate</attribute>"
+				"					<attribute name='action'>app.rgb-saturate</attribute>"
+				"				</item>"
+				"				<item>"
+				"					<attribute name='label' translatable='yes'>Edge _preserving filter</attribute>"
+				"					<attribute name='action'>app.rgb-edge-preserving-filter</attribute>"
+				"				</item>"
+				"			</section>"
+				"			<section>"
+				"				<item>"
+				"					<attribute name='label' translatable='yes'>_Differential</attribute>"
+				"					<attribute name='action'>app.rgb-diff</attribute>"
+				"				</item>"
+				"			</section>"
+				"		</submenu>"
+				"		<submenu>"
+				"			<attribute name='label' translatable='yes'>_Gray</attribute>"
+				"			<attribute name='action'>app.gray-menu</attribute>"
+				"			<section>"
+				"				<item>"
+				"					<attribute name='label' translatable='yes'>To _RGB</attribute>"
+				"					<attribute name='action'>app.gray-to-rgb</attribute>"
+				"				</item>"
+				"			</section>"
+				"			<section>"
+				"				<item>"
+				"					<attribute name='label' translatable='yes'>_Threshold</attribute>"
+				"					<attribute name='action'>app.gray-threshold</attribute>"
+				"				</item>"
+				"				<item>"
+				"					<attribute name='label' translatable='yes'>_Fisher</attribute>"
+				"					<attribute name='action'>app.gray-fisher</attribute>"
+				"				</item>"
+				"				<item>"
+				"					<attribute name='label' translatable='yes'>_Entropy</attribute>"
+				"					<attribute name='action'>app.gray-entropy</attribute>"
+				"				</item>"
+				"				<item>"
+				"					<attribute name='label' translatable='yes'>_Otsu</attribute>"
+				"					<attribute name='action'>app.gray-otsu</attribute>"
+				"				</item>"
+				"				<item>"
+				"					<attribute name='label' translatable='yes'>_Niblack</attribute>"
+				"					<attribute name='action'>app.gray-niblack</attribute>"
+				"				</item>"
+				"				<item>"
+				"					<attribute name='label' translatable='yes'>_Sauvola</attribute>"
+				"					<attribute name='action'>app.gray-sauvola</attribute>"
+				"				</item>"
+				"				<item>"
+				"					<attribute name='label' translatable='yes'>_k means histogram</attribute>"
+				"					<attribute name='action'>app.gray-kmh</attribute>"
+				"				</item>"
+				"				<item>"
+				"					<attribute name='label' translatable='yes'>Local m_in</attribute>"
+				"					<attribute name='action'>app.gray-lmin</attribute>"
+				"				</item>"
+				"				<item>"
+				"					<attribute name='label' translatable='yes'>Local m_ax</attribute>"
+				"					<attribute name='action'>app.gray-lmax</attribute>"
+				"				</item>"
+				"			</section>"
+				"			<section>"
+				"				<item>"
+				"					<attribute name='label' translatable='yes'>_Strokes statistics</attribute>"
+				"					<attribute name='action'>app.gray-strokes</attribute>"
+				"				</item>"
+				"				<item>"
+				"					<attribute name='label' translatable='yes'>_Histogram</attribute>"
+				"					<attribute name='action'>app.gray-histo</attribute>"
+				"				</item>"
+				"				<item>"
+				"					<attribute name='label' translatable='yes'>_Radial histogram</attribute>"
+				"					<attribute name='action'>app.gray-rhisto</attribute>"
+				"				</item>"
+				"			</section>"
+				"			<section>"
+				"				<item>"
+				"					<attribute name='label' translatable='yes'>_Differential</attribute>"
+				"					<attribute name='action'>app.gray-diff</attribute>"
+				"				</item>"
+				"			</section>"
+				"		</submenu>"
+				"		<submenu>"
+				"			<attribute name='label' translatable='yes'>_BW</attribute>"
+				"			<attribute name='action'>app.bw-menu</attribute>"
+				"			<section>"
+				"				<item>"
+				"					<attribute name='label' translatable='yes'>To _gray</attribute>"
+				"					<attribute name='action'>app.bw-to-gray</attribute>"
+				"				</item>"
+				"			</section>"
+				"			<section>"
+				"				<item>"
+				"					<attribute name='label' translatable='yes'>_Left profile</attribute>"
+				"					<attribute name='action'>app.bw-leftprof</attribute>"
+				"				</item>"
+				"				<item>"
+				"					<attribute name='label' translatable='yes'>_Right profile</attribute>"
+				"					<attribute name='action'>app.bw-rightprof</attribute>"
+				"				</item>"
+				"				<item>"
+				"					<attribute name='label' translatable='yes'>_Top profile</attribute>"
+				"					<attribute name='action'>app.bw-topprof</attribute>"
+				"				</item>"
+				"				<item>"
+				"					<attribute name='label' translatable='yes'>_Bottom profile</attribute>"
+				"					<attribute name='action'>app.bw-bottomprof</attribute>"
+				"				</item>"
+				"				<item>"
+				"					<attribute name='label' translatable='yes'>_Horizontal projection</attribute>"
+				"					<attribute name='action'>app.bw-hproj</attribute>"
+				"				</item>"
+				"				<item>"
+				"					<attribute name='label' translatable='yes'>_Vertical projection</attribute>"
+				"					<attribute name='action'>app.bw-vproj</attribute>"
+				"				</item>"
+				"			</section>"
+				"		</submenu>"
+				"		<submenu>"
+				"			<attribute name='label' translatable='yes'>_Differential</attribute>"
+				"			<attribute name='action'>app.diff-menu</attribute>"
+				"			<section>"
+				"				<item>"
+				"					<attribute name='label' translatable='yes'>_Diffuse</attribute>"
+				"					<attribute name='action'>app.diff-diffuse</attribute>"
+				"				</item>"
+				"			</section>"
+				"			<section>"
+				"				<item>"
+				"					<attribute name='label' translatable='yes'>Gradient (_grayscale)</attribute>"
+				"					<attribute name='action'>app.diff-gradgray</attribute>"
+				"				</item>"
+				"				<item>"
+				"					<attribute name='label' translatable='yes'>Gradient (_RGB)</attribute>"
+				"					<attribute name='action'>app.diff-gradrgb</attribute>"
+				"				</item>"
+				"				<item>"
+				"					<attribute name='label' translatable='yes'>Gradient _module</attribute>"
+				"					<attribute name='action'>app.diff-gradmod</attribute>"
+				"				</item>"
+				"			</section>"
+				"			<section>"
+				"				<item>"
+				"					<attribute name='label' translatable='yes'>_Divergence</attribute>"
+				"					<attribute name='action'>app.diff-div</attribute>"
+				"				</item>"
+				"				<item>"
+				"					<attribute name='label' translatable='yes'>_Laplacian</attribute>"
+				"					<attribute name='action'>app.diff-laplacian</attribute>"
+				"				</item>"
+				"				<item>"
+				"					<attribute name='label' translatable='yes'>_Edge</attribute>"
+				"					<attribute name='action'>app.diff-edge</attribute>"
+				"				</item>"
+				"				<item>"
+				"					<attribute name='label' translatable='yes'>_Corner</attribute>"
+				"					<attribute name='action'>app.diff-corner</attribute>"
+				"				</item>"
+				"				<item>"
+				"					<attribute name='label' translatable='yes'>Kappa _1</attribute>"
+				"					<attribute name='action'>app.diff-k1</attribute>"
+				"				</item>"
+				"				<item>"
+				"					<attribute name='label' translatable='yes'>Kappa _2</attribute>"
+				"					<attribute name='action'>app.diff-k2</attribute>"
+				"				</item>"
+				"				<item>"
+				"					<attribute name='label' translatable='yes'>_Hessian corner</attribute>"
+				"					<attribute name='action'>app.diff-hcorner</attribute>"
+				"				</item>"
+				"			</section>"
+				"			<section>"
+				"				<item>"
+				"					<attribute name='label' translatable='yes'>_Isophote curvature</attribute>"
+				"					<attribute name='action'>app.diff-iso</attribute>"
+				"				</item>"
+				"				<item>"
+				"					<attribute name='label' translatable='yes'>_Flowline curvature</attribute>"
+				"					<attribute name='action'>app.diff-flow</attribute>"
+				"				</item>"
+				"				<item>"
+				"					<attribute name='label' translatable='yes'>_Gaussian curvature</attribute>"
+				"					<attribute name='action'>app.diff-gaussc</attribute>"
+				"				</item>"
+				"				<item>"
+				"					<attribute name='label' translatable='yes'>G_radient curvature</attribute>"
+				"					<attribute name='action'>app.diff-gradc</attribute>"
+				"				</item>"
+				"			</section>"
+				"			<section>"
+				"				<item>"
+				"					<attribute name='label' translatable='yes'>L_x</attribute>"
+				"					<attribute name='action'>app.diff-lx</attribute>"
+				"				</item>"
+				"				<item>"
+				"					<attribute name='label' translatable='yes'>L_y</attribute>"
+				"					<attribute name='action'>app.diff-ly</attribute>"
+				"				</item>"
+				"				<item>"
+				"					<attribute name='label' translatable='yes'>L_xx</attribute>"
+				"					<attribute name='action'>app.diff-lxx</attribute>"
+				"				</item>"
+				"				<item>"
+				"					<attribute name='label' translatable='yes'>L_xy</attribute>"
+				"					<attribute name='action'>app.diff-lxy</attribute>"
+				"				</item>"
+				"				<item>"
+				"					<attribute name='label' translatable='yes'>L_yy</attribute>"
+				"					<attribute name='action'>app.diff-lyy</attribute>"
+				"				</item>"
+				"				<item>"
+				"					<attribute name='label' translatable='yes'>L_w</attribute>"
+				"					<attribute name='action'>app.diff-lw</attribute>"
+				"				</item>"
+				"				<item>"
+				"					<attribute name='label' translatable='yes'>L_vv</attribute>"
+				"					<attribute name='action'>app.diff-lvv</attribute>"
+				"				</item>"
+				"				<item>"
+				"					<attribute name='label' translatable='yes'>L_vw</attribute>"
+				"					<attribute name='action'>app.diff-lvw</attribute>"
+				"				</item>"
+				"				<item>"
+				"					<attribute name='label' translatable='yes'>L_ww</attribute>"
+				"					<attribute name='action'>app.diff-lww</attribute>"
+				"				</item>"
+				"			</section>"
+				"		</submenu>"
+				"		<submenu>"
+				"			<attribute name='label' translatable='yes'>_?</attribute>"
+				"			<attribute name='action'>app.help-menu</attribute>"
+				"			<section>"
+				"				<item>"
+				"					<attribute name='label' translatable='yes'>_About</attribute>"
+				"					<attribute name='action'>app.about</attribute>"
+				"				</item>"
+				"			</section>"
+				"		</submenu>"
+				"	</menu>"
+				"	<object class='GtkToolbar' id='ToolBar'>"
+				"		<property name='visible'>True</property>"
+				"		<child>"
+				"			<object class='GtkToolButton' id='open-but'>"
+				"				<property name='visible'>True</property>"
+				"				<property name='can_focus'>False</property>"
+				"				<property name='tooltip_text' translatable='yes'>Open image</property>"
+				"				<property name='action_name'>app.open-image</property>"
+				"				<property name='icon_name'>document-open</property>"
+				"			</object>"
+				"			<packing>"
+				"				<property name='expand'>False</property>"
+				"				<property name='homogeneous'>True</property>"
+				"			</packing>"
+				"		</child>"
+				"		<child>"
+				"			<object class='GtkToolButton' id='save-but'>"
+				"				<property name='visible'>True</property>"
+				"				<property name='can_focus'>False</property>"
+				"				<property name='tooltip_text' translatable='yes'>Save image</property>"
+				"				<property name='action_name'>app.save-image</property>"
+				"				<property name='icon_name'>document-save</property>"
+				"			</object>"
+				"			<packing>"
+				"				<property name='expand'>False</property>"
+				"				<property name='homogeneous'>True</property>"
+				"			</packing>"
+				"		</child>"
+				"		<child>"
+				"			<object class='GtkSeparatorToolItem' id='tsep1'>"
+				"				<property name='visible'>True</property>"
+				"				<property name='can_focus'>False</property>"
+				"			</object>"
+				"			<packing>"
+				"				<property name='expand'>False</property>"
+				"				<property name='homogeneous'>True</property>"
+				"			</packing>"
+				"		</child>"
+				"		<child>"
+				"			<object class='GtkRadioToolButton' id='show-rgb'>"
+				"				<property name='visible'>True</property>"
+				"				<property name='can_focus'>False</property>"
+				"				<property name='tooltip_text' translatable='yes'>Show RGB image</property>"
+				"				<property name='action_name'>app.show-image</property>"
+				"				<property name='action_target'>0</property>"
+				//"				<property name='icon_name'></property>"
+				"			</object>"
+				"			<packing>"
+				"				<property name='expand'>False</property>"
+				"				<property name='homogeneous'>True</property>"
+				"			</packing>"
+				"		</child>"
+				"		<child>"
+				"			<object class='GtkRadioToolButton' id='show-gray'>"
+				"				<property name='visible'>True</property>"
+				"				<property name='can_focus'>False</property>"
+				"				<property name='tooltip_text' translatable='yes'>Show Gray image</property>"
+				"				<property name='action_name'>app.show-image</property>"
+				"				<property name='action_target'>1</property>"
+				//"				<property name='icon_name'></property>"
+				"			</object>"
+				"			<packing>"
+				"				<property name='expand'>False</property>"
+				"				<property name='homogeneous'>True</property>"
+				"			</packing>"
+				"		</child>"
+				"		<child>"
+				"			<object class='GtkRadioToolButton' id='show-bw'>"
+				"				<property name='visible'>True</property>"
+				"				<property name='can_focus'>False</property>"
+				"				<property name='tooltip_text' translatable='yes'>Show BW image</property>"
+				"				<property name='action_name'>app.show-image</property>"
+				"				<property name='action_target'>2</property>"
+				//"				<property name='icon_name'></property>"
+				"			</object>"
+				"			<packing>"
+				"				<property name='expand'>False</property>"
+				"				<property name='homogeneous'>True</property>"
+				"			</packing>"
+				"		</child>"
+				"		<child>"
+				"			<object class='GtkRadioToolButton' id='show-other'>"
+				"				<property name='visible'>True</property>"
+				"				<property name='can_focus'>False</property>"
+				"				<property name='tooltip_text' translatable='yes'>Show result image</property>"
+				"				<property name='action_name'>app.show-image</property>"
+				"				<property name='action_target'>3</property>"
+				//"				<property name='icon_name'></property>"
+				"			</object>"
+				"			<packing>"
+				"				<property name='expand'>False</property>"
+				"				<property name='homogeneous'>True</property>"
+				"			</packing>"
+				"		</child>"
+				"		<child>"
+				"			<object class='GtkSeparatorToolItem' id='tsep2'>"
+				"				<property name='visible'>True</property>"
+				"				<property name='can_focus'>False</property>"
+				"			</object>"
+				"			<packing>"
+				"				<property name='expand'>False</property>"
+				"				<property name='homogeneous'>True</property>"
+				"			</packing>"
+				"		</child>"
+				"		<child>"
+				"			<object class='GtkToolButton' id='zoomin-but'>"
+				"				<property name='visible'>True</property>"
+				"				<property name='can_focus'>False</property>"
+				"				<property name='tooltip_text' translatable='yes'>Zoom In</property>"
+				"				<property name='action_name'>image.zoom-in</property>"
+				"				<property name='icon_name'>zoom-in</property>"
+				"			</object>"
+				"			<packing>"
+				"				<property name='expand'>False</property>"
+				"				<property name='homogeneous'>True</property>"
+				"			</packing>"
+				"		</child>"
+				"		<child>"
+				"			<object class='GtkToolButton' id='zoomout-but'>"
+				"				<property name='visible'>True</property>"
+				"				<property name='can_focus'>False</property>"
+				"				<property name='tooltip_text' translatable='yes'>Zoom Out</property>"
+				"				<property name='action_name'>image.zoom-out</property>"
+				"				<property name='icon_name'>zoom-out</property>"
+				"			</object>"
+				"			<packing>"
+				"				<property name='expand'>False</property>"
+				"				<property name='homogeneous'>True</property>"
+				"			</packing>"
+				"		</child>"
+				"		<child>"
+				"			<object class='GtkToolButton' id='zoom100-but'>"
+				"				<property name='visible'>True</property>"
+				"				<property name='can_focus'>False</property>"
+				"				<property name='tooltip_text' translatable='yes'>Normal Size</property>"
+				"				<property name='action_name'>image.zoom-100</property>"
+				"				<property name='icon_name'>zoom-original</property>"
+				"			</object>"
+				"			<packing>"
+				"				<property name='expand'>False</property>"
+				"				<property name='homogeneous'>True</property>"
+				"			</packing>"
+				"		</child>"
+				"		<child>"
+				"			<object class='GtkToolButton' id='zoomfit-but'>"
+				"				<property name='visible'>True</property>"
+				"				<property name='can_focus'>False</property>"
+				"				<property name='tooltip_text' translatable='yes'>Best Fit</property>"
+				"				<property name='action_name'>image.zoom-fit</property>"
+				"				<property name='icon_name'>zoom-fit-best</property>"
+				"			</object>"
+				"			<packing>"
+				"				<property name='expand'>False</property>"
+				"				<property name='homogeneous'>True</property>"
+				"			</packing>"
+				"		</child>"
+				"	</object>"
+				"</interface>";
+
+			signal_realize().connect(sigc::bind(sigc::mem_fun(this, &Gtk::Widget::insert_action_group), "image", img.get_actions()));
+			
+			try
+			{
+				builder = Gtk::Builder::create_from_string(ui_info);
+			}
+			catch (Glib::Error &ex)
+			{
+				std::cout << ex.what() << '\n';
+				return;
+			}
 #else
+			// file menu
 			actions->add(Gtk::Action::create("open-image", Gtk::Stock::OPEN, _("_Open image"), _("Open image")), sigc::mem_fun(this, &Titus::open_image));
-#endif
-			//actions->add(Gtk::Action::create("save-image", Gtk::Stock::SAVE, _("_Save image"), _("Save image")), sigc::mem_fun(this, &Titus::save_image));
+			actions->add(Gtk::Action::create("save-image", Gtk::Stock::SAVE, _("_Save image"), _("Save image")), sigc::mem_fun(this, &Titus::save_image));
 
 			// toolbar
 			Gtk::RadioAction::Group g;
-			//actions->add(Gtk::RadioAction::create(g, "show-rgb", Gtk::StockID("gtk-crn-rgb"), _("_RGB"), _("Show RGB image")));
-			//Glib::RefPtr<Gtk::RadioAction>::cast_dynamic(actions->get_action("show-rgb"))->signal_toggled().connect(sigc::mem_fun(this, &Titus::on_image_toggled));
-			//actions->add(Gtk::RadioAction::create(g, "show-gray", Gtk::StockID("gtk-crn-gray"), _("_Gray"), _("Show Gray image")));
-			//Glib::RefPtr<Gtk::RadioAction>::cast_dynamic(actions->get_action("show-gray"))->signal_toggled().connect(sigc::mem_fun(this, &Titus::on_image_toggled));
-			//actions->add(Gtk::RadioAction::create(g, "show-bw", Gtk::StockID("gtk-crn-bw"), _("_BW"), _("Show BW image")));
-			//Glib::RefPtr<Gtk::RadioAction>::cast_dynamic(actions->get_action("show-bw"))->signal_toggled().connect(sigc::mem_fun(this, &Titus::on_image_toggled));
-			//actions->add(Gtk::RadioAction::create(g, "show-other", Gtk::StockID("gtk-crn-document"), _("_Result"), _("Show result image")));
-			//Glib::RefPtr<Gtk::RadioAction>::cast_dynamic(actions->get_action("show-other"))->signal_toggled().connect(sigc::mem_fun(this, &Titus::on_image_toggled));
+			actions->add(Gtk::RadioAction::create(g, "show-rgb", Gtk::StockID("gtk-crn-rgb"), _("_RGB"), _("Show RGB image")));
+			Glib::RefPtr<Gtk::RadioAction>::cast_dynamic(actions->get_action("show-rgb"))->signal_toggled().connect(sigc::mem_fun(this, &Titus::on_image_toggled));
+			actions->add(Gtk::RadioAction::create(g, "show-gray", Gtk::StockID("gtk-crn-gray"), _("_Gray"), _("Show Gray image")));
+			Glib::RefPtr<Gtk::RadioAction>::cast_dynamic(actions->get_action("show-gray"))->signal_toggled().connect(sigc::mem_fun(this, &Titus::on_image_toggled));
+			actions->add(Gtk::RadioAction::create(g, "show-bw", Gtk::StockID("gtk-crn-bw"), _("_BW"), _("Show BW image")));
+			Glib::RefPtr<Gtk::RadioAction>::cast_dynamic(actions->get_action("show-bw"))->signal_toggled().connect(sigc::mem_fun(this, &Titus::on_image_toggled));
+			actions->add(Gtk::RadioAction::create(g, "show-other", Gtk::StockID("gtk-crn-document"), _("_Result"), _("Show result image")));
+			Glib::RefPtr<Gtk::RadioAction>::cast_dynamic(actions->get_action("show-other"))->signal_toggled().connect(sigc::mem_fun(this, &Titus::on_image_toggled));
 
 			// generic menu
 			actions->add(Gtk::Action::create("generic-menu", _("Gene_ric")));
@@ -169,133 +785,136 @@ class Titus: public GtkCRN::App
 
 			Glib::ustring ui_info =
 				"<ui>"
-				
+				"	<menubar name='MenuBar'>"
+				"		<menu action='app-file-menu'>"
+				"			<menuitem action='open-image'/>"
+				"			<menuitem action='save-image'/>"
+				"			<separator/>"
+				"			<menuitem action='app-quit'/>"
+				"		</menu>"
+				"		<menu action='generic-menu'>"
+				"			<menuitem action='generic-blur'/>"
+				"			<menuitem action='generic-blur-x'/>"
+				"			<menuitem action='generic-blur-y'/>"
+				"			<separator/>"
+				"			<menuitem action='generic-deriv-x'/>"
+				"			<menuitem action='generic-deriv-y'/>"
+				"			<menuitem action='generic-2deriv-x'/>"
+				"			<menuitem action='generic-2deriv-y'/>"
+				"		</menu>"
+				"		<menu action='rgb-menu'>"
+				"			<menuitem action='rgb-red'/>"
+				"			<menuitem action='rgb-green'/>"
+				"			<menuitem action='rgb-blue'/>"
+				"			<menuitem action='rgb-hue'/>"
+				"			<menuitem action='rgb-saturation'/>"
+				"			<menuitem action='rgb-pseudosaturation'/>"
+				"			<menuitem action='rgb-value'/>"
+				"			<menuitem action='rgb-y'/>"
+				"			<menuitem action='rgb-l'/>"
+				"			<menuitem action='rgb-lprime'/>"
+				"			<separator/>"
+				"			<menuitem action='rgb-saturate'/>"
+				"			<menuitem action='rgb-edge-preserving-filter'/>"
+				"			<separator/>"
+				"			<menuitem action='rgb-diff'/>"
+				"		</menu>"
+				"		<menu action='gray-menu'>"
+				"			<menuitem action='gray-to-rgb'/>"
+				"			<separator/>"
+				"			<menuitem action='gray-threshold'/>"
+				"			<menuitem action='gray-fisher'/>"
+				"			<menuitem action='gray-entropy'/>"
+				"			<menuitem action='gray-otsu'/>"
+				"			<menuitem action='gray-niblack'/>"
+				"			<menuitem action='gray-sauvola'/>"
+				"			<menuitem action='gray-kmh'/>"
+				"			<menuitem action='gray-lmin'/>"
+				"			<menuitem action='gray-lmax'/>"
+				"			<separator/>"
+				"			<menuitem action='gray-strokes'/>"
+				"			<menuitem action='gray-histo'/>"
+				"			<menuitem action='gray-rhisto'/>"
+				"			<separator/>"
+				"			<menuitem action='gray-diff'/>"
+				"		</menu>"
+				"		<menu action='bw-menu'>"
+				"			<menuitem action='bw-to-gray'/>"
+				"			<separator/>"
+				"			<menuitem action='bw-leftprof'/>"
+				"			<menuitem action='bw-rightprof'/>"
+				"			<menuitem action='bw-topprof'/>"
+				"			<menuitem action='bw-bottomprof'/>"
+				"			<menuitem action='bw-hproj'/>"
+				"			<menuitem action='bw-vproj'/>"
+				"		</menu>"
+				"		<menu action='diff-menu'>"
+				"			<menuitem action='diff-diffuse'/>"
+				"			<separator/>"
+				"			<menuitem action='diff-gradgray'/>"
+				"			<menuitem action='diff-gradrgb'/>"
+				"			<menuitem action='diff-gradmod'/>"
+				"			<separator/>"
+				"			<menuitem action='diff-div'/>"
+				"			<menuitem action='diff-laplacian'/>"
+				"			<menuitem action='diff-edge'/>"
+				"			<menuitem action='diff-corner'/>"
+				"			<menuitem action='diff-k1'/>"
+				"			<menuitem action='diff-k2'/>"
+				"			<menuitem action='diff-hcorner'/>"
+				"			<separator/>"
+				"			<menuitem action='diff-iso'/>"
+				"			<menuitem action='diff-flow'/>"
+				"			<menuitem action='diff-gaussc'/>"
+				"			<menuitem action='diff-gradc'/>"
+				"			<separator/>"
+				"			<menuitem action='diff-lx'/>"
+				"			<menuitem action='diff-ly'/>"
+				"			<menuitem action='diff-lxx'/>"
+				"			<menuitem action='diff-lxy'/>"
+				"			<menuitem action='diff-lyy'/>"
+				"			<menuitem action='diff-lw'/>"
+				"			<menuitem action='diff-lvv'/>"
+				"			<menuitem action='diff-lvw'/>"
+				"			<menuitem action='diff-lww'/>"
+				"		</menu>"
+				"		<menu action='app-help-menu'>"
+				"			<menuitem action='app-about'/>"
+				"		</menu>"
+				"	</menubar>"
 				"	<toolbar name='ToolBar'>"
 				"		<toolitem action='open-image'/>"
-
+				"		<toolitem action='save-image'/>"
+				"		<separator/>"
+				"		<toolitem action='show-rgb'/>"
+				"		<toolitem action='show-gray'/>"
+				"		<toolitem action='show-bw'/>"
+				"		<toolitem action='show-other'/>"
+				"		<separator/>"
+				"		<toolitem action='image-zoom-in'/>"
+				"		<toolitem action='image-zoom-out'/>"
+				"		<toolitem action='image-zoom-100'/>"
+				"		<toolitem action='image-zoom-fit'/>"
 				"	</toolbar>"
-				"</ui>";/*
-				"<ui>"
-					"	<menubar name='MenuBar'>"
-					"		<menu action='app-file-menu'>"
-					"			<menuitem action='open-image'/>"
-					"			<menuitem action='save-image'/>"
-					"			<separator/>"
-					"			<menuitem action='app-quit'/>"
-					"		</menu>"
-					"		<menu action='generic-menu'>"
-					"			<menuitem action='generic-blur'/>"
-					"			<menuitem action='generic-blur-x'/>"
-					"			<menuitem action='generic-blur-y'/>"
-					"			<separator/>"
-					"			<menuitem action='generic-deriv-x'/>"
-					"			<menuitem action='generic-deriv-y'/>"
-					"			<menuitem action='generic-2deriv-x'/>"
-					"			<menuitem action='generic-2deriv-y'/>"
-					"		</menu>"
-					"		<menu action='rgb-menu'>"
-					"			<menuitem action='rgb-red'/>"
-					"			<menuitem action='rgb-green'/>"
-					"			<menuitem action='rgb-blue'/>"
-					"			<menuitem action='rgb-hue'/>"
-					"			<menuitem action='rgb-saturation'/>"
-					"			<menuitem action='rgb-pseudosaturation'/>"
-					"			<menuitem action='rgb-value'/>"
-					"			<menuitem action='rgb-y'/>"
-					"			<menuitem action='rgb-l'/>"
-					"			<menuitem action='rgb-lprime'/>"
-					"			<separator/>"
-					"			<menuitem action='rgb-saturate'/>"
-					"			<menuitem action='rgb-edge-preserving-filter'/>"
-					"			<separator/>"
-					"			<menuitem action='rgb-diff'/>"
-					"		</menu>"
-					"		<menu action='gray-menu'>"
-					"			<menuitem action='gray-to-rgb'/>"
-					"			<separator/>"
-					"			<menuitem action='gray-threshold'/>"
-					"			<menuitem action='gray-fisher'/>"
-					"			<menuitem action='gray-entropy'/>"
-					"			<menuitem action='gray-otsu'/>"
-					"			<menuitem action='gray-niblack'/>"
-					"			<menuitem action='gray-sauvola'/>"
-					"			<menuitem action='gray-kmh'/>"
-					"			<menuitem action='gray-lmin'/>"
-					"			<menuitem action='gray-lmax'/>"
-					"			<separator/>"
-					"			<menuitem action='gray-strokes'/>"
-					"			<menuitem action='gray-histo'/>"
-					"			<menuitem action='gray-rhisto'/>"
-					"			<separator/>"
-					"			<menuitem action='gray-diff'/>"
-					"		</menu>"
-					"		<menu action='bw-menu'>"
-					"			<menuitem action='bw-to-gray'/>"
-					"			<separator/>"
-					"			<menuitem action='bw-leftprof'/>"
-					"			<menuitem action='bw-rightprof'/>"
-					"			<menuitem action='bw-topprof'/>"
-					"			<menuitem action='bw-bottomprof'/>"
-					"			<menuitem action='bw-hproj'/>"
-					"			<menuitem action='bw-vproj'/>"
-					"		</menu>"
-					"		<menu action='diff-menu'>"
-					"			<menuitem action='diff-diffuse'/>"
-					"			<separator/>"
-					"			<menuitem action='diff-gradgray'/>"
-					"			<menuitem action='diff-gradrgb'/>"
-					"			<menuitem action='diff-gradmod'/>"
-					"			<separator/>"
-					"			<menuitem action='diff-div'/>"
-					"			<menuitem action='diff-laplacian'/>"
-					"			<menuitem action='diff-edge'/>"
-					"			<menuitem action='diff-corner'/>"
-					"			<menuitem action='diff-k1'/>"
-					"			<menuitem action='diff-k2'/>"
-					"			<menuitem action='diff-hcorner'/>"
-					"			<separator/>"
-					"			<menuitem action='diff-iso'/>"
-					"			<menuitem action='diff-flow'/>"
-					"			<menuitem action='diff-gaussc'/>"
-					"			<menuitem action='diff-gradc'/>"
-					"			<separator/>"
-					"			<menuitem action='diff-lx'/>"
-					"			<menuitem action='diff-ly'/>"
-					"			<menuitem action='diff-lxx'/>"
-					"			<menuitem action='diff-lxy'/>"
-					"			<menuitem action='diff-lyy'/>"
-					"			<menuitem action='diff-lw'/>"
-					"			<menuitem action='diff-lvv'/>"
-					"			<menuitem action='diff-lvw'/>"
-					"			<menuitem action='diff-lww'/>"
-					"		</menu>"
-					"		<menu action='app-help-menu'>"
-					"			<menuitem action='app-about'/>"
-					"		</menu>"
-					"	</menubar>"
-					"	<toolbar name='ToolBar'>"
-					"		<toolitem action='open-image'/>"
-					"		<toolitem action='save-image'/>"
-					"		<separator/>"
-					"		<toolitem action='show-rgb'/>"
-					"		<toolitem action='show-gray'/>"
-					"		<toolitem action='show-bw'/>"
-					"		<toolitem action='show-other'/>"
-					"		<separator/>"
-					"		<toolitem action='image-zoom-in'/>"
-					"		<toolitem action='image-zoom-out'/>"
-					"		<toolitem action='image-zoom-100'/>"
-					"		<toolitem action='image-zoom-fit'/>"
-					"	</toolbar>"
-					"</ui>";
-*/
+				"</ui>";
 			ui_manager->add_ui_from_string(ui_info);
+#endif
 			Gtk::VBox *vbox = Gtk::manage(new Gtk::VBox());
 			vbox->show();
 			add(*vbox);
 
-			//vbox->pack_start(*ui_manager->get_widget("/MenuBar"), false, true, 0);
+#ifdef CRN_USING_GTKMM3
+			auto menumodel = Glib::RefPtr<Gio::Menu>::cast_dynamic(builder->get_object("MenuBar"));
+			auto *menu = new Gtk::MenuBar(menumodel);
+			vbox->pack_start(*Gtk::manage(menu), false, true, 0);
+			menu->show();
+			Gtk::Toolbar *tb = nullptr;
+			builder->get_widget("ToolBar", tb);
+			vbox->pack_start(*tb, false, true, 0);
+#else
+			vbox->pack_start(*ui_manager->get_widget("/MenuBar"), false, true, 0);
 			vbox->pack_start(*ui_manager->get_widget("/ToolBar"), false, true, 0);
+#endif
 			vbox->pack_start(img, true, true, 0);
 			img.show();
 
@@ -310,15 +929,21 @@ class Titus: public GtkCRN::App
 #endif
 			fdial.set_filter(ff);
 			fdial.add_button("ok", Gtk::RESPONSE_ACCEPT);
-			//fdial.add_button(Gtk::Stock::CANCEL, Gtk::RESPONSE_CANCEL);
-			//fdial.add_button(Gtk::Stock::OPEN, Gtk::RESPONSE_ACCEPT);
+#ifdef CRN_USING_GTKMM3
+			fdial.add_button(_("_Cancel"), Gtk::RESPONSE_CANCEL);
+			fdial.add_button(_("_Open"), Gtk::RESPONSE_ACCEPT);
+#else
+			fdial.add_button(Gtk::Stock::CANCEL, Gtk::RESPONSE_CANCEL);
+			fdial.add_button(Gtk::Stock::OPEN, Gtk::RESPONSE_ACCEPT);
 			std::vector<int> altbut;
 			altbut.push_back(Gtk::RESPONSE_ACCEPT);
 			altbut.push_back(Gtk::RESPONSE_CANCEL);
-			//fdial.set_alternative_button_order_from_array(altbut);
+			fdial.set_alternative_button_order_from_array(altbut);
+#endif
 			fdial.set_default_response(Gtk::RESPONSE_ACCEPT);
 
-			show_image(NONE);
+			//show_image(NONE);
+			signal_realize().connect(sigc::bind(sigc::mem_fun(this, &Titus::show_image), NONE));
 		}
 		virtual ~Titus() override {}
 
@@ -391,12 +1016,17 @@ class Titus: public GtkCRN::App
 				ff.add_pixbuf_formats();
 #endif
 				dial->set_filter(ff);
-				//dial->add_button(Gtk::Stock::CANCEL, Gtk::RESPONSE_CANCEL);
-				//dial->add_button(Gtk::Stock::SAVE, Gtk::RESPONSE_ACCEPT);
+#ifdef CRN_USING_GTKMM3
+				dial->add_button(_("_Cancel"), Gtk::RESPONSE_CANCEL);
+				dial->add_button(_("_Save"), Gtk::RESPONSE_ACCEPT);
+#else
+				dial->add_button(Gtk::Stock::CANCEL, Gtk::RESPONSE_CANCEL);
+				dial->add_button(Gtk::Stock::SAVE, Gtk::RESPONSE_ACCEPT);
 				std::vector<int> altbut;
 				altbut.push_back(Gtk::RESPONSE_ACCEPT);
 				altbut.push_back(Gtk::RESPONSE_CANCEL);
-				//dial->set_alternative_button_order_from_array(altbut);
+				dial->set_alternative_button_order_from_array(altbut);
+#endif
 				dial->set_default_response(Gtk::RESPONSE_ACCEPT);
 			}
 			dial->set_current_name("export.png");
@@ -412,6 +1042,9 @@ class Titus: public GtkCRN::App
 		{
 			current_image = mode;
 			refreshing = true;
+#ifdef CRN_USING_GTKMM3
+			Gtk::RadioToolButton *tb = nullptr;
+#endif
 			switch (mode)
 			{
 				case NONE:
@@ -419,56 +1052,127 @@ class Titus: public GtkCRN::App
 					break;
 				case RGB:
 					currimg = irgb;
-					//Glib::RefPtr<Gtk::RadioAction>::cast_dynamic(actions->get_action("show-rgb"))->set_active();
+#ifdef CRN_USING_GTKMM3
+					builder->get_widget("show-rgb", tb);
+					tb->set_active();
+#else
+					Glib::RefPtr<Gtk::RadioAction>::cast_dynamic(actions->get_action("show-rgb"))->set_active();
+#endif
 					break;
 				case GRAY:
 					currimg = igray;
-					//Glib::RefPtr<Gtk::RadioAction>::cast_dynamic(actions->get_action("show-gray"))->set_active();
+#ifdef CRN_USING_GTKMM3
+					builder->get_widget("show-gray", tb);
+					tb->set_active();
+#else
+					Glib::RefPtr<Gtk::RadioAction>::cast_dynamic(actions->get_action("show-gray"))->set_active();
+#endif
 					break;
 				case BW:
 					currimg = ibw;
-					//Glib::RefPtr<Gtk::RadioAction>::cast_dynamic(actions->get_action("show-bw"))->set_active();
+#ifdef CRN_USING_GTKMM3
+					builder->get_widget("show-bw", tb);
+					tb->set_active();
+#else
+					Glib::RefPtr<Gtk::RadioAction>::cast_dynamic(actions->get_action("show-bw"))->set_active();
+#endif
 					break;
 				default:
 					currimg = iother;
-					//Glib::RefPtr<Gtk::RadioAction>::cast_dynamic(actions->get_action("show-other"))->set_active();
+#ifdef CRN_USING_GTKMM3
+					builder->get_widget("show-other", tb);
+					tb->set_active();
+#else
+					Glib::RefPtr<Gtk::RadioAction>::cast_dynamic(actions->get_action("show-other"))->set_active();
+#endif
 			}
 			if (currimg)
 				img.set_pixbuf(GdkCRN::PixbufFromCRNImage(*currimg));
 			else
 				img.set_pixbuf(Glib::RefPtr<Gdk::Pixbuf>(nullptr));
 			refreshing = false;
-			/*actions->get_action("save-image")->set_sensitive(currimg != nullptr);
-			actions->get_action("generic-menu")->set_sensitive(mode != NONE);
-			actions->get_action("rgb-menu")->set_sensitive(irgb != nullptr);
-			actions->get_action("gray-menu")->set_sensitive(igray != nullptr);
-			actions->get_action("bw-menu")->set_sensitive(ibw != nullptr);
-			actions->get_action("diff-menu")->set_sensitive(diff != nullptr);
-			actions->get_action("show-rgb")->set_sensitive(irgb != nullptr);
-			actions->get_action("show-gray")->set_sensitive(igray != nullptr);
-			actions->get_action("show-bw")->set_sensitive(ibw != nullptr);
-			actions->get_action("show-other")->set_sensitive(iother != nullptr);*/
+
+			GtkCRN::set_enable_action(actions, "save-image", currimg != nullptr);
+#ifdef CRN_USING_GTKMM3
+			builder->get_widget("show-rgb", tb);
+			tb->set_sensitive(irgb != nullptr);
+			builder->get_widget("show-gray", tb);
+			tb->set_sensitive(igray != nullptr);
+			builder->get_widget("show-bw", tb);
+			tb->set_sensitive(ibw != nullptr);
+			builder->get_widget("show-other", tb);
+			tb->set_sensitive(iother != nullptr);
+#else
+			GtkCRN::set_enable_action(actions, "show-rgb", irgb != nullptr);
+			GtkCRN::set_enable_action(actions, "show-gray", igray != nullptr);
+			GtkCRN::set_enable_action(actions, "show-bw", ibw != nullptr);
+			GtkCRN::set_enable_action(actions, "show-other", iother != nullptr);
+#endif
+			GtkCRN::set_enable_action(actions, "generic-menu", mode != NONE);
+			GtkCRN::set_enable_action(actions, "rgb-menu", irgb != nullptr);
+			GtkCRN::set_enable_action(actions, "gray-menu", igray != nullptr);
+			GtkCRN::set_enable_action(actions, "bw-menu", ibw != nullptr);
+			GtkCRN::set_enable_action(actions, "diff-menu", diff != nullptr);
+
 		}
+#ifdef CRN_USING_GTKMM3
+		void on_image_toggled(int id)
+		{
+			if (refreshing)
+				return;
+			auto obj = actions->lookup_action("show-image");
+			auto act = Glib::RefPtr<Gio::SimpleAction>::cast_dynamic(obj);
+			act->change_state(id);
+			switch (id)
+			{
+				case 0:
+					currimg = irgb;
+					current_image = RGB;
+					break;
+				case 1:
+					currimg = igray;
+					current_image = GRAY;
+					break;
+				case 2:
+					currimg = ibw;
+					current_image = BW;
+					break;
+				case 3:
+					currimg = iother;
+					img.set_pixbuf(GdkCRN::PixbufFromCRNImage(*iother));
+					current_image = OTHER;
+					break;
+				default:
+					currimg = nullptr;
+					current_image = NONE;
+			}
+			if (currimg)
+				img.set_pixbuf(GdkCRN::PixbufFromCRNImage(*currimg));
+			else
+				img.set_pixbuf(Glib::RefPtr<Gdk::Pixbuf>(nullptr));
+		}
+#else
 		void on_image_toggled()
 		{
+			auto &a = actions;
 			if (!refreshing)
-			{/*
-				if (Glib::RefPtr<Gtk::RadioAction>::cast_dynamic(actions->get_action("show-rgb"))->get_active())
-				{*/
+			{
+				if (GtkCRN::is_toggle_action_active(a, "show-rgb"))
+				{
 					currimg = irgb;
-					current_image = RGB;/*
+					current_image = RGB;
 				}
-				else if (Glib::RefPtr<Gtk::RadioAction>::cast_dynamic(actions->get_action("show-gray"))->get_active())
+				else if (GtkCRN::is_toggle_action_active(a, "show-gray"))
 				{
 					currimg = igray;
 					current_image = GRAY;
 				}
-				else if (Glib::RefPtr<Gtk::RadioAction>::cast_dynamic(actions->get_action("show-bw"))->get_active())
+				else if (GtkCRN::is_toggle_action_active(a, "show-bw"))
 				{
 					currimg = ibw;
 					current_image = BW;
 				}
-				else if (Glib::RefPtr<Gtk::RadioAction>::cast_dynamic(actions->get_action("show-other"))->get_active())
+				else if (GtkCRN::is_toggle_action_active(a, "show-other"))
 				{
 					currimg = iother;
 					img.set_pixbuf(GdkCRN::PixbufFromCRNImage(*iother));
@@ -478,13 +1182,14 @@ class Titus: public GtkCRN::App
 				{
 					currimg = nullptr;
 					current_image = NONE;
-				}*/
+				}
 				if (currimg)
 					img.set_pixbuf(GdkCRN::PixbufFromCRNImage(*currimg));
 				else
 					img.set_pixbuf(Glib::RefPtr<Gdk::Pixbuf>(nullptr));
 			}
 		}
+#endif
 		virtual void about() override
 		{
 			Gtk::AboutDialog dial;
@@ -826,7 +1531,7 @@ class Titus: public GtkCRN::App
 			if (dial.run() == Gtk::RESPONSE_ACCEPT)
 			{
 				diff = std::make_unique<Differential>(Differential::NewGaussian(*irgb, Differential::RGBProjection::ABSMAX, sigma));
-				//actions->get_action("diff-menu")->set_sensitive(true);
+				GtkCRN::enable_action(actions, "diff-menu");
 			}
 		}
 		////////////////////////////////////////////////////////////
@@ -963,7 +1668,7 @@ class Titus: public GtkCRN::App
 			if (dial.run() == Gtk::RESPONSE_ACCEPT)
 			{
 				diff = std::make_unique<Differential>(Differential::NewGaussian(*igray, sigma));
-				//actions->get_action("diff-menu")->set_sensitive(true);
+				GtkCRN::enable_action(actions, "diff-menu");
 			}
 		}
 		////////////////////////////////////////////////////////////
@@ -1153,12 +1858,17 @@ class Titus: public GtkCRN::App
 				Gtk::Dialog(name, parent, true)
 		{
 			set_position(Gtk::WIN_POS_CENTER_ON_PARENT);
-			//add_button(Gtk::Stock::CANCEL, Gtk::RESPONSE_CANCEL);
-			//add_button(Gtk::Stock::OK, Gtk::RESPONSE_ACCEPT);
+#ifdef CRN_USING_GTKMM3
+			add_button(_("Cancel"), Gtk::RESPONSE_CANCEL);
+			add_button(_("OK"), Gtk::RESPONSE_ACCEPT);
+#else
+			add_button(Gtk::Stock::CANCEL, Gtk::RESPONSE_CANCEL);
+			add_button(Gtk::Stock::OK, Gtk::RESPONSE_ACCEPT);
 			std::vector<int> altbut;
 			altbut.push_back(Gtk::RESPONSE_ACCEPT);
 			altbut.push_back(Gtk::RESPONSE_CANCEL);
-			//set_alternative_button_order_from_array(altbut);
+			set_alternative_button_order_from_array(altbut);
+#endif
 			set_default_response(Gtk::RESPONSE_ACCEPT);
 			signal_response().connect(sigc::mem_fun(this, &ParameterDialog::set_values));
 
@@ -1183,7 +1893,7 @@ class Titus: public GtkCRN::App
 				scale->set_value(*val);
 				hbox->pack_start(*scale, true, true, 2);
 				hbox->show_all();
-				//get_vbox()->pack_start(*hbox, false, false, 2);
+				get_content_area()->pack_start(*hbox, false, false, 2);
 			}
 			void add_value(const Glib::ustring &name, double *val, double min, double max)
 			{
@@ -1197,7 +1907,7 @@ class Titus: public GtkCRN::App
 				spin->set_value(*val);
 				hbox->pack_start(*spin, true, true, 2);
 				hbox->show_all();
-				//get_vbox()->pack_start(*hbox, false, false, 2);
+				get_content_area()->pack_start(*hbox, false, false, 2);
 			}
 			void add_value(const Glib::ustring &name, bool *val)
 			{
@@ -1205,7 +1915,7 @@ class Titus: public GtkCRN::App
 				booleans[check] = val;
 				check->set_active(*val);
 				check->show();
-				//get_vbox()->pack_start(*check, true, false, 2);
+				get_content_area()->pack_start(*check, true, false, 2);
 			}
 
 		private:
@@ -1232,6 +1942,9 @@ class Titus: public GtkCRN::App
 			std::map<Gtk::CheckButton*, bool*> booleans;
 	};
 
+#ifdef CRN_USING_GTKMM3
+		Glib::RefPtr<Gtk::Builder> builder;
+#endif
 		GtkCRN::Image img;
 		int current_image;
 		Gtk::FileChooserDialog fdial;
@@ -1260,18 +1973,18 @@ int main(int argc, char *argv[])
 #ifdef CRN_USING_GTKMM3
 	auto gapp =
 		Gtk::Application::create(argc, argv,
-			"org.gtkmm.examples.base");
+				"org.libcrn.titus");
 #else
 	GtkCRN::Main kit(argc, argv);
 	GtkCRN::Main::SetDefaultExceptionHandler();
 #endif
 	Titus app;
+	GtkCRN::App::set_main_window(&app);
 #ifdef CRN_USING_GTKMM3
 	return gapp->run(app);
 #else
-	GtkCRN::App::set_main_window(&app);
 	app.show();
-	
+
 	kit.run_thread_safe();
 	return 0;
 #endif

@@ -333,48 +333,50 @@ namespace crn
 	 */
 	template<typename T> ImageBW kMeansHisto(const Image<T> &img, size_t classes, size_t black_classes, typename std::enable_if<std::is_arithmetic<T>::value>::type *dummy = nullptr)
 	{
-		ImageBW out = ImageBW(img.GetWidth(), img.GetHeight(), pixel::BWBlack);
+		if (classes < 2 || black_classes < 1)
+			throw ExceptionDomain{"kMeansHisto(): invalid number of classes."};
 
 		auto histo = MakeHistogram(img);
 		if (histo.Size() < 3)
 			return Fisher(img);
 
-		// TODO
-#if 0
-		auto km = kMeans{};
-		km.AddSamples(histo);
-		auto min = 0.0;
-		auto max = double(histo.Size()) - 1;
-		for (size_t tmp = 1; tmp < histo.Size(); tmp++)
-			if (histo.GetBin(tmp) != 0)
-			{
-				if (histo.GetBin(tmp - 1) == 0)
-					min = double(tmp);
-				break;
-			}
-		for (auto tmp = int(histo.Size()) - 2; tmp >= 0; tmp--)
-			if (histo.GetBin(tmp) != 0)
-			{
-				if (histo.GetBin(tmp + 1) == 0)
-					max = double(tmp);
-				break;
-			}
-
-		if (max <= min)
+		auto protos = std::vector<int>(classes);
+		for (auto tmp : Range(protos))
 		{
-			max = double(histo.Size()) - 1;
-			min = 0;
+			protos[tmp] = int(tmp * (histo.Size() - 1) / (classes));
 		}
-
-		for (size_t tmp = 0; tmp < classes; tmp++)
+		auto ok = false;
+		while (!ok)
 		{
-			RealCoeff rc(min + double(tmp + 1) * (max - min) / double(classes + 1), 1);
-			km.AddPrototype(rc);
+			auto cumul = std::vector<int>(classes, 0);
+			auto cnt = std::vector<int>(classes, 0);
+			// for each bin
+			for (auto tmp : Range(histo))
+			{
+				// find nearest prototype
+				auto c = 0;
+				auto d = Abs(int(tmp) - protos[0]);
+				for (auto tmpc = size_t(1); tmpc < classes; ++tmpc)
+				{
+					const auto td = Abs(int(tmp) - protos[tmpc]);
+					if (td < d)
+					{
+						d = td;
+						c = tmpc;
+					}
+				}
+				cumul[c] += int(tmp);
+				cnt[c] += int(histo[tmp]);
+			}
+			for (auto tmp : Range(cumul))
+				if (cnt[tmp])
+					cumul[tmp] /= cnt[tmp];
+			ok = (protos == cumul);
+			cumul.swap(protos);
 		}
-		km.Run();
-		double threshold = double(
-				std::static_pointer_cast<Real>(km.GetPrototypes()[black_classes - 1])->GetValue() +
-				std::static_pointer_cast<Real>(km.GetPrototypes()[black_classes])->GetValue()) / 2.0;
+		
+		ImageBW out = ImageBW(img.GetWidth(), img.GetHeight(), pixel::BWBlack);
+		double threshold = double(protos[black_classes - 1] + protos[black_classes]) / 2.0;
 
 		for (auto tmp : Range(img))
 		{
@@ -383,7 +385,6 @@ namespace crn
 			else
 				out.At(tmp) = pixel::BWBlack;
 		}
-#endif
 
 		return out;
 	}

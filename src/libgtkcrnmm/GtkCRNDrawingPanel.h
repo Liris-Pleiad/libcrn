@@ -23,6 +23,9 @@
 #define GtkCRNDrawingPanel_HEADER
 
 #include <libgtkcrnmm_config.h>
+
+#ifndef CRN_USING_GTKMM3
+
 #include <gtkmm.h>
 #include <CRNGeometry/CRNPoint2DDouble.h>
 #include <GtkCRNColorAction.h>
@@ -109,10 +112,13 @@ namespace GtkCRN
 			std::vector<std::vector<crn::Point2DDouble>> stroke_list; /*!< the strokes to display*/
 
 			Glib::RefPtr<Gtk::ActionGroup> actions; /*!< public UI elements */
+#ifndef CRN_USING_GTKMM3
 			Glib::RefPtr<GtkCRN::ColorAction> bg_act, fg_act;
 			Glib::RefPtr<GtkCRN::ScaleAction> thick_act;
+#endif
 	};
 }
 
 #endif
 
+#endif

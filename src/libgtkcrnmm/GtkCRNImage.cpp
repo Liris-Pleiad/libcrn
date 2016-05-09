@@ -37,31 +37,22 @@ int Image::selection_margin(5);
 
 /*! Constructor */
 Image::Image():
-	//Grid(3, 3, false),
+#ifndef CRN_USING_GTKMM3
+	Table(3, 3, false),
+#endif
 	mouse_mode(MouseMode::NONE),
 	need_redraw(true),
 	need_recompute(false),
 	dispw(0),
 	disph(0),
 	zoom(1.0),
+#ifdef CRN_USING_GTKMM3
+	image_actions(Gio::SimpleActionGroup::create()),
+#else
 	image_actions(Gtk::ActionGroup::create("image")),
-	selection_type(Overlay::None)//,
-#ifdef CRN_USING_GTKMM3/*
-	scroll_cursor(Gdk::Cursor::create(Gdk::FLEUR)),
-	select_cursor(Gdk::Cursor::create(Gdk::CROSS)),
-	move_cursor(Gdk::Cursor::create(Gdk::HAND1)),
-	move_1_cursor(Gdk::Cursor::create(Gdk::FLEUR)),
-	drag_left_cursor(Gdk::Cursor::create(Gdk::LEFT_SIDE)),
-	drag_bottom_left_cursor(Gdk::Cursor::create(Gdk::BOTTOM_LEFT_CORNER)),
-	drag_bottom_cursor(Gdk::Cursor::create(Gdk::BOTTOM_SIDE)),
-	drag_bottom_right_cursor(Gdk::Cursor::create(Gdk::BOTTOM_RIGHT_CORNER)),
-	drag_right_cursor(Gdk::Cursor::create(Gdk::RIGHT_SIDE)),
-	drag_top_right_cursor(Gdk::Cursor::create(Gdk::TOP_RIGHT_CORNER)),
-	drag_top_cursor(Gdk::Cursor::create(Gdk::TOP_SIDE)),
-	drag_top_left_cursor(Gdk::Cursor::create(Gdk::TOP_LEFT_CORNER)),
-	user_cursor(Gdk::Cursor::create(Gdk::TARGET))*/
-#else /* CRN_USING_GTKMM3 */
-	/*scroll_cursor(Gdk::FLEUR),
+#endif
+	selection_type(Overlay::None),
+	scroll_cursor(Gdk::FLEUR),
 	select_cursor(Gdk::CROSS),
 	move_cursor(Gdk::HAND1),
 	move_1_cursor(Gdk::FLEUR),
@@ -73,27 +64,21 @@ Image::Image():
 	drag_top_right_cursor(Gdk::TOP_RIGHT_CORNER),
 	drag_top_cursor(Gdk::TOP_SIDE),
 	drag_top_left_cursor(Gdk::TOP_LEFT_CORNER),
-	user_cursor(Gdk::TARGET)*/
-#endif /* CRN_USING_GTKMM3 */
+	user_cursor(Gdk::TARGET)
 {
-#ifdef CRN_USING_GTKMM3
-	//attach(hruler, 1, 2, 0, 1, Gtk::FILL, Gtk::FILL, 0, 0);
-	//hruler.show();
-#else /* CRN_USING_GTKMM3 */
+#ifndef CRN_USING_GTKMM3
 	attach(hruler, 1, 2, 0, 1, Gtk::FILL, Gtk::FILL, 0, 0);
 	hruler.show();
-#endif /* CRN_USING_GTKMM3 */
 	//hruler.set_sensitive(false);
-#ifdef CRN_USING_GTKMM3
-	//attach(vruler, 0, 1, 1, 2, Gtk::FILL, Gtk::FILL, 0, 0);
-	//vruler.show();
-#else /* CRN_USING_GTKMM3 */
 	attach(vruler, 0, 1, 1, 2, Gtk::FILL, Gtk::FILL, 0, 0);
 	vruler.show();
-#endif /* CRN_USING_GTKMM3 */
 	//vruler.set_sensitive(false);
+#endif /* !CRN_USING_GTKMM3 */
+
 #ifdef CRN_USING_GTKMM3
-	attach(da, 1, 2, 1, 2);
+	attach(da, 1, 1, 1, 1);
+	da.set_hexpand(true);
+	da.set_vexpand(true);
 #else
 	attach(da, 1, 2, 1, 2, Gtk::FILL | Gtk::EXPAND | Gtk::SHRINK, Gtk::FILL | Gtk::EXPAND | Gtk::SHRINK, 0, 0);
 #endif
@@ -110,28 +95,29 @@ Image::Image():
 	da.signal_scroll_event().connect(sigc::mem_fun(this, &Image::mouse_wheel));
 	da.show();
 	//da.set_sensitive(false);
-#ifdef CRN_USING_GTKMM3
-	hscrollbar.set_orientation(Gtk::Orientation::ORIENTATION_HORIZONTAL);
-#endif
 	hscrollbar.get_adjustment()->set_lower(0);
 	hscrollbar.get_adjustment()->set_step_increment(10);
 	hscrollbar.get_adjustment()->set_page_increment(100);
 #ifdef CRN_USING_GTKMM3
-	attach(hscrollbar, 1, 2, 2, 3);
+	attach(hscrollbar, 1, 2, 1, 1);
+	hscrollbar.set_hexpand(true);
+	hscrollbar.set_vexpand(false);
+	hscrollbar.set_orientation(Gtk::ORIENTATION_HORIZONTAL),
 #else
 	attach(hscrollbar, 1, 2, 2, 3, Gtk::FILL, Gtk::FILL, 0, 0);
 #endif
 	hscrollbar.signal_value_changed().connect(sigc::mem_fun(this, &Image::scrolled));
 	hscrollbar.show();
 	//hscrollbar.set_sensitive(false);
-#ifdef CRN_USING_GTKMM3
-	vscrollbar.set_orientation(Gtk::Orientation::ORIENTATION_VERTICAL);
-#endif
+
 	vscrollbar.get_adjustment()->set_lower(0);
 	vscrollbar.get_adjustment()->set_step_increment(10);
 	vscrollbar.get_adjustment()->set_page_increment(100);
 #ifdef CRN_USING_GTKMM3
-	attach(vscrollbar, 2, 3, 1, 2);
+	attach(vscrollbar, 2, 1, 1, 1);
+	vscrollbar.set_hexpand(false);
+	vscrollbar.set_vexpand(true);
+	vscrollbar.set_orientation(Gtk::ORIENTATION_VERTICAL),
 #else
 	attach(vscrollbar, 2, 3, 1, 2, Gtk::FILL, Gtk::FILL, 0, 0);
 #endif
@@ -143,12 +129,19 @@ Image::Image():
 	refresher = Glib::signal_timeout().connect(sigc::mem_fun(this, &Image::refresh), 100);
 
 	// actions
-	/*image_actions->add(Gtk::Action::create("image-zoom-in", Gtk::Stock::ZOOM_IN), sigc::mem_fun(this, &Image::zoom_in));
+#ifdef CRN_USING_GTKMM3
+	image_actions->add_action("zoom-in", sigc::mem_fun(this, &Image::zoom_in));
+	image_actions->add_action("zoom-out", sigc::mem_fun(this, &Image::zoom_out));
+	image_actions->add_action("zoom-100", sigc::mem_fun(this, &Image::zoom_100));
+	image_actions->add_action("zoom-fit", sigc::mem_fun(this, &Image::zoom_fit));
+	image_actions->add_action("clear-user-selection", sigc::mem_fun(this, &Image::clear_selection));
+#else
+	image_actions->add(Gtk::Action::create("image-zoom-in", Gtk::Stock::ZOOM_IN), sigc::mem_fun(this, &Image::zoom_in));
 	image_actions->add(Gtk::Action::create("image-zoom-out", Gtk::Stock::ZOOM_OUT), sigc::mem_fun(this, &Image::zoom_out));
 	image_actions->add(Gtk::Action::create("image-zoom-100", Gtk::Stock::ZOOM_100), sigc::mem_fun(this, &Image::zoom_100));
 	image_actions->add(Gtk::Action::create("image-zoom-fit", Gtk::Stock::ZOOM_FIT), sigc::mem_fun(this, &Image::zoom_fit));
 	image_actions->add(Gtk::Action::create("image-clear-user-selection", Gtk::Stock::CLEAR, _("_Clear User Selection"), _("Clear User Selection")), sigc::mem_fun(this, &Image::clear_selection));
-	*/
+#endif
 	overlays[selection_overlay()].config.moveable = true;
 	overlays[selection_overlay()].config.editable = true;
 }
@@ -295,7 +288,7 @@ void Image::focus_on(int x, int y)
  * \param[in]	cur	the cursor to use in user mouse mode
  */
 #ifdef CRN_USING_GTKMM3
-void Image::set_user_cursor(const Glib::RefPtr<Gdk::Cursor> &cur)
+void Image::set_user_cursor(const Gdk::CursorType &cur)
 #else /* CRN_USING_GTKMM3 */
 void Image::set_user_cursor(const Gdk::Cursor &cur)
 #endif /* CRN_USING_GTKMM3 */
@@ -345,13 +338,10 @@ bool Image::configure(GdkEventConfigure *ev)
 bool Image::mouse_motion(GdkEventMotion* ev)
 {
 	// update rulers
-#ifdef CRN_USING_GTKMM3
-	//hruler.set_range(pos.X, pos.X + int(dispw / zoom), pos.X + int(ev->x / zoom), pos.X + int(dispw / zoom));
-	//vruler.set_range(pos.Y, pos.Y + int(disph / zoom), pos.Y + int(ev->y / zoom), pos.Y + int(disph / zoom));
-#else /* CRN_USING_GTKMM3 */
+#ifndef CRN_USING_GTKMM3
 	hruler.set_range(pos.X, pos.X + int(dispw / zoom), pos.X + int(ev->x / zoom), pos.X + int(dispw / zoom));
 	vruler.set_range(pos.Y, pos.Y + int(disph / zoom), pos.Y + int(ev->y / zoom), pos.Y + int(disph / zoom));
-#endif /* CRN_USING_GTKMM3 */
+#endif /* ! CRN_USING_GTKMM3 */
 
 	// check for a click
 	switch (mouse_mode)
@@ -528,7 +518,6 @@ bool Image::mouse_motion(GdkEventMotion* ev)
 			}
 			break;
 
-			// case MouseMode::MOVE1:
 		case MouseMode::MOVEPOINT:
 			{
 				double dx = (ev->x - click_ref.X) / zoom;
@@ -1542,17 +1531,13 @@ bool Image::button_clicked(GdkEventButton *ev)
 												min_y = y1;
 											if(max_y < y1)
 												max_y = y1;
-#ifdef CRN_USING_GTKMM3
 											crn::Rect rec(min_x - selection_margin, min_y - selection_margin, max_x + selection_margin, max_y + selection_margin);
 											if(rec.Contains(realx,realy))
 												res.push_back(std::make_pair(lit->first, overlay.first));
-#endif /* ! CRN_USING_GTKMM3 */
 										}
-#ifdef CRN_USING_GTKMM3
 										crn::Rect rec(min_x - selection_margin, min_y - selection_margin, max_x + selection_margin ,max_y + selection_margin);
 										if(rec.Contains(realx,realy))
 											res.push_back(std::make_pair(lit->first, overlay.first));
-#endif /* CRN_USING_GTKMM3 */
 									}
 								}
 							}
@@ -1592,7 +1577,7 @@ bool Image::button_clicked(GdkEventButton *ev)
 			break;
 	}
 	set_cursor_from_mode(mouse_mode);
-	return FALSE;
+	return false;
 }
 
 /*! Scroll with mouse wheel
@@ -1874,6 +1859,56 @@ Image::MouseMode Image::find_selection_at(double mouse_x, double mouse_y, crn::S
  */
 void Image::set_cursor_from_mode(Image::MouseMode m)
 {
+#ifdef CRN_USING_GTKMM3
+	switch (m)
+	{
+		case MouseMode::SCROLL:
+			da.get_window()->set_cursor(Gdk::Cursor::create(get_display(), scroll_cursor));
+			break;
+		case MouseMode::DRAW:
+			da.get_window()->set_cursor(Gdk::Cursor::create(get_display(), select_cursor));
+			break;
+		case MouseMode::MOVE:
+			da.get_window()->set_cursor(Gdk::Cursor::create(get_display(), move_cursor));
+			break;
+		case MouseMode::MOVEPOINT:
+			da.get_window()->set_cursor(Gdk::Cursor::create(get_display(), move_1_cursor));
+			break;
+		case MouseMode::STRETCH_LEFT:
+			da.get_window()->set_cursor(Gdk::Cursor::create(get_display(), drag_left_cursor));
+			break;
+		case MouseMode::STRETCH_BOTTOM_LEFT:
+			da.get_window()->set_cursor(Gdk::Cursor::create(get_display(), drag_bottom_left_cursor));
+			break;
+		case MouseMode::STRETCH_BOTTOM:
+			da.get_window()->set_cursor(Gdk::Cursor::create(get_display(), drag_bottom_cursor));
+			break;
+		case MouseMode::STRETCH_BOTTOM_RIGHT:
+			da.get_window()->set_cursor(Gdk::Cursor::create(get_display(), drag_bottom_right_cursor));
+			break;
+		case MouseMode::STRETCH_RIGHT:
+			da.get_window()->set_cursor(Gdk::Cursor::create(get_display(), drag_right_cursor));
+			break;
+		case MouseMode::STRETCH_TOP_RIGHT:
+			da.get_window()->set_cursor(Gdk::Cursor::create(get_display(), drag_top_right_cursor));
+			break;
+		case MouseMode::STRETCH_TOP:
+			da.get_window()->set_cursor(Gdk::Cursor::create(get_display(), drag_top_cursor));
+			break;
+		case MouseMode::STRETCH_TOP_LEFT:
+			da.get_window()->set_cursor(Gdk::Cursor::create(get_display(), drag_top_left_cursor));
+			break;
+		case MouseMode::USER:
+			da.get_window()->set_cursor(Gdk::Cursor::create(get_display(), user_cursor));
+			break;
+		case MouseMode::NONE:
+		default:
+			if (selection_type == Overlay::User)
+				da.get_window()->set_cursor(Gdk::Cursor::create(get_display(), user_cursor));
+			else
+				da.get_window()->set_cursor();
+	}
+#else
 	switch (m)
 	{
 		case MouseMode::SCROLL:
@@ -1885,7 +1920,6 @@ void Image::set_cursor_from_mode(Image::MouseMode m)
 		case MouseMode::MOVE:
 			da.get_window()->set_cursor(move_cursor);
 			break;
-			//    case MouseMode::MOVE1:
 		case MouseMode::MOVEPOINT:
 			da.get_window()->set_cursor(move_1_cursor);
 			break;
@@ -1923,6 +1957,7 @@ void Image::set_cursor_from_mode(Image::MouseMode m)
 			else
 				da.get_window()->set_cursor();
 	}
+#endif
 }
 
 
@@ -2350,23 +2385,15 @@ bool Image::refresh()
 			// allows the user to modify the image
 			drawing.emit(buffer);
 
+#ifndef CRN_USING_GTKMM3
 			// set the rulers' scale
-#ifdef CRN_USING_GTKMM3
-			//hruler.set_range(pos.X, pos.X + int(dispw / zoom), pos.X, pos.X + int(dispw / zoom));
-			//vruler.set_range(pos.Y, pos.Y + int(disph / zoom), pos.Y, pos.Y + int(disph / zoom));
-#else /* CRN_USING_GTKMM3 */
 			hruler.set_range(pos.X, pos.X + int(dispw / zoom), pos.X, pos.X + int(dispw / zoom));
 			vruler.set_range(pos.Y, pos.Y + int(disph / zoom), pos.Y, pos.Y + int(disph / zoom));
-#endif /* CRN_USING_GTKMM3 */
 
 			// update the GC
-#ifdef CRN_USING_GTKMM3
-			//da_gc = Gdk::GC::create(win);
-			//da_gc->set_rgb_fg_color(Gdk::Color("white"));
-#else /* CRN_USING_GTKMM3 */
 			da_gc = Gdk::GC::create(win);
 			da_gc->set_rgb_fg_color(Gdk::Color("white"));
-#endif /* CRN_USING_GTKMM3 */
+#endif /* ! CRN_USING_GTKMM3 */
 
 			need_recompute = false;
 			need_redraw = true;
@@ -2375,23 +2402,11 @@ bool Image::refresh()
 		{
 			// need to redraw the image
 			// create a buffer
-#ifdef CRN_USING_GTKMM3
-			//Glib::RefPtr<Gdk::Pixmap> pm = Gdk::Pixmap::create(win, dispw, disph);
-#else /* CRN_USING_GTKMM3 */
+#ifndef CRN_USING_GTKMM3
 			Glib::RefPtr<Gdk::Pixmap> pm = Gdk::Pixmap::create(win, dispw, disph);
-#endif /* CRN_USING_GTKMM3 */
-			// clear the buffer
-#ifdef CRN_USING_GTKMM3
-			//pm->draw_rectangle(da_gc, true, 0, 0, dispw, disph);
-#else /* CRN_USING_GTKMM3 */
 			pm->draw_rectangle(da_gc, true, 0, 0, dispw, disph);
-#endif /* CRN_USING_GTKMM3 */
-			// copy the image
-#ifdef CRN_USING_GTKMM3
-			//pm->draw_pixbuf(da_gc, buffer, 0, 0, 0, 0, buffer->get_width(), buffer->get_height(), Gdk::RGB_DITHER_NONE, 0, 0);
-#else /* CRN_USING_GTKMM3 */
 			pm->draw_pixbuf(da_gc, buffer, 0, 0, 0, 0, buffer->get_width(), buffer->get_height(), Gdk::RGB_DITHER_NONE, 0, 0);
-#endif /* CRN_USING_GTKMM3 */
+#endif /* ! CRN_USING_GTKMM3 */
 
 			// now draw the rectangles!
 #ifdef CRN_USING_GTKMM3
@@ -2642,11 +2657,9 @@ bool Image::refresh()
 			} //for each overlay
 
 			// copy pixmap to drawing area
-#ifdef CRN_USING_GTKMM3
-			//win->draw_drawable(da_gc, pm, 0, 0, 0, 0);
-#else /* CRN_USING_GTKMM3 */
+#ifndef CRN_USING_GTKMM3
 			win->draw_drawable(da_gc, pm, 0, 0, 0, 0);
-#endif /* CRN_USING_GTKMM3 */
+#endif /* ! CRN_USING_GTKMM3 */
 
 			// done!
 			need_redraw = false;
