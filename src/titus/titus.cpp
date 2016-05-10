@@ -69,7 +69,7 @@ class Titus: public GtkCRN::App
 			actions->add_action("open-image", sigc::mem_fun(this, &Titus::open_image));
 			actions->add_action("save-image", sigc::mem_fun(this, &Titus::save_image));
 			// toolbar
-			actions->add_action_radio_integer("show-image", sigc::mem_fun(this, &Titus::on_image_toggled), 0);
+			actions->add_action_radio_integer("show-image", sigc::mem_fun(this, &Titus::on_image_toggled), 0); // XXX TODO Crash on windows
 
 			// generic menu
 			actions->add_action("generic-menu");
