@@ -214,7 +214,7 @@ if(GTK3_FOUND)
 	set(CRN_USING_GDKPB on)
 endif()
 
-if(NOT MSVC)
+#if(NOT MSVC)
 # libpng
 	find_package(PNG)
 	if(PNG_FOUND)
@@ -228,8 +228,7 @@ if(NOT MSVC)
 		set(CRN_USING_LIBJPEG on)
 		message("Using jpeglib")
 	endif()
-
-endif()
+#endif()
 
 # Build
 if(MSVC)

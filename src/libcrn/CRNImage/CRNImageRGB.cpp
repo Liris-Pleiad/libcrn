@@ -29,6 +29,13 @@
 #	include <gdk-pixbuf/gdk-pixbuf.h>
 #endif
 
+#ifdef CRN_USING_GDIPLUS
+#	include <windows.h>
+#	include <objidl.h>
+#	include <gdiplus.h>
+#	undef RegisterClass
+#endif
+
 #ifdef CRN_USING_LIBPNG
 #	include <png.h>
 #endif
@@ -38,18 +45,11 @@
 #  include <setjmp.h>
 struct crn_jpeg_error_mgr
 {
-  struct jpeg_error_mgr pub;	/* "public" fields */
-  jmp_buf setjmp_buffer;	/* for return to caller */
+	struct jpeg_error_mgr pub;	/* "public" fields */
+	jmp_buf setjmp_buffer;	/* for return to caller */
 };
 typedef struct crn_jpeg_error_mgr * crn_jpeg_error_ptr;
 void crn_jpeg_error_exit(j_common_ptr cinfo);
-#endif
-
-#ifdef CRN_USING_GDIPLUS
-#	include <windows.h>
-#	include <objidl.h>
-#	include <gdiplus.h>
-#	undef RegisterClass
 #endif
 
 void fclose_if_not_null(FILE *f);

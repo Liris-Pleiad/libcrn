@@ -31,6 +31,12 @@
 #	include <gdk-pixbuf/gdk-pixbuf.h>
 #endif
 
+#ifdef CRN_USING_GDIPLUS
+#	include <windows.h>
+#	include <objidl.h>
+#	include <gdiplus.h>
+#endif
+
 #ifdef CRN_USING_LIBPNG
 #	include <png.h>
 #endif
@@ -38,12 +44,6 @@
 #ifdef CRN_USING_LIBJPEG
 #  include <jpeglib.h>
 #  include <setjmp.h>
-#endif
-
-#ifdef CRN_USING_GDIPLUS
-#	include <windows.h>
-#	include <objidl.h>
-#	include <gdiplus.h>
 #endif
 
 using namespace crn;

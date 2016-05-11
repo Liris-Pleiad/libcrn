@@ -89,7 +89,7 @@ endif()
 
 # jpeglib
 if(CRN_USING_LIBJPEG)
-	include_directories(${JPEG_INCLUDE_DIRS})
+	include_directories(${JPEG_INCLUDE_DIR})
 	target_link_libraries(crn	${JPEG_LIBRARIES})
 	set(FINDLIBCRN_DEPS "${FINDLIBCRN_DEPS}\nset(FINDLIBCRN_JPEG on)")
 endif()

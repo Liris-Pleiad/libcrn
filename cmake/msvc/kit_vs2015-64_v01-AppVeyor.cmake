@@ -13,6 +13,17 @@ set(ICONV_DIR										${MSVC_KIT_ROOT}/libiconv-1.14)
 
 ### optional :
 
+set(ZLIB_INCLUDE_DIR								${MSVC_KIT_ROOT}/3rdparty/zlib)
+set(ZLIB_LIBRARY									${MSVC_KIT_ROOT}/3rdparty/zlib/lib/Release/zlib.lib)
+
+set(PNG_PNG_INCLUDE_DIR								${MSVC_KIT_ROOT}/3rdparty/libpng)
+set(PNG_LIBRARY										${MSVC_KIT_ROOT}/3rdparty/libpng/lib/Release/libpng.lib)
+
+set(JPEG_INCLUDE_DIR								${MSVC_KIT_ROOT}/3rdparty/libjpeg)
+set(JPEG_LIBRARY									${MSVC_KIT_ROOT}/3rdparty/libjpeg/lib/Release/jpeg.lib)
+
+# ---
+
 #set(WITH_GTKMM2										TRUE)
 #set(WITH_GTKMM3_DEBUG								TRUE)
 #set(WITH_GTKMM3_RELEASE								TRUE)
