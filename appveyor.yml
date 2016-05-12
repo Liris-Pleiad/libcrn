@@ -76,6 +76,9 @@ before_build:
 # libiconv
   - IF %CACHE%==FALSE curl -s -O https://download.gforge.liris.cnrs.fr/meppbin/windows/vs2015/PLEIAD/packages/clean/libiconv-1.14.rar
   - IF %CACHE%==FALSE 7z x libiconv-1.14.rar > nul
+# 3rdparty
+  - IF %CACHE%==FALSE curl -s -O https://download.gforge.liris.cnrs.fr/meppbin/windows/vs2015/PLEIAD/packages/clean/3rdparty.rar
+  - IF %CACHE%==FALSE 7z x 3rdparty.rar > nul
 # bin_gettext
   - IF %CACHE%==FALSE curl -s -O https://download.gforge.liris.cnrs.fr/meppbin/windows/vs2015/PLEIAD/packages/clean/bin_gettext.rar
   - IF %CACHE%==FALSE 7z x bin_gettext.rar > nul
