@@ -79,6 +79,12 @@ before_build:
 # 3rdparty
   - IF %CACHE%==FALSE curl -s -O https://download.gforge.liris.cnrs.fr/meppbin/windows/vs2015/PLEIAD/packages/clean/3rdparty.rar
   - IF %CACHE%==FALSE 7z x 3rdparty.rar > nul
+# zip
+  - IF %CACHE%==FALSE curl -s -O https://download.gforge.liris.cnrs.fr/meppbin/windows/vs2015/PLEIAD/packages/clean/libzip-1.1.2.rar
+  - IF %CACHE%==FALSE 7z x libzip-1.1.2.rar > nul
+# haru(pdf)
+  - IF %CACHE%==FALSE curl -s -O https://download.gforge.liris.cnrs.fr/meppbin/windows/vs2015/PLEIAD/packages/clean/libharu-2.3.0.rar
+  - IF %CACHE%==FALSE 7z x libharu-2.3.0.rar > nul
 # bin_gettext
   - IF %CACHE%==FALSE curl -s -O https://download.gforge.liris.cnrs.fr/meppbin/windows/vs2015/PLEIAD/packages/clean/bin_gettext.rar
   - IF %CACHE%==FALSE 7z x bin_gettext.rar > nul

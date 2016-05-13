@@ -11,7 +11,7 @@ endif()
 
 set(ICONV_DIR										${MSVC_KIT_ROOT}/libiconv-1.14)
 
-### optional :
+### optional 1 : png, jpeg, intl
 
 set(ZLIB_INCLUDE_DIR								${MSVC_KIT_ROOT}/3rdparty/zlib)
 set(ZLIB_LIBRARY									${MSVC_KIT_ROOT}/3rdparty/zlib/lib/Release/zlib.lib)
@@ -24,11 +24,40 @@ set(JPEG_LIBRARY									${MSVC_KIT_ROOT}/3rdparty/libjpeg/lib/Release/jpeg.lib)
 
 # ---
 
+# TEMP !!! : juste here to test 3 different versions of intl...
+
+if(0)
+set(Intl_INCLUDE_DIR								${MSVC_KIT_ROOT}/gtkmm2/include)
+set(Intl_LIBRARY									${MSVC_KIT_ROOT}/gtkmm2/lib/intl.lib)
+endif()
+
+if(0)
+set(Intl_INCLUDE_DIR								${MSVC_KIT_ROOT}/gtkmm3_debug/include/gettext/intl)
+set(Intl_LIBRARY									${MSVC_KIT_ROOT}/gtkmm3_debug/lib/intl.dll.lib)
+endif()
+
+if(0)
+set(Intl_INCLUDE_DIR								${MSVC_KIT_ROOT}/gtkmm3_release/include/gettext/intl)
+set(Intl_LIBRARY									${MSVC_KIT_ROOT}/gtkmm3_release/lib/intl.dll.lib)
+endif()
+
+### optional 2 : zip, haru(pdf)
+
+# TODO
+
+#set(XXXX_INCLUDE_DIR								${MSVC_KIT_ROOT}/libzip-1.1.2/include)
+#set(XXXX_LIBRARY									${MSVC_KIT_ROOT}/libzip-1.1.2/lib/Release/zip.lib)
+
+#set(XXXX_INCLUDE_DIR								${MSVC_KIT_ROOT}/libharu-2.3.0/include)
+#set(XXXX_LIBRARY									${MSVC_KIT_ROOT}/libharu-2.3.0/lib/Release/libhpdf.lib)
+
+### optional 3 : gtkmm2, gtkmm3
+
 #set(WITH_GTKMM2										TRUE)
 #set(WITH_GTKMM3_DEBUG								TRUE)
 #set(WITH_GTKMM3_RELEASE								TRUE)
 
-###
+# ---
 
 if(WITH_GTKMM2)
 	set(GTK2_HINTS									${MSVC_KIT_ROOT}/gtkmm2)
@@ -53,5 +82,7 @@ else()
 		set(Intl_LIBRARY							${GTK3_HINTS}/lib/intl.dll.lib)
 	endif()
 endif()
+
+### optional 4 : qt4, qt5
 
 ###
