@@ -52,7 +52,10 @@ install:
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install libzip libharu; fi
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install doxygen graphviz; fi
 
+# No HPDF on travis
+# Missing file in homebrew's libzip
+# Missing file in homebrew's gettext
 script:
-  - mkdir build && cd build && cmake .. $BTYPE -DCRN_DEPENDENCY_GTKMM2=ON -DCRN_DEPENDENCY_GTKMM3=ON -DCRN_DEPENDENCY_PNG=ON -DCRN_DEPENDENCY_JPEG=ON -DCRN_DEPENDENCY_GDKPIXBUF=ON -DCRN_DEPENDENCY_GETTEXT_INTL=OFF -DCRN_DEPENDENCY_ZIP=ON -DCRN_DEPENDENCY_HARUPDF=OFF
+  - mkdir build && cd build && cmake .. $BTYPE -DCRN_DEPENDENCY_GTKMM2=ON -DCRN_DEPENDENCY_GTKMM3=ON -DCRN_DEPENDENCY_PNG=ON -DCRN_DEPENDENCY_JPEG=ON -DCRN_DEPENDENCY_GDKPIXBUF=ON -DCRN_DEPENDENCY_GETTEXT_INTL=OFF -DCRN_DEPENDENCY_ZIP=OFF -DCRN_DEPENDENCY_HARUPDF=OFF
   - make
   - make test
