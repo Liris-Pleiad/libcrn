@@ -4,6 +4,17 @@ libcrn is a document image processing library written in C++11 for Linux, Window
 
 ( --> Initial commit from http://sourceforge.net/projects/libcrn/ - Tree [r1364] : http://sourceforge.net/p/libcrn/code/1364/ <-- )
 
+## Windows
+Visual Studio 2015 needed.
+Download dependencies at: http://TODO .
+For now, only one option between Gtkmm2, Gtkmm3-Release and Gtkmm3-Debug can be chosen at the same time.
+
+## Linux
+Builds with g++ 4.8 to 6.1 and clang++ 3.6.
+
+## MaxOS
+Dependencies available in homebrew.
+
 ## Android
 ### Build
 ```
