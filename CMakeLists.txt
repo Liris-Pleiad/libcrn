@@ -68,7 +68,11 @@ if(ANDROID)
 		message(FATAL_ERROR "Android API level must be >=9.")
 	endif(ANDROID_NATIVE_API_LEVEL LESS 9)
 	set(CRN_PF_ANDROID ON)
-	#set(ICONV_INCLUDE_DIR "${ANDROID_NDK}/sources/android/support/include") # need to include a homebuilt version of iconv
+
+	set(ICONV_INCLUDE_DIR "${CMAKE_SOURCE_DIR}/android-deps/include" CACHE PATH "path to iconv")
+	set(ICONV_LIBRARIES "${CMAKE_SOURCE_DIR}/android-deps/lib/${ANDROID_ABI}/libiconv.a" CACHE PATH "path to iconv")
+	set(PNG_PNG_INCLUDE_DIR "${CMAKE_SOURCE_DIR}/android-deps/include" CACHE PATH "path to libpng")
+	set(PNG_LIBRARY_RELEASE "${CMAKE_SOURCE_DIR}/android-deps/lib/${ANDROID_ABI}/libpng.a" CACHE PATH "path to libpng")
 
 	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIE")
 	set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -fPIE -pie")
