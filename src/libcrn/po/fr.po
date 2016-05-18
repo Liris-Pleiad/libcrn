@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libcrn 3.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-04-13 14:09+0200\n"
+"POT-Creation-Date: 2016-05-17 09:25+0200\n"
 "PO-Revision-Date: 2015-11-24 13:57+0100\n"
 "Last-Translator: Yann LEYDIER <yann@leydier.info>\n"
 "Language-Team: French <>\n"
@@ -765,74 +765,74 @@ msgstr "les matrices sont de tailles différentes."
 
 #: /home/yleydier/prg/v4/libcrn/src/libcrn/CRNImage/CRNImageRGB.cpp:73
 #: /home/yleydier/prg/v4/libcrn/src/libcrn/CRNImage/CRNImageRGB.cpp:331
-#: /home/yleydier/prg/v4/libcrn/src/libcrn/CRNImage/CRNImageGray.cpp:67
-#: /home/yleydier/prg/v4/libcrn/src/libcrn/CRNImage/CRNImageGray.cpp:319
-#: /home/yleydier/prg/v4/libcrn/src/libcrn/CRNImage/CRNImageBW.cpp:67
-#: /home/yleydier/prg/v4/libcrn/src/libcrn/CRNImage/CRNImageBW.cpp:318
+#: /home/yleydier/prg/v4/libcrn/src/libcrn/CRNImage/CRNImageGray.cpp:70
+#: /home/yleydier/prg/v4/libcrn/src/libcrn/CRNImage/CRNImageGray.cpp:322
+#: /home/yleydier/prg/v4/libcrn/src/libcrn/CRNImage/CRNImageBW.cpp:70
+#: /home/yleydier/prg/v4/libcrn/src/libcrn/CRNImage/CRNImageBW.cpp:321
 msgid "Cannot create file "
 msgstr "Impossible de créer le fichier "
 
 #: /home/yleydier/prg/v4/libcrn/src/libcrn/CRNImage/CRNImageRGB.cpp:80
-#: /home/yleydier/prg/v4/libcrn/src/libcrn/CRNImage/CRNImageGray.cpp:74
-#: /home/yleydier/prg/v4/libcrn/src/libcrn/CRNImage/CRNImageBW.cpp:74
+#: /home/yleydier/prg/v4/libcrn/src/libcrn/CRNImage/CRNImageGray.cpp:77
+#: /home/yleydier/prg/v4/libcrn/src/libcrn/CRNImage/CRNImageBW.cpp:77
 msgid "Cannot create the PNG structure."
 msgstr "Impossible de créer la structure PNG."
 
 #: /home/yleydier/prg/v4/libcrn/src/libcrn/CRNImage/CRNImageRGB.cpp:86
-#: /home/yleydier/prg/v4/libcrn/src/libcrn/CRNImage/CRNImageGray.cpp:80
-#: /home/yleydier/prg/v4/libcrn/src/libcrn/CRNImage/CRNImageBW.cpp:80
+#: /home/yleydier/prg/v4/libcrn/src/libcrn/CRNImage/CRNImageGray.cpp:83
+#: /home/yleydier/prg/v4/libcrn/src/libcrn/CRNImage/CRNImageBW.cpp:83
 msgid "Cannot create the PNG info."
 msgstr "Impossible les informations PNG."
 
 #: /home/yleydier/prg/v4/libcrn/src/libcrn/CRNImage/CRNImageRGB.cpp:93
-#: /home/yleydier/prg/v4/libcrn/src/libcrn/CRNImage/CRNImageGray.cpp:87
-#: /home/yleydier/prg/v4/libcrn/src/libcrn/CRNImage/CRNImageBW.cpp:87
+#: /home/yleydier/prg/v4/libcrn/src/libcrn/CRNImage/CRNImageGray.cpp:90
+#: /home/yleydier/prg/v4/libcrn/src/libcrn/CRNImage/CRNImageBW.cpp:90
 msgid "Error while generating the PNG image."
 msgstr "Erreur de génération de l'image PNG."
 
 #: /home/yleydier/prg/v4/libcrn/src/libcrn/CRNImage/CRNImageRGB.cpp:168
 #: /home/yleydier/prg/v4/libcrn/src/libcrn/CRNImage/CRNImageRGB.cpp:385
-#: /home/yleydier/prg/v4/libcrn/src/libcrn/CRNImage/CRNImageGray.cpp:153
-#: /home/yleydier/prg/v4/libcrn/src/libcrn/CRNImage/CRNImageGray.cpp:369
-#: /home/yleydier/prg/v4/libcrn/src/libcrn/CRNImage/CRNImageBW.cpp:154
-#: /home/yleydier/prg/v4/libcrn/src/libcrn/CRNImage/CRNImageBW.cpp:368
+#: /home/yleydier/prg/v4/libcrn/src/libcrn/CRNImage/CRNImageGray.cpp:156
+#: /home/yleydier/prg/v4/libcrn/src/libcrn/CRNImage/CRNImageGray.cpp:372
+#: /home/yleydier/prg/v4/libcrn/src/libcrn/CRNImage/CRNImageBW.cpp:157
+#: /home/yleydier/prg/v4/libcrn/src/libcrn/CRNImage/CRNImageBW.cpp:371
 msgid "Cannot create temporary buffer."
 msgstr "Impossible de créer le buffer temporaire."
 
 #: /home/yleydier/prg/v4/libcrn/src/libcrn/CRNImage/CRNImageRGB.cpp:202
 #: /home/yleydier/prg/v4/libcrn/src/libcrn/CRNImage/CRNImageRGB.cpp:421
-#: /home/yleydier/prg/v4/libcrn/src/libcrn/CRNImage/CRNImageGray.cpp:187
-#: /home/yleydier/prg/v4/libcrn/src/libcrn/CRNImage/CRNImageGray.cpp:404
-#: /home/yleydier/prg/v4/libcrn/src/libcrn/CRNImage/CRNImageBW.cpp:188
-#: /home/yleydier/prg/v4/libcrn/src/libcrn/CRNImage/CRNImageBW.cpp:403
+#: /home/yleydier/prg/v4/libcrn/src/libcrn/CRNImage/CRNImageGray.cpp:190
+#: /home/yleydier/prg/v4/libcrn/src/libcrn/CRNImage/CRNImageGray.cpp:407
+#: /home/yleydier/prg/v4/libcrn/src/libcrn/CRNImage/CRNImageBW.cpp:191
+#: /home/yleydier/prg/v4/libcrn/src/libcrn/CRNImage/CRNImageBW.cpp:406
 msgid "Cannot save file. "
 msgstr "Impossible de sauvegarder le fichier. "
 
 #: /home/yleydier/prg/v4/libcrn/src/libcrn/CRNImage/CRNImageRGB.cpp:254
 #: /home/yleydier/prg/v4/libcrn/src/libcrn/CRNImage/CRNImageRGB.cpp:442
-#: /home/yleydier/prg/v4/libcrn/src/libcrn/CRNImage/CRNImageGray.cpp:239
-#: /home/yleydier/prg/v4/libcrn/src/libcrn/CRNImage/CRNImageGray.cpp:425
-#: /home/yleydier/prg/v4/libcrn/src/libcrn/CRNImage/CRNImageBW.cpp:240
-#: /home/yleydier/prg/v4/libcrn/src/libcrn/CRNImage/CRNImageBW.cpp:424
+#: /home/yleydier/prg/v4/libcrn/src/libcrn/CRNImage/CRNImageGray.cpp:242
+#: /home/yleydier/prg/v4/libcrn/src/libcrn/CRNImage/CRNImageGray.cpp:428
+#: /home/yleydier/prg/v4/libcrn/src/libcrn/CRNImage/CRNImageBW.cpp:243
+#: /home/yleydier/prg/v4/libcrn/src/libcrn/CRNImage/CRNImageBW.cpp:427
 msgid "Cannot create bitmap"
 msgstr "Impossible de créer le bitmap"
 
 #: /home/yleydier/prg/v4/libcrn/src/libcrn/CRNImage/CRNImageRGB.cpp:289
 #: /home/yleydier/prg/v4/libcrn/src/libcrn/CRNImage/CRNImageRGB.cpp:484
-#: /home/yleydier/prg/v4/libcrn/src/libcrn/CRNImage/CRNImageGray.cpp:277
-#: /home/yleydier/prg/v4/libcrn/src/libcrn/CRNImage/CRNImageGray.cpp:469
+#: /home/yleydier/prg/v4/libcrn/src/libcrn/CRNImage/CRNImageGray.cpp:280
+#: /home/yleydier/prg/v4/libcrn/src/libcrn/CRNImage/CRNImageGray.cpp:472
 #: /home/yleydier/prg/v4/libcrn/src/libcrn/CRNImage/CRNImage.cpp:611
-#: /home/yleydier/prg/v4/libcrn/src/libcrn/CRNImage/CRNImageBW.cpp:276
-#: /home/yleydier/prg/v4/libcrn/src/libcrn/CRNImage/CRNImageBW.cpp:468
+#: /home/yleydier/prg/v4/libcrn/src/libcrn/CRNImage/CRNImageBW.cpp:279
+#: /home/yleydier/prg/v4/libcrn/src/libcrn/CRNImage/CRNImageBW.cpp:471
 msgid "Null file name."
 msgstr "Nom de fichier nul."
 
 #: /home/yleydier/prg/v4/libcrn/src/libcrn/CRNImage/CRNImageRGB.cpp:318
 #: /home/yleydier/prg/v4/libcrn/src/libcrn/CRNImage/CRNImageRGB.cpp:513
-#: /home/yleydier/prg/v4/libcrn/src/libcrn/CRNImage/CRNImageGray.cpp:306
-#: /home/yleydier/prg/v4/libcrn/src/libcrn/CRNImage/CRNImageGray.cpp:498
-#: /home/yleydier/prg/v4/libcrn/src/libcrn/CRNImage/CRNImageBW.cpp:305
-#: /home/yleydier/prg/v4/libcrn/src/libcrn/CRNImage/CRNImageBW.cpp:497
+#: /home/yleydier/prg/v4/libcrn/src/libcrn/CRNImage/CRNImageGray.cpp:309
+#: /home/yleydier/prg/v4/libcrn/src/libcrn/CRNImage/CRNImageGray.cpp:501
+#: /home/yleydier/prg/v4/libcrn/src/libcrn/CRNImage/CRNImageBW.cpp:308
+#: /home/yleydier/prg/v4/libcrn/src/libcrn/CRNImage/CRNImageBW.cpp:500
 msgid ""
 "No library for saving image found or write permissions on the file or "
 "directory are not granted. No image will be saved."
@@ -841,8 +841,8 @@ msgstr ""
 "le fichier refusée. Aucune image ne sera sauvegardée."
 
 #: /home/yleydier/prg/v4/libcrn/src/libcrn/CRNImage/CRNImageRGB.cpp:342
-#: /home/yleydier/prg/v4/libcrn/src/libcrn/CRNImage/CRNImageGray.cpp:330
-#: /home/yleydier/prg/v4/libcrn/src/libcrn/CRNImage/CRNImageBW.cpp:329
+#: /home/yleydier/prg/v4/libcrn/src/libcrn/CRNImage/CRNImageGray.cpp:333
+#: /home/yleydier/prg/v4/libcrn/src/libcrn/CRNImage/CRNImageBW.cpp:332
 msgid "Cannot create jpeg file structure."
 msgstr "Impossible de créer la structure JPEG."
 
@@ -899,15 +899,15 @@ msgstr "Impossible de verrouiller les pixels. Erreur n° "
 msgid "No decoder could open the file."
 msgstr "Aucun décodeur n'a pu ouvrir le fichier."
 
-#: /home/yleydier/prg/v4/libcrn/src/libcrn/CRNImage/CRNImageBW.cpp:798
+#: /home/yleydier/prg/v4/libcrn/src/libcrn/CRNImage/CRNImageBW.cpp:801
 msgid "Min neighbors must be < 8."
 msgstr "Le nombre min de voisins doit être < 8."
 
-#: /home/yleydier/prg/v4/libcrn/src/libcrn/CRNImage/CRNImageBW.cpp:853
+#: /home/yleydier/prg/v4/libcrn/src/libcrn/CRNImage/CRNImageBW.cpp:856
 msgid "matrices of different sizes"
 msgstr "les matrices sont de tailles différentes."
 
-#: /home/yleydier/prg/v4/libcrn/src/libcrn/CRNImage/CRNImageBW.cpp:857
+#: /home/yleydier/prg/v4/libcrn/src/libcrn/CRNImage/CRNImageBW.cpp:860
 msgid "even matrix dimensions."
 msgstr "dimensions de matrice paires."
 

@@ -1,6 +1,10 @@
 # This is the CMake script for compiling libcrn
 # Martial TOLA - March 2016
 
+###############################################################################
+# Config
+###############################################################################
+
 cmake_minimum_required(VERSION 2.8.9)
 set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake")
 
@@ -33,30 +37,36 @@ endif ()
 message("Build type : ${CMAKE_BUILD_TYPE}")
 
 set(BUILD_SHARED_LIBS on)
-set(CRNLIB_EXT "${CMAKE_SHARED_LIBRARY_SUFFIX}")
+set(CRNLIB_EXT "${CMAKE_SHARED_LIBRARY_SUFFIX}") # by default link to the shared library
 
+# install subpaths
 set(RUNTIME_INSTALL_PATH "bin")
 set(LIBRARY_INSTALL_PATH "lib")
 set(ARCHIVE_INSTALL_PATH "lib")
 set(CRN_DATA_PATH "share/crn" CACHE PATH "Path to the data files")
 
-#set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/out")
-#set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/out")
-#set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/out")
-#set(CMAKE_INSTALL_RPATH "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}")
-#############################
+# put all binaries in the same directory
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/out")
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/out")
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/out")
+set(CMAKE_INSTALL_RPATH "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}")
+
+# platform
 if(UNIX)
 	set(CRN_PF_UNIX ON)
 endif(UNIX)
-
 if(APPLE)
 	set(CRN_PF_APPLE ON)
 endif(APPLE)
-
+# for windows: _MSC_VER
 if(ANDROID)
-	if (ANDROID_NATIVE_API_LEVEL LESS 9)
+	if(NOT ANDROID_NATIVE_API_LEVEL)
+		set(ANDROID_NATIVE_API_LEVEL 9)
+		message(FATAL_ERROR "Android API level set to 9.")
+	endif()
+	if(ANDROID_NATIVE_API_LEVEL LESS 9)
 		message(FATAL_ERROR "Android API level must be >=9.")
-	endif (ANDROID_NATIVE_API_LEVEL LESS 9)
+	endif(ANDROID_NATIVE_API_LEVEL LESS 9)
 	set(CRN_PF_ANDROID ON)
 	#set(ICONV_INCLUDE_DIR "${ANDROID_NDK}/sources/android/support/include") # need to include a homebuilt version of iconv
 
@@ -64,7 +74,6 @@ if(ANDROID)
 	set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -fPIE -pie")
 	set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -fPIE -pie")
 endif(ANDROID)
-#############################
 
 #------------------------------------------------------------------------------
 # Specific compiler options
@@ -93,8 +102,6 @@ if(CMAKE_COMPILER_IS_CLANGXX)
 	set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 	set(ENABLE_CXX11 "-std=c++11")
 
-#	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${ENABLE_CXX11} -Qunused-arguments")
-#	set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${ENABLE_CXX11} -Qunused-arguments")
 	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${ENABLE_CXX11} -Wfatal-errors -pthread")
 	set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${ENABLE_CXX11}")
 	message("Clang compiler detected (with ${ENABLE_CXX11} activated)")
@@ -102,17 +109,15 @@ endif()
 #------------------------------------------------------------------------------
 # MSVC
 #------------------------------------------------------------------------------
-# /MP for multiple compilation units (cl.exe) ; without any value, it is set automatically depending on your number of main threads
 if(MSVC)
 	set(CMAKE_SHARED_LIBRARY_PREFIX "lib")
 	set(CMAKE_STATIC_LIBRARY_PREFIX "lib")
 	set(CMAKE_IMPORT_LIBRARY_PREFIX "lib")
 	set(CMAKE_DEBUG_POSTFIX "-d")
 
-	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /MP /D_MBCS")
+	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /MP /D_MBCS") # multi-process build + multibyte C strings
 
-	#set(BUILD_SHARED_LIBS off)
-	set(CRNLIB_EXT "${CMAKE_IMPORT_LIBRARY_SUFFIX}")
+	set(CRNLIB_EXT "${CMAKE_IMPORT_LIBRARY_SUFFIX}") # link to the import library, not the DLL!
 
 	set_property(DIRECTORY APPEND PROPERTY COMPILE_DEFINITIONS _CRT_SECURE_NO_WARNINGS)
 	set_property(DIRECTORY APPEND PROPERTY COMPILE_DEFINITIONS _SCL_SECURE_NO_WARNINGS)
@@ -140,7 +145,6 @@ if(MSVC)
 	# set default search path to the binary kit
 	#set(CMAKE_FIND_ROOT_PATH "${CMAKE_SOURCE_DIR}/gtkmm2formsvc14")
 	#set(CMAKE_PREFIX_PATH "${CMAKE_SOURCE_DIR}/gtkmm2formsvc14")
-
 endif()
 #------------------------------------------------------------------------------
 # APPLE OS X
@@ -149,6 +153,31 @@ if(APPLE)
 	set(CMAKE_MACOSX_RPATH ON) # see cmake POLICY CMP0042
 endif(APPLE)
 #------------------------------------------------------------------------------
+
+###############################################################################
+# Dependencies
+###############################################################################
+# Image
+option(CRN_DEPENDENCY_PNG "Use libpng to load and save images." on)
+option(CRN_DEPENDENCY_JPEG "Use jpeglib to load and save images." off)
+option(CRN_DEPENDENCY_GDKPIXBUF "Use GdkPixbuf to load and save images." off)
+if(MSVC)
+	option(CRN_DEPENDENCY_GDIPLUS "Use Gdi+ to load and save images." on)
+endif()
+
+# Misc
+option(CRN_DEPENDENCY_GETTEXT_INTL "Use Gettext and libintl to translate messages." off)
+option(CRN_DEPENDENCY_ZIP "Use libzip to create archives." off)
+option(CRN_DEPENDENCY_HARUPDF "Use haru to create PDF files." off)
+
+# GUI
+option(CRN_DEPENDENCY_GTKMM2 "Use Gtkmm 2 to build GUIs." off)
+if(MSVC)
+	option(CRN_DEPENDENCY_GTKMM3_RELEASE "Use Gtkmm 3 (release) to build GUIs." off)
+	option(CRN_DEPENDENCY_GTKMM3_DEBUG "Use Gtkmm 3 (debug) to build GUIs." off)
+else(MSVC)
+	option(CRN_DEPENDENCY_GTKMM3 "Use Gtkmm 3 to build GUIs." off)
+endif(MSVC)
 
 # Find Iconv
 find_package(Iconv)
@@ -159,14 +188,11 @@ else(ICONV_FOUND)
 endif(ICONV_FOUND)
 
 # GDIPLUS
-if(MSVC)
-	OPTION(CRN_USING_GDIPLUS "Use Gdi+ to load and save images." on)
-	if (CRN_USING_GDIPLUS)
-		set(GDIPLUS_LIBRARIES "gdiplus.lib")
-	else (CRN_USING_GDIPLUS)
-		set(GDIPLUS_LIBRARIES "")
-	endif (CRN_USING_GDIPLUS)
-endif(MSVC)
+if (CRN_DEPENDENCY_GDIPLUS)
+	set(GDIPLUS_LIBRARIES "gdiplus.lib")
+else (CRN_DEPENDENCY_GDIPLUS)
+	set(GDIPLUS_LIBRARIES "")
+endif (CRN_DEPENDENCY_GDIPLUS)
 
 # gettext
 set(LANGUAGES "en_GB;fr")
@@ -214,7 +240,6 @@ if(GTK3_FOUND)
 	set(CRN_USING_GDKPB on)
 endif()
 
-#if(NOT MSVC)
 # libpng
 	find_package(PNG)
 	if(PNG_FOUND)
@@ -228,9 +253,10 @@ endif()
 		set(CRN_USING_LIBJPEG on)
 		message("Using jpeglib")
 	endif()
-#endif()
 
+###############################################################################
 # Build
+###############################################################################
 if(MSVC)
 	add_executable(gendef src/gendef/gendef.cc)
 endif()
@@ -245,7 +271,10 @@ endif()
 enable_testing()
 add_subdirectory(src/tests)
 
+###############################################################################
 # Pack
+###############################################################################
+
 include(InstallRequiredSystemLibraries)
 set(CPACK_PACKAGE_FILE_NAME "libcrn-${CRN_PACKAGE_VERSION_MAJOR}.${CRN_PACKAGE_VERSION_MINOR}.${CRN_PACKAGE_VERSION_PATCH}${CRN_PACK_NAME}")
 set(CPACK_PACKAGE_VERSION_MAJOR ${CRN_PACKAGE_VERSION_MAJOR})
@@ -260,11 +289,12 @@ if(WIN32)
 	set(CPACK_NSIS_SOURCE_DIR "${PROJECT_SOURCE_DIR}")
 else(WIN32)
 	set(CPACK_BINARY_TBZ2 ON)
+	set(CPACK_BINARY_ZIP OFF)
 endif(WIN32)
 if(UNIX)
 	set(CPACK_DEBIAN_PACKAGE_VERSION ${CRN_PACKAGE_VERSION})
-	set(CPACK_DEBIAN_PACKAGE_MAINTAINER "Yann LEYDIER <yann.leydier@corenum.com>")
-	set(CPACK_DEBIAN_PACKAGE_DESCRIPTION "The CoReNum image processing library.")
+	set(CPACK_DEBIAN_PACKAGE_MAINTAINER "Yann LEYDIER <yann@leydier.info>")
+	set(CPACK_DEBIAN_PACKAGE_DESCRIPTION "libcrn image processing library")
 	set(CPACK_DEBIAN_PACKAGE_SECTION "devel")
 	set(CPACK_DEBIAN_PACKAGE_SHLIBDEPS ON) # auto depends
 	set(CPACK_DEB_COMPONENT_INSTALL ON)

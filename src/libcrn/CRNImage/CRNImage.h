@@ -294,13 +294,13 @@ namespace crn
 	template<typename T> SummedAreaTable<SumType<T>> MakeSummedAreaTable(const Image<T> &img);
 
 	/*! \brief Creates a rotated version of the image */
-	template<typename T> Image<T> Rotate(const Image<T> &img, const Angle<Degree> &angle, const T &bgColor);
+	template<typename T> Image<T> MakeRotation(const Image<T> &img, const Angle<Degree> &angle, const T &bgColor);
 	/*! \brief Creates a rotated version of the image */
-	template<typename T> Image<T> Rotate90(const Image<T> &img);
+	template<typename T> Image<T> Make90Rotation(const Image<T> &img);
 	/*! \brief Creates a rotated version of the image */
-	template<typename T> Image<T> Rotate180(const Image<T> &img);
+	template<typename T> Image<T> Make180Rotation(const Image<T> &img);
 	/*! \brief Creates a rotated version of the image */
-	template<typename T> Image<T> Rotate270(const Image<T> &img);
+	template<typename T> Image<T> Make270Rotation(const Image<T> &img);
 
 	template<typename T> inline auto Size(const Image<T> &img) noexcept(noexcept(img.Size())) -> decltype(img.Size()) { return img.Size(); }
 	/*@}*/
