@@ -32,5 +32,5 @@ set(TESTS_LIB
 
 add_executable(tests ${TESTS_SRC} ${TESTS_HEADER})
 target_link_libraries(tests ${TESTS_LIB})
-add_test(all tests)
+add_test(NAME all COMMAND $<TARGET_FILE:tests>)
 

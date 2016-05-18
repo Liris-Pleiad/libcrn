@@ -179,6 +179,7 @@ else(MSVC)
 	option(CRN_DEPENDENCY_GTKMM3 "Use Gtkmm 3 to build GUIs." off)
 endif(MSVC)
 
+
 # Find Iconv
 find_package(Iconv)
 if(ICONV_FOUND)
@@ -188,71 +189,112 @@ else(ICONV_FOUND)
 endif(ICONV_FOUND)
 
 # GDIPLUS
-if (CRN_DEPENDENCY_GDIPLUS)
+if(CRN_DEPENDENCY_GDIPLUS)
 	set(GDIPLUS_LIBRARIES "gdiplus.lib")
-else (CRN_DEPENDENCY_GDIPLUS)
+else(CRN_DEPENDENCY_GDIPLUS)
 	set(GDIPLUS_LIBRARIES "")
-endif (CRN_DEPENDENCY_GDIPLUS)
+endif(CRN_DEPENDENCY_GDIPLUS)
 
-# gettext
-set(LANGUAGES "en_GB;fr")
-include(Gettext)
-if (Gettext_FOUND)
+if(CRN_DEPENDENCY_GETTEXT_INTL)
+	# gettext
+	set(LANGUAGES "en_GB;fr")
+	include(Gettext)
+	if(NOT Gettext_FOUND)
+		message(FATAL_ERROR "Cannot find Gettext.")
+	endif()
 	TRANSLATE("${PROJECT_SOURCE_DIR}/src/libcrn" "libcrn")
 	TRANSLATE("${PROJECT_SOURCE_DIR}/src/libgtkcrnmm" "libgtkcrnmm")
 	TRANSLATE("${PROJECT_SOURCE_DIR}/src/titus" "titus")
 	INSTALL_TRANSLATIONS()
-endif()
 
-# libintl
-find_package(Intl)
-if(Intl_FOUND AND Gettext_FOUND)
+	# libintl
+	find_package(Intl)
+	if(NOT Intl_FOUND)
+		message(FATAL_ERROR "Cannot find libintl.")
+	endif()
 	message("Using libintl")
 	set(CRN_USING_LIBINTL on)
-endif()
+endif(CRN_DEPENDENCY_GETTEXT_INTL)
 
-# Find Gtkmm2
-#set(GTK2_DEBUG on)
-find_package(GTK2 2.22 COMPONENTS gtk gtkmm)
-if(GTK2_FOUND)
-	if(Intl_FOUND AND Gettext_FOUND)
-		message("Using Glibintl")
-		set(CRN_USING_GLIB_INTL on)
-		set(CRN_USING_LIBINTL off)
+if(CRN_DEPENDENCY_GTKMM2)
+	# Find Gtkmm2
+	#set(GTK2_DEBUG on)
+	find_package(GTK2 2.22 COMPONENTS gtk gtkmm)
+	if(NOT GTK2_FOUND)
+		message(FATAL_ERROR "Cannot find Gtkmm 2.")
 	endif()
+
 	message("Using Gtkmm2")
 	set(CRN_USING_GTKMM on)
-	message("Using GdkPixbuf")
-	set(CRN_USING_GDKPB on)
-endif()
-
-#set(GTK3_DEBUG on)
-find_package(GTK3 3.10 COMPONENTS gtk gtkmm)
-if(GTK3_FOUND)
 	if(Intl_FOUND AND Gettext_FOUND)
-		message("Using Glibintl")
+		message("Using Glibintl instead of libintl")
 		set(CRN_USING_GLIB_INTL on)
 		set(CRN_USING_LIBINTL off)
 	endif()
+
+	if(CRN_DEPENDENCY_GDKPIXBUF)
+		message("Using GdkPixbuf")
+		set(CRN_USING_GDKPB on)
+	endif(CRN_DEPENDENCY_GDKPIXBUF)
+endif(CRN_DEPENDENCY_GTKMM2)
+
+if(CRN_DEPENDENCY_GTKMM3)
+	#set(GTK3_DEBUG on)
+	find_package(GTK3 3.10 COMPONENTS gtk gtkmm)
+	if(NOT GTK3_FOUND)
+		message(FATAL_ERROR "Cannot find Gtkmm 3.")
+	endif()
+
 	message("Using Gtkmm3")
 	set(CRN_USING_GTKMM on)
-	message("Using GdkPixbuf")
-	set(CRN_USING_GDKPB on)
-endif()
+	
+	if(Intl_FOUND AND Gettext_FOUND)
+		message("Using Glibintl instead of libintl")
+		set(CRN_USING_GLIB_INTL on)
+		set(CRN_USING_LIBINTL off)
+	endif()
 
-# libpng
+	if(CRN_DEPENDENCY_GDKPIXBUF)
+		message("Using GdkPixbuf")
+		set(CRN_USING_GDKPB on)
+	endif(CRN_DEPENDENCY_GDKPIXBUF)
+endif(CRN_DEPENDENCY_GTKMM3)
+
+if(CRN_DEPENDENCY_PNG)
+	# libpng
 	find_package(PNG)
-	if(PNG_FOUND)
-		set(CRN_USING_LIBPNG on)
-		message("Using libpng")
+	if(NOT PNG_FOUND)
+		message(FATAL_ERROR "Cannot find libpng.")
 	endif()
+	set(CRN_USING_LIBPNG on)
+	message("Using libpng")
+endif(CRN_DEPENDENCY_PNG)
 
-# jpeglib
+if(CRN_DEPENDENCY_JPEG)
+	# jpeglib
 	find_package(JPEG)
-	if(JPEG_FOUND)
-		set(CRN_USING_LIBJPEG on)
-		message("Using jpeglib")
+	if(NOT JPEG_FOUND)
+		message(FATAL_ERROR "Cannot find jpeglib.")
 	endif()
+	set(CRN_USING_LIBJPEG on)
+	message("Using jpeglib")
+endif(CRN_DEPENDENCY_JPEG)
+
+if(CRN_DEPENDENCY_ZIP)
+	find_package(ZIP)
+	if(NOT ZIP_FOUND)
+		message(FATAL_ERROR "Cannot find libzip.")
+	endif()
+	set(CRN_USING_LIBZIP on)
+endif(CRN_DEPENDENCY_ZIP)
+
+if(CRN_DEPENDENCY_HARUPDF)
+	find_package(HPDF)
+	if(NOT HPDF_FOUND)
+		message(FATAL_ERROR "Cannot find haru.")
+	endif()
+	set(CRN_USING_HARU on)
+endif(CRN_DEPENDENCY_HARUPDF)
 
 ###############################################################################
 # Build
@@ -274,7 +316,6 @@ add_subdirectory(src/tests)
 ###############################################################################
 # Pack
 ###############################################################################
-
 include(InstallRequiredSystemLibraries)
 set(CPACK_PACKAGE_FILE_NAME "libcrn-${CRN_PACKAGE_VERSION_MAJOR}.${CRN_PACKAGE_VERSION_MINOR}.${CRN_PACKAGE_VERSION_PATCH}${CRN_PACK_NAME}")
 set(CPACK_PACKAGE_VERSION_MAJOR ${CRN_PACKAGE_VERSION_MAJOR})

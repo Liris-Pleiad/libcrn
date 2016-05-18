@@ -36,18 +36,22 @@ addons:
     packages:
       - libgtkmm-2.4-dev
       - libgtkmm-3.0-dev
+      - libzip-dev
+      - libhpdf-dev
+      - gettext
       - doxygen
       - graphviz
 
 install:
   - cmake --version
-#
+
 # osx :
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew update; fi
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install gtkmm gtkmm3; fi
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install libzip libharu; f
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install doxygen graphviz; fi
 
 script:
-  - mkdir build && cd build && cmake .. $BTYPE
+  - mkdir build && cd build && cmake .. $BTYPE -DCRN_DEPENDENCY_GTKMM2=ON -DCRN_DEPENDENCY_GTKMM3=ON -DCRN_DEPENDENCY_PNG=ON -DCRN_DEPENDENCY_JPEG=ON -DCRN_DEPENDENCY_GDKPIXBUF=ON -DCRN_DEPENDENCY_GETTEXT_INTL=ON -DCRN_DEPENDENCY_ZIP=ON -DCRN_DEPENDENCY_HARUPDF=ON
   - make
   - make test

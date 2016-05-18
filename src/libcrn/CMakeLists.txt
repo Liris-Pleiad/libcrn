@@ -94,6 +94,20 @@ if(CRN_USING_LIBJPEG)
 	set(FINDLIBCRN_DEPS "${FINDLIBCRN_DEPS}\nset(FINDLIBCRN_JPEG on)")
 endif()
 
+# zip
+if(CRN_USING_LIBZIP)
+	include_directories(${ZIP_INCLUDE_DIR})
+	target_link_libraries(crn	${ZIP_LIBRARIES})
+	set(FINDLIBCRN_DEPS "${FINDLIBCRN_DEPS}\nset(FINDLIBCRN_ZIP on)")
+endif(CRN_USING_LIBZIP)
+
+# haru
+if(CRN_USING_HARU)
+	include_directories(${HPDF_INCLUDE_DIR})
+	target_link_libraries(crn	${HPDF_LIBRARIES})
+	set(FINDLIBCRN_DEPS "${FINDLIBCRN_DEPS}\nset(FINDLIBCRN_HPDF on)")
+endif(CRN_USING_HARU)
+
 if(MSVC)
 	add_dependencies(crn gendef)
 	add_custom_command(TARGET crn PRE_LINK COMMAND ${PROJECT_BINARY_DIR}/${CMAKE_CFG_INTDIR}/gendef 
@@ -122,6 +136,8 @@ install(FILES "${PROJECT_SOURCE_DIR}/cmake/FindIconv.cmake" DESTINATION "share/c
 install(FILES "${PROJECT_SOURCE_DIR}/cmake/FindIntl.cmake" DESTINATION "share/cmake" COMPONENT dev) # XXX TODO find where to install this!
 install(FILES "${PROJECT_SOURCE_DIR}/cmake/FindGTK2.cmake" DESTINATION "share/cmake" COMPONENT dev) # XXX TODO find where to install this!
 install(FILES "${PROJECT_SOURCE_DIR}/cmake/FindGTK3.cmake" DESTINATION "share/cmake" COMPONENT dev) # XXX TODO find where to install this!
+install(FILES "${PROJECT_SOURCE_DIR}/cmake/FindZIP.cmake" DESTINATION "share/cmake" COMPONENT dev) # XXX TODO find where to install this!
+install(FILES "${PROJECT_SOURCE_DIR}/cmake/FindHPDF.cmake" DESTINATION "share/cmake" COMPONENT dev) # XXX TODO find where to install this!
 
 # Create Android package
 #if(ANDROID)
