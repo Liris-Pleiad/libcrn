@@ -40,5 +40,5 @@ if(PNG_FOUND)
 		set(HPDF_LIBRARIES ${HPDF_LIBRARY} ${PNG_LIBRARY})
 	endif()
 
-endif(ZLIB_FOUND)
+endif(PNG_FOUND)
 
