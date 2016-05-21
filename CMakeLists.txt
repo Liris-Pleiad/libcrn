@@ -26,7 +26,6 @@ set(CRN_PACKAGE_VERSION "${CRN_PACKAGE_VERSION_MAJOR}.${CRN_PACKAGE_VERSION_MINO
 message("${PRJ_NAME} ${CRN_PACKAGE_VERSION}")
 
 project(${PRJ_NAME})
-#set(CMAKE_INSTALL_PREFIX "${PROJECT_BINARY_DIR}/${PRJ_NAME}_deploy_${CRN_PACKAGE_VERSION}")
 
 # set Release as default build target
 if (NOT CMAKE_BUILD_TYPE)
@@ -68,7 +67,11 @@ if(ANDROID)
 		message(FATAL_ERROR "Android API level must be >=9.")
 	endif(ANDROID_NATIVE_API_LEVEL LESS 9)
 	set(CRN_PF_ANDROID ON)
-	#set(ICONV_INCLUDE_DIR "${ANDROID_NDK}/sources/android/support/include") # need to include a homebuilt version of iconv
+
+	set(ICONV_INCLUDE_DIR "${CMAKE_SOURCE_DIR}/android-deps/include" CACHE PATH "path to iconv")
+	set(ICONV_LIBRARIES "${CMAKE_SOURCE_DIR}/android-deps/lib/${ANDROID_ABI}/libiconv.a" CACHE PATH "path to iconv")
+	set(PNG_PNG_INCLUDE_DIR "${CMAKE_SOURCE_DIR}/android-deps/include" CACHE PATH "path to libpng")
+	set(PNG_LIBRARY_RELEASE "${CMAKE_SOURCE_DIR}/android-deps/lib/${ANDROID_ABI}/libpng.a" CACHE PATH "path to libpng")
 
 	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIE")
 	set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -fPIE -pie")
@@ -141,10 +144,6 @@ if(MSVC)
 	if(EXISTS "${CMAKE_SOURCE_DIR}/cmake/msvc/kit.cmake")
 		include("${CMAKE_SOURCE_DIR}/cmake/msvc/kit.cmake")
 	endif()
-
-	# set default search path to the binary kit
-	#set(CMAKE_FIND_ROOT_PATH "${CMAKE_SOURCE_DIR}/gtkmm2formsvc14")
-	#set(CMAKE_PREFIX_PATH "${CMAKE_SOURCE_DIR}/gtkmm2formsvc14")
 endif()
 #------------------------------------------------------------------------------
 # APPLE OS X
@@ -179,6 +178,7 @@ else(MSVC)
 	option(CRN_DEPENDENCY_GTKMM3 "Use Gtkmm 3 to build GUIs." off)
 endif(MSVC)
 
+
 # Find Iconv
 find_package(Iconv)
 if(ICONV_FOUND)
@@ -188,71 +188,114 @@ else(ICONV_FOUND)
 endif(ICONV_FOUND)
 
 # GDIPLUS
-if (CRN_DEPENDENCY_GDIPLUS)
+if(CRN_DEPENDENCY_GDIPLUS)
+	set(CRN_USING_GDIPLUS ON)
 	set(GDIPLUS_LIBRARIES "gdiplus.lib")
-else (CRN_DEPENDENCY_GDIPLUS)
+else(CRN_DEPENDENCY_GDIPLUS)
+	set(CRN_USING_GDIPLUS OFF)
 	set(GDIPLUS_LIBRARIES "")
-endif (CRN_DEPENDENCY_GDIPLUS)
+endif(CRN_DEPENDENCY_GDIPLUS)
 
-# gettext
-set(LANGUAGES "en_GB;fr")
-include(Gettext)
-if (Gettext_FOUND)
+if(CRN_DEPENDENCY_GETTEXT_INTL)
+	# gettext
+	set(LANGUAGES "en_GB;fr")
+	include(Gettext)
+	if(NOT Gettext_FOUND)
+		message(FATAL_ERROR "Cannot find Gettext.")
+	endif()
 	TRANSLATE("${PROJECT_SOURCE_DIR}/src/libcrn" "libcrn")
 	TRANSLATE("${PROJECT_SOURCE_DIR}/src/libgtkcrnmm" "libgtkcrnmm")
 	TRANSLATE("${PROJECT_SOURCE_DIR}/src/titus" "titus")
 	INSTALL_TRANSLATIONS()
-endif()
 
-# libintl
-find_package(Intl)
-if(Intl_FOUND AND Gettext_FOUND)
+	# libintl
+	find_package(Intl)
+	if(NOT Intl_FOUND)
+		message(FATAL_ERROR "Cannot find libintl.")
+	endif()
 	message("Using libintl")
 	set(CRN_USING_LIBINTL on)
-endif()
+endif(CRN_DEPENDENCY_GETTEXT_INTL)
 
-# Find Gtkmm2
-#set(GTK2_DEBUG on)
-find_package(GTK2 2.22 COMPONENTS gtk gtkmm)
-if(GTK2_FOUND)
-	if(Intl_FOUND AND Gettext_FOUND)
-		message("Using Glibintl")
-		set(CRN_USING_GLIB_INTL on)
-		set(CRN_USING_LIBINTL off)
+if(CRN_DEPENDENCY_GTKMM2)
+	# Find Gtkmm2
+	#set(GTK2_DEBUG on)
+	find_package(GTK2 2.22 COMPONENTS gtk gtkmm)
+	if(NOT GTK2_FOUND)
+		message(FATAL_ERROR "Cannot find Gtkmm 2.")
 	endif()
+
 	message("Using Gtkmm2")
 	set(CRN_USING_GTKMM on)
-	message("Using GdkPixbuf")
-	set(CRN_USING_GDKPB on)
-endif()
-
-#set(GTK3_DEBUG on)
-find_package(GTK3 3.10 COMPONENTS gtk gtkmm)
-if(GTK3_FOUND)
 	if(Intl_FOUND AND Gettext_FOUND)
-		message("Using Glibintl")
+		message("Using Glibintl instead of libintl")
 		set(CRN_USING_GLIB_INTL on)
 		set(CRN_USING_LIBINTL off)
 	endif()
+
+	if(CRN_DEPENDENCY_GDKPIXBUF)
+		message("Using GdkPixbuf")
+		set(CRN_USING_GDKPB on)
+	endif(CRN_DEPENDENCY_GDKPIXBUF)
+endif(CRN_DEPENDENCY_GTKMM2)
+
+if(CRN_DEPENDENCY_GTKMM3)
+	#set(GTK3_DEBUG on)
+	find_package(GTK3 3.10 COMPONENTS gtk gtkmm)
+	if(NOT GTK3_FOUND)
+		message(FATAL_ERROR "Cannot find Gtkmm 3.")
+	endif()
+
 	message("Using Gtkmm3")
 	set(CRN_USING_GTKMM on)
-	message("Using GdkPixbuf")
-	set(CRN_USING_GDKPB on)
-endif()
+	
+	if(Intl_FOUND AND Gettext_FOUND)
+		message("Using Glibintl instead of libintl")
+		set(CRN_USING_GLIB_INTL on)
+		set(CRN_USING_LIBINTL off)
+	endif()
 
-# libpng
+	if(CRN_DEPENDENCY_GDKPIXBUF)
+		message("Using GdkPixbuf")
+		set(CRN_USING_GDKPB on)
+	endif(CRN_DEPENDENCY_GDKPIXBUF)
+endif(CRN_DEPENDENCY_GTKMM3)
+
+if(CRN_DEPENDENCY_PNG)
+	# libpng
 	find_package(PNG)
-	if(PNG_FOUND)
-		set(CRN_USING_LIBPNG on)
-		message("Using libpng")
+	if(NOT PNG_FOUND)
+		message(FATAL_ERROR "Cannot find libpng.")
 	endif()
+	set(CRN_USING_LIBPNG on)
+	message("Using libpng")
+endif(CRN_DEPENDENCY_PNG)
 
-# jpeglib
+if(CRN_DEPENDENCY_JPEG)
+	# jpeglib
 	find_package(JPEG)
-	if(JPEG_FOUND)
-		set(CRN_USING_LIBJPEG on)
-		message("Using jpeglib")
+	if(NOT JPEG_FOUND)
+		message(FATAL_ERROR "Cannot find jpeglib.")
 	endif()
+	set(CRN_USING_LIBJPEG on)
+	message("Using jpeglib")
+endif(CRN_DEPENDENCY_JPEG)
+
+if(CRN_DEPENDENCY_ZIP)
+	find_package(ZIP)
+	if(NOT ZIP_FOUND)
+		message(FATAL_ERROR "Cannot find libzip.")
+	endif()
+	set(CRN_USING_LIBZIP on)
+endif(CRN_DEPENDENCY_ZIP)
+
+if(CRN_DEPENDENCY_HARUPDF)
+	find_package(HPDF)
+	if(NOT HPDF_FOUND)
+		message(FATAL_ERROR "Cannot find haru.")
+	endif()
+	set(CRN_USING_HARU on)
+endif(CRN_DEPENDENCY_HARUPDF)
 
 ###############################################################################
 # Build
@@ -272,42 +315,55 @@ enable_testing()
 add_subdirectory(src/tests)
 
 ###############################################################################
+# Doc
+###############################################################################
+# add a target to generate API documentation with Doxygen
+find_package(Doxygen)
+if(DOXYGEN_FOUND)
+	configure_file(${CMAKE_CURRENT_SOURCE_DIR}/Doxyfile.in ${CMAKE_CURRENT_BINARY_DIR}/Doxyfile @ONLY)
+	add_custom_target(doc
+		${DOXYGEN_EXECUTABLE} ${CMAKE_CURRENT_BINARY_DIR}/Doxyfile
+		WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
+		COMMENT "Generating API documentation with Doxygen" VERBATIM
+		)
+endif(DOXYGEN_FOUND)
+
+###############################################################################
 # Pack
 ###############################################################################
-
-include(InstallRequiredSystemLibraries)
-set(CPACK_PACKAGE_FILE_NAME "libcrn-${CRN_PACKAGE_VERSION_MAJOR}.${CRN_PACKAGE_VERSION_MINOR}.${CRN_PACKAGE_VERSION_PATCH}${CRN_PACK_NAME}")
-set(CPACK_PACKAGE_VERSION_MAJOR ${CRN_PACKAGE_VERSION_MAJOR})
-set(CPACK_PACKAGE_VERSION_MINOR ${CRN_PACKAGE_VERSION_MINOR})
-set(CPACK_PACKAGE_VERSION_PATCH ${CRN_PACKAGE_VERSION_PATCH})
-set(CPACK_BINARY_TZ OFF)
-if(WIN32)
-	set(CPACK_BINARY_NSIS OFF) # tmp
-	set(CPACK_NSIS_DISPLAY_NAME "libcrn ${CRN_PACKAGE_VERSION_MAJOR}.${CRN_PACKAGE_VERSION_MINOR}.${CRN_PACKAGE_VERSION_PATCH}")
-	set(CPACK_BINARY_TBZ2 OFF)
-	set(CPACK_BINARY_ZIP ON)
-	set(CPACK_NSIS_SOURCE_DIR "${PROJECT_SOURCE_DIR}")
-else(WIN32)
-	set(CPACK_BINARY_TBZ2 ON)
-	set(CPACK_BINARY_ZIP OFF)
-endif(WIN32)
-if(UNIX)
-	set(CPACK_DEBIAN_PACKAGE_VERSION ${CRN_PACKAGE_VERSION})
-	set(CPACK_DEBIAN_PACKAGE_MAINTAINER "Yann LEYDIER <yann@leydier.info>")
-	set(CPACK_DEBIAN_PACKAGE_DESCRIPTION "libcrn image processing library")
-	set(CPACK_DEBIAN_PACKAGE_SECTION "devel")
-	set(CPACK_DEBIAN_PACKAGE_SHLIBDEPS ON) # auto depends
-	set(CPACK_DEB_COMPONENT_INSTALL ON)
-	set(CPACK_RPM_COMPONENT_INSTALL ON)
-endif(UNIX)
-set(CPACK_COMPONENTS_ALL bin dev app)
-set(CPACK_COMPONENT_BIN_DISPLAY_NAME "Runtime files")
-set(CPACK_COMPONENT_BIN_DESCRIPTION "Libraries and configuration files")
-set(CPACK_COMPONENT_DEV_DISPLAY_NAME "Development files")
-set(CPACK_COMPONENT_DEV_DESCRIPTION "Headers and various library-related files")
-set(CPACK_COMPONENT_DEV_DEPENDS bin)
-set(CPACK_COMPONENT_APP_DISPLAY_NAME "Applications")
-set(CPACK_COMPONENT_APP_DESCRIPTION "Demonstration applications")
-set(CPACK_COMPONENT_APP_DEPENDS bin)
-include(CPack)
+#include(InstallRequiredSystemLibraries)
+#set(CPACK_PACKAGE_FILE_NAME "libcrn-${CRN_PACKAGE_VERSION_MAJOR}.${CRN_PACKAGE_VERSION_MINOR}.${CRN_PACKAGE_VERSION_PATCH}${CRN_PACK_NAME}")
+#set(CPACK_PACKAGE_VERSION_MAJOR ${CRN_PACKAGE_VERSION_MAJOR})
+#set(CPACK_PACKAGE_VERSION_MINOR ${CRN_PACKAGE_VERSION_MINOR})
+#set(CPACK_PACKAGE_VERSION_PATCH ${CRN_PACKAGE_VERSION_PATCH})
+#set(CPACK_BINARY_TZ OFF)
+#if(WIN32)
+#	set(CPACK_BINARY_NSIS OFF) # tmp
+#	set(CPACK_NSIS_DISPLAY_NAME "libcrn ${CRN_PACKAGE_VERSION_MAJOR}.${CRN_PACKAGE_VERSION_MINOR}.${CRN_PACKAGE_VERSION_PATCH}")
+#	set(CPACK_BINARY_TBZ2 OFF)
+#	set(CPACK_BINARY_ZIP ON)
+#	set(CPACK_NSIS_SOURCE_DIR "${PROJECT_SOURCE_DIR}")
+#else(WIN32)
+#	set(CPACK_BINARY_TBZ2 ON)
+#	set(CPACK_BINARY_ZIP OFF)
+#endif(WIN32)
+#if(UNIX)
+#	set(CPACK_DEBIAN_PACKAGE_VERSION ${CRN_PACKAGE_VERSION})
+#	set(CPACK_DEBIAN_PACKAGE_MAINTAINER "Yann LEYDIER <yann@leydier.info>")
+#	set(CPACK_DEBIAN_PACKAGE_DESCRIPTION "libcrn image processing library")
+#	set(CPACK_DEBIAN_PACKAGE_SECTION "devel")
+#	set(CPACK_DEBIAN_PACKAGE_SHLIBDEPS ON) # auto depends
+#	set(CPACK_DEB_COMPONENT_INSTALL ON)
+#	set(CPACK_RPM_COMPONENT_INSTALL ON)
+#endif(UNIX)
+#set(CPACK_COMPONENTS_ALL bin dev app)
+#set(CPACK_COMPONENT_BIN_DISPLAY_NAME "Runtime files")
+#set(CPACK_COMPONENT_BIN_DESCRIPTION "Libraries and configuration files")
+#set(CPACK_COMPONENT_DEV_DISPLAY_NAME "Development files")
+#set(CPACK_COMPONENT_DEV_DESCRIPTION "Headers and various library-related files")
+#set(CPACK_COMPONENT_DEV_DEPENDS bin)
+#set(CPACK_COMPONENT_APP_DISPLAY_NAME "Applications")
+#set(CPACK_COMPONENT_APP_DESCRIPTION "Demonstration applications")
+#set(CPACK_COMPONENT_APP_DEPENDS bin)
+#include(CPack)
 
