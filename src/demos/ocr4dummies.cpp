@@ -42,6 +42,7 @@ g++ `pkg-config --cflags --libs libcrn` ocr4dummies.cpp -o ocr4dummies
 #include <CRNAI/CRNBasicClassify.h>
 #include <CRNUtils/CRNTimer.h>
 #include <CRNIO/CRNIO.h>
+#include <CRNFeature/CRNBlockTreeExtractorTextLinesFromProjection.h>
 
 using namespace crn::literals;
 
@@ -71,7 +72,7 @@ int main(int argc, char *argv[])
 	featureExtractor->PushBack(std::make_shared<crn::FeatureExtractorProjection>(
 				crn::Orientation::HORIZONTAL | crn::Orientation::VERTICAL, 10, 100));
 	// Create the database.
-	auto database = std::make_unique<crn::Vector>();
+	auto database = std::vector<crn::SObject>();
 	// For each capital roman character...
 	for (auto c = 'A'; c <= 'Z'; ++c)
 	{
@@ -90,7 +91,7 @@ int main(int argc, char *argv[])
 		// Embed the image in a block structure.
 		auto charblock = crn::Block::New(charimage);
 		// Extract the features and store it in the database.
-		database->PushBack(featureExtractor->Extract(*charblock));
+		database.push_back(featureExtractor->Extract(*charblock));
 	}
 	crn::Timer::Split(U"OCR4dummies", U"Database");
 	/**************************************************************************/
@@ -113,29 +114,18 @@ int main(int argc, char *argv[])
 	/**************************************************************************/
 	// Embed the image in a block structure.
 	auto pageblock = crn::Block::New(pageimage);
-	// Estimate the mean stroke width.
-	const auto sw = StrokesWidth(*pageblock->GetGray());
-	// Now we will agglomerate the characters on each line to extract them:
-	// Create a line matrix filled with 1.
-	auto xsmear = crn::MatrixInt(1, 6 * sw + 1, 1);
-	// Smear the black and white version of the image.
-	pageblock->GetBW()->Dilate(xsmear);
-	// Extract connected components (lines).
-	pageblock->ExtractCC(U"Lines");
-	// Remove false detections (very small lines).
-	pageblock->FilterMinOr(U"Lines", 2*sw, 2*sw);
-	// Sort lines from top to bottom.
-	pageblock->SortTree(U"Lines", crn::Direction::TOP);
-	// Reset the smeared black and white image.
-	pageblock->FlushBW();
+	// Extract text lines
+	crn::BlockTreeExtractorTextLinesFromProjection{U"Lines"}.Extract(*pageblock);
 	/**************************************************************************/
 	/* 2.2 Recognition                                                        */
 	/**************************************************************************/
 	auto s = crn::String{};
+	// Estimate the mean stroke width.
+	const auto sw = StrokesWidth(*pageblock->GetGray());
 	// For each line...
-	for (auto oline : pageblock->GetTree(U"Lines"))
+	for (auto nline = size_t{0}; nline < pageblock->GetNbChildren(U"Lines"); ++nline)
 	{
-		auto line = std::static_pointer_cast<crn::Block>(oline);
+		auto line = pageblock->GetChild(U"Lines", nline);
 		// Extract connected components in the line (characters).
 		// To do that, a new black and white image (that is not smeared) 
 		// is automatically computed.
@@ -145,13 +135,13 @@ int main(int argc, char *argv[])
 		// Sort characters from left to right.
 		line->SortTree(U"Characters", crn::Direction::LEFT);
 		// For each character...
-		for (auto ocharacter : line->GetTree(U"Characters"))
+		for (auto nchar = size_t{0}; nchar < line->GetNbChildren(U"Characters"); ++nchar)
 		{
-			auto character = std::static_pointer_cast<crn::Block>(ocharacter);
+			auto character = line->GetChild(U"Characters", nchar);
 			// Extract the features.
 			auto features = featureExtractor->Extract(*character);
 			// Classify the character using the database.
-			auto res = crn::BasicClassify::NearestNeighbor(features, database->begin(), database->end());
+			auto res = crn::BasicClassify::NearestNeighbor(features, database.begin(), database.end());
 			// Print the characters label.
 			s += char32_t(U'A' + res.class_id);
 		}
@@ -159,6 +149,7 @@ int main(int argc, char *argv[])
 		s += U'\n';
 	}
 	CRNVerbose(s);
+
 	crn::Timer::Split(U"OCR4dummies", U"Recognition");
 	CRNVerbose(crn::Timer::Stats(U"OCR4dummies"));
 
