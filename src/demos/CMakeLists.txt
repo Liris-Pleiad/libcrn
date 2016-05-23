@@ -12,3 +12,8 @@ add_executable(estimateStrokes estimateStrokes.cpp)
 # add dependencies
 target_link_libraries(estimateStrokes crn)
 
+# create ocr4dummies
+add_executable(ocr4dummies ocr4dummies.cpp)
+# add dependencies
+target_link_libraries(ocr4dummies crn)
+

@@ -346,11 +346,13 @@ double crn::Distance(const Vector &v1, const Vector &v2)
 		throw ExceptionDimension(StringUTF8("double Distance(const Vector&, const Vector&): ") + _("vectors have different sizes."));
 	auto d = 0.0;
 	for (auto tmp : Range(v1))
-		d += Distance(v1, v2);
+		d += Distance(v1[tmp], v2[tmp]);
 	return d;
 }
 
 CRN_BEGIN_CLASS_CONSTRUCTOR(Vector)
 	CRN_DATA_FACTORY_REGISTER(U"Vector", Vector)
+	Cloner::Register<Vector>();
+	Ruler::Register<Vector>();
 CRN_END_CLASS_CONSTRUCTOR(Vector)
 

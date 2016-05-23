@@ -65,13 +65,13 @@ namespace crn
 				>
 			static ClassifResult NearestNeighbor(const typename std::iterator_traits<ConstIterator>::value_type &obj, ConstIterator begin, ConstIterator end)
 			{
-				int nearest = 0;
-				double mindist = std::numeric_limits<double>::max();
-				int classid = 0;
+				auto nearest = 0;
+				auto mindist = std::numeric_limits<double>::max();
+				auto classid = 0;
 				ConstIterator prot;
 				for (auto it = begin; it != end; ++it)
 				{
-					double d = Distance(obj, **it);
+					const auto d = Distance(obj, *it);
 					if (d < mindist)
 					{
 						mindist = d;

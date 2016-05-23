@@ -43,7 +43,7 @@ namespace crn
 				const auto it = getInstance().serializers.find(id);
 				if (it == getInstance().serializers.end())
 					throw ExceptionProtocol{id.name() + StringUTF8(": not a serializable object.")};
-				it->second->Deserialize(obj, el);
+				it->second->deserialize(obj, el);
 			}
 			static xml::Element Serialize(const Object &obj, xml::Element &el)
 			{
@@ -51,7 +51,7 @@ namespace crn
 				const auto it = getInstance().serializers.find(id);
 				if (it == getInstance().serializers.end())
 					throw ExceptionProtocol{id.name() + StringUTF8(": not a serializable object.")};
-				return it->second->Serialize(obj, el);
+				return it->second->serialize(obj, el);
 			}
 			template<typename T> static void Register()
 			{
@@ -62,16 +62,16 @@ namespace crn
 			static Serializer& getInstance();
 			struct serializer
 			{
-				virtual void Deserialize(Object &obj, xml::Element &el) = 0;
-				virtual xml::Element Serialize(const Object &obj, xml::Element &parent) = 0;
+				virtual void deserialize(Object &obj, xml::Element &el) = 0;
+				virtual xml::Element serialize(const Object &obj, xml::Element &parent) = 0;
 			};
 			template<typename T> struct serializerImpl: public serializer
 			{
-				virtual void Deserialize(Object &obj, xml::Element &el) override
+				virtual void deserialize(Object &obj, xml::Element &el) override
 				{
 					static_cast<T&>(obj).Deserialize(el);
 				}
-				virtual xml::Element Serialize(const Object &obj, xml::Element &parent) override
+				virtual xml::Element serialize(const Object &obj, xml::Element &parent) override
 				{
 					return static_cast<const T&>(obj).Serialize(parent);
 				}
@@ -88,7 +88,7 @@ namespace crn
 				const auto it = getInstance().cloners.find(id);
 				if (it == getInstance().cloners.end())
 					throw ExceptionProtocol{id.name() + StringUTF8(": not a clonable object.")};
-				return it->second->Clone(obj);
+				return it->second->clone(obj);
 			}
 			template<typename T> static void Register()
 			{
@@ -110,11 +110,11 @@ namespace crn
 			static Cloner& getInstance();
 			struct cloner
 			{
-				virtual UObject Clone(const Object &o) const = 0;
+				virtual UObject clone(const Object &o) const = 0;
 			};
 			template<typename T> struct clonerImpl: public cloner
 			{
-				virtual UObject Clone(const Object &o) const override { return std::make_unique<T>(static_cast<const T&>(o)); }
+				virtual UObject clone(const Object &o) const override { return std::make_unique<T>(static_cast<const T&>(o)); }
 			};
 			std::unordered_map<std::type_index, std::unique_ptr<cloner>> cloners;
 	};
@@ -122,7 +122,7 @@ namespace crn
 	class Ruler
 	{
 		public:
-			static double Distance(const Object &o1, const Object &o2)
+			static double ComputeDistance(const Object &o1, const Object &o2)
 			{
 				const auto id1 = std::type_index{typeid(o1)};
 				const auto id2 = std::type_index{typeid(o2)};
@@ -131,7 +131,7 @@ namespace crn
 				const auto it = getInstance().rulers.find(id1);
 				if (it == getInstance().rulers.end())
 					throw ExceptionProtocol{id1.name() + StringUTF8(": not a metric object.")};
-				return it->second->Distance(o1, o2);
+				return it->second->distance(o1, o2);
 			}
 			template<typename T> static void Register()
 			{
@@ -142,11 +142,11 @@ namespace crn
 			static Ruler& getInstance();
 			struct ruler
 			{
-				virtual double Distance(const Object &o1, const Object &o2) const = 0;
+				virtual double distance(const Object &o1, const Object &o2) const = 0;
 			};
 			template<typename T> struct rulerImpl: public ruler
 			{
-				virtual double Distance(const Object &o1, const Object &o2) const override { return Distance(static_cast<const T&>(o1), static_cast<const T&>(o2)); }
+				virtual double distance(const Object &o1, const Object &o2) const override { return Distance(static_cast<const T&>(o1), static_cast<const T&>(o2)); }
 			};
 			std::unordered_map<std::type_index, std::unique_ptr<ruler>> rulers;
 	};
