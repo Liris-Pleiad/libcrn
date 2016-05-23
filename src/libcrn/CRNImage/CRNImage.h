@@ -229,7 +229,7 @@ namespace crn
 			void Complement(pixel_type maxval = std::numeric_limits<pixel_type>::max());
 
 			/*! \brief Copies a part of an image */
-			template<typename Y> void Blit(const Image<Y> &src, Rect srczone, size_t dx, size_t dy);
+			template<typename Y> void Blit(const Image<Y> &src, const Rect &srczone, size_t dx, size_t dy);
 			
 			/*! \brief Flood fills a portion of the image */
 			void FloodFill(size_t x, size_t y, const pixel_type &val, crn::DistanceType dist = crn::DistanceType::D4);
