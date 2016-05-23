@@ -243,7 +243,7 @@ namespace crn
 	 * \param[in]	dx	the abscissa where to copy
 	 * \param[in]	dy	the ordinate where to copy
 	 */
-	template<typename T> template<typename Y> void Image<T>::Blit(const Image<Y> &src, Rect srczone, size_t dx, size_t dy)
+	template<typename T> template<typename Y> void Image<T>::Blit(const Image<Y> &src, const Rect &srczone, size_t dx, size_t dy)
 	{
 		if ((dx >= width) || (dy >= height)) // nothing to be done
 			return;
@@ -256,7 +256,7 @@ namespace crn
 			bbox.SetWidth(int(height) - int(dy));
 		// copy
 		for (int y = 0; y < bbox.GetHeight(); ++y)
-			std::copy_n(src.begin() + bbox.GetLeft() + y * src.GetWidth(), bbox.GetWidth(), pixels.begin() + dx + (dy + y) * width);
+			std::copy_n(src.begin() + bbox.GetLeft() + (y + bbox.GetTop()) * src.GetWidth(), bbox.GetWidth(), pixels.begin() + dx + (dy + y) * width);
 	}
 
 	/****************************************************************************/
