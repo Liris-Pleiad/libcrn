@@ -26,25 +26,51 @@ g++ `pkg-config --cflags --libs libcrn` ocr4dummies.cpp -o ocr4dummies
  * \author Yann LEYDIER
  */
 
-#include <CRN.h>
-#include <fstream>
-#include <cstdlib>
-#include <CRNConfig.h>
 #include <CRNBlock.h>
-#include <CRNException.h>
-#include <CRNImage/CRNImageRGB.h>
 #include <CRNImage/CRNImageGray.h>
-#include <CRNImage/CRNImageBW.h>
 #include <CRNFeature/CRNFeatureSet.h>
 #include <CRNFeature/CRNFeatureExtractorProfile.h>
 #include <CRNFeature/CRNFeatureExtractorProjection.h>
-#include <CRNMath/CRNMatrixInt.h>
+#include <CRNFeature/CRNBlockTreeExtractorTextLinesFromProjection.h>
 #include <CRNAI/CRNBasicClassify.h>
 #include <CRNUtils/CRNTimer.h>
 #include <CRNIO/CRNIO.h>
-#include <CRNFeature/CRNBlockTreeExtractorTextLinesFromProjection.h>
 
 using namespace crn::literals;
+
+void minimal(const crn::Path &imageFileName)
+{
+	auto featureExtractor = crn::FeatureSet{};
+	featureExtractor.PushBack(std::make_shared<crn::FeatureExtractorProfile>(crn::Direction::LEFT | crn::Direction::RIGHT | crn::Direction::TOP | crn::Direction::BOTTOM, 10, 100));
+	featureExtractor.PushBack(std::make_shared<crn::FeatureExtractorProjection>(crn::Orientation::HORIZONTAL | crn::Orientation::VERTICAL, 10, 100));
+	auto database = std::vector<crn::SObject>();
+	for (auto c = 'A'; c <= 'Z'; ++c)
+	{
+		const auto charFileName = "data"_p / c + ".png"_p;
+		auto charblock = crn::Block::New(crn::NewImageFromFile(charFileName));
+		database.push_back(featureExtractor.Extract(*charblock));
+	}
+	auto pageblock = crn::Block::New(crn::NewImageFromFile(imageFileName));
+	crn::BlockTreeExtractorTextLinesFromProjection{U"Lines"}.Extract(*pageblock);
+	const auto sw = StrokesWidth(*pageblock->GetGray());
+	auto s = crn::String{};
+	for (auto nline = size_t{0}; nline < pageblock->GetNbChildren(U"Lines"); ++nline)
+	{
+		auto line = pageblock->GetChild(U"Lines", nline);
+		line->ExtractCC(U"Characters");
+		line->FilterMinOr(U"Characters", sw, sw);
+		line->SortTree(U"Characters", crn::Direction::LEFT);
+		for (auto nchar = size_t{0}; nchar < line->GetNbChildren(U"Characters"); ++nchar)
+		{
+			auto character = line->GetChild(U"Characters", nchar);
+			auto features = featureExtractor.Extract(*character);
+			auto res = crn::BasicClassify::NearestNeighbor(features, database.begin(), database.end());
+			s += char32_t(U'A' + res.class_id);
+		}
+		s += U'\n';
+	}
+	CRNVerbose(s);
+}
 
 int main(int argc, char *argv[])
 {
@@ -59,17 +85,19 @@ int main(int argc, char *argv[])
 
 	crn::Timer::Start(U"OCR4dummies");
 
+	minimal(argv[1]);
+
 	/**************************************************************************/
 	/* 1. Database                                                            */
 	/**************************************************************************/
 	// Create a feature extraction engine.
-	auto featureExtractor = std::make_unique<crn::FeatureSet>();
+	auto featureExtractor = crn::FeatureSet{};
 	// It will extract the four profiles, reduced each to 10 values in [0..100].
-	featureExtractor->PushBack(std::make_shared<crn::FeatureExtractorProfile>(
+	featureExtractor.PushBack(std::make_shared<crn::FeatureExtractorProfile>(
 				crn::Direction::LEFT | crn::Direction::RIGHT | 
 				crn::Direction::TOP | crn::Direction::BOTTOM, 10, 100));
 	// It will also extract the two projections under the same conditions.
-	featureExtractor->PushBack(std::make_shared<crn::FeatureExtractorProjection>(
+	featureExtractor.PushBack(std::make_shared<crn::FeatureExtractorProjection>(
 				crn::Orientation::HORIZONTAL | crn::Orientation::VERTICAL, 10, 100));
 	// Create the database.
 	auto database = std::vector<crn::SObject>();
@@ -91,7 +119,7 @@ int main(int argc, char *argv[])
 		// Embed the image in a block structure.
 		auto charblock = crn::Block::New(charimage);
 		// Extract the features and store it in the database.
-		database.push_back(featureExtractor->Extract(*charblock));
+		database.push_back(featureExtractor.Extract(*charblock));
 	}
 	crn::Timer::Split(U"OCR4dummies", U"Database");
 	/**************************************************************************/
@@ -139,7 +167,7 @@ int main(int argc, char *argv[])
 		{
 			auto character = line->GetChild(U"Characters", nchar);
 			// Extract the features.
-			auto features = featureExtractor->Extract(*character);
+			auto features = featureExtractor.Extract(*character);
 			// Classify the character using the database.
 			auto res = crn::BasicClassify::NearestNeighbor(features, database.begin(), database.end());
 			// Print the characters label.
