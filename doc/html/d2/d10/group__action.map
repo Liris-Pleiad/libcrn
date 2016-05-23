@@ -1,0 +1,7 @@
+<map id="Actions" name="Actions">
+<area shape="rect" id="node1" href="$d0/dd8/group__imagegray.html" title="Gray images" alt="" coords="456,164,552,191"/>
+<area shape="rect" id="node3" href="$d4/d0e/group__imagergb.html" title="RGB images" alt="" coords="455,323,553,349"/>
+<area shape="rect" id="node5" href="$da/dcb/group__featex.html" title="Feature extractors" alt="" coords="440,373,568,400"/>
+<area shape="rect" id="node6" href="$d3/d37/group__btex.html" title="Block tree extractors" alt="" coords="433,424,575,451"/>
+<area shape="rect" id="node4" href="$db/d81/group__utils.html" title="Commodities" alt="" coords="5,352,104,379"/>
+</map>

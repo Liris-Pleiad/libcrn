@@ -1,0 +1,20 @@
+<map id="/home/yleydier/prg/libcrn/src/libcrn/CRNFeature/CRNFeatureExtractor.h" name="/home/yleydier/prg/libcrn/src/libcrn/CRNFeature/CRNFeatureExtractor.h">
+<area shape="rect" id="node2" href="$d5/dd7/_c_r_n_object_8h.html" title="CRNObject.h" alt="" coords="1051,483,1152,509"/>
+<area shape="rect" id="node4" href="$dd/d9a/_c_r_n_default_action_8h.html" title="CRNUtils/CRNDefaultAction.h" alt="" coords="633,109,836,136"/>
+<area shape="rect" id="node29" href="$d2/dc4/_c_r_n_image_formats_8h.html" title="CRNImage/CRNImageFormats.h" alt="" coords="1183,109,1400,136"/>
+<area shape="rect" id="node5" href="$d5/d12/_c_r_n_map_8h.html" title="CRNData/CRNMap.h" alt="" coords="430,184,580,211"/>
+<area shape="rect" id="node6" href="$dd/df3/_c_r_n_complex_object_8h.html" title="CRNComplexObject.h" alt="" coords="577,259,729,285"/>
+<area shape="rect" id="node25" href="$d8/da0/_c_r_n_map_ptr_8h.html" title="CRNData/CRNMapPtr.h" alt="" coords="282,333,448,360"/>
+<area shape="rect" id="node27" href="$d1/dda/_c_r_n_foreach_8h.html" title="CRNData/CRNForeach.h" alt="" coords="65,259,236,285"/>
+<area shape="rect" id="node8" href="$d8/df6/_c_r_n_string_8h.html" title="CRNString.h" alt="" coords="729,408,825,435"/>
+<area shape="rect" id="node21" href="$d1/dc2/_c_r_n_path_8h.html" title="CRNIO/CRNPath.h" alt="" coords="544,333,683,360"/>
+<area shape="rect" id="node15" href="$d3/d6c/_c_r_n_string_ptr_8h.html" title="CRNStringPtr.h" alt="" coords="861,483,976,509"/>
+<area shape="rect" id="node16" href="$d9/d7d/_c_r_n_type_8h.html" title="CRNType.h" alt="" coords="95,557,187,584"/>
+<area shape="rect" id="node22" href="$d8/dc7/_c_r_n_string_u_t_f8_8h.html" title="CRNStringUTF8.h" alt="" coords="548,408,677,435"/>
+<area shape="rect" id="node24" href="$de/d1d/_c_r_n_path_ptr_8h.html" title="CRNIO/CRNPathPtr.h" alt="" coords="249,408,403,435"/>
+<area shape="rect" id="node23" href="$d7/d17/_c_r_n_string_u_t_f8_ptr_8h.html" title="CRNStringUTF8Ptr.h" alt="" coords="179,483,325,509"/>
+<area shape="rect" id="node30" href="$dc/dbc/_c_r_n_pixel_8h.html" title="CRNImage/CRNPixel.h" alt="" coords="1256,259,1419,285"/>
+<area shape="rect" id="node31" href="$de/da6/_c_r_n_math_8h.html" title="CRNMath/CRNMath.h" alt="" coords="1260,333,1413,360"/>
+<area shape="rect" id="node34" href="$d6/dcd/_c_r_n_trigonometry_8h.html" title="CRNMath/CRNTrigonometry.h" alt="" coords="1155,408,1357,435"/>
+<area shape="rect" id="node35" href="$db/db0/_c_r_n_exception_8h.html" title="CRNException.h" alt="" coords="1259,483,1380,509"/>
+</map>

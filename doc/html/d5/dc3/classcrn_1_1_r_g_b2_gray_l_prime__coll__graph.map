@@ -1,0 +1,6 @@
+<map id="crn::RGB2GrayLPrime" name="crn::RGB2GrayLPrime">
+<area shape="rect" id="node2" href="$d3/db2/classcrn_1_1_r_g_b2_gray.html" title="RGB to grayscale conversion action. " alt="" coords="25,251,136,277"/>
+<area shape="rect" id="node3" href="$d0/d3d/classcrn_1_1_action.html" title="Base functor class. " alt="" coords="39,173,124,200"/>
+<area shape="rect" id="node4" href="$d8/d3e/classcrn_1_1_object.html" title="crn::Object" alt="" coords="43,5,129,32"/>
+<area shape="rect" id="node5" href="$d7/d89/classcrn_1_1_map.html" title="Data map class. " alt="" coords="98,83,171,109"/>
+</map>

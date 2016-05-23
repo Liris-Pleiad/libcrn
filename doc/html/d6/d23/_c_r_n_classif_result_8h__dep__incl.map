@@ -1,0 +1,15 @@
+<map id="/home/yleydier/prg/libcrn/src/libcrn/CRNAI/CRNClassifResult.h" name="/home/yleydier/prg/libcrn/src/libcrn/CRNAI/CRNClassifResult.h">
+<area shape="rect" id="node2" href="$d8/df4/_c_r_n_basic_classify_8h.html" title="/home/yleydier/prg\l/libcrn/src/libcrn/CRNAI\l/CRNBasicClassify.h" alt="" coords="540,109,701,165"/>
+<area shape="rect" id="node14" href="$df/db8/_c_r_n_spectral_clustering_8cpp.html" title="/home/yleydier/prg\l/libcrn/src/libcrn/CRNAI\l/CRNSpectralClustering.cpp" alt="" coords="726,109,913,165"/>
+<area shape="rect" id="node3" href="$d5/d25/_c_r_nk_means_8h.html" title="/home/yleydier/prg\l/libcrn/src/libcrn/CRNAI\l/CRNkMeans.h" alt="" coords="540,213,701,269"/>
+<area shape="rect" id="node4" href="$de/d64/_c_r_nk_means_8cpp.html" title="/home/yleydier/prg\l/libcrn/src/libcrn/CRNAI\l/CRNkMeans.cpp" alt="" coords="442,317,602,373"/>
+<area shape="rect" id="node5" href="$d0/d79/_c_r_n_image_gray_8h.html" title="/home/yleydier/prg\l/libcrn/src/libcrn/CRNImage\l/CRNImageGray.h" alt="" coords="628,317,812,373"/>
+<area shape="rect" id="node6" href="$da/d37/_c_r_n_block_8cpp.html" title="/home/yleydier/prg\l/libcrn/src/libcrn/CRNBlock.cpp" alt="" coords="250,549,456,590"/>
+<area shape="rect" id="node7" href="$d9/d59/_c_r_n_feature_extractor_angle_radial_zoning_8cpp.html" title="/home/yleydier/prg\l/libcrn/src/libcrn/CRNFeature\l/CRNFeatureExtractorAngleRadialZoning.cpp" alt="" coords="34,429,320,485"/>
+<area shape="rect" id="node8" href="$d3/da4/_c_r_n_feature_extractor_overlapping_angle_histogram_8cpp.html" title="/home/yleydier/prg\l/libcrn/src/libcrn/CRNFeature\l/CRNFeatureExtractorOverlappingAngle\lHistogram.cpp" alt="" coords="344,422,598,493"/>
+<area shape="rect" id="node9" href="$d0/d1d/_c_r_n_gradient_matching_8cpp.html" title="/home/yleydier/prg\l/libcrn/src/libcrn/CRNFeature\l/CRNGradientMatching.cpp" alt="" coords="624,429,816,485"/>
+<area shape="rect" id="node10" href="$d4/df4/_c_r_n_differential_8h.html" title="/home/yleydier/prg\l/libcrn/src/libcrn/CRNImage\l/CRNDifferential.h" alt="" coords="840,429,1024,485"/>
+<area shape="rect" id="node12" href="$db/dab/_c_r_n_image_8cpp.html" title="/home/yleydier/prg\l/libcrn/src/libcrn/CRNImage\l/CRNImage.cpp" alt="" coords="1048,429,1232,485"/>
+<area shape="rect" id="node13" href="$d2/d83/_c_r_n_image_gray_8cpp.html" title="/home/yleydier/prg\l/libcrn/src/libcrn/CRNImage\l/CRNImageGray.cpp" alt="" coords="1256,429,1440,485"/>
+<area shape="rect" id="node11" href="$de/d06/_c_r_n_differential_8cpp.html" title="/home/yleydier/prg\l/libcrn/src/libcrn/CRNImage\l/CRNDifferential.cpp" alt="" coords="840,541,1024,597"/>
+</map>

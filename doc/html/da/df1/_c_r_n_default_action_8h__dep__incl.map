@@ -1,0 +1,29 @@
+<map id="/home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNDefaultAction.h" name="/home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNDefaultAction.h">
+<area shape="rect" id="node2" href="$dd/d05/_c_r_n_block_tree_extractor_8h.html" title="/home/yleydier/prg\l/libcrn/src/libcrn/CRNFeature\l/CRNBlockTreeExtractor.h" alt="" coords="347,109,539,165"/>
+<area shape="rect" id="node7" href="$d9/dcd/_c_r_n_feature_extractor_8h.html" title="/home/yleydier/prg\l/libcrn/src/libcrn/CRNFeature\l/CRNFeatureExtractor.h" alt="" coords="1377,109,1569,165"/>
+<area shape="rect" id="node19" href="$d0/d79/_c_r_n_image_gray_8h.html" title="/home/yleydier/prg\l/libcrn/src/libcrn/CRNImage\l/CRNImageGray.h" alt="" coords="2488,109,2672,165"/>
+<area shape="rect" id="node26" href="$df/d68/_c_r_n_image_r_g_b_8h.html" title="/home/yleydier/prg\l/libcrn/src/libcrn/CRNImage\l/CRNImageRGB.h" alt="" coords="3019,109,3203,165"/>
+<area shape="rect" id="node28" href="$df/d71/_c_r_n_default_action_8cpp.html" title="/home/yleydier/prg\l/libcrn/src/libcrn/CRNUtils\l/CRNDefaultAction.cpp" alt="" coords="3227,109,3401,165"/>
+<area shape="rect" id="node3" href="$dc/d1a/_c_r_n_block_tree_extractor_text_lines_from_projection_8h.html" title="/home/yleydier/prg\l/libcrn/src/libcrn/CRNFeature\l/CRNBlockTreeExtractorTextLinesFrom\lProjection.h" alt="" coords="7,214,261,285"/>
+<area shape="rect" id="node5" href="$de/d93/_c_r_n_block_tree_extractor_words_from_projection_8h.html" title="/home/yleydier/prg\l/libcrn/src/libcrn/CRNFeature\l/CRNBlockTreeExtractorWordsFromProjection.h" alt="" coords="290,221,595,277"/>
+<area shape="rect" id="node4" href="$d2/dec/_c_r_n_block_tree_extractor_text_lines_from_projection_8cpp.html" title="/home/yleydier/prg\l/libcrn/src/libcrn/CRNFeature\l/CRNBlockTreeExtractorTextLinesFrom\lProjection.cpp" alt="" coords="5,334,259,405"/>
+<area shape="rect" id="node6" href="$d7/d52/_c_r_n_block_tree_extractor_words_from_projection_8cpp.html" title="/home/yleydier/prg\l/libcrn/src/libcrn/CRNFeature\l/CRNBlockTreeExtractorWordsFromProjection.cpp" alt="" coords="283,341,601,397"/>
+<area shape="rect" id="node8" href="$da/d65/_c_r_n_feature_extractor_angle_radial_zoning_8h.html" title="/home/yleydier/prg\l/libcrn/src/libcrn/CRNFeature\l/CRNFeatureExtractorAngleRadialZoning.h" alt="" coords="1594,221,1867,277"/>
+<area shape="rect" id="node10" href="$d9/d03/_c_r_n_feature_extractor_angle_zoning_8h.html" title="/home/yleydier/prg\l/libcrn/src/libcrn/CRNFeature\l/CRNFeatureExtractorAngleZoning.h" alt="" coords="638,221,873,277"/>
+<area shape="rect" id="node12" href="$d5/d70/_c_r_n_feature_extractor_overlapping_angle_histogram_8h.html" title="/home/yleydier/prg\l/libcrn/src/libcrn/CRNFeature\l/CRNFeatureExtractorOverlappingAngle\lHistogram.h" alt="" coords="1891,214,2145,285"/>
+<area shape="rect" id="node14" href="$d1/d26/_c_r_n_feature_extractor_profile_8h.html" title="/home/yleydier/prg\l/libcrn/src/libcrn/CRNFeature\l/CRNFeatureExtractorProfile.h" alt="" coords="905,221,1105,277"/>
+<area shape="rect" id="node16" href="$de/dbc/_c_r_n_feature_extractor_projection_8h.html" title="/home/yleydier/prg\l/libcrn/src/libcrn/CRNFeature\l/CRNFeatureExtractorProjection.h" alt="" coords="1130,221,1352,277"/>
+<area shape="rect" id="node18" href="$d4/d2c/_c_r_n_feature_set_8cpp.html" title="/home/yleydier/prg\l/libcrn/src/libcrn/CRNFeature\l/CRNFeatureSet.cpp" alt="" coords="1377,221,1569,277"/>
+<area shape="rect" id="node9" href="$d9/d59/_c_r_n_feature_extractor_angle_radial_zoning_8cpp.html" title="/home/yleydier/prg\l/libcrn/src/libcrn/CRNFeature\l/CRNFeatureExtractorAngleRadialZoning.cpp" alt="" coords="1639,341,1925,397"/>
+<area shape="rect" id="node11" href="$d2/dc4/_c_r_n_feature_extractor_angle_zoning_8cpp.html" title="/home/yleydier/prg\l/libcrn/src/libcrn/CRNFeature\l/CRNFeatureExtractorAngleZoning.cpp" alt="" coords="627,341,877,397"/>
+<area shape="rect" id="node13" href="$d3/da4/_c_r_n_feature_extractor_overlapping_angle_histogram_8cpp.html" title="/home/yleydier/prg\l/libcrn/src/libcrn/CRNFeature\l/CRNFeatureExtractorOverlappingAngle\lHistogram.cpp" alt="" coords="2003,334,2257,405"/>
+<area shape="rect" id="node15" href="$d7/d40/_c_r_n_feature_extractor_profile_8cpp.html" title="/home/yleydier/prg\l/libcrn/src/libcrn/CRNFeature\l/CRNFeatureExtractorProfile.cpp" alt="" coords="902,341,1116,397"/>
+<area shape="rect" id="node17" href="$d0/d37/_c_r_n_feature_extractor_projection_8cpp.html" title="/home/yleydier/prg\l/libcrn/src/libcrn/CRNFeature\l/CRNFeatureExtractorProjection.cpp" alt="" coords="1141,341,1376,397"/>
+<area shape="rect" id="node20" href="$da/d37/_c_r_n_block_8cpp.html" title="/home/yleydier/prg\l/libcrn/src/libcrn/CRNBlock.cpp" alt="" coords="2735,349,2941,390"/>
+<area shape="rect" id="node21" href="$d0/d1d/_c_r_n_gradient_matching_8cpp.html" title="/home/yleydier/prg\l/libcrn/src/libcrn/CRNFeature\l/CRNGradientMatching.cpp" alt="" coords="2272,221,2464,277"/>
+<area shape="rect" id="node22" href="$d4/df4/_c_r_n_differential_8h.html" title="/home/yleydier/prg\l/libcrn/src/libcrn/CRNImage\l/CRNDifferential.h" alt="" coords="2747,221,2931,277"/>
+<area shape="rect" id="node24" href="$db/dab/_c_r_n_image_8cpp.html" title="/home/yleydier/prg\l/libcrn/src/libcrn/CRNImage\l/CRNImage.cpp" alt="" coords="2955,221,3139,277"/>
+<area shape="rect" id="node25" href="$d2/d83/_c_r_n_image_gray_8cpp.html" title="/home/yleydier/prg\l/libcrn/src/libcrn/CRNImage\l/CRNImageGray.cpp" alt="" coords="2488,221,2672,277"/>
+<area shape="rect" id="node23" href="$de/d06/_c_r_n_differential_8cpp.html" title="/home/yleydier/prg\l/libcrn/src/libcrn/CRNImage\l/CRNDifferential.cpp" alt="" coords="3051,341,3235,397"/>
+<area shape="rect" id="node27" href="$de/d27/_c_r_n_image_r_g_b_8cpp.html" title="/home/yleydier/prg\l/libcrn/src/libcrn/CRNImage\l/CRNImageRGB.cpp" alt="" coords="3264,221,3448,277"/>
+</map>

@@ -1,0 +1,31 @@
+<map id="/home/yleydier/prg/libcrn/src/libgtkcrnmm/GdkCRNPixbuf.cpp" name="/home/yleydier/prg/libcrn/src/libgtkcrnmm/GdkCRNPixbuf.cpp">
+<area shape="rect" id="node3" href="$d3/d64/_gdk_c_r_n_pixbuf_8h.html" title="GdkCRNPixbuf.h" alt="" coords="1736,109,1860,136"/>
+<area shape="rect" id="node46" href="$d8/dc7/_c_r_n_string_u_t_f8_8h.html" title="CRNStringUTF8.h" alt="" coords="1561,573,1690,600"/>
+<area shape="rect" id="node48" href="$d1/dc2/_c_r_n_path_8h.html" title="CRNIO/CRNPath.h" alt="" coords="952,491,1090,517"/>
+<area shape="rect" id="node50" href="$d7/dc2/_c_r_ni18n_8h.html" title="CRNi18n.h" alt="" coords="2152,109,2238,136"/>
+<area shape="rect" id="node5" href="$d8/d35/_c_r_n_image_8h.html" title="CRNImage/CRNImage.h" alt="" coords="1642,184,1810,211"/>
+<area shape="rect" id="node37" href="$dc/dbc/_c_r_n_pixel_8h.html" title="CRNImage/CRNPixel.h" alt="" coords="1645,333,1808,360"/>
+<area shape="rect" id="node6" href="$de/da6/_c_r_n_math_8h.html" title="CRNMath/CRNMath.h" alt="" coords="1165,573,1318,600"/>
+<area shape="rect" id="node12" href="$db/db0/_c_r_n_exception_8h.html" title="CRNException.h" alt="" coords="278,723,398,749"/>
+<area shape="rect" id="node16" href="$d8/df6/_c_r_n_string_8h.html" title="CRNString.h" alt="" coords="1716,573,1813,600"/>
+<area shape="rect" id="node27" href="$d0/d91/_c_r_n_summed_area_table_8h.html" title="CRNImage/CRNSummedAreaTable.h" alt="" coords="580,259,824,285"/>
+<area shape="rect" id="node36" href="$d2/dc4/_c_r_n_image_formats_8h.html" title="CRNImage/CRNImageFormats.h" alt="" coords="1618,259,1834,285"/>
+<area shape="rect" id="node38" href="$d7/ddc/_c_r_n_image_8hpp.html" title="CRNImage/CRNImage.hpp" alt="" coords="1186,259,1368,285"/>
+<area shape="rect" id="node11" href="$d6/dcd/_c_r_n_trigonometry_8h.html" title="CRNMath/CRNTrigonometry.h" alt="" coords="936,648,1138,675"/>
+<area shape="rect" id="node17" href="$d5/dd7/_c_r_n_object_8h.html" title="CRNObject.h" alt="" coords="2029,648,2130,675"/>
+<area shape="rect" id="node21" href="$d3/d6c/_c_r_n_string_ptr_8h.html" title="CRNStringPtr.h" alt="" coords="746,648,861,675"/>
+<area shape="rect" id="node22" href="$d9/d7d/_c_r_n_type_8h.html" title="CRNType.h" alt="" coords="467,723,558,749"/>
+<area shape="rect" id="node28" href="$d5/ddd/_c_r_n_rect_8h.html" title="CRNGeometry/CRNRect.h" alt="" coords="576,333,758,360"/>
+<area shape="rect" id="node29" href="$d5/d1e/_c_r_n_point2_d_int_8h.html" title="CRNGeometry/CRNPoint2DInt.h" alt="" coords="1706,408,1922,435"/>
+<area shape="rect" id="node31" href="$d3/da6/_c_r_n_statistic_sample_8h.html" title="CRNStatistics/CRNStatistic\lSample.h" alt="" coords="738,483,928,525"/>
+<area shape="rect" id="node34" href="$d1/dda/_c_r_n_foreach_8h.html" title="CRNData/CRNForeach.h" alt="" coords="22,723,193,749"/>
+<area shape="rect" id="node30" href="$d1/d9a/_c_r_n_point2_d_8h.html" title="CRNGeometry/CRNPoint2D.h" alt="" coords="1928,491,2129,517"/>
+<area shape="rect" id="node40" href="$dd/d75/_c_r_n_matrix_int_8h.html" title="CRNMath/CRNMatrixInt.h" alt="" coords="936,408,1113,435"/>
+<area shape="rect" id="node43" href="$dd/d72/_c_r_n_matrix_double_8h.html" title="CRNMath/CRNMatrixDouble.h" alt="" coords="1138,408,1341,435"/>
+<area shape="rect" id="node45" href="$d7/dd5/_c_r_n_matrix_complex_8h.html" title="CRNMath/CRNMatrixComplex.h" alt="" coords="1416,408,1630,435"/>
+<area shape="rect" id="node41" href="$d8/d64/_c_r_n_matrix_8h.html" title="CRNMath/CRNMatrix.h" alt="" coords="1324,491,1486,517"/>
+<area shape="rect" id="node42" href="$d4/db9/_c_r_n_matrix_int_ptr_8h.html" title="CRNMath/CRNMatrixIntPtr.h" alt="" coords="274,491,469,517"/>
+<area shape="rect" id="node44" href="$de/ddb/_c_r_n_matrix_double_ptr_8h.html" title="CRNMath/CRNMatrixDoublePtr.h" alt="" coords="494,491,713,517"/>
+<area shape="rect" id="node47" href="$d7/d17/_c_r_n_string_u_t_f8_ptr_8h.html" title="CRNStringUTF8Ptr.h" alt="" coords="576,648,722,675"/>
+<area shape="rect" id="node49" href="$de/d1d/_c_r_n_path_ptr_8h.html" title="CRNIO/CRNPathPtr.h" alt="" coords="936,573,1089,600"/>
+</map>

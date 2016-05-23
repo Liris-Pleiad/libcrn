@@ -1,0 +1,73 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" href="$d8/d3e/classcrn_1_1_object.html" title="crn::Object" alt="" coords="6,1767,93,1793"/>
+<area shape="rect" id="node2" href="$d0/d3d/classcrn_1_1_action.html" title="Base functor class. " alt="" coords="201,636,287,663"/>
+<area shape="rect" id="node31" href="$d9/d56/classcrn_1_1_cartesian2_d_function.html" title="Base class for 2D functions. " alt="" coords="159,1092,329,1119"/>
+<area shape="rect" id="node35" href="$de/d68/classcrn_1_1_discrete_h_m_m.html" title="Discrete HMM class. " alt="" coords="179,1143,309,1169"/>
+<area shape="rect" id="node36" href="$d8/d53/classcrn_1_1_gaussian_s_c_h_m_m.html" title="Semi&#45;continuous gaussian HMM class. " alt="" coords="167,1193,321,1220"/>
+<area shape="rect" id="node37" href="$dc/d83/classcrn_1_1_histogram.html" title="Mother class for integer histograms. " alt="" coords="190,1244,298,1271"/>
+<area shape="rect" id="node38" href="$dc/d69/classcrn_1_1_int.html" title="Interface class for the metric real number class. " alt="" coords="213,1295,275,1321"/>
+<area shape="rect" id="node39" href="$d7/d89/classcrn_1_1_map.html" title="Data map class. " alt="" coords="207,1345,281,1372"/>
+<area shape="rect" id="node40" href="$d6/d6e/classcrn_1_1_matrix.html" title="Base matrix class. " alt="" coords="186,1396,302,1423"/>
+<area shape="rect" id="node41" href="$de/de1/classcrn_1_1_multivariate_gaussian_mixture.html" title="Multivariate gaussian mixture. " alt="" coords="159,1447,329,1489"/>
+<area shape="rect" id="node42" href="$d1/d89/classcrn_1_1_multivariate_gaussian_p_d_f.html" title="Multivariate Gaussian distribution. " alt="" coords="145,1513,343,1540"/>
+<area shape="rect" id="node43" href="$da/dd9/classcrn_1_1_p_c_a.html" title="Class to perform Principal Componant Analysis. " alt="" coords="206,1564,282,1591"/>
+<area shape="rect" id="node44" href="$db/d3e/classcrn_1_1_p_d_f_1_1_attributes.html" title="Attributes to create a PDF export of a document. " alt="" coords="175,1615,313,1641"/>
+<area shape="rect" id="node45" href="$d5/dbd/classcrn_1_1_point2_d.html" title="A 2D point class. " alt="" coords="181,1665,307,1692"/>
+<area shape="rect" id="node46" href="$d1/dc7/classcrn_1_1_prop3.html" title="A ternary proposition. " alt="" coords="203,1716,285,1743"/>
+<area shape="rect" id="node47" href="$d7/d79/classcrn_1_1_real.html" title="Interface class for the metric real number class. " alt="" coords="207,1767,281,1793"/>
+<area shape="rect" id="node48" href="$d3/dd8/classcrn_1_1_real_to_real_function.html" title="Numerical integration toolbox class. " alt="" coords="161,1817,327,1844"/>
+<area shape="rect" id="node49" href="$d4/d24/classcrn_1_1_rect.html" title="A rectangle class. " alt="" coords="206,1868,282,1895"/>
+<area shape="rect" id="node50" href="$dd/dae/classcrn_1_1_savable.html" title="complex base abstract class " alt="" coords="197,1919,291,1945"/>
+<area shape="rect" id="node53" href="$d8/d56/classcrn_1_1_string.html" title="A UTF32 character string class. " alt="" coords="203,1969,285,1996"/>
+<area shape="rect" id="node54" href="$dc/dc5/classcrn_1_1_string_u_t_f8.html" title="A character string class. " alt="" coords="187,2020,301,2047"/>
+<area shape="rect" id="node56" href="$d9/de1/classcrn_1_1_stroke.html" title="A list of points. " alt="" coords="201,2071,287,2097"/>
+<area shape="rect" id="node57" href="$d1/d56/classcrn_1_1_univariate_gaussian_mixture.html" title="Univariate Gaussian mixture. " alt="" coords="141,2121,347,2148"/>
+<area shape="rect" id="node58" href="$d0/de4/classcrn_1_1_univariate_gaussian_p_d_f.html" title="Univariate Gaussian distribution. " alt="" coords="149,2172,339,2199"/>
+<area shape="rect" id="node59" href="$d3/d02/classcrn_1_1_vector.html" title="Data vector class. " alt="" coords="201,2223,287,2249"/>
+<area shape="rect" id="node61" href="$d6/d6e/classcrn_1_1_matrix.html" title="crn::Matrix\&lt; double \&gt;" alt="" coords="171,2273,317,2300"/>
+<area shape="rect" id="node64" href="$d6/d6e/classcrn_1_1_matrix.html" title="crn::Matrix\&lt; int \&gt;" alt="" coords="183,2324,305,2351"/>
+<area shape="rect" id="node66" href="$d6/d6e/classcrn_1_1_matrix.html" title="crn::Matrix\&lt; std::complex\l\&lt; double \&gt; \&gt;" alt="" coords="159,2375,329,2417"/>
+<area shape="rect" id="node68" href="$d5/dbd/classcrn_1_1_point2_d.html" title="crn::Point2D\&lt; double \&gt;" alt="" coords="165,2441,323,2468"/>
+<area shape="rect" id="node70" href="$d5/dbd/classcrn_1_1_point2_d.html" title="crn::Point2D\&lt; int \&gt;" alt="" coords="177,2492,311,2519"/>
+<area shape="rect" id="node3" href="$dd/dc0/classcrn_1_1_block_tree_extractor.html" title="BlockTree extractor base class. " alt="" coords="404,77,564,104"/>
+<area shape="rect" id="node6" href="$d9/d59/classcrn_1_1_feature_extractor.html" title="Feature extractor base class. " alt="" coords="411,303,557,329"/>
+<area shape="rect" id="node12" href="$d1/d28/classcrn_1_1_gray2_b_w.html" title="Binarization action. " alt="" coords="431,636,537,663"/>
+<area shape="rect" id="node22" href="$d3/db2/classcrn_1_1_r_g_b2_gray.html" title="RGB to grayscale conversion action. " alt="" coords="428,1016,540,1043"/>
+<area shape="rect" id="node4" href="$d8/d14/classcrn_1_1_block_tree_extractor_text_lines_from_projection.html" title="A class to extract text lines from a text block. " alt="" coords="636,5,823,46"/>
+<area shape="rect" id="node5" href="$d5/d8d/classcrn_1_1_block_tree_extractor_words_from_projection.html" title="A class to extract words from a text line. " alt="" coords="630,70,829,111"/>
+<area shape="rect" id="node7" href="$d3/da2/classcrn_1_1_feature_extractor_angle_radial_zoning.html" title="AngleRadialZoning features extractor class. " alt="" coords="640,135,819,177"/>
+<area shape="rect" id="node8" href="$d2/d6b/classcrn_1_1_feature_extractor_angle_zoning.html" title="AngleZoning features extractor class. " alt="" coords="640,201,819,242"/>
+<area shape="rect" id="node9" href="$de/dfb/classcrn_1_1_feature_extractor_overlapping_angle_histogram.html" title="OverlappingAngleHistogram features extractor class. " alt="" coords="622,266,837,307"/>
+<area shape="rect" id="node10" href="$de/df7/classcrn_1_1_feature_extractor_profile.html" title="Profile features extractor class. " alt="" coords="638,332,821,359"/>
+<area shape="rect" id="node11" href="$dd/d8d/classcrn_1_1_feature_extractor_projection.html" title="Projection features extractor class. " alt="" coords="628,383,831,409"/>
+<area shape="rect" id="node13" href="$d7/dbb/classcrn_1_1_gray2_b_w_entropy.html" title="Entropy binarization action. " alt="" coords="654,433,805,460"/>
+<area shape="rect" id="node14" href="$d4/d33/classcrn_1_1_gray2_b_w_fisher.html" title="Fisher binarization action. " alt="" coords="659,484,800,511"/>
+<area shape="rect" id="node15" href="$d2/df0/classcrn_1_1_gray2_b_wk_means_histo.html" title="k&#45;means histo binarization action " alt="" coords="638,535,821,561"/>
+<area shape="rect" id="node16" href="$d8/d3d/classcrn_1_1_gray2_b_w_local_max.html" title="Local max binarization action. " alt="" coords="649,585,810,612"/>
+<area shape="rect" id="node17" href="$dc/d9d/classcrn_1_1_gray2_b_w_local_min.html" title="Local min binarization action. " alt="" coords="651,636,808,663"/>
+<area shape="rect" id="node18" href="$d1/ddf/classcrn_1_1_gray2_b_w_niblack.html" title="Niblack binarization action. " alt="" coords="655,687,804,713"/>
+<area shape="rect" id="node19" href="$d1/d96/classcrn_1_1_gray2_b_w_otsu.html" title="Otsu binarization action. " alt="" coords="663,737,796,764"/>
+<area shape="rect" id="node20" href="$da/dac/classcrn_1_1_gray2_b_w_sauvola.html" title="Sauvola binarization action. " alt="" coords="653,788,805,815"/>
+<area shape="rect" id="node21" href="$d0/d2f/classcrn_1_1_gray2_b_w_threshold.html" title="Threshold binarization action. " alt="" coords="648,839,811,865"/>
+<area shape="rect" id="node23" href="$d2/df0/classcrn_1_1_r_g_b2_gray_blue.html" title="Blue pixels extraction action. " alt="" coords="660,889,799,916"/>
+<area shape="rect" id="node24" href="$dd/d22/classcrn_1_1_r_g_b2_gray_green.html" title="Green pixels extraction action. " alt="" coords="656,940,803,967"/>
+<area shape="rect" id="node25" href="$d4/d45/classcrn_1_1_r_g_b2_gray_l.html" title="L pixels extraction action. " alt="" coords="670,991,789,1017"/>
+<area shape="rect" id="node26" href="$d0/d26/classcrn_1_1_r_g_b2_gray_l_prime.html" title="LPrime pixels extraction action. " alt="" coords="653,1041,806,1068"/>
+<area shape="rect" id="node27" href="$d4/df9/classcrn_1_1_r_g_b2_gray_red.html" title="Red pixels extraction action. " alt="" coords="661,1092,797,1119"/>
+<area shape="rect" id="node28" href="$d2/da7/classcrn_1_1_r_g_b2_gray_saturation.html" title="Saturation pixels extraction action. " alt="" coords="644,1143,815,1169"/>
+<area shape="rect" id="node29" href="$d3/d78/classcrn_1_1_r_g_b2_gray_value.html" title="Value pixels extraction action. " alt="" coords="657,1193,802,1220"/>
+<area shape="rect" id="node30" href="$d7/dd6/classcrn_1_1_r_g_b2_gray_y.html" title="Y pixels extraction action. " alt="" coords="669,1244,790,1271"/>
+<area shape="rect" id="node32" href="$d2/da5/classcrn_1_1_cubic_spline.html" title="Cubic spline interpolation. " alt="" coords="425,1067,543,1093"/>
+<area shape="rect" id="node33" href="$d4/def/classcrn_1_1_linear_interpolation.html" title="Linear interpolation. " alt="" coords="407,1117,561,1144"/>
+<area shape="rect" id="node34" href="$d6/dac/classcrn_1_1_polynomial_regression.html" title="Polynomial regression. " alt="" coords="395,1168,573,1195"/>
+<area shape="rect" id="node51" href="$de/dc9/classcrn_1_1_block.html" title="A block. " alt="" coords="443,1893,525,1920"/>
+<area shape="rect" id="node52" href="$d5/d2b/classcrn_1_1_document.html" title="Document utility class. " alt="" coords="430,1944,538,1971"/>
+<area shape="rect" id="node55" href="$de/d1c/classcrn_1_1_path.html" title="A convenience class for file paths. " alt="" coords="447,2020,521,2047"/>
+<area shape="rect" id="node60" href="$d9/dbb/classcrn_1_1_feature_set.html" title="Feature vector class. " alt="" coords="428,2223,540,2249"/>
+<area shape="rect" id="node62" href="$d4/da3/classcrn_1_1_matrix_double.html" title="double matrix class " alt="" coords="421,2273,547,2300"/>
+<area shape="rect" id="node63" href="$d0/db1/classcrn_1_1_square_matrix_double.html" title="Square double matrix class. " alt="" coords="646,2273,813,2300"/>
+<area shape="rect" id="node65" href="$d6/d15/classcrn_1_1_matrix_int.html" title="Integer matrix class. " alt="" coords="435,2324,533,2351"/>
+<area shape="rect" id="node67" href="$d6/d5a/classcrn_1_1_matrix_complex.html" title="Complex matrix class. " alt="" coords="416,2383,552,2409"/>
+<area shape="rect" id="node69" href="$d8/d7a/classcrn_1_1_point2_d_double.html" title="A 2D point class. " alt="" coords="416,2441,552,2468"/>
+<area shape="rect" id="node71" href="$d2/d1e/classcrn_1_1_point2_d_int.html" title="A 2D point class. " alt="" coords="429,2492,539,2519"/>
+</map>

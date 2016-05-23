@@ -1,0 +1,14 @@
+<map id="/home/yleydier/prg/libcrn/src/libcrn/CRNAI/CRNGaussianSCHMM.h" name="/home/yleydier/prg/libcrn/src/libcrn/CRNAI/CRNGaussianSCHMM.h">
+<area shape="rect" id="node2" href="$d5/dd7/_c_r_n_object_8h.html" title="CRNObject.h" alt="" coords="5,365,107,392"/>
+<area shape="rect" id="node4" href="$dd/d72/_c_r_n_matrix_double_8h.html" title="CRNMath/CRNMatrixDouble.h" alt="" coords="735,117,937,144"/>
+<area shape="rect" id="node26" href="$db/d70/_c_r_n_square_matrix_double_ptr_8h.html" title="CRNMath/CRNSquareMatrixDouble\lPtr.h" alt="" coords="1163,201,1396,242"/>
+<area shape="rect" id="node27" href="$d8/dc8/_c_r_n_multivariate_gaussian_mixture_ptr_8h.html" title="CRNMath/CRNMultivariateGaussian\lMixturePtr.h" alt="" coords="1301,110,1537,151"/>
+<area shape="rect" id="node5" href="$d8/d64/_c_r_n_matrix_8h.html" title="CRNMath/CRNMatrix.h" alt="" coords="421,208,584,235"/>
+<area shape="rect" id="node9" href="$de/da6/_c_r_n_math_8h.html" title="CRNMath/CRNMath.h" alt="" coords="405,291,559,317"/>
+<area shape="rect" id="node25" href="$de/ddb/_c_r_n_matrix_double_ptr_8h.html" title="CRNMath/CRNMatrixDoublePtr.h" alt="" coords="839,208,1059,235"/>
+<area shape="rect" id="node6" href="$db/db0/_c_r_n_exception_8h.html" title="CRNException.h" alt="" coords="234,440,355,467"/>
+<area shape="rect" id="node15" href="$d8/df6/_c_r_n_string_8h.html" title="CRNString.h" alt="" coords="806,291,903,317"/>
+<area shape="rect" id="node13" href="$d6/dcd/_c_r_n_trigonometry_8h.html" title="CRNMath/CRNTrigonometry.h" alt="" coords="381,365,584,392"/>
+<area shape="rect" id="node19" href="$d3/d6c/_c_r_n_string_ptr_8h.html" title="CRNStringPtr.h" alt="" coords="1128,365,1243,392"/>
+<area shape="rect" id="node20" href="$d9/d7d/_c_r_n_type_8h.html" title="CRNType.h" alt="" coords="1353,440,1444,467"/>
+</map>

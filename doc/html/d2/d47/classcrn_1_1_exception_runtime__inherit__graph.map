@@ -1,0 +1,8 @@
+<map id="crn::ExceptionRuntime" name="crn::ExceptionRuntime">
+<area shape="rect" id="node4" href="$d9/d97/classcrn_1_1_exception_i_o.html" title="I/O error. " alt="" coords="544,5,664,32"/>
+<area shape="rect" id="node5" href="$d7/d1e/classcrn_1_1_exception_protocol.html" title="A protocol is not implemented. " alt="" coords="527,56,681,83"/>
+<area shape="rect" id="node6" href="$d4/dcf/classcrn_1_1_exception_t_o_d_o.html" title="Something to be done. " alt="" coords="532,107,676,133"/>
+<area shape="rect" id="node7" href="$dc/da6/classcrn_1_1_exception_uninitialized.html" title="Unintialized object error. " alt="" coords="515,157,693,184"/>
+<area shape="rect" id="node2" href="$dd/d10/classcrn_1_1_exception.html" title="Base class for exceptions. " alt="" coords="157,81,264,108"/>
+<area shape="rect" id="node3" title="STL class. " alt="" coords="5,81,109,108"/>
+</map>

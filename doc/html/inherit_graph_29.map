@@ -1,0 +1,10 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" href="$d5/d8e/classcrn_1_1_image_base.html" title="Base class for images. " alt="" coords="5,140,120,167"/>
+<area shape="rect" id="node2" href="$d5/ddf/classcrn_1_1_image.html" title="Abstract class for images. " alt="" coords="194,5,310,32"/>
+<area shape="rect" id="node3" href="$d5/ddf/classcrn_1_1_image.html" title="crn::Image\&lt; double \&gt;" alt="" coords="179,56,325,83"/>
+<area shape="rect" id="node4" href="$d5/ddf/classcrn_1_1_image.html" title="crn::Image\&lt; pixel::BW \&gt;" alt="" coords="169,107,335,133"/>
+<area shape="rect" id="node5" href="$d5/ddf/classcrn_1_1_image.html" title="crn::Image\&lt; pixel::\lPolar2D\&lt; unsigned int,\l Angle\&lt; ByteAngle \&gt; \&gt; \&gt;" alt="" coords="169,157,335,213"/>
+<area shape="rect" id="node7" href="$d5/ddf/classcrn_1_1_image.html" title="crn::Image\&lt; typename\l ByteAngle::type \&gt;" alt="" coords="175,237,329,278"/>
+<area shape="rect" id="node8" href="$d5/ddf/classcrn_1_1_image.html" title="crn::Image\&lt; uint8_t \&gt;" alt="" coords="179,303,325,329"/>
+<area shape="rect" id="node6" href="$d8/db4/classcrn_1_1_image_gradient.html" title="Gradient image in polar form. " alt="" coords="384,172,517,199"/>
+</map>

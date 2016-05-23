@@ -1,0 +1,8 @@
+<map id="crn::ExceptionLogic" name="crn::ExceptionLogic">
+<area shape="rect" id="node4" href="$d2/d3d/classcrn_1_1_exception_dimension.html" title="A dimension error. " alt="" coords="515,5,683,32"/>
+<area shape="rect" id="node5" href="$d1/db9/classcrn_1_1_exception_domain.html" title="A generic domain error. " alt="" coords="523,56,674,83"/>
+<area shape="rect" id="node6" href="$d7/d9a/classcrn_1_1_exception_invalid_argument.html" title="Invalid argument error (e.g.: nullptr pointer) " alt="" coords="499,107,699,133"/>
+<area shape="rect" id="node7" href="$db/d7b/classcrn_1_1_exception_not_found.html" title="An item was not found in a container. " alt="" coords="517,157,680,184"/>
+<area shape="rect" id="node2" href="$dd/d10/classcrn_1_1_exception.html" title="Base class for exceptions. " alt="" coords="157,81,264,108"/>
+<area shape="rect" id="node3" title="STL class. " alt="" coords="5,81,109,108"/>
+</map>

@@ -1,0 +1,9 @@
+<map id="crn::FeatureExtractor" name="crn::FeatureExtractor">
+<area shape="rect" id="node4" href="$d3/da2/classcrn_1_1_feature_extractor_angle_radial_zoning.html" title="AngleRadialZoning features extractor class. " alt="" coords="488,5,667,46"/>
+<area shape="rect" id="node5" href="$d2/d6b/classcrn_1_1_feature_extractor_angle_zoning.html" title="AngleZoning features extractor class. " alt="" coords="488,70,667,111"/>
+<area shape="rect" id="node6" href="$de/dfb/classcrn_1_1_feature_extractor_overlapping_angle_histogram.html" title="OverlappingAngleHistogram features extractor class. " alt="" coords="470,135,685,177"/>
+<area shape="rect" id="node7" href="$de/df7/classcrn_1_1_feature_extractor_profile.html" title="Profile features extractor class. " alt="" coords="486,201,669,228"/>
+<area shape="rect" id="node8" href="$dd/d8d/classcrn_1_1_feature_extractor_projection.html" title="Projection features extractor class. " alt="" coords="476,252,679,279"/>
+<area shape="rect" id="node2" href="$d0/d3d/classcrn_1_1_action.html" title="Base functor class. " alt="" coords="141,143,227,169"/>
+<area shape="rect" id="node3" href="$d8/d3e/classcrn_1_1_object.html" title="crn::Object" alt="" coords="6,143,93,169"/>
+</map>

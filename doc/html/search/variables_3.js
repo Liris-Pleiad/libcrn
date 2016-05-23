@@ -1,0 +1,21 @@
+var searchData=
+[
+  ['c',['c',['../d6/d59/structkuhn__munkres.html#aa188ae7cce00d8b06848651c811b0657',1,'kuhn_munkres']]],
+  ['cached',['cached',['../d9/d00/struct___w_d_i_r.html#a9b7432df163d1e291ba5925347fd4af3',1,'_WDIR']]],
+  ['can_5fjut_5fout',['can_jut_out',['../d7/ddd/struct_gtk_c_r_n_1_1_image_1_1_overlay_config.html#a1c86978b09d464c4b94555fe588f7a8a',1,'GtkCRN::Image::OverlayConfig']]],
+  ['changed',['changed',['../d3/dd5/class_gtk_c_r_n_1_1_color_action.html#ad82779176c61485c1a2e9a842bf06ce9',1,'GtkCRN::ColorAction']]],
+  ['class_5fid',['class_id',['../d2/d50/classcrn_1_1_classif_result.html#acaeed219a853e600b495f0decd9e129c',1,'crn::ClassifResult']]],
+  ['class_5flabel',['class_label',['../d2/d50/classcrn_1_1_classif_result.html#a5dda115b7807676f6422328fc8427804',1,'crn::ClassifResult']]],
+  ['closed_5fpolygons',['closed_polygons',['../d7/ddd/struct_gtk_c_r_n_1_1_image_1_1_overlay_config.html#a8522655a438f5652bc621a581eec3d3b',1,'GtkCRN::Image::OverlayConfig']]],
+  ['col_5fcovered',['col_covered',['../d6/d59/structkuhn__munkres.html#a0fac3da463d4040d23635174c2948e78',1,'kuhn_munkres']]],
+  ['color',['color',['../d3/dd5/class_gtk_c_r_n_1_1_color_action.html#a58bb36f8f5745c64180ff74561c77537',1,'GtkCRN::ColorAction']]],
+  ['color1',['color1',['../d7/ddd/struct_gtk_c_r_n_1_1_image_1_1_overlay_config.html#a90d90e6d72a39946e64995c8aeb7ce90',1,'GtkCRN::Image::OverlayConfig']]],
+  ['color2',['color2',['../d7/ddd/struct_gtk_c_r_n_1_1_image_1_1_overlay_config.html#a8066810d117f0427a698f1bd08ccaa21',1,'GtkCRN::Image::OverlayConfig']]],
+  ['cols',['cols',['../d6/d6e/classcrn_1_1_matrix.html#abfd89f4b66b9eddc90e6359438b48dad',1,'crn::Matrix']]],
+  ['conv',['conv',['../d6/dfa/classcrn_1_1xml_1_1_node.html#abf8992e4ec35921fbc86d26fd445f670',1,'crn::xml::Node']]],
+  ['copyable',['copyable',['../db/d3e/classcrn_1_1_p_d_f_1_1_attributes.html#ac7259fd673f48a60e2d5fd6b800c569f',1,'crn::PDF::Attributes']]],
+  ['creator',['creator',['../db/d3e/classcrn_1_1_p_d_f_1_1_attributes.html#a84b5a044ecf8c10c384dc7141a0d0bfc',1,'crn::PDF::Attributes']]],
+  ['cross_5fsize',['cross_size',['../d7/ddd/struct_gtk_c_r_n_1_1_image_1_1_overlay_config.html#a0d6dce49045a39f031a5c010a89ddb0a',1,'GtkCRN::Image::OverlayConfig']]],
+  ['cumulcost',['cumulCost',['../df/ded/structcrn_1_1_a_star_node.html#abccb45cef40e9aa8ddaee2a03047844b',1,'crn::AStarNode::cumulCost()'],['../d0/de1/structcrn_1_1_a_star_node_c.html#a3b300488ec6b14f3aede730f620f21b5',1,'crn::AStarNodeC::cumulCost()']]],
+  ['current',['current',['../d4/d05/classcrn_1_1_progress.html#a616cc73b53aaf6847a4aad9d79ae0089',1,'crn::Progress']]]
+];

@@ -1,0 +1,12 @@
+<map id="crn::RGB2Gray" name="crn::RGB2Gray">
+<area shape="rect" id="node4" href="$d2/df0/classcrn_1_1_r_g_b2_gray_blue.html" title="Blue pixels extraction action. " alt="" coords="451,5,589,32"/>
+<area shape="rect" id="node5" href="$dd/d22/classcrn_1_1_r_g_b2_gray_green.html" title="Green pixels extraction action. " alt="" coords="447,56,593,83"/>
+<area shape="rect" id="node6" href="$d4/d45/classcrn_1_1_r_g_b2_gray_l.html" title="L pixels extraction action. " alt="" coords="461,107,579,133"/>
+<area shape="rect" id="node7" href="$d0/d26/classcrn_1_1_r_g_b2_gray_l_prime.html" title="LPrime pixels extraction action. " alt="" coords="443,157,597,184"/>
+<area shape="rect" id="node8" href="$d4/df9/classcrn_1_1_r_g_b2_gray_red.html" title="Red pixels extraction action. " alt="" coords="452,208,588,235"/>
+<area shape="rect" id="node9" href="$d2/da7/classcrn_1_1_r_g_b2_gray_saturation.html" title="Saturation pixels extraction action. " alt="" coords="435,259,605,285"/>
+<area shape="rect" id="node10" href="$d3/d78/classcrn_1_1_r_g_b2_gray_value.html" title="Value pixels extraction action. " alt="" coords="447,309,593,336"/>
+<area shape="rect" id="node11" href="$d7/dd6/classcrn_1_1_r_g_b2_gray_y.html" title="Y pixels extraction action. " alt="" coords="459,360,581,387"/>
+<area shape="rect" id="node2" href="$d0/d3d/classcrn_1_1_action.html" title="Base functor class. " alt="" coords="141,183,227,209"/>
+<area shape="rect" id="node3" href="$d8/d3e/classcrn_1_1_object.html" title="crn::Object" alt="" coords="6,183,93,209"/>
+</map>

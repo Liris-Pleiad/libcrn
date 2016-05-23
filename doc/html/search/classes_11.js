@@ -1,0 +1,20 @@
+var searchData=
+[
+  ['savable',['Savable',['../dd/dae/classcrn_1_1_savable.html',1,'crn']]],
+  ['sc',['SC',['../d3/d7c/structcrn_1_1_gradient_shape_context_1_1_s_c.html',1,'crn::GradientShapeContext']]],
+  ['scalarrange',['ScalarRange',['../dc/da2/classcrn_1_1_scalar_range.html',1,'crn']]],
+  ['scaleaction',['ScaleAction',['../dd/d48/class_gtk_c_r_n_1_1_scale_action.html',1,'GtkCRN']]],
+  ['selectid',['SelectId',['../d8/dce/classcrn_1_1_classif_result_1_1_select_id.html',1,'crn::ClassifResult']]],
+  ['selectionbox',['SelectionBox',['../d2/d03/class_gtk_c_r_n_1_1_selection_box.html',1,'GtkCRN']]],
+  ['serializer',['Serializer',['../d5/d25/classcrn_1_1_serializer.html',1,'crn']]],
+  ['sorter',['Sorter',['../d1/d55/classcrn_1_1_point3_d_1_1_sorter.html',1,'crn::Point3D']]],
+  ['sorter',['Sorter',['../de/d7d/classcrn_1_1_rect_1_1_sorter.html',1,'crn::Rect']]],
+  ['spectralclustering',['SpectralClustering',['../d6/da9/classcrn_1_1_spectral_clustering.html',1,'crn']]],
+  ['spiral_5fiterator',['spiral_iterator',['../da/dc2/classcrn_1_1_rect_1_1spiral__iterator.html',1,'crn::Rect']]],
+  ['squarematrixdouble',['SquareMatrixDouble',['../d0/db1/classcrn_1_1_square_matrix_double.html',1,'crn']]],
+  ['string',['String',['../d8/d56/classcrn_1_1_string.html',1,'crn']]],
+  ['stringutf8',['StringUTF8',['../dc/dc5/classcrn_1_1_string_u_t_f8.html',1,'crn']]],
+  ['stroke',['Stroke',['../d9/de1/classcrn_1_1_stroke.html',1,'crn']]],
+  ['strpair',['StrPair',['../de/dc1/classtinyxml2_1_1_str_pair.html',1,'tinyxml2']]],
+  ['summedareatable',['SummedAreaTable',['../da/d50/classcrn_1_1_summed_area_table.html',1,'crn']]]
+];

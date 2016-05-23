@@ -1,0 +1,10 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node2" href="$d1/d55/classcrn_1_1_point3_d_1_1_sorter.html" title="Functor to sort rectangles regarding directions. " alt="" coords="199,5,334,46"/>
+<area shape="rect" id="node3" href="$d6/df9/classcrn_1_1_rect_1_1_area_sorter.html" title="Functor to sort rectangles regarding surfaces. " alt="" coords="193,71,340,97"/>
+<area shape="rect" id="node4" href="$d9/d8f/structcrn_1_1_rect_1_1_bitwise_compare.html" title="Functor to sort Rects in sets and maps. " alt="" coords="177,121,357,148"/>
+<area shape="rect" id="node5" href="$d6/dc2/classcrn_1_1_rect_1_1_height_sorter.html" title="Functor to sort rectangles regarding surfaces. " alt="" coords="188,172,345,199"/>
+<area shape="rect" id="node6" href="$d5/d5f/classcrn_1_1_rect_1_1_horizontal_stretching_sorter.html" title="Functor to sort rectangles regarding horizontal stretching values. " alt="" coords="165,223,368,265"/>
+<area shape="rect" id="node7" href="$db/d9d/classcrn_1_1_rect_1_1_inclusion_sorter.html" title="Functor to sort rectangles by inclusion. " alt="" coords="181,289,352,316"/>
+<area shape="rect" id="node8" href="$dd/dcd/classcrn_1_1_rect_1_1_orthogonal_sorter.html" title="Functor to sort rectangles regarding orthogonal directions. " alt="" coords="175,340,358,367"/>
+<area shape="rect" id="node9" href="$de/d7d/classcrn_1_1_rect_1_1_sorter.html" title="Functor to sort rectangles regarding directions. " alt="" coords="207,391,326,417"/>
+</map>

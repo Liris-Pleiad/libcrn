@@ -1,0 +1,5 @@
+<map id="crn::RGB2GraySaturation" name="crn::RGB2GraySaturation">
+<area shape="rect" id="node2" href="$d3/db2/classcrn_1_1_r_g_b2_gray.html" title="RGB to grayscale conversion action. " alt="" coords="35,155,145,181"/>
+<area shape="rect" id="node3" href="$d0/d3d/classcrn_1_1_action.html" title="Base functor class. " alt="" coords="48,80,133,107"/>
+<area shape="rect" id="node4" href="$d8/d3e/classcrn_1_1_object.html" title="crn::Object" alt="" coords="47,5,133,32"/>
+</map>

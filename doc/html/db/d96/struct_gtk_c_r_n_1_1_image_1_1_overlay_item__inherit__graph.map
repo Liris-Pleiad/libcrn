@@ -1,0 +1,7 @@
+<map id="GtkCRN::Image::OverlayItem" name="GtkCRN::Image::OverlayItem">
+<area shape="rect" id="node2" href="$db/d16/struct_gtk_c_r_n_1_1_image_1_1_line.html" title="GtkCRN::Image::Line" alt="" coords="268,5,417,32"/>
+<area shape="rect" id="node3" href="$d0/d2b/struct_gtk_c_r_n_1_1_image_1_1_point.html" title="GtkCRN::Image::Point" alt="" coords="265,56,420,83"/>
+<area shape="rect" id="node4" href="$df/d7e/struct_gtk_c_r_n_1_1_image_1_1_polygon.html" title="GtkCRN::Image::Polygon" alt="" coords="257,107,429,133"/>
+<area shape="rect" id="node5" href="$d3/d0f/struct_gtk_c_r_n_1_1_image_1_1_rectangle.html" title="GtkCRN::Image::Rectangle" alt="" coords="251,157,435,184"/>
+<area shape="rect" id="node6" href="$db/d8d/struct_gtk_c_r_n_1_1_image_1_1_text.html" title="GtkCRN::Image::Text" alt="" coords="267,208,418,235"/>
+</map>

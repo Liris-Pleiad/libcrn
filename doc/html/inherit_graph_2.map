@@ -1,0 +1,11 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node2" href="$dc/d2f/classblock__iterator.html" title="Iterator on the blocks of a child tree. " alt="" coords="149,5,249,32"/>
+<area shape="rect" id="node3" href="$d6/d05/classconst__block__iterator.html" title="const Iterator on the blocks of a child tree " alt="" coords="129,56,268,83"/>
+<area shape="rect" id="node4" href="$d0/d6d/classconst__iterator.html" title="const_iterator" alt="" coords="148,107,249,133"/>
+<area shape="rect" id="node5" href="$d1/d86/classcrn_1_1_document_1_1iterator.html" title="Iterator on the blocks of the document. " alt="" coords="121,157,277,184"/>
+<area shape="rect" id="node6" href="$d5/d0c/classcrn_1_1_rect_1_1iterator.html" title="iterator for a Rect " alt="" coords="137,208,261,235"/>
+<area shape="rect" id="node8" href="$da/dc2/classcrn_1_1_rect_1_1spiral__iterator.html" title="Spiral iterator for a Rect. " alt="" coords="117,259,280,285"/>
+<area shape="rect" id="node9" href="$d9/dc5/structcrn_1_1_scalar_range_1_1iterator.html" title="crn::ScalarRange\&lt; S\l \&gt;::iterator" alt="" coords="127,310,271,351"/>
+<area shape="rect" id="node10" href="$dd/d16/classiterator.html" title="iterator" alt="" coords="167,376,230,403"/>
+<area shape="rect" id="node7" href="$d1/d6c/classcrn_1_1_block_1_1masked__pixel__iterator.html" title="Iterator on the pixels the block with BW buffer as mask. " alt="" coords="329,201,463,242"/>
+</map>

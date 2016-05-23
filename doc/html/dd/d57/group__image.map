@@ -1,0 +1,8 @@
+<map id="Image" name="Image">
+<area shape="rect" id="node1" href="$d9/dc9/group__imageother.html" title="Misc images" alt="" coords="119,5,215,32"/>
+<area shape="rect" id="node2" href="$d0/dd8/group__imagegray.html" title="Gray images" alt="" coords="119,56,215,83"/>
+<area shape="rect" id="node3" href="$dc/d1e/group__imagebw.html" title="Bitonal images" alt="" coords="113,107,221,133"/>
+<area shape="rect" id="node4" href="$df/d78/group__diff.html" title="PDE" alt="" coords="141,157,192,184"/>
+<area shape="rect" id="node5" href="$d4/d0e/group__imagergb.html" title="RGB images" alt="" coords="118,208,215,235"/>
+<area shape="rect" id="node7" href="$db/dec/group__pixel.html" title="Pixel formats" alt="" coords="117,259,216,285"/>
+</map>

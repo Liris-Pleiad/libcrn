@@ -1,0 +1,16 @@
+<map id="crn::Exception" name="crn::Exception">
+<area shape="rect" id="node3" href="$d8/d7b/classcrn_1_1_charset_converter_1_1_exception.html" title="crn::CharsetConverter\l::Exception" alt="" coords="314,70,465,111"/>
+<area shape="rect" id="node6" href="$d6/d9d/classcrn_1_1_exception_logic.html" title="A generic logic error. " alt="" coords="321,212,458,239"/>
+<area shape="rect" id="node11" href="$dd/d51/classcrn_1_1_exception_runtime.html" title="A generic runtime error. " alt="" coords="312,389,467,416"/>
+<area shape="rect" id="node2" title="STL class. " alt="" coords="5,212,109,239"/>
+<area shape="rect" id="node4" href="$d1/d1f/classcrn_1_1_charset_converter_1_1_exception_incomplete_code.html" title="crn::CharsetConverter\l::ExceptionIncompleteCode" alt="" coords="523,5,706,46"/>
+<area shape="rect" id="node5" href="$de/d0b/classcrn_1_1_charset_converter_1_1_exception_invalid_character.html" title="crn::CharsetConverter\l::ExceptionInvalidCharacter" alt="" coords="523,70,706,111"/>
+<area shape="rect" id="node7" href="$d2/d3d/classcrn_1_1_exception_dimension.html" title="A dimension error. " alt="" coords="531,136,699,163"/>
+<area shape="rect" id="node8" href="$d1/db9/classcrn_1_1_exception_domain.html" title="A generic domain error. " alt="" coords="539,187,690,213"/>
+<area shape="rect" id="node9" href="$d7/d9a/classcrn_1_1_exception_invalid_argument.html" title="Invalid argument error (e.g.: nullptr pointer) " alt="" coords="515,237,715,264"/>
+<area shape="rect" id="node10" href="$db/d7b/classcrn_1_1_exception_not_found.html" title="An item was not found in a container. " alt="" coords="533,288,696,315"/>
+<area shape="rect" id="node12" href="$d9/d97/classcrn_1_1_exception_i_o.html" title="I/O error. " alt="" coords="555,339,675,365"/>
+<area shape="rect" id="node13" href="$d7/d1e/classcrn_1_1_exception_protocol.html" title="A protocol is not implemented. " alt="" coords="537,389,692,416"/>
+<area shape="rect" id="node14" href="$d4/dcf/classcrn_1_1_exception_t_o_d_o.html" title="Something to be done. " alt="" coords="543,440,687,467"/>
+<area shape="rect" id="node15" href="$dc/da6/classcrn_1_1_exception_uninitialized.html" title="Unintialized object error. " alt="" coords="526,491,703,517"/>
+</map>

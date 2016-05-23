@@ -1,0 +1,6 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node2" href="$d2/d4d/structcrn_1_1_is_clonable.html" title="crn::IsClonable\&lt; T \&gt;" alt="" coords="177,5,319,32"/>
+<area shape="rect" id="node3" href="$d2/df9/structcrn_1_1_is_savable.html" title="crn::IsSavable\&lt; T \&gt;" alt="" coords="179,56,317,83"/>
+<area shape="rect" id="node4" href="$d0/d3b/structcrn_1_1_is_serializable.html" title="crn::IsSerializable\&lt; T \&gt;" alt="" coords="169,107,327,133"/>
+<area shape="rect" id="node5" href="$de/db1/structcrn_1_1traits_1_1_is_dereferenceable.html" title="crn::traits::IsDereferenceable\&lt; T \&gt;" alt="" coords="137,157,359,184"/>
+</map>

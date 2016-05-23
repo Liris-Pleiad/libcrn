@@ -1,0 +1,12 @@
+<map id="crn::FileMessenger" name="crn::FileMessenger">
+<area shape="rect" id="node2" href="$de/dff/classcrn_1_1_messenger.html" title="Base class for an object that prints messages. " alt="" coords="5,403,116,429"/>
+<area shape="rect" id="node3" href="$d8/d56/classcrn_1_1_string.html" title="A UTF32 character string class. " alt="" coords="16,261,97,288"/>
+<area shape="rect" id="node4" href="$d8/d3e/classcrn_1_1_object.html" title="crn::Object" alt="" coords="73,168,159,195"/>
+<area shape="rect" id="node6" href="$dc/dc5/classcrn_1_1_string_u_t_f8.html" title="A character string class. " alt="" coords="123,261,237,288"/>
+<area shape="rect" id="node5" href="$de/d1c/classcrn_1_1_path.html" title="A convenience class for file paths. " alt="" coords="143,403,216,429"/>
+<area shape="rect" id="node7" title="STL class. " alt="" coords="251,403,349,429"/>
+<area shape="rect" id="node8" title="STL class. " alt="" coords="262,254,399,295"/>
+<area shape="rect" id="node9" title="STL class. " alt="" coords="264,161,397,202"/>
+<area shape="rect" id="node10" title="STL class. " alt="" coords="253,83,407,109"/>
+<area shape="rect" id="node11" title="STL class. " alt="" coords="281,5,380,32"/>
+</map>

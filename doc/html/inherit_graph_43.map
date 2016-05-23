@@ -1,0 +1,5 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" href="$de/dff/classcrn_1_1_messenger.html" title="Base class for an object that prints messages. " alt="" coords="5,31,117,57"/>
+<area shape="rect" id="node2" href="$d6/d0e/classcrn_1_1_console_messenger.html" title="Class to print messages to the console. " alt="" coords="165,5,325,32"/>
+<area shape="rect" id="node3" href="$d9/d71/classcrn_1_1_file_messenger.html" title="Class to print messages to a file. " alt="" coords="179,56,312,83"/>
+</map>
