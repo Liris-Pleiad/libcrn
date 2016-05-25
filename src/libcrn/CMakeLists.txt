@@ -97,6 +97,9 @@ endif()
 # zip
 if(CRN_USING_LIBZIP)
 	include_directories(${ZIP_INCLUDE_DIR})
+	if (APPLE) # VERY BAD !!!
+		include_directories(${ZIP_INCLUDE_DIR}/../lib/libzip/include)
+	endif (APPLE)
 	target_link_libraries(crn	${ZIP_LIBRARIES})
 	set(FINDLIBCRN_DEPS "${FINDLIBCRN_DEPS}\nset(FINDLIBCRN_ZIP on)")
 endif(CRN_USING_LIBZIP)
