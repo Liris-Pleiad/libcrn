@@ -176,7 +176,8 @@ if(MSVC)
 else(MSVC)
 	option(CRN_DEPENDENCY_GTKMM3 "Use Gtkmm 3 to build GUIs." off)
 endif(MSVC)
-
+option(CRN_DEPENDENCY_QT4 "Use Qt 4 to build GUIs (in development)." off)
+option(CRN_DEPENDENCY_QT5 "Use Qt 5 to build GUIs (in development)." off)
 
 # Find Iconv
 find_package(Iconv)
@@ -260,6 +261,68 @@ if(CRN_DEPENDENCY_GTKMM3)
 	endif(CRN_DEPENDENCY_GDKPIXBUF)
 endif(CRN_DEPENDENCY_GTKMM3)
 
+if(CRN_DEPENDENCY_QT4)
+	# Find Qt4
+	#set(QT4_DEBUG on)
+	if (QTDIR)
+		set( ENV{QTDIR} ${QTDIR} )
+	endif()
+	set(QT_USE_QTMAIN TRUE)
+	set(QT_USE_QTXML  TRUE)
+	find_package(Qt4)
+	if(NOT QT4_FOUND)
+		message(FATAL_ERROR "Cannot find Qt 4.")
+	endif()
+
+	message("Using Qt4")
+	set(CRN_USING_QT on)
+
+	include(${QT_USE_FILE}) # used ?
+
+	set(CNR_QTGUI_INC ${CNR_QTGUI_INC} ${QT_INCLUDE_DIR})
+	set(CNR_QTGUI_LIB ${CNR_QTGUI_LIB} ${QT_LIBRARIES})
+endif(CRN_DEPENDENCY_QT4)
+
+if(CRN_DEPENDENCY_QT5)
+	# Find Qt5
+	#set(QT5_DEBUG on)
+	set(CMAKE_PREFIX_PATH ${CMAKE_PREFIX_PATH} ${QT5_DIR})
+
+	# Instruct CMake to NOT run moc automatically when needed / IMPORTANT : automoc is off for qt5 because we wan't same behavior with qt4 and/or qt5...
+	set(CMAKE_AUTOMOC OFF)
+
+	find_package(Qt5Core)
+	if(${Qt5Core_FOUND})
+		#message(STATUS "--> Qt5Core found.")
+		find_package(Qt5Widgets)
+		if(${Qt5Widgets_FOUND})
+	  		#message(STATUS "--> Qt5Widgets found.")
+	  		find_package(Qt5Xml)
+	  		if(${Qt5Xml_FOUND})
+				#message(STATUS "--> Qt5Xml found.")
+				set(QT5_FOUND TRUE)
+	  		else(${Qt5Xml_FOUND})
+				message(FATAL_ERROR "Qt5Xml not found.")
+	  		endif(${Qt5Xml_FOUND})
+		else(${Qt5Widgets_FOUND})
+	  		message(FATAL_ERROR "Qt5Widgets not found.")
+		endif(${Qt5Widgets_FOUND})
+	endif(${Qt5Core_FOUND})
+	if(NOT QT5_FOUND)
+		message(FATAL_ERROR "Cannot find Qt 5.")
+	endif()
+
+	message("Using Qt5")
+	set(CRN_USING_QT on)
+
+	set(CNR_QTGUI_INC	${CNR_QTGUI_INC}
+	               		${Qt5Widgets_INCLUDES_DIRS}
+	               		${Qt5Xml_INCLUDES_DIR})
+	set(CNR_QTGUI_LIB	${CNR_QTGUI_LIB}
+	               		${Qt5Widgets_LIBRARIES}
+	               		${Qt5Xml_LIBRARIES})
+endif(CRN_DEPENDENCY_QT5)
+
 if(CRN_DEPENDENCY_PNG)
 	# libpng
 	find_package(PNG)
@@ -286,6 +349,7 @@ if(CRN_DEPENDENCY_ZIP)
 		message(FATAL_ERROR "Cannot find libzip.")
 	endif()
 	set(CRN_USING_LIBZIP on)
+	message("Using libzip")
 endif(CRN_DEPENDENCY_ZIP)
 
 if(CRN_DEPENDENCY_HARUPDF)
@@ -294,6 +358,7 @@ if(CRN_DEPENDENCY_HARUPDF)
 		message(FATAL_ERROR "Cannot find haru.")
 	endif()
 	set(CRN_USING_HARU on)
+	message("Using haru")
 endif(CRN_DEPENDENCY_HARUPDF)
 
 ###############################################################################
@@ -307,6 +372,10 @@ add_subdirectory(src/demos)
 if(GTK2_FOUND OR GTK3_FOUND)
 	add_subdirectory(src/libgtkcrnmm)
 	add_subdirectory(src/titus)
+endif()
+if(QT4_FOUND OR QT5_FOUND)
+	add_subdirectory(src/Qt/libQtcrn)
+	add_subdirectory(src/Qt/titus)
 endif()
 
 # Tests
@@ -365,4 +434,3 @@ endif(DOXYGEN_FOUND)
 #set(CPACK_COMPONENT_APP_DESCRIPTION "Demonstration applications")
 #set(CPACK_COMPONENT_APP_DEPENDS bin)
 #include(CPack)
-
