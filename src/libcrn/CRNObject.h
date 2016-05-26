@@ -41,6 +41,8 @@ namespace crn
 
 	/*! \brief Clones an object if possible */
 	UObject Clone(const Object &obj);
+	UObject Clone(const UCObject &obj);
+	UObject Clone(const SCObject &obj);
 	class Int;
 	std::unique_ptr<Int> Clone(int i);
 	class Real;
@@ -56,11 +58,19 @@ namespace crn
 	}
 	/*! \brief Reads an object from XML if possible */
 	void Deserialize(Object &obj, xml::Element &el);
+	void Deserialize(const UObject &obj, xml::Element &el);
+	void Deserialize(const SObject &obj, xml::Element &el);
 	/*! \brief Writes an object to XML if possible */
 	xml::Element Serialize(const Object &obj, xml::Element &parent);
+	xml::Element Serialize(const UCObject &obj, xml::Element &parent);
+	xml::Element Serialize(const SCObject &obj, xml::Element &parent);
 
 	/*! \brief Distance between two objects */
 	double Distance(const Object &o1, const Object &o2);
+	/*! \brief Distance between two objects */
+	double Distance(const UCObject &o1, const UCObject &o2);
+	/*! \brief Distance between two objects */
+	double Distance(const SCObject &o1, const SCObject &o2);
 	// see CRNMath.h for Distance between numbers
 
 	/*! Has:
@@ -75,7 +85,10 @@ namespace crn
 	/*! Has:
 	 * - Distance(T, T)
 	 */
-	template<typename T> struct IsMetric: public std::integral_constant<bool, std::is_arithmetic<T>::value>{};
+	template<typename T> struct IsMetric: public std::integral_constant<bool, std::is_arithmetic<T>::value> {};
+	template<> struct IsMetric<Object>: public std::true_type {};
+	template<> struct IsMetric<UObject>: public std::true_type {};
+	template<> struct IsMetric<SObject>: public std::true_type {};
 
 	/*! Has:
 	 * - operator+(T, T)
@@ -129,11 +142,13 @@ namespace crn
 	 * - Deserialize(T &, xml::Element &)
 	 */
 	template<typename T> struct IsSerializable: public std::false_type {};
+	template<> struct IsSerializable<Object>: public std::true_type {};
 
 	/*! Has:
 	 * - T::Clone()
 	 */
 	template<typename T> struct IsClonable: public std::false_type {};
+	template<> struct IsClonable<Object>: public std::true_type {};
 
 	/*! Has:
 	 * - T::T(const Path &)

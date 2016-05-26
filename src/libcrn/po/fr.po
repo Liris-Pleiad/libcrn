@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libcrn 3.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-05-19 15:07+0200\n"
+"POT-Creation-Date: 2016-05-23 16:32+0200\n"
 "PO-Revision-Date: 2015-11-24 13:57+0100\n"
 "Last-Translator: Yann LEYDIER <yann@leydier.info>\n"
 "Language-Team: French <>\n"
@@ -249,6 +249,18 @@ msgstr "Index hors limites."
 #: /home/yleydier/prg/libcrn/src/libcrn/CRNString.cpp:309
 msgid "Null suffix to search."
 msgstr "Le suffixe à rechercher est nul."
+
+#: /home/yleydier/prg/libcrn/src/libcrn/CRNObject.cpp:47
+#: /home/yleydier/prg/libcrn/src/libcrn/CRNObject.cpp:58
+#: /home/yleydier/prg/libcrn/src/libcrn/CRNObject.cpp:92
+#: /home/yleydier/prg/libcrn/src/libcrn/CRNObject.cpp:103
+#: /home/yleydier/prg/libcrn/src/libcrn/CRNObject.cpp:121
+#: /home/yleydier/prg/libcrn/src/libcrn/CRNObject.cpp:131
+#: /home/yleydier/prg/libcrn/src/libcrn/CRNObject.cpp:150
+#: /home/yleydier/prg/libcrn/src/libcrn/CRNObject.cpp:161
+#, fuzzy
+msgid "null pointer."
+msgstr "Pointeur nul."
 
 #: /home/yleydier/prg/libcrn/src/libcrn/CRNString.cpp:359
 msgid "Null suffix to delete."
@@ -3151,9 +3163,6 @@ msgstr "Langue française sélectionnée."
 
 #~ msgid "The argument is not a square matrix."
 #~ msgstr "Le paramètre n'est pas une matrice carrée."
-
-#~ msgid "nullptr pointer."
-#~ msgstr "Pointeur nul."
 
 #~ msgid "Cannot copy file. Error "
 #~ msgstr "Impossible de copier le fichier. Erreur "
