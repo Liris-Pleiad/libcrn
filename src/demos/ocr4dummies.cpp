@@ -38,40 +38,6 @@ g++ `pkg-config --cflags --libs libcrn` ocr4dummies.cpp -o ocr4dummies
 
 using namespace crn::literals;
 
-void minimal(const crn::Path &imageFileName)
-{
-	auto featureExtractor = crn::FeatureSet{};
-	featureExtractor.PushBack(std::make_shared<crn::FeatureExtractorProfile>(crn::Direction::LEFT | crn::Direction::RIGHT | crn::Direction::TOP | crn::Direction::BOTTOM, 10, 100));
-	featureExtractor.PushBack(std::make_shared<crn::FeatureExtractorProjection>(crn::Orientation::HORIZONTAL | crn::Orientation::VERTICAL, 10, 100));
-	auto database = std::vector<crn::SObject>();
-	for (auto c = 'A'; c <= 'Z'; ++c)
-	{
-		const auto charFileName = "data"_p / c + ".png"_p;
-		auto charblock = crn::Block::New(crn::NewImageFromFile(charFileName));
-		database.push_back(featureExtractor.Extract(*charblock));
-	}
-	auto pageblock = crn::Block::New(crn::NewImageFromFile(imageFileName));
-	crn::BlockTreeExtractorTextLinesFromProjection{U"Lines"}.Extract(*pageblock);
-	const auto sw = StrokesWidth(*pageblock->GetGray());
-	auto s = crn::String{};
-	for (auto nline = size_t{0}; nline < pageblock->GetNbChildren(U"Lines"); ++nline)
-	{
-		auto line = pageblock->GetChild(U"Lines", nline);
-		line->ExtractCC(U"Characters");
-		line->FilterMinOr(U"Characters", sw, sw);
-		line->SortTree(U"Characters", crn::Direction::LEFT);
-		for (auto nchar = size_t{0}; nchar < line->GetNbChildren(U"Characters"); ++nchar)
-		{
-			auto character = line->GetChild(U"Characters", nchar);
-			auto features = featureExtractor.Extract(*character);
-			auto res = crn::BasicClassify::NearestNeighbor(features, database.begin(), database.end());
-			s += char32_t(U'A' + res.class_id);
-		}
-		s += U'\n';
-	}
-	CRNVerbose(s);
-}
-
 int main(int argc, char *argv[])
 {
 	// Check argument.
@@ -84,8 +50,6 @@ int main(int argc, char *argv[])
 	crn::IO::IsQuiet() = false;
 
 	crn::Timer::Start(U"OCR4dummies");
-
-	minimal(argv[1]);
 
 	/**************************************************************************/
 	/* 1. Database                                                            */
