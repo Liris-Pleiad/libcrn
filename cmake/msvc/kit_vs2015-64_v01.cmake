@@ -42,8 +42,11 @@ endif(CRN_DEPENDENCY_GETTEXT_INTL)
 ### optional 2 : zip, haru(pdf)
 
 if(CRN_DEPENDENCY_ZIP)
-	set(ZIP_INCLUDE_DIR								${MSVC_KIT_ROOT}/libzip-1.1.2/include)
-	set(ZIP_LIBRARY									${MSVC_KIT_ROOT}/libzip-1.1.2/lib/Release/zip.lib)
+	set(ZLIB_INCLUDE_DIR								${MSVC_KIT_ROOT}/3rdparty/zlib)
+	set(ZLIB_LIBRARY									${MSVC_KIT_ROOT}/3rdparty/zlib/lib/Release/zlib.lib)
+
+	set(ZIP_INCLUDE_DIR									${MSVC_KIT_ROOT}/libzip-1.1.2/include)
+	set(ZIP_LIBRARY										${MSVC_KIT_ROOT}/libzip-1.1.2/lib/Release/zip.lib)
 endif(CRN_DEPENDENCY_ZIP)
 
 if(CRN_DEPENDENCY_HARUPDF)

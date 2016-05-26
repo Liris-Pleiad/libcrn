@@ -277,7 +277,7 @@ if(CRN_DEPENDENCY_QT4)
 	message("Using Qt4")
 	set(CRN_USING_QT on)
 
-	include(${QT_USE_FILE}) # used ?
+	include(${QT_USE_FILE})
 
 	set(CNR_QTGUI_INC ${CNR_QTGUI_INC} ${QT_INCLUDE_DIR})
 	set(CNR_QTGUI_LIB ${CNR_QTGUI_LIB} ${QT_LIBRARIES})
@@ -286,6 +286,9 @@ endif(CRN_DEPENDENCY_QT4)
 if(CRN_DEPENDENCY_QT5)
 	# Find Qt5
 	#set(QT5_DEBUG on)
+	if(DEFINED ENV{QT5_DIR})
+		set(QT5_DIR $ENV{QT5_DIR})
+	endif()
 	set(CMAKE_PREFIX_PATH ${CMAKE_PREFIX_PATH} ${QT5_DIR})
 
 	# Instruct CMake to NOT run moc automatically when needed / IMPORTANT : automoc is off for qt5 because we wan't same behavior with qt4 and/or qt5...
