@@ -36,9 +36,9 @@ addons:
     packages:
       - libgtkmm-2.4-dev
       - libgtkmm-3.0-dev
+      - gettext
       - libzip-dev
       - libhpdf-dev
-      - gettext
       - doxygen
       - graphviz
 
@@ -52,10 +52,12 @@ install:
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install libzip libharu; fi
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install doxygen graphviz; fi
 
-# No HPDF on travis
-# Missing file in homebrew's libzip
-# Missing file in homebrew's gettext
 script:
-  - mkdir build && cd build && cmake .. $BTYPE -DCRN_DEPENDENCY_GTKMM2=ON -DCRN_DEPENDENCY_GTKMM3=ON -DCRN_DEPENDENCY_PNG=ON -DCRN_DEPENDENCY_JPEG=ON -DCRN_DEPENDENCY_GDKPIXBUF=ON -DCRN_DEPENDENCY_GETTEXT_INTL=OFF -DCRN_DEPENDENCY_ZIP=OFF -DCRN_DEPENDENCY_HARUPDF=OFF
+# linux :
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]];  then mkdir build && cd build && cmake .. $BTYPE -DCRN_DEPENDENCY_GTKMM2=ON -DCRN_DEPENDENCY_GTKMM3=ON -DCRN_DEPENDENCY_PNG=ON -DCRN_DEPENDENCY_JPEG=ON -DCRN_DEPENDENCY_GDKPIXBUF=ON -DCRN_DEPENDENCY_GETTEXT_INTL=ON  -DCRN_DEPENDENCY_ZIP=ON -DCRN_DEPENDENCY_HARUPDF=ON; fi
+# osx :
+#   -> missing file in homebrew's gettext
+#   -> missing file in homebrew's libzip
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]];    then mkdir build && cd build && cmake .. $BTYPE -DCRN_DEPENDENCY_GTKMM2=ON -DCRN_DEPENDENCY_GTKMM3=ON -DCRN_DEPENDENCY_PNG=ON -DCRN_DEPENDENCY_JPEG=ON -DCRN_DEPENDENCY_GDKPIXBUF=ON -DCRN_DEPENDENCY_GETTEXT_INTL=OFF -DCRN_DEPENDENCY_ZIP=ON -DCRN_DEPENDENCY_HARUPDF=ON; fi
   - make
   - make test

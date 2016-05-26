@@ -1,5 +1,4 @@
 # This is the CMake script for compiling libcrn
-# Martial TOLA - March 2016
 
 ###############################################################################
 # Config
