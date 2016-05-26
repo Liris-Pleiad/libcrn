@@ -39,6 +39,7 @@ addons:
       - gettext
       - libzip-dev
       - libhpdf-dev
+      - libqt4-dev
       - doxygen
       - graphviz
 
@@ -50,14 +51,22 @@ install:
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install gtkmm gtkmm3; fi
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install gettext intltool; fi
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install libzip libharu; fi
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install qt; fi
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install doxygen graphviz; fi
 
 script:
 # linux :
-  - if [[ "$TRAVIS_OS_NAME" == "linux" ]];  then mkdir build && cd build && cmake .. $BTYPE -DCRN_DEPENDENCY_GTKMM2=ON -DCRN_DEPENDENCY_GTKMM3=ON -DCRN_DEPENDENCY_PNG=ON -DCRN_DEPENDENCY_JPEG=ON -DCRN_DEPENDENCY_GDKPIXBUF=ON -DCRN_DEPENDENCY_GETTEXT_INTL=ON  -DCRN_DEPENDENCY_ZIP=ON -DCRN_DEPENDENCY_HARUPDF=ON; fi
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]];  then mkdir build && cd build && cmake .. $BTYPE -DCRN_DEPENDENCY_GTKMM2=ON -DCRN_DEPENDENCY_GTKMM3=ON -DCRN_DEPENDENCY_PNG=ON -DCRN_DEPENDENCY_JPEG=ON -DCRN_DEPENDENCY_GDKPIXBUF=ON -DCRN_DEPENDENCY_GETTEXT_INTL=ON  -DCRN_DEPENDENCY_ZIP=ON -DCRN_DEPENDENCY_HARUPDF=ON -DCRN_DEPENDENCY_QT4=ON -DCRN_DEPENDENCY_QT5=OFF; fi
 # osx :
 #   -> missing file in homebrew's gettext
-#   -> missing file in homebrew's libzip
-  - if [[ "$TRAVIS_OS_NAME" == "osx" ]];    then mkdir build && cd build && cmake .. $BTYPE -DCRN_DEPENDENCY_GTKMM2=ON -DCRN_DEPENDENCY_GTKMM3=ON -DCRN_DEPENDENCY_PNG=ON -DCRN_DEPENDENCY_JPEG=ON -DCRN_DEPENDENCY_GDKPIXBUF=ON -DCRN_DEPENDENCY_GETTEXT_INTL=OFF -DCRN_DEPENDENCY_ZIP=ON -DCRN_DEPENDENCY_HARUPDF=ON; fi
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]];    then mkdir build && cd build && cmake .. $BTYPE -DCRN_DEPENDENCY_GTKMM2=ON -DCRN_DEPENDENCY_GTKMM3=ON -DCRN_DEPENDENCY_PNG=ON -DCRN_DEPENDENCY_JPEG=ON -DCRN_DEPENDENCY_GDKPIXBUF=ON -DCRN_DEPENDENCY_GETTEXT_INTL=OFF -DCRN_DEPENDENCY_ZIP=ON -DCRN_DEPENDENCY_HARUPDF=ON -DCRN_DEPENDENCY_QT4=ON -DCRN_DEPENDENCY_QT5=OFF; fi
   - make
   - make test
+#
+# osx only (add qt5 after qt4 in the same job) :
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew unlink qt; fi # ---> now unlink qt4
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install qt5; fi
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then cd ..; fi
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then mkdir build_osx_qt5 && cd build_osx_qt5 && cmake .. $BTYPE -DCRN_DEPENDENCY_GTKMM2=ON -DCRN_DEPENDENCY_GTKMM3=ON -DCRN_DEPENDENCY_PNG=ON -DCRN_DEPENDENCY_JPEG=ON -DCRN_DEPENDENCY_GDKPIXBUF=ON -DCRN_DEPENDENCY_GETTEXT_INTL=OFF -DCRN_DEPENDENCY_ZIP=ON -DCRN_DEPENDENCY_HARUPDF=ON -DCRN_DEPENDENCY_QT4=OFF -DCRN_DEPENDENCY_QT5=ON -DQT5_DIR=/usr/local/opt/qt5; fi
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then make; fi
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then make test; fi

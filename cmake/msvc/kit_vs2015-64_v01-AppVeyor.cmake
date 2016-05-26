@@ -1,4 +1,4 @@
-# MSVC - KIT VS 2015 x64 - V01
+# MSVC - KIT VS 2015 x64 - V03
 
 if( DEFINED ENV{MSVC_KIT_ROOT} )
 	set( MSVC_KIT_ROOT $ENV{MSVC_KIT_ROOT} )
@@ -42,8 +42,8 @@ endif(CRN_DEPENDENCY_GETTEXT_INTL)
 ### optional 2 : zip, haru(pdf)
 
 if(CRN_DEPENDENCY_ZIP)
-	set(ZIP_INCLUDE_DIR								${MSVC_KIT_ROOT}/libzip-1.1.2/include)
-	set(ZIP_LIBRARY									${MSVC_KIT_ROOT}/libzip-1.1.2/lib/Release/zip.lib)
+	set(ZIP_INCLUDE_DIR									${MSVC_KIT_ROOT}/libzip-1.1.2/include)
+	set(ZIP_LIBRARY										${MSVC_KIT_ROOT}/libzip-1.1.2/lib/Release/zip.lib)
 endif(CRN_DEPENDENCY_ZIP)
 
 if(CRN_DEPENDENCY_HARUPDF)
@@ -62,7 +62,7 @@ if(CRN_DEPENDENCY_GTKMM2)
 else()
 	if(CRN_DEPENDENCY_GTKMM3_DEBUG)
 		set(GTK3_HINTS								${MSVC_KIT_ROOT}/gtkmm3_debug)
-		set(CMAKE_BUILD_TYPE Debug CACHE STRING "Foreced by debug version of Gtkmm3." FORCE)
+		set(CMAKE_BUILD_TYPE Debug CACHE STRING "Forced by debug version of Gtkmm3." FORCE)
 	elseif(CRN_DEPENDENCY_GTKMM3_RELEASE)
 		set(GTK3_HINTS								${MSVC_KIT_ROOT}/gtkmm3_release)
 		set(CMAKE_BUILD_TYPE Release CACHE STRING "Forced by release version of Gtkmm3." FORCE)
@@ -76,5 +76,8 @@ endif()
 
 ### optional 4 : qt4, qt5
 
-###
+set(QTDIR ${MSVC_KIT_ROOT}/Qt/qt-4.8.7-x64-msvc2015)
 
+#QT5_DIR -> see appveyor
+
+###

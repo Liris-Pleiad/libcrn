@@ -21,12 +21,18 @@ environment:
   - B_USE_GTKMM2:   ON
     B_USE_GTKMM3D:  OFF
     B_USE_GTKMM3R:  OFF
-  - B_USE_GTKMM2:   OFF
-    B_USE_GTKMM3D:  ON
-    B_USE_GTKMM3R:  OFF
+    B_USE_QT4:      ON
+    B_USE_QT5:      OFF
   - B_USE_GTKMM2:   OFF
     B_USE_GTKMM3D:  OFF
     B_USE_GTKMM3R:  ON
+    B_USE_QT4:      OFF
+    B_USE_QT5:      ON
+  - B_USE_GTKMM2:   OFF
+    B_USE_GTKMM3D:  ON
+    B_USE_GTKMM3R:  OFF
+    B_USE_QT4:      OFF
+    B_USE_QT5:      OFF
 
 # this is how to allow failing jobs in the matrix
 matrix:
@@ -97,9 +103,12 @@ before_build:
 # gtkmm3_release
   - IF %CACHE%==FALSE curl -s -O https://download.gforge.liris.cnrs.fr/meppbin/windows/vs2015/PLEIAD/packages/clean/gtkmm3_release.7z
   - IF %CACHE%==FALSE 7z x gtkmm3_release.7z > nul
+# Qt4
+  - IF %CACHE%==FALSE curl -s -O https://download.gforge.liris.cnrs.fr/meppbin/windows/vs2015/MEPP/packages/clean/qt-4.8.7-x64-msvc2015.7z
+  - IF %CACHE%==FALSE 7z x qt-4.8.7-x64-msvc2015.7z > nul
 #
   - cd %APPVEYOR_BUILD_FOLDER%
-  - cmake . -G"Visual Studio 14 2015 Win64" -DMSVC_KIT_ROOT=%KIT_ROOT% -DCRN_DEPENDENCY_PNG=OFF -DCRN_DEPENDENCY_GTKMM2=%B_USE_GTKMM2% -DCRN_DEPENDENCY_GTKMM3_DEBUG=%B_USE_GTKMM3D% -DCRN_DEPENDENCY_GTKMM3_RELEASE=%B_USE_GTKMM3R% -DCRN_DEPENDENCY_ZIP=ON -DCRN_DEPENDENCY_HARUPDF=ON
+  - cmake . -G"Visual Studio 14 2015 Win64" -DMSVC_KIT_ROOT=%KIT_ROOT% -DCRN_DEPENDENCY_PNG=OFF -DCRN_DEPENDENCY_GTKMM2=%B_USE_GTKMM2% -DCRN_DEPENDENCY_GTKMM3_DEBUG=%B_USE_GTKMM3D% -DCRN_DEPENDENCY_GTKMM3_RELEASE=%B_USE_GTKMM3R% -DCRN_DEPENDENCY_ZIP=ON -DCRN_DEPENDENCY_HARUPDF=ON -DCRN_DEPENDENCY_QT4=%B_USE_QT4% -DCRN_DEPENDENCY_QT5=%B_USE_QT5%
 
 # to run your custom scripts instead of automatic MSBuild
 build_script:
