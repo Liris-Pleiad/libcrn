@@ -362,7 +362,7 @@ namespace crn
 					if (td < d)
 					{
 						d = td;
-						c = tmpc;
+						c = int(tmpc);
 					}
 				}
 				cumul[c] += int(tmp);
