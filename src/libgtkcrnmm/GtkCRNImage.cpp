@@ -1511,10 +1511,8 @@ bool Image::button_clicked(GdkEventButton *ev)
 									}
 
 									Polygon* poly = dynamic_cast<Polygon*>(item.get());
-									if(poly != nullptr)
+									if ((poly != nullptr) && !poly->points.empty())
 									{
-										// if (poly->contains(crn::Point2DInt(realx, realy),zoom))
-										//  res.push_back(std::make_pair(lit->first, overlay.first));
 										int max_x = poly->points[0].X;
 										int min_x = poly->points[0].X;
 										int max_y = poly->points[0].Y;
@@ -1531,9 +1529,6 @@ bool Image::button_clicked(GdkEventButton *ev)
 												min_y = y1;
 											if(max_y < y1)
 												max_y = y1;
-											crn::Rect rec(min_x - selection_margin, min_y - selection_margin, max_x + selection_margin, max_y + selection_margin);
-											if(rec.Contains(realx,realy))
-												res.push_back(std::make_pair(lit->first, overlay.first));
 										}
 										crn::Rect rec(min_x - selection_margin, min_y - selection_margin, max_x + selection_margin ,max_y + selection_margin);
 										if(rec.Contains(realx,realy))

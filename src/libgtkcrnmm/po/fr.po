@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libcrn 3.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-05-19 15:07+0200\n"
+"POT-Creation-Date: 2016-06-01 09:39+0200\n"
 "PO-Revision-Date: 2015-11-24 13:57+0100\n"
 "Last-Translator: Yann LEYDIER <yann@leydier.info>\n"
 "Language-Team: French <>\n"
@@ -435,52 +435,52 @@ msgstr "_Effacer la Sélection Utilisateur"
 msgid "Clear User Selection"
 msgstr "Effacer la Sélection Utilisateur"
 
-#: /home/yleydier/prg/libcrn/src/libgtkcrnmm/GtkCRNImage.cpp:1992
+#: /home/yleydier/prg/libcrn/src/libgtkcrnmm/GtkCRNImage.cpp:1987
 msgid "Cannot set selection type to Text."
 msgstr "Le type de sélection ne peut pas être Text."
 
-#: /home/yleydier/prg/libcrn/src/libgtkcrnmm/GtkCRNImage.cpp:1994
+#: /home/yleydier/prg/libcrn/src/libgtkcrnmm/GtkCRNImage.cpp:1989
 msgid "Cannot set selection type to Polygon."
 msgstr "Le type de sélection ne peut pas être Polygone."
 
-#: /home/yleydier/prg/libcrn/src/libgtkcrnmm/GtkCRNImage.cpp:2081
-#: /home/yleydier/prg/libcrn/src/libgtkcrnmm/GtkCRNImage.cpp:2099
+#: /home/yleydier/prg/libcrn/src/libgtkcrnmm/GtkCRNImage.cpp:2076
+#: /home/yleydier/prg/libcrn/src/libgtkcrnmm/GtkCRNImage.cpp:2094
 msgid "The polygon must have more than two points."
 msgstr "Le polygone doit avoir plus de deux points."
 
-#: /home/yleydier/prg/libcrn/src/libgtkcrnmm/GtkCRNImage.cpp:2117
-#: /home/yleydier/prg/libcrn/src/libgtkcrnmm/GtkCRNImage.cpp:2135
-#: /home/yleydier/prg/libcrn/src/libgtkcrnmm/GtkCRNImage.cpp:2152
+#: /home/yleydier/prg/libcrn/src/libgtkcrnmm/GtkCRNImage.cpp:2112
+#: /home/yleydier/prg/libcrn/src/libgtkcrnmm/GtkCRNImage.cpp:2130
+#: /home/yleydier/prg/libcrn/src/libgtkcrnmm/GtkCRNImage.cpp:2147
 msgid "Overlay not found."
 msgstr "Surouche introuvable."
 
-#: /home/yleydier/prg/libcrn/src/libgtkcrnmm/GtkCRNImage.cpp:2120
-#: /home/yleydier/prg/libcrn/src/libgtkcrnmm/GtkCRNImage.cpp:2138
-#: /home/yleydier/prg/libcrn/src/libgtkcrnmm/GtkCRNImage.cpp:2155
+#: /home/yleydier/prg/libcrn/src/libgtkcrnmm/GtkCRNImage.cpp:2115
+#: /home/yleydier/prg/libcrn/src/libgtkcrnmm/GtkCRNImage.cpp:2133
+#: /home/yleydier/prg/libcrn/src/libgtkcrnmm/GtkCRNImage.cpp:2150
 msgid "Overlay item not found."
 msgstr "Objet de surcouche introuvable."
 
-#: /home/yleydier/prg/libcrn/src/libgtkcrnmm/GtkCRNImage.cpp:2223
-#: /home/yleydier/prg/libcrn/src/libgtkcrnmm/GtkCRNImage.cpp:2226
-#: /home/yleydier/prg/libcrn/src/libgtkcrnmm/GtkCRNImage.cpp:2245
-#: /home/yleydier/prg/libcrn/src/libgtkcrnmm/GtkCRNImage.cpp:2248
-#: /home/yleydier/prg/libcrn/src/libgtkcrnmm/GtkCRNImage.cpp:2267
-#: /home/yleydier/prg/libcrn/src/libgtkcrnmm/GtkCRNImage.cpp:2270
+#: /home/yleydier/prg/libcrn/src/libgtkcrnmm/GtkCRNImage.cpp:2218
+#: /home/yleydier/prg/libcrn/src/libgtkcrnmm/GtkCRNImage.cpp:2221
+#: /home/yleydier/prg/libcrn/src/libgtkcrnmm/GtkCRNImage.cpp:2240
+#: /home/yleydier/prg/libcrn/src/libgtkcrnmm/GtkCRNImage.cpp:2243
+#: /home/yleydier/prg/libcrn/src/libgtkcrnmm/GtkCRNImage.cpp:2262
+#: /home/yleydier/prg/libcrn/src/libgtkcrnmm/GtkCRNImage.cpp:2265
 msgid "No selection found."
 msgstr "Pas de sélection."
 
-#: /home/yleydier/prg/libcrn/src/libgtkcrnmm/GtkCRNImage.cpp:2233
-#: /home/yleydier/prg/libcrn/src/libgtkcrnmm/GtkCRNImage.cpp:2292
+#: /home/yleydier/prg/libcrn/src/libgtkcrnmm/GtkCRNImage.cpp:2228
+#: /home/yleydier/prg/libcrn/src/libgtkcrnmm/GtkCRNImage.cpp:2287
 msgid "The selection is not a rectangle."
 msgstr "La sélection n'est pas un rectangle."
 
-#: /home/yleydier/prg/libcrn/src/libgtkcrnmm/GtkCRNImage.cpp:2255
-#: /home/yleydier/prg/libcrn/src/libgtkcrnmm/GtkCRNImage.cpp:2309
+#: /home/yleydier/prg/libcrn/src/libgtkcrnmm/GtkCRNImage.cpp:2250
+#: /home/yleydier/prg/libcrn/src/libgtkcrnmm/GtkCRNImage.cpp:2304
 msgid "The selection is not a point."
 msgstr "La sélection n'est pas un point."
 
-#: /home/yleydier/prg/libcrn/src/libgtkcrnmm/GtkCRNImage.cpp:2277
-#: /home/yleydier/prg/libcrn/src/libgtkcrnmm/GtkCRNImage.cpp:2330
+#: /home/yleydier/prg/libcrn/src/libgtkcrnmm/GtkCRNImage.cpp:2272
+#: /home/yleydier/prg/libcrn/src/libgtkcrnmm/GtkCRNImage.cpp:2325
 msgid "The selection is not a line."
 msgstr "La sélection n'est pas une ligne."
 
