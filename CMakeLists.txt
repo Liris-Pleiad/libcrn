@@ -448,6 +448,29 @@ if(UNIX)
 	option(CPACK_BINARY_TBZ2 OFF)
 	option(CPACK_BINARY_ZIP OFF)
 endif(UNIX)
+if(APPLE)
+	option(CPACK_BINARY_DEB OFF)
+	option(CPACK_BINARY_NSIS OFF)
+	option(CPACK_BINARY_RPM OFF)
+	option(CPACK_BINARY_STGZ OFF)
+	option(CPACK_BINARY_TBZ2 ON)
+	option(CPACK_BINARY_TGZ OFF)
+	option(CPACK_BINARY_TZ OFF)
+	option(CPACK_BINARY_ZIP OFF)
+	option(CPACK_SOURCE_TBZ2 ON)
+	option(CPACK_SOURCE_TGZ OFF)
+	option(CPACK_SOURCE_TXZ OFF)
+	option(CPACK_SOURCE_TZ OFF)
+	option(CPACK_SOURCE_ZIP OFF)
+	option(CPACK_BINARY_TBZ2 OFF)
+	option(CPACK_BINARY_ZIP OFF)
+	#CPACK_PACKAGE_FILE_NAME - provides the name of the final compressed disk image (the name of the file that is distributed).
+	#CPACK_PACKAGE_ICON - provides the icon for the mounted disk image (appears after the user mounts the disk image).
+	#CPACK_BUNDLE_NAME - provides the bundle name (displayed in the finder underneath the bundle icon).
+	#CPACK_BUNDLE_ICON - provides the bundle icon (displayed in the /Applications folder, on the dock, etc).
+	#CPACK_BUNDLE_PLIST - path to a file that will become the bundle plist.
+	#CPACK_BUNDLE_STARTUP_COMMAND - path to a file that will be executed when the user opens the bundle. Could be a shell-script or a binary.
+endif(APPLE)
 include(CPack)
 cpack_add_component(bin
                     DISPLAY_NAME "Runtime files"
