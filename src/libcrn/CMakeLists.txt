@@ -123,7 +123,7 @@ endif()
 
 # Install
 # - binaries
-install(TARGETS crn RUNTIME DESTINATION "${RUNTIME_INSTALL_PATH}" COMPONENT bin  LIBRARY DESTINATION "${LIBRARY_INSTALL_PATH}" COMPONENT bin ARCHIVE DESTINATION "${ARCHIVE_INSTALL_PATH}" COMPONENT bin)
+install(TARGETS crn RUNTIME DESTINATION "${RUNTIME_INSTALL_PATH}" COMPONENT bin LIBRARY DESTINATION "${LIBRARY_INSTALL_PATH}" COMPONENT bin ARCHIVE DESTINATION "${ARCHIVE_INSTALL_PATH}" COMPONENT bin)
 
 # - includes
 set(LIBCRN_INCLUDE_INSTALL "include/libcrn-${CRN_PACKAGE_VERSION_MAJOR}.${CRN_PACKAGE_VERSION_MINOR}")
@@ -134,19 +134,17 @@ install(FILES "${PROJECT_BINARY_DIR}/include/libcrn/CRN.h" DESTINATION ${LIBCRN_
 
 # - CMake file
 configure_file(FindCRN.cmake.in ${PROJECT_BINARY_DIR}/share/FindCRN.cmake @ONLY)
-install(FILES "${PROJECT_BINARY_DIR}/share/FindCRN.cmake" DESTINATION "share/cmake" COMPONENT dev) # XXX TODO find where to install this!
-install(FILES "${PROJECT_SOURCE_DIR}/cmake/FindIconv.cmake" DESTINATION "share/cmake" COMPONENT dev) # XXX TODO find where to install this!
-install(FILES "${PROJECT_SOURCE_DIR}/cmake/FindIntl.cmake" DESTINATION "share/cmake" COMPONENT dev) # XXX TODO find where to install this!
-install(FILES "${PROJECT_SOURCE_DIR}/cmake/FindGTK2.cmake" DESTINATION "share/cmake" COMPONENT dev) # XXX TODO find where to install this!
-install(FILES "${PROJECT_SOURCE_DIR}/cmake/FindGTK3.cmake" DESTINATION "share/cmake" COMPONENT dev) # XXX TODO find where to install this!
-install(FILES "${PROJECT_SOURCE_DIR}/cmake/FindZIP.cmake" DESTINATION "share/cmake" COMPONENT dev) # XXX TODO find where to install this!
-install(FILES "${PROJECT_SOURCE_DIR}/cmake/FindHPDF.cmake" DESTINATION "share/cmake" COMPONENT dev) # XXX TODO find where to install this!
+install(FILES "${PROJECT_BINARY_DIR}/share/FindCRN.cmake" DESTINATION "share/cmake" COMPONENT dev)
+install(FILES "${PROJECT_SOURCE_DIR}/cmake/FindIconv.cmake" DESTINATION "share/cmake" COMPONENT dev)
+install(FILES "${PROJECT_SOURCE_DIR}/cmake/FindIntl.cmake" DESTINATION "share/cmake" COMPONENT dev)
+install(FILES "${PROJECT_SOURCE_DIR}/cmake/FindGTK2.cmake" DESTINATION "share/cmake" COMPONENT dev)
+install(FILES "${PROJECT_SOURCE_DIR}/cmake/FindGTK3.cmake" DESTINATION "share/cmake" COMPONENT dev)
+install(FILES "${PROJECT_SOURCE_DIR}/cmake/FindZIP.cmake" DESTINATION "share/cmake" COMPONENT dev)
+install(FILES "${PROJECT_SOURCE_DIR}/cmake/FindHPDF.cmake" DESTINATION "share/cmake" COMPONENT dev)
 
 # Create Android package
 #if(ANDROID)
 	#include("cmake/android/Apk.cmake" REQUIRED)
 	#android_create_apk(crn "${CMAKE_BINARY_DIR}/apk" "${APP_SHARED_LIBRARIES}" "" "Data")
 #endif(ANDROID)
-
-#add_subdirectory(po)
 

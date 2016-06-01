@@ -65,7 +65,7 @@ if(GTK2_FOUND)
 	install(FILES "${PROJECT_BINARY_DIR}/include/libgtkcrnmm2/libgtkcrnmm_config.h" DESTINATION "${LIBGTKCRNMM2_INCLUDE_INSTALL}" COMPONENT dev)
 	# - CMake files
 	configure_file(FindGTKCRNMM2.cmake.in ${PROJECT_BINARY_DIR}/share/FindGTKCRNMM2.cmake @ONLY)
-	install(FILES "${PROJECT_BINARY_DIR}/share/FindGTKCRNMM2.cmake" DESTINATION "share/cmake" COMPONENT dev) # XXX TODO find where to install this!
+	install(FILES "${PROJECT_BINARY_DIR}/share/FindGTKCRNMM2.cmake" DESTINATION "share/cmake" COMPONENT dev)
 endif()
 
 # Gtkmm3
@@ -102,7 +102,7 @@ if(GTK3_FOUND)
 	install(FILES "${PROJECT_BINARY_DIR}/include/libgtkcrnmm3/libgtkcrnmm_config.h" DESTINATION "${LIBGTKCRNMM3_INCLUDE_INSTALL}" COMPONENT dev)
 	# - CMake files
 	configure_file(FindGTKCRNMM3.cmake.in ${PROJECT_BINARY_DIR}/share/FindGTKCRNMM3.cmake @ONLY)
-	install(FILES "${PROJECT_BINARY_DIR}/share/FindGTKCRNMM3.cmake" DESTINATION "share/cmake" COMPONENT dev) # XXX TODO find where to install this!
+	install(FILES "${PROJECT_BINARY_DIR}/share/FindGTKCRNMM3.cmake" DESTINATION "share/cmake" COMPONENT dev)
 endif()
 
 # Install
