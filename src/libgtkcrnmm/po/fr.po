@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libcrn 3.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-06-02 09:39+0200\n"
+"POT-Creation-Date: 2016-06-02 14:28+0200\n"
 "PO-Revision-Date: 2015-11-24 13:57+0100\n"
 "Last-Translator: Yann LEYDIER <yann@leydier.info>\n"
 "Language-Team: French <>\n"
@@ -365,52 +365,52 @@ msgstr "_Effacer la Sélection Utilisateur"
 msgid "Clear User Selection"
 msgstr "Effacer la Sélection Utilisateur"
 
-#: E:/CoReNum/v4/libcrn/src/libgtkcrnmm/GtkCRNImage.cpp:1987
+#: E:/CoReNum/v4/libcrn/src/libgtkcrnmm/GtkCRNImage.cpp:1991
 msgid "Cannot set selection type to Text."
 msgstr "Le type de sélection ne peut pas être Text."
 
-#: E:/CoReNum/v4/libcrn/src/libgtkcrnmm/GtkCRNImage.cpp:1989
+#: E:/CoReNum/v4/libcrn/src/libgtkcrnmm/GtkCRNImage.cpp:1993
 msgid "Cannot set selection type to Polygon."
 msgstr "Le type de sélection ne peut pas être Polygone."
 
-#: E:/CoReNum/v4/libcrn/src/libgtkcrnmm/GtkCRNImage.cpp:2076
-#: E:/CoReNum/v4/libcrn/src/libgtkcrnmm/GtkCRNImage.cpp:2094
+#: E:/CoReNum/v4/libcrn/src/libgtkcrnmm/GtkCRNImage.cpp:2080
+#: E:/CoReNum/v4/libcrn/src/libgtkcrnmm/GtkCRNImage.cpp:2098
 msgid "The polygon must have more than two points."
 msgstr "Le polygone doit avoir plus de deux points."
 
-#: E:/CoReNum/v4/libcrn/src/libgtkcrnmm/GtkCRNImage.cpp:2112
-#: E:/CoReNum/v4/libcrn/src/libgtkcrnmm/GtkCRNImage.cpp:2130
-#: E:/CoReNum/v4/libcrn/src/libgtkcrnmm/GtkCRNImage.cpp:2147
+#: E:/CoReNum/v4/libcrn/src/libgtkcrnmm/GtkCRNImage.cpp:2116
+#: E:/CoReNum/v4/libcrn/src/libgtkcrnmm/GtkCRNImage.cpp:2134
+#: E:/CoReNum/v4/libcrn/src/libgtkcrnmm/GtkCRNImage.cpp:2151
 msgid "Overlay not found."
 msgstr "Surouche introuvable."
 
-#: E:/CoReNum/v4/libcrn/src/libgtkcrnmm/GtkCRNImage.cpp:2115
-#: E:/CoReNum/v4/libcrn/src/libgtkcrnmm/GtkCRNImage.cpp:2133
-#: E:/CoReNum/v4/libcrn/src/libgtkcrnmm/GtkCRNImage.cpp:2150
+#: E:/CoReNum/v4/libcrn/src/libgtkcrnmm/GtkCRNImage.cpp:2119
+#: E:/CoReNum/v4/libcrn/src/libgtkcrnmm/GtkCRNImage.cpp:2137
+#: E:/CoReNum/v4/libcrn/src/libgtkcrnmm/GtkCRNImage.cpp:2154
 msgid "Overlay item not found."
 msgstr "Objet de surcouche introuvable."
 
-#: E:/CoReNum/v4/libcrn/src/libgtkcrnmm/GtkCRNImage.cpp:2218
-#: E:/CoReNum/v4/libcrn/src/libgtkcrnmm/GtkCRNImage.cpp:2221
-#: E:/CoReNum/v4/libcrn/src/libgtkcrnmm/GtkCRNImage.cpp:2240
-#: E:/CoReNum/v4/libcrn/src/libgtkcrnmm/GtkCRNImage.cpp:2243
-#: E:/CoReNum/v4/libcrn/src/libgtkcrnmm/GtkCRNImage.cpp:2262
-#: E:/CoReNum/v4/libcrn/src/libgtkcrnmm/GtkCRNImage.cpp:2265
+#: E:/CoReNum/v4/libcrn/src/libgtkcrnmm/GtkCRNImage.cpp:2222
+#: E:/CoReNum/v4/libcrn/src/libgtkcrnmm/GtkCRNImage.cpp:2225
+#: E:/CoReNum/v4/libcrn/src/libgtkcrnmm/GtkCRNImage.cpp:2244
+#: E:/CoReNum/v4/libcrn/src/libgtkcrnmm/GtkCRNImage.cpp:2247
+#: E:/CoReNum/v4/libcrn/src/libgtkcrnmm/GtkCRNImage.cpp:2266
+#: E:/CoReNum/v4/libcrn/src/libgtkcrnmm/GtkCRNImage.cpp:2269
 msgid "No selection found."
 msgstr "Pas de sélection."
 
-#: E:/CoReNum/v4/libcrn/src/libgtkcrnmm/GtkCRNImage.cpp:2228
-#: E:/CoReNum/v4/libcrn/src/libgtkcrnmm/GtkCRNImage.cpp:2287
+#: E:/CoReNum/v4/libcrn/src/libgtkcrnmm/GtkCRNImage.cpp:2232
+#: E:/CoReNum/v4/libcrn/src/libgtkcrnmm/GtkCRNImage.cpp:2291
 msgid "The selection is not a rectangle."
 msgstr "La sélection n'est pas un rectangle."
 
-#: E:/CoReNum/v4/libcrn/src/libgtkcrnmm/GtkCRNImage.cpp:2250
-#: E:/CoReNum/v4/libcrn/src/libgtkcrnmm/GtkCRNImage.cpp:2304
+#: E:/CoReNum/v4/libcrn/src/libgtkcrnmm/GtkCRNImage.cpp:2254
+#: E:/CoReNum/v4/libcrn/src/libgtkcrnmm/GtkCRNImage.cpp:2308
 msgid "The selection is not a point."
 msgstr "La sélection n'est pas un point."
 
-#: E:/CoReNum/v4/libcrn/src/libgtkcrnmm/GtkCRNImage.cpp:2272
-#: E:/CoReNum/v4/libcrn/src/libgtkcrnmm/GtkCRNImage.cpp:2325
+#: E:/CoReNum/v4/libcrn/src/libgtkcrnmm/GtkCRNImage.cpp:2276
+#: E:/CoReNum/v4/libcrn/src/libgtkcrnmm/GtkCRNImage.cpp:2329
 msgid "The selection is not a line."
 msgstr "La sélection n'est pas une ligne."
 
