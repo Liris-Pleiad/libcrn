@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libcrn 3.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-06-02 09:39+0200\n"
+"POT-Creation-Date: 2016-06-02 15:01+0200\n"
 "PO-Revision-Date: 2015-11-24 13:57+0100\n"
 "Last-Translator: Yann LEYDIER <yann@leydier.info>\n"
 "Language-Team: French <>\n"
@@ -998,27 +998,32 @@ msgstr "L'élément n'est pas initialisé."
 msgid "The element is of unknown type."
 msgstr "L'élément n'est pas initialisé."
 
-#: E:/CoReNum/v4/libcrn/src/libcrn/CRNUtils/CRNConfigurationFile.cpp:153
+#: E:/CoReNum/v4/libcrn/src/libcrn/CRNUtils/CRNConfigurationFile.cpp:104
+#, fuzzy
+msgid "Cannot save configuration file: "
+msgstr "Impossible de lire le fichier de configuration."
+
+#: E:/CoReNum/v4/libcrn/src/libcrn/CRNUtils/CRNConfigurationFile.cpp:154
 msgid " is not a Path."
 msgstr " n'est pas un Path."
 
-#: E:/CoReNum/v4/libcrn/src/libcrn/CRNUtils/CRNConfigurationFile.cpp:166
+#: E:/CoReNum/v4/libcrn/src/libcrn/CRNUtils/CRNConfigurationFile.cpp:167
 msgid " is not a String."
 msgstr " n'est pas un String."
 
-#: E:/CoReNum/v4/libcrn/src/libcrn/CRNUtils/CRNConfigurationFile.cpp:179
+#: E:/CoReNum/v4/libcrn/src/libcrn/CRNUtils/CRNConfigurationFile.cpp:180
 msgid " is not a StringUTF8."
 msgstr " n'est pas un StringUTF8."
 
-#: E:/CoReNum/v4/libcrn/src/libcrn/CRNUtils/CRNConfigurationFile.cpp:192
+#: E:/CoReNum/v4/libcrn/src/libcrn/CRNUtils/CRNConfigurationFile.cpp:193
 msgid " is not a Prop3."
 msgstr " n'est pas un Prop3."
 
-#: E:/CoReNum/v4/libcrn/src/libcrn/CRNUtils/CRNConfigurationFile.cpp:205
+#: E:/CoReNum/v4/libcrn/src/libcrn/CRNUtils/CRNConfigurationFile.cpp:206
 msgid " is not an int."
 msgstr " n'est pas un entier."
 
-#: E:/CoReNum/v4/libcrn/src/libcrn/CRNUtils/CRNConfigurationFile.cpp:218
+#: E:/CoReNum/v4/libcrn/src/libcrn/CRNUtils/CRNConfigurationFile.cpp:219
 msgid " is not a double."
 msgstr " n'est pas un double."
 
@@ -2947,9 +2952,6 @@ msgstr "L'XML ne contient pas d'élément."
 
 #~ msgid "Load a configuration file"
 #~ msgstr "Charger un fichier de configuration"
-
-#~ msgid "Cannot read configuration file."
-#~ msgstr "Impossible de lire le fichier de configuration."
 
 #~ msgid "Cannot write configuration file."
 #~ msgstr "Impossible d'écrire le fichier de configuration."
