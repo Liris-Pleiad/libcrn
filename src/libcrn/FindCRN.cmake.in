@@ -10,7 +10,7 @@ find_path(CRN_INCLUDE_DIR CRN.h
 	PATHS
 		/usr/@LIBCRN_INCLUDE_INSTALL@
 		/usr/local/@LIBCRN_INCLUDE_INSTALL@
-		$ENV{LIBCRN_PATH}/@LIBCRN_INCLUDE_INSTALL@
+		$ENV{LIBCRN_4_SDK_PATH}/@LIBCRN_INCLUDE_INSTALL@
 )
 
 find_library(CRN_LIBRARY NAME libcrn@CRNLIB_EXT@
@@ -19,7 +19,7 @@ find_library(CRN_LIBRARY NAME libcrn@CRNLIB_EXT@
 	PATHS
 		/usr/lib
 		/usr/local/lib
-		$ENV{LIBCRN_PATH}/lib
+		$ENV{LIBCRN_4_SDK_PATH}/lib
 )
 
 find_library(CRN_LIBRARY_DEBUG NAME libcrn-d@CRNLIB_EXT@
@@ -28,7 +28,7 @@ find_library(CRN_LIBRARY_DEBUG NAME libcrn-d@CRNLIB_EXT@
 	PATHS
 		/usr/lib
 		/usr/local/lib
-		$ENV{LIBCRN_PATH}/lib
+		$ENV{LIBCRN_4_SDK_PATH}/lib
 )
 if(NOT "${CRN_LIBRARY_DEBUG}" STREQUAL "CRN_LIBRARY_DEBUG-NOTFOUND")
 	set(CRN_LIBRARY "optimized;${CRN_LIBRARY};debug;${CRN_LIBRARY_DEBUG}")
@@ -41,9 +41,9 @@ find_package_handle_standard_args(CRN DEFAULT_MSG CRN_LIBRARY CRN_INCLUDE_DIR)
 
 mark_as_advanced(CRN_INCLUDE_DIR CRN_LIBRARY)
 
-find_package(Iconv REQUIRED)
-
 @FINDLIBCRN_DEPS@
+
+find_package(Iconv REQUIRED)
 
 if(FINDLIBCRN_INTL)
 	find_package(Intl REQUIRED)
