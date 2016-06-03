@@ -22,8 +22,11 @@
  */
 #include "mainwindow.hxx"
 
-mainwindow::mainwindow(QMainWindow *parent) : QMainWindow(parent)
+mainwindow::mainwindow(QMainWindow *parent) : 
+	QMainWindow(parent)
 {
+	img = new QtCRN::Image();
+	setCentralWidget(img);
 }
 
 mainwindow::~mainwindow()
