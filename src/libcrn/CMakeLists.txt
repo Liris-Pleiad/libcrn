@@ -38,9 +38,12 @@ add_library(crn ${LIBCRN_SRC} ${LIBCRN_HEADER_CFG} ${LIBCRN_HEADER})
 
 # Dependencies
 # Iconv needed
-target_link_libraries(crn	${ICONV_LIBRARIES})
-
 set(FINDLIBCRN_DEPS "# libcrn optional dependencies")
+
+target_link_libraries(crn	${ICONV_LIBRARIES})
+if(MSVC)
+	set(FINDLIBCRN_DEPS "${FINDLIBCRN_DEPS}\nset(ICONV_DIR \$ENV{LIBCRN_DEPS_PATH}/libiconv-1.14)")
+endif(MSVC)
 
 if(CRN_USING_GDIPLUS)
 	set(FINDLIBCRN_DEPS "${FINDLIBCRN_DEPS}\nset(FINDLIBCRN_GDIPLUS on)")
@@ -51,8 +54,16 @@ endif()
 if(CRN_USING_GLIB_INTL)
 	if(GTK2_FOUND)
 		target_link_libraries(crn GTK2::glib)
+		if(MSVC)
+			set(FINDLIBCRN_DEPS "${FINDLIBCRN_DEPS}\nset(Intl_INCLUDE_DIR \$ENV{LIBCRN_DEPS_PATH}/gtkmm2/include)")
+			set(FINDLIBCRN_DEPS "${FINDLIBCRN_DEPS}\nset(Intl_LIBRARY \$ENV{LIBCRN_DEPS_PATH}/gtkmm2/lib/intl.lib)")
+		endif(MSVC)
 	else()
 		target_link_libraries(crn GTK3::glib)
+		if(MSVC)
+			set(FINDLIBCRN_DEPS "${FINDLIBCRN_DEPS}\nset(Intl_INCLUDE_DIR \$ENV{LIBCRN_DEPS_PATH}/gtkmm3_release/include)")
+			set(FINDLIBCRN_DEPS "${FINDLIBCRN_DEPS}\nset(Intl_LIBRARY \$ENV{LIBCRN_DEPS_PATH}/gtkmm3_release/lib/intl.dll.lib)")
+		endif(MSVC)
 	endif()
 	include_directories(${Intl_INCLUDE_DIRS})
 	target_link_libraries(crn	${Intl_LIBRARIES})
@@ -62,15 +73,21 @@ if(CRN_USING_GDKPB)
 	if(GTK2_FOUND)
 		target_link_libraries(crn GTK2::gdk_pixbuf)
 		set(FINDLIBCRN_DEPS "${FINDLIBCRN_DEPS}\nset(FINDLIBCRN_GTK2 on)")
+		if(MSVC)
+			set(FINDLIBCRN_DEPS "${FINDLIBCRN_DEPS}\nset(GTK2_HINTS \$ENV{LIBCRN_DEPS_PATH}/gtkmm2)")
+		endif(MSVC)
 	else()
 		target_link_libraries(crn GTK3::gdk_pixbuf)
 		set(FINDLIBCRN_DEPS "${FINDLIBCRN_DEPS}\nset(FINDLIBCRN_GTK3 on)")
+		if(MSVC)
+			set(FINDLIBCRN_DEPS "${FINDLIBCRN_DEPS}\nset(GTK3_HINTS \$ENV{LIBCRN_DEPS_PATH}/gtkmm3_release)")
+		endif(MSVC)
 	endif()
-	if(CRN_USING_GLIB_INTL)
-		include_directories(${Intl_INCLUDE_DIRS})
-		target_link_libraries(crn	${Intl_LIBRARIES})
-		set(FINDLIBCRN_DEPS "${FINDLIBCRN_DEPS}\nset(FINDLIBCRN_INTL on)")
-	endif()
+	#if(CRN_USING_GLIB_INTL)
+	#include_directories(${Intl_INCLUDE_DIRS})
+	#target_link_libraries(crn	${Intl_LIBRARIES})
+	#set(FINDLIBCRN_DEPS "${FINDLIBCRN_DEPS}\nset(FINDLIBCRN_INTL on)")
+	#endif()
 endif()
 
 # libintl
@@ -78,6 +95,10 @@ if(CRN_USING_LIBINTL)
 	include_directories(${Intl_INCLUDE_DIRS})
 	target_link_libraries(crn	${Intl_LIBRARIES})
 	set(FINDLIBCRN_DEPS "${FINDLIBCRN_DEPS}\nset(FINDLIBCRN_INTL on)")
+	if(MSVC)
+		set(FINDLIBCRN_DEPS "${FINDLIBCRN_DEPS}\nset(Intl_INCLUDE_DIR \$ENV{LIBCRN_DEPS_PATH}/gtkmm2/include)")
+		set(FINDLIBCRN_DEPS "${FINDLIBCRN_DEPS}\nset(Intl_LIBRARY \$ENV{LIBCRN_DEPS_PATH}/gtkmm2/lib/intl.lib)")
+	endif(MSVC)
 endif()
 
 # libpng
@@ -85,6 +106,10 @@ if(CRN_USING_LIBPNG)
 	include_directories(${PNG_INCLUDE_DIRS})
 	target_link_libraries(crn	${PNG_LIBRARIES})
 	set(FINDLIBCRN_DEPS "${FINDLIBCRN_DEPS}\nset(FINDLIBCRN_PNG on)")
+	if(MSVC)
+		set(FINDLIBCRN_DEPS "${FINDLIBCRN_DEPS}\nset(PNG_PNG_INCLUDE_DIR \$ENV{LIBCRN_DEPS_PATH}/3rdparty/libpng)")
+		set(FINDLIBCRN_DEPS "${FINDLIBCRN_DEPS}\nset(PNG_LIBRARY \$ENV{LIBCRN_DEPS_PATH}/3rdparty/libpng/lib/Release/libpng.lib)")
+	endif(MSVC)
 endif()
 
 # jpeglib
@@ -92,6 +117,10 @@ if(CRN_USING_LIBJPEG)
 	include_directories(${JPEG_INCLUDE_DIR})
 	target_link_libraries(crn	${JPEG_LIBRARIES})
 	set(FINDLIBCRN_DEPS "${FINDLIBCRN_DEPS}\nset(FINDLIBCRN_JPEG on)")
+	if(MSVC)
+		set(FINDLIBCRN_DEPS "${FINDLIBCRN_DEPS}\nset(JPEG_INCLUDE_DIR \$ENV{LIBCRN_DEPS_PATH}/3rdparty/libjpeg)")
+		set(FINDLIBCRN_DEPS "${FINDLIBCRN_DEPS}\nset(JPEG_LIBRARY \$ENV{LIBCRN_DEPS_PATH}/3rdparty/libjpeg/lib/Release/jpeg.lib)")
+	endif(MSVC)
 endif()
 
 # zip
@@ -102,6 +131,10 @@ if(CRN_USING_LIBZIP)
 	endif (APPLE)
 	target_link_libraries(crn	${ZIP_LIBRARIES})
 	set(FINDLIBCRN_DEPS "${FINDLIBCRN_DEPS}\nset(FINDLIBCRN_ZIP on)")
+	if(MSVC)
+		set(FINDLIBCRN_DEPS "${FINDLIBCRN_DEPS}\nset(ZIP_INCLUDE_DIR \$ENV{LIBCRN_DEPS_PATH}/libzip-1.1.2/include)")
+		set(FINDLIBCRN_DEPS "${FINDLIBCRN_DEPS}\nset(ZIP_LIBRARY \$ENV{LIBCRN_DEPS_PATH}/libzip-1.1.2/lib/Release/zip.lib)")
+	endif(MSVC)
 endif(CRN_USING_LIBZIP)
 
 # haru
@@ -109,6 +142,10 @@ if(CRN_USING_HARU)
 	include_directories(${HPDF_INCLUDE_DIR})
 	target_link_libraries(crn	${HPDF_LIBRARIES})
 	set(FINDLIBCRN_DEPS "${FINDLIBCRN_DEPS}\nset(FINDLIBCRN_HPDF on)")
+	if(MSVC)
+		set(FINDLIBCRN_DEPS "${FINDLIBCRN_DEPS}\nset(HPDF_INCLUDE_DIR \$ENV{LIBCRN_DEPS_PATH}/libharu-2.3.0/include)")
+		set(FINDLIBCRN_DEPS "${FINDLIBCRN_DEPS}\nset(HPDF_LIBRARY \$ENV{LIBCRN_DEPS_PATH}/libharu-2.3.0/lib/Release/libhpdf.lib)")
+	endif(MSVC)
 endif(CRN_USING_HARU)
 
 if(MSVC)
@@ -123,7 +160,7 @@ endif()
 
 # Install
 # - binaries
-install(TARGETS crn RUNTIME DESTINATION "${RUNTIME_INSTALL_PATH}" COMPONENT bin  LIBRARY DESTINATION "${LIBRARY_INSTALL_PATH}" COMPONENT bin ARCHIVE DESTINATION "${ARCHIVE_INSTALL_PATH}" COMPONENT bin)
+install(TARGETS crn RUNTIME DESTINATION "${RUNTIME_INSTALL_PATH}" COMPONENT bin LIBRARY DESTINATION "${LIBRARY_INSTALL_PATH}" COMPONENT bin ARCHIVE DESTINATION "${ARCHIVE_INSTALL_PATH}" COMPONENT bin)
 
 # - includes
 set(LIBCRN_INCLUDE_INSTALL "include/libcrn-${CRN_PACKAGE_VERSION_MAJOR}.${CRN_PACKAGE_VERSION_MINOR}")
@@ -134,19 +171,17 @@ install(FILES "${PROJECT_BINARY_DIR}/include/libcrn/CRN.h" DESTINATION ${LIBCRN_
 
 # - CMake file
 configure_file(FindCRN.cmake.in ${PROJECT_BINARY_DIR}/share/FindCRN.cmake @ONLY)
-install(FILES "${PROJECT_BINARY_DIR}/share/FindCRN.cmake" DESTINATION "share/cmake" COMPONENT dev) # XXX TODO find where to install this!
-install(FILES "${PROJECT_SOURCE_DIR}/cmake/FindIconv.cmake" DESTINATION "share/cmake" COMPONENT dev) # XXX TODO find where to install this!
-install(FILES "${PROJECT_SOURCE_DIR}/cmake/FindIntl.cmake" DESTINATION "share/cmake" COMPONENT dev) # XXX TODO find where to install this!
-install(FILES "${PROJECT_SOURCE_DIR}/cmake/FindGTK2.cmake" DESTINATION "share/cmake" COMPONENT dev) # XXX TODO find where to install this!
-install(FILES "${PROJECT_SOURCE_DIR}/cmake/FindGTK3.cmake" DESTINATION "share/cmake" COMPONENT dev) # XXX TODO find where to install this!
-install(FILES "${PROJECT_SOURCE_DIR}/cmake/FindZIP.cmake" DESTINATION "share/cmake" COMPONENT dev) # XXX TODO find where to install this!
-install(FILES "${PROJECT_SOURCE_DIR}/cmake/FindHPDF.cmake" DESTINATION "share/cmake" COMPONENT dev) # XXX TODO find where to install this!
+install(FILES "${PROJECT_BINARY_DIR}/share/FindCRN.cmake" DESTINATION "share/cmake" COMPONENT dev)
+install(FILES "${PROJECT_SOURCE_DIR}/cmake/FindIconv.cmake" DESTINATION "share/cmake" COMPONENT dev)
+install(FILES "${PROJECT_SOURCE_DIR}/cmake/FindIntl.cmake" DESTINATION "share/cmake" COMPONENT dev)
+install(FILES "${PROJECT_SOURCE_DIR}/cmake/FindGTK2.cmake" DESTINATION "share/cmake" COMPONENT dev)
+install(FILES "${PROJECT_SOURCE_DIR}/cmake/FindGTK3.cmake" DESTINATION "share/cmake" COMPONENT dev)
+install(FILES "${PROJECT_SOURCE_DIR}/cmake/FindZIP.cmake" DESTINATION "share/cmake" COMPONENT dev)
+install(FILES "${PROJECT_SOURCE_DIR}/cmake/FindHPDF.cmake" DESTINATION "share/cmake" COMPONENT dev)
 
 # Create Android package
 #if(ANDROID)
 	#include("cmake/android/Apk.cmake" REQUIRED)
 	#android_create_apk(crn "${CMAKE_BINARY_DIR}/apk" "${APP_SHARED_LIBRARIES}" "" "Data")
 #endif(ANDROID)
-
-#add_subdirectory(po)
 

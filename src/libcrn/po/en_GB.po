@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libcrn 3.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-05-23 16:32+0200\n"
+"POT-Creation-Date: 2016-06-02 15:17+0200\n"
 "PO-Revision-Date: 2015-11-24 13:55+0100\n"
 "Last-Translator: Yann LEYDIER <yann@leydier.info>\n"
 "Language-Team: English <>\n"
@@ -929,27 +929,32 @@ msgstr "Stopwatch: "
 msgid "Total time: "
 msgstr "Total time: "
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNConfigurationFile.cpp:153
+#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNConfigurationFile.cpp:104
+#, fuzzy
+msgid "Cannot save configuration file: "
+msgstr "Cannot read configuration file."
+
+#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNConfigurationFile.cpp:154
 msgid " is not a Path."
 msgstr " is not a Path."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNConfigurationFile.cpp:166
+#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNConfigurationFile.cpp:167
 msgid " is not a String."
 msgstr " is not a String."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNConfigurationFile.cpp:179
+#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNConfigurationFile.cpp:180
 msgid " is not a StringUTF8."
 msgstr " is not a StringUTF8."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNConfigurationFile.cpp:192
+#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNConfigurationFile.cpp:193
 msgid " is not a Prop3."
 msgstr " is not a Prop3."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNConfigurationFile.cpp:205
+#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNConfigurationFile.cpp:206
 msgid " is not an int."
 msgstr " is not an int."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNConfigurationFile.cpp:218
+#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNConfigurationFile.cpp:219
 msgid " is not a double."
 msgstr " is not a double."
 
@@ -2924,9 +2929,6 @@ msgstr "British english language selected."
 
 #~ msgid "Load a configuration file"
 #~ msgstr "Load a configuration file"
-
-#~ msgid "Cannot read configuration file."
-#~ msgstr "Cannot read configuration file."
 
 #~ msgid "Cannot write configuration file."
 #~ msgstr "Cannot write configuration file."

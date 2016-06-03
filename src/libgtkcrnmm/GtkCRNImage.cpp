@@ -434,7 +434,7 @@ bool Image::mouse_motion(GdkEventMotion* ev)
 				int oy = int(dy);
 
 				std::unique_ptr<OverlayItem> &item(overlays[selected_overlay].items[selected_overlay_item]);
-				std::cout<<selected_overlay<<std::endl;
+				
 				Line* li = dynamic_cast<Line*>(item.get());
 				if (li != nullptr)
 				{
@@ -1471,8 +1471,10 @@ bool Image::button_clicked(GdkEventButton *ev)
 					case 3:
 						{
 							// send signal
-							int realx = int(ev->x / zoom) + pos.X;
-							int realy = int(ev->y / zoom) + pos.Y;
+							const auto realx = int(ev->x / zoom) + pos.X;
+							const auto realy = int(ev->y / zoom) + pos.Y;
+							const auto selection_margin_zoom = int(selection_margin / zoom);
+							
 							std::vector<std::pair<crn::String, crn::String> > res;
 							for (std::map<crn::String, Overlay_internal>::const_iterator lit = overlays.begin(); lit != overlays.end(); ++lit)
 							{
@@ -1484,12 +1486,12 @@ bool Image::button_clicked(GdkEventButton *ev)
 									Line* li = dynamic_cast<Line*>(item.get());
 									if(li != nullptr)
 									{
-										crn::Rect r(li->p1.X - selection_margin, li->p1.Y - selection_margin, li->p2.X + selection_margin, li->p2.Y + selection_margin);
+										crn::Rect r(li->p1.X - selection_margin_zoom, li->p1.Y - selection_margin_zoom, li->p2.X + selection_margin_zoom, li->p2.Y + selection_margin_zoom);
 										if (r.Contains(realx, realy))
 										{
 											double s = (li->p1.Y - li->p2.Y) * (realx - li->p1.X) + (li->p2.X - li->p1.X) * (realy - li->p1.Y); // dot product of p1-mouse by the orthogonal of p1-p2
 											s /= sqrt(double(crn::Sqr(li->p1.X -  li->p2.X) + crn::Sqr(li->p1.Y - li->p2.Y))); // normalize
-											if (crn::Abs(s) < selection_margin)
+											if (crn::Abs(s) < selection_margin_zoom)
 												res.push_back(std::make_pair(lit->first, overlay.first));
 										}
 									}
@@ -1505,16 +1507,14 @@ bool Image::button_clicked(GdkEventButton *ev)
 									if(p != nullptr)
 									{
 
-										crn::Rect r(p->point.X - selection_margin, p->point.Y - selection_margin, p->point.X + selection_margin, p->point.Y + selection_margin);
+										crn::Rect r(p->point.X - selection_margin_zoom, p->point.Y - selection_margin_zoom, p->point.X + selection_margin_zoom, p->point.Y + selection_margin_zoom);
 										if (r.Contains(realx, realy))
 											res.push_back(std::make_pair(lit->first, overlay.first));
 									}
 
 									Polygon* poly = dynamic_cast<Polygon*>(item.get());
-									if(poly != nullptr)
+									if ((poly != nullptr) && !poly->points.empty())
 									{
-										// if (poly->contains(crn::Point2DInt(realx, realy),zoom))
-										//  res.push_back(std::make_pair(lit->first, overlay.first));
 										int max_x = poly->points[0].X;
 										int min_x = poly->points[0].X;
 										int max_y = poly->points[0].Y;
@@ -1531,13 +1531,12 @@ bool Image::button_clicked(GdkEventButton *ev)
 												min_y = y1;
 											if(max_y < y1)
 												max_y = y1;
-											crn::Rect rec(min_x - selection_margin, min_y - selection_margin, max_x + selection_margin, max_y + selection_margin);
-											if(rec.Contains(realx,realy))
-												res.push_back(std::make_pair(lit->first, overlay.first));
 										}
-										crn::Rect rec(min_x - selection_margin, min_y - selection_margin, max_x + selection_margin ,max_y + selection_margin);
-										if(rec.Contains(realx,realy))
+										crn::Rect rec(min_x - selection_margin_zoom, min_y - selection_margin_zoom, max_x + selection_margin_zoom, max_y + selection_margin_zoom);
+										
+										if (rec.Contains(realx, realy))
 											res.push_back(std::make_pair(lit->first, overlay.first));
+										
 									}
 								}
 							}

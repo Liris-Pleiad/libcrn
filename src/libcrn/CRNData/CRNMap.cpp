@@ -293,9 +293,10 @@ void Map::Load(const Path &fname)
 
 void Map::Save(const Path &fname) const
 {
-	auto doc = xml::Document(fname);
+	auto doc = xml::Document{};
 	auto root = doc.PushBackElement("ComplexObject");
 	Serialize(root);
+	doc.Save(fname);
 }
 
 CRN_BEGIN_CLASS_CONSTRUCTOR(Map)

@@ -57,10 +57,10 @@ ConfigurationFile::ConfigurationFile(const String &application_name, const Strin
 Path ConfigurationFile::Load()
 {
 	std::vector<Path> dirs, files;
+	dirs.push_back(GetUserDirectory());
 	char cwd[4096];
 	getcwd(cwd, 4096);
 	dirs.push_back(cwd);
-	dirs.push_back(GetUserDirectory());
 	dirs.push_back(CRN_CONFIG_FULL_PATH);
 	files.push_back(filename + ".xml");
 	files.push_back("_" + filename + ".xml");
@@ -93,14 +93,15 @@ Path ConfigurationFile::Load()
  */
 Path ConfigurationFile::Save()
 {
-	Path fname(GetUserDirectory() / filename + ".xml");
+	const auto fname = GetUserDirectory() / filename + ".xml";
 	try
 	{
 		data.Save(fname);
 		return fname;
 	}
-	catch (...)
+	catch (std::exception &ex)
 	{
+		CRNError(crn::StringUTF8(_("Cannot save configuration file: ")) + ex.what());
 		return "";
 	}
 }
