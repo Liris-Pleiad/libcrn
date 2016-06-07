@@ -14,7 +14,8 @@ set(ICONV_DIR										${MSVC_KIT_ROOT}/libiconv-1.14)
 ### optional 1 : png, jpeg, intl
 
 #if(CRN_DEPENDENCY_PNG)
-	set(ZLIB_INCLUDE_DIR								${MSVC_KIT_ROOT}/3rdparty/zlib)
+	set(ZLIB_ROOT										${MSVC_KIT_ROOT}/3rdparty/zlib)
+	#set(ZLIB_INCLUDE_DIR								${MSVC_KIT_ROOT}/3rdparty/zlib)
 	set(ZLIB_LIBRARY									${MSVC_KIT_ROOT}/3rdparty/zlib/lib/Release/zlib.lib)
 
 	set(PNG_PNG_INCLUDE_DIR								${MSVC_KIT_ROOT}/3rdparty/libpng)
