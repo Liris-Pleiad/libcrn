@@ -63,12 +63,51 @@ void Image::setImage(QImage &&img)
 	pm = QPixmap::fromImage(std::move(img));
 }
 
+void Image::setZoom(qreal z)
+{
+	zoom = z;
+	if (zoom > 10) zoom = 10;
+	if (zoom < 0.1) zoom = 0.1;
+	resetTransform();
+	scale(zoom, zoom);
+}
+
+void Image::zoomIn()
+{
+	zoom += 0.1;
+	if (zoom > 10) zoom = 10;
+	resetTransform();
+	scale(zoom, zoom);
+}
+
+void Image::zoomOut()
+{
+	zoom -= 0.1;
+	if (zoom < 0.1) zoom = 0.1;
+	resetTransform();
+	scale(zoom, zoom);
+}
+
+void Image::zoom100()
+{
+	zoom = 1;
+	resetTransform();
+	scale(zoom, zoom);
+}
+
+void Image::zoomFit()
+{
+	fitInView(scene.sceneRect(), Qt::KeepAspectRatio);
+	zoom = transform().m11();
+}
+
 void Image::mouseReleaseEvent(QMouseEvent *event)
 {
 	std::cout << "click @ " << event->x() << "x" << event->y() << '\n';
 	auto p = mapToScene(event->x(), event->y());
 	std::cout << "click @ " << p.x() << "x" << p.y() << '\n';
-	event->ignore();
+	
+	QGraphicsView::mouseReleaseEvent(event);
 }
 
 void Image::wheelEvent(QWheelEvent *event)
@@ -87,10 +126,9 @@ void Image::wheelEvent(QWheelEvent *event)
 		if (zoom < 0.1) zoom = 0.1;
 		resetTransform();
 		scale(zoom, zoom);
-		event->accept();
 	}
 	else
-		event->ignore();
+		QGraphicsView::wheelEvent(event);
 }
 
 void Image::redraw()
