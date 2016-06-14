@@ -30,6 +30,8 @@ namespace crn
 {
 	class String;
 
+	enum class ConfigurationType { USER, APP };
+
 	/*! \brief Configuration file management utility class
 	 *
 	 * Configuration file management utility class
@@ -42,7 +44,7 @@ namespace crn
 	{
 		public:
 			/*! \brief Constructor */
-			ConfigurationFile(const String &application_name, const StringUTF8 &file_name = "");
+			ConfigurationFile(const String &application_name, const StringUTF8 &file_name = "", ConfigurationType ctype = ConfigurationType::APP);
 			ConfigurationFile(const ConfigurationFile &) = delete;
 			ConfigurationFile(ConfigurationFile&&) = default;
 			ConfigurationFile& operator=(const ConfigurationFile &) = delete;
@@ -85,6 +87,7 @@ namespace crn
 			Map data; /*!< data storage */
 			Path appname; /*!< name of the application */
 			Path filename; /*!< name of the configuration file */
+			ConfigurationType type;
 
 		CRN_DECLARE_CLASS_CONSTRUCTOR(ConfigurationFile)
 	};
