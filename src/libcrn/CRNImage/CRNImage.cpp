@@ -644,6 +644,6 @@ UImage crn::NewImageFromFile(const Path &fname)
 #endif // CRN_USING_GDKPB
 	if (res.first.get() == nullptr)
 		throw ExceptionIO(StringUTF8("UImage NewImageFromFile(const Path &fname): ") +
-				_("No decoder could open the file.") + errors.CStr());
+			_("No decoder could open the file ") + StringUTF8{ fname } + "\n" + errors.CStr());
 	return std::move(res.first);
 }
