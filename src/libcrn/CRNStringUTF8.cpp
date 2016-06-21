@@ -120,11 +120,11 @@ const char& StringUTF8::operator[](size_t index) const
 Prop3 StringUTF8::ToProp3() const
 {
 	if (data == "true")
-		return Prop3::True;
+		return Prop3::True();
 	else if (data == "false")
-		return Prop3::False;
+		return Prop3::False();
 	else
-		return Prop3::Unknown;
+		return Prop3::Unknown();
 }
 
 /*!

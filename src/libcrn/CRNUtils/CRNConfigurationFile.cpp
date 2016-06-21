@@ -40,9 +40,10 @@ using namespace crn;
  * \param[in]	application_name	the name of the application
  * \param[in]	file_name	the name of the configuration file. If empty, the application name is used
  */
-ConfigurationFile::ConfigurationFile(const String &application_name, const StringUTF8 &file_name):
+ConfigurationFile::ConfigurationFile(const String &application_name, const StringUTF8 &file_name, ConfigurationType ctype):
 	appname(application_name),
-	filename(file_name)
+	filename(file_name),
+	type(ctype)
 {
 	if (file_name.IsEmpty())
 		filename = application_name.CStr();
@@ -57,11 +58,20 @@ ConfigurationFile::ConfigurationFile(const String &application_name, const Strin
 Path ConfigurationFile::Load()
 {
 	std::vector<Path> dirs, files;
-	dirs.push_back(GetUserDirectory());
 	char cwd[4096];
 	getcwd(cwd, 4096);
-	dirs.push_back(cwd);
-	dirs.push_back(CRN_CONFIG_FULL_PATH);
+	if (type == ConfigurationType::APP)
+	{
+		dirs.push_back(cwd);
+		dirs.push_back(GetUserDirectory());
+		dirs.push_back(CRN_CONFIG_FULL_PATH);
+	}
+	else
+	{
+		dirs.push_back(GetUserDirectory());
+		dirs.push_back(cwd);
+		dirs.push_back(CRN_CONFIG_FULL_PATH);
+	}
 	files.push_back(filename + ".xml");
 	files.push_back("_" + filename + ".xml");
 	files.push_back("." + filename + ".xml");
