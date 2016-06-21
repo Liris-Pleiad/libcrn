@@ -49,8 +49,8 @@ namespace crn
 			Prop3(bool val) noexcept :
 				value(val ? TRUEval : FALSEval)
 			{}
-			constexpr Prop3(const Prop3 &) = default;
-			constexpr Prop3(Prop3 &&) = default;
+			Prop3(const Prop3 &) = default;
+			Prop3(Prop3 &&) = default;
 			~Prop3() = default;
 
 			Prop3& operator=(const Prop3 &) = default;
