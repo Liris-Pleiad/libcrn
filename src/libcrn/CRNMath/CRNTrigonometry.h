@@ -333,7 +333,7 @@ namespace crn
 	 *
 	 * Distance between two angles
 	 *
-	 * Usage example: AngularDistance<ByteAngle>(35, Angle<ByteAngle>::TOP)
+	 * Usage example: AngularDistance<ByteAngle>(35, Angle<ByteAngle>::TOP())
 	 *
 	 * \param[in]	a1	first angle
 	 * \param[in]	a2	second angle
