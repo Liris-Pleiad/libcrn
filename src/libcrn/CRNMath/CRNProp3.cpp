@@ -25,6 +25,10 @@
 #include <CRNUtils/CRNXml.h>
 #include <CRNi18n.h>
 
+#ifndef TRUE
+#	define TRUE ~0
+#endif
+
 using namespace crn;
 
 /*!
