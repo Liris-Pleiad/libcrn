@@ -97,19 +97,19 @@ bool Prop3::click(GdkEventButton *ev)
 	{
 		case 1:
 			if (prop.IsTrue())
-				prop = crn::Prop3::False;
+				prop = crn::Prop3::False();
 			else if (prop.IsFalse())
-				prop = crn::Prop3::Unknown;
+				prop = crn::Prop3::Unknown();
 			else
-				prop = crn::Prop3::True;
+				prop = crn::Prop3::True();
 			break;
 		case 3:
 			if (prop.IsFalse())
-				prop = crn::Prop3::True;
+				prop = crn::Prop3::True();
 			else if (prop.IsTrue())
-				prop = crn::Prop3::Unknown;
+				prop = crn::Prop3::Unknown();
 			else
-				prop = crn::Prop3::False;
+				prop = crn::Prop3::False();
 			break;
 	}
 	set_image();

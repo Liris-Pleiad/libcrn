@@ -32,10 +32,11 @@
 #endif
 
 using namespace crn;
+using namespace crn::literals;
 
 const Path Document::thumbdir("/thumbs/");
-size_t Document::ThumbWidth = 70; // almost A4
-size_t Document::ThumbHeight = 100;
+size_t Document::thumbWidth = 70; // almost A4
+size_t Document::thumbHeight = 100;
 
 /*****************************************************************************/
 /*!
@@ -532,15 +533,15 @@ UImage Document::createThumbnail(const Path &imagename) const
 	UImage img = NewImageFromFile(imagename);
 	// scale the image
 	size_t nw, nh;
-	nh = img->GetHeight() * ThumbWidth / img->GetWidth();
-	if (nh <= ThumbHeight)
+	nh = img->GetHeight() * thumbWidth / img->GetWidth();
+	if (nh <= thumbHeight)
 	{
-		nw = ThumbWidth;
+		nw = thumbWidth;
 	}
 	else
 	{
-		nw = img->GetWidth() * ThumbHeight / img->GetHeight();
-		nh = ThumbHeight;
+		nw = img->GetWidth() * thumbHeight / img->GetHeight();
+		nh = thumbHeight;
 	}
 	img->ScaleToSize(nw, nh);
 	return std::forward<UImage>(img);
@@ -801,4 +802,23 @@ void Document::ExportPDF(const Path &fname, const PDF::Attributes &attr, Progres
 }
 #endif
 
-
+size_t Document::GetThumbWidth() noexcept
+{
+	return thumbWidth;
+}
+size_t Document::GetThumbHeight() noexcept
+{
+	return thumbHeight;
+}
+void Document::SetThumbWidth(size_t w)
+{
+	if (w == 0)
+		throw ExceptionDomain{ "Document::SetThumbWidth()"_s + _("Null width.") };
+	thumbWidth = w;
+}
+void Document::SetThumbHeight(size_t h)
+{
+	if (h == 0)
+		throw ExceptionDomain{ "Document::SetThumbHeight()"_s + _("Null height.") };
+	thumbHeight = h;
+}
