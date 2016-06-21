@@ -96,30 +96,20 @@ bool Prop3::click(GdkEventButton *ev)
 	switch (ev->button)
 	{
 		case 1:
-			switch (prop.GetValue())
-			{
-				case TRUE:
-					prop = FALSE;
-					break;
-				case FALSE:
-					prop = crn::Prop3::UNKNOWN;
-					break;
-				default:
-					prop = TRUE;
-			}
+			if (prop.IsTrue())
+				prop = crn::Prop3::False;
+			else if (prop.IsFalse())
+				prop = crn::Prop3::Unknown;
+			else
+				prop = crn::Prop3::True;
 			break;
 		case 3:
-			switch (prop.GetValue())
-			{
-				case FALSE:
-					prop = TRUE;
-					break;
-				case TRUE:
-					prop = crn::Prop3::UNKNOWN;
-					break;
-				default:
-					prop = FALSE;
-			}
+			if (prop.IsFalse())
+				prop = crn::Prop3::True;
+			else if (prop.IsTrue())
+				prop = crn::Prop3::Unknown;
+			else
+				prop = crn::Prop3::False;
 			break;
 	}
 	set_image();

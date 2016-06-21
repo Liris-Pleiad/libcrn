@@ -23,7 +23,7 @@
 #define CRNPROP3_HEADER
 
 #include <CRNString.h>
-
+/*
 #ifdef FALSE
 #undef FALSE
 #endif
@@ -32,7 +32,7 @@
 #undef TRUE
 #endif
 #define TRUE 1
-
+*/
 namespace crn
 {
 
@@ -50,9 +50,10 @@ namespace crn
 	{
 		public:
 			/*! \brief Default constructor */
-			Prop3() noexcept : value(Prop3::UNKNOWN) {}
+			Prop3() noexcept;
 			/*! \brief Constructor from value */
 			Prop3(int val) noexcept;
+			Prop3(bool val) noexcept;
 			constexpr Prop3(const Prop3 &) = default;
 			constexpr Prop3(Prop3 &&) = default;
 			~Prop3() = default;
@@ -75,21 +76,21 @@ namespace crn
 			/*! \brief Complementary operator */
 			Prop3 operator!() const noexcept;
 			/*! \brief Is true? */
-			bool IsTrue() const noexcept { if (value == TRUE) return true; else return false; }
+			bool IsTrue() const noexcept;
 			/*! \brief Is false? */
-			bool IsFalse() const noexcept { if (value == FALSE) return true; else return false; }
+			bool IsFalse() const noexcept;
 			/*! \brief Is unknown? */
-			bool IsUnknown() const noexcept { if (value == Prop3::UNKNOWN) return true; else return false; }
+			bool IsUnknown() const noexcept;
 
 			/*! \brief Dumps value to a string */
 			String ToString() const;
 			/*! \brief Returns the internal integer value */
 			int GetValue() const noexcept { return value; }
 
-			static const int UNKNOWN; /*!< UNKNOWN value */
-			static const Prop3 True; /*!< True constant */
-			static const Prop3 False; /*!< False constant */
-			static const Prop3 Unknown; /*!< Unknown constant */
+
+			static const Prop3& True(); /*!< True constant */
+			static const Prop3& False(); /*!< False constant */
+			static const Prop3& Unknown(); /*!< Unknown constant */
 
 			/*! \brief Initializes the object from an XML element. Unsafe. */
 			void Deserialize(xml::Element &el);
@@ -97,6 +98,10 @@ namespace crn
 			xml::Element Serialize(xml::Element &parent) const;
 
 		private:
+			static const int FALSEval;
+			static const int TRUEval;
+			static const int UNKNOWNval;
+
 			int value; /*!< internal value */
 
 		CRN_DECLARE_CLASS_CONSTRUCTOR(Prop3)
