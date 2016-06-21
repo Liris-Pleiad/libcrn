@@ -23,16 +23,7 @@
 #define CRNPROP3_HEADER
 
 #include <CRNString.h>
-/*
-#ifdef FALSE
-#undef FALSE
-#endif
-#define FALSE 0
-#ifdef TRUE
-#undef TRUE
-#endif
-#define TRUE 1
-*/
+
 namespace crn
 {
 
@@ -50,10 +41,14 @@ namespace crn
 	{
 		public:
 			/*! \brief Default constructor */
-			Prop3() noexcept;
+			constexpr Prop3() noexcept :
+				value(Prop3::UNKNOWNval)
+			{}
 			/*! \brief Constructor from value */
 			Prop3(int val) noexcept;
-			Prop3(bool val) noexcept;
+			constexpr Prop3(bool val) noexcept :
+				value(val ? TRUEval : FALSEval)
+			{}
 			constexpr Prop3(const Prop3 &) = default;
 			constexpr Prop3(Prop3 &&) = default;
 			~Prop3() = default;
@@ -87,10 +82,12 @@ namespace crn
 			/*! \brief Returns the internal integer value */
 			int GetValue() const noexcept { return value; }
 
-
-			static const Prop3& True(); /*!< True constant */
-			static const Prop3& False(); /*!< False constant */
-			static const Prop3& Unknown(); /*!< Unknown constant */
+			static constexpr int FALSEval = 0;
+			static constexpr int TRUEval = 1;
+			static constexpr int UNKNOWNval = 2;
+			static Prop3 True() { return true; }; /*!< True constant */
+			static Prop3 False() { return false; }; /*!< False constant */
+			static Prop3 Unknown() { return Prop3{}; }; /*!< Unknown constant */
 
 			/*! \brief Initializes the object from an XML element. Unsafe. */
 			void Deserialize(xml::Element &el);
@@ -98,9 +95,6 @@ namespace crn
 			xml::Element Serialize(xml::Element &parent) const;
 
 		private:
-			static const int FALSEval;
-			static const int TRUEval;
-			static const int UNKNOWNval;
 
 			int value; /*!< internal value */
 

@@ -23,13 +23,6 @@
 
 using namespace crn;
 
-const Radian::type Radian::MAXVAL(2.0 * M_PI);
-const TypeInfo<Radian::type>::SumType Radian::VAL2PI(2.0 * M_PI);
 
-const Degree::type Degree::MAXVAL(360.0);
-const TypeInfo<Degree::type>::SumType Degree::VAL2PI(360.0);
-
-const ByteAngle::type ByteAngle::MAXVAL(255);
-const TypeInfo<ByteAngle::type>::SumType ByteAngle::VAL2PI(256);
 
 

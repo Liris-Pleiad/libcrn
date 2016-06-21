@@ -177,11 +177,11 @@ const char* String::CStr() const
 Prop3 String::ToProp3() const
 {
 	if (data == U"true")
-		return Prop3::True;
+		return Prop3::True();
 	else if (data == U"false")
-		return Prop3::False;
+		return Prop3::False();
 	else
-		return Prop3::Unknown;
+		return Prop3::Unknown();
 }
 
 /*!

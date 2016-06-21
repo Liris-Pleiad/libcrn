@@ -27,22 +27,6 @@
 
 using namespace crn;
 
-
-const int Prop3::TRUEval = 1;
-const int Prop3::FALSEval = 0;
-const int Prop3::UNKNOWNval = 2;
-/*
-const Prop3 Prop3::True(TRUEval);
-const Prop3 Prop3::False(FALSEval);
-const Prop3 Prop3::Unknown(Prop3::UNKNOWNval);
-*/
-
-/*! Default constructor */
-Prop3::Prop3() noexcept : 
-value(Prop3::UNKNOWNval) 
-{
-}
-
 /*!
  * Constructor from integer value
  *
@@ -52,18 +36,10 @@ Prop3::Prop3(int val) noexcept
 {
 	if ((val == TRUEval) || (val == FALSEval))
 		value = val;
-	else if (val == TRUE)
+	else if (val == int(TRUE))
 		value = TRUEval;
 	else
 		value = UNKNOWNval;
-}
-
-Prop3::Prop3(bool val) noexcept
-{
-	if (val)
-		value = TRUEval;
-	else
-		value = FALSEval;
 }
 
 /*****************************************************************************/
@@ -198,22 +174,6 @@ bool Prop3::IsTrue() const noexcept { return value == TRUEval; }
 bool Prop3::IsFalse() const noexcept { return value == FALSEval; }
 /*! \brief Is unknown? */
 bool Prop3::IsUnknown() const noexcept { return value == UNKNOWNval; }
-
-const Prop3& Prop3::True()
-{
-	static const Prop3 v{TRUEval};
-	return v;
-}
-const Prop3& Prop3::False()
-{
-	static const Prop3 v{FALSEval};
-	return v;
-}
-const Prop3& Prop3::Unknown()
-{
-	static const Prop3 v{UNKNOWNval};
-	return v;
-}
 
 /*! 
  * Initialize the object from an XML element. Unsafe.

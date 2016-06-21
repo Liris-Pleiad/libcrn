@@ -279,11 +279,11 @@ double ImageGradient::GetHRun() const noexcept
 		{
 			mode = GR_WAIT;
 		}
-		else if (AngularDistance<ByteAngle>(angle, Angle<ByteAngle>::RIGHT) < 16)
+		else if (AngularDistance<ByteAngle>(angle, Angle<ByteAngle>::RIGHT()) < 16)
 		{
 			mode = GR_WAITRIGHT;
 		}
-		else if (AngularDistance<ByteAngle>(angle, Angle<ByteAngle>::LEFT) < 16)
+		else if (AngularDistance<ByteAngle>(angle, Angle<ByteAngle>::LEFT()) < 16)
 		{
 			mode = GR_WAITLEFT;
 		}
@@ -299,11 +299,11 @@ double ImageGradient::GetHRun() const noexcept
 			{
 				pix = GR_WAIT;
 			}
-			else if (AngularDistance<ByteAngle>(angle, Angle<ByteAngle>::RIGHT) < 16)
+			else if (AngularDistance<ByteAngle>(angle, Angle<ByteAngle>::RIGHT()) < 16)
 			{
 				pix = GR_RIGHT;
 			}
-			else if (AngularDistance<ByteAngle>(angle, Angle<ByteAngle>::LEFT) < 16)
+			else if (AngularDistance<ByteAngle>(angle, Angle<ByteAngle>::LEFT()) < 16)
 			{
 				pix = GR_LEFT;
 			}
@@ -421,11 +421,11 @@ const auto GR_BOTTOM = 5;
 		{
 			mode = GR_WAIT;
 		}
-		else if (AngularDistance<ByteAngle>(angle, Angle<ByteAngle>::BOTTOM) < 16)
+		else if (AngularDistance<ByteAngle>(angle, Angle<ByteAngle>::BOTTOM()) < 16)
 		{
 			mode = GR_WAITBOTTOM;
 		}
-		else if (AngularDistance<ByteAngle>(angle, Angle<ByteAngle>::TOP) < 16)
+		else if (AngularDistance<ByteAngle>(angle, Angle<ByteAngle>::TOP()) < 16)
 		{
 			mode = GR_WAITTOP;
 		}
@@ -441,11 +441,11 @@ const auto GR_BOTTOM = 5;
 			{
 				pix = GR_WAIT;
 			}
-			else if (AngularDistance<ByteAngle>(angle, Angle<ByteAngle>::BOTTOM) < 16)
+			else if (AngularDistance<ByteAngle>(angle, Angle<ByteAngle>::BOTTOM()) < 16)
 			{
 				pix = GR_BOTTOM;
 			}
-			else if (AngularDistance<ByteAngle>(angle, Angle<ByteAngle>::TOP) < 16)
+			else if (AngularDistance<ByteAngle>(angle, Angle<ByteAngle>::TOP()) < 16)
 			{
 				pix = GR_TOP;
 			}
