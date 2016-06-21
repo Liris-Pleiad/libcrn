@@ -41,12 +41,12 @@ namespace crn
 	{
 		public:
 			/*! \brief Default constructor */
-			constexpr Prop3() noexcept :
+			Prop3() noexcept :
 				value(Prop3::UNKNOWNval)
 			{}
 			/*! \brief Constructor from value */
 			Prop3(int val) noexcept;
-			constexpr Prop3(bool val) noexcept :
+			Prop3(bool val) noexcept :
 				value(val ? TRUEval : FALSEval)
 			{}
 			constexpr Prop3(const Prop3 &) = default;
