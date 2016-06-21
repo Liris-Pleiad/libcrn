@@ -68,7 +68,11 @@ Main::Main(int &argc, char **&argv):
 		char *loc = getenv("LANG");
 		CRNdout << GETTEXT_PACKAGE << " LANG environment var: " << (loc == nullptr ? "none" : loc) << std::endl;
 
+#if !defined(CRN_USING_GLIB_INTL) && !defined(CRN_USING_LIBINTL)
+		loc = setlocale(LC_ALL, "C");
+#else
 		loc = setlocale(LC_ALL, "");
+#endif
 		if (!loc)
 			CRNdout << GETTEXT_PACKAGE << " setlocale failed" << std::endl;
 		else
