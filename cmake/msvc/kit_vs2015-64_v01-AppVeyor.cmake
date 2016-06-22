@@ -77,8 +77,12 @@ endif()
 
 ### optional 4 : qt4, qt5
 
-set(QTDIR ${MSVC_KIT_ROOT}/Qt/qt-4.8.7-x64-msvc2015)
+set(QTDIR 				${MSVC_KIT_ROOT}/Qt/qt-4.8.7-x64-msvc2015)
 
 #QT5_DIR -> see appveyor
+
+### optional 5 : opencv
+
+set(OpenCV_DIR			${MSVC_KIT_ROOT}/opencv-3.1.0/build)
 
 ###

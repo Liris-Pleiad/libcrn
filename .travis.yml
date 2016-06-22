@@ -40,6 +40,7 @@ addons:
       - libzip-dev
       - libhpdf-dev
       - libqt4-dev
+      - libopencv-dev
       - doxygen
       - graphviz
 
@@ -52,6 +53,7 @@ install:
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install gettext intltool; fi
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install libzip libharu; fi
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install qt; fi
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install homebrew/science/opencv; fi
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install doxygen graphviz; fi
 
 script:

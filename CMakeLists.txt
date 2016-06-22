@@ -179,6 +179,9 @@ endif(MSVC)
 option(CRN_DEPENDENCY_QT4 "Use Qt 4 to build GUIs (in development)." off)
 option(CRN_DEPENDENCY_QT5 "Use Qt 5 to build GUIs (in development)." off)
 
+# OpenCV
+option(CRN_DEPENDENCY_OPENCV "Use OpenCV for 'crn2opencv2crn' demo." on)
+
 # Find Iconv
 find_package(Iconv)
 if(ICONV_FOUND)
