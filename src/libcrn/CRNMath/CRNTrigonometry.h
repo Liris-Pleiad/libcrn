@@ -36,22 +36,22 @@ namespace crn
 	struct Radian
 	{
 		using type = double;
-		static const type MAXVAL;
-		static const TypeInfo<type>::SumType VAL2PI;
+		static constexpr type MAXVAL = 2.0 * M_PI;
+		static constexpr TypeInfo<type>::SumType VAL2PI = 2.0 * M_PI;
 	};
 	/*! \brief Degree angle unit */
 	struct Degree
 	{
 		using type = double;
-		static const type MAXVAL;
-		static const TypeInfo<type>::SumType VAL2PI;
+		static constexpr type MAXVAL = 360;
+		static constexpr TypeInfo<type>::SumType VAL2PI = 360;
 	};
 	/*! \brief BYTE angle unit */
 	struct ByteAngle
 	{
 		using type = uint8_t;
-		static const type MAXVAL;
-		static const TypeInfo<type>::SumType VAL2PI;
+		static constexpr type MAXVAL = 255;
+		static constexpr TypeInfo<type>::SumType VAL2PI = 256;
 	};
 
 	/*! \brief Cosine of an angle 
@@ -248,18 +248,13 @@ namespace crn
 		/*! \brief Computes arc tangent from coordinates */
 		static inline Angle Atan(double y, double x) noexcept(std::is_nothrow_constructible<typename Unit::type>::value) { return Angle<Radian>(atan2(y, x)); }
 
-		static const Angle<Unit> LEFT; /*!< Angle facing left (automatically computed) */
-		static const Angle<Unit> RIGHT; /*!< Angle facing right (automatically computed) */
-		static const Angle<Unit> TOP; /*!< Angle facing top (automatically computed) */
-		static const Angle<Unit> BOTTOM; /*!< Angle facing bottom (automatically computed) */
+		static constexpr Angle<Unit> LEFT() { return typename Unit::type(0); } /*!< Angle facing left (automatically computed) */
+		static constexpr Angle<Unit> RIGHT() { return typename Unit::type(Unit::MAXVAL / 2); } /*!< Angle facing right (automatically computed) */
+		static constexpr Angle<Unit> TOP() { return typename Unit::type(Unit::MAXVAL / 4); } /*!< Angle facing top (automatically computed) */
+		static constexpr Angle<Unit> BOTTOM() { return typename Unit::type((3 * (typename TypeInfo<typename Unit::type>::SumType)Unit::MAXVAL) / 4); } /*!< Angle facing bottom (automatically computed) */
 
 		typename Unit::type value; /*!< The value of the angle */
 	};
-
-	template<typename Unit> const Angle<Unit> Angle<Unit>::LEFT(typename Unit::type(0));
-	template<typename Unit> const Angle<Unit> Angle<Unit>::RIGHT(typename Unit::type(Unit::MAXVAL / 2));
-	template<typename Unit> const Angle<Unit> Angle<Unit>::TOP(typename Unit::type(Unit::MAXVAL / 4));
-	template<typename Unit> const Angle<Unit> Angle<Unit>::BOTTOM(typename Unit::type((3 * (typename TypeInfo<typename Unit::type>::SumType)Unit::MAXVAL) / 4));
 
 	template<class ANGLE> using Unit = typename ANGLE::unit;
 
@@ -338,7 +333,7 @@ namespace crn
 	 *
 	 * Distance between two angles
 	 *
-	 * Usage example: AngularDistance<ByteAngle>(35, Angle<ByteAngle>::TOP)
+	 * Usage example: AngularDistance<ByteAngle>(35, Angle<ByteAngle>::TOP())
 	 *
 	 * \param[in]	a1	first angle
 	 * \param[in]	a2	second angle

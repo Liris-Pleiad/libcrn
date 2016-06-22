@@ -25,24 +25,25 @@
 #include <CRNUtils/CRNXml.h>
 #include <CRNi18n.h>
 
-using namespace crn;
+#ifndef TRUE
+#	define TRUE ~0
+#endif
 
-const int Prop3::UNKNOWN = 2;
-const Prop3 Prop3::True(TRUE);
-const Prop3 Prop3::False(FALSE);
-const Prop3 Prop3::Unknown(Prop3::UNKNOWN);
+using namespace crn;
 
 /*!
  * Constructor from integer value
  *
- * \param[in]	val	the value (TRUE, FALSE, anything else is UNKNOWN)
+ * \param[in]	val	the value (TRUEval, FALSEval, anything else is UNKNOWNval)
  */
 Prop3::Prop3(int val) noexcept
 {
-	if ((val == TRUE) || (val == FALSE))
+	if ((val == TRUEval) || (val == FALSEval))
 		value = val;
+	else if (val == int(TRUE))
+		value = TRUEval;
 	else
-		value = Prop3::UNKNOWN;
+		value = UNKNOWNval;
 }
 
 /*****************************************************************************/
@@ -55,11 +56,11 @@ String Prop3::ToString() const
 {
 	switch (value)
 	{
-		case TRUE:
+		case TRUEval:
 			return String(_("true"));
-		case FALSE:
+		case FALSEval:
 			return String(_("false"));
-		case Prop3::UNKNOWN:
+		case UNKNOWNval:
 		default:
 			return String(_("unknown"));
 	}	
@@ -74,11 +75,11 @@ String Prop3::ToString() const
  */
 Prop3 Prop3::operator|(const Prop3 &prop) const noexcept
 {
-	if ((prop.value == TRUE) || (value == TRUE))
-		return Prop3(TRUE);
-	if ((prop.value == FALSE) && (value == FALSE))
-		return Prop3(FALSE);
-	return Prop3(Prop3::UNKNOWN);
+	if ((prop.value == TRUEval) || (value == TRUEval))
+		return Prop3(TRUEval);
+	if ((prop.value == FALSEval) && (value == FALSEval))
+		return Prop3(FALSEval);
+	return Prop3(UNKNOWNval);
 }
 
 /*!
@@ -90,11 +91,11 @@ Prop3 Prop3::operator|(const Prop3 &prop) const noexcept
  */
 Prop3 Prop3::operator&(const Prop3 &prop) const noexcept
 {
-	if ((prop.value == FALSE) || (value == FALSE))
-		return Prop3(FALSE);
-	if ((prop.value == TRUE) && (value == TRUE))
-		return Prop3(TRUE);
-	return Prop3(Prop3::UNKNOWN);
+	if ((prop.value == FALSEval) || (value == FALSEval))
+		return Prop3(FALSEval);
+	if ((prop.value == TRUEval) && (value == TRUEval))
+		return Prop3(TRUEval);
+	return Prop3(UNKNOWNval);
 }
 
 /*!
@@ -128,11 +129,11 @@ Prop3& Prop3::operator=(const int &prop) noexcept
  */
 Prop3 Prop3::operator!() const noexcept
 {
-	if (value == TRUE)
-		return Prop3(FALSE);
-	if (value == FALSE)
-		return Prop3(TRUE);
-	return Prop3(Prop3::UNKNOWN);
+	if (value == TRUEval)
+		return Prop3(FALSEval);
+	if (value == FALSEval)
+		return Prop3(TRUEval);
+	return Prop3(UNKNOWNval);
 }
 
 /*!
@@ -144,12 +145,12 @@ Prop3 Prop3::operator!() const noexcept
  */
 Prop3& Prop3::operator|=(const Prop3 &prop) noexcept
 {
-	if ((prop.value == TRUE) || (value == TRUE))
-		value = TRUE;
-	else if ((prop.value == FALSE) && (value == FALSE))
-		value = FALSE;
+	if ((prop.value == TRUEval) || (value == TRUEval))
+		value = TRUEval;
+	else if ((prop.value == FALSEval) && (value == FALSEval))
+		value = FALSEval;
 	else
-		value = Prop3::UNKNOWN;
+		value = UNKNOWNval;
 	return *this;
 }
 
@@ -162,14 +163,21 @@ Prop3& Prop3::operator|=(const Prop3 &prop) noexcept
  */
 Prop3& Prop3::operator&=(const Prop3 &prop) noexcept
 {
-	if ((prop.value == FALSE) || (value == FALSE))
-		value = FALSE;
-	else if ((prop.value == TRUE) && (value == TRUE))
-		value = TRUE;
+	if ((prop.value == FALSEval) || (value == FALSEval))
+		value = FALSEval;
+	else if ((prop.value == TRUEval) && (value == TRUEval))
+		value = TRUEval;
 	else
-		value = Prop3::UNKNOWN;
+		value = UNKNOWNval;
 	return *this;
 }
+
+/*! \brief Is true? */
+bool Prop3::IsTrue() const noexcept { return value == TRUEval; }
+/*! \brief Is false? */
+bool Prop3::IsFalse() const noexcept { return value == FALSEval; }
+/*! \brief Is unknown? */
+bool Prop3::IsUnknown() const noexcept { return value == UNKNOWNval; }
 
 /*! 
  * Initialize the object from an XML element. Unsafe.

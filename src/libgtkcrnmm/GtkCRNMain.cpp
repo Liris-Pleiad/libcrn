@@ -156,7 +156,7 @@ Main::Main(int &argc, char **&argv):
 	{
 		try
 		{
-			Glib::RefPtr<Gdk::Pixbuf> pb = GdkCRN::PixbufFromFile(basedir + iconlist[tmp].file);
+			Glib::RefPtr<Gdk::Pixbuf> pb = Gdk::Pixbuf::create_from_file((basedir + iconlist[tmp].file).CStr());
 			if (pb)
 			{
 				icons.push_back(Gtk::IconSet(pb));

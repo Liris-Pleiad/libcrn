@@ -1,4 +1,4 @@
-/* Copyright 2015 CNRS
+/* Copyright 2016 CNRS
  * 
  * This file is part of libcrn.
  * 

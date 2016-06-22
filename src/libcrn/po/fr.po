@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libcrn 3.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-06-02 15:17+0200\n"
+"POT-Creation-Date: 2016-06-14 09:28+0200\n"
 "PO-Revision-Date: 2015-11-24 13:57+0100\n"
 "Last-Translator: Yann LEYDIER <yann@leydier.info>\n"
 "Language-Team: French <>\n"
@@ -935,32 +935,32 @@ msgstr "Chronomètre : "
 msgid "Total time: "
 msgstr "Temps total : "
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNConfigurationFile.cpp:104
+#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNConfigurationFile.cpp:114
 #, fuzzy
 msgid "Cannot save configuration file: "
 msgstr "Impossible de lire le fichier de configuration."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNConfigurationFile.cpp:154
+#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNConfigurationFile.cpp:164
 msgid " is not a Path."
 msgstr " n'est pas un Path."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNConfigurationFile.cpp:167
+#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNConfigurationFile.cpp:177
 msgid " is not a String."
 msgstr " n'est pas un String."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNConfigurationFile.cpp:180
+#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNConfigurationFile.cpp:190
 msgid " is not a StringUTF8."
 msgstr " n'est pas un StringUTF8."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNConfigurationFile.cpp:193
+#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNConfigurationFile.cpp:203
 msgid " is not a Prop3."
 msgstr " n'est pas un Prop3."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNConfigurationFile.cpp:206
+#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNConfigurationFile.cpp:216
 msgid " is not an int."
 msgstr " n'est pas un entier."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNConfigurationFile.cpp:219
+#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNConfigurationFile.cpp:229
 msgid " is not a double."
 msgstr " n'est pas un double."
 

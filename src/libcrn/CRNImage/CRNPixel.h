@@ -38,8 +38,8 @@ namespace crn
 	namespace pixel
 	{
 		using BW = bool;
-		static const BW BWWhite = true;
-		static const BW BWBlack = false;
+		static constexpr BW BWWhite = true;
+		static constexpr BW BWBlack = false;
 	}
 
 	/*************************************************************

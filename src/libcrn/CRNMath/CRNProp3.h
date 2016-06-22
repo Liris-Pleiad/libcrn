@@ -24,15 +24,6 @@
 
 #include <CRNString.h>
 
-#ifdef FALSE
-#undef FALSE
-#endif
-#define FALSE 0
-#ifdef TRUE
-#undef TRUE
-#endif
-#define TRUE 1
-
 namespace crn
 {
 
@@ -50,11 +41,16 @@ namespace crn
 	{
 		public:
 			/*! \brief Default constructor */
-			Prop3() noexcept : value(Prop3::UNKNOWN) {}
+			Prop3() noexcept :
+				value(Prop3::UNKNOWNval)
+			{}
 			/*! \brief Constructor from value */
 			Prop3(int val) noexcept;
-			constexpr Prop3(const Prop3 &) = default;
-			constexpr Prop3(Prop3 &&) = default;
+			Prop3(bool val) noexcept :
+				value(val ? TRUEval : FALSEval)
+			{}
+			Prop3(const Prop3 &) = default;
+			Prop3(Prop3 &&) = default;
 			~Prop3() = default;
 
 			Prop3& operator=(const Prop3 &) = default;
@@ -75,21 +71,23 @@ namespace crn
 			/*! \brief Complementary operator */
 			Prop3 operator!() const noexcept;
 			/*! \brief Is true? */
-			bool IsTrue() const noexcept { if (value == TRUE) return true; else return false; }
+			bool IsTrue() const noexcept;
 			/*! \brief Is false? */
-			bool IsFalse() const noexcept { if (value == FALSE) return true; else return false; }
+			bool IsFalse() const noexcept;
 			/*! \brief Is unknown? */
-			bool IsUnknown() const noexcept { if (value == Prop3::UNKNOWN) return true; else return false; }
+			bool IsUnknown() const noexcept;
 
 			/*! \brief Dumps value to a string */
 			String ToString() const;
 			/*! \brief Returns the internal integer value */
 			int GetValue() const noexcept { return value; }
 
-			static const int UNKNOWN; /*!< UNKNOWN value */
-			static const Prop3 True; /*!< True constant */
-			static const Prop3 False; /*!< False constant */
-			static const Prop3 Unknown; /*!< Unknown constant */
+			static constexpr int FALSEval = 0;
+			static constexpr int TRUEval = 1;
+			static constexpr int UNKNOWNval = 2;
+			static Prop3 True() { return true; }; /*!< True constant */
+			static Prop3 False() { return false; }; /*!< False constant */
+			static Prop3 Unknown() { return Prop3{}; }; /*!< Unknown constant */
 
 			/*! \brief Initializes the object from an XML element. Unsafe. */
 			void Deserialize(xml::Element &el);
@@ -97,6 +95,7 @@ namespace crn
 			xml::Element Serialize(xml::Element &parent) const;
 
 		private:
+
 			int value; /*!< internal value */
 
 		CRN_DECLARE_CLASS_CONSTRUCTOR(Prop3)

@@ -165,8 +165,10 @@ namespace crn
 			void ExportPDF(const Path &fname, const PDF::Attributes &attr = PDF::Attributes(), Progress *prog = nullptr) const;
 #endif
 
-			static size_t ThumbWidth; /*!< Global setting for new thumbnails' width */
-			static size_t ThumbHeight; /*!< Global setting for new thumbnails' height */
+			static size_t GetThumbWidth() noexcept;
+			static size_t GetThumbHeight() noexcept;
+			static void SetThumbWidth(size_t w);
+			static void SetThumbHeight(size_t h);
 
 		private:
 			/*! \brief Adds a new image with a given id */
@@ -205,6 +207,8 @@ namespace crn
 			String date; /*!< The date of the document */
 
 			static const Path thumbdir; /*!< Relative to the thumbnails */
+			static size_t thumbWidth; /*!< Global setting for new thumbnails' width */
+			static size_t thumbHeight; /*!< Global setting for new thumbnails' height */
 	};
 
 	/*! \brief Number of views in a document */
