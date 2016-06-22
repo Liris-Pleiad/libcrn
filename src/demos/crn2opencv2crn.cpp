@@ -3,7 +3,7 @@
 #include "opencv2/highgui/highgui.hpp"
 #include <iostream>
 
-using namespace cv;
+//using namespace cv;
 //using namespace std;
 
 int opencv(int argc, char *argv[])
@@ -15,10 +15,10 @@ int opencv(int argc, char *argv[])
 		return -1;
 	}
 
-	Mat src, dst;
+	cv::Mat src, dst;
 
 	// load image
-	src = imread(argv[1], /*CV_LOAD_IMAGE_COLOR*/CV_LOAD_IMAGE_GRAYSCALE);
+	src = cv::imread(argv[1], /*CV_LOAD_IMAGE_COLOR*/CV_LOAD_IMAGE_GRAYSCALE);
 
 	if (!src.data) // check for invalid input
 	{
@@ -27,22 +27,22 @@ int opencv(int argc, char *argv[])
 	}
 
 	// apply bilateral filter
-	bilateralFilter(src, dst, 15, 80, 80);
+	cv::bilateralFilter(src, dst, 15, 80, 80);
 
 	// apply Gaussian filter
-	//GaussianBlur(src, dst, Size(5, 5), 0, 0);
+	//cv::GaussianBlur(src, dst, Size(5, 5), 0, 0);
 
 	// apply median filter
-	//medianBlur(src, dst, 15);
+	//cv::medianBlur(src, dst, 15);
 
 	// display image
-	imshow("source", src);
-	imshow("result", dst);
+	cv::imshow("source", src);
+	cv::imshow("result", dst);
 
 	// save image
-	imwrite("result.jpg", dst); // it will store the image in name "result.jpg"
+	cv::imwrite("result.jpg", dst); // it will store the image in name "result.jpg"
 
-	waitKey(0); // wait for a keystroke in the window
+	cv::waitKey(0); // wait for a keystroke in the window
 
 	return 0;
 }
