@@ -57,7 +57,11 @@ Config::Config():
 	char *loc = getenv("LANG");
 	CRNdout << "libcrn LANG env: " << (loc == nullptr ? "none" : loc) << std::endl;
 	
+#if !defined(CRN_USING_GLIB_INTL) && !defined(CRN_USING_LIBINTL)
+	loc = setlocale(LC_ALL, "C");
+#else
 	loc = setlocale(LC_ALL, "");
+#endif
 	
 	if (!loc)
 		CRNdout << "libcrn setlocale failed" << std::endl;

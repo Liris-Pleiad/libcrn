@@ -14,7 +14,8 @@ set(ICONV_DIR										${MSVC_KIT_ROOT}/libiconv-1.14)
 ### optional 1 : png, jpeg, intl
 
 #if(CRN_DEPENDENCY_PNG)
-	set(ZLIB_INCLUDE_DIR								${MSVC_KIT_ROOT}/3rdparty/zlib)
+	set(ZLIB_ROOT										${MSVC_KIT_ROOT}/3rdparty/zlib)
+	#set(ZLIB_INCLUDE_DIR								${MSVC_KIT_ROOT}/3rdparty/zlib)
 	set(ZLIB_LIBRARY									${MSVC_KIT_ROOT}/3rdparty/zlib/lib/Release/zlib.lib)
 
 	set(PNG_PNG_INCLUDE_DIR								${MSVC_KIT_ROOT}/3rdparty/libpng)
@@ -76,8 +77,12 @@ endif()
 
 ### optional 4 : qt4, qt5
 
-set(QTDIR ${MSVC_KIT_ROOT}/Qt/qt-4.8.7-x64-msvc2015)
+set(QTDIR 				${MSVC_KIT_ROOT}/Qt/qt-4.8.7-x64-msvc2015)
 
-set(QT5_DIR ${MSVC_KIT_ROOT}/Qt/Qt5.6.0/5.6/msvc2015_64)
+set(QT5_DIR				${MSVC_KIT_ROOT}/Qt/Qt5.6.0/5.6/msvc2015_64)
+
+### optional 5 : opencv
+
+set(OpenCV_DIR			${MSVC_KIT_ROOT}/opencv-3.1.0/build)
 
 ###

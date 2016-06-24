@@ -8,14 +8,17 @@ sudo: required # need by trusty
 dist: trusty
 
 compiler:
-  - gcc
   - clang
+  - gcc
 
 cache: apt # this feature is available only for private repositories
 
 env:
   - BTYPE="-DCMAKE_BUILD_TYPE=Debug"
   - BTYPE="-DCMAKE_BUILD_TYPE=Release"
+
+# doc
+  - GENDOC="true"
 
 #-------------------------------------------------------------------
 # matrix details :
@@ -25,11 +28,20 @@ env:
 #
 #   - 2x clang  under OS X with Apple LLVM      (debug and release)
 #-------------------------------------------------------------------
+#   - 1x clang  under Linux trusty 14.04 LTS    (DOCUMENTATION)
+#-------------------------------------------------------------------
 matrix:
   fast_finish: true
   exclude:
     - os: osx
       compiler: gcc
+# exclude 'doc' under clang-osx and under gcc-linux
+    - os: osx
+      compiler: clang
+      env: GENDOC="true"
+    - os: linux
+      compiler: gcc
+      env: GENDOC="true"
 
 addons:
   apt:
@@ -40,11 +52,13 @@ addons:
       - libzip-dev
       - libhpdf-dev
       - libqt4-dev
+      - libopencv-dev
       - doxygen
       - graphviz
 
 install:
   - cmake --version
+  - DOC="false"
 
 # osx :
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew update; fi
@@ -52,7 +66,12 @@ install:
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install gettext intltool; fi
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install libzip libharu; fi
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install qt; fi
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install homebrew/science/opencv; fi
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install doxygen graphviz; fi
+#
+# documentation :
+  - if [[ "$GENDOC" == "true" ]]; then if [[ "$Pleiad_Original_Repo" == "true" ]]; then if [[ "$TRAVIS_PULL_REQUEST" == "false" ]]; then DOC="true"; echo "---> DOCUMENTATION <---"; fi; fi; fi
+  - if [[ "$DOC" == "true" ]]; then openssl aes-256-cbc -K $encrypted_8f288eedc0f3_key -iv $encrypted_8f288eedc0f3_iv -in .travis/pleiad.enc -out .travis/pleiad -d; chmod 600 .travis/pleiad; fi
 
 script:
 # linux :
@@ -70,3 +89,15 @@ script:
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then mkdir build_osx_qt5 && cd build_osx_qt5 && cmake .. $BTYPE -DCRN_DEPENDENCY_GTKMM2=ON -DCRN_DEPENDENCY_GTKMM3=ON -DCRN_DEPENDENCY_PNG=ON -DCRN_DEPENDENCY_JPEG=ON -DCRN_DEPENDENCY_GDKPIXBUF=ON -DCRN_DEPENDENCY_GETTEXT_INTL=OFF -DCRN_DEPENDENCY_ZIP=ON -DCRN_DEPENDENCY_HARUPDF=ON -DCRN_DEPENDENCY_QT4=OFF -DCRN_DEPENDENCY_QT5=ON -DQT5_DIR=/usr/local/opt/qt5; fi
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then make; fi
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then make test; fi
+#
+# linux only (add qt5 after qt4 in the same job) :
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then if [[ "$DOC" == "false" ]]; then sudo apt-get -y install qtbase5-dev qt5-default; fi; fi # ---> now install qt5
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then if [[ "$DOC" == "false" ]]; then cd ..; fi; fi
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then if [[ "$DOC" == "false" ]]; then mkdir build_linux_qt5 && cd build_linux_qt5 && cmake .. $BTYPE -DCRN_DEPENDENCY_GTKMM2=ON -DCRN_DEPENDENCY_GTKMM3=ON -DCRN_DEPENDENCY_PNG=ON -DCRN_DEPENDENCY_JPEG=ON -DCRN_DEPENDENCY_GDKPIXBUF=ON -DCRN_DEPENDENCY_GETTEXT_INTL=ON  -DCRN_DEPENDENCY_ZIP=ON -DCRN_DEPENDENCY_HARUPDF=ON -DCRN_DEPENDENCY_QT4=OFF -DCRN_DEPENDENCY_QT5=ON; fi; fi
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then if [[ "$DOC" == "false" ]]; then make; fi; fi
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then if [[ "$DOC" == "false" ]]; then make test; fi; fi
+#
+# building the documentation
+after_success:
+  - if [[ "$DOC" == "true" ]]; then make doc; fi
+  - if [[ "$DOC" == "true" ]]; then rsync -azv --delete --delete-after -e 'ssh -oStrictHostKeyChecking=no -i ../.travis/pleiad' ../doc/html/ mepp@liris.cnrs.fr:/home/mepp/public_html/libcrn/doc/nightly/; fi
