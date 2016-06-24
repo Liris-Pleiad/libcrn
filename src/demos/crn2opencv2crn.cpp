@@ -1,10 +1,6 @@
-//#include <opencv2/core/core.hpp>
 #include "opencv2/imgproc/imgproc.hpp"
 #include "opencv2/highgui/highgui.hpp"
 #include <iostream>
-
-//using namespace cv;
-//using namespace std;
 
 int opencv(int argc, char *argv[])
 {
@@ -35,7 +31,7 @@ int opencv(int argc, char *argv[])
 	// apply median filter
 	//cv::medianBlur(src, dst, 15);
 
-	// display image
+	// display images
 	cv::imshow("source", src);
 	cv::imshow("result", dst);
 
@@ -47,22 +43,14 @@ int opencv(int argc, char *argv[])
 	return 0;
 }
 
-//#include <CRNBlock.h>
-//#include <CRNFeature/CRNFeatureSet.h>
-//#include <CRNFeature/CRNFeatureExtractorProfile.h>
-//#include <CRNFeature/CRNFeatureExtractorProjection.h>
-//#include <CRNFeature/CRNBlockTreeExtractorTextLinesFromProjection.h>
-//#include <CRNAI/CRNBasicClassify.h>
-
 #include <CRNIO/CRNIO.h>
 #include <CRNUtils/CRNTimer.h>
 #include <CRNImage/CRNImageGray.h>
-
-//using namespace crn::literals;
+#include <CRNBlock.h>
 
 int main(int argc, char *argv[])
 {
-	// Check argument.
+	// check argument
 	if (argc < 2)
 	{
 		printf("Usage: %s <document_image_name>\n", argv[0]);
@@ -73,23 +61,48 @@ int main(int argc, char *argv[])
 
 	crn::Timer::Start(U"crn2opencv2crn");
 
-	////////////////////////////////////////////////////////////////////////////
-	// 1. Document                                                            //
-	////////////////////////////////////////////////////////////////////////////
-	// Open the document image file.
+	// open the document image file
 	auto imageFileName = crn::Path(argv[1]);
 	auto pageimage = crn::SImage{};
 	try
 	{
-		pageimage	= crn::NewImageFromFile(imageFileName);
-
-		opencv(argc, argv); // TEMP
+		pageimage = crn::NewImageFromFile(imageFileName);
 	}
 	catch (...)
 	{
 		CRNError(U"Cannot open document image");
 		return -2;
 	}
+
+	//opencv(argc, argv); // TEMP
+	
+	// 'make' a gray image
+	crn::SBlock b(crn::Block::New(pageimage));
+	crn::SImageGray ig(b->GetGray());
+
+	// [OpenCV] : import the gray image from libcrn
+	cv::Mat src(ig->GetHeight(), ig->GetWidth(), CV_8UC1, (unsigned char*)ig->GetPixels());
+
+	// [OpenCV] : apply a bilateral filter
+	cv::Mat dst;
+	cv::bilateralFilter(src, dst, 15, 80, 80);
+
+#if(0)
+	// [OpenCV] : display images
+	cv::imshow("source", src);
+	cv::imshow("result", dst);
+
+	cv::waitKey(0); // wait for a keystroke in the window
+#endif
+	
+	// save the source gray image
+	ig->SavePNG("gray_img_src.png");
+	
+	// [OpenCV] : copy result image to source image
+	dst.copyTo(src);
+
+	// save the result gray image
+	ig->SavePNG("gray_img_dst_after_OpenCV_bilateral_filter.png");
 
 	crn::Timer::Split(U"crn2opencv2crn", U"Document");
 	CRNVerbose(crn::Timer::Stats(U"crn2opencv2crn"));
