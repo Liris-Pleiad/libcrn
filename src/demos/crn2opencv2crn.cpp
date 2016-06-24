@@ -1,47 +1,5 @@
 #include "opencv2/imgproc/imgproc.hpp"
 #include "opencv2/highgui/highgui.hpp"
-#include <iostream>
-
-int opencv(int argc, char *argv[])
-{
-	// check argument
-	if (argc < 2)
-	{
-		printf("Usage: %s <document_image_name>\n", argv[0]);
-		return -1;
-	}
-
-	cv::Mat src, dst;
-
-	// load image
-	src = cv::imread(argv[1], /*CV_LOAD_IMAGE_COLOR*/CV_LOAD_IMAGE_GRAYSCALE);
-
-	if (!src.data) // check for invalid input
-	{
-		std::cout << "Cannot open document image" << std::endl;
-		return -2;
-	}
-
-	// apply bilateral filter
-	cv::bilateralFilter(src, dst, 15, 80, 80);
-
-	// apply Gaussian filter
-	//cv::GaussianBlur(src, dst, Size(5, 5), 0, 0);
-
-	// apply median filter
-	//cv::medianBlur(src, dst, 15);
-
-	// display images
-	cv::imshow("source", src);
-	cv::imshow("result", dst);
-
-	// save image
-	cv::imwrite("result.jpg", dst); // it will store the image in name "result.jpg"
-
-	cv::waitKey(0); // wait for a keystroke in the window
-
-	return 0;
-}
 
 #include <CRNIO/CRNIO.h>
 #include <CRNUtils/CRNTimer.h>
@@ -73,8 +31,6 @@ int main(int argc, char *argv[])
 		CRNError(U"Cannot open document image");
 		return -2;
 	}
-
-	//opencv(argc, argv); // TEMP
 	
 	// 'make' a gray image
 	crn::SBlock b(crn::Block::New(pageimage));
