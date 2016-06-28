@@ -20,7 +20,7 @@ set(PRJ_NAME libcrn)
 
 set(CRN_PACKAGE_VERSION_MAJOR 3)
 set(CRN_PACKAGE_VERSION_MINOR 9)
-set(CRN_PACKAGE_VERSION_PATCH 1)
+set(CRN_PACKAGE_VERSION_PATCH 3)
 set(CRN_PACKAGE_VERSION "${CRN_PACKAGE_VERSION_MAJOR}.${CRN_PACKAGE_VERSION_MINOR}.${CRN_PACKAGE_VERSION_PATCH}")
 message("${PRJ_NAME} ${CRN_PACKAGE_VERSION}")
 
@@ -178,6 +178,9 @@ else(MSVC)
 endif(MSVC)
 option(CRN_DEPENDENCY_QT4 "Use Qt 4 to build GUIs (in development)." off)
 option(CRN_DEPENDENCY_QT5 "Use Qt 5 to build GUIs (in development)." off)
+
+# OpenCV
+option(CRN_DEPENDENCY_OPENCV "Use OpenCV for 'crn2opencv2crn' demo." on)
 
 # Find Iconv
 find_package(Iconv)

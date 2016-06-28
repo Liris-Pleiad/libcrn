@@ -41,7 +41,7 @@ namespace GtkCRN
 	{
 		public:
 			/*! \brief Constructor */
-			Prop3(Gtk::IconSize is, const crn::Prop3 &p = crn::Prop3::Unknown);
+			Prop3(Gtk::IconSize is, const crn::Prop3 &p = crn::Prop3::Unknown());
 			virtual ~Prop3() override {}
 
 			/*! \brief Sets the value */

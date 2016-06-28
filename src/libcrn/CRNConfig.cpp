@@ -42,7 +42,7 @@ Config::Config():
 		conf.SetData(topDirKey(), Path(CRN_PROJECT_FULL_PATH));
 		conf.SetData(localeDirKey(), Path(CRN_LOCALE_FULL_PATH));
 		conf.SetData(staticDataDirKey(), Path(CRN_DATA_FULL_PATH));
-		conf.SetData(verboseKey(), Prop3::True);
+		conf.SetData(verboseKey(), Prop3::True());
 		conf.Save();
 	}
 	IO::IsVerbose() = conf.GetProp3(verboseKey()).IsTrue();
@@ -57,7 +57,11 @@ Config::Config():
 	char *loc = getenv("LANG");
 	CRNdout << "libcrn LANG env: " << (loc == nullptr ? "none" : loc) << std::endl;
 	
+#if !defined(CRN_USING_GLIB_INTL) && !defined(CRN_USING_LIBINTL)
+	loc = setlocale(LC_ALL, "C");
+#else
 	loc = setlocale(LC_ALL, "");
+#endif
 	
 	if (!loc)
 		CRNdout << "libcrn setlocale failed" << std::endl;

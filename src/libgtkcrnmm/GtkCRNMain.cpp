@@ -68,7 +68,11 @@ Main::Main(int &argc, char **&argv):
 		char *loc = getenv("LANG");
 		CRNdout << GETTEXT_PACKAGE << " LANG environment var: " << (loc == nullptr ? "none" : loc) << std::endl;
 
+#if !defined(CRN_USING_GLIB_INTL) && !defined(CRN_USING_LIBINTL)
+		loc = setlocale(LC_ALL, "C");
+#else
 		loc = setlocale(LC_ALL, "");
+#endif
 		if (!loc)
 			CRNdout << GETTEXT_PACKAGE << " setlocale failed" << std::endl;
 		else
@@ -156,7 +160,7 @@ Main::Main(int &argc, char **&argv):
 	{
 		try
 		{
-			Glib::RefPtr<Gdk::Pixbuf> pb = GdkCRN::PixbufFromFile(basedir + iconlist[tmp].file);
+			Glib::RefPtr<Gdk::Pixbuf> pb = Gdk::Pixbuf::create_from_file((basedir + iconlist[tmp].file).CStr());
 			if (pb)
 			{
 				icons.push_back(Gtk::IconSet(pb));

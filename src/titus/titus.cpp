@@ -1965,7 +1965,11 @@ class Titus: public GtkCRN::App
 
 int main(int argc, char *argv[])
 {
+#if !defined(CRN_USING_GLIB_INTL) && !defined(CRN_USING_LIBINTL)
+	setlocale(LC_ALL, "C");
+#else
 	setlocale(LC_ALL, "");
+#endif
 	CRNbindtextdomain(GETTEXT_PACKAGE, CRN_LOCALE_FULL_PATH);
 	CRNbind_textdomain_codeset(GETTEXT_PACKAGE, "UTF-8");
 	CRNtextdomain(GETTEXT_PACKAGE);

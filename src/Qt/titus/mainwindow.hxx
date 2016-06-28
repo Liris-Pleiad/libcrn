@@ -24,6 +24,7 @@
 #define HEADER_mainwindow
 
 #include <QMainWindow>
+#include <QtCRNImage.hxx>
 
 /*!
  * \class mainwindow
@@ -47,9 +48,10 @@ class mainwindow : public QMainWindow
 
 	protected:
 
-		private slots:
+	private slots:
 
 	private:
+		QtCRN::Image *img;
 };
 
 #endif

@@ -123,19 +123,19 @@ namespace crn
 	template<typename Unit> Direction ToDirection(const Angle<Unit> &ang) noexcept
 	{
 		Angle<ByteAngle> a(ang);
-		if (a == Angle<ByteAngle>::LEFT)
+		if (a == Angle<ByteAngle>::LEFT())
 		{
 			return Direction::LEFT;
 		}
-		else if (a == Angle<ByteAngle>::RIGHT)
+		else if (a == Angle<ByteAngle>::RIGHT())
 		{
 			return Direction::RIGHT;
 		}
-		else if (a == Angle<ByteAngle>::TOP)
+		else if (a == Angle<ByteAngle>::TOP())
 		{
 			return Direction::TOP;
 		}
-		else if (a == Angle<ByteAngle>::BOTTOM)
+		else if (a == Angle<ByteAngle>::BOTTOM())
 		{
 			return Direction::BOTTOM;
 		}

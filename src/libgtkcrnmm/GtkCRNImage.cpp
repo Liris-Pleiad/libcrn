@@ -2496,7 +2496,15 @@ bool Image::refresh()
 							Glib::RefPtr<Pango::Layout> pl(Pango::Layout::create(cc));
 							pl->set_font_description(fdesc);
 							pl->set_text(it->second->label.Std());
-							cc->move_to(z.GetLeft(), z.GetTop());
+							//cc->move_to(z.GetLeft(), z.GetTop());
+							////////
+							auto w = 0, h = 0;
+							pl->get_pixel_size(w, h);
+							auto posy = z.GetTop();
+							if (h > z.GetHeight())
+								posy = z.GetBottom() - h;
+							cc->move_to(z.GetLeft(), posy);
+							////////
 							cc->set_source_rgb(lit->second.config.text_color.get_red_p(), lit->second.config.text_color.get_green_p(), lit->second.config.text_color.get_blue_p());
 							pl->show_in_cairo_context(cc);
 						}
