@@ -13,7 +13,7 @@ os: Visual Studio 2015
 
 # environment variables
 environment:
-  QT5_DIR: C:\Qt\5.6\msvc2015_64
+  QT5_DIR: C:\Qt\5.7\msvc2015_64
 #
   KIT_ROOT: C:\local_vs2015_64
 #
@@ -52,7 +52,8 @@ init:
 #  - dir C:\Libraries
 #  - dir C:\Libraries\boost_1_59_0
 #  - dir C:\Qt
-#  - dir C:\Qt\5.6
+#  - dir C:\Qt\5.7
+  - C:\Qt\5.7\msvc2015_64\bin\qmake --version
   - set PATH=%KIT_ROOT%\gettext;%PATH%
   - set APPVEYOR=TRUE
   - set CACHE=FALSE
