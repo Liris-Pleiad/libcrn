@@ -2,12 +2,12 @@ language: cpp
 
 os:
   - linux
-  - osx
+  - osx # default : Xcode 6.1b under Mavericks (OS X 10.9) -> more 'bottles', less compilation time...
 
 sudo: required # need by trusty
 dist: trusty # Ubuntu 14.04 LTS
 
-osx_image: xcode7.3 # Xcode 7.3.1 under El Capitan (OS X 10.11)
+#osx_image: xcode7.3 # Xcode 7.3.1 under El Capitan (OS X 10.11)
 #osx_image: xcode6.4 # Xcode 6.4 under Yosemite (OS X 10.10)
 
 compiler:
@@ -69,7 +69,7 @@ install:
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install gettext intltool; fi
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install libzip libharu; fi
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install qt; fi
-  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install homebrew/science/opencv; fi
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then travis_wait 60 brew install homebrew/science/opencv; fi
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install doxygen graphviz; fi
 #
 # documentation :
