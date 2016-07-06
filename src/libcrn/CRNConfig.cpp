@@ -39,7 +39,7 @@ Config::Config():
 	if (!conf.Load())
 	{
 		// default init
-		conf.SetData(topDirKey(), Path(CRN_PROJECT_FULL_PATH));
+		conf.SetData(topDirKey(), Path(CRN_PROJECT_PATH));
 		conf.SetData(localeDirKey(), Path(CRN_LOCALE_FULL_PATH));
 		conf.SetData(staticDataDirKey(), Path(CRN_DATA_FULL_PATH));
 		conf.SetData(verboseKey(), Prop3::True());

@@ -42,6 +42,7 @@ set(RUNTIME_INSTALL_PATH "bin")
 set(LIBRARY_INSTALL_PATH "lib")
 set(ARCHIVE_INSTALL_PATH "lib")
 set(CRN_DATA_PATH "share/crn" CACHE PATH "Path to the data files")
+set(CRN_LOCALE_PATH "share/locale" CACHE PATH "Path to the translation files")
 
 # put all binaries in the same directory
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/out")
@@ -52,12 +53,25 @@ set(CMAKE_INSTALL_RPATH "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}")
 # platform
 if(UNIX)
 	set(CRN_PF_UNIX ON)
+	set(CRN_CONFIG_FULL_PATH "/etc")
+	set(CRN_CONFIG_FULL_PATH "${CMAKE_INSTALL_PREFIX}/${CRN_DATA_PATH}")
+	set(CRN_PROJECT_FULL_PATH "/var/crn")
+	set(CRN_LOCALE_FULL_PATH "${CMAKE_INSTALL_PREFIX}/${CRN_LOCALE_PATH}")
 endif(UNIX)
 if(APPLE)
 	set(CRN_PF_APPLE ON)
+	set(CRN_CONFIG_FULL_PATH "/etc")
+	set(CRN_CONFIG_FULL_PATH "${CMAKE_INSTALL_PREFIX}/${CRN_DATA_PATH}")
+	set(CRN_PROJECT_FULL_PATH "/var/crn")
+	set(CRN_LOCALE_FULL_PATH "${CMAKE_INSTALL_PREFIX}/${CRN_LOCALE_PATH}")
 endif(APPLE)
 # for windows: _MSC_VER
 if(ANDROID)
+	set(CRN_CONFIG_FULL_PATH "") # TODO change to the real correct value
+	set(CRN_CONFIG_FULL_PATH "${CMAKE_INSTALL_PREFIX}/${CRN_DATA_PATH}")
+	set(CRN_PROJECT_FULL_PATH "/var/crn")
+	set(CRN_LOCALE_FULL_PATH "${CMAKE_INSTALL_PREFIX}/${CRN_LOCALE_PATH}")
+
 	if(NOT ANDROID_NATIVE_API_LEVEL)
 		set(ANDROID_NATIVE_API_LEVEL 9)
 		message(FATAL_ERROR "Android API level set to 9.")
@@ -116,6 +130,12 @@ if(MSVC)
 	set(CMAKE_STATIC_LIBRARY_PREFIX "lib")
 	set(CMAKE_IMPORT_LIBRARY_PREFIX "lib")
 	set(CMAKE_DEBUG_POSTFIX "-d")
+
+	set(CRN_CONFIG_PATH "")
+	set(CRN_DATA_FULL_PATH "${CRN_DATA_PATH}")
+	set(CRN_PROJECT_PATH "$ENV{CommonProgramFiles}/crn")
+	string(REPLACE "\\" "/" CRN_PROJECT_PATH ${CRN_PROJECT_PATH})
+	set(CRN_LOCALE_FULL_PATH "${CRN_LOCALE_PATH}")
 
 	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /MP /D_MBCS") # multi-process build + multibyte C strings
 
