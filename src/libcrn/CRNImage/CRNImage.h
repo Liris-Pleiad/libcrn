@@ -106,7 +106,7 @@ namespace crn
 	class Path;
 	/*! \brief Loads an image from a file */
 	UImage NewImageFromFile(const Path &fname);
-
+	
 	/****************************************************************************/
 	/*! \brief Abstract class for images
 	 *
@@ -320,6 +320,13 @@ template<typename T1, typename T2> crn::Image<crn::SumType<typename std::common_
 
 namespace crn
 {
+	/*! \brief Loads an image from a file and converts it if necessary */
+	UImageRGB NewImageRGBFromFile(const Path &fname);
+	/*! \brief Loads an image from a file and converts it if necessary */
+	UImageGray NewImageGrayFromFile(const Path &fname);
+	/*! \brief Loads an image from a file and converts it if necessary */
+	UImageBW NewImageBWFromFile(const Path &fname);
+
 	/*! Converts the image to a type that has a smaller pixel range
 	 * \param[in]	img	the source image
 	 * \return	a new image

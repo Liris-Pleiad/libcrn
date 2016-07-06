@@ -25,6 +25,7 @@
 #include <CRNImage/CRNImageRGB.h>
 #include <CRNException.h>
 #include <CRNIO/CRNFileShield.h>
+#include <typeindex>
 #include <CRNi18n.h>
 
 #ifdef CRN_USING_GDKPB
@@ -47,6 +48,7 @@
 #endif
 
 using namespace crn;
+using namespace crn::literals;
 
 ImageBase::~ImageBase() = default;
 
@@ -646,4 +648,67 @@ UImage crn::NewImageFromFile(const Path &fname)
 		throw ExceptionIO(StringUTF8("UImage NewImageFromFile(const Path &fname): ") +
 			_("No decoder could open the file ") + StringUTF8{ fname } + "\n" + errors.CStr());
 	return std::move(res.first);
+}
+
+/*! Loads an image from a file and converts it if necessary
+ * \throws	ExceptionInvalidArgument	null file name
+ * \throws	ExceptionIO	no decoder found
+ * \throws	ExceptionDomain	unhandled image format
+ * \param[in]	fname	full path to the image file
+ * \return	a pointer on an image
+ */
+UImageRGB crn::NewImageRGBFromFile(const Path &fname)
+{
+	auto img = NewImageFromFile(fname);
+	if (typeid(ImageRGB) == typeid(*img))
+		return std::unique_ptr<ImageRGB>(static_cast<ImageRGB*>(img.release()));
+	auto *ig = dynamic_cast<const ImageGray*>(img.get());
+	if (ig)
+		return std::make_unique<ImageRGB>(*ig);
+	auto *ibw = dynamic_cast<const ImageBW*>(img.get());
+	if (ibw)
+		return std::make_unique<ImageRGB>(*ibw);
+	throw ExceptionDomain("NewImageRGBFromFile(): "_s + _("unknown image format."));
+}
+
+/*! Loads an image from a file and converts it if necessary using the default RGB2Gray method
+* \throws	ExceptionInvalidArgument	null file name
+* \throws	ExceptionIO	no decoder found
+* \throws	ExceptionDomain	unhandled image format
+* \param[in]	fname	full path to the image file
+* \return	a pointer on an image
+*/
+UImageGray crn::NewImageGrayFromFile(const Path &fname)
+{
+	auto img = NewImageFromFile(fname);
+	auto *irgb = dynamic_cast<const ImageRGB*>(img.get());
+	if (irgb)
+		return MoveUnique(MakeImageGray(*irgb));
+	if (typeid(ImageGray) == typeid(*img))
+		return std::unique_ptr<ImageGray>(static_cast<ImageGray*>(img.release()));
+	auto *ibw = dynamic_cast<const ImageBW*>(img.get());
+	if (ibw)
+		return std::make_unique<ImageGray>(*ibw);
+	throw ExceptionDomain("NewImageGrayFromFile(): "_s + _("unknown image format."));
+}
+
+/*! Loads an image from a file and converts it if necessary using the default RGB2Gray and Gray2BW methods
+* \throws	ExceptionInvalidArgument	null file name
+* \throws	ExceptionIO	no decoder found
+* \throws	ExceptionDomain	unhandled image format
+* \param[in]	fname	full path to the image file
+* \return	a pointer on an image
+*/
+UImageBW crn::NewImageBWFromFile(const Path &fname)
+{
+	auto img = NewImageFromFile(fname);
+	auto *irgb = dynamic_cast<const ImageRGB*>(img.get());
+	if (irgb)
+		return MoveUnique(MakeImageBW(MakeImageGray(*irgb)));
+	auto *ig = dynamic_cast<const ImageGray*>(img.get());
+	if (ig)
+		return MoveUnique(MakeImageBW(*ig));
+	if (typeid(ImageBW) == typeid(*img))
+		return std::unique_ptr<ImageBW>(static_cast<ImageBW*>(img.release()));
+	throw ExceptionDomain("NewImageBWFromFile(): "_s + _("unknown image format."));
 }

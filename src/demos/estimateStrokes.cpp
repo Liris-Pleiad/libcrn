@@ -20,8 +20,6 @@
  */
 
 #include <CRN.h>
-#include <locale.h>
-#include <CRNBlock.h>
 #include <CRNImage/CRNImageGray.h>
 #include <CRNConfig.h>
 #include <CRNIO/CRNIO.h>
@@ -41,9 +39,7 @@ int main(int argc, char *argv[])
 	{
 		try
 		{
-			crn::SImage img(crn::NewImageFromFile(argv[tmp]));
-			crn::SBlock b(crn::Block::New(img));
-			crn::SImageGray ig(b->GetGray());
+			auto ig = crn::NewImageGrayFromFile(argv[tmp]);
 			CRNVerbose(crn::String(U"*** ") + argv[tmp] + crn::String(U" ***"));
 			CRNVerbose(crn::String(U"\tStokes width: ") + StrokesWidth(*ig));
 			CRNVerbose(crn::String(U"\tStokes height: ") + StrokesHeight(*ig));

@@ -43,23 +43,10 @@ int main(int argc, char *argv[])
 
 	// open the document image file
 	auto imageFileName = crn::Path(argv[1]);
-	auto pageimage = crn::SImage{};
+	
 	try
 	{
-		pageimage = crn::NewImageFromFile(imageFileName);
-	}
-	catch (...)
-	{
-		CRNError(U"Cannot open document image");
-		return -2;
-	}
-	
-	// 'make' a gray image
-	crn::SBlock b(crn::Block::New(pageimage));
-
-	{
-		crn::SImageGray ig(b->GetGray());
-
+		auto ig = crn::NewImageGrayFromFile(imageFileName);
 		// [OpenCV] : import the gray image from libcrn
 		auto src = crn::WrapCVMat(*ig);
 
@@ -86,9 +73,15 @@ int main(int argc, char *argv[])
 
 		crn::Timer::Split(U"crn2opencv2crn", U"Gray");
 	}
-
+	catch (...)
 	{
-		auto irgb = b->GetRGB();
+		CRNError(U"Cannot open document image");
+		return -2;
+	}
+
+	try
+	{
+		auto irgb = crn::NewImageRGBFromFile(imageFileName);
 
 		// [OpenCV] : import the gray image from libcrn
 		auto src = crn::WrapCVMat(*irgb);
@@ -116,7 +109,11 @@ int main(int argc, char *argv[])
 
 		crn::Timer::Split(U"crn2opencv2crn", U"RGB");
 	}
-
+	catch (...)
+	{
+		CRNError(U"Cannot open document image");
+		return -2;
+	}
 	CRNVerbose(crn::Timer::Stats(U"crn2opencv2crn"));
 
 	return 0;

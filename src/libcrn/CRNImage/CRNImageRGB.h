@@ -246,17 +246,7 @@ namespace crn
 	template<> struct IsSerializable<RGB2GrayL> : public std::true_type {};
 	template<> struct IsSerializable<RGB2GrayLPrime> : public std::true_type {};
 
-	template<typename T> Image<T> MakeImageGray(const Image<pixel::RGB<T>> &img)
-	{
-		auto act = std::dynamic_pointer_cast<RGB2Gray>(DefaultAction::GetAction(U"RGB2Gray"));
-		if (!act)
-		{
-			act = std::make_shared<RGB2GrayL>();
-			DefaultAction::SetAction(U"RGB2Gray", act);
-		}
-		return act->Convert(img);
-	}
-
+	ImageGray MakeImageGray(const ImageRGB &img);
 	/*@}*/
 }
 #endif

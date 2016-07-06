@@ -646,6 +646,16 @@ ImageGray crn::PseudoSaturation(const ImageRGB &img)
 	return pseudo_saturation_img;
 }
 
+ImageGray crn::MakeImageGray(const ImageRGB &img)
+{
+	auto act = std::dynamic_pointer_cast<RGB2Gray>(DefaultAction::GetAction(U"RGB2Gray"));
+	if (!act)
+	{
+		act = std::make_shared<RGB2GrayL>();
+		DefaultAction::SetAction(U"RGB2Gray", act);
+	}
+	return act->Convert(img);
+}
 
 CRN_BEGIN_CLASS_CONSTRUCTOR(RGB2GrayRed)
 	CRN_DATA_FACTORY_REGISTER(U"RGB2GrayRed", RGB2GrayRed)
