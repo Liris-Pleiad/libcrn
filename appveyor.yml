@@ -123,4 +123,4 @@ build_script:
 
 # to run your custom scripts instead of automatic tests
 test_script:
-- ctest
+- ctest -C %CONFIGURATION%
