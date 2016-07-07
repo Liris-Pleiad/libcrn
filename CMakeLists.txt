@@ -176,11 +176,13 @@ endif(APPLE)
 # Dependencies
 ###############################################################################
 # Image
-option(CRN_DEPENDENCY_PNG "Use libpng to load and save images." on)
 option(CRN_DEPENDENCY_JPEG "Use jpeglib to load and save images." off)
 option(CRN_DEPENDENCY_GDKPIXBUF "Use GdkPixbuf to load and save images." off)
 if(MSVC)
 	option(CRN_DEPENDENCY_GDIPLUS "Use Gdi+ to load and save images." on)
+	option(CRN_DEPENDENCY_PNG "Use libpng to load and save images." off)
+else()
+	option(CRN_DEPENDENCY_PNG "Use libpng to load and save images." on)
 endif()
 
 # Misc
@@ -200,7 +202,7 @@ option(CRN_DEPENDENCY_QT4 "Use Qt 4 to build GUIs (in development)." off)
 option(CRN_DEPENDENCY_QT5 "Use Qt 5 to build GUIs (in development)." off)
 
 # OpenCV
-option(CRN_DEPENDENCY_OPENCV "Use OpenCV for 'crn2opencv2crn' demo." on)
+option(CRN_DEPENDENCY_OPENCV "Use OpenCV for 'crn2opencv2crn' demo." off)
 
 # Find Iconv
 find_package(Iconv)
