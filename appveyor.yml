@@ -54,7 +54,10 @@ init:
 #  - dir C:\Qt
 #  - dir C:\Qt\5.7
   - C:\Qt\5.7\msvc2015_64\bin\qmake --version
-  - set PATH=%KIT_ROOT%\gettext;%PATH%
+  - set PATH=%KIT_ROOT%\gettext;%KIT_ROOT%\libiconv-1.14\lib;%KIT_ROOT%\3rdparty\libpng\lib\Release;%KIT_ROOT%\3rdparty\zlib\lib\Release;%KIT_ROOT%\libzip-1.1.2\lib\Release;%KIT_ROOT%\libharu-2.3.0\lib\Release;%KIT_ROOT%\Qt\qt-4.8.7-x64-msvc2015\bin;%QT5_DIR%\bin;%KIT_ROOT%\opencv-3.1.0\build\x64\vc14\bin;%PATH%
+  - if %B_USE_GTKMM2%==TRUE set PATH=%PATH%;%KIT_ROOT%\gtkmm2\bin
+  - if %B_USE_GTKMM3D%==TRUE set PATH=%PATH%;%KIT_ROOT%\gtkmm3_debug\bin
+  - if %B_USE_GTKMM3R%==TRUE set PATH=%PATH%;%KIT_ROOT%\gtkmm3_release\bin
   - set APPVEYOR=TRUE
   - set CACHE=FALSE
 
@@ -117,3 +120,7 @@ before_build:
 # to run your custom scripts instead of automatic MSBuild
 build_script:
   - msbuild /m libcrn.sln # /m is ignored ? (but not really important because the VM has only one processor !)
+
+# to run your custom scripts instead of automatic tests
+test_script:
+- ctest -C %CONFIGURATION%
