@@ -129,9 +129,9 @@ namespace crn
 			/*! \brief Conversion to unsigned long long */
 			unsigned long long ToULongLong() const { return convertTo<unsigned long long>(); }
 			/*! \brief Conversion to int64_t */
-			int64_t Toint64_t() const { return convertTo<int64_t>(); }
+			int64_t ToInt64() const { return convertTo<int64_t>(); }
 			/*! \brief Conversion to uint64_t */
-			uint64_t Touint64_t() const { return convertTo<uint64_t>(); }
+			uint64_t ToUInt64() const { return convertTo<uint64_t>(); }
 			
 			/**********************************************************************/
 			/* String manipulation                                                */

@@ -64,13 +64,13 @@ Path ConfigurationFile::Load()
 	{
 		dirs.push_back(cwd);
 		dirs.push_back(GetUserDirectory());
-		dirs.push_back(CRN_CONFIG_FULL_PATH);
+		dirs.push_back(CRN_CONFIG_PATH);
 	}
 	else
 	{
 		dirs.push_back(GetUserDirectory());
 		dirs.push_back(cwd);
-		dirs.push_back(CRN_CONFIG_FULL_PATH);
+		dirs.push_back(CRN_CONFIG_PATH);
 	}
 	files.push_back(filename + ".xml");
 	files.push_back("_" + filename + ".xml");
@@ -158,9 +158,18 @@ SCObject ConfigurationFile::GetData(const String &key) const
  */
 Path ConfigurationFile::GetPath(const String &key) const
 {
-	SCPath str(std::dynamic_pointer_cast<const Path>(GetData(key)));
+	auto str = std::dynamic_pointer_cast<const Path>(GetData(key));
 	if (str)
-		return *str;
+	{
+		if (str->IsRelative())
+		{
+			char cwd[4096];
+			getcwd(cwd, 4096);
+			return crn::Path{cwd} / *str;
+		}
+		else
+			return *str;
+	}
 	throw ExceptionInvalidArgument(key.CStr() + StringUTF8(_(" is not a Path.")));
 }
 
