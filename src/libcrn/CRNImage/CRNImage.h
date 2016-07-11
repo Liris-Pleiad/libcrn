@@ -57,6 +57,8 @@ namespace crn
 			ImageBase& operator=(const ImageBase&) = default;
 			ImageBase& operator=(ImageBase&&) = default;
 
+			virtual std::unique_ptr<ImageBase> Clone() const = 0;
+
 			/*! \brief Saves as PNG file */
 			virtual void SavePNG(const Path &fname) const = 0;
 			/*! \brief Saves as JPEG file */
@@ -152,6 +154,8 @@ namespace crn
 			template<typename Y> void Assign(const Image<Y> &img);
 			/*! \brief Move operator */
 			Image& operator=(Image &&img) = default;
+
+			virtual std::unique_ptr<ImageBase> Clone() const override { return std::make_unique<Image>(*this); }
 
 			/*! \brief Swaps two images */
 			void Swap(Image &other)
