@@ -62,7 +62,12 @@ if(QT4_FOUND)
 	target_link_libraries(Qtcrn4 crn)
 	target_link_libraries(Qtcrn4 ${CNR_QTGUI_LIB})
 
-	# Install -> TODO !!!
+	# Install
+	install(TARGETS Qtcrn4 RUNTIME DESTINATION "${RUNTIME_INSTALL_PATH}" COMPONENT bin LIBRARY DESTINATION "${LIBRARY_INSTALL_PATH}" COMPONENT bin ARCHIVE DESTINATION "${ARCHIVE_INSTALL_PATH}" COMPONENT bin)
+	if(MSVC)
+		file(GLOB QT4DLL "$ENV{LIBCRN_DEPS_PATH}/Qt/qt-4.8.7-x64-msvc2015/bin/*.dll")
+		install(FILES ${QT4DLL} DESTINATION deps COMPONENT bin)
+	endif()
 endif()
 
 # Qt5
@@ -84,7 +89,12 @@ if(QT5_FOUND)
 	target_link_libraries(Qtcrn5 crn)
 	target_link_libraries(Qtcrn5 ${CNR_QTGUI_LIB})
 
-	# Install -> TODO !!!
+	# Install
+	install(TARGETS Qtcrn5 RUNTIME DESTINATION "${RUNTIME_INSTALL_PATH}" COMPONENT bin LIBRARY DESTINATION "${LIBRARY_INSTALL_PATH}" COMPONENT bin ARCHIVE DESTINATION "${ARCHIVE_INSTALL_PATH}" COMPONENT bin)
+	if(MSVC)
+		file(GLOB QT5DLL "$ENV{LIBCRN_DEPS_PATH}/Qt/Qt5.6.0/5.6/msvc2015_64/bin/*.dll")
+		install(FILES ${QT5DLL} DESTINATION deps COMPONENT bin)
+	endif()
 endif()
 
 # Install -> TODO !!!
