@@ -329,9 +329,10 @@ namespace crn
 	 * \param[in]	img	the image to binarize
 	 * \param[in]	classes	the total number of classes to compute
 	 * \param[in]	black_classes	the total number of classes that represent the black pixels
+	 * \param[in]	maxcnt	the maximal number of loops
 	 * \return	the newly created image or nullptr if the image was not allocated
 	 */
-	template<typename T> ImageBW kMeansHisto(const Image<T> &img, size_t classes, size_t black_classes, typename std::enable_if<std::is_arithmetic<T>::value>::type *dummy = nullptr)
+	template<typename T> ImageBW kMeansHisto(const Image<T> &img, size_t classes, size_t black_classes, size_t maxcnt = 10000, typename std::enable_if<std::is_arithmetic<T>::value>::type *dummy = nullptr)
 	{
 		if (classes < 2 || black_classes < 1)
 			throw ExceptionDomain{"kMeansHisto(): invalid number of classes."};
@@ -373,6 +374,9 @@ namespace crn
 					cumul[tmp] /= cnt[tmp];
 			ok = (protos == cumul);
 			cumul.swap(protos);
+			if (maxcnt == 0)
+				break;
+			maxcnt -= 1;
 		}
 		
 		ImageBW out = ImageBW(img.GetWidth(), img.GetHeight(), pixel::BWBlack);
