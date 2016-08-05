@@ -115,7 +115,12 @@ namespace crn
 		using type = bool;
 	};
 	/*! \internal */
-	struct BoolNotBoolDummy {};
+	struct BoolNotBoolDummy
+	{
+		BoolNotBoolDummy(int i = 0) {}
+		operator bool() const { return false; }
+		operator int() const { return 0; }
+	};
 	/*! \internal */
 	template<> struct BoolNotBool<bool>
 	{
