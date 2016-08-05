@@ -109,6 +109,18 @@ namespace crn
 	/*! \brief Loads an image from a file */
 	UImage NewImageFromFile(const Path &fname);
 	
+	/*! \internal */
+	template<typename T> struct BoolNotBool
+	{
+		using type = bool;
+	};
+	/*! \internal */
+	struct BoolNotBoolDummy {};
+	/*! \internal */
+	template<> struct BoolNotBool<bool>
+	{
+		using type = BoolNotBoolDummy;
+	};
 	/****************************************************************************/
 	/*! \brief Abstract class for images
 	 *
@@ -138,8 +150,12 @@ namespace crn
 			Image(const Image &img) = default;
 			/*! \brief Copy constructor */
 			template<typename Y> explicit Image(const Image<Y> &img);
+			/*! \brief Copy constructor */
+			explicit Image(const Image<typename BoolNotBool<T>::type> &img);
 			/*! \brief Crop constructor */
 			template<typename Y> Image(const Image<Y> &img, const Rect &bbox);
+			/*! \brief Crop constructor */
+			Image(const Image<typename BoolNotBool<T>::type> &img, const Rect &bbox);
 			/*! \brief Move constructor */
 			Image(Image &&img) = default;
 
@@ -150,6 +166,8 @@ namespace crn
 			Image& operator=(const Image &img) = default;
 			/*! \brief Copy operator */
 			template<typename Y> Image& operator=(const Image<Y> &img);
+			/*! \brief Copy operator */
+			Image& operator=(const Image<typename BoolNotBool<T>::type> &img);
 			/*! \brief Force copy operator (pixel cast) */
 			template<typename Y> void Assign(const Image<Y> &img);
 			/*! \brief Move operator */
