@@ -117,10 +117,13 @@ namespace crn
 	/*! \internal */
 	struct BoolNotBoolDummy
 	{
-		BoolNotBoolDummy(int i = 0) {}
-		operator bool() const { return false; }
-		operator int() const { return 0; }
+		inline BoolNotBoolDummy(int i = 0) {}
+		inline BoolNotBoolDummy& operator+=(const BoolNotBoolDummy&) { return *this; }
 	};
+	inline BoolNotBoolDummy operator+(const BoolNotBoolDummy&, const BoolNotBoolDummy&) { return BoolNotBoolDummy{}; }
+	inline BoolNotBoolDummy operator-(const BoolNotBoolDummy&, const BoolNotBoolDummy&) { return BoolNotBoolDummy{}; }
+	inline BoolNotBoolDummy operator*(const BoolNotBoolDummy&, const BoolNotBoolDummy&) { return BoolNotBoolDummy{}; }
+	inline BoolNotBoolDummy operator/(const BoolNotBoolDummy&, const BoolNotBoolDummy&) { return BoolNotBoolDummy{}; }
 	/*! \internal */
 	template<> struct BoolNotBool<bool>
 	{
