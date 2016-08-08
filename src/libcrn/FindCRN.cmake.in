@@ -77,8 +77,13 @@ set(CRN_LIBRARIES ${ICONV_LIBRARIES} ${Intl_LIBRARIES} ${PNG_LIBRARIES} ${JPEG_L
 set(CRN_INCLUDE_DIRS ${CRN_INCLUDE_DIR} ${ICONV_INCLUDE_DIR} ${Intl_INCLUDE_DIRS} ${PNG_INCLUDE_DIRS} ${JPEG_INCLUDE_DIRS} ${GTK2_INCLUDE_DIRS} ${ZIP_INCLUDE_DIRS} ${HPDF_INCLUDE_DIRS})
 
 if(MSVC)
-	macro(InstallLibcrn)
+	macro(InstallLibcrnDeps)
 		install(DIRECTORY "$ENV{LIBCRN_4_SDK_PATH}/deps/" DESTINATION . COMPONENT bin)
+	endmacro()
+	macro(InstallLibcrn)
+		InstallLibcrnDeps()
+		install(FILES "$ENV{LIBCRN_4_SDK_PATH}/bin/libcrn.dll" DESTINATION . COMPONENT bin)
+		install(DIRECTORY "$ENV{LIBCRN_4_SDK_PATH}/share/locale" DESTINATION share COMPONENT bin)
 	endmacro()
 endif(MSVC)
 
