@@ -116,7 +116,8 @@ Glib::RefPtr<ScaleAction> ScaleAction::create_with_icon_name(const Glib::ustring
 
 Gtk::Widget* ScaleAction::create_menu_item_vfunc()
 {
-	Gtk::MenuItem *it = (Gtk::MenuItem*)Action::create_menu_item_vfunc();
+	//Gtk::MenuItem *it = (Gtk::MenuItem*)Action::create_menu_item_vfunc();
+	auto *it = Gtk::manage(new Gtk::MenuItem(lab));
 	it->signal_activate().connect(sigc::mem_fun(this, &ScaleAction::dialog));
 	return it;
 }
@@ -144,7 +145,7 @@ void ScaleAction::dialog()
 	else
 		dial.set_position(Gtk::WIN_POS_CENTER);
 	dial.set_position(Gtk::WIN_POS_CENTER);
-	//dial.add_button(Gtk::Stock::APPLY, Gtk::RESPONSE_ACCEPT);
+	dial.add_button(Gtk::Stock::APPLY, Gtk::RESPONSE_ACCEPT);
 	dial.set_default_response(Gtk::RESPONSE_ACCEPT);
 	Gtk::HBox hbox;
 	dial.get_vbox()->pack_start(hbox, false, true, 0);

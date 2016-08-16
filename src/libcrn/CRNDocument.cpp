@@ -680,7 +680,13 @@ void Document::save(const Path &fname)
  */
 Path Document::GetDefaultDirName()
 {
-	return Path(Config::GetTopDataPath()) + "/documents/";
+	static const auto dirname = Config::GetTopDataPath() / "documents";
+	if (!IO::Access(dirname, IO::EXISTS))
+	{
+		try { IO::Mkdir(dirname); }
+		catch (...) {}
+	}
+	return dirname;
 }
 
 /*****************************************************************************/
@@ -692,7 +698,7 @@ Path Document::GetDefaultDirName()
  */
 Path Document::completeFilename(const Path &fn) const
 {
-	return GetDefaultDirName() + fn;
+	return GetDefaultDirName() / fn;
 }
 
 /*! 

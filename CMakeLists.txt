@@ -133,7 +133,7 @@ if(MSVC)
 
 	set(CRN_CONFIG_PATH "")
 	set(CRN_DATA_FULL_PATH "${CRN_DATA_PATH}")
-	set(CRN_PROJECT_PATH "$ENV{CommonProgramFiles}/crn")
+	set(CRN_PROJECT_PATH "$ENV{Public}/Documents/crn")
 	string(REPLACE "\\" "/" CRN_PROJECT_PATH ${CRN_PROJECT_PATH})
 	set(CRN_LOCALE_FULL_PATH "${CRN_LOCALE_PATH}")
 

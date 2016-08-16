@@ -40,6 +40,14 @@ Config::Config():
 	{
 		// default init
 		conf.SetData(topDirKey(), Path(CRN_PROJECT_PATH));
+		if (!IO::Access(CRN_PROJECT_PATH, IO::EXISTS))
+		{
+			try
+			{
+				IO::Mkdir(CRN_PROJECT_PATH);
+			}
+			catch (...) {}
+		}
 		conf.SetData(localeDirKey(), Path(CRN_LOCALE_FULL_PATH));
 		conf.SetData(staticDataDirKey(), Path(CRN_DATA_FULL_PATH));
 		conf.SetData(verboseKey(), Prop3::True());
