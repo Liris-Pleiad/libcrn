@@ -22,7 +22,7 @@
 #ifndef CRNBLOCK_HEADER
 #define CRNBLOCK_HEADER
 
-#include <CRNComplexObject.h>
+#include <CRNSavable.h>
 #include <CRNGeometry/CRNRect.h>
 #include <CRNData/CRNMap.h>
 #include <CRNData/CRNVector.h>

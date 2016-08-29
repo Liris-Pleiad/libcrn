@@ -22,7 +22,7 @@
 #ifndef CRNHISTOGRAM_HEADER
 #define CRNHISTOGRAM_HEADER
 
-#include <CRNComplexObject.h>
+#include <CRNString.h>
 #include <CRNStatistics/CRNHistogramPtr.h>
 #include <CRNImage/CRNImageFormats.h>
 #include <cmath>

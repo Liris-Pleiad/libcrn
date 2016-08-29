@@ -25,6 +25,7 @@
 #include <CRNStatistics/CRNStatisticSample.h>
 #include <CRNMath/CRNUnivariateGaussianMixture.h>
 #include <CRNMath/CRNMultivariateGaussianMixture.h>
+#include <CRNStringUTF8.h>
 #include <functional>
 #include <limits>
 #include <CRNi18n.h>

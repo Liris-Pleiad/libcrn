@@ -22,7 +22,7 @@
 #ifndef CRNTEXTFILE_HEADER
 #define CRNTEXTFILE_HEADER
 
-#include <CRNComplexObject.h>
+#include <CRNString.h>
 #include <CRNIO/CRNPath.h>
 #include <vector>
 #include <set>

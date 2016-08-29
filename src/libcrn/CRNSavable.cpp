@@ -15,12 +15,12 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with libcrn.  If not, see <http://www.gnu.org/licenses/>.
  * 
- * file: CRNComplexObject.cpp
+ * file: CRNSavable.cpp
  * \author Yann LEYDIER
  */
 
 #include <CRNi18n.h>
-#include <CRNComplexObject.h>
+#include <CRNSavable.h>
 #include <CRNException.h>
 #include <CRNData/CRNMap.h>
 #include <CRNUtils/CRNXml.h>

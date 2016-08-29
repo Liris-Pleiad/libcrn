@@ -50,7 +50,7 @@ namespace crn
 	class Prop3;
 	std::unique_ptr<Prop3> Clone(bool b);
 
-	template<typename T> inline std::unique_ptr<T> CloneAs(const Object &obj) { return std::unique_ptr<T>(dynamic_cast<T*>(Clone(obj).release())); }
+	template<typename T, typename U> inline std::unique_ptr<T> CloneAs(const U &obj) { return std::unique_ptr<T>(dynamic_cast<T*>(Clone(obj).release())); }
 
 	namespace xml
 	{

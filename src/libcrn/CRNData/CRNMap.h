@@ -22,7 +22,8 @@
 #ifndef CRNMAP_H
 #define CRNMAP_H
 
-#include <CRNComplexObject.h>
+#include <CRNString.h>
+#include <CRNIO/CRNPath.h>
 #include <map>
 #include <CRNData/CRNMapPtr.h>
 #include <CRNData/CRNForeach.h>

@@ -22,7 +22,6 @@
 #ifndef CRNDIFFERENTIAL_HEADER
 #define CRNDIFFERENTIAL_HEADER
 
-#include <CRNComplexObject.h>
 #include <CRNImage/CRNImageGradient.h>
 #include <CRNImage/CRNImageGray.h>
 #include <mutex>

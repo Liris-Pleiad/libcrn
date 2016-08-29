@@ -22,7 +22,7 @@
 #ifndef CRNPROGRESS_HEADER
 #define CRNPROGRESS_HEADER
 
-#include <CRNComplexObject.h>
+#include <CRNString.h>
 
 namespace crn
 {
