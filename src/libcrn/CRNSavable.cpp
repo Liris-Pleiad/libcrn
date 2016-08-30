@@ -170,6 +170,7 @@ void Savable::ClearUserData()
 Savable::Savable(const String &s, const Path &fname):
 	name(s),
 	user_data(nullptr),
+	filelock(std::make_unique<std::mutex>()),
 	filename(fname)
 { 
 }
