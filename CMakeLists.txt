@@ -55,21 +55,21 @@ if(UNIX)
 	set(CRN_PF_UNIX ON)
 	set(CRN_CONFIG_FULL_PATH "/etc")
 	set(CRN_CONFIG_FULL_PATH "${CMAKE_INSTALL_PREFIX}/${CRN_DATA_PATH}")
-	set(CRN_PROJECT_FULL_PATH "/var/crn")
+	set(CRN_PROJECT_BASE "/var")
 	set(CRN_LOCALE_FULL_PATH "${CMAKE_INSTALL_PREFIX}/${CRN_LOCALE_PATH}")
 endif(UNIX)
 if(APPLE)
 	set(CRN_PF_APPLE ON)
 	set(CRN_CONFIG_FULL_PATH "/etc")
 	set(CRN_CONFIG_FULL_PATH "${CMAKE_INSTALL_PREFIX}/${CRN_DATA_PATH}")
-	set(CRN_PROJECT_FULL_PATH "/var/crn")
+	set(CRN_PROJECT_BASE "/var")
 	set(CRN_LOCALE_FULL_PATH "${CMAKE_INSTALL_PREFIX}/${CRN_LOCALE_PATH}")
 endif(APPLE)
 # for windows: _MSC_VER
 if(ANDROID)
 	set(CRN_CONFIG_FULL_PATH "") # TODO change to the real correct value
 	set(CRN_CONFIG_FULL_PATH "${CMAKE_INSTALL_PREFIX}/${CRN_DATA_PATH}")
-	set(CRN_PROJECT_FULL_PATH "/var/crn")
+	set(CRN_PROJECT_BASE "/var")
 	set(CRN_LOCALE_FULL_PATH "${CMAKE_INSTALL_PREFIX}/${CRN_LOCALE_PATH}")
 
 	if(NOT ANDROID_NATIVE_API_LEVEL)
@@ -133,8 +133,8 @@ if(MSVC)
 
 	set(CRN_CONFIG_PATH "")
 	set(CRN_DATA_FULL_PATH "${CRN_DATA_PATH}")
-	set(CRN_PROJECT_PATH "$ENV{Public}/Documents/crn")
-	string(REPLACE "\\" "/" CRN_PROJECT_PATH ${CRN_PROJECT_PATH})
+	set(CRN_PROJECT_BASE "$ENV{Public}/Documents")
+	string(REPLACE "\\" "/" CRN_PROJECT_BASE ${CRN_PROJECT_BASE})
 	set(CRN_LOCALE_FULL_PATH "${CRN_LOCALE_PATH}")
 
 	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /MP /D_MBCS") # multi-process build + multibyte C strings
@@ -171,6 +171,8 @@ if(APPLE)
 	set(CMAKE_MACOSX_RPATH ON) # see cmake POLICY CMP0042
 endif(APPLE)
 #------------------------------------------------------------------------------
+
+set(CRN_PROJECT_PATH "${CRN_PROJECT_BASE}/crn")
 
 ###############################################################################
 # Dependencies
