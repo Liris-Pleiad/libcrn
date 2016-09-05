@@ -1,66 +1,65 @@
-# French translations for libcrn package.
-# Copyright (C) 2007-2015 Yann LEYDIER
-# This file is distributed under the same license as the libcrn package.
-# Yann LEYDIER <yann@leydier.info>, 2007-2015, 2015.
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
+#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: libcrn 3.0.0\n"
+"Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-05 11:50+0200\n"
-"PO-Revision-Date: 2015-11-24 13:57+0100\n"
-"Last-Translator: Yann LEYDIER <yann@leydier.info>\n"
-"Language-Team: French <>\n"
-"Language: fr\n"
+"POT-Creation-Date: 2016-09-05 11:52+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Gtranslator 2.91.6\n"
 
 #: GtkCRNPDFAttributes.cpp:28
 msgid "Single pages"
-msgstr "Pages simples"
+msgstr ""
 
 #: GtkCRNPDFAttributes.cpp:29
 msgid "Continuous pages"
-msgstr "Pages continues"
+msgstr ""
 
 #: GtkCRNPDFAttributes.cpp:30
 msgid "Two pages, first on the left"
-msgstr "Deux pages, première à gauche"
+msgstr ""
 
 #: GtkCRNPDFAttributes.cpp:31
 msgid "Tow pages, first on the right"
-msgstr "Deux pages, première à droite"
+msgstr ""
 
 #: GtkCRNPDFAttributes.cpp:36
 msgid "Lossy image compression"
-msgstr "Compression d'image avec pertes"
+msgstr ""
 
 #: GtkCRNPDFAttributes.cpp:37
 msgid "Allow users to copy the content"
-msgstr "Autoriser les utilisateurs à copier le contenu"
+msgstr ""
 
 #: GtkCRNPDFAttributes.cpp:38
 msgid "Allow users to print the document"
-msgstr "Autoriser les utilisateurs à imprimer le document"
+msgstr ""
 
 #: GtkCRNPDFAttributes.cpp:41 GtkCRNPDFAttributes.cpp:43
 msgid "Author"
-msgstr "Auteur"
+msgstr ""
 
 #: GtkCRNPDFAttributes.cpp:49 GtkCRNPDFAttributes.cpp:52
 msgid "Title"
-msgstr "Titre"
+msgstr ""
 
 #: GtkCRNPDFAttributes.cpp:236
 msgid "JPEG quality must be between 0 and 100."
-msgstr "La qualité de compression JPEG doit se situer entre 0 et 100."
+msgstr ""
 
 #: GtkCRNProp3.cpp:94
 msgid "null event."
-msgstr "événement nul."
+msgstr ""
 
 #: GtkCRNProgressWindow.cpp:40
 msgid "_Close"
@@ -70,177 +69,175 @@ msgstr ""
 #: GtkCRNSelectionBox.cpp:708 GtkCRNSelectionBox.cpp:724
 #: GtkCRNSelectionBox.cpp:762
 msgid "index out of bounds."
-msgstr "Index hors limites."
+msgstr ""
 
 #: GtkCRNObject.cpp:41
 msgid "null object"
-msgstr "objet nul"
+msgstr ""
 
 #: GtkCRNFileSelecter.cpp:47
 msgid "Filename"
-msgstr "Nom de fichier"
+msgstr ""
 
 #: GtkCRNSelectionBox.cpp:63
 msgid "GtkCRN::SelectionBox: Invalid orientation."
-msgstr "GtkCRN::SelectionBox: Orientation non valide."
+msgstr ""
 
 #: GtkCRNDocument.cpp:54 GtkCRNDocument.cpp:93
 msgid "Views"
-msgstr "Vues"
+msgstr ""
 
 #: GtkCRNDocument.cpp:70
 msgid "Blocks"
-msgstr "Blocs"
+msgstr ""
 
 #: GtkCRNDocument.cpp:93
 msgid "_Views"
-msgstr "_Vues"
+msgstr ""
 
 #: GtkCRNDocument.cpp:94
 msgid "_Add Views"
-msgstr "_Ajouter des Vues"
+msgstr ""
 
 #: GtkCRNDocument.cpp:94
 msgid "Add Views"
-msgstr "Ajouter des Vues"
+msgstr ""
 
 #: GtkCRNDocument.cpp:95
 msgid "_Refresh Views"
-msgstr "_Rafraîchir les Vues"
+msgstr ""
 
 #: GtkCRNDocument.cpp:95
 msgid "Refresh Views"
-msgstr "Rafraîchir les Vues"
+msgstr ""
 
 #: GtkCRNDocument.cpp:96
 msgid "Select _First View"
-msgstr "Sélectionner la _Première Vue"
+msgstr ""
 
 #: GtkCRNDocument.cpp:96
 msgid "Select First View"
-msgstr "Sélectionner la Première Vue"
+msgstr ""
 
 #: GtkCRNDocument.cpp:97
 msgid "Select _Previous View"
-msgstr "Sélectionner la Vue _Précédente"
+msgstr ""
 
 #: GtkCRNDocument.cpp:97
 msgid "Select Previous View"
-msgstr "Sélectionner la Vue Précédente"
+msgstr ""
 
 #: GtkCRNDocument.cpp:98
 msgid "Select _Next View"
-msgstr "Sélectionner la Vue _Suivante"
+msgstr ""
 
 #: GtkCRNDocument.cpp:98
 msgid "Select Next View"
-msgstr "Sélectionner la Vue Suivante"
+msgstr ""
 
 #: GtkCRNDocument.cpp:99
 msgid "Select _Last View"
-msgstr "Sélectionner la _Dernière Vue"
+msgstr ""
 
 #: GtkCRNDocument.cpp:99
 msgid "Select Last View"
-msgstr "Sélectionner la Dernière Vue"
+msgstr ""
 
 #: GtkCRNDocument.cpp:100
 msgid "Select _All Views"
-msgstr "Sélectionner _Toutes les Vues"
+msgstr ""
 
 #: GtkCRNDocument.cpp:100
 msgid "Select All Views"
-msgstr "Sélectionner Toutes les Vues"
+msgstr ""
 
 #: GtkCRNDocument.cpp:101
 msgid "_Deselect Views"
-msgstr "_Désélectionner les Vues"
+msgstr ""
 
 #: GtkCRNDocument.cpp:101
 msgid "Deselect Views"
-msgstr "Désélectionner les Vues"
+msgstr ""
 
 #: GtkCRNDocument.cpp:102
 msgid "Select _Even Views"
-msgstr "Sélectionner les Vues _Paires"
+msgstr ""
 
 #: GtkCRNDocument.cpp:103
 msgid "Select _Odd Views"
-msgstr "Sélectionner les Vues _Impaires"
+msgstr ""
 
 #: GtkCRNDocument.cpp:104
 msgid "_Invert View Selection"
-msgstr "_Inverser la Sélection des Vues"
+msgstr ""
 
 #: GtkCRNDocument.cpp:104
 msgid "Invert View Selection"
-msgstr "Inverser la Sélection des Vues"
+msgstr ""
 
 #: GtkCRNDocument.cpp:105
 msgid "_Remove View Selection"
-msgstr "_Supprimer les Vues Sélectionnées"
+msgstr ""
 
 #: GtkCRNDocument.cpp:105
 msgid "Remove View Selection"
-msgstr "Supprimer les Vues Sélectionnées"
+msgstr ""
 
 #: GtkCRNDocument.cpp:107
 msgid "_Export PDF"
-msgstr "_Exporter un PDF"
+msgstr ""
 
 #: GtkCRNDocument.cpp:107 GtkCRNDocument.cpp:1154 GtkCRNDocument.cpp:1188
 msgid "Export PDF"
-msgstr "Exporter un PDF"
+msgstr ""
 
 #: GtkCRNDocument.cpp:118
 msgid "_Add Subblock"
-msgstr "_Ajouter un Sous-bloc"
+msgstr ""
 
 #: GtkCRNDocument.cpp:118
 msgid "Add Subblock"
-msgstr "Ajouter un Sous-bloc"
+msgstr ""
 
 #: GtkCRNDocument.cpp:119
 msgid "_Remove Subblock"
-msgstr "_Supprimer le Sous-bloc"
+msgstr ""
 
 #: GtkCRNDocument.cpp:119
 msgid "Remove Subblock"
-msgstr "Supprimer le Sous-bloc"
+msgstr ""
 
 #: GtkCRNDocument.cpp:120
 msgid "_Show/Hide Subblocks"
-msgstr "_Afficher/Cacher les Sous-blocs"
+msgstr ""
 
 #: GtkCRNDocument.cpp:120
 msgid "Show/Hide Subblocks"
-msgstr "Afficher/Cacher les Sous-blocs"
+msgstr ""
 
 #: GtkCRNDocument.cpp:121
 msgid "Subblocks _Settings"
-msgstr "_Paramètres des Sous-blocs"
+msgstr ""
 
 #: GtkCRNDocument.cpp:121
 msgid "Subblocks Settings"
-msgstr "Paramètres des Sous-blocs"
+msgstr ""
 
 #: GtkCRNDocument.cpp:198
 msgid "Block name"
-msgstr "Nom du bloc"
+msgstr ""
 
 #: GtkCRNDocument.cpp:199
 msgid "Coordinates"
-msgstr "Coordonnées"
+msgstr ""
 
 #: GtkCRNDocument.cpp:299
 msgid "Inexistent view"
-msgstr "Vue inexistante"
+msgstr ""
 
 #: GtkCRNDocument.cpp:320
 msgid "The document was never saved. It is impossible to generate thumbnails."
 msgstr ""
-"Le document n'a jamais été sauvegardé. Il est impossible de générer les "
-"imagettes."
 
 #: GtkCRNDocument.cpp:333
 #, c-format
@@ -248,20 +245,18 @@ msgid ""
 "%i error(s) occurred during the generation of the thumbnails. Some images "
 "may be deffective."
 msgstr ""
-"il y a eu %i erreur(s) durant la génération des imagettes. Certaines images "
-"sont possiblement défectueuses."
 
 #: GtkCRNDocument.cpp:357
 msgid "Refresh"
-msgstr "Rafraîchir"
+msgstr ""
 
 #: GtkCRNDocument.cpp:358
 msgid "Loading view"
-msgstr "Chargement de la vue"
+msgstr ""
 
 #: GtkCRNDocument.cpp:597
 msgid "Please select views to add"
-msgstr "Veuillez sélectionner les vues à ajouter"
+msgstr ""
 
 #: GtkCRNDocument.cpp:609 GtkCRNDocument.cpp:805 GtkCRNDocument.cpp:954
 #: GtkCRNDocument.cpp:1168 GtkCRNApp.cpp:113
@@ -274,7 +269,7 @@ msgstr ""
 
 #: GtkCRNDocument.cpp:802
 msgid "Add a subblock"
-msgstr "Ajouter un sous-bloc"
+msgstr ""
 
 #: GtkCRNDocument.cpp:806 GtkCRNDocument.cpp:955 GtkCRNApp.cpp:114
 msgid "_OK"
@@ -282,179 +277,177 @@ msgstr ""
 
 #: GtkCRNDocument.cpp:816
 msgid "Subblock tree"
-msgstr "Arbre de sous-blocs"
+msgstr ""
 
 #: GtkCRNDocument.cpp:817
 msgid "New subblock's name"
-msgstr "Nom du nouveau sous-bloc"
+msgstr ""
 
 #: GtkCRNDocument.cpp:849
 msgid "New subblock"
-msgstr "Nouveau sous-bloc"
+msgstr ""
 
 #: GtkCRNDocument.cpp:871
 msgid "Cannot add such selection to the subblock tree."
-msgstr "Impossible d'ajouter cette sélection à l'arbre de sous-blocs."
+msgstr ""
 
 #: GtkCRNDocument.cpp:951
 msgid "Configure subblocks display"
-msgstr "Configurer l'affichage des sous-blocs"
+msgstr ""
 
 #: GtkCRNDocument.cpp:966
 msgid "Frame color"
-msgstr "Couleur du cadre"
+msgstr ""
 
 #: GtkCRNDocument.cpp:967
 msgid "Fill color"
-msgstr "Couleur de remplissage"
+msgstr ""
 
 #: GtkCRNDocument.cpp:968
 msgid "Show subblock _labels"
-msgstr "Montrer les _étiquettes des sous-blocs"
+msgstr ""
 
 #: GtkCRNDocument.cpp:970
 msgid "Label color"
-msgstr "Couleur des étiquettes"
+msgstr ""
 
 #: GtkCRNDocument.cpp:1169
-#, fuzzy
 msgid "_Save"
-msgstr "Sauvegarder"
+msgstr ""
 
 #: GtkCRNDocument.cpp:1189
 msgid "Writing image"
-msgstr "Écriture de l'image"
+msgstr ""
 
 #: GtkCRNFileSelecterDialog.cpp:38
 msgid "File selection"
-msgstr "Sélection de fichier"
+msgstr ""
 
 #: GtkCRNMain.cpp:100
 msgid "Using default language."
-msgstr "Langue française sélectionnée."
+msgstr ""
 
 #: GdkCRNPixbuf.cpp:117
 msgid "unsupported pixel format."
-msgstr "le format de l'image n'est pas géré."
+msgstr ""
 
 #: GdkCRNPixbuf.cpp:151
 msgid "Null pixbuf given."
-msgstr "Pixbuf nul."
+msgstr ""
 
 #: GtkCRNConfigElement.cpp:38
 msgid "The element was not initialized."
-msgstr "L'élément n'est pas initialisé."
+msgstr ""
 
 #: GtkCRNApp.cpp:59
 msgid "_File"
-msgstr "_Fichier"
+msgstr ""
 
 #: GtkCRNApp.cpp:59
 msgid "File"
-msgstr "Fichier"
+msgstr ""
 
 #: GtkCRNApp.cpp:61
 msgid "_?"
-msgstr "_?"
+msgstr ""
 
 #: GtkCRNApp.cpp:61
 msgid "?"
-msgstr "?"
+msgstr ""
 
 #: GtkCRNApp.cpp:78
 msgid "Are you sure you want to quit?"
-msgstr "Êtes-vous sûr vouloir quitter l'application ?"
+msgstr ""
 
 #: GtkCRNApp.cpp:169
 msgid "Advanced details"
-msgstr "Détails"
+msgstr ""
 
 #: GtkCRNApp.cpp:198
 msgid "Unhandled exception caught."
-msgstr "Exception non gérée."
+msgstr ""
 
 #: GtkCRNDrawingPanel.cpp:39
 msgid "_Background Color…"
-msgstr "Couleur du _Fond"
+msgstr ""
 
 #: GtkCRNDrawingPanel.cpp:39
 msgid "Background Color"
-msgstr "Couleur du Fond"
+msgstr ""
 
 #: GtkCRNDrawingPanel.cpp:41
 msgid "Background"
-msgstr "Fond"
+msgstr ""
 
 #: GtkCRNDrawingPanel.cpp:46
 msgid "_Foreground Color…"
-msgstr "Couleur des Fo_rmes…"
+msgstr ""
 
 #: GtkCRNDrawingPanel.cpp:46
 msgid "Foreground Color"
-msgstr "Couleur des Formes"
+msgstr ""
 
 #: GtkCRNDrawingPanel.cpp:48
 msgid "Foreground"
-msgstr "Formes"
+msgstr ""
 
 #: GtkCRNDrawingPanel.cpp:58
 msgid "Set _Thickness"
-msgstr "Changer l'_Épaisseur"
+msgstr ""
 
 #: GtkCRNDrawingPanel.cpp:58
 msgid "Set Thickness"
-msgstr "Changer l'Épaisseur"
+msgstr ""
 
 #: GtkCRNDrawingPanel.cpp:94 GtkCRNImage.cpp:209
 msgid "null or negative zoom value."
-msgstr "valeur de zoom nulle ou négative."
+msgstr ""
 
 #: GtkCRNHelpers.cpp:80
-#, fuzzy
 msgid "not a ToggleAction."
-msgstr "ce n'est pas un vecteur colonne."
+msgstr ""
 
 #: GtkCRNImage.cpp:143
 msgid "_Clear User Selection"
-msgstr "_Effacer la Sélection Utilisateur"
+msgstr ""
 
 #: GtkCRNImage.cpp:143
 msgid "Clear User Selection"
-msgstr "Effacer la Sélection Utilisateur"
+msgstr ""
 
 #: GtkCRNImage.cpp:1991
 msgid "Cannot set selection type to Text."
-msgstr "Le type de sélection ne peut pas être Text."
+msgstr ""
 
 #: GtkCRNImage.cpp:1993
 msgid "Cannot set selection type to Polygon."
-msgstr "Le type de sélection ne peut pas être Polygone."
+msgstr ""
 
 #: GtkCRNImage.cpp:2080 GtkCRNImage.cpp:2098
 msgid "The polygon must have more than two points."
-msgstr "Le polygone doit avoir plus de deux points."
+msgstr ""
 
 #: GtkCRNImage.cpp:2116 GtkCRNImage.cpp:2134 GtkCRNImage.cpp:2151
 msgid "Overlay not found."
-msgstr "Surouche introuvable."
+msgstr ""
 
 #: GtkCRNImage.cpp:2119 GtkCRNImage.cpp:2137 GtkCRNImage.cpp:2154
 msgid "Overlay item not found."
-msgstr "Objet de surcouche introuvable."
+msgstr ""
 
 #: GtkCRNImage.cpp:2222 GtkCRNImage.cpp:2225 GtkCRNImage.cpp:2244
 #: GtkCRNImage.cpp:2247 GtkCRNImage.cpp:2266 GtkCRNImage.cpp:2269
 msgid "No selection found."
-msgstr "Pas de sélection."
+msgstr ""
 
 #: GtkCRNImage.cpp:2232 GtkCRNImage.cpp:2291
 msgid "The selection is not a rectangle."
-msgstr "La sélection n'est pas un rectangle."
+msgstr ""
 
 #: GtkCRNImage.cpp:2254 GtkCRNImage.cpp:2308
 msgid "The selection is not a point."
-msgstr "La sélection n'est pas un point."
+msgstr ""
 
 #: GtkCRNImage.cpp:2276 GtkCRNImage.cpp:2329
 msgid "The selection is not a line."
-msgstr "La sélection n'est pas une ligne."
+msgstr ""

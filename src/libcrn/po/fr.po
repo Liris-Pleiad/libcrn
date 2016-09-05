@@ -1,14 +1,14 @@
 # French translations for libcrn package.
-# Copyright (C) 2007-2015 Yann LEYDIER
+# Copyright (C) 2007-2016 Yann LEYDIER
 # This file is distributed under the same license as the libcrn package.
-# Yann LEYDIER <yann@leydier.info>, 2007-2015, 2015.
+# Yann LEYDIER <yann@leydier.info>, 2007-2016, 2016.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: libcrn 3.0.0\n"
+"Project-Id-Version: libcrn 3.9.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-06-14 09:28+0200\n"
-"PO-Revision-Date: 2015-11-24 13:57+0100\n"
+"POT-Creation-Date: 2016-09-05 11:50+0200\n"
+"PO-Revision-Date: 2016-09-05 11:29+0200\n"
 "Last-Translator: Yann LEYDIER <yann@leydier.info>\n"
 "Language-Team: French <>\n"
 "Language: fr\n"
@@ -18,833 +18,988 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Generator: Gtranslator 2.91.6\n"
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNStatistics/CRNHistogram.cpp:125
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNStatistics/CRNHistogram.cpp:147
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNStatistics/CRNHistogram.cpp:170
+#: CRNStatistics/CRNHistogram.cpp:125 CRNStatistics/CRNHistogram.cpp:147
+#: CRNStatistics/CRNHistogram.cpp:170
 msgid "invalid index."
 msgstr "Index invalide."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNStatistics/CRNHistogram.cpp:402
+#: CRNStatistics/CRNHistogram.cpp:402
 msgid "flat histogram."
 msgstr "Histogramme plat."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNStatistics/CRNHistogram.cpp:462
+#: CRNStatistics/CRNHistogram.cpp:462
 msgid "window larger than histogram. Cropping."
 msgstr ""
 "la fenêtre est plus large que l'histogramme. Cette dernière sera réduite."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNStatistics/CRNHistogram.cpp:634
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNStatistics/CRNHistogram.cpp:662
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNStatistics/CRNHistogram.cpp:691
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNStatistics/CRNHistogram.cpp:733
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNStatistics/CRNHistogram.cpp:772
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNStatistics/CRNHistogram.cpp:803
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNStatistics/CRNHistogram.cpp:837
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNStatistics/CRNHistogram.cpp:871
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNStatistics/CRNHistogram.cpp:905
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNStatistics/CRNHistogram.cpp:929
+#: CRNStatistics/CRNHistogram.cpp:634 CRNStatistics/CRNHistogram.cpp:662
+#: CRNStatistics/CRNHistogram.cpp:691 CRNStatistics/CRNHistogram.cpp:733
+#: CRNStatistics/CRNHistogram.cpp:772 CRNStatistics/CRNHistogram.cpp:803
+#: CRNStatistics/CRNHistogram.cpp:837 CRNStatistics/CRNHistogram.cpp:871
+#: CRNStatistics/CRNHistogram.cpp:905 CRNStatistics/CRNHistogram.cpp:929
 msgid "histograms must have same size."
 msgstr "Les histogrammes doivent avoir la même taille."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNStatistics/CRNHistogram.cpp:1012
+#: CRNStatistics/CRNHistogram.cpp:1012
 msgid "Cannot resize histogram with null size."
 msgstr "Impossible changer la taille de l'histogramme avec une taille nulle."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNStatistics/CRNHistogram.cpp:1065
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNStatistics/CRNPCA.cpp:719
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNStringUTF8.cpp:489
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNString.cpp:744
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNFeature/CRNBlockTreeExtractorTextLinesFromProjection.cpp:285
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNFeature/CRNFeatureExtractorAngleRadialZoning.cpp:198
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNFeature/CRNFeatureExtractorOverlappingAngleHistogram.cpp:239
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNFeature/CRNBlockTreeExtractorWordsFromProjection.cpp:292
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNFeature/CRNFeatureExtractorAngleZoning.cpp:129
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNFeature/CRNFeatureExtractorProfile.cpp:168
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNFeature/CRNFeatureExtractorProjection.cpp:124
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNIO/CRNPath.cpp:567
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNMath/CRNUnivariateGaussianPDF.cpp:259
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNMath/CRNProp3.cpp:187
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNMath/CRNMatrixDouble.cpp:197
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNMath/CRNLinearInterpolation.cpp:77
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNMath/CRNUnivariateGaussianMixture.cpp:745
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNData/CRNReal.cpp:46
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNData/CRNInt.cpp:43
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNData/CRNMap.cpp:193
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNData/CRNVector.cpp:273
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNPDFAttributes.cpp:41
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNDefaultAction.cpp:52
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNGeometry/CRNPoint2DInt.cpp:44
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNGeometry/CRNStroke.cpp:69
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNGeometry/CRNRect.cpp:556
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNGeometry/CRNPoint2DDouble.cpp:44
+#: CRNStatistics/CRNHistogram.cpp:1065 CRNStatistics/CRNPCA.cpp:718
+#: CRNStringUTF8.cpp:488 CRNString.cpp:743
+#: CRNFeature/CRNBlockTreeExtractorTextLinesFromProjection.cpp:284
+#: CRNFeature/CRNFeatureExtractorAngleRadialZoning.cpp:197
+#: CRNFeature/CRNFeatureExtractorOverlappingAngleHistogram.cpp:238
+#: CRNFeature/CRNBlockTreeExtractorWordsFromProjection.cpp:291
+#: CRNFeature/CRNFeatureExtractorAngleZoning.cpp:128
+#: CRNFeature/CRNFeatureExtractorProfile.cpp:167
+#: CRNFeature/CRNFeatureExtractorProjection.cpp:123 CRNIO/CRNPath.cpp:567
+#: CRNMath/CRNUnivariateGaussianPDF.cpp:258 CRNMath/CRNProp3.cpp:194
+#: CRNMath/CRNMatrixDouble.cpp:196 CRNMath/CRNLinearInterpolation.cpp:75
+#: CRNMath/CRNUnivariateGaussianMixture.cpp:744 CRNData/CRNReal.cpp:45
+#: CRNData/CRNInt.cpp:42 CRNData/CRNMap.cpp:192 CRNData/CRNVector.cpp:272
+#: CRNUtils/CRNPDFAttributes.cpp:40 CRNUtils/CRNDefaultAction.cpp:52
+#: CRNGeometry/CRNPoint2DInt.cpp:43 CRNGeometry/CRNStroke.cpp:68
+#: CRNGeometry/CRNRect.cpp:555 CRNGeometry/CRNPoint2DDouble.cpp:43
 msgid "Wrong XML element."
 msgstr "Mauvais élément XML."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNStatistics/CRNHistogram.cpp:1071
+#: CRNStatistics/CRNHistogram.cpp:1071
 msgid "Cannot get CDATA."
 msgstr "Impossible de récupérer le CDATA."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNStatistics/CRNHistogram.cpp:1078
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNMath/CRNMatrixDouble.cpp:208
+#: CRNStatistics/CRNHistogram.cpp:1078 CRNMath/CRNMatrixDouble.cpp:207
 msgid "Cannot convert CDATA."
 msgstr "Impossible de convertir le CDATA."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNStatistics/CRNHistogram.cpp:1340
+#: CRNStatistics/CRNHistogram.cpp:1340
 msgid "The histogram is empty."
 msgstr "L'histogramme est vide."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNStatistics/CRNStatisticSample.cpp:218
+#: CRNStatistics/CRNStatisticSample.cpp:219
 msgid "Illegal range."
 msgstr "Intervalle incorrect."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNStatistics/CRNPCA.cpp:528
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNStatistics/CRNPCA.cpp:543
+#: CRNStatistics/CRNPCA.cpp:527 CRNStatistics/CRNPCA.cpp:542
 msgid "Index out of dimension range."
 msgstr "Index hors des limites."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNStatistics/CRNPCA.cpp:565
+#: CRNStatistics/CRNPCA.cpp:564
 msgid "Incompatible input pattern dimensions."
 msgstr "Dimensions des données en entrée incompatibles."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNStatistics/CRNPCA.cpp:569
+#: CRNStatistics/CRNPCA.cpp:568
 msgid "Incompatible output dimensions."
 msgstr "Dimensions des données en sortie incompatibles."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNStatistics/CRNPCA.cpp:750
+#: CRNStatistics/CRNPCA.cpp:749
 msgid "Incomplete PCA xml element."
 msgstr "Element xml de PCA incomplet."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNAI/CRNAffinityPropagation.cpp:32
+#: CRNXml/CRNAlto.cpp:72 CRNXml/CRNAlto.cpp:90 CRNXml/CRNAltoLayout.cpp:101
+#: CRNXml/CRNAltoLayout.cpp:156 CRNXml/CRNAltoLayout.cpp:185
+#: CRNXml/CRNAltoLayout.cpp:203 CRNXml/CRNAltoTextBlock.cpp:158
+#: CRNXml/CRNAltoTextBlock.cpp:186 CRNXml/CRNAltoTextBlock.cpp:204
+msgid "Page not found."
+msgstr "Page non trouvée."
+
+#: CRNXml/CRNAlto.cpp:113 CRNXml/CRNAlto.cpp:136 CRNXml/CRNAltoLayout.cpp:677
+#: CRNXml/CRNAltoLayout.cpp:703
+msgid "Space not found."
+msgstr "Espace non trouvé."
+
+#: CRNXml/CRNAlto.cpp:162 CRNXml/CRNAlto.cpp:188
+msgid "Block not found."
+msgstr "Bloc non trouvé."
+
+#: CRNXml/CRNAlto.cpp:217 CRNXml/CRNAlto.cpp:246
+msgid "Text block not found."
+msgstr "Bloc de texte non trouvé."
+
+#: CRNXml/CRNAlto.cpp:280 CRNXml/CRNAlto.cpp:314
+msgid "Line not found."
+msgstr "Ligne non trouvée."
+
+#: CRNXml/CRNAlto.cpp:356 CRNXml/CRNAlto.cpp:398
+msgid "Word not found."
+msgstr "Mot non trouvé."
+
+#: CRNXml/CRNAlto.cpp:463 CRNXml/CRNAlto.cpp:528
+msgid "Element not found."
+msgstr "Élément non trouvé."
+
+#: CRNXml/CRNAlto.cpp:627
+msgid "The element already has an id."
+msgstr "L'élément a déjà un id."
+
+#: CRNXml/CRNAlto.cpp:649 CRNXml/CRNAltoLayout.cpp:39 CRNXml/CRNXml.cpp:396
+#: CRNXml/CRNXml.cpp:449 CRNXml/CRNXml.cpp:505 CRNXml/CRNXml.cpp:526
+#: CRNXml/CRNXml.cpp:1108 CRNXml/CRNXml.cpp:1144 CRNXml/CRNXml.cpp:1163
+#: CRNXml/CRNAltoTextBlock.cpp:585 CRNXml/CRNAltoTextBlock.cpp:599
+#: CRNXml/CRNAltoSpace.cpp:40 CRNXml/CRNAltoSpace.cpp:604
+#: CRNXml/CRNAltoSpace.cpp:626 CRNXml/CRNAltoSpace.cpp:759
+#: CRNXml/CRNAltoSpace.cpp:776 CRNXml/CRNAltoSpace.cpp:792
+msgid "Null node."
+msgstr "Nœud nul."
+
+#: CRNXml/CRNAlto.cpp:667
+msgid "Cannot find layout."
+msgstr "Impossible de trouver le layout."
+
+#: CRNXml/CRNAlto.cpp:681
+msgid "Null namespace."
+msgstr "Espace de nom nul."
+
+#: CRNXml/CRNAltoWrapper.cpp:35 CRNXml/CRNAltoWrapper.cpp:46
+#: CRNXml/CRNAltoWrapper.cpp:58 CRNXml/CRNAltoWrapper.cpp:71
+#: CRNXml/CRNAltoWrapper.cpp:85
+msgid "Malformed path string."
+msgstr "La chaîne de chemin est invalide."
+
+#: CRNXml/CRNAltoWrapper.cpp:222
+msgid ": no xml match."
+msgstr ": pas de correspondance XML."
+
+#: CRNXml/CRNAltoWrapper.cpp:253 CRNXml/CRNAltoWrapper.cpp:281
+msgid "The document is not associated to any Alto data."
+msgstr "Le document n'est pas associé à des données Alto."
+
+#: CRNXml/CRNAltoWrapper.cpp:974 CRNXml/CRNAltoWrapper.cpp:983
+#: CRNXml/CRNAltoWrapper.cpp:989 CRNXml/CRNAltoWrapper.cpp:995
+#: CRNXml/CRNAltoWrapper.cpp:1243 CRNXml/CRNAltoWrapper.cpp:1252
+#: CRNXml/CRNAltoWrapper.cpp:1258 CRNXml/CRNAltoWrapper.cpp:1392
+#: CRNXml/CRNAltoWrapper.cpp:1401 CRNXml/CRNAltoWrapper.cpp:1558
+msgid "Resizing the element would invalidate its content."
+msgstr "Changer la taille de cet élément invaliderait son contenu."
+
+#: CRNXml/CRNAltoWrapper.cpp:1070
+msgid "No top margin on this page."
+msgstr "Il n'y a pas de marge supérieure sur cette page."
+
+#: CRNXml/CRNAltoWrapper.cpp:1095
+msgid "No left margin on this page."
+msgstr "Il n'y a pas de marge gauche sur cette page."
+
+#: CRNXml/CRNAltoWrapper.cpp:1120
+msgid "No bottom margin on this page."
+msgstr "Il n'y a pas de marge inférieure sur cette page."
+
+#: CRNXml/CRNAltoWrapper.cpp:1145
+msgid "No right margin on this page."
+msgstr "Il n'y a pas de marge droite sur cette page."
+
+#: CRNXml/CRNAltoWrapper.cpp:1170
+msgid "No print space on this page."
+msgstr "Il n'y a pas d'espace d'impression sur cette page."
+
+#: CRNXml/CRNAltoLayout.cpp:307
+msgid "Invalid page position."
+msgstr "Position de page invalide."
+
+#: CRNXml/CRNAltoLayout.cpp:404
+msgid "Negative physical image number."
+msgstr "Numéro d'image physique négatif."
+
+#: CRNXml/CRNAltoLayout.cpp:473
+msgid "Invalid quality."
+msgstr "Qualité invalide."
+
+#: CRNXml/CRNAltoLayout.cpp:543
+msgid "The page accuracy must be in [0, 100]"
+msgstr "Le taux de reconnaissance de la page doit être dans [0, 100]."
+
+#: CRNXml/CRNAltoLayout.cpp:562
+msgid "The page confidence must be in [0, 1]"
+msgstr "La confiance de la page doit être dans [0, 1]."
+
+#: CRNXml/CRNAltoLayout.cpp:577
+msgid "The page already has a top margin."
+msgstr "La page a déjà une marge supérieure."
+
+#: CRNXml/CRNAltoLayout.cpp:595
+msgid "The page already has a left margin."
+msgstr "La page a déjà une marge gauche."
+
+#: CRNXml/CRNAltoLayout.cpp:613
+msgid "The page already has a right margin."
+msgstr "La page a déjà une marge droite."
+
+#: CRNXml/CRNAltoLayout.cpp:631
+msgid "The page already has a bottom margin."
+msgstr "La page a déjà une marge inférieure."
+
+#: CRNXml/CRNAltoLayout.cpp:649
+msgid "The page already has a print space."
+msgstr "La page a déjà un espace d'impression."
+
+#: CRNXml/CRNXml.cpp:50
+msgid "Cannot find attribute."
+msgstr "Impossible de trouver l'attribut."
+
+#: CRNXml/CRNXml.cpp:52
+msgid "Wrong attribute type."
+msgstr "Mauvais type d'attribut."
+
+#: CRNXml/CRNXml.cpp:54
+msgid "File not found."
+msgstr "Fichier introuvable."
+
+#: CRNXml/CRNXml.cpp:56
+msgid "File could not be opened."
+msgstr "Impossible d'ouvrir le fichier."
+
+#: CRNXml/CRNXml.cpp:58
+msgid "File read error."
+msgstr "Erreur de lecture du fichier."
+
+#: CRNXml/CRNXml.cpp:61
+msgid "Element mismatch."
+msgstr "Les éléments ne correspondent pas."
+
+#: CRNXml/CRNXml.cpp:63
+msgid "Could not parse element."
+msgstr "Impossible de lire l'élement."
+
+#: CRNXml/CRNXml.cpp:65
+msgid "Could not parse attribute."
+msgstr "Impossible de lire l'attribut."
+
+#: CRNXml/CRNXml.cpp:67
+msgid "Could not identify tag."
+msgstr "Impossible d'identifier l'étiquette."
+
+#: CRNXml/CRNXml.cpp:69
+msgid "Could not parse text."
+msgstr "Impossible de lire le texte."
+
+#: CRNXml/CRNXml.cpp:71
+msgid "Could not parse CDATA."
+msgstr "Impossible de lire le CDATA."
+
+#: CRNXml/CRNXml.cpp:73
+msgid "Could not parse comment."
+msgstr "Impossible de lire le commentaire."
+
+#: CRNXml/CRNXml.cpp:75
+msgid "Could not parse declaration."
+msgstr "Impossible de lire la déclaration."
+
+#: CRNXml/CRNXml.cpp:77
+msgid "Could not parse unknown item."
+msgstr "Impossible de lire l'objet inconnu."
+
+#: CRNXml/CRNXml.cpp:79
+msgid "Empty document."
+msgstr "Document vide."
+
+#: CRNXml/CRNXml.cpp:81
+msgid "Parse error."
+msgstr "Erreur de lecture."
+
+#: CRNXml/CRNXml.cpp:83
+msgid "Cannot convert text."
+msgstr "Impossible de convertir le texte."
+
+#: CRNXml/CRNXml.cpp:85
+msgid "No text node."
+msgstr "Nœud textuel manquant."
+
+#: CRNXml/CRNXml.cpp:133 CRNXml/CRNXml.cpp:136
+msgid "Not an element."
+msgstr "Pas un élément."
+
+#: CRNXml/CRNXml.cpp:147 CRNXml/CRNXml.cpp:150
+msgid "Not a comment."
+msgstr "Pas un commentaire."
+
+#: CRNXml/CRNXml.cpp:161 CRNXml/CRNXml.cpp:164
+msgid "Not a text."
+msgstr "Pas un texte."
+
+#: CRNXml/CRNXml.cpp:343
+msgid "No child node."
+msgstr "Pas de nœud enfant."
+
+#: CRNXml/CRNXml.cpp:358 CRNXml/CRNXml.cpp:376 CRNXml/CRNXml.cpp:398
+#: CRNXml/CRNXml.cpp:1090 CRNXml/CRNXml.cpp:1110
+msgid "Empty element name."
+msgstr "Nom d'élément vide."
+
+#: CRNXml/CRNXml.cpp:403 CRNXml/CRNXml.cpp:454 CRNXml/CRNXml.cpp:511
+#: CRNXml/CRNXml.cpp:1115 CRNXml/CRNXml.cpp:1149
+msgid "Node not found."
+msgstr "Nœud introuvable."
+
+#: CRNXml/CRNXml.cpp:568 CRNXml/CRNXml.cpp:1212
+msgid "Invalid node."
+msgstr "Nœud invalide."
+
+#: CRNXml/CRNXml.cpp:598 CRNXml/CRNXml.cpp:611 CRNXml/CRNXml.cpp:642
+#: CRNXml/CRNXml.cpp:661 CRNXml/CRNXml.cpp:678 CRNXml/CRNXml.cpp:695
+#: CRNXml/CRNXml.cpp:712 CRNXml/CRNXml.cpp:729
+msgid "Empty attribute name."
+msgstr "Nom d'attribut vide."
+
+#: CRNXml/CRNXml.cpp:645
+msgid "Cannot find attribute: "
+msgstr "Impossible de trouver l'attribut : "
+
+#: CRNXml/CRNXml.cpp:1025
+msgid "Empty filename."
+msgstr "Nom de fichier vide."
+
+#: CRNXml/CRNXml.cpp:1038
+msgid "No element in the XML."
+msgstr "L'XML ne contient pas d'élément."
+
+#: CRNXml/CRNAltoStyles.cpp:85 CRNXml/CRNAltoStyles.cpp:99
+msgid "Text style not found."
+msgstr "Style de texte non trouvé."
+
+#: CRNXml/CRNAltoStyles.cpp:126 CRNXml/CRNAltoStyles.cpp:140
+msgid "Paragraph style not found."
+msgstr "Style de paragraphe non trouvé."
+
+#: CRNXml/CRNAltoTextBlock.cpp:113
+msgid "The block contains no text line with this id."
+msgstr "Le bloc ne contient aucune ligne ayant cet id."
+
+#: CRNXml/CRNAltoTextBlock.cpp:372
+msgid "The baseline is out of the line's bounds"
+msgstr "La ligne de base est en dehors des limites de la ligne"
+
+#: CRNXml/CRNAltoTextBlock.cpp:441
+msgid "The line contains no word with this id."
+msgstr "La ligne ne contient aucun mot ayant cet id."
+
+#: CRNXml/CRNAltoTextBlock.cpp:506 CRNXml/CRNAltoTextBlock.cpp:544
+msgid "Cannot find element."
+msgstr "Impossible de trouver l'élement."
+
+#: CRNXml/CRNAltoTextBlock.cpp:570
+msgid "Cannot find word."
+msgstr "Impossible de trouver le mot."
+
+#: CRNXml/CRNAltoTextBlock.cpp:854
+msgid "Wrong type of substitution."
+msgstr "Mauvais type de substitution."
+
+#: CRNXml/CRNAltoTextBlock.cpp:875
+msgid "The word confidence must be in [0, 1]."
+msgstr "La confiance du mot doit être dans [0, 1]."
+
+#: CRNXml/CRNAltoDescription.cpp:45
+msgid "Null image filename."
+msgstr "Nom de fichier image nul."
+
+#: CRNXml/CRNAltoDescription.cpp:75
+msgid "Invalid measurement unit."
+msgstr "Unité de mesure invalide."
+
+#: CRNXml/CRNAltoSpace.cpp:212
+msgid "The space contains no block with this id."
+msgstr "L'espace ne contient aucun bloc ayant cet id."
+
+#: CRNXml/CRNAltoSpace.cpp:283
+msgid "The space contains no text block with this id."
+msgstr "L'espace ne contient aucun bloc de texte ayant cet id."
+
+#: CRNXml/CRNAltoSpace.cpp:341 CRNXml/CRNAltoSpace.cpp:379
+#: CRNXml/CRNAltoSpace.cpp:443 CRNXml/CRNAltoSpace.cpp:480
+#: CRNXml/CRNAltoSpace.cpp:544 CRNXml/CRNAltoSpace.cpp:581
+msgid "Cannot find block."
+msgstr "Impossible de trouver le bloc."
+
+#: CRNAI/CRNAffinityPropagation.cpp:32
 msgid "The damping must be in [0, 1[."
 msgstr "L'amortissement doit être dans [0, 1[."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNAI/CRNAffinityPropagation.cpp:34
+#: CRNAI/CRNAffinityPropagation.cpp:34
 msgid "The number of stable iterations to stop must be >1."
 msgstr "Le nombre d'itérations stables pour s'arrêter doit être >1."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNAI/CRNAffinityPropagation.cpp:36
+#: CRNAI/CRNAffinityPropagation.cpp:36
 msgid "The maximal number of iterations must be >1."
 msgstr "Le nombre maximal d'itérations doit être >1."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNAI/CRNAffinityPropagation.cpp:181
+#: CRNAI/CRNAffinityPropagation.cpp:181
 msgid "The preference is not the same dimension as the distance matrix."
 msgstr ""
 "Les préférences n'ont pas la même dimension que la matrice de distance."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNAI/CRNOutliers.cpp:34
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNAI/CRNOutliers.cpp:120
+#: CRNAI/CRNOutliers.cpp:34 CRNAI/CRNOutliers.cpp:120
 msgid "The neighborhood must be > 1."
 msgstr "La taille du voisinage doit être > 1."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNAI/CRNOutliers.cpp:36
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNAI/CRNOutliers.cpp:124
+#: CRNAI/CRNOutliers.cpp:36 CRNAI/CRNOutliers.cpp:124
 msgid "The neighborhood is greater than the number of elements."
 msgstr "La taille du voisinage est plus grande que le nombre d'éléments."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNAI/CRNOutliers.cpp:111
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNAI/CRNOutliers.cpp:205
+#: CRNAI/CRNOutliers.cpp:111 CRNAI/CRNOutliers.cpp:205
 msgid "The distance matrix is not square."
 msgstr "La matrice de distances n'est pas carrée."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNAI/CRNOutliers.cpp:122
+#: CRNAI/CRNOutliers.cpp:122
 msgid "lambda must be > 0."
 msgstr "lambda doit être > 0."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNAI/CRNGaussianSCHMM.cpp:65
+#: CRNAI/CRNGaussianSCHMM.cpp:65
 msgid "Index out of range"
 msgstr "Index hors des limites"
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNAI/CRNGaussianSCHMM.cpp:106
+#: CRNAI/CRNGaussianSCHMM.cpp:106
 msgid "Illegal input vector dimension"
 msgstr "Dimension du vecteur d'entrée incorrecte"
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNAI/CRNBipartite.cpp:303
+#: CRNAI/CRNBipartite.cpp:303
 msgid "empty distance matrix."
 msgstr "matrice de distance vide."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNAI/CRNBipartite.cpp:306
+#: CRNAI/CRNBipartite.cpp:306
 msgid "the distance matrix is not square."
 msgstr "la matrice de distances n'est pas carrée."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNAI/CRNSpectralClustering.cpp:45
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNAI/CRNSpectralClustering.cpp:87
+#: CRNAI/CRNSpectralClustering.cpp:45 CRNAI/CRNSpectralClustering.cpp:87
 msgid "Neighborhood to compute sigma must be >=1."
 msgstr "La taille du voisinage pour calculer sigma doit être >=1."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNAI/CRNSpectralClustering.cpp:48
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNAI/CRNSpectralClustering.cpp:90
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNAI/CRNSpectralClustering.cpp:125
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNAI/CRNSpectralClustering.cpp:152
+#: CRNAI/CRNSpectralClustering.cpp:48 CRNAI/CRNSpectralClustering.cpp:90
+#: CRNAI/CRNSpectralClustering.cpp:125 CRNAI/CRNSpectralClustering.cpp:152
 msgid "Empty distance matrix."
 msgstr "Matrice de distance vide."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNAI/CRNSpectralClustering.cpp:122
+#: CRNAI/CRNSpectralClustering.cpp:122
 msgid "Dimension must be >=1."
 msgstr "La dimension doit être >=1."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNAI/CRNSpectralClustering.cpp:149
+#: CRNAI/CRNSpectralClustering.cpp:149
 msgid "Sigma must be positive."
 msgstr "Sigma doit être positif."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNAI/CRNSpectralClustering.cpp:209
+#: CRNAI/CRNSpectralClustering.cpp:209
 msgid "Eigenvalues should be in [0, 1]."
 msgstr "Les valeurs propres doivent être dans [0, 1]."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNAI/CRNSpectralClustering.cpp:229
+#: CRNAI/CRNSpectralClustering.cpp:229
 msgid "Cannot project on less than one coordinate."
 msgstr "Impossible de projet sur moins d'une coordonnée."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNStringUTF8.cpp:98
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNStringUTF8.cpp:113
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNStringUTF8.cpp:149
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNStringUTF8.cpp:169
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNStringUTF8.cpp:211
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNStringUTF8.cpp:235
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNStringUTF8.cpp:366
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNStringUTF8.cpp:385
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNStringUTF8.cpp:404
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNStringUTF8.cpp:427
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNStringUTF8.cpp:448
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNStringUTF8.cpp:469
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNString.cpp:142
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNString.cpp:159
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNString.cpp:206
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNString.cpp:226
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNString.cpp:268
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNString.cpp:292
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNString.cpp:521
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNString.cpp:617
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNString.cpp:637
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNString.cpp:661
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNString.cpp:682
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNString.cpp:703
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNMath/CRNMultivariateGaussianMixture.cpp:89
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNMath/CRNMultivariateGaussianMixture.cpp:107
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNMath/CRNMultivariateGaussianMixture.cpp:125
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNMath/CRNMultivariateGaussianMixture.cpp:143
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNMath/CRNMultivariateGaussianMixture.cpp:226
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNMath/CRNMultivariateGaussianMixture.cpp:256
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNMath/CRNUnivariateGaussianMixture.cpp:57
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNMath/CRNUnivariateGaussianMixture.cpp:77
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNMath/CRNUnivariateGaussianMixture.cpp:97
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNMath/CRNUnivariateGaussianMixture.cpp:117
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNMath/CRNUnivariateGaussianMixture.cpp:149
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNMath/CRNUnivariateGaussianMixture.cpp:257
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNDocument.cpp:107
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNDocument.cpp:149
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNDocument.cpp:295
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNDocument.cpp:327
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNDocument.cpp:596
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:1902
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:1927
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:2003
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:2523
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:2566
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:2608
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:2657
+#: CRNStringUTF8.cpp:97 CRNStringUTF8.cpp:112 CRNStringUTF8.cpp:148
+#: CRNStringUTF8.cpp:168 CRNStringUTF8.cpp:210 CRNStringUTF8.cpp:234
+#: CRNStringUTF8.cpp:365 CRNStringUTF8.cpp:384 CRNStringUTF8.cpp:403
+#: CRNStringUTF8.cpp:426 CRNStringUTF8.cpp:447 CRNStringUTF8.cpp:468
+#: CRNString.cpp:141 CRNString.cpp:158 CRNString.cpp:205 CRNString.cpp:225
+#: CRNString.cpp:267 CRNString.cpp:291 CRNString.cpp:520 CRNString.cpp:616
+#: CRNString.cpp:636 CRNString.cpp:660 CRNString.cpp:681 CRNString.cpp:702
+#: CRNMath/CRNMultivariateGaussianMixture.cpp:89
+#: CRNMath/CRNMultivariateGaussianMixture.cpp:107
+#: CRNMath/CRNMultivariateGaussianMixture.cpp:125
+#: CRNMath/CRNMultivariateGaussianMixture.cpp:143
+#: CRNMath/CRNMultivariateGaussianMixture.cpp:226
+#: CRNMath/CRNMultivariateGaussianMixture.cpp:256
+#: CRNMath/CRNUnivariateGaussianMixture.cpp:56
+#: CRNMath/CRNUnivariateGaussianMixture.cpp:76
+#: CRNMath/CRNUnivariateGaussianMixture.cpp:96
+#: CRNMath/CRNUnivariateGaussianMixture.cpp:116
+#: CRNMath/CRNUnivariateGaussianMixture.cpp:148
+#: CRNMath/CRNUnivariateGaussianMixture.cpp:256 CRNDocument.cpp:108
+#: CRNDocument.cpp:150 CRNDocument.cpp:296 CRNDocument.cpp:328
+#: CRNDocument.cpp:597 CRNBlock.cpp:1902 CRNBlock.cpp:1927 CRNBlock.cpp:2003
+#: CRNBlock.cpp:2523 CRNBlock.cpp:2566 CRNBlock.cpp:2608 CRNBlock.cpp:2657
 msgid "index out of bounds."
 msgstr "Index hors limites."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNStringUTF8.cpp:604
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNString.cpp:309
+#: CRNStringUTF8.cpp:603 CRNString.cpp:308
 msgid "Null suffix to search."
 msgstr "Le suffixe à rechercher est nul."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNObject.cpp:47
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNObject.cpp:58
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNObject.cpp:92
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNObject.cpp:103
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNObject.cpp:121
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNObject.cpp:131
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNObject.cpp:150
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNObject.cpp:161
-#, fuzzy
+#: CRNObject.cpp:47 CRNObject.cpp:58 CRNObject.cpp:92 CRNObject.cpp:103
+#: CRNObject.cpp:121 CRNObject.cpp:131 CRNObject.cpp:150 CRNObject.cpp:161
 msgid "null pointer."
 msgstr "Pointeur nul."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNString.cpp:359
+#: CRNString.cpp:358
 msgid "Null suffix to delete."
 msgstr "Le suffixe à effacer est nul."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNFeature/CRNFeatureExtractorProfile.cpp:48
+#: CRNFeature/CRNFeatureExtractorProfile.cpp:47
 msgid "no direction given."
 msgstr "direction manquante."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNFeature/CRNFeatureExtractorProfile.cpp:50
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNFeature/CRNFeatureExtractorProjection.cpp:49
+#: CRNFeature/CRNFeatureExtractorProfile.cpp:49
+#: CRNFeature/CRNFeatureExtractorProjection.cpp:48
 msgid "negative size."
 msgstr "taille négative."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNFeature/CRNFeatureExtractorProfile.cpp:52
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNFeature/CRNFeatureExtractorProjection.cpp:51
+#: CRNFeature/CRNFeatureExtractorProfile.cpp:51
+#: CRNFeature/CRNFeatureExtractorProjection.cpp:50
 msgid "negative maximal value."
 msgstr "valeur maximale négative."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNFeature/CRNFeatureExtractorProjection.cpp:47
+#: CRNFeature/CRNFeatureExtractorProjection.cpp:46
 msgid "no orientation given."
 msgstr "orientation manquante."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNIO/CRNTextFile.cpp:55
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNImage/CRNImage.cpp:83
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNImage/CRNImage.cpp:321
+#: CRNIO/CRNTextFile.cpp:55 CRNImage/CRNImage.cpp:85 CRNImage/CRNImage.cpp:323
 msgid "Cannot open file "
 msgstr "Impossible d'ouvrir le fichier "
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNIO/CRNTextFile.cpp:91
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNIO/CRNTextFile.cpp:116
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNIO/CRNTextFile.cpp:139
+#: CRNIO/CRNTextFile.cpp:91 CRNIO/CRNTextFile.cpp:116
+#: CRNIO/CRNTextFile.cpp:139
 msgid "cannot open file "
 msgstr "impossible d'ouvrir le fichier "
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNIO/CRNConsoleMessenger.cpp:35
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNIO/CRNFileMessenger.cpp:43
+#: CRNIO/CRNConsoleMessenger.cpp:35 CRNIO/CRNFileMessenger.cpp:43
 msgid "DEBUG"
 msgstr "DEBUG"
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNIO/CRNConsoleMessenger.cpp:37
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNIO/CRNFileMessenger.cpp:45
+#: CRNIO/CRNConsoleMessenger.cpp:37 CRNIO/CRNFileMessenger.cpp:45
 msgid "WARNING"
 msgstr "AVERTISSEMENT"
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNIO/CRNConsoleMessenger.cpp:38
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNIO/CRNFileMessenger.cpp:46
+#: CRNIO/CRNConsoleMessenger.cpp:38 CRNIO/CRNFileMessenger.cpp:46
 msgid "ERROR"
 msgstr "ERREUR"
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNIO/CRNZip.cpp:78
+#: CRNIO/CRNZip.cpp:78
 msgid "libzip version is too old to support zip_discard()."
 msgstr "La version de libzip est trop ancienne pour utiliser zip_discard()."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNIO/CRNZip.cpp:156
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNIO/CRNZip.cpp:219
+#: CRNIO/CRNZip.cpp:156 CRNIO/CRNZip.cpp:219
 msgid "The file already exists."
 msgstr "Le fichier existe déjà."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNIO/CRNZip.cpp:158
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNIO/CRNZip.cpp:221
+#: CRNIO/CRNZip.cpp:158 CRNIO/CRNZip.cpp:221
 msgid "The file is inconsistent."
 msgstr "Le fichier n'est pas cohérent."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNIO/CRNZip.cpp:161
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNIO/CRNZip.cpp:224
+#: CRNIO/CRNZip.cpp:161 CRNIO/CRNZip.cpp:224
 msgid "Not enough memory."
 msgstr "Pas assez de mémoire."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNIO/CRNZip.cpp:163
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNIO/CRNZip.cpp:226
+#: CRNIO/CRNZip.cpp:163 CRNIO/CRNZip.cpp:226
 msgid "This is not a zip file."
 msgstr "Ce n'est pas un fichier Zip"
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNIO/CRNZip.cpp:166
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNIO/CRNZip.cpp:229
+#: CRNIO/CRNZip.cpp:166 CRNIO/CRNZip.cpp:229
 msgid "Cannot open file."
 msgstr "Impossible d'ouvrir le fichier."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNIO/CRNZip.cpp:169
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNIO/CRNZip.cpp:232
+#: CRNIO/CRNZip.cpp:169 CRNIO/CRNZip.cpp:232
 msgid "Cannot read file."
 msgstr "Impossible de lire le fichier."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNIO/CRNZip.cpp:171
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNIO/CRNZip.cpp:234
+#: CRNIO/CRNZip.cpp:171 CRNIO/CRNZip.cpp:234
 msgid "Unknown zip error."
 msgstr "Erreur ZIP inconnue : "
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNIO/CRNFileMessenger.cpp:44
+#: CRNIO/CRNFileMessenger.cpp:44
 msgid "VERBOSE"
 msgstr "MESSAGE"
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNIO/CRNPath.cpp:239
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNIO/CRNPath.cpp:256
+#: CRNIO/CRNPath.cpp:239 CRNIO/CRNPath.cpp:256
 msgid "the path does not contain a filename."
 msgstr "le chemin ne contient pas de nom de fichier."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNIO/CRNIO.cpp:150
+#: CRNIO/CRNIO.cpp:150
 msgid "Cannot create directory: "
 msgstr "Impossible de créer le dossier : "
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNIO/CRNIO.cpp:182
+#: CRNIO/CRNIO.cpp:182
 msgid "Cannot remove: "
 msgstr "Impossible d'effacer : "
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNIO/CRNIO.cpp:212
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNIO/CRNIO.cpp:318
+#: CRNIO/CRNIO.cpp:212 CRNIO/CRNIO.cpp:318
 msgid "Cannot open directory: "
 msgstr "Impossible d'ouvrir le dossier : "
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNIO/CRNIO.cpp:238
+#: CRNIO/CRNIO.cpp:238
 msgid "Cannot remove file: "
 msgstr "Impossible d'effacer le fichier : "
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNIO/CRNIO.cpp:250
+#: CRNIO/CRNIO.cpp:250
 msgid "Cannot remove directory: "
 msgstr "Impossible d'effacer le dossier : "
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNIO/CRNIO.cpp:266
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNIO/CRNIO.cpp:298
+#: CRNIO/CRNIO.cpp:266 CRNIO/CRNIO.cpp:298
 msgid "Cannot copy a file over itself."
 msgstr "Impossible de copier un fichier sur lui-même."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNIO/CRNIO.cpp:277
+#: CRNIO/CRNIO.cpp:277
 msgid "Cannot open source file: "
 msgstr "Impossible d'ouvrir le fichier source : "
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNIO/CRNIO.cpp:280
+#: CRNIO/CRNIO.cpp:280
 msgid "Cannot open destination file: "
 msgstr "Impossible d'ouvrir le fichier destination : "
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNMath/CRNMatrixInt.cpp:48
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNMath/CRNMatrixInt.cpp:120
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNMath/CRNMatrixInt.cpp:175
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNMath/CRNMatrixDouble.cpp:66
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNMath/CRNMatrixDouble.cpp:93
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNMath/CRNMatrixDouble.cpp:130
+#: CRNMath/CRNMatrixInt.cpp:48 CRNMath/CRNMatrixInt.cpp:120
+#: CRNMath/CRNMatrixInt.cpp:175 CRNMath/CRNMatrixDouble.cpp:65
+#: CRNMath/CRNMatrixDouble.cpp:92 CRNMath/CRNMatrixDouble.cpp:129
 msgid "Negative standard deviation"
 msgstr "Écart type négatif."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNMath/CRNRealToRealFunction.cpp:182
+#: CRNMath/CRNRealToRealFunction.cpp:182
 msgid "No preimage found."
 msgstr "Aucun antécédent trouvé."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNMath/CRNMultivariateGaussianMixture.cpp:165
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNMath/CRNMultivariateGaussianMixture.cpp:186
+#: CRNMath/CRNMultivariateGaussianMixture.cpp:165
+#: CRNMath/CRNMultivariateGaussianMixture.cpp:186
 msgid "Incompatible dimensions"
 msgstr "Dimensions incompatibles"
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNMath/CRNMultivariateGaussianMixture.cpp:189
+#: CRNMath/CRNMultivariateGaussianMixture.cpp:189
 msgid "Invalid index"
 msgstr "Index invalide"
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNMath/CRNMultivariateGaussianMixture.cpp:231
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNMath/CRNMultivariateGaussianMixture.cpp:261
+#: CRNMath/CRNMultivariateGaussianMixture.cpp:231
+#: CRNMath/CRNMultivariateGaussianMixture.cpp:261
 msgid "incompatible dimensions."
 msgstr "dimensions incompatibles."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNMath/CRNMultivariateGaussianPDF.cpp:105
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNMath/CRNMultivariateGaussianPDF.cpp:144
+#: CRNMath/CRNMultivariateGaussianPDF.cpp:105
+#: CRNMath/CRNMultivariateGaussianPDF.cpp:144
 msgid "incompatible dimensions"
 msgstr "Dimensions incompatibles"
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNMath/CRNEquationSolver.cpp:50
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNMath/CRNEquationSolver.cpp:100
+#: CRNMath/CRNEquationSolver.cpp:50 CRNMath/CRNEquationSolver.cpp:100
 msgid "invalid or incompatible matrix dimensions"
 msgstr "les dimensions de la matrice sont invalides ou incorrectes"
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNMath/CRNEquationSolver.cpp:58
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNMath/CRNEquationSolver.cpp:131
+#: CRNMath/CRNEquationSolver.cpp:58 CRNMath/CRNEquationSolver.cpp:131
 msgid "Equation has either no solution or an infinity of solutions."
 msgstr "L'équation n'a soit aucune solution, soit une infinité de solutions."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNMath/CRNUnivariateGaussianPDF.cpp:75
+#: CRNMath/CRNUnivariateGaussianPDF.cpp:74
 msgid "Negative variance."
 msgstr "Variance négative."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNMath/CRNProp3.cpp:59
+#: CRNMath/CRNProp3.cpp:59
 msgid "true"
 msgstr "vrai"
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNMath/CRNProp3.cpp:61
+#: CRNMath/CRNProp3.cpp:61
 msgid "false"
 msgstr "faux"
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNMath/CRNProp3.cpp:64
+#: CRNMath/CRNProp3.cpp:64
 msgid "unknown"
 msgstr "inconnu"
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNMath/CRNMatrixComplex.cpp:36
+#: CRNMath/CRNMatrixComplex.cpp:36
 msgid "FFT: signal size is not a power of 2."
 msgstr "FFT : le signal n'a pas une taille puissance de 2."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNMath/CRNMatrixDouble.cpp:177
+#: CRNMath/CRNMatrixDouble.cpp:176
 msgid "not a column vector."
 msgstr "ce n'est pas un vecteur colonne."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNMath/CRNSquareMatrixDouble.cpp:40
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNMath/CRNSquareMatrixDouble.cpp:47
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNMath/CRNSquareMatrixDouble.cpp:54
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNMath/CRNSquareMatrixDouble.cpp:61
+#: CRNMath/CRNSquareMatrixDouble.cpp:40 CRNMath/CRNSquareMatrixDouble.cpp:47
+#: CRNMath/CRNSquareMatrixDouble.cpp:54 CRNMath/CRNSquareMatrixDouble.cpp:61
 msgid "the matrix is not square."
 msgstr "La matrice n'est pas carrée."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNMath/CRNSquareMatrixDouble.cpp:410
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNMath/CRNSquareMatrixDouble.cpp:452
+#: CRNMath/CRNSquareMatrixDouble.cpp:410 CRNMath/CRNSquareMatrixDouble.cpp:452
 msgid "row or column index out of range"
 msgstr "Index de ligne ou de colonne en dehors des limites."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNMath/CRNSquareMatrixDouble.cpp:577
+#: CRNMath/CRNSquareMatrixDouble.cpp:577
 msgid "The matrix cannot be inversed."
 msgstr "La matrice ne peut pas être inversée."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNMath/CRNSquareMatrixDouble.cpp:641
+#: CRNMath/CRNSquareMatrixDouble.cpp:641
 msgid "Matrix cannot be inversed. Null pivot at column: "
 msgstr "La matrice ne peut pas être inversée. Pivol nul dans la colonne : "
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNMath/CRNSquareMatrixDouble.cpp:1048
+#: CRNMath/CRNSquareMatrixDouble.cpp:1048
 msgid "Too many iterations."
 msgstr "Trop d'itérations."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/3rdParty/unicode/UtfConverter.cpp:95
-#: /home/yleydier/prg/libcrn/src/libcrn/3rdParty/unicode/UtfConverter.cpp:168
+#: 3rdParty/unicode/UtfConverter.cpp:95 3rdParty/unicode/UtfConverter.cpp:168
 msgid "UTF not supported."
 msgstr "UTF non supporté."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNDocument.cpp:73
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNDocument.cpp:105
+#: CRNDocument.cpp:74 CRNDocument.cpp:106
 msgid "null filename."
 msgstr "nom de fichier nul."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNDocument.cpp:134
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNDocument.cpp:282
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNDocument.cpp:314
+#: CRNDocument.cpp:135 CRNDocument.cpp:283 CRNDocument.cpp:315
 msgid "filename not found."
 msgstr "nom de fichier introuvable."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNDocument.cpp:198
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:2403
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNData/CRNVector.cpp:129
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNData/CRNVector.cpp:217
+#: CRNDocument.cpp:199 CRNBlock.cpp:2403 CRNData/CRNVector.cpp:128
+#: CRNData/CRNVector.cpp:216
 msgid "Index out of bounds."
 msgstr "Index hors limites."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNDocument.cpp:264
+#: CRNDocument.cpp:265
 msgid "id not found."
 msgstr "id introuvable."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNDocument.cpp:359
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNDocument.cpp:399
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNData/CRNVector.cpp:145
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNData/CRNVector.cpp:183
+#: CRNDocument.cpp:360 CRNDocument.cpp:400 CRNData/CRNVector.cpp:144
+#: CRNData/CRNVector.cpp:182
 msgid "bad changeset size."
 msgstr "mauvaise taille de liste de changements."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNDocument.cpp:369
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNDocument.cpp:409
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNData/CRNVector.cpp:155
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNData/CRNVector.cpp:193
+#: CRNDocument.cpp:370 CRNDocument.cpp:410 CRNData/CRNVector.cpp:154
+#: CRNData/CRNVector.cpp:192
 msgid "changeset contains duplicates."
 msgstr "la liste de changements contient des doublons."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNDocument.cpp:374
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNDocument.cpp:414
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNData/CRNVector.cpp:160
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNData/CRNVector.cpp:198
+#: CRNDocument.cpp:375 CRNDocument.cpp:415 CRNData/CRNVector.cpp:159
+#: CRNData/CRNVector.cpp:197
 msgid "changeset contains values out of bounds."
 msgstr "la liste des changements contient des valeurs hors limites."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNDocument.cpp:454
+#: CRNDocument.cpp:455
 msgid "Not a Document file."
 msgstr "Ceci n'est pas un fichier Document."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNDocument.cpp:600
+#: CRNDocument.cpp:601
 msgid "the document was never saved."
 msgstr "le document n'a jamais été sauvegardé."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:77
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:161
+#: CRNDocument.cpp:822
+msgid "Null width."
+msgstr "Largeur nulle."
+
+#: CRNDocument.cpp:828
+msgid "Null height."
+msgstr "Hauteur nulle."
+
+#: CRNSavable.cpp:135
+msgid "No user data to remove."
+msgstr "Pas de données utilisateur à supprimer."
+
+#: CRNSavable.cpp:230
+msgid "Cannot save an object with no filename."
+msgstr "Impossible de sauvegarder un objet sans nom de fichier."
+
+#: CRNBlock.cpp:77 CRNBlock.cpp:161
 msgid "NewBlock"
 msgstr "NouveauBloc"
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:80
+#: CRNBlock.cpp:80
 msgid "No image."
 msgstr "Image manquante."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:95
+#: CRNBlock.cpp:95
 msgid "unsupported image type."
 msgstr "format d'image non supporté."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:213
+#: CRNBlock.cpp:213
 msgid "No parent."
 msgstr "Pas de parent."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:258
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:304
+#: CRNBlock.cpp:258 CRNBlock.cpp:304
 msgid "this is a topmost block. Its bounding box cannot be changed."
 msgstr ""
 "ce bloc est en haut de l'arbre. Son rectangle englobant ne peut pas être "
 "modifié."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:261
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:307
+#: CRNBlock.cpp:261 CRNBlock.cpp:307
 msgid "Uninitialized bounding box."
 msgstr "Rectangle englobant non initialisé."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:266
+#: CRNBlock.cpp:266
 msgid "bounding box out of parent's bounding box."
 msgstr "la boîte englobante dépasse de celle du parent."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:342
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:360
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:381
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:402
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:1849
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:1880
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:1900
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:1922
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:1947
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:1972
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:1999
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:2038
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:2062
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:2085
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:2117
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:2142
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:2167
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:2191
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:2219
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:2248
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:2283
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:2519
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:2562
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:2604
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:2631
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:2653
+#: CRNBlock.cpp:342 CRNBlock.cpp:360 CRNBlock.cpp:381 CRNBlock.cpp:402
+#: CRNBlock.cpp:1849 CRNBlock.cpp:1880 CRNBlock.cpp:1900 CRNBlock.cpp:1922
+#: CRNBlock.cpp:1947 CRNBlock.cpp:1972 CRNBlock.cpp:1999 CRNBlock.cpp:2038
+#: CRNBlock.cpp:2062 CRNBlock.cpp:2085 CRNBlock.cpp:2117 CRNBlock.cpp:2142
+#: CRNBlock.cpp:2167 CRNBlock.cpp:2191 CRNBlock.cpp:2219 CRNBlock.cpp:2248
+#: CRNBlock.cpp:2283 CRNBlock.cpp:2519 CRNBlock.cpp:2562 CRNBlock.cpp:2604
+#: CRNBlock.cpp:2631 CRNBlock.cpp:2653
 msgid "tree not found."
 msgstr "arbre introuvable."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:434
+#: CRNBlock.cpp:434
 msgid "Cannot open image."
 msgstr "Impossible d'ouvrir l'image."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:552
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:579
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:606
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:641
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:674
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:702
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:730
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:766
+#: CRNBlock.cpp:552 CRNBlock.cpp:579 CRNBlock.cpp:606 CRNBlock.cpp:641
+#: CRNBlock.cpp:674 CRNBlock.cpp:702 CRNBlock.cpp:730 CRNBlock.cpp:766
 msgid "Uninitialized clipping rectangle."
 msgstr "Rectangle de bordure non initialisé."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:557
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:584
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:617
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:652
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:680
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:708
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:742
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:778
+#: CRNBlock.cpp:557 CRNBlock.cpp:584 CRNBlock.cpp:617 CRNBlock.cpp:652
+#: CRNBlock.cpp:680 CRNBlock.cpp:708 CRNBlock.cpp:742 CRNBlock.cpp:778
 msgid "Clipping rectangle out of bounds."
 msgstr "Rectangle de bordure hors limites."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:913
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:973
+#: CRNBlock.cpp:913 CRNBlock.cpp:973
 msgid "Cannot access to any source or buffer."
 msgstr "Impossible d'accéder à une source ou un buffer."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:1010
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:1087
+#: CRNBlock.cpp:1010 CRNBlock.cpp:1087
 msgid "No filename given."
 msgstr "Nom de fichier manquant."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:1107
+#: CRNBlock.cpp:1107
 msgid "Saved block do not have the same size."
 msgstr "Le bloc sauvegardé n'a pas la même taille."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:1151
+#: CRNBlock.cpp:1151
 msgid "Wrong content."
 msgstr "Mauvais contenu."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:1447
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:1477
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:1507
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:1537
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNImage/CRNImageGradient.cpp:40
+#: CRNBlock.cpp:1447 CRNBlock.cpp:1477 CRNBlock.cpp:1507 CRNBlock.cpp:1537
+#: CRNImage/CRNImageGradient.cpp:40
 msgid "Wrong image dimensions."
 msgstr "Mauvaises dimensions de l'image."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:1955
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:1980
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:2047
+#: CRNBlock.cpp:1955 CRNBlock.cpp:1980 CRNBlock.cpp:2047
 msgid "block not found."
 msgstr "bloc introuvable."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:2223
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:2252
+#: CRNBlock.cpp:2223 CRNBlock.cpp:2252
 msgid "ratio is null or negative."
 msgstr "ratio nul ou négatif."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:2286
+#: CRNBlock.cpp:2286
 msgid "overlap is negative."
 msgstr "recouvrement négatif."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:2391
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:2452
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:2696
+#: CRNBlock.cpp:2391 CRNBlock.cpp:2452 CRNBlock.cpp:2696
 msgid "Tree not found."
 msgstr "Arbre introuvable."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:2397
+#: CRNBlock.cpp:2397
 msgid "Identical indexes."
 msgstr "Index indentiques."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:2469
+#: CRNBlock.cpp:2469
 msgid "Cannot find subblock."
 msgstr "Impossible de trouver le sous-bloc."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:2542
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:2582
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:2675
+#: CRNBlock.cpp:2542 CRNBlock.cpp:2582 CRNBlock.cpp:2675
 msgid "null block or block is not a child."
 msgstr "le bloc est nul ou bien n'est pas un enfant."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:2737
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNGeometry/CRNRect.cpp:247
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNGeometry/CRNRect.cpp:329
+#: CRNBlock.cpp:2737 CRNGeometry/CRNRect.cpp:246 CRNGeometry/CRNRect.cpp:328
 msgid "Wrong direction."
 msgstr "Mauvaise direction."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNComplexObject.cpp:135
-msgid "No user data to remove."
-msgstr "Pas de données utilisateur à supprimer."
-
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNComplexObject.cpp:229
-msgid "Cannot save an object with no filename."
-msgstr "Impossible de sauvegarder un objet sans nom de fichier."
-
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNData/CRNData.cpp:161
+#: CRNData/CRNData.cpp:161
 msgid "the character 'z' is invalid inside an ASCII85 block."
 msgstr "la caractère «z» est invalide à l'intérieur d'un bloc ASCII85."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNData/CRNData.cpp:171
+#: CRNData/CRNData.cpp:171
 msgid "ASCII85 only allows characters '!' to 'u', but found a: "
 msgstr ""
 "ASCII85 n'autorise que les caractères entre «!» et «u», mais il est apparu "
 "un : "
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNData/CRNData.cpp:194
+#: CRNData/CRNData.cpp:194
 msgid "the last block of ASCII85 data cannot be a single byte."
 msgstr "le dernier bloc d'une chaîne ASCII85 ne peut pas être un octet seul."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNData/CRNMap.cpp:108
+#: CRNData/CRNMap.cpp:107
 msgid "Key not found"
 msgstr "Clé introuvable."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNData/CRNMap.cpp:126
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNData/CRNVector.cpp:235
+#: CRNData/CRNMap.cpp:125 CRNData/CRNVector.cpp:234
 msgid "Object not found."
 msgstr "Objet introuvable."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNData/CRNMap.cpp:139
+#: CRNData/CRNMap.cpp:138
 msgid "Invalid iterator."
 msgstr "Itérateur invalide."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNData/CRNMap.cpp:157
+#: CRNData/CRNMap.cpp:156
 msgid "First iterator is end()."
 msgstr "Le premier itérateur est end()."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNData/CRNMap.cpp:160
+#: CRNData/CRNMap.cpp:159
 msgid "First and end iterators are equal."
 msgstr "Le premier itérateur et l'itérateur de fin sont égaux."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNData/CRNMap.cpp:175
+#: CRNData/CRNMap.cpp:174
 msgid "End iterator is before first."
 msgstr "L'itérateur final se trouve avant le premier."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNData/CRNMap.cpp:208
+#: CRNData/CRNMap.cpp:207
 msgid "Cannot deserialize: "
 msgstr "Impossible de désérialiser : "
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNData/CRNMap.cpp:208
+#: CRNData/CRNMap.cpp:207
 msgid " because "
 msgstr " car "
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNData/CRNMap.cpp:289
-#, fuzzy
+#: CRNData/CRNMap.cpp:288
 msgid "Cannot find root element."
-msgstr "Impossible de trouver l'élément valeur."
+msgstr "Impossible de trouver l'élément racine."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNData/CRNDataFactory.cpp:51
+#: CRNData/CRNDataFactory.cpp:51
 msgid "Null XML element."
 msgstr "Élément XML nul."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNData/CRNDataFactory.cpp:56
+#: CRNData/CRNDataFactory.cpp:56
 msgid "Cannot read element."
 msgstr "Impossible de lire l'élement."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNData/CRNDataFactory.cpp:124
+#: CRNData/CRNDataFactory.cpp:124
 msgid "Unknown type: "
 msgstr "Type inconnu : "
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNData/CRNVector.cpp:286
+#: CRNData/CRNVector.cpp:285
 msgid "Unknown XML element: "
 msgstr "Élément XML inconnu : "
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNData/CRNVector.cpp:346
-#, fuzzy
+#: CRNData/CRNVector.cpp:345
 msgid "vectors have different sizes."
-msgstr "les matrices sont de tailles différentes."
+msgstr "les vecteurs sont de tailles différentes."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNImage/CRNImageRGB.cpp:73
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNImage/CRNImageRGB.cpp:331
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNImage/CRNImageGray.cpp:70
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNImage/CRNImageGray.cpp:322
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNImage/CRNImageBW.cpp:70
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNImage/CRNImageBW.cpp:321
+#: CRNImage/CRNImageRGB.cpp:73 CRNImage/CRNImageRGB.cpp:331
+#: CRNImage/CRNImageGray.cpp:70 CRNImage/CRNImageGray.cpp:322
+#: CRNImage/CRNImageBW.cpp:70 CRNImage/CRNImageBW.cpp:321
 msgid "Cannot create file "
 msgstr "Impossible de créer le fichier "
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNImage/CRNImageRGB.cpp:80
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNImage/CRNImageGray.cpp:77
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNImage/CRNImageBW.cpp:77
+#: CRNImage/CRNImageRGB.cpp:80 CRNImage/CRNImageGray.cpp:77
+#: CRNImage/CRNImageBW.cpp:77
 msgid "Cannot create the PNG structure."
 msgstr "Impossible de créer la structure PNG."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNImage/CRNImageRGB.cpp:86
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNImage/CRNImageGray.cpp:83
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNImage/CRNImageBW.cpp:83
+#: CRNImage/CRNImageRGB.cpp:86 CRNImage/CRNImageGray.cpp:83
+#: CRNImage/CRNImageBW.cpp:83
 msgid "Cannot create the PNG info."
 msgstr "Impossible les informations PNG."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNImage/CRNImageRGB.cpp:93
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNImage/CRNImageGray.cpp:90
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNImage/CRNImageBW.cpp:90
+#: CRNImage/CRNImageRGB.cpp:93 CRNImage/CRNImageGray.cpp:90
+#: CRNImage/CRNImageBW.cpp:90
 msgid "Error while generating the PNG image."
 msgstr "Erreur de génération de l'image PNG."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNImage/CRNImageRGB.cpp:168
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNImage/CRNImageRGB.cpp:385
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNImage/CRNImageGray.cpp:156
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNImage/CRNImageGray.cpp:372
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNImage/CRNImageBW.cpp:157
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNImage/CRNImageBW.cpp:371
+#: CRNImage/CRNImageRGB.cpp:168 CRNImage/CRNImageRGB.cpp:385
+#: CRNImage/CRNImageGray.cpp:156 CRNImage/CRNImageGray.cpp:372
+#: CRNImage/CRNImageBW.cpp:157 CRNImage/CRNImageBW.cpp:371
 msgid "Cannot create temporary buffer."
 msgstr "Impossible de créer le buffer temporaire."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNImage/CRNImageRGB.cpp:202
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNImage/CRNImageRGB.cpp:421
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNImage/CRNImageGray.cpp:190
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNImage/CRNImageGray.cpp:407
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNImage/CRNImageBW.cpp:191
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNImage/CRNImageBW.cpp:406
+#: CRNImage/CRNImageRGB.cpp:202 CRNImage/CRNImageRGB.cpp:421
+#: CRNImage/CRNImageGray.cpp:190 CRNImage/CRNImageGray.cpp:407
+#: CRNImage/CRNImageBW.cpp:191 CRNImage/CRNImageBW.cpp:406
 msgid "Cannot save file. "
 msgstr "Impossible de sauvegarder le fichier. "
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNImage/CRNImageRGB.cpp:254
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNImage/CRNImageRGB.cpp:442
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNImage/CRNImageGray.cpp:242
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNImage/CRNImageGray.cpp:428
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNImage/CRNImageBW.cpp:243
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNImage/CRNImageBW.cpp:427
+#: CRNImage/CRNImageRGB.cpp:254 CRNImage/CRNImageRGB.cpp:442
+#: CRNImage/CRNImageGray.cpp:242 CRNImage/CRNImageGray.cpp:428
+#: CRNImage/CRNImageBW.cpp:243 CRNImage/CRNImageBW.cpp:427
 msgid "Cannot create bitmap"
 msgstr "Impossible de créer le bitmap"
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNImage/CRNImageRGB.cpp:289
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNImage/CRNImageRGB.cpp:484
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNImage/CRNImageGray.cpp:280
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNImage/CRNImageGray.cpp:472
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNImage/CRNImage.cpp:611
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNImage/CRNImageBW.cpp:279
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNImage/CRNImageBW.cpp:471
+#: CRNImage/CRNImageRGB.cpp:289 CRNImage/CRNImageRGB.cpp:484
+#: CRNImage/CRNImageGray.cpp:280 CRNImage/CRNImageGray.cpp:472
+#: CRNImage/CRNImage.cpp:613 CRNImage/CRNImageBW.cpp:279
+#: CRNImage/CRNImageBW.cpp:471
 msgid "Null file name."
 msgstr "Nom de fichier nul."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNImage/CRNImageRGB.cpp:318
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNImage/CRNImageRGB.cpp:513
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNImage/CRNImageGray.cpp:309
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNImage/CRNImageGray.cpp:501
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNImage/CRNImageBW.cpp:308
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNImage/CRNImageBW.cpp:500
+#: CRNImage/CRNImageRGB.cpp:318 CRNImage/CRNImageRGB.cpp:513
+#: CRNImage/CRNImageGray.cpp:309 CRNImage/CRNImageGray.cpp:501
+#: CRNImage/CRNImageBW.cpp:308 CRNImage/CRNImageBW.cpp:500
 msgid ""
 "No library for saving image found or write permissions on the file or "
 "directory are not granted. No image will be saved."
@@ -852,335 +1007,183 @@ msgstr ""
 "Bibliothèque de sauvegarde d'image introuvable ou permission en écriture sur "
 "le fichier refusée. Aucune image ne sera sauvegardée."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNImage/CRNImageRGB.cpp:342
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNImage/CRNImageGray.cpp:333
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNImage/CRNImageBW.cpp:332
+#: CRNImage/CRNImageRGB.cpp:342 CRNImage/CRNImageGray.cpp:333
+#: CRNImage/CRNImageBW.cpp:332
 msgid "Cannot create jpeg file structure."
 msgstr "Impossible de créer la structure JPEG."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNImage/CRNImageRGB.cpp:529
+#: CRNImage/CRNImageRGB.cpp:529
 msgid "The number of iterations is null."
 msgstr "Le nombre d'itérations est nul."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNImage/CRNImage.cpp:99
+#: CRNImage/CRNImage.cpp:101
 msgid "Cannot create PNG reader."
 msgstr "Impossible de créer le lecteur PNG."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNImage/CRNImage.cpp:106
+#: CRNImage/CRNImage.cpp:108
 msgid "Cannot create PNG info."
 msgstr "Impossible de créer les informations PNG."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNImage/CRNImage.cpp:113
+#: CRNImage/CRNImage.cpp:115
 msgid "Error while reading the PNG file "
 msgstr "Erreur de lecture de l'image PNG "
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNImage/CRNImage.cpp:330
+#: CRNImage/CRNImage.cpp:332
 msgid "Not a JPEG file."
 msgstr "Ceci n'est pas un fichier JPEG."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNImage/CRNImage.cpp:355
+#: CRNImage/CRNImage.cpp:357
 msgid "JPEG file contains unnatural bytes per pixel count."
 msgstr "Le fichier JPEG contient un nombre d'octets par pixel incorrect."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNImage/CRNImage.cpp:409
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNImage/CRNImage.cpp:418
+#: CRNImage/CRNImage.cpp:411 CRNImage/CRNImage.cpp:420
 msgid "Cannot convert filename string. "
 msgstr "Impossible de convertir le nom de fichier"
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNImage/CRNImage.cpp:427
+#: CRNImage/CRNImage.cpp:429
 msgid "Cannot open image. "
 msgstr "Impossible d'ouvrir l'image."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNImage/CRNImage.cpp:480
-#, fuzzy
+#: CRNImage/CRNImage.cpp:482
 msgid "Gdi+ could not load the image."
-msgstr " n'a pas pu être chargé correctement."
+msgstr "Gdi+ n'a pas pu charger l'image."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNImage/CRNImage.cpp:486
-#, fuzzy
+#: CRNImage/CRNImage.cpp:488
 msgid "Gdi+ could not load the image correctly. Error number "
-msgstr "Impossible de verrouiller les pixels. Erreur n° "
+msgstr "Gdi+ n'a pas pu charger l'image correctement. Erreur n° "
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNImage/CRNImage.cpp:502
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNImage/CRNImage.cpp:556
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNImage/CRNImage.cpp:581
+#: CRNImage/CRNImage.cpp:504 CRNImage/CRNImage.cpp:558
+#: CRNImage/CRNImage.cpp:583
 msgid "Could not lock pixels. Error number "
 msgstr "Impossible de verrouiller les pixels. Erreur n° "
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNImage/CRNImage.cpp:647
-msgid "No decoder could open the file."
-msgstr "Aucun décodeur n'a pu ouvrir le fichier."
+#: CRNImage/CRNImage.cpp:649
+msgid "No decoder could open the file "
+msgstr "Aucun décodeur n'a pu ouvrir le fichier "
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNImage/CRNImageBW.cpp:801
+#: CRNImage/CRNImage.cpp:671 CRNImage/CRNImage.cpp:692
+#: CRNImage/CRNImage.cpp:713
+msgid "unknown image format."
+msgstr "Format d'image inconnu."
+
+#: CRNImage/CRNImageBW.cpp:801
 msgid "Min neighbors must be < 8."
 msgstr "Le nombre min de voisins doit être < 8."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNImage/CRNImageBW.cpp:856
+#: CRNImage/CRNImageBW.cpp:856
 msgid "matrices of different sizes"
 msgstr "les matrices sont de tailles différentes."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNImage/CRNImageBW.cpp:860
+#: CRNImage/CRNImageBW.cpp:860
 msgid "even matrix dimensions."
 msgstr "dimensions de matrice paires."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNTimer.cpp:94
+#: CRNUtils/CRNTimer.cpp:94
 msgid "Unused stopwatch."
 msgstr "Chronomètre non utilisé."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNTimer.cpp:97
+#: CRNUtils/CRNTimer.cpp:97
 msgid "Stopwatch: "
 msgstr "Chronomètre : "
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNTimer.cpp:99
+#: CRNUtils/CRNTimer.cpp:99
 msgid "Total time: "
 msgstr "Temps total : "
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNConfigurationFile.cpp:114
-#, fuzzy
+#: CRNUtils/CRNConfigurationFile.cpp:114
 msgid "Cannot save configuration file: "
-msgstr "Impossible de lire le fichier de configuration."
+msgstr "Impossible de sauvegarder le fichier de configuration : "
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNConfigurationFile.cpp:164
+#: CRNUtils/CRNConfigurationFile.cpp:173
 msgid " is not a Path."
 msgstr " n'est pas un Path."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNConfigurationFile.cpp:177
+#: CRNUtils/CRNConfigurationFile.cpp:186
 msgid " is not a String."
 msgstr " n'est pas un String."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNConfigurationFile.cpp:190
+#: CRNUtils/CRNConfigurationFile.cpp:199
 msgid " is not a StringUTF8."
 msgstr " n'est pas un StringUTF8."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNConfigurationFile.cpp:203
+#: CRNUtils/CRNConfigurationFile.cpp:212
 msgid " is not a Prop3."
 msgstr " n'est pas un Prop3."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNConfigurationFile.cpp:216
+#: CRNUtils/CRNConfigurationFile.cpp:225
 msgid " is not an int."
 msgstr " n'est pas un entier."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNConfigurationFile.cpp:229
+#: CRNUtils/CRNConfigurationFile.cpp:238
 msgid " is not a double."
 msgstr " n'est pas un double."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNXml.cpp:50
-msgid "Cannot find attribute."
-msgstr "Impossible de trouver l'attribut."
-
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNXml.cpp:52
-msgid "Wrong attribute type."
-msgstr "Mauvais type d'attribut."
-
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNXml.cpp:54
-msgid "File not found."
-msgstr "Fichier introuvable."
-
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNXml.cpp:56
-msgid "File could not be opened."
-msgstr "Impossible d'ouvrir le fichier."
-
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNXml.cpp:58
-msgid "File read error."
-msgstr "Erreur de lecture du fichier."
-
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNXml.cpp:61
-msgid "Element mismatch."
-msgstr "Les éléments ne correspondent pas."
-
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNXml.cpp:63
-msgid "Could not parse element."
-msgstr "Impossible de lire l'élement."
-
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNXml.cpp:65
-msgid "Could not parse attribute."
-msgstr "Impossible de lire l'attribut."
-
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNXml.cpp:67
-msgid "Could not identify tag."
-msgstr "Impossible d'identifier l'étiquette."
-
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNXml.cpp:69
-msgid "Could not parse text."
-msgstr "Impossible de lire le texte."
-
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNXml.cpp:71
-msgid "Could not parse CDATA."
-msgstr "Impossible de lire le CDATA."
-
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNXml.cpp:73
-msgid "Could not parse comment."
-msgstr "Impossible de lire le commentaire."
-
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNXml.cpp:75
-msgid "Could not parse declaration."
-msgstr "Impossible de lire la déclaration."
-
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNXml.cpp:77
-msgid "Could not parse unknown item."
-msgstr "Impossible de lire l'objet inconnu."
-
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNXml.cpp:79
-msgid "Empty document."
-msgstr "Document vide."
-
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNXml.cpp:81
-msgid "Parse error."
-msgstr "Erreur de lecture."
-
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNXml.cpp:83
-msgid "Cannot convert text."
-msgstr "Impossible de convertir le texte."
-
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNXml.cpp:85
-msgid "No text node."
-msgstr "Nœud textuel manquant."
-
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNXml.cpp:133
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNXml.cpp:136
-msgid "Not an element."
-msgstr "Pas un élément."
-
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNXml.cpp:147
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNXml.cpp:150
-msgid "Not a comment."
-msgstr "Pas un commentaire."
-
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNXml.cpp:161
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNXml.cpp:164
-msgid "Not a text."
-msgstr "Pas un texte."
-
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNXml.cpp:343
-msgid "No child node."
-msgstr "Pas de nœud enfant."
-
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNXml.cpp:358
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNXml.cpp:376
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNXml.cpp:398
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNXml.cpp:1090
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNXml.cpp:1110
-msgid "Empty element name."
-msgstr "Nom d'élément vide."
-
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNXml.cpp:396
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNXml.cpp:449
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNXml.cpp:505
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNXml.cpp:526
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNXml.cpp:1108
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNXml.cpp:1144
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNXml.cpp:1163
-msgid "Null node."
-msgstr "Nœud nul."
-
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNXml.cpp:403
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNXml.cpp:454
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNXml.cpp:511
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNXml.cpp:1115
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNXml.cpp:1149
-msgid "Node not found."
-msgstr "Nœud introuvable."
-
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNXml.cpp:568
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNXml.cpp:1212
-msgid "Invalid node."
-msgstr "Nœud invalide."
-
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNXml.cpp:598
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNXml.cpp:611
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNXml.cpp:642
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNXml.cpp:661
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNXml.cpp:678
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNXml.cpp:695
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNXml.cpp:712
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNXml.cpp:729
-msgid "Empty attribute name."
-msgstr "Nom d'attribut vide."
-
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNXml.cpp:645
-msgid "Cannot find attribute: "
-msgstr "Impossible de trouver l'attribut : "
-
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNXml.cpp:1025
-msgid "Empty filename."
-msgstr "Nom de fichier vide."
-
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNXml.cpp:1038
-msgid "No element in the XML."
-msgstr "L'XML ne contient pas d'élément."
-
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNConfigElement.cpp:135
+#: CRNUtils/CRNConfigElement.cpp:135
 msgid "The element was not initialized."
 msgstr "L'élément n'est pas initialisé."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNConfigElement.cpp:154
-#, fuzzy
+#: CRNUtils/CRNConfigElement.cpp:154
 msgid "The element is of unknown type."
-msgstr "L'élément n'est pas initialisé."
+msgstr "Le type de l'élément est inconnu."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNCharsetConverter.cpp:65
+#: CRNUtils/CRNCharsetConverter.cpp:65
 msgid "Null charset"
 msgstr "Charset nul."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNCharsetConverter.cpp:81
+#: CRNUtils/CRNCharsetConverter.cpp:81
 msgid "Cannot convert from "
 msgstr "Impossible de convertir à partir de "
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNCharsetConverter.cpp:90
+#: CRNUtils/CRNCharsetConverter.cpp:90
 msgid "Cannot convert to "
 msgstr "Impossible de convertir vers "
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNCharsetConverter.cpp:145
+#: CRNUtils/CRNCharsetConverter.cpp:145
 msgid "Invalid character."
 msgstr "Caractère invalide."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNCharsetConverter.cpp:151
+#: CRNUtils/CRNCharsetConverter.cpp:151
 msgid "Incomplete multibyte character."
 msgstr "Caractère multi-octets incomplet."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNCharsetConverter.cpp:210
+#: CRNUtils/CRNCharsetConverter.cpp:210
 msgid "Invalid character in: "
 msgstr "Caractère invalide dans : "
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNCharsetConverter.cpp:216
+#: CRNUtils/CRNCharsetConverter.cpp:216
 msgid "Incomplete multibyte character in: "
 msgstr "Caractère multi-octets incomplet dans : "
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNGeometry/CRNStroke.cpp:125
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNGeometry/CRNStroke.cpp:156
+#: CRNGeometry/CRNStroke.cpp:124 CRNGeometry/CRNStroke.cpp:155
 msgid "Invalid stroke"
 msgstr "Tracé invalide"
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNGeometry/CRNStroke.cpp:162
+#: CRNGeometry/CRNStroke.cpp:161
 msgid "Null step."
 msgstr "Pas nul."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNGeometry/CRNStroke.cpp:213
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNGeometry/CRNStroke.cpp:230
+#: CRNGeometry/CRNStroke.cpp:212 CRNGeometry/CRNStroke.cpp:229
 msgid "index out of range."
 msgstr "index hors des limites."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNGeometry/CRNStroke.cpp:249
+#: CRNGeometry/CRNStroke.cpp:248
 msgid "Cannot reach abscissa."
 msgstr "Impossible d'atteindre l'abscisse."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNGeometry/CRNRect.cpp:113
+#: CRNGeometry/CRNRect.cpp:112
 msgid "No orientation given."
 msgstr "Orientation manquante."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNGeometry/CRNRect.cpp:227
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNGeometry/CRNRect.cpp:440
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNGeometry/CRNRect.cpp:464
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNGeometry/CRNRect.cpp:602
+#: CRNGeometry/CRNRect.cpp:226 CRNGeometry/CRNRect.cpp:439
+#: CRNGeometry/CRNRect.cpp:463 CRNGeometry/CRNRect.cpp:601
 msgid "The rectangle isn't initialized."
 msgstr "Le rectangle n'est pas initialisé."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNGeometry/CRNRect.cpp:442
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNGeometry/CRNRect.cpp:466
+#: CRNGeometry/CRNRect.cpp:441 CRNGeometry/CRNRect.cpp:465
 msgid "negative scale."
 msgstr "échelle négative."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNConfig.cpp:82
+#: CRNConfig.cpp:94
 msgid "Using default language."
 msgstr "Langue française sélectionnée."
 
@@ -3034,9 +3037,6 @@ msgstr "Langue française sélectionnée."
 #~ msgstr ""
 #~ "Matrice plus grande que l'image. Aucune opération ne sera effectuée."
 
-#~ msgid "Null image."
-#~ msgstr "Image nulle."
-
 #~ msgid "The composite image is empty."
 #~ msgstr "L'image composite est vide."
 
@@ -3725,9 +3725,6 @@ msgstr "Langue française sélectionnée."
 #~ msgid "no histogram to append."
 #~ msgstr "Pas d'histogramme à ajouter."
 
-#~ msgid "Null data"
-#~ msgstr "Données vides."
-
 #~ msgid "Null stroke"
 #~ msgstr "Tracé vide"
 
@@ -3945,9 +3942,6 @@ msgstr "Langue française sélectionnée."
 
 #~ msgid "Please select a PNG file name"
 #~ msgstr "Veuillez sélectionner un nom d'image PNG"
-
-#~ msgid "Unknown data format: "
-#~ msgstr "Format de données inconnu : "
 
 #~ msgid "Convolution"
 #~ msgstr "Convolution"
@@ -4475,3 +4469,345 @@ msgstr "Langue française sélectionnée."
 #~ msgid "No library for image loading found. No image will be created."
 #~ msgstr ""
 #~ "Bibliothèque de lecture d'image introuvable. Aucune image ne sera créée."
+
+#~ msgid "New project"
+#~ msgstr "Nouveau projet"
+
+#~ msgid "Read image names in _XML Altos"
+#~ msgstr "Lire les noms des images dans les _XML Alto"
+
+#~ msgid "Match images and XML Altos _filenames"
+#~ msgstr "Apparier les noms de _fichier des images et des XML Alto"
+
+#~ msgid "Path to the XML Alto files"
+#~ msgstr "Chemin vers les fichiers XML Alto"
+
+#~ msgid "Path to the images"
+#~ msgstr "Chemin vers les images"
+
+#~ msgid "_Images are in a different folder"
+#~ msgstr "Les _images sont dans un autre dossier"
+
+#~ msgid "Images path"
+#~ msgstr "Chemin des images"
+
+#~ msgid "Project name"
+#~ msgstr "Nom du projet"
+
+#~ msgid "XML Altos path"
+#~ msgstr "Chemin des XML Alto"
+
+#~ msgid "Cannot create project"
+#~ msgstr "Impossible de créer le projet"
+
+#~ msgid "Style not found."
+#~ msgstr "Style non trouvé."
+
+#~ msgid "Text line information"
+#~ msgstr "Informations sur la ligne de texte"
+
+#~ msgid "Baseline"
+#~ msgstr "Ligne de base"
+
+#~ msgid "Horizontal position"
+#~ msgstr "Position horizontale"
+
+#~ msgid "Vertical position"
+#~ msgstr "Position verticale"
+
+#~ msgid "Width"
+#~ msgstr "Largeur"
+
+#~ msgid "Height"
+#~ msgstr "Hauteur"
+
+#~ msgid "Manually corrected"
+#~ msgstr "Corrigé manuellement"
+
+#~ msgid "Line styles"
+#~ msgstr "Styles de la ligne"
+
+#~ msgid "Undefined"
+#~ msgstr "Non défini"
+
+#~ msgid "Right"
+#~ msgstr "Droite"
+
+#~ msgid "Left"
+#~ msgstr "Gauche"
+
+#~ msgid "Center"
+#~ msgstr "Centré"
+
+#~ msgid "Paragraph style"
+#~ msgstr "Style de paragraphe"
+
+#~ msgid "Left indentation"
+#~ msgstr "Écart à gauche"
+
+#~ msgid "Right indentation"
+#~ msgstr "Écart à droite"
+
+#~ msgid "Line space"
+#~ msgstr "Interligne"
+
+#~ msgid "First line indentation"
+#~ msgstr "Indentation de la première ligne"
+
+#~ msgid "Id"
+#~ msgstr "Identifiant"
+
+#~ msgid "Alignment"
+#~ msgstr "Alignement"
+
+#~ msgid "Add style"
+#~ msgstr "Ajouter un style"
+
+#~ msgid "Add text style"
+#~ msgstr "Ajouter un style de texte"
+
+#~ msgid "Add paragraph style"
+#~ msgstr "Ajouter un style de paragraphe"
+
+#~ msgid "Create style"
+#~ msgstr "Créer un style"
+
+#~ msgid "This id already exists in the document."
+#~ msgstr "Cet identifiant existe déjà dans le document."
+
+#~ msgid "Text style"
+#~ msgstr "Style de texte"
+
+#~ msgid "Colored"
+#~ msgstr "Coloré"
+
+#~ msgid "Bold"
+#~ msgstr "Gras"
+
+#~ msgid "Italics"
+#~ msgstr "Italiques"
+
+#~ msgid "Subscript"
+#~ msgstr "Indice"
+
+#~ msgid "Superscript"
+#~ msgstr "Exposant"
+
+#~ msgid "Small caps"
+#~ msgstr "Petites majuscules"
+
+#~ msgid "Underlined"
+#~ msgstr "Souligné"
+
+#~ msgid "Font family"
+#~ msgstr "Police"
+
+#~ msgid "Serif"
+#~ msgstr "Empattements"
+
+#~ msgid "Fixed width"
+#~ msgstr "Chasse fixe"
+
+#~ msgid "Font size"
+#~ msgstr "Taille de la police"
+
+#~ msgid "Word information"
+#~ msgstr "Informations sur le mot"
+
+#~ msgid "Word confidence"
+#~ msgstr "Indice de confiance"
+
+#~ msgid "Content"
+#~ msgstr "Contenu"
+
+#~ msgid "Word styles"
+#~ msgstr "Styles du mot"
+
+#~ msgid "Show/hide _pages"
+#~ msgstr "Montrer/cacher les _pages"
+
+#~ msgid "Show/hide pages"
+#~ msgstr "Montrer/cacher les pages"
+
+#~ msgid "Show/hide _spaces"
+#~ msgstr "Montrer/cacher les e_spaces"
+
+#~ msgid "Show/hide spaces"
+#~ msgstr "Montrer/cacher les espaces"
+
+#~ msgid "Show/hide _text blocks"
+#~ msgstr "Montrer/cacher les blocs de _texte"
+
+#~ msgid "Show/hide text blocks"
+#~ msgstr "Montrer/cacher les blocs de texte"
+
+#~ msgid "Show/hide text _lines"
+#~ msgstr "Montrer/cacher les _lignes de texte"
+
+#~ msgid "Show/hide text lines"
+#~ msgstr "Montrer/cacher les lignes de texte"
+
+#~ msgid "Show/hide _words"
+#~ msgstr "Montrer/cacher les _mots"
+
+#~ msgid "Show/hide words"
+#~ msgstr "Montrer/cacher les mots"
+
+#~ msgid "_Edit alto"
+#~ msgstr "_Modifier l'alto"
+
+#~ msgid "Edit alto"
+#~ msgstr "Modifier l'alto"
+
+#~ msgid "Add word"
+#~ msgstr "Ajouter un mot"
+
+#~ msgid "Delete word"
+#~ msgstr "Supprimer le mot"
+
+#~ msgid "Create page"
+#~ msgstr "Créer une page"
+
+#~ msgid "Page"
+#~ msgstr "Page"
+
+#~ msgid "Delete"
+#~ msgstr "Supprimer"
+
+#~ msgid "Cut vertically here"
+#~ msgstr "Couper vecticalement ici"
+
+#~ msgid "Create group"
+#~ msgstr "Créer un groupe"
+
+#~ msgid "Add to group"
+#~ msgstr "Ajouter au groupe"
+
+#~ msgid "Merge group"
+#~ msgstr "Fusionner le groupe"
+
+#~ msgid "Clear group"
+#~ msgstr "Vider le groupe"
+
+#~ msgid "Print space"
+#~ msgstr "Espace d'impression"
+
+#~ msgid "Cut horizontally here"
+#~ msgstr "Couper horizontalement ici"
+
+#~ msgid "Text block"
+#~ msgstr "Bloc de texte"
+
+#~ msgid "Text line"
+#~ msgstr "Ligne de texte"
+
+#~ msgid "Edit"
+#~ msgstr "Modifier"
+
+#~ msgid "Word"
+#~ msgstr "Mot"
+
+#~ msgid "No transcription"
+#~ msgstr "Pas de transcription"
+
+#~ msgid "Add text line"
+#~ msgstr "Ajouter une ligne de texte"
+
+#~ msgid "Add text block"
+#~ msgstr "Ajouter un bloc de texte"
+
+#~ msgid "Add print space"
+#~ msgstr "Ajouter un espace d'impression"
+
+#~ msgid "Cannot add page."
+#~ msgstr "Impossible d'ajouter une page."
+
+#~ msgid "Cannot remove page."
+#~ msgstr "Impossible de supprimer la page."
+
+#~ msgid "Modify value"
+#~ msgstr "Modifier la valeur"
+
+#~ msgid "Cannot find text style."
+#~ msgstr "Impossible de trouver le style de texte."
+
+#~ msgid "Cannot find paragraph style."
+#~ msgstr "Impossible de trouver le style de paragraphe."
+
+#~ msgid "Cannot write file."
+#~ msgstr "Impossible d'écrire le fichier."
+
+#~ msgid "No element has this id."
+#~ msgstr "Aucun élément n'a cet id."
+
+#~ msgid "The page has no Id."
+#~ msgstr "La page n'a pas d'id."
+
+#~ msgid "The page has no physical image number."
+#~ msgstr "La page n'a pas de numéro d'image physique."
+
+#~ msgid "No page has this id."
+#~ msgstr "Aucune page n'a cet id."
+
+#~ msgid "No space has this id in this page."
+#~ msgstr "Aucun espace n'a cet id dans cette page."
+
+#~ msgid "Cannot find measurement unit."
+#~ msgstr "Impossible de trouver l'unité de mesure."
+
+#~ msgid "Unhandled font type."
+#~ msgstr "Type de police de caractère non supportée."
+
+#~ msgid "Unhandled font width."
+#~ msgstr "Largeur de police de caractère non supportée."
+
+#~ msgid "Invalid font style."
+#~ msgstr "Style de police de caractères invalide."
+
+#~ msgid "Invalid paragraph alignment."
+#~ msgstr "Alignement de paragraphe invalide."
+
+#~ msgid "The page space has no height."
+#~ msgstr "L'espace n'a pas de hauteur."
+
+#~ msgid "The page space has no width."
+#~ msgstr "L'espace n'a pas de largeur."
+
+#~ msgid "The page space has no vpos."
+#~ msgstr "L'espace n'a pas de position verticale."
+
+#~ msgid "The page space has no hpos."
+#~ msgstr "L'espace n'a pas de position horizontale."
+
+#~ msgid "Null charset converter."
+#~ msgstr "Convertisseur de codage de caractères nul."
+
+#~ msgid "Unknown type of node."
+#~ msgstr "Type de nœud inconnu."
+
+#~ msgid "Could not find any attribute named "
+#~ msgstr "Impossible de trouver l'attribut nommé "
+
+#~ msgid "Position out of bounds"
+#~ msgstr "Position hors limites"
+
+#~ msgid "Subnode not found."
+#~ msgstr "Sous-nœud introuvable."
+
+#~ msgid "Cannot not find id."
+#~ msgstr "Impossible de trouver l'id."
+
+#~ msgid "The line has no height."
+#~ msgstr "La ligne n'a pas de hauteur."
+
+#~ msgid "The line has no width."
+#~ msgstr "La ligne n'a pas de largeur."
+
+#~ msgid "The line has no vpos."
+#~ msgstr "La ligne n'a pas de position verticale."
+
+#~ msgid "The line has no hpos."
+#~ msgstr "La ligne n'a pas de position horizontale."
+
+#~ msgid "The block contains no word with this id."
+#~ msgstr "Le bloc ne contient aucun mot ayant cet id."
