@@ -20,8 +20,6 @@
  */
 
 #include <CRNMath/CRNLinearInterpolation.h>
-#include <CRNUtils/CRNXml.h>
-#include <CRNData/CRNForeach.h>
 #include <CRNData/CRNDataFactory.h>
 #include <CRNi18n.h>
 

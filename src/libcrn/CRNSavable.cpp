@@ -23,7 +23,7 @@
 #include <CRNSavable.h>
 #include <CRNException.h>
 #include <CRNData/CRNMap.h>
-#include <CRNUtils/CRNXml.h>
+#include <CRNXml/CRNXml.h>
 
 using namespace crn;
 

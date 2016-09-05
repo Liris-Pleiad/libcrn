@@ -25,7 +25,7 @@
 #include <CRNConfig.h>
 #include <CRNUtils/CRNAtScopeExit.h>
 #include <CRNUtils/CRNProgress.h>
-#include <CRNUtils/CRNXml.h>
+#include <CRNXml/CRNXml.h>
 #include <CRNIO/CRNIO.h>
 #ifdef CRN_USING_HARU
 #	include <CRNUtils/CRNPDF.h>

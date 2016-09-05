@@ -24,7 +24,6 @@
 #include <CRNException.h>
 #include <CRNMath/CRNProp3.h>
 #include <CRNData/CRNDataFactory.h>
-#include <CRNUtils/CRNXml.h>
 #include <CRNMath/CRNMath.h>
 #include <CRNi18n.h>
 

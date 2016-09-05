@@ -20,7 +20,7 @@
  */
 
 #include <CRNUtils/CRNDefaultAction.h>
-#include <CRNUtils/CRNXml.h>
+#include <CRNXml/CRNXml.h>
 #include <CRNi18n.h>
 
 using namespace crn;

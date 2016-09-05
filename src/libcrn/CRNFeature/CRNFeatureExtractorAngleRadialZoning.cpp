@@ -26,7 +26,6 @@
 #include <CRNImage/CRNImageGradient.h>
 #include <CRNBlock.h>
 #include <CRNData/CRNDataFactory.h>
-#include <CRNUtils/CRNXml.h>
 #include <CRNi18n.h>
 
 using namespace crn;

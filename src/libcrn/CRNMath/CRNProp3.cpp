@@ -22,7 +22,6 @@
 #include <CRNMath/CRNProp3.h>
 #include <CRNException.h>
 #include <CRNData/CRNDataFactory.h>
-#include <CRNUtils/CRNXml.h>
 #include <CRNi18n.h>
 
 #ifndef TRUE

@@ -28,7 +28,7 @@
 #include <unordered_map>
 #include <typeinfo>
 #include <typeindex>
-#include <CRNUtils/CRNXml.h>
+#include <CRNXml/CRNXml.h>
 
 /*! \addtogroup base */
 /*@{*/
