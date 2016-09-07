@@ -23,7 +23,10 @@
 #ifdef CRNAlto_HEADER
 /*! \endcond */
 
-/*! \brief XML Alto layout element */
+/*! \brief XML Alto layout element
+ * \ingroup xml
+ * \author Yann LEYDIER
+ */
 class Layout: public Element
 {
 	public:
@@ -40,7 +43,10 @@ class Layout: public Element
 		/*! \brief Removes a reference to a style */
 		void RemoveStyle(const Id &styleid);
 
-		/*! \brief XML Alto Page element */
+		/*! \brief XML Alto Page element
+		 * \ingroup xml
+		 * \author Yann LEYDIER
+		 */
 		class Page: public Element
 		{
 			public:

@@ -23,7 +23,10 @@
 #ifdef CRNAlto_HEADER
 /*! \endcond */
 
-/*! \brief Alto global description */
+/*! \brief Alto global description 
+ * \ingroup xml
+ * \author Yann LEYDIER
+ */
 class Description: public Element
 {
 	public:
@@ -45,7 +48,7 @@ class Description: public Element
 		/*! \brief Constructor from file name */
 		Description(const Element &el, const Path &imagename);
 
-	friend class Root;
+		friend class Root;
 };
 
 #else

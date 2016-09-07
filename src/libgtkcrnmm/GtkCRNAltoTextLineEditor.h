@@ -28,6 +28,9 @@
 #ifndef CRN_USING_GTKMM3
 namespace GtkCRN
 {
+	/*! \brief A widget to edit a text line's properties
+	 * \ingroup	gtkcrn
+	 */
 	class AltoTextLineEditor: public Gtk::Dialog
 	{
 		public:

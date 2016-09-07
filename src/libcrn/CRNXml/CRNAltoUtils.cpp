@@ -28,6 +28,8 @@ using namespace xml;
 /*! Gets the list of style references
  * \param[in]	el	the element
  * \return	the style references
+ * \ingroup xml
+ * \author Yann LEYDIER
  */
 std::vector<Id> crn::xml::GetStyleRefs(const Element &el)
 {
@@ -42,6 +44,8 @@ std::vector<Id> crn::xml::GetStyleRefs(const Element &el)
  * \param[in]	el	the element
  * \param[in]	styles	the element's list of styles
  * \param[in]	id	the style to add
+ * \ingroup xml
+ * \author Yann LEYDIER
  */
 void crn::xml::AddStyleRef(Element &el, const Id &id)
 {
@@ -59,6 +63,8 @@ void crn::xml::AddStyleRef(Element &el, const Id &id)
  * \param[in]	el	the element
  * \param[in]	styles	the element's list of styles
  * \param[in]	id	the style to add
+ * \ingroup xml
+ * \author Yann LEYDIER
  */
 void crn::xml::RemoveStyleRef(Element &el, const Id &id)
 {

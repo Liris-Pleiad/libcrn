@@ -34,6 +34,8 @@ namespace crn
 		/*! \brief XML Alto file wrapper
 		 * 
 		 * A class to load, modify and save an XML Alto file
+		 * \ingroup xml
+		 * \author Yann LEYDIER
 		 */
 		class Alto: public Document
 		{

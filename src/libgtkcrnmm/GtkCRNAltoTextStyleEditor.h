@@ -32,6 +32,7 @@ namespace GtkCRN
 	/*! \brief Text style edition widget
 	 * 
 	 * A class to display and modify a text style
+	 * \ingroup	gtkcrn
 	 */
 	class AltoTextStyleEditor: public Gtk::Dialog
 	{

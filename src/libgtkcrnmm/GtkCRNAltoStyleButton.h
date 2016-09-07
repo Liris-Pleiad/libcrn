@@ -31,6 +31,7 @@ namespace GtkCRN
 	/*! \brief A button that links to a style editor
 	 * 
 	 * A button that links to a style editor
+	 * \ingroup	gtkcrn
 	 */
 	class AltoStyleButton: public Gtk::HBox
 	{

@@ -31,6 +31,7 @@ namespace GtkCRN
 	/*! \brief Paragraph style edition widget
 	 * 
 	 * A class to display and modify a paragraph style
+	 * \ingroup	gtkcrn
 	 */
 	class AltoParagraphStyleEditor: public Gtk::Dialog
 	{

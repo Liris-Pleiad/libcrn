@@ -31,6 +31,7 @@ namespace GtkCRN
 	/*! \brief XML Alto display
 	 * 
 	 * A class to display a document and its alto structure
+	 * \ingroup	gtkcrn
 	 */
 	class Alto: public Gtk::HBox
 	{

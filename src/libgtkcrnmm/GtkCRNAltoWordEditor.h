@@ -25,8 +25,12 @@
 #include <CRNXml/CRNAlto.h>
 #include <gtkmm.h>
 
+#ifndef CRN_USING_GTKMM3
 namespace GtkCRN
 {
+	/*! \brief A widget to edit a word's properties
+	 * \ingroup	gtkcrn
+	 */
 	class AltoWordEditor: public Gtk::Dialog
 	{
 		public:
@@ -48,4 +52,5 @@ namespace GtkCRN
 
 #endif
 
+#endif
 

@@ -23,7 +23,10 @@
 #ifdef CRNAlto_HEADER
 /*! \endcond */
 
-/*! \brief List of styles used in the document */
+/*! \brief List of styles used in the document
+ * \ingroup xml
+ * \author Yann LEYDIER
+ */
 class Styles: public Element
 {
 	public:
@@ -37,7 +40,10 @@ class Styles: public Element
 		std::vector<Id> GetTextStyles() const;
 		/*! \brief Returns the ids of the paragraph styles */
 		std::vector<Id> GetParagraphStyles() const;
-		/*! \brief A text style */
+		/*! \brief A text style
+		 * \ingroup xml
+		 * \author Yann LEYDIER
+		 */
 		class Text:public Element
 		{
 			public:
@@ -89,7 +95,10 @@ class Styles: public Element
 		/*! \brief Adds a text style */
 		Text& AddTextStyle(const Id &id_, double size);
 
-		/*! \brief A paragraph style */
+		/*! \brief A paragraph style
+		 * \ingroup xml
+		 * \author Yann LEYDIER
+		 */
 		class Paragraph: public Element
 		{
 			public:

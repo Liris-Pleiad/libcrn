@@ -32,7 +32,10 @@ namespace crn
 {
 	namespace xml
 	{
-		/*! Path to an alto page */
+		/*! Path to an alto page
+		 * \ingroup xml
+		 * \author Yann LEYDIER
+		 */
 		struct PagePath
 		{
 			PagePath() { }
@@ -56,7 +59,10 @@ namespace crn
 			static const crn::String Separator;
 			static const PagePath NullPath;
 		};
-		/*! Path to an alto space */
+		/*! Path to an alto space
+		 * \ingroup xml
+		 * \author Yann LEYDIER
+		 */
 		struct SpacePath: public PagePath
 		{
 			SpacePath() { }
@@ -78,7 +84,10 @@ namespace crn
 			virtual String ToString() const override { return PagePath::ToString() + Separator + space_id; }
 			static const SpacePath NullPath;
 		};
-		/*! Path to an alto block (text block, illustration, etc.) */
+		/*! Path to an alto block (text block, illustration, etc.)
+		 * \ingroup xml
+		 * \author Yann LEYDIER
+		 */
 		struct BlockPath: public SpacePath
 		{
 			BlockPath() { }
@@ -100,7 +109,10 @@ namespace crn
 			virtual String ToString() const override { return SpacePath::ToString() + Separator + block_id; }
 			static const BlockPath NullPath;
 		};
-		/*! Path to an alto text line */
+		/*! Path to an alto text line
+		 * \ingroup xml
+		 * \author Yann LEYDIER
+		 */
 		struct TextLinePath: public BlockPath
 		{
 			TextLinePath() { }
@@ -122,7 +134,10 @@ namespace crn
 			virtual String ToString() const override { return BlockPath::ToString() + Separator + textline_id; }
 			static const TextLinePath NullPath;
 		};
-		/*! Path to an alto string */
+		/*! Path to an alto string
+		 * \ingroup xml
+		 * \author Yann LEYDIER
+		 */
 		struct WordPath: public TextLinePath
 		{
 			WordPath() { }
@@ -147,6 +162,8 @@ namespace crn
 		/*! \brief XML Alto file wrapper to crn::Document
 		 * 
 		 * A class that associates a crn::Document to XML Alto files
+		 * \ingroup xml
+		 * \author Yann LEYDIER
 		 */
 		class AltoWrapper
 		{
@@ -203,7 +220,11 @@ namespace crn
 				SDocument GetDocument() { return doc; }
 				SCDocument GetDocument() const { return doc; }
 
-				/*! \brief Internal class used to save modifications at the right time */
+				/*! \brief Internal class used to save modifications at the right time
+				 * \internal
+				 * \ingroup xml
+				 * \author Yann LEYDIER
+				 */
 				class ViewLock
 				{
 					public:
@@ -226,7 +247,10 @@ namespace crn
 
 						friend class AltoWrapper;
 				};
-				/*! \brief Word proxy */
+				/*! \brief Word proxy
+				 * \ingroup xml
+				 * \author Yann LEYDIER
+				 */
 				class Word
 				{
 					public:
@@ -300,7 +324,10 @@ namespace crn
 				/*! \brief Gets a Word by path */
 				Word GetWord(const WordPath &p);
 
-				/*! \brief Text line proxy */
+				/*! \brief Text line proxy
+				 * \ingroup xml
+				 * \author Yann LEYDIER
+				 */
 				class TextLine
 				{
 					public:
@@ -380,7 +407,10 @@ namespace crn
 				/*! \brief Gets a TextLine by path */
 				TextLine GetTextLine(const TextLinePath &p);
 
-				/*! \brief Text block proxy */
+				/*! \brief Text block proxy
+				 * \ingroup xml
+				 * \author Yann LEYDIER
+				 */
 				class TextBlock
 				{
 					public:
@@ -442,7 +472,7 @@ namespace crn
 
 						/*! \brief Removes a text line */
 						void RemoveTextLine(const Id &tid);
-						
+
 					private:
 						SBlock block;
 						Alto::Layout::Page::Space::TextBlock *textblock;
@@ -452,7 +482,10 @@ namespace crn
 				/*! \brief Gets a TextBlock by path */
 				TextBlock GetTextBlock(const BlockPath &p);
 
-				/*! \brief Page space proxy */
+				/*! \brief Page space proxy
+				 * \ingroup xml
+				 * \author Yann LEYDIER
+				 */
 				class Space
 				{
 					public:
@@ -520,7 +553,10 @@ namespace crn
 				/*! \brief Gets a Space by path */
 				Space GetSpace(const SpacePath &p);
 
-				/*! \brief Page proxy */
+				/*! \brief Page proxy
+				 * \ingroup xml
+				 * \author Yann LEYDIER
+				 */
 				class Page
 				{
 					public:
@@ -637,7 +673,10 @@ namespace crn
 				/*! \brief Gets a Page by path */
 				Page GetPage(const PagePath &p);
 
-				/*! \brief Wrapper on a view */
+				/*! \brief Wrapper on a view
+				 * \ingroup xml
+				 * \author Yann LEYDIER
+				 */
 				class View
 				{
 					public:

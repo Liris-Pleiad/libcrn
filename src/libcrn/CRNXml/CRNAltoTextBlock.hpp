@@ -23,7 +23,10 @@
 #ifdef CRNAlto_HEADER
 /*! \endcond */
 
-/*! \brief Alto text block */
+/*! \brief Alto text block
+ * \ingroup xml
+ * \author Yann LEYDIER
+ */
 class TextBlock: public Block
 {
 	public:
@@ -36,7 +39,10 @@ class TextBlock: public Block
 		/*! \brief Returns the language of the text inside the block */
 		Option<StringUTF8> GetLanguage() const;
 
-		/*! \brief Alto text line */
+		/*! \brief Alto text line
+		 * \ingroup xml
+		 * \author Yann LEYDIER
+		 */
 		class TextLine: public Element
 		{
 			public:
@@ -85,7 +91,10 @@ class TextBlock: public Block
 				/*! \brief Unsets whether the line was manually corrected or not */
 				void UnsetManuallyCorrected();
 
-				/*! \brief Base class for elements in a text line */
+				/*! \brief Base class for elements in a text line
+				 * \ingroup xml
+				 * \author Yann LEYDIER
+				 */
 				class LineElement: public Element
 				{
 					public:
@@ -121,7 +130,10 @@ class TextBlock: public Block
 				/*! \brief Returns the number of elements in the line */
 				size_t GetNbLineElements() const { return lineElements.size(); }
 
-				/*! \brief Alto word ("String" element) */
+				/*! \brief Alto word ("String" element)
+				 * \ingroup xml
+				 * \author Yann LEYDIER
+				 */
 				class Word: public LineElement
 				{
 					public:
@@ -199,7 +211,10 @@ class TextBlock: public Block
 				/*! \brief Removes a word */
 				void RemoveWord(const Id &wid);
 
-				/*! \brief Alto white space ("SP" element) */
+				/*! \brief Alto white space ("SP" element)
+				 * \ingroup xml
+				 * \author Yann LEYDIER
+				 */
 				class WhiteSpace: public LineElement
 				{
 					public:
@@ -222,7 +237,10 @@ class TextBlock: public Block
 				};
 				typedef std::weak_ptr<WhiteSpace> WhiteSpacePtr;
 
-				/*! \brief Alto hyphen ("HYP" element) */
+				/*! \brief Alto hyphen ("HYP" element)
+				 * \ingroup xml
+				 * \author Yann LEYDIER
+				 */
 				class Hyphen: public LineElement
 				{
 					public:

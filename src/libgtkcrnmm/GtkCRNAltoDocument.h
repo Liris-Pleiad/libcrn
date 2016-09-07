@@ -28,6 +28,9 @@
 #ifndef CRN_USING_GTKMM3
 namespace GtkCRN
 {
+	/*! \brief Displays an alto document
+	 * \ingroup	gtkcrn
+	 */
 	class AltoDocument: public Gtk::Frame
 	{
 		public:

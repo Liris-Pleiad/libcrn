@@ -28,6 +28,9 @@
 #ifndef CRN_USING_GTKMM3
 namespace GtkCRN
 {
+	/*! \brief Displays an alto page
+	 * \ingroup	gtkcrn
+	 */
 	class AltoImage: public sigc::trackable
 	{
 		public:

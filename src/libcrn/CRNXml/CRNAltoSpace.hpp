@@ -23,7 +23,10 @@
 #ifdef CRNAlto_HEADER
 /*! \endcond */
 
-/*! \brief A print space on a page */
+/*! \brief A print space on a page
+ * \ingroup xml
+ * \author Yann LEYDIER
+ */
 class Space: public Element
 {
 	public:
@@ -60,7 +63,10 @@ class Space: public Element
 		/*! \brief Sets the ordinate of the element */
 		void SetVPos(double d);
 
-		/*! \brief Base class for blocks in spaces  */
+		/*! \brief Base class for blocks in spaces
+		 * \ingroup xml
+		 * \author Yann LEYDIER
+		 */
 		class Block: public Element
 		{
 			public:
@@ -130,7 +136,10 @@ class Space: public Element
 		/*! \brief Adds a text block in the print space */
 		TextBlock& AddTextBlockBefore(const Id &next, const Id &id_, int x, int y, int w, int h);
 
-		/*! \brief Illustration in a space */
+		/*! \brief Illustration in a space
+		 * \ingroup xml
+		 * \author Yann LEYDIER
+		 */
 		class Illustration: public Block
 		{
 			public:
@@ -164,7 +173,10 @@ class Space: public Element
 		/*! \brief Adds an illustration in the print space */
 		Illustration& AddIllustrationBefore(const Id &next, const Id &id_, int x, int y, int w, int h);
 
-		/*! \brief Graphical element in a space */
+		/*! \brief Graphical element in a space
+		 * \ingroup xml
+		 * \author Yann LEYDIER
+		 */
 		class GraphicalElement: public Block
 		{
 			public:
@@ -193,7 +205,10 @@ class Space: public Element
 		/*! \brief Adds an graphical element in the print space */
 		GraphicalElement& AddGraphicalElementBefore(const Id &next, const Id &id_, int x, int y, int w, int h);
 
-		/*! \brief A composed block in a space */
+		/*! \brief A composed block in a space
+		 * \ingroup xml
+		 * \author Yann LEYDIER
+		 */
 		class ComposedBlock: public Block
 		{
 			public:
