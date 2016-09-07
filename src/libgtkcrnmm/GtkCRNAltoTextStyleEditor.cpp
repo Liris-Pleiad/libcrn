@@ -19,11 +19,11 @@
  * \author Yann LEYDIER
  */
 
-#ifndef CRN_USING_GTKMM3
 #include <GtkCRNAltoTextStyleEditor.h>
 #include <GtkCRNApp.h>
 #include <CRNi18n.h>
 
+#ifndef CRN_USING_GTKMM3
 using namespace GtkCRN;
 
 AltoTextStyleEditor::AltoTextStyleEditor(const crn::xml::Alto::Styles::Text &ts, Gtk::Window *parent):

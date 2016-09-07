@@ -19,13 +19,13 @@
  * \author Yann LEYDIER
  */
 
-#ifndef CRN_USING_GTKMM3
 #include <GtkCRNAltoStyleRefList.h>
 #include <GtkCRNAltoTextStyleEditor.h>
 #include <GtkCRNAltoParagraphStyleEditor.h>
 #include <GtkCRNApp.h>
 #include <CRNi18n.h>
 
+#ifndef CRN_USING_GTKMM3
 using namespace GtkCRN;
 
 AltoStyleRefList::AltoStyleRefList(crn::xml::Alto &a, crn::xml::Element &el):

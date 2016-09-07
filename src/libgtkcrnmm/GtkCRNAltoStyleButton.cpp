@@ -19,13 +19,13 @@
  * \author Yann LEYDIER
  */
 
-#ifndef CRN_USING_GTKMM3
 #include <GtkCRNAltoStyleButton.h>
 #include <CRNException.h>
 #include <GtkCRNAltoTextStyleEditor.h>
 #include <GtkCRNAltoParagraphStyleEditor.h>
 #include <CRNi18n.h>
 
+#ifndef CRN_USING_GTKMM3
 using namespace GtkCRN;
 
 AltoStyleButton::AltoStyleButton(crn::xml::Alto &alto, const crn::xml::Id &id)

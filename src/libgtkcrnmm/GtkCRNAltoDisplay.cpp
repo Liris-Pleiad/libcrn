@@ -19,7 +19,6 @@
  * \author Yann LEYDIER
  */
 
-#ifndef CRN_USING_GTKMM3
 #include <GtkCRNAltoDisplay.h>
 #include <CRNImage/CRNPixel.h>
 #include <GdkCRNPixbuf.h>
@@ -28,6 +27,7 @@
 #include <GtkCRNAltoTextLineEditor.h>
 #include <CRNi18n.h>
 
+#ifndef CRN_USING_GTKMM3
 using namespace GtkCRN;
 
 const crn::String Alto::pageList(U"nimrod::4pages");

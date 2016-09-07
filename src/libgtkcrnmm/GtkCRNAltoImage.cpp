@@ -19,11 +19,11 @@
  * \author Yann LEYDIER
  */
 
-#ifndef CRN_USING_GTKMM3
 #include <GtkCRNAltoImage.h>
 #include <GdkCRNPixbuf.h>
 #include <CRNi18n.h>
 
+#ifndef CRN_USING_GTKMM3
 using namespace GtkCRN;
 
 const crn::String AltoImage::pageList(U"nimrod::4pages");

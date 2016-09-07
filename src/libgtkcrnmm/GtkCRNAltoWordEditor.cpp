@@ -19,12 +19,12 @@
  * \author Yann LEYDIER
  */
 
-#ifndef CRN_USING_GTKMM3
 #include <GtkCRNAltoWordEditor.h>
 #include <GtkCRNApp.h>
 #include <GtkCRNAltoStyleRefList.h>
 #include <CRNi18n.h>
 
+#ifndef CRN_USING_GTKMM3
 using namespace GtkCRN;
 
 AltoWordEditor::AltoWordEditor(crn::xml::Alto &alto, crn::xml::AltoWord &w, Gtk::Window *parent):

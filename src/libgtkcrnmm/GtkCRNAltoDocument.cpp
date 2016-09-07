@@ -19,9 +19,9 @@
  * \author Yann LEYDIER
  */
 
-#ifndef CRN_USING_GTKMM3
 #include <GtkCRNAltoDocument.h>
 
+#ifndef CRN_USING_GTKMM3
 using namespace GtkCRN;
 
 AltoDocument::AltoDocument():

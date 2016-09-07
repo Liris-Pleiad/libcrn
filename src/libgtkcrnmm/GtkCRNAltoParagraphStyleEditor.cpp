@@ -19,11 +19,11 @@
  * \author Yann LEYDIER
  */
 
-#ifndef CRN_USING_GTKMM3
 #include <GtkCRNAltoParagraphStyleEditor.h>
 #include <GtkCRNApp.h>
 #include <CRNi18n.h>
 
+#ifndef CRN_USING_GTKMM3
 using namespace GtkCRN;
 
 const crn::StringUTF8 AltoParagraphStyleEditor::aUndef(N_("Undefined"));
