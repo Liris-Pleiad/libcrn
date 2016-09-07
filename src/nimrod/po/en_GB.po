@@ -1,0 +1,59 @@
+# English translations for libcrn package.
+# Copyright (C) 2011-2015 CoReNum
+# This file is distributed under the same license as the libcrb package.
+# Yann LEYDIER <yann@leydier.info>, 2011-2016, 2016.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: libcrn 3.9\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-09-07 10:01+0200\n"
+"PO-Revision-Date: 2016-09-07 10:03+0200\n"
+"Last-Translator: Yann LEYDIER <yann@leydier.info>\n"
+"Language-Team: English <>\n"
+"Language: en_GB\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Gtranslator 2.91.6\n"
+
+#: nimrod.cpp:85
+msgid "New project"
+msgstr "New project"
+
+#: nimrod.cpp:86
+msgid "Read image names in _XML Altos"
+msgstr "Read image names in _XML Altos"
+
+#: nimrod.cpp:87
+msgid "Match images and XML Altos _filenames"
+msgstr "Match images and XML Altos _filenames"
+
+#: nimrod.cpp:88
+msgid "Path to the XML Alto files"
+msgstr "Path to the XML Alto files"
+
+#: nimrod.cpp:89
+msgid "Path to the images"
+msgstr "Path to the images"
+
+#: nimrod.cpp:90
+msgid "_Images are in a different folder"
+msgstr "_Images are in a different folder"
+
+#: nimrod.cpp:91
+msgid "Images path"
+msgstr "Images path"
+
+#: nimrod.cpp:104
+msgid "Project name"
+msgstr "Project name"
+
+#: nimrod.cpp:115
+msgid "XML Altos path"
+msgstr "XML Altos path"
+
+#: nimrod.cpp:154
+msgid "Cannot create project"
+msgstr "Cannot create project"

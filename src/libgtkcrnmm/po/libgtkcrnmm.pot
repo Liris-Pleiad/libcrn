@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-05 11:52+0200\n"
+"POT-Creation-Date: 2016-09-07 09:22+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -71,12 +71,267 @@ msgstr ""
 msgid "index out of bounds."
 msgstr ""
 
+#: GtkCRNAltoTextStyleEditor.cpp:30
+msgid "Text style"
+msgstr ""
+
+#: GtkCRNAltoTextStyleEditor.cpp:35
+msgid "Colored"
+msgstr ""
+
+#: GtkCRNAltoTextStyleEditor.cpp:36 GtkCRNAltoWordEditor.cpp:34
+msgid "Bold"
+msgstr ""
+
+#: GtkCRNAltoTextStyleEditor.cpp:37 GtkCRNAltoWordEditor.cpp:35
+msgid "Italics"
+msgstr ""
+
+#: GtkCRNAltoTextStyleEditor.cpp:38 GtkCRNAltoWordEditor.cpp:36
+msgid "Subscript"
+msgstr ""
+
+#: GtkCRNAltoTextStyleEditor.cpp:39 GtkCRNAltoWordEditor.cpp:37
+msgid "Superscript"
+msgstr ""
+
+#: GtkCRNAltoTextStyleEditor.cpp:40 GtkCRNAltoWordEditor.cpp:38
+msgid "Small caps"
+msgstr ""
+
+#: GtkCRNAltoTextStyleEditor.cpp:41 GtkCRNAltoWordEditor.cpp:39
+msgid "Underlined"
+msgstr ""
+
+#: GtkCRNAltoTextStyleEditor.cpp:68 GtkCRNAltoParagraphStyleEditor.cpp:68
+msgid "Id"
+msgstr ""
+
+#: GtkCRNAltoTextStyleEditor.cpp:71
+msgid "Font family"
+msgstr ""
+
+#: GtkCRNAltoTextStyleEditor.cpp:76
+msgid "Serif"
+msgstr ""
+
+#: GtkCRNAltoTextStyleEditor.cpp:83
+msgid "Fixed width"
+msgstr ""
+
+#: GtkCRNAltoTextStyleEditor.cpp:90
+msgid "Font size"
+msgstr ""
+
+#: GtkCRNAltoParagraphStyleEditor.cpp:29
+msgid "Undefined"
+msgstr ""
+
+#: GtkCRNAltoParagraphStyleEditor.cpp:30
+msgid "Right"
+msgstr ""
+
+#: GtkCRNAltoParagraphStyleEditor.cpp:31
+msgid "Left"
+msgstr ""
+
+#: GtkCRNAltoParagraphStyleEditor.cpp:32
+msgid "Center"
+msgstr ""
+
+#: GtkCRNAltoParagraphStyleEditor.cpp:35
+msgid "Paragraph style"
+msgstr ""
+
+#: GtkCRNAltoParagraphStyleEditor.cpp:38
+msgid "Left indentation"
+msgstr ""
+
+#: GtkCRNAltoParagraphStyleEditor.cpp:39
+msgid "Right indentation"
+msgstr ""
+
+#: GtkCRNAltoParagraphStyleEditor.cpp:40
+msgid "Line space"
+msgstr ""
+
+#: GtkCRNAltoParagraphStyleEditor.cpp:41
+msgid "First line indentation"
+msgstr ""
+
+#: GtkCRNAltoParagraphStyleEditor.cpp:71
+msgid "Alignment"
+msgstr ""
+
+#: GtkCRNAltoDisplay.cpp:45 GtkCRNAltoImage.cpp:44
+msgid "Show/hide _pages"
+msgstr ""
+
+#: GtkCRNAltoDisplay.cpp:45 GtkCRNAltoImage.cpp:44
+msgid "Show/hide pages"
+msgstr ""
+
+#: GtkCRNAltoDisplay.cpp:46 GtkCRNAltoImage.cpp:45
+msgid "Show/hide _spaces"
+msgstr ""
+
+#: GtkCRNAltoDisplay.cpp:46 GtkCRNAltoImage.cpp:45
+msgid "Show/hide spaces"
+msgstr ""
+
+#: GtkCRNAltoDisplay.cpp:47 GtkCRNAltoImage.cpp:46
+msgid "Show/hide _text blocks"
+msgstr ""
+
+#: GtkCRNAltoDisplay.cpp:47 GtkCRNAltoImage.cpp:46
+msgid "Show/hide text blocks"
+msgstr ""
+
+#: GtkCRNAltoDisplay.cpp:48 GtkCRNAltoImage.cpp:47
+msgid "Show/hide text _lines"
+msgstr ""
+
+#: GtkCRNAltoDisplay.cpp:48 GtkCRNAltoImage.cpp:47
+msgid "Show/hide text lines"
+msgstr ""
+
+#: GtkCRNAltoDisplay.cpp:49 GtkCRNAltoImage.cpp:48
+msgid "Show/hide _words"
+msgstr ""
+
+#: GtkCRNAltoDisplay.cpp:49 GtkCRNAltoImage.cpp:48
+msgid "Show/hide words"
+msgstr ""
+
+#: GtkCRNAltoDisplay.cpp:50 GtkCRNAltoImage.cpp:49
+msgid "_Edit alto"
+msgstr ""
+
+#: GtkCRNAltoDisplay.cpp:50 GtkCRNAltoImage.cpp:49
+msgid "Edit alto"
+msgstr ""
+
+#: GtkCRNAltoDisplay.cpp:227
+msgid "Create page"
+msgstr ""
+
+#: GtkCRNAltoDisplay.cpp:260
+msgid "Page"
+msgstr ""
+
+#: GtkCRNAltoDisplay.cpp:269 GtkCRNAltoDisplay.cpp:312
+#: GtkCRNAltoDisplay.cpp:338 GtkCRNAltoDisplay.cpp:368
+#: GtkCRNAltoDisplay.cpp:403
+msgid "Delete"
+msgstr ""
+
+#: GtkCRNAltoDisplay.cpp:272 GtkCRNAltoDisplay.cpp:314
+#: GtkCRNAltoDisplay.cpp:340 GtkCRNAltoDisplay.cpp:370
+#: GtkCRNAltoDisplay.cpp:405
+msgid "Cut vertically here"
+msgstr ""
+
+#: GtkCRNAltoDisplay.cpp:278
+msgid "Create group"
+msgstr ""
+
+#: GtkCRNAltoDisplay.cpp:282 GtkCRNAltoDisplay.cpp:318
+#: GtkCRNAltoDisplay.cpp:344 GtkCRNAltoDisplay.cpp:374
+#: GtkCRNAltoDisplay.cpp:409
+msgid "Add to group"
+msgstr ""
+
+#: GtkCRNAltoDisplay.cpp:292 GtkCRNAltoDisplay.cpp:320
+#: GtkCRNAltoDisplay.cpp:346 GtkCRNAltoDisplay.cpp:376
+#: GtkCRNAltoDisplay.cpp:411
+msgid "Merge group"
+msgstr ""
+
+#: GtkCRNAltoDisplay.cpp:296 GtkCRNAltoDisplay.cpp:323
+#: GtkCRNAltoDisplay.cpp:349 GtkCRNAltoDisplay.cpp:379
+#: GtkCRNAltoDisplay.cpp:414
+msgid "Clear group"
+msgstr ""
+
+#: GtkCRNAltoDisplay.cpp:303
+msgid "Print space"
+msgstr ""
+
+#: GtkCRNAltoDisplay.cpp:316 GtkCRNAltoDisplay.cpp:342
+#: GtkCRNAltoDisplay.cpp:372 GtkCRNAltoDisplay.cpp:407
+msgid "Cut horizontally here"
+msgstr ""
+
+#: GtkCRNAltoDisplay.cpp:329
+msgid "Text block"
+msgstr ""
+
+#: GtkCRNAltoDisplay.cpp:355
+msgid "Text line"
+msgstr ""
+
+#: GtkCRNAltoDisplay.cpp:364 GtkCRNAltoDisplay.cpp:400
+msgid "Edit"
+msgstr ""
+
+#: GtkCRNAltoDisplay.cpp:385
+msgid "Word"
+msgstr ""
+
+#: GtkCRNAltoDisplay.cpp:389
+msgid "No transcription"
+msgstr ""
+
+#: GtkCRNAltoDisplay.cpp:423 GtkCRNAltoImage.cpp:222
+msgid "Add word"
+msgstr ""
+
+#: GtkCRNAltoDisplay.cpp:428
+msgid "Add text line"
+msgstr ""
+
+#: GtkCRNAltoDisplay.cpp:433
+msgid "Add text block"
+msgstr ""
+
+#: GtkCRNAltoDisplay.cpp:438
+msgid "Add print space"
+msgstr ""
+
+#: GtkCRNAltoDisplay.cpp:459
+msgid "Cannot add page."
+msgstr ""
+
+#: GtkCRNAltoDisplay.cpp:473
+msgid "Cannot remove page."
+msgstr ""
+
+#: GtkCRNAltoWordEditor.cpp:31
+msgid "Word information"
+msgstr ""
+
+#: GtkCRNAltoWordEditor.cpp:33
+msgid "Word confidence"
+msgstr ""
+
+#: GtkCRNAltoWordEditor.cpp:67
+msgid "Content"
+msgstr ""
+
+#: GtkCRNAltoWordEditor.cpp:99
+msgid "Word styles"
+msgstr ""
+
 #: GtkCRNObject.cpp:41
 msgid "null object"
 msgstr ""
 
 #: GtkCRNFileSelecter.cpp:47
 msgid "Filename"
+msgstr ""
+
+#: GtkCRNAltoImage.cpp:231
+msgid "Delete word"
 msgstr ""
 
 #: GtkCRNSelectionBox.cpp:63
@@ -403,8 +658,60 @@ msgstr ""
 msgid "null or negative zoom value."
 msgstr ""
 
+#: GtkCRNAltoStyleRefList.cpp:53
+msgid "Add style"
+msgstr ""
+
+#: GtkCRNAltoStyleRefList.cpp:64
+msgid "Add text style"
+msgstr ""
+
+#: GtkCRNAltoStyleRefList.cpp:68
+msgid "Add paragraph style"
+msgstr ""
+
+#: GtkCRNAltoStyleRefList.cpp:131
+msgid "Create style"
+msgstr ""
+
+#: GtkCRNAltoStyleRefList.cpp:151
+msgid "This id already exists in the document."
+msgstr ""
+
 #: GtkCRNHelpers.cpp:80
 msgid "not a ToggleAction."
+msgstr ""
+
+#: GtkCRNAltoTextLineEditor.cpp:31
+msgid "Text line information"
+msgstr ""
+
+#: GtkCRNAltoTextLineEditor.cpp:34
+msgid "Baseline"
+msgstr ""
+
+#: GtkCRNAltoTextLineEditor.cpp:62
+msgid "Horizontal position"
+msgstr ""
+
+#: GtkCRNAltoTextLineEditor.cpp:66
+msgid "Vertical position"
+msgstr ""
+
+#: GtkCRNAltoTextLineEditor.cpp:70
+msgid "Width"
+msgstr ""
+
+#: GtkCRNAltoTextLineEditor.cpp:74
+msgid "Height"
+msgstr ""
+
+#: GtkCRNAltoTextLineEditor.cpp:96
+msgid "Manually corrected"
+msgstr ""
+
+#: GtkCRNAltoTextLineEditor.cpp:109
+msgid "Line styles"
 msgstr ""
 
 #: GtkCRNImage.cpp:143
@@ -450,4 +757,8 @@ msgstr ""
 
 #: GtkCRNImage.cpp:2276 GtkCRNImage.cpp:2329
 msgid "The selection is not a line."
+msgstr ""
+
+#: GtkCRNAltoStyleButton.cpp:58
+msgid "Style not found."
 msgstr ""
