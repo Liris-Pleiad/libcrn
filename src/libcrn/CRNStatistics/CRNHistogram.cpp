@@ -24,8 +24,8 @@
 #include <CRNException.h>
 #include <CRNImage/CRNImageBW.h>
 #include <CRNData/CRNDataFactory.h>
-#include <CRNUtils/CRNXml.h>
 #include <CRNIO/CRNIO.h>
+#include <functional>
 #include <CRNi18n.h>
 
 using namespace crn;

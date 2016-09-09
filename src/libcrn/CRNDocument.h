@@ -23,7 +23,7 @@
 #define CRNDOCUMENT_HEADER
 
 #include <vector>
-#include <CRNComplexObject.h>
+#include <CRNSavable.h>
 #include <CRNBlock.h>
 #include <CRNDocumentPtr.h>
 #include <CRNData/CRNForeach.h>

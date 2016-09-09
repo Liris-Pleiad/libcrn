@@ -55,21 +55,21 @@ if(UNIX)
 	set(CRN_PF_UNIX ON)
 	set(CRN_CONFIG_FULL_PATH "/etc")
 	set(CRN_CONFIG_FULL_PATH "${CMAKE_INSTALL_PREFIX}/${CRN_DATA_PATH}")
-	set(CRN_PROJECT_FULL_PATH "/var/crn")
+	set(CRN_PROJECT_BASE "/var")
 	set(CRN_LOCALE_FULL_PATH "${CMAKE_INSTALL_PREFIX}/${CRN_LOCALE_PATH}")
 endif(UNIX)
 if(APPLE)
 	set(CRN_PF_APPLE ON)
 	set(CRN_CONFIG_FULL_PATH "/etc")
 	set(CRN_CONFIG_FULL_PATH "${CMAKE_INSTALL_PREFIX}/${CRN_DATA_PATH}")
-	set(CRN_PROJECT_FULL_PATH "/var/crn")
+	set(CRN_PROJECT_BASE "/var")
 	set(CRN_LOCALE_FULL_PATH "${CMAKE_INSTALL_PREFIX}/${CRN_LOCALE_PATH}")
 endif(APPLE)
 # for windows: _MSC_VER
 if(ANDROID)
 	set(CRN_CONFIG_FULL_PATH "") # TODO change to the real correct value
 	set(CRN_CONFIG_FULL_PATH "${CMAKE_INSTALL_PREFIX}/${CRN_DATA_PATH}")
-	set(CRN_PROJECT_FULL_PATH "/var/crn")
+	set(CRN_PROJECT_BASE "/var")
 	set(CRN_LOCALE_FULL_PATH "${CMAKE_INSTALL_PREFIX}/${CRN_LOCALE_PATH}")
 
 	if(NOT ANDROID_NATIVE_API_LEVEL)
@@ -133,8 +133,8 @@ if(MSVC)
 
 	set(CRN_CONFIG_PATH "")
 	set(CRN_DATA_FULL_PATH "${CRN_DATA_PATH}")
-	set(CRN_PROJECT_PATH "$ENV{CommonProgramFiles}/crn")
-	string(REPLACE "\\" "/" CRN_PROJECT_PATH ${CRN_PROJECT_PATH})
+	set(CRN_PROJECT_BASE "$ENV{Public}/Documents")
+	string(REPLACE "\\" "/" CRN_PROJECT_BASE ${CRN_PROJECT_BASE})
 	set(CRN_LOCALE_FULL_PATH "${CRN_LOCALE_PATH}")
 
 	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /MP /D_MBCS") # multi-process build + multibyte C strings
@@ -171,6 +171,8 @@ if(APPLE)
 	set(CMAKE_MACOSX_RPATH ON) # see cmake POLICY CMP0042
 endif(APPLE)
 #------------------------------------------------------------------------------
+
+set(CRN_PROJECT_PATH "${CRN_PROJECT_BASE}/crn")
 
 ###############################################################################
 # Dependencies
@@ -231,6 +233,7 @@ if(CRN_DEPENDENCY_GETTEXT_INTL)
 	TRANSLATE("${PROJECT_SOURCE_DIR}/src/libcrn" "libcrn")
 	TRANSLATE("${PROJECT_SOURCE_DIR}/src/libgtkcrnmm" "libgtkcrnmm")
 	TRANSLATE("${PROJECT_SOURCE_DIR}/src/titus" "titus")
+	TRANSLATE("${PROJECT_SOURCE_DIR}/src/nimrod" "nimrod")
 	INSTALL_TRANSLATIONS()
 
 	# libintl
@@ -264,7 +267,7 @@ if(CRN_DEPENDENCY_GTKMM2)
 	endif(CRN_DEPENDENCY_GDKPIXBUF)
 endif(CRN_DEPENDENCY_GTKMM2)
 
-if(CRN_DEPENDENCY_GTKMM3)
+if(CRN_DEPENDENCY_GTKMM3 OR CRN_DEPENDENCY_GTKMM3_RELEASE OR CRN_DEPENDENCY_GTKMM3_DEBUG)
 	#set(GTK3_DEBUG on)
 	find_package(GTK3 3.10 COMPONENTS gtk gtkmm)
 	if(NOT GTK3_FOUND)
@@ -284,7 +287,7 @@ if(CRN_DEPENDENCY_GTKMM3)
 		message("Using GdkPixbuf")
 		set(CRN_USING_GDKPB on)
 	endif(CRN_DEPENDENCY_GDKPIXBUF)
-endif(CRN_DEPENDENCY_GTKMM3)
+endif()
 
 if(CRN_DEPENDENCY_QT4)
 	# Find Qt4
@@ -400,6 +403,9 @@ add_subdirectory(src/demos)
 if(GTK2_FOUND OR GTK3_FOUND)
 	add_subdirectory(src/libgtkcrnmm)
 	add_subdirectory(src/titus)
+endif()
+if(GTK2_FOUND)
+	add_subdirectory(src/nimrod)
 endif()
 if(QT4_FOUND OR QT5_FOUND)
 	add_subdirectory(src/Qt/libQtcrn)

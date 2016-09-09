@@ -57,6 +57,8 @@ namespace crn
 			ImageBase& operator=(const ImageBase&) = default;
 			ImageBase& operator=(ImageBase&&) = default;
 
+			virtual std::unique_ptr<ImageBase> Clone() const = 0;
+
 			/*! \brief Saves as PNG file */
 			virtual void SavePNG(const Path &fname) const = 0;
 			/*! \brief Saves as JPEG file */
@@ -107,6 +109,26 @@ namespace crn
 	/*! \brief Loads an image from a file */
 	UImage NewImageFromFile(const Path &fname);
 	
+	/*! \internal */
+	template<typename T> struct BoolNotBool
+	{
+		using type = bool;
+	};
+	/*! \internal */
+	struct BoolNotBoolDummy
+	{
+		inline BoolNotBoolDummy(int i = 0) {}
+		inline BoolNotBoolDummy& operator+=(const BoolNotBoolDummy&) { return *this; }
+	};
+	inline BoolNotBoolDummy operator+(const BoolNotBoolDummy&, const BoolNotBoolDummy&) { return BoolNotBoolDummy{}; }
+	inline BoolNotBoolDummy operator-(const BoolNotBoolDummy&, const BoolNotBoolDummy&) { return BoolNotBoolDummy{}; }
+	inline BoolNotBoolDummy operator*(const BoolNotBoolDummy&, const BoolNotBoolDummy&) { return BoolNotBoolDummy{}; }
+	inline BoolNotBoolDummy operator/(const BoolNotBoolDummy&, const BoolNotBoolDummy&) { return BoolNotBoolDummy{}; }
+	/*! \internal */
+	template<> struct BoolNotBool<bool>
+	{
+		using type = BoolNotBoolDummy;
+	};
 	/****************************************************************************/
 	/*! \brief Abstract class for images
 	 *
@@ -136,8 +158,12 @@ namespace crn
 			Image(const Image &img) = default;
 			/*! \brief Copy constructor */
 			template<typename Y> explicit Image(const Image<Y> &img);
+			/*! \brief Copy constructor */
+			explicit Image(const Image<typename BoolNotBool<T>::type> &img);
 			/*! \brief Crop constructor */
 			template<typename Y> Image(const Image<Y> &img, const Rect &bbox);
+			/*! \brief Crop constructor */
+			Image(const Image<typename BoolNotBool<T>::type> &img, const Rect &bbox);
 			/*! \brief Move constructor */
 			Image(Image &&img) = default;
 
@@ -148,10 +174,14 @@ namespace crn
 			Image& operator=(const Image &img) = default;
 			/*! \brief Copy operator */
 			template<typename Y> Image& operator=(const Image<Y> &img);
+			/*! \brief Copy operator */
+			Image& operator=(const Image<typename BoolNotBool<T>::type> &img);
 			/*! \brief Force copy operator (pixel cast) */
 			template<typename Y> void Assign(const Image<Y> &img);
 			/*! \brief Move operator */
 			Image& operator=(Image &&img) = default;
+
+			virtual std::unique_ptr<ImageBase> Clone() const override { return std::make_unique<Image>(*this); }
 
 			/*! \brief Swaps two images */
 			void Swap(Image &other)

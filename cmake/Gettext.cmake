@@ -42,10 +42,11 @@ function(TRANSLATE srcdir domainname)
 		file(MAKE_DIRECTORY "${srcdir}/po")
 	endif()
 
-	file(GLOB_RECURSE SOURCES "${srcdir}/*.cpp")
+	file(GLOB_RECURSE SOURCES RELATIVE "${srcdir}" "${srcdir}/*.cpp")
+	file(GLOB_RECURSE FPSOURCES "${srcdir}/*.cpp")
 
 	# create pot file
-	set(POT_FILE "${CMAKE_BINARY_DIR}/${domainname}.pot")
+	set(POT_FILE "${srcdir}/po/${domainname}.pot")
 	add_custom_command(OUTPUT "${POT_FILE}"
 		COMMAND "${Gettext_XGETTEXT_EXECUTABLE}"
 			-o "${POT_FILE}"
@@ -53,8 +54,9 @@ function(TRANSLATE srcdir domainname)
 			--from-code=utf-8
 			--keyword=_
 			--keyword=N_
-		${SOURCES}
-		DEPENDS ${SOURCES}
+			-D ${srcdir}
+			${SOURCES}
+			DEPENDS ${FPSOURCES}
 		WORKING_DIRECTORY "${CMAKE_BINARY_DIR}"
 		)
 

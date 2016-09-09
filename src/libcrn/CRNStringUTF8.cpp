@@ -26,7 +26,6 @@
 #include <3rdParty/unicode/UtfConverter.h>
 #include <CRNString.h>
 #include <CRNData/CRNDataFactory.h>
-#include <CRNUtils/CRNXml.h>
 #include <CRNProtocols.h>
 #include <random>
 

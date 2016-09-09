@@ -31,7 +31,7 @@
 #include <functional>
 #include <CRNIO/CRNFileShield.h>
 #include <CRNIO/CRNIO.h>
-#include <CRNUtils/CRNXml.h>
+#include <CRNXml/CRNXml.h>
 
 using namespace crn;
 

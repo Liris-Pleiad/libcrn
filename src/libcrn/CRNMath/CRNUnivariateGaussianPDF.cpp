@@ -27,7 +27,6 @@
 #include <CRNMath/CRNEquationSolver.h>
 #include <CRNMath/CRNMath.h>
 #include <CRNData/CRNDataFactory.h>
-#include <CRNUtils/CRNXml.h>
 #include <CRNi18n.h>
 
 using namespace crn;

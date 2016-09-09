@@ -36,13 +36,12 @@ namespace tinyxml2
 }
 namespace crn
 {
-	/*! \brief Wrapper on TinyXml2
+	/*! \brief XML files manipulation tools
 	 *
-	 * Wrapper on TinyXml2
+	 * XML files manipulation tools (wrapper on TinyXml2 and Alto files management)
 	 *
 	 * \author	Yann LEYDIER
 	 * \date	August 2012
-	 * \ingroup	utils
 	 * \defgroup	xml	XML file handling
 	 */
 	namespace xml

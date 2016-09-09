@@ -1,16 +1,16 @@
 # English translations for libcrn package.
-# Copyright (C) 2007-2015 Yann LEYDIER
+# Copyright (C) 2011-2016 CoReNum
 # This file is distributed under the same license as the libcrn package.
-# Yann LEYDIER <yann@leydier.info>, 2007-2015, 2015.
+# Yann LEYDIER <yann@leydier.info>, 2011-2016, 2016.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: libcrn 3.0.0\n"
+"Project-Id-Version: libcrn 3.9\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-06-14 09:28+0200\n"
-"PO-Revision-Date: 2015-11-24 13:55+0100\n"
+"POT-Creation-Date: 2016-09-09 10:23+0200\n"
+"PO-Revision-Date: 2016-09-05 11:13+0200\n"
 "Last-Translator: Yann LEYDIER <yann@leydier.info>\n"
-"Language-Team: English <>\n"
+"Language-Team: French <>\n"
 "Language: en_GB\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -18,827 +18,504 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Generator: Gtranslator 2.91.6\n"
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNStatistics/CRNHistogram.cpp:125
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNStatistics/CRNHistogram.cpp:147
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNStatistics/CRNHistogram.cpp:170
-msgid "invalid index."
-msgstr "invalid index."
-
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNStatistics/CRNHistogram.cpp:402
-msgid "flat histogram."
-msgstr "flat histogram."
-
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNStatistics/CRNHistogram.cpp:462
-msgid "window larger than histogram. Cropping."
-msgstr "window larger than histogram. Cropping."
-
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNStatistics/CRNHistogram.cpp:634
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNStatistics/CRNHistogram.cpp:662
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNStatistics/CRNHistogram.cpp:691
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNStatistics/CRNHistogram.cpp:733
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNStatistics/CRNHistogram.cpp:772
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNStatistics/CRNHistogram.cpp:803
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNStatistics/CRNHistogram.cpp:837
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNStatistics/CRNHistogram.cpp:871
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNStatistics/CRNHistogram.cpp:905
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNStatistics/CRNHistogram.cpp:929
-msgid "histograms must have same size."
-msgstr "histograms must have same size."
-
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNStatistics/CRNHistogram.cpp:1012
-msgid "Cannot resize histogram with null size."
-msgstr "Cannot resize histogram with null size."
-
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNStatistics/CRNHistogram.cpp:1065
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNStatistics/CRNPCA.cpp:719
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNStringUTF8.cpp:489
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNString.cpp:744
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNFeature/CRNBlockTreeExtractorTextLinesFromProjection.cpp:285
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNFeature/CRNFeatureExtractorAngleRadialZoning.cpp:198
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNFeature/CRNFeatureExtractorOverlappingAngleHistogram.cpp:239
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNFeature/CRNBlockTreeExtractorWordsFromProjection.cpp:292
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNFeature/CRNFeatureExtractorAngleZoning.cpp:129
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNFeature/CRNFeatureExtractorProfile.cpp:168
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNFeature/CRNFeatureExtractorProjection.cpp:124
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNIO/CRNPath.cpp:567
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNMath/CRNUnivariateGaussianPDF.cpp:259
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNMath/CRNProp3.cpp:187
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNMath/CRNMatrixDouble.cpp:197
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNMath/CRNLinearInterpolation.cpp:77
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNMath/CRNUnivariateGaussianMixture.cpp:745
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNData/CRNReal.cpp:46
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNData/CRNInt.cpp:43
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNData/CRNMap.cpp:193
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNData/CRNVector.cpp:273
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNPDFAttributes.cpp:41
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNDefaultAction.cpp:52
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNGeometry/CRNPoint2DInt.cpp:44
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNGeometry/CRNStroke.cpp:69
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNGeometry/CRNRect.cpp:556
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNGeometry/CRNPoint2DDouble.cpp:44
-msgid "Wrong XML element."
-msgstr "Wrong XML element."
-
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNStatistics/CRNHistogram.cpp:1071
-msgid "Cannot get CDATA."
-msgstr "Cannot get CDATA."
-
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNStatistics/CRNHistogram.cpp:1078
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNMath/CRNMatrixDouble.cpp:208
-msgid "Cannot convert CDATA."
-msgstr "Cannot convert CDATA."
-
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNStatistics/CRNHistogram.cpp:1340
-msgid "The histogram is empty."
-msgstr "The histogram is empty."
-
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNStatistics/CRNStatisticSample.cpp:218
-msgid "Illegal range."
-msgstr "Illegal range."
-
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNStatistics/CRNPCA.cpp:528
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNStatistics/CRNPCA.cpp:543
-msgid "Index out of dimension range."
-msgstr "Index out of dimension range."
-
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNStatistics/CRNPCA.cpp:565
-msgid "Incompatible input pattern dimensions."
-msgstr "Incompatible input pattern dimensions."
-
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNStatistics/CRNPCA.cpp:569
-msgid "Incompatible output dimensions."
-msgstr "Incompatible output dimensions."
-
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNStatistics/CRNPCA.cpp:750
-msgid "Incomplete PCA xml element."
-msgstr "Incomplete PCA xml element."
-
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNAI/CRNAffinityPropagation.cpp:32
-msgid "The damping must be in [0, 1[."
-msgstr "The damping must be in [0, 1[."
-
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNAI/CRNAffinityPropagation.cpp:34
-msgid "The number of stable iterations to stop must be >1."
-msgstr "The number of stable iterations to stop must be >1."
-
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNAI/CRNAffinityPropagation.cpp:36
-msgid "The maximal number of iterations must be >1."
-msgstr "The maximal number of iterations must be >1."
-
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNAI/CRNAffinityPropagation.cpp:181
-msgid "The preference is not the same dimension as the distance matrix."
-msgstr "The preference is not the same dimension as the distance matrix."
-
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNAI/CRNOutliers.cpp:34
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNAI/CRNOutliers.cpp:120
-msgid "The neighborhood must be > 1."
-msgstr "The neighbourhood must be > 1."
-
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNAI/CRNOutliers.cpp:36
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNAI/CRNOutliers.cpp:124
-msgid "The neighborhood is greater than the number of elements."
-msgstr "The neighbourhood is greater than the number of elements."
-
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNAI/CRNOutliers.cpp:111
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNAI/CRNOutliers.cpp:205
-msgid "The distance matrix is not square."
-msgstr "The distance matrix is not square."
-
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNAI/CRNOutliers.cpp:122
-msgid "lambda must be > 0."
-msgstr "lambda must be > 0."
-
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNAI/CRNGaussianSCHMM.cpp:65
-msgid "Index out of range"
-msgstr "Index out of range"
-
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNAI/CRNGaussianSCHMM.cpp:106
-msgid "Illegal input vector dimension"
-msgstr "Illegal input vector dimension"
-
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNAI/CRNBipartite.cpp:303
-msgid "empty distance matrix."
-msgstr "empty distance matrix."
-
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNAI/CRNBipartite.cpp:306
-msgid "the distance matrix is not square."
-msgstr "the distance matrix is not square."
-
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNAI/CRNSpectralClustering.cpp:45
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNAI/CRNSpectralClustering.cpp:87
-msgid "Neighborhood to compute sigma must be >=1."
-msgstr "Neighborhood to compute sigma must be >=1."
-
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNAI/CRNSpectralClustering.cpp:48
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNAI/CRNSpectralClustering.cpp:90
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNAI/CRNSpectralClustering.cpp:125
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNAI/CRNSpectralClustering.cpp:152
-msgid "Empty distance matrix."
-msgstr "Empty distance matrix."
-
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNAI/CRNSpectralClustering.cpp:122
-msgid "Dimension must be >=1."
-msgstr "Dimension must be >=1."
-
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNAI/CRNSpectralClustering.cpp:149
-msgid "Sigma must be positive."
-msgstr "Sigma must be positive."
-
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNAI/CRNSpectralClustering.cpp:209
-msgid "Eigenvalues should be in [0, 1]."
-msgstr "Eigenvalues should be in [0, 1]."
-
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNAI/CRNSpectralClustering.cpp:229
-msgid "Cannot project on less than one coordinate."
-msgstr "Cannot project on less than one coordinate."
-
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNStringUTF8.cpp:98
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNStringUTF8.cpp:113
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNStringUTF8.cpp:149
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNStringUTF8.cpp:169
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNStringUTF8.cpp:211
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNStringUTF8.cpp:235
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNStringUTF8.cpp:366
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNStringUTF8.cpp:385
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNStringUTF8.cpp:404
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNStringUTF8.cpp:427
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNStringUTF8.cpp:448
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNStringUTF8.cpp:469
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNString.cpp:142
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNString.cpp:159
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNString.cpp:206
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNString.cpp:226
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNString.cpp:268
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNString.cpp:292
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNString.cpp:521
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNString.cpp:617
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNString.cpp:637
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNString.cpp:661
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNString.cpp:682
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNString.cpp:703
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNMath/CRNMultivariateGaussianMixture.cpp:89
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNMath/CRNMultivariateGaussianMixture.cpp:107
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNMath/CRNMultivariateGaussianMixture.cpp:125
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNMath/CRNMultivariateGaussianMixture.cpp:143
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNMath/CRNMultivariateGaussianMixture.cpp:226
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNMath/CRNMultivariateGaussianMixture.cpp:256
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNMath/CRNUnivariateGaussianMixture.cpp:57
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNMath/CRNUnivariateGaussianMixture.cpp:77
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNMath/CRNUnivariateGaussianMixture.cpp:97
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNMath/CRNUnivariateGaussianMixture.cpp:117
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNMath/CRNUnivariateGaussianMixture.cpp:149
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNMath/CRNUnivariateGaussianMixture.cpp:257
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNDocument.cpp:107
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNDocument.cpp:149
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNDocument.cpp:295
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNDocument.cpp:327
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNDocument.cpp:596
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:1902
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:1927
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:2003
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:2523
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:2566
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:2608
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:2657
-msgid "index out of bounds."
-msgstr "index out of bounds."
-
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNStringUTF8.cpp:604
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNString.cpp:309
-msgid "Null suffix to search."
-msgstr "Null suffix to search."
-
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNObject.cpp:47
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNObject.cpp:58
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNObject.cpp:92
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNObject.cpp:103
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNObject.cpp:121
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNObject.cpp:131
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNObject.cpp:150
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNObject.cpp:161
-#, fuzzy
-msgid "null pointer."
-msgstr "nullptr pointer."
-
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNString.cpp:359
-msgid "Null suffix to delete."
-msgstr "Null suffix to delete."
-
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNFeature/CRNFeatureExtractorProfile.cpp:48
-msgid "no direction given."
-msgstr "no direction given."
-
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNFeature/CRNFeatureExtractorProfile.cpp:50
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNFeature/CRNFeatureExtractorProjection.cpp:49
-msgid "negative size."
-msgstr "negative size."
-
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNFeature/CRNFeatureExtractorProfile.cpp:52
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNFeature/CRNFeatureExtractorProjection.cpp:51
-msgid "negative maximal value."
-msgstr "negative maximal value."
-
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNFeature/CRNFeatureExtractorProjection.cpp:47
-msgid "no orientation given."
-msgstr "no orientation given."
-
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNIO/CRNTextFile.cpp:55
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNImage/CRNImage.cpp:83
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNImage/CRNImage.cpp:321
-msgid "Cannot open file "
-msgstr "Cannot open file "
-
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNIO/CRNTextFile.cpp:91
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNIO/CRNTextFile.cpp:116
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNIO/CRNTextFile.cpp:139
-msgid "cannot open file "
-msgstr "cannot open file "
-
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNIO/CRNConsoleMessenger.cpp:35
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNIO/CRNFileMessenger.cpp:43
-msgid "DEBUG"
-msgstr "DEBUG"
-
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNIO/CRNConsoleMessenger.cpp:37
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNIO/CRNFileMessenger.cpp:45
-msgid "WARNING"
-msgstr "WARNING"
-
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNIO/CRNConsoleMessenger.cpp:38
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNIO/CRNFileMessenger.cpp:46
-msgid "ERROR"
-msgstr "ERROR"
-
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNIO/CRNZip.cpp:78
-msgid "libzip version is too old to support zip_discard()."
-msgstr "libzip version is too old to support zip_discard()."
-
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNIO/CRNZip.cpp:156
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNIO/CRNZip.cpp:219
-msgid "The file already exists."
-msgstr "The file already exists."
-
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNIO/CRNZip.cpp:158
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNIO/CRNZip.cpp:221
-msgid "The file is inconsistent."
-msgstr "The file is inconsistent."
-
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNIO/CRNZip.cpp:161
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNIO/CRNZip.cpp:224
-msgid "Not enough memory."
-msgstr "Not enough memory."
-
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNIO/CRNZip.cpp:163
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNIO/CRNZip.cpp:226
-msgid "This is not a zip file."
-msgstr "This is not a zip file."
-
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNIO/CRNZip.cpp:166
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNIO/CRNZip.cpp:229
-msgid "Cannot open file."
-msgstr "Cannot open file."
-
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNIO/CRNZip.cpp:169
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNIO/CRNZip.cpp:232
-msgid "Cannot read file."
-msgstr "Cannot read file."
-
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNIO/CRNZip.cpp:171
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNIO/CRNZip.cpp:234
-msgid "Unknown zip error."
-msgstr "Unknown zip error."
-
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNIO/CRNFileMessenger.cpp:44
-msgid "VERBOSE"
-msgstr "VERBOSE"
-
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNIO/CRNPath.cpp:239
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNIO/CRNPath.cpp:256
-msgid "the path does not contain a filename."
-msgstr "the path does not contain a filename."
-
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNIO/CRNIO.cpp:150
-msgid "Cannot create directory: "
-msgstr "Cannot create directory: "
-
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNIO/CRNIO.cpp:182
-msgid "Cannot remove: "
-msgstr "Cannot remove: "
-
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNIO/CRNIO.cpp:212
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNIO/CRNIO.cpp:318
-msgid "Cannot open directory: "
-msgstr "Cannot open directory: "
-
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNIO/CRNIO.cpp:238
-msgid "Cannot remove file: "
-msgstr "Cannot remove file: "
-
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNIO/CRNIO.cpp:250
-msgid "Cannot remove directory: "
-msgstr "Cannot remove directory: "
-
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNIO/CRNIO.cpp:266
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNIO/CRNIO.cpp:298
-msgid "Cannot copy a file over itself."
-msgstr "Cannot copy a file over itself."
-
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNIO/CRNIO.cpp:277
-msgid "Cannot open source file: "
-msgstr "Cannot open source file: "
-
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNIO/CRNIO.cpp:280
-msgid "Cannot open destination file: "
-msgstr "Cannot open destination file: "
-
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNMath/CRNMatrixInt.cpp:48
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNMath/CRNMatrixInt.cpp:120
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNMath/CRNMatrixInt.cpp:175
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNMath/CRNMatrixDouble.cpp:66
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNMath/CRNMatrixDouble.cpp:93
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNMath/CRNMatrixDouble.cpp:130
-msgid "Negative standard deviation"
-msgstr "Negative standard deviation"
-
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNMath/CRNRealToRealFunction.cpp:182
-msgid "No preimage found."
-msgstr "No preimage found."
-
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNMath/CRNMultivariateGaussianMixture.cpp:165
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNMath/CRNMultivariateGaussianMixture.cpp:186
-msgid "Incompatible dimensions"
-msgstr "Incompatible dimensions"
-
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNMath/CRNMultivariateGaussianMixture.cpp:189
-msgid "Invalid index"
-msgstr "Invalid index"
-
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNMath/CRNMultivariateGaussianMixture.cpp:231
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNMath/CRNMultivariateGaussianMixture.cpp:261
-msgid "incompatible dimensions."
-msgstr "incompatible dimensions."
-
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNMath/CRNMultivariateGaussianPDF.cpp:105
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNMath/CRNMultivariateGaussianPDF.cpp:144
-msgid "incompatible dimensions"
-msgstr "incompatible dimensions"
-
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNMath/CRNEquationSolver.cpp:50
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNMath/CRNEquationSolver.cpp:100
-msgid "invalid or incompatible matrix dimensions"
-msgstr "invalid or incompatible matrix dimensions"
-
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNMath/CRNEquationSolver.cpp:58
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNMath/CRNEquationSolver.cpp:131
-msgid "Equation has either no solution or an infinity of solutions."
-msgstr "Equation has either no solution or an infinity of solutions."
-
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNMath/CRNUnivariateGaussianPDF.cpp:75
-msgid "Negative variance."
-msgstr "Negative variance."
-
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNMath/CRNProp3.cpp:59
-msgid "true"
-msgstr "true"
-
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNMath/CRNProp3.cpp:61
-msgid "false"
-msgstr "false"
-
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNMath/CRNProp3.cpp:64
-msgid "unknown"
-msgstr "unknown"
-
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNMath/CRNMatrixComplex.cpp:36
-msgid "FFT: signal size is not a power of 2."
-msgstr "FFT: signal size is not a power of 2."
-
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNMath/CRNMatrixDouble.cpp:177
-msgid "not a column vector."
-msgstr "not a column vector."
-
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNMath/CRNSquareMatrixDouble.cpp:40
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNMath/CRNSquareMatrixDouble.cpp:47
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNMath/CRNSquareMatrixDouble.cpp:54
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNMath/CRNSquareMatrixDouble.cpp:61
-msgid "the matrix is not square."
-msgstr "the matrix is not square."
-
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNMath/CRNSquareMatrixDouble.cpp:410
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNMath/CRNSquareMatrixDouble.cpp:452
-msgid "row or column index out of range"
-msgstr "row or column index out of range"
-
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNMath/CRNSquareMatrixDouble.cpp:577
-msgid "The matrix cannot be inversed."
-msgstr "The matrix cannot be inversed."
-
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNMath/CRNSquareMatrixDouble.cpp:641
-msgid "Matrix cannot be inversed. Null pivot at column: "
-msgstr "Matrix cannot be inversed. Null pivot at column: "
-
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNMath/CRNSquareMatrixDouble.cpp:1048
-msgid "Too many iterations."
-msgstr "Too many iterations."
-
-#: /home/yleydier/prg/libcrn/src/libcrn/3rdParty/unicode/UtfConverter.cpp:95
-#: /home/yleydier/prg/libcrn/src/libcrn/3rdParty/unicode/UtfConverter.cpp:168
+#: 3rdParty/unicode/UtfConverter.cpp:95 3rdParty/unicode/UtfConverter.cpp:168
 msgid "UTF not supported."
 msgstr "UTF not supported."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNDocument.cpp:73
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNDocument.cpp:105
-msgid "null filename."
-msgstr "null filename."
+#: CRNAI/CRNAffinityPropagation.cpp:32
+msgid "The damping must be in [0, 1[."
+msgstr "The damping must be in [0, 1[."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNDocument.cpp:134
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNDocument.cpp:282
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNDocument.cpp:314
-msgid "filename not found."
-msgstr "filename not found."
+#: CRNAI/CRNAffinityPropagation.cpp:34
+msgid "The number of stable iterations to stop must be >1."
+msgstr "The number of stable iterations to stop must be >1."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNDocument.cpp:198
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:2403
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNData/CRNVector.cpp:129
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNData/CRNVector.cpp:217
-msgid "Index out of bounds."
-msgstr "Index out of bounds."
+#: CRNAI/CRNAffinityPropagation.cpp:36
+msgid "The maximal number of iterations must be >1."
+msgstr "The maximal number of iterations must be >1."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNDocument.cpp:264
-msgid "id not found."
-msgstr "id not found."
+#: CRNAI/CRNAffinityPropagation.cpp:181
+msgid "The preference is not the same dimension as the distance matrix."
+msgstr "The preference is not the same dimension as the distance matrix."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNDocument.cpp:359
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNDocument.cpp:399
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNData/CRNVector.cpp:145
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNData/CRNVector.cpp:183
-msgid "bad changeset size."
-msgstr "bad changeset size."
+#: CRNAI/CRNBipartite.cpp:303
+msgid "empty distance matrix."
+msgstr "empty distance matrix."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNDocument.cpp:369
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNDocument.cpp:409
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNData/CRNVector.cpp:155
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNData/CRNVector.cpp:193
-msgid "changeset contains duplicates."
-msgstr "changeset contains duplicates."
+#: CRNAI/CRNBipartite.cpp:306
+msgid "the distance matrix is not square."
+msgstr "the distance matrix is not square."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNDocument.cpp:374
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNDocument.cpp:414
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNData/CRNVector.cpp:160
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNData/CRNVector.cpp:198
-msgid "changeset contains values out of bounds."
-msgstr "changeset contains values out of bounds."
+#: CRNAI/CRNGaussianSCHMM.cpp:65
+msgid "Index out of range"
+msgstr "Index out of range"
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNDocument.cpp:454
-msgid "Not a Document file."
-msgstr "Not a Document file."
+#: CRNAI/CRNGaussianSCHMM.cpp:106
+msgid "Illegal input vector dimension"
+msgstr "Illegal input vector dimension"
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNDocument.cpp:600
-msgid "the document was never saved."
-msgstr "the document was never saved."
+#: CRNAI/CRNOutliers.cpp:34 CRNAI/CRNOutliers.cpp:120
+msgid "The neighborhood must be > 1."
+msgstr "The neighbourhood must be > 1."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:77
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:161
+#: CRNAI/CRNOutliers.cpp:36 CRNAI/CRNOutliers.cpp:124
+msgid "The neighborhood is greater than the number of elements."
+msgstr "The neighbourhood is greater than the number of elements."
+
+#: CRNAI/CRNOutliers.cpp:111 CRNAI/CRNOutliers.cpp:205
+msgid "The distance matrix is not square."
+msgstr "The distance matrix is not square."
+
+#: CRNAI/CRNOutliers.cpp:122
+msgid "lambda must be > 0."
+msgstr "lambda must be > 0."
+
+#: CRNAI/CRNSpectralClustering.cpp:45 CRNAI/CRNSpectralClustering.cpp:87
+msgid "Neighborhood to compute sigma must be >=1."
+msgstr "Neighborhood to compute sigma must be >=1."
+
+#: CRNAI/CRNSpectralClustering.cpp:48 CRNAI/CRNSpectralClustering.cpp:90
+#: CRNAI/CRNSpectralClustering.cpp:125 CRNAI/CRNSpectralClustering.cpp:152
+msgid "Empty distance matrix."
+msgstr "Empty distance matrix."
+
+#: CRNAI/CRNSpectralClustering.cpp:122
+msgid "Dimension must be >=1."
+msgstr "Dimension must be >=1."
+
+#: CRNAI/CRNSpectralClustering.cpp:149
+msgid "Sigma must be positive."
+msgstr "Sigma must be positive."
+
+#: CRNAI/CRNSpectralClustering.cpp:209
+msgid "Eigenvalues should be in [0, 1]."
+msgstr "Eigenvalues should be in [0, 1]."
+
+#: CRNAI/CRNSpectralClustering.cpp:229
+msgid "Cannot project on less than one coordinate."
+msgstr "Cannot project on less than one coordinate."
+
+#: CRNBlock.cpp:77 CRNBlock.cpp:161
 msgid "NewBlock"
 msgstr "NewBlock"
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:80
+#: CRNBlock.cpp:80
 msgid "No image."
 msgstr "No image."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:95
+#: CRNBlock.cpp:95
 msgid "unsupported image type."
 msgstr "unsupported image type."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:213
+#: CRNBlock.cpp:213
 msgid "No parent."
 msgstr "No parent."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:258
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:304
+#: CRNBlock.cpp:258 CRNBlock.cpp:304
 msgid "this is a topmost block. Its bounding box cannot be changed."
 msgstr "this is a topmost block. Its bounding box cannot be changed."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:261
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:307
+#: CRNBlock.cpp:261 CRNBlock.cpp:307
 msgid "Uninitialized bounding box."
 msgstr "Uninitialized bounding box."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:266
+#: CRNBlock.cpp:266
 msgid "bounding box out of parent's bounding box."
 msgstr "bounding box out of parent's bounding box."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:342
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:360
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:381
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:402
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:1849
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:1880
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:1900
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:1922
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:1947
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:1972
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:1999
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:2038
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:2062
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:2085
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:2117
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:2142
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:2167
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:2191
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:2219
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:2248
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:2283
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:2519
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:2562
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:2604
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:2631
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:2653
+#: CRNBlock.cpp:342 CRNBlock.cpp:360 CRNBlock.cpp:381 CRNBlock.cpp:402
+#: CRNBlock.cpp:1849 CRNBlock.cpp:1880 CRNBlock.cpp:1900 CRNBlock.cpp:1922
+#: CRNBlock.cpp:1947 CRNBlock.cpp:1972 CRNBlock.cpp:1999 CRNBlock.cpp:2038
+#: CRNBlock.cpp:2062 CRNBlock.cpp:2085 CRNBlock.cpp:2117 CRNBlock.cpp:2142
+#: CRNBlock.cpp:2167 CRNBlock.cpp:2191 CRNBlock.cpp:2219 CRNBlock.cpp:2248
+#: CRNBlock.cpp:2283 CRNBlock.cpp:2519 CRNBlock.cpp:2562 CRNBlock.cpp:2604
+#: CRNBlock.cpp:2631 CRNBlock.cpp:2653
 msgid "tree not found."
 msgstr "tree not found."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:434
+#: CRNBlock.cpp:434
 msgid "Cannot open image."
 msgstr "Cannot open image."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:552
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:579
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:606
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:641
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:674
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:702
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:730
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:766
+#: CRNBlock.cpp:552 CRNBlock.cpp:579 CRNBlock.cpp:606 CRNBlock.cpp:641
+#: CRNBlock.cpp:674 CRNBlock.cpp:702 CRNBlock.cpp:730 CRNBlock.cpp:766
 msgid "Uninitialized clipping rectangle."
 msgstr "Uninitialized clipping rectangle."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:557
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:584
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:617
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:652
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:680
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:708
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:742
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:778
+#: CRNBlock.cpp:557 CRNBlock.cpp:584 CRNBlock.cpp:617 CRNBlock.cpp:652
+#: CRNBlock.cpp:680 CRNBlock.cpp:708 CRNBlock.cpp:742 CRNBlock.cpp:778
 msgid "Clipping rectangle out of bounds."
 msgstr "Clipping rectangle out of bounds."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:913
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:973
+#: CRNBlock.cpp:913 CRNBlock.cpp:973
 msgid "Cannot access to any source or buffer."
 msgstr "Cannot access to any source or buffer."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:1010
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:1087
+#: CRNBlock.cpp:1010 CRNBlock.cpp:1087
 msgid "No filename given."
 msgstr "No filename given."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:1107
+#: CRNBlock.cpp:1107
 msgid "Saved block do not have the same size."
 msgstr "Saved block do not have the same size."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:1151
+#: CRNBlock.cpp:1151
 msgid "Wrong content."
 msgstr "Wrong content."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:1447
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:1477
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:1507
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:1537
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNImage/CRNImageGradient.cpp:40
+#: CRNBlock.cpp:1447 CRNBlock.cpp:1477 CRNBlock.cpp:1507 CRNBlock.cpp:1537
+#: CRNImage/CRNImageGradient.cpp:40
 msgid "Wrong image dimensions."
 msgstr "Wrong image dimensions."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:1955
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:1980
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:2047
+#: CRNBlock.cpp:1902 CRNBlock.cpp:1927 CRNBlock.cpp:2003 CRNBlock.cpp:2523
+#: CRNBlock.cpp:2566 CRNBlock.cpp:2608 CRNBlock.cpp:2657 CRNDocument.cpp:108
+#: CRNDocument.cpp:150 CRNDocument.cpp:296 CRNDocument.cpp:328
+#: CRNDocument.cpp:597 CRNMath/CRNMultivariateGaussianMixture.cpp:89
+#: CRNMath/CRNMultivariateGaussianMixture.cpp:107
+#: CRNMath/CRNMultivariateGaussianMixture.cpp:125
+#: CRNMath/CRNMultivariateGaussianMixture.cpp:143
+#: CRNMath/CRNMultivariateGaussianMixture.cpp:226
+#: CRNMath/CRNMultivariateGaussianMixture.cpp:256
+#: CRNMath/CRNUnivariateGaussianMixture.cpp:56
+#: CRNMath/CRNUnivariateGaussianMixture.cpp:76
+#: CRNMath/CRNUnivariateGaussianMixture.cpp:96
+#: CRNMath/CRNUnivariateGaussianMixture.cpp:116
+#: CRNMath/CRNUnivariateGaussianMixture.cpp:148
+#: CRNMath/CRNUnivariateGaussianMixture.cpp:256 CRNString.cpp:141
+#: CRNString.cpp:158 CRNString.cpp:205 CRNString.cpp:225 CRNString.cpp:267
+#: CRNString.cpp:291 CRNString.cpp:520 CRNString.cpp:616 CRNString.cpp:636
+#: CRNString.cpp:660 CRNString.cpp:681 CRNString.cpp:702 CRNStringUTF8.cpp:97
+#: CRNStringUTF8.cpp:112 CRNStringUTF8.cpp:148 CRNStringUTF8.cpp:168
+#: CRNStringUTF8.cpp:210 CRNStringUTF8.cpp:234 CRNStringUTF8.cpp:365
+#: CRNStringUTF8.cpp:384 CRNStringUTF8.cpp:403 CRNStringUTF8.cpp:426
+#: CRNStringUTF8.cpp:447 CRNStringUTF8.cpp:468
+msgid "index out of bounds."
+msgstr "index out of bounds."
+
+#: CRNBlock.cpp:1955 CRNBlock.cpp:1980 CRNBlock.cpp:2047
 msgid "block not found."
 msgstr "block not found."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:2223
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:2252
+#: CRNBlock.cpp:2223 CRNBlock.cpp:2252
 msgid "ratio is null or negative."
 msgstr "ratio is null or negative."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:2286
+#: CRNBlock.cpp:2286
 msgid "overlap is negative."
 msgstr "overlap is negative."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:2391
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:2452
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:2696
+#: CRNBlock.cpp:2391 CRNBlock.cpp:2452 CRNBlock.cpp:2696
 msgid "Tree not found."
 msgstr "Tree not found."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:2397
+#: CRNBlock.cpp:2397
 msgid "Identical indexes."
 msgstr "Identical indexes."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:2469
+#: CRNBlock.cpp:2403 CRNData/CRNVector.cpp:128 CRNData/CRNVector.cpp:216
+#: CRNDocument.cpp:199
+msgid "Index out of bounds."
+msgstr "Index out of bounds."
+
+#: CRNBlock.cpp:2469
 msgid "Cannot find subblock."
 msgstr "Cannot find subblock."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:2542
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:2582
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:2675
+#: CRNBlock.cpp:2542 CRNBlock.cpp:2582 CRNBlock.cpp:2675
 msgid "null block or block is not a child."
 msgstr "null block or block is not a child."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNBlock.cpp:2737
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNGeometry/CRNRect.cpp:247
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNGeometry/CRNRect.cpp:329
+#: CRNBlock.cpp:2737 CRNGeometry/CRNRect.cpp:246 CRNGeometry/CRNRect.cpp:328
 msgid "Wrong direction."
 msgstr "Wrong direction."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNComplexObject.cpp:135
-msgid "No user data to remove."
-msgstr "No user data to remove."
+#: CRNConfig.cpp:94
+msgid "Using default language."
+msgstr "British english language selected."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNComplexObject.cpp:229
-msgid "Cannot save an object with no filename."
-msgstr "Cannot save an object with no filename."
-
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNData/CRNData.cpp:161
+#: CRNData/CRNData.cpp:161
 msgid "the character 'z' is invalid inside an ASCII85 block."
 msgstr "the character 'z' is invalid inside an ASCII85 block."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNData/CRNData.cpp:171
+#: CRNData/CRNData.cpp:171
 msgid "ASCII85 only allows characters '!' to 'u', but found a: "
 msgstr "ASCII85 only allows characters '!' to 'u', but found a: "
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNData/CRNData.cpp:194
+#: CRNData/CRNData.cpp:194
 msgid "the last block of ASCII85 data cannot be a single byte."
 msgstr "the last block of ASCII85 data cannot be a single byte."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNData/CRNMap.cpp:108
-msgid "Key not found"
-msgstr "Key not found"
-
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNData/CRNMap.cpp:126
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNData/CRNVector.cpp:235
-msgid "Object not found."
-msgstr "Object not found."
-
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNData/CRNMap.cpp:139
-msgid "Invalid iterator."
-msgstr "Invalid iterator."
-
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNData/CRNMap.cpp:157
-msgid "First iterator is end()."
-msgstr "First iterator is end()."
-
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNData/CRNMap.cpp:160
-msgid "First and end iterators are equal."
-msgstr "First and end iterators are equal."
-
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNData/CRNMap.cpp:175
-msgid "End iterator is before first."
-msgstr "End iterator is before first."
-
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNData/CRNMap.cpp:208
-msgid "Cannot deserialize: "
-msgstr "Cannot deserialize: "
-
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNData/CRNMap.cpp:208
-msgid " because "
-msgstr " because "
-
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNData/CRNMap.cpp:289
-#, fuzzy
-msgid "Cannot find root element."
-msgstr "Cannot find value element."
-
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNData/CRNDataFactory.cpp:51
+#: CRNData/CRNDataFactory.cpp:51
 msgid "Null XML element."
 msgstr "Null XML element."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNData/CRNDataFactory.cpp:56
+#: CRNData/CRNDataFactory.cpp:56
 msgid "Cannot read element."
 msgstr "Cannot read element."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNData/CRNDataFactory.cpp:124
+#: CRNData/CRNDataFactory.cpp:124
 msgid "Unknown type: "
 msgstr "Unknown type: "
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNData/CRNVector.cpp:286
+#: CRNData/CRNInt.cpp:42 CRNData/CRNMap.cpp:192 CRNData/CRNReal.cpp:45
+#: CRNData/CRNVector.cpp:272
+#: CRNFeature/CRNBlockTreeExtractorTextLinesFromProjection.cpp:284
+#: CRNFeature/CRNBlockTreeExtractorWordsFromProjection.cpp:291
+#: CRNFeature/CRNFeatureExtractorAngleRadialZoning.cpp:197
+#: CRNFeature/CRNFeatureExtractorAngleZoning.cpp:128
+#: CRNFeature/CRNFeatureExtractorOverlappingAngleHistogram.cpp:238
+#: CRNFeature/CRNFeatureExtractorProfile.cpp:167
+#: CRNFeature/CRNFeatureExtractorProjection.cpp:123
+#: CRNGeometry/CRNPoint2DDouble.cpp:43 CRNGeometry/CRNPoint2DInt.cpp:43
+#: CRNGeometry/CRNRect.cpp:555 CRNGeometry/CRNStroke.cpp:68
+#: CRNIO/CRNPath.cpp:567 CRNMath/CRNLinearInterpolation.cpp:75
+#: CRNMath/CRNMatrixDouble.cpp:196 CRNMath/CRNProp3.cpp:194
+#: CRNMath/CRNUnivariateGaussianMixture.cpp:744
+#: CRNMath/CRNUnivariateGaussianPDF.cpp:258
+#: CRNStatistics/CRNHistogram.cpp:1065 CRNStatistics/CRNPCA.cpp:718
+#: CRNString.cpp:743 CRNStringUTF8.cpp:488 CRNUtils/CRNDefaultAction.cpp:52
+#: CRNUtils/CRNPDFAttributes.cpp:40
+msgid "Wrong XML element."
+msgstr "Wrong XML element."
+
+#: CRNData/CRNMap.cpp:107
+msgid "Key not found"
+msgstr "Key not found"
+
+#: CRNData/CRNMap.cpp:125 CRNData/CRNVector.cpp:234
+msgid "Object not found."
+msgstr "Object not found."
+
+#: CRNData/CRNMap.cpp:138
+msgid "Invalid iterator."
+msgstr "Invalid iterator."
+
+#: CRNData/CRNMap.cpp:156
+msgid "First iterator is end()."
+msgstr "First iterator is end()."
+
+#: CRNData/CRNMap.cpp:159
+msgid "First and end iterators are equal."
+msgstr "First and end iterators are equal."
+
+#: CRNData/CRNMap.cpp:174
+msgid "End iterator is before first."
+msgstr "End iterator is before first."
+
+#: CRNData/CRNMap.cpp:207
+msgid "Cannot deserialize: "
+msgstr "Cannot deserialize: "
+
+#: CRNData/CRNMap.cpp:207
+msgid " because "
+msgstr " because "
+
+#: CRNData/CRNMap.cpp:288
+msgid "Cannot find root element."
+msgstr "Cannot find root element."
+
+#: CRNData/CRNVector.cpp:144 CRNData/CRNVector.cpp:182 CRNDocument.cpp:360
+#: CRNDocument.cpp:400
+msgid "bad changeset size."
+msgstr "bad changeset size."
+
+#: CRNData/CRNVector.cpp:154 CRNData/CRNVector.cpp:192 CRNDocument.cpp:370
+#: CRNDocument.cpp:410
+msgid "changeset contains duplicates."
+msgstr "changeset contains duplicates."
+
+#: CRNData/CRNVector.cpp:159 CRNData/CRNVector.cpp:197 CRNDocument.cpp:375
+#: CRNDocument.cpp:415
+msgid "changeset contains values out of bounds."
+msgstr "changeset contains values out of bounds."
+
+#: CRNData/CRNVector.cpp:285
 msgid "Unknown XML element: "
 msgstr "Unknown XML element: "
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNData/CRNVector.cpp:346
-#, fuzzy
+#: CRNData/CRNVector.cpp:345
 msgid "vectors have different sizes."
-msgstr "matrices of different sizes"
+msgstr "vectors have different sizes."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNImage/CRNImageRGB.cpp:73
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNImage/CRNImageRGB.cpp:331
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNImage/CRNImageGray.cpp:70
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNImage/CRNImageGray.cpp:322
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNImage/CRNImageBW.cpp:70
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNImage/CRNImageBW.cpp:321
-msgid "Cannot create file "
-msgstr "Cannot create file "
+#: CRNDocument.cpp:74 CRNDocument.cpp:106
+msgid "null filename."
+msgstr "null filename."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNImage/CRNImageRGB.cpp:80
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNImage/CRNImageGray.cpp:77
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNImage/CRNImageBW.cpp:77
-msgid "Cannot create the PNG structure."
-msgstr "Cannot create the PNG structure "
+#: CRNDocument.cpp:135 CRNDocument.cpp:283 CRNDocument.cpp:315
+msgid "filename not found."
+msgstr "filename not found."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNImage/CRNImageRGB.cpp:86
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNImage/CRNImageGray.cpp:83
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNImage/CRNImageBW.cpp:83
-msgid "Cannot create the PNG info."
-msgstr "Cannot create the PNG info."
+#: CRNDocument.cpp:265
+msgid "id not found."
+msgstr "id not found."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNImage/CRNImageRGB.cpp:93
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNImage/CRNImageGray.cpp:90
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNImage/CRNImageBW.cpp:90
-msgid "Error while generating the PNG image."
-msgstr "Error while generating the PNG image."
+#: CRNDocument.cpp:455
+msgid "Not a Document file."
+msgstr "Not a Document file."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNImage/CRNImageRGB.cpp:168
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNImage/CRNImageRGB.cpp:385
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNImage/CRNImageGray.cpp:156
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNImage/CRNImageGray.cpp:372
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNImage/CRNImageBW.cpp:157
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNImage/CRNImageBW.cpp:371
-msgid "Cannot create temporary buffer."
-msgstr "Cannot create temporary buffer."
+#: CRNDocument.cpp:601
+msgid "the document was never saved."
+msgstr "the document was never saved."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNImage/CRNImageRGB.cpp:202
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNImage/CRNImageRGB.cpp:421
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNImage/CRNImageGray.cpp:190
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNImage/CRNImageGray.cpp:407
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNImage/CRNImageBW.cpp:191
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNImage/CRNImageBW.cpp:406
-msgid "Cannot save file. "
-msgstr "Cannot save file. "
+#: CRNDocument.cpp:822
+msgid "Null width."
+msgstr "Null width."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNImage/CRNImageRGB.cpp:254
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNImage/CRNImageRGB.cpp:442
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNImage/CRNImageGray.cpp:242
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNImage/CRNImageGray.cpp:428
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNImage/CRNImageBW.cpp:243
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNImage/CRNImageBW.cpp:427
-msgid "Cannot create bitmap"
-msgstr "Cannot create bitmap"
+#: CRNDocument.cpp:828
+msgid "Null height."
+msgstr "Null height."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNImage/CRNImageRGB.cpp:289
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNImage/CRNImageRGB.cpp:484
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNImage/CRNImageGray.cpp:280
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNImage/CRNImageGray.cpp:472
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNImage/CRNImage.cpp:611
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNImage/CRNImageBW.cpp:279
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNImage/CRNImageBW.cpp:471
+#: CRNFeature/CRNFeatureExtractorProfile.cpp:47
+msgid "no direction given."
+msgstr "no direction given."
+
+#: CRNFeature/CRNFeatureExtractorProfile.cpp:49
+#: CRNFeature/CRNFeatureExtractorProjection.cpp:48
+msgid "negative size."
+msgstr "negative size."
+
+#: CRNFeature/CRNFeatureExtractorProfile.cpp:51
+#: CRNFeature/CRNFeatureExtractorProjection.cpp:50
+msgid "negative maximal value."
+msgstr "negative maximal value."
+
+#: CRNFeature/CRNFeatureExtractorProjection.cpp:46
+msgid "no orientation given."
+msgstr "no orientation given."
+
+#: CRNGeometry/CRNRect.cpp:112
+msgid "No orientation given."
+msgstr "No orientation given."
+
+#: CRNGeometry/CRNRect.cpp:226 CRNGeometry/CRNRect.cpp:439
+#: CRNGeometry/CRNRect.cpp:463 CRNGeometry/CRNRect.cpp:601
+msgid "The rectangle isn't initialized."
+msgstr "The rectangle isn't initialized."
+
+#: CRNGeometry/CRNRect.cpp:441 CRNGeometry/CRNRect.cpp:465
+msgid "negative scale."
+msgstr "negative scale."
+
+#: CRNGeometry/CRNStroke.cpp:124 CRNGeometry/CRNStroke.cpp:155
+msgid "Invalid stroke"
+msgstr "Invalid stroke"
+
+#: CRNGeometry/CRNStroke.cpp:161
+msgid "Null step."
+msgstr "Null step."
+
+#: CRNGeometry/CRNStroke.cpp:212 CRNGeometry/CRNStroke.cpp:229
+msgid "index out of range."
+msgstr "index out of range."
+
+#: CRNGeometry/CRNStroke.cpp:248
+msgid "Cannot reach abscissa."
+msgstr "Cannot reach abscissa."
+
+#: CRNImage/CRNImage.cpp:85 CRNImage/CRNImage.cpp:323 CRNIO/CRNTextFile.cpp:55
+msgid "Cannot open file "
+msgstr "Cannot open file "
+
+#: CRNImage/CRNImage.cpp:101
+msgid "Cannot create PNG reader."
+msgstr "Cannot create PNG reader."
+
+#: CRNImage/CRNImage.cpp:108
+msgid "Cannot create PNG info."
+msgstr "Cannot create PNG info."
+
+#: CRNImage/CRNImage.cpp:115
+msgid "Error while reading the PNG file "
+msgstr "Error while reading the PNG file "
+
+#: CRNImage/CRNImage.cpp:332
+msgid "Not a JPEG file."
+msgstr "Not a JPEG file."
+
+#: CRNImage/CRNImage.cpp:357
+msgid "JPEG file contains unnatural bytes per pixel count."
+msgstr "JPEG file contains unnatural bytes per pixel count."
+
+#: CRNImage/CRNImage.cpp:411 CRNImage/CRNImage.cpp:420
+msgid "Cannot convert filename string. "
+msgstr "Cannot convert filename string. "
+
+#: CRNImage/CRNImage.cpp:429
+msgid "Cannot open image. "
+msgstr "Cannot open image. "
+
+#: CRNImage/CRNImage.cpp:482
+msgid "Gdi+ could not load the image."
+msgstr "Gdi+ could not load the image."
+
+#: CRNImage/CRNImage.cpp:488
+msgid "Gdi+ could not load the image correctly. Error number "
+msgstr "Gdi+ could not load the image correctly. Error number "
+
+#: CRNImage/CRNImage.cpp:504 CRNImage/CRNImage.cpp:558
+#: CRNImage/CRNImage.cpp:583
+msgid "Could not lock pixels. Error number "
+msgstr "Could not lock pixels. Error number "
+
+#: CRNImage/CRNImage.cpp:613 CRNImage/CRNImageBW.cpp:279
+#: CRNImage/CRNImageBW.cpp:471 CRNImage/CRNImageGray.cpp:280
+#: CRNImage/CRNImageGray.cpp:472 CRNImage/CRNImageRGB.cpp:289
+#: CRNImage/CRNImageRGB.cpp:484
 msgid "Null file name."
 msgstr "Null file name."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNImage/CRNImageRGB.cpp:318
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNImage/CRNImageRGB.cpp:513
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNImage/CRNImageGray.cpp:309
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNImage/CRNImageGray.cpp:501
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNImage/CRNImageBW.cpp:308
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNImage/CRNImageBW.cpp:500
+#: CRNImage/CRNImage.cpp:649
+msgid "No decoder could open the file "
+msgstr "No decoder could open the file "
+
+#: CRNImage/CRNImage.cpp:671 CRNImage/CRNImage.cpp:692
+#: CRNImage/CRNImage.cpp:713
+msgid "unknown image format."
+msgstr "unknown image format."
+
+#: CRNImage/CRNImageBW.cpp:70 CRNImage/CRNImageBW.cpp:321
+#: CRNImage/CRNImageGray.cpp:70 CRNImage/CRNImageGray.cpp:322
+#: CRNImage/CRNImageRGB.cpp:73 CRNImage/CRNImageRGB.cpp:331
+msgid "Cannot create file "
+msgstr "Cannot create file "
+
+#: CRNImage/CRNImageBW.cpp:77 CRNImage/CRNImageGray.cpp:77
+#: CRNImage/CRNImageRGB.cpp:80
+msgid "Cannot create the PNG structure."
+msgstr "Cannot create the PNG structure."
+
+#: CRNImage/CRNImageBW.cpp:83 CRNImage/CRNImageGray.cpp:83
+#: CRNImage/CRNImageRGB.cpp:86
+msgid "Cannot create the PNG info."
+msgstr "Cannot create the PNG info."
+
+#: CRNImage/CRNImageBW.cpp:90 CRNImage/CRNImageGray.cpp:90
+#: CRNImage/CRNImageRGB.cpp:93
+msgid "Error while generating the PNG image."
+msgstr "Error while generating the PNG image."
+
+#: CRNImage/CRNImageBW.cpp:157 CRNImage/CRNImageBW.cpp:371
+#: CRNImage/CRNImageGray.cpp:156 CRNImage/CRNImageGray.cpp:372
+#: CRNImage/CRNImageRGB.cpp:168 CRNImage/CRNImageRGB.cpp:385
+msgid "Cannot create temporary buffer."
+msgstr "Cannot create temporary buffer."
+
+#: CRNImage/CRNImageBW.cpp:191 CRNImage/CRNImageBW.cpp:406
+#: CRNImage/CRNImageGray.cpp:190 CRNImage/CRNImageGray.cpp:407
+#: CRNImage/CRNImageRGB.cpp:202 CRNImage/CRNImageRGB.cpp:421
+msgid "Cannot save file. "
+msgstr "Cannot save file. "
+
+#: CRNImage/CRNImageBW.cpp:243 CRNImage/CRNImageBW.cpp:427
+#: CRNImage/CRNImageGray.cpp:242 CRNImage/CRNImageGray.cpp:428
+#: CRNImage/CRNImageRGB.cpp:254 CRNImage/CRNImageRGB.cpp:442
+msgid "Cannot create bitmap"
+msgstr "Cannot create bitmap"
+
+#: CRNImage/CRNImageBW.cpp:308 CRNImage/CRNImageBW.cpp:500
+#: CRNImage/CRNImageGray.cpp:309 CRNImage/CRNImageGray.cpp:501
+#: CRNImage/CRNImageRGB.cpp:318 CRNImage/CRNImageRGB.cpp:513
 msgid ""
 "No library for saving image found or write permissions on the file or "
 "directory are not granted. No image will be saved."
@@ -846,3652 +523,969 @@ msgstr ""
 "No library for saving image found or write permissions on the file or "
 "directory are not granted. No image will be saved."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNImage/CRNImageRGB.cpp:342
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNImage/CRNImageGray.cpp:333
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNImage/CRNImageBW.cpp:332
+#: CRNImage/CRNImageBW.cpp:332 CRNImage/CRNImageGray.cpp:333
+#: CRNImage/CRNImageRGB.cpp:342
 msgid "Cannot create jpeg file structure."
 msgstr "Cannot create jpeg file structure."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNImage/CRNImageRGB.cpp:529
-msgid "The number of iterations is null."
-msgstr "The number of iterations is null."
-
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNImage/CRNImage.cpp:99
-msgid "Cannot create PNG reader."
-msgstr "Cannot create PNG reader."
-
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNImage/CRNImage.cpp:106
-msgid "Cannot create PNG info."
-msgstr "Cannot create PNG info."
-
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNImage/CRNImage.cpp:113
-msgid "Error while reading the PNG file "
-msgstr "Error while reading the PNG file "
-
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNImage/CRNImage.cpp:330
-msgid "Not a JPEG file."
-msgstr "Not a JPEG file."
-
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNImage/CRNImage.cpp:355
-msgid "JPEG file contains unnatural bytes per pixel count."
-msgstr "JPEG file contains unnatural bytes per pixel count."
-
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNImage/CRNImage.cpp:409
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNImage/CRNImage.cpp:418
-msgid "Cannot convert filename string. "
-msgstr "Cannot convert filename string. "
-
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNImage/CRNImage.cpp:427
-msgid "Cannot open image. "
-msgstr "Cannot open image. "
-
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNImage/CRNImage.cpp:480
-#, fuzzy
-msgid "Gdi+ could not load the image."
-msgstr " could not be loaded properly."
-
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNImage/CRNImage.cpp:486
-#, fuzzy
-msgid "Gdi+ could not load the image correctly. Error number "
-msgstr "Could not lock pixels. Error number "
-
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNImage/CRNImage.cpp:502
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNImage/CRNImage.cpp:556
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNImage/CRNImage.cpp:581
-msgid "Could not lock pixels. Error number "
-msgstr "Could not lock pixels. Error number "
-
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNImage/CRNImage.cpp:647
-msgid "No decoder could open the file."
-msgstr "No decoder could open the file."
-
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNImage/CRNImageBW.cpp:801
+#: CRNImage/CRNImageBW.cpp:801
 msgid "Min neighbors must be < 8."
 msgstr "Min neighbours must be < 8."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNImage/CRNImageBW.cpp:856
+#: CRNImage/CRNImageBW.cpp:856
 msgid "matrices of different sizes"
 msgstr "matrices of different sizes"
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNImage/CRNImageBW.cpp:860
+#: CRNImage/CRNImageBW.cpp:860
 msgid "even matrix dimensions."
 msgstr "even matrix dimensions."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNTimer.cpp:94
-msgid "Unused stopwatch."
-msgstr "Unused stopwatch."
+#: CRNImage/CRNImageRGB.cpp:529
+msgid "The number of iterations is null."
+msgstr "The number of iterations is null."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNTimer.cpp:97
-msgid "Stopwatch: "
-msgstr "Stopwatch: "
+#: CRNIO/CRNConsoleMessenger.cpp:35 CRNIO/CRNFileMessenger.cpp:43
+msgid "DEBUG"
+msgstr "DEBUG"
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNTimer.cpp:99
-msgid "Total time: "
-msgstr "Total time: "
+#: CRNIO/CRNConsoleMessenger.cpp:37 CRNIO/CRNFileMessenger.cpp:45
+msgid "WARNING"
+msgstr "WARNING"
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNConfigurationFile.cpp:114
-#, fuzzy
-msgid "Cannot save configuration file: "
-msgstr "Cannot read configuration file."
+#: CRNIO/CRNConsoleMessenger.cpp:38 CRNIO/CRNFileMessenger.cpp:46
+msgid "ERROR"
+msgstr "ERROR"
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNConfigurationFile.cpp:164
-msgid " is not a Path."
-msgstr " is not a Path."
+#: CRNIO/CRNFileMessenger.cpp:44
+msgid "VERBOSE"
+msgstr "VERBOSE"
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNConfigurationFile.cpp:177
-msgid " is not a String."
-msgstr " is not a String."
+#: CRNIO/CRNIO.cpp:150
+msgid "Cannot create directory: "
+msgstr "Cannot create directory: "
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNConfigurationFile.cpp:190
-msgid " is not a StringUTF8."
-msgstr " is not a StringUTF8."
+#: CRNIO/CRNIO.cpp:182
+msgid "Cannot remove: "
+msgstr "Cannot remove: "
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNConfigurationFile.cpp:203
-msgid " is not a Prop3."
-msgstr " is not a Prop3."
+#: CRNIO/CRNIO.cpp:212 CRNIO/CRNIO.cpp:318
+msgid "Cannot open directory: "
+msgstr "Cannot open directory: "
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNConfigurationFile.cpp:216
-msgid " is not an int."
-msgstr " is not an int."
+#: CRNIO/CRNIO.cpp:238
+msgid "Cannot remove file: "
+msgstr "Cannot remove file: "
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNConfigurationFile.cpp:229
-msgid " is not a double."
-msgstr " is not a double."
+#: CRNIO/CRNIO.cpp:250
+msgid "Cannot remove directory: "
+msgstr "Cannot remove directory: "
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNXml.cpp:50
-msgid "Cannot find attribute."
-msgstr "Cannot find attribute."
+#: CRNIO/CRNIO.cpp:266 CRNIO/CRNIO.cpp:298
+msgid "Cannot copy a file over itself."
+msgstr "Cannot copy a file over itself."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNXml.cpp:52
-msgid "Wrong attribute type."
-msgstr "Wrong attribute type."
+#: CRNIO/CRNIO.cpp:277
+msgid "Cannot open source file: "
+msgstr "Cannot open source file: "
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNXml.cpp:54
-msgid "File not found."
-msgstr "File not found."
+#: CRNIO/CRNIO.cpp:280
+msgid "Cannot open destination file: "
+msgstr "Cannot open destination file: "
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNXml.cpp:56
-msgid "File could not be opened."
-msgstr "File could not be opened."
+#: CRNIO/CRNPath.cpp:239 CRNIO/CRNPath.cpp:256
+msgid "the path does not contain a filename."
+msgstr "the path does not contain a filename."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNXml.cpp:58
-msgid "File read error."
-msgstr "File read error."
+#: CRNIO/CRNTextFile.cpp:91 CRNIO/CRNTextFile.cpp:116
+#: CRNIO/CRNTextFile.cpp:139
+msgid "cannot open file "
+msgstr "cannot open file "
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNXml.cpp:61
-msgid "Element mismatch."
-msgstr "Element mismatch."
+#: CRNIO/CRNZip.cpp:78
+msgid "libzip version is too old to support zip_discard()."
+msgstr "libzip version is too old to support zip_discard()."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNXml.cpp:63
-msgid "Could not parse element."
-msgstr "Could not parse element."
+#: CRNIO/CRNZip.cpp:156 CRNIO/CRNZip.cpp:219
+msgid "The file already exists."
+msgstr "The file already exists."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNXml.cpp:65
-msgid "Could not parse attribute."
-msgstr "Could not parse attribute."
+#: CRNIO/CRNZip.cpp:158 CRNIO/CRNZip.cpp:221
+msgid "The file is inconsistent."
+msgstr "The file is inconsistent."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNXml.cpp:67
-msgid "Could not identify tag."
-msgstr "Could not identify tag."
+#: CRNIO/CRNZip.cpp:161 CRNIO/CRNZip.cpp:224
+msgid "Not enough memory."
+msgstr "Not enough memory."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNXml.cpp:69
-msgid "Could not parse text."
-msgstr "Could not parse text."
+#: CRNIO/CRNZip.cpp:163 CRNIO/CRNZip.cpp:226
+msgid "This is not a zip file."
+msgstr "This is not a zip file."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNXml.cpp:71
-msgid "Could not parse CDATA."
-msgstr "Could not parse CDATA."
+#: CRNIO/CRNZip.cpp:166 CRNIO/CRNZip.cpp:229
+msgid "Cannot open file."
+msgstr "Cannot open file."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNXml.cpp:73
-msgid "Could not parse comment."
-msgstr "Could not parse comment."
+#: CRNIO/CRNZip.cpp:169 CRNIO/CRNZip.cpp:232
+msgid "Cannot read file."
+msgstr "Cannot read file."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNXml.cpp:75
-msgid "Could not parse declaration."
-msgstr "Could not parse declaration."
+#: CRNIO/CRNZip.cpp:171 CRNIO/CRNZip.cpp:234
+msgid "Unknown zip error."
+msgstr "Unknown zip error."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNXml.cpp:77
-msgid "Could not parse unknown item."
-msgstr "Could not parse unknown item."
+#: CRNMath/CRNEquationSolver.cpp:50 CRNMath/CRNEquationSolver.cpp:100
+msgid "invalid or incompatible matrix dimensions"
+msgstr "invalid or incompatible matrix dimensions"
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNXml.cpp:79
-msgid "Empty document."
-msgstr "Empty document."
+#: CRNMath/CRNEquationSolver.cpp:58 CRNMath/CRNEquationSolver.cpp:131
+msgid "Equation has either no solution or an infinity of solutions."
+msgstr "Equation has either no solution or an infinity of solutions."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNXml.cpp:81
-msgid "Parse error."
-msgstr "Parse error."
+#: CRNMath/CRNMatrixComplex.cpp:36
+msgid "FFT: signal size is not a power of 2."
+msgstr "FFT: signal size is not a power of 2."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNXml.cpp:83
-msgid "Cannot convert text."
-msgstr "Cannot convert text."
+#: CRNMath/CRNMatrixDouble.cpp:65 CRNMath/CRNMatrixDouble.cpp:92
+#: CRNMath/CRNMatrixDouble.cpp:129 CRNMath/CRNMatrixInt.cpp:48
+#: CRNMath/CRNMatrixInt.cpp:120 CRNMath/CRNMatrixInt.cpp:175
+msgid "Negative standard deviation"
+msgstr "Negative standard deviation"
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNXml.cpp:85
-msgid "No text node."
-msgstr "No text node."
+#: CRNMath/CRNMatrixDouble.cpp:176
+msgid "not a column vector."
+msgstr "not a column vector."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNXml.cpp:133
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNXml.cpp:136
-msgid "Not an element."
-msgstr "Not an element."
+#: CRNMath/CRNMatrixDouble.cpp:207 CRNStatistics/CRNHistogram.cpp:1078
+msgid "Cannot convert CDATA."
+msgstr "Cannot convert CDATA."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNXml.cpp:147
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNXml.cpp:150
-msgid "Not a comment."
-msgstr "Not a comment."
+#: CRNMath/CRNMultivariateGaussianMixture.cpp:165
+#: CRNMath/CRNMultivariateGaussianMixture.cpp:186
+msgid "Incompatible dimensions"
+msgstr "Incompatible dimensions"
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNXml.cpp:161
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNXml.cpp:164
-msgid "Not a text."
-msgstr "Not a text."
+#: CRNMath/CRNMultivariateGaussianMixture.cpp:189
+msgid "Invalid index"
+msgstr "Invalid index"
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNXml.cpp:343
-msgid "No child node."
-msgstr "No child node."
+#: CRNMath/CRNMultivariateGaussianMixture.cpp:231
+#: CRNMath/CRNMultivariateGaussianMixture.cpp:261
+msgid "incompatible dimensions."
+msgstr "incompatible dimensions."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNXml.cpp:358
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNXml.cpp:376
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNXml.cpp:398
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNXml.cpp:1090
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNXml.cpp:1110
-msgid "Empty element name."
-msgstr "Empty element name."
+#: CRNMath/CRNMultivariateGaussianPDF.cpp:105
+#: CRNMath/CRNMultivariateGaussianPDF.cpp:144
+msgid "incompatible dimensions"
+msgstr "incompatible dimensions"
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNXml.cpp:396
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNXml.cpp:449
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNXml.cpp:505
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNXml.cpp:526
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNXml.cpp:1108
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNXml.cpp:1144
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNXml.cpp:1163
-msgid "Null node."
-msgstr "Null node."
+#: CRNMath/CRNProp3.cpp:59
+msgid "true"
+msgstr "true"
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNXml.cpp:403
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNXml.cpp:454
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNXml.cpp:511
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNXml.cpp:1115
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNXml.cpp:1149
-msgid "Node not found."
-msgstr "Node not found."
+#: CRNMath/CRNProp3.cpp:61
+msgid "false"
+msgstr "false"
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNXml.cpp:568
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNXml.cpp:1212
-msgid "Invalid node."
-msgstr "Invalid node."
+#: CRNMath/CRNProp3.cpp:64
+msgid "unknown"
+msgstr "unknown"
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNXml.cpp:598
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNXml.cpp:611
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNXml.cpp:642
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNXml.cpp:661
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNXml.cpp:678
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNXml.cpp:695
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNXml.cpp:712
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNXml.cpp:729
-msgid "Empty attribute name."
-msgstr "Empty attribute name."
+#: CRNMath/CRNRealToRealFunction.cpp:182
+msgid "No preimage found."
+msgstr "No preimage found."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNXml.cpp:645
-msgid "Cannot find attribute: "
-msgstr "Cannot find attribute: "
+#: CRNMath/CRNSquareMatrixDouble.cpp:40 CRNMath/CRNSquareMatrixDouble.cpp:47
+#: CRNMath/CRNSquareMatrixDouble.cpp:54 CRNMath/CRNSquareMatrixDouble.cpp:61
+msgid "the matrix is not square."
+msgstr "the matrix is not square."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNXml.cpp:1025
-msgid "Empty filename."
-msgstr "Empty filename."
+#: CRNMath/CRNSquareMatrixDouble.cpp:410 CRNMath/CRNSquareMatrixDouble.cpp:452
+msgid "row or column index out of range"
+msgstr "row or column index out of range"
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNXml.cpp:1038
-msgid "No element in the XML."
-msgstr "No element in the XML."
+#: CRNMath/CRNSquareMatrixDouble.cpp:577
+msgid "The matrix cannot be inversed."
+msgstr "The matrix cannot be inversed."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNConfigElement.cpp:135
-msgid "The element was not initialized."
-msgstr "The element was not initialized."
+#: CRNMath/CRNSquareMatrixDouble.cpp:641
+msgid "Matrix cannot be inversed. Null pivot at column: "
+msgstr "Matrix cannot be inversed. Null pivot at column: "
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNConfigElement.cpp:154
-#, fuzzy
-msgid "The element is of unknown type."
-msgstr "The element was not initialized."
+#: CRNMath/CRNSquareMatrixDouble.cpp:1048
+msgid "Too many iterations."
+msgstr "Too many iterations."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNCharsetConverter.cpp:65
+#: CRNMath/CRNUnivariateGaussianPDF.cpp:74
+msgid "Negative variance."
+msgstr "Negative variance."
+
+#: CRNObject.cpp:47 CRNObject.cpp:58 CRNObject.cpp:92 CRNObject.cpp:103
+#: CRNObject.cpp:121 CRNObject.cpp:131 CRNObject.cpp:150 CRNObject.cpp:161
+msgid "null pointer."
+msgstr "null pointer."
+
+#: CRNSavable.cpp:135
+msgid "No user data to remove."
+msgstr "No user data to remove."
+
+#: CRNSavable.cpp:230
+msgid "Cannot save an object with no filename."
+msgstr "Cannot save an object with no filename."
+
+#: CRNStatistics/CRNHistogram.cpp:125 CRNStatistics/CRNHistogram.cpp:147
+#: CRNStatistics/CRNHistogram.cpp:170
+msgid "invalid index."
+msgstr "invalid index."
+
+#: CRNStatistics/CRNHistogram.cpp:402
+msgid "flat histogram."
+msgstr "flat histogram."
+
+#: CRNStatistics/CRNHistogram.cpp:462
+msgid "window larger than histogram. Cropping."
+msgstr "window larger than histogram. Cropping."
+
+#: CRNStatistics/CRNHistogram.cpp:634 CRNStatistics/CRNHistogram.cpp:662
+#: CRNStatistics/CRNHistogram.cpp:691 CRNStatistics/CRNHistogram.cpp:733
+#: CRNStatistics/CRNHistogram.cpp:772 CRNStatistics/CRNHistogram.cpp:803
+#: CRNStatistics/CRNHistogram.cpp:837 CRNStatistics/CRNHistogram.cpp:871
+#: CRNStatistics/CRNHistogram.cpp:905 CRNStatistics/CRNHistogram.cpp:929
+msgid "histograms must have same size."
+msgstr "histograms must have same size."
+
+#: CRNStatistics/CRNHistogram.cpp:1012
+msgid "Cannot resize histogram with null size."
+msgstr "Cannot resize histogram with null size."
+
+#: CRNStatistics/CRNHistogram.cpp:1071
+msgid "Cannot get CDATA."
+msgstr "Cannot get CDATA."
+
+#: CRNStatistics/CRNHistogram.cpp:1340
+msgid "The histogram is empty."
+msgstr "The histogram is empty."
+
+#: CRNStatistics/CRNPCA.cpp:527 CRNStatistics/CRNPCA.cpp:542
+msgid "Index out of dimension range."
+msgstr "Index out of dimension range."
+
+#: CRNStatistics/CRNPCA.cpp:564
+msgid "Incompatible input pattern dimensions."
+msgstr "Incompatible input pattern dimensions."
+
+#: CRNStatistics/CRNPCA.cpp:568
+msgid "Incompatible output dimensions."
+msgstr "Incompatible output dimensions."
+
+#: CRNStatistics/CRNPCA.cpp:749
+msgid "Incomplete PCA xml element."
+msgstr "Incomplete PCA xml element."
+
+#: CRNStatistics/CRNStatisticSample.cpp:219
+msgid "Illegal range."
+msgstr "Illegal range."
+
+#: CRNString.cpp:308 CRNStringUTF8.cpp:603
+msgid "Null suffix to search."
+msgstr "Null suffix to search."
+
+#: CRNString.cpp:358
+msgid "Null suffix to delete."
+msgstr "Null suffix to delete."
+
+#: CRNUtils/CRNCharsetConverter.cpp:65
 msgid "Null charset"
 msgstr "Null charset"
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNCharsetConverter.cpp:81
+#: CRNUtils/CRNCharsetConverter.cpp:81
 msgid "Cannot convert from "
 msgstr "Cannot convert from "
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNCharsetConverter.cpp:90
+#: CRNUtils/CRNCharsetConverter.cpp:90
 msgid "Cannot convert to "
 msgstr "Cannot convert to "
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNCharsetConverter.cpp:145
+#: CRNUtils/CRNCharsetConverter.cpp:145
 msgid "Invalid character."
 msgstr "Invalid character."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNCharsetConverter.cpp:151
+#: CRNUtils/CRNCharsetConverter.cpp:151
 msgid "Incomplete multibyte character."
 msgstr "Incomplete multibyte character."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNCharsetConverter.cpp:210
+#: CRNUtils/CRNCharsetConverter.cpp:210
 msgid "Invalid character in: "
 msgstr "Invalid character in: "
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNUtils/CRNCharsetConverter.cpp:216
+#: CRNUtils/CRNCharsetConverter.cpp:216
 msgid "Incomplete multibyte character in: "
 msgstr "Incomplete multibyte character in: "
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNGeometry/CRNStroke.cpp:125
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNGeometry/CRNStroke.cpp:156
-msgid "Invalid stroke"
-msgstr "Invalid stroke"
+#: CRNUtils/CRNConfigElement.cpp:135
+msgid "The element was not initialized."
+msgstr "The element was not initialized."
+
+#: CRNUtils/CRNConfigElement.cpp:154
+msgid "The element is of unknown type."
+msgstr "The element is of unknown type."
+
+#: CRNUtils/CRNConfigurationFile.cpp:114
+msgid "Cannot save configuration file: "
+msgstr "Cannot save configuration file: "
+
+#: CRNUtils/CRNConfigurationFile.cpp:173
+msgid " is not a Path."
+msgstr " is not a Path."
+
+#: CRNUtils/CRNConfigurationFile.cpp:186
+msgid " is not a String."
+msgstr " is not a String."
+
+#: CRNUtils/CRNConfigurationFile.cpp:199
+msgid " is not a StringUTF8."
+msgstr " is not a StringUTF8."
+
+#: CRNUtils/CRNConfigurationFile.cpp:212
+msgid " is not a Prop3."
+msgstr " is not a Prop3."
+
+#: CRNUtils/CRNConfigurationFile.cpp:225
+msgid " is not an int."
+msgstr " is not an int."
+
+#: CRNUtils/CRNConfigurationFile.cpp:238
+msgid " is not a double."
+msgstr " is not a double."
+
+#: CRNUtils/CRNTimer.cpp:94
+msgid "Unused stopwatch."
+msgstr "Unused stopwatch."
+
+#: CRNUtils/CRNTimer.cpp:97
+msgid "Stopwatch: "
+msgstr "Stopwatch: "
+
+#: CRNUtils/CRNTimer.cpp:99
+msgid "Total time: "
+msgstr "Total time: "
+
+#: CRNXml/CRNAlto.cpp:72 CRNXml/CRNAlto.cpp:90 CRNXml/CRNAltoLayout.cpp:101
+#: CRNXml/CRNAltoLayout.cpp:156 CRNXml/CRNAltoLayout.cpp:185
+#: CRNXml/CRNAltoLayout.cpp:203 CRNXml/CRNAltoTextBlock.cpp:158
+#: CRNXml/CRNAltoTextBlock.cpp:186 CRNXml/CRNAltoTextBlock.cpp:204
+msgid "Page not found."
+msgstr "Page not found."
+
+#: CRNXml/CRNAlto.cpp:113 CRNXml/CRNAlto.cpp:136 CRNXml/CRNAltoLayout.cpp:677
+#: CRNXml/CRNAltoLayout.cpp:703
+msgid "Space not found."
+msgstr "Space not found."
+
+#: CRNXml/CRNAlto.cpp:162 CRNXml/CRNAlto.cpp:188
+msgid "Block not found."
+msgstr "Block not found."
+
+#: CRNXml/CRNAlto.cpp:217 CRNXml/CRNAlto.cpp:246
+msgid "Text block not found."
+msgstr "Text block not found."
+
+#: CRNXml/CRNAlto.cpp:280 CRNXml/CRNAlto.cpp:314
+msgid "Line not found."
+msgstr "Line not found."
+
+#: CRNXml/CRNAlto.cpp:356 CRNXml/CRNAlto.cpp:398
+msgid "Word not found."
+msgstr "Word not found."
+
+#: CRNXml/CRNAlto.cpp:463 CRNXml/CRNAlto.cpp:528
+msgid "Element not found."
+msgstr "Element not found."
+
+#: CRNXml/CRNAlto.cpp:627
+msgid "The element already has an id."
+msgstr "The element already has an id."
+
+#: CRNXml/CRNAlto.cpp:649 CRNXml/CRNAltoLayout.cpp:39
+#: CRNXml/CRNAltoSpace.cpp:40 CRNXml/CRNAltoSpace.cpp:604
+#: CRNXml/CRNAltoSpace.cpp:626 CRNXml/CRNAltoSpace.cpp:759
+#: CRNXml/CRNAltoSpace.cpp:776 CRNXml/CRNAltoSpace.cpp:792
+#: CRNXml/CRNAltoTextBlock.cpp:585 CRNXml/CRNAltoTextBlock.cpp:599
+#: CRNXml/CRNXml.cpp:396 CRNXml/CRNXml.cpp:449 CRNXml/CRNXml.cpp:505
+#: CRNXml/CRNXml.cpp:526 CRNXml/CRNXml.cpp:1108 CRNXml/CRNXml.cpp:1144
+#: CRNXml/CRNXml.cpp:1163
+msgid "Null node."
+msgstr "Null node."
+
+#: CRNXml/CRNAlto.cpp:667
+msgid "Cannot find layout."
+msgstr "Cannot find layout."
+
+#: CRNXml/CRNAlto.cpp:681
+msgid "Null namespace."
+msgstr "Null namespace."
+
+#: CRNXml/CRNAltoDescription.cpp:45
+msgid "Null image filename."
+msgstr "Null image filename."
+
+#: CRNXml/CRNAltoDescription.cpp:75
+msgid "Invalid measurement unit."
+msgstr "Invalid measurement unit."
+
+#: CRNXml/CRNAltoLayout.cpp:307
+msgid "Invalid page position."
+msgstr "Invalid page position."
+
+#: CRNXml/CRNAltoLayout.cpp:404
+msgid "Negative physical image number."
+msgstr "Negative physical image number."
+
+#: CRNXml/CRNAltoLayout.cpp:473
+msgid "Invalid quality."
+msgstr "Invalid quality."
+
+#: CRNXml/CRNAltoLayout.cpp:543
+msgid "The page accuracy must be in [0, 100]"
+msgstr "The page accuracy must be in [0, 100]"
+
+#: CRNXml/CRNAltoLayout.cpp:562
+msgid "The page confidence must be in [0, 1]"
+msgstr "The page confidence must be in [0, 1]"
+
+#: CRNXml/CRNAltoLayout.cpp:577
+msgid "The page already has a top margin."
+msgstr "The page already has a top margin."
+
+#: CRNXml/CRNAltoLayout.cpp:595
+msgid "The page already has a left margin."
+msgstr "The page already has a left margin."
+
+#: CRNXml/CRNAltoLayout.cpp:613
+msgid "The page already has a right margin."
+msgstr "The page already has a right margin."
+
+#: CRNXml/CRNAltoLayout.cpp:631
+msgid "The page already has a bottom margin."
+msgstr "The page already has a bottom margin."
+
+#: CRNXml/CRNAltoLayout.cpp:649
+msgid "The page already has a print space."
+msgstr "The page already has a print space."
+
+#: CRNXml/CRNAltoSpace.cpp:212
+msgid "The space contains no block with this id."
+msgstr "The space contains no block with this id."
+
+#: CRNXml/CRNAltoSpace.cpp:283
+msgid "The space contains no text block with this id."
+msgstr "The space contains no text block with this id."
+
+#: CRNXml/CRNAltoSpace.cpp:341 CRNXml/CRNAltoSpace.cpp:379
+#: CRNXml/CRNAltoSpace.cpp:443 CRNXml/CRNAltoSpace.cpp:480
+#: CRNXml/CRNAltoSpace.cpp:544 CRNXml/CRNAltoSpace.cpp:581
+msgid "Cannot find block."
+msgstr "Cannot find block."
+
+#: CRNXml/CRNAltoStyles.cpp:85 CRNXml/CRNAltoStyles.cpp:99
+msgid "Text style not found."
+msgstr "Text style not found."
+
+#: CRNXml/CRNAltoStyles.cpp:126 CRNXml/CRNAltoStyles.cpp:140
+msgid "Paragraph style not found."
+msgstr "Paragraph style not found."
+
+#: CRNXml/CRNAltoTextBlock.cpp:113
+msgid "The block contains no text line with this id."
+msgstr "The block contains no text line with this id."
+
+#: CRNXml/CRNAltoTextBlock.cpp:372
+msgid "The baseline is out of the line's bounds"
+msgstr "The baseline is out of the line's bounds"
+
+#: CRNXml/CRNAltoTextBlock.cpp:441
+msgid "The line contains no word with this id."
+msgstr "The line contains no word with this id."
+
+#: CRNXml/CRNAltoTextBlock.cpp:506 CRNXml/CRNAltoTextBlock.cpp:544
+msgid "Cannot find element."
+msgstr "Cannot find element."
+
+#: CRNXml/CRNAltoTextBlock.cpp:570
+msgid "Cannot find word."
+msgstr "Cannot find word."
+
+#: CRNXml/CRNAltoTextBlock.cpp:854
+msgid "Wrong type of substitution."
+msgstr "Wrong type of substitution."
+
+#: CRNXml/CRNAltoTextBlock.cpp:875
+msgid "The word confidence must be in [0, 1]."
+msgstr "The word confidence must be in [0, 1]."
+
+#: CRNXml/CRNAltoWrapper.cpp:35 CRNXml/CRNAltoWrapper.cpp:46
+#: CRNXml/CRNAltoWrapper.cpp:58 CRNXml/CRNAltoWrapper.cpp:71
+#: CRNXml/CRNAltoWrapper.cpp:85
+msgid "Malformed path string."
+msgstr "Malformed path string."
+
+#: CRNXml/CRNAltoWrapper.cpp:222
+msgid ": no xml match."
+msgstr ": no xml match."
+
+#: CRNXml/CRNAltoWrapper.cpp:253 CRNXml/CRNAltoWrapper.cpp:281
+msgid "The document is not associated to any Alto data."
+msgstr "The document is not associated to any Alto data."
+
+#: CRNXml/CRNAltoWrapper.cpp:974 CRNXml/CRNAltoWrapper.cpp:983
+#: CRNXml/CRNAltoWrapper.cpp:989 CRNXml/CRNAltoWrapper.cpp:995
+#: CRNXml/CRNAltoWrapper.cpp:1243 CRNXml/CRNAltoWrapper.cpp:1252
+#: CRNXml/CRNAltoWrapper.cpp:1258 CRNXml/CRNAltoWrapper.cpp:1392
+#: CRNXml/CRNAltoWrapper.cpp:1401 CRNXml/CRNAltoWrapper.cpp:1558
+msgid "Resizing the element would invalidate its content."
+msgstr "Resizing the element would invalidate its content."
+
+#: CRNXml/CRNAltoWrapper.cpp:1070
+msgid "No top margin on this page."
+msgstr "No top margin on this page."
+
+#: CRNXml/CRNAltoWrapper.cpp:1095
+msgid "No left margin on this page."
+msgstr "No left margin on this page."
+
+#: CRNXml/CRNAltoWrapper.cpp:1120
+msgid "No bottom margin on this page."
+msgstr "No bottom margin on this page."
+
+#: CRNXml/CRNAltoWrapper.cpp:1145
+msgid "No right margin on this page."
+msgstr "No right margin on this page."
+
+#: CRNXml/CRNAltoWrapper.cpp:1170
+msgid "No print space on this page."
+msgstr "No print space on this page."
+
+#: CRNXml/CRNXml.cpp:50
+msgid "Cannot find attribute."
+msgstr "Cannot find attribute."
+
+#: CRNXml/CRNXml.cpp:52
+msgid "Wrong attribute type."
+msgstr "Wrong attribute type."
+
+#: CRNXml/CRNXml.cpp:54
+msgid "File not found."
+msgstr "File not found."
+
+#: CRNXml/CRNXml.cpp:56
+msgid "File could not be opened."
+msgstr "File could not be opened."
+
+#: CRNXml/CRNXml.cpp:58
+msgid "File read error."
+msgstr "File read error."
+
+#: CRNXml/CRNXml.cpp:61
+msgid "Element mismatch."
+msgstr "Element mismatch."
+
+#: CRNXml/CRNXml.cpp:63
+msgid "Could not parse element."
+msgstr "Could not parse element."
+
+#: CRNXml/CRNXml.cpp:65
+msgid "Could not parse attribute."
+msgstr "Could not parse attribute."
+
+#: CRNXml/CRNXml.cpp:67
+msgid "Could not identify tag."
+msgstr "Could not identify tag."
+
+#: CRNXml/CRNXml.cpp:69
+msgid "Could not parse text."
+msgstr "Could not parse text."
+
+#: CRNXml/CRNXml.cpp:71
+msgid "Could not parse CDATA."
+msgstr "Could not parse CDATA."
+
+#: CRNXml/CRNXml.cpp:73
+msgid "Could not parse comment."
+msgstr "Could not parse comment."
+
+#: CRNXml/CRNXml.cpp:75
+msgid "Could not parse declaration."
+msgstr "Could not parse declaration."
+
+#: CRNXml/CRNXml.cpp:77
+msgid "Could not parse unknown item."
+msgstr "Could not parse unknown item."
+
+#: CRNXml/CRNXml.cpp:79
+msgid "Empty document."
+msgstr "Empty document."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNGeometry/CRNStroke.cpp:162
-msgid "Null step."
-msgstr "Null step."
+#: CRNXml/CRNXml.cpp:81
+msgid "Parse error."
+msgstr "Parse error."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNGeometry/CRNStroke.cpp:213
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNGeometry/CRNStroke.cpp:230
-msgid "index out of range."
-msgstr "index out of range."
+#: CRNXml/CRNXml.cpp:83
+msgid "Cannot convert text."
+msgstr "Cannot convert text."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNGeometry/CRNStroke.cpp:249
-msgid "Cannot reach abscissa."
-msgstr "Cannot reach abscissa."
+#: CRNXml/CRNXml.cpp:85
+msgid "No text node."
+msgstr "No text node."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNGeometry/CRNRect.cpp:113
-msgid "No orientation given."
-msgstr "No orientation given."
+#: CRNXml/CRNXml.cpp:133 CRNXml/CRNXml.cpp:136
+msgid "Not an element."
+msgstr "Not an element."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNGeometry/CRNRect.cpp:227
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNGeometry/CRNRect.cpp:440
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNGeometry/CRNRect.cpp:464
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNGeometry/CRNRect.cpp:602
-msgid "The rectangle isn't initialized."
-msgstr "The rectangle isn't initialized."
+#: CRNXml/CRNXml.cpp:147 CRNXml/CRNXml.cpp:150
+msgid "Not a comment."
+msgstr "Not a comment."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNGeometry/CRNRect.cpp:442
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNGeometry/CRNRect.cpp:466
-msgid "negative scale."
-msgstr "negative scale."
+#: CRNXml/CRNXml.cpp:161 CRNXml/CRNXml.cpp:164
+msgid "Not a text."
+msgstr "Not a text."
 
-#: /home/yleydier/prg/libcrn/src/libcrn/CRNConfig.cpp:82
-msgid "Using default language."
-msgstr "British english language selected."
+#: CRNXml/CRNXml.cpp:343
+msgid "No child node."
+msgstr "No child node."
 
-#~ msgid "The sample is not compatible with the already existing data."
-#~ msgstr "The sample is not compatible with the already existing data."
+#: CRNXml/CRNXml.cpp:358 CRNXml/CRNXml.cpp:376 CRNXml/CRNXml.cpp:398
+#: CRNXml/CRNXml.cpp:1090 CRNXml/CRNXml.cpp:1110
+msgid "Empty element name."
+msgstr "Empty element name."
 
-#~ msgid "Void histogram."
-#~ msgstr "Void histogram."
+#: CRNXml/CRNXml.cpp:403 CRNXml/CRNXml.cpp:454 CRNXml/CRNXml.cpp:511
+#: CRNXml/CRNXml.cpp:1115 CRNXml/CRNXml.cpp:1149
+msgid "Node not found."
+msgstr "Node not found."
 
-#~ msgid "No sample available."
-#~ msgstr "No sample available."
+#: CRNXml/CRNXml.cpp:568 CRNXml/CRNXml.cpp:1212
+msgid "Invalid node."
+msgstr "Invalid node."
 
-#~ msgid "Error classifying a sample!"
-#~ msgstr "Error classifying a sample!"
+#: CRNXml/CRNXml.cpp:598 CRNXml/CRNXml.cpp:611 CRNXml/CRNXml.cpp:642
+#: CRNXml/CRNXml.cpp:661 CRNXml/CRNXml.cpp:678 CRNXml/CRNXml.cpp:695
+#: CRNXml/CRNXml.cpp:712 CRNXml/CRNXml.cpp:729
+msgid "Empty attribute name."
+msgstr "Empty attribute name."
 
-#~ msgid "Wrong class number."
-#~ msgstr "Wrong class number."
+#: CRNXml/CRNXml.cpp:645
+msgid "Cannot find attribute: "
+msgstr "Cannot find attribute: "
 
-#~ msgid "Some samples were not added."
-#~ msgstr "Some samples were not added."
+#: CRNXml/CRNXml.cpp:1025
+msgid "Empty filename."
+msgstr "Empty filename."
 
-#~ msgid "The model is not a Vector."
-#~ msgstr "The model is not a Vector."
+#: CRNXml/CRNXml.cpp:1038
+msgid "No element in the XML."
+msgstr "No element in the XML."
 
-#~ msgid "Value object does not conform to the map's protocols."
-#~ msgstr "Value object does not conform to the map's protocols."
+#~ msgid "New project"
+#~ msgstr "New project"
 
-#~ msgid "This map does not contain clonable objects."
-#~ msgstr "This map does not contain clonable objects."
+#~ msgid "Read image names in _XML Altos"
+#~ msgstr "Read image names in _XML Altos"
 
-#~ msgid "This map does not contain serializable objects."
-#~ msgstr "This map does not contain serializable objects."
+#~ msgid "Match images and XML Altos _filenames"
+#~ msgstr "Match images and XML Altos _filenames"
 
-#~ msgid "Object not added: protocols differ obj="
-#~ msgstr "Object not added: protocols differ obj="
+#~ msgid "Path to the XML Alto files"
+#~ msgstr "Path to the XML Alto files"
 
-#~ msgid "This vector does not contain clonable objects."
-#~ msgstr "This vector does not contain clonable objects."
+#~ msgid "Path to the images"
+#~ msgstr "Path to the images"
 
-#~ msgid "This vector does not contain poset objects."
-#~ msgstr "This vector does not contain poset objects."
+#~ msgid "_Images are in a different folder"
+#~ msgstr "_Images are in a different folder"
 
-#~ msgid "This vector does not contain serializable objects."
-#~ msgstr "This vector does not contain serializable objects."
+#~ msgid "Images path"
+#~ msgstr "Images path"
 
-#~ msgid "This vector does not contain metric objects."
-#~ msgstr "This vector does not contain metric objects."
+#~ msgid "Project name"
+#~ msgstr "Project name"
 
-#~ msgid "The vector do not have the same size."
-#~ msgstr "The vector do not have the same size."
+#~ msgid "XML Altos path"
+#~ msgstr "XML Altos path"
 
-#~ msgid "Please select an image"
-#~ msgstr "Please select an image"
+#~ msgid "Text line information"
+#~ msgstr "Text line information"
 
-#~ msgid "_Open image"
-#~ msgstr "_Open image"
+#~ msgid "Baseline"
+#~ msgstr "Baseline"
 
-#~ msgid "Open image"
-#~ msgstr "Open image"
+#~ msgid "Horizontal position"
+#~ msgstr "Horizontal position"
 
-#~ msgid "_Save image"
-#~ msgstr "_Save image"
+#~ msgid "Vertical position"
+#~ msgstr "Vertical position"
 
-#~ msgid "Save image"
-#~ msgstr "Save image"
+#~ msgid "Width"
+#~ msgstr "Width"
 
-#~ msgid "_RGB"
-#~ msgstr "_RGB"
+#~ msgid "Height"
+#~ msgstr "Height"
 
-#~ msgid "Show RGB image"
-#~ msgstr "Show RGB image"
+#~ msgid "Manually corrected"
+#~ msgstr "Manually corrected"
 
-#~ msgid "_Gray"
-#~ msgstr "_Grey"
+#~ msgid "Line styles"
+#~ msgstr "Line styles"
 
-#~ msgid "Show Gray image"
-#~ msgstr "Show Gray image"
+#~ msgid "Undefined"
+#~ msgstr "Undefined"
 
-#~ msgid "_BW"
-#~ msgstr "_BW"
+#~ msgid "Right"
+#~ msgstr "Right"
 
-#~ msgid "Show BW image"
-#~ msgstr "Show BW image"
+#~ msgid "Left"
+#~ msgstr "Left"
 
-#~ msgid "_Result"
-#~ msgstr "_Result"
+#~ msgid "Center"
+#~ msgstr "Center"
 
-#~ msgid "Show result image"
-#~ msgstr "Show result image"
+#~ msgid "Paragraph style"
+#~ msgstr "Paragraph style"
 
-#~ msgid "Gene_ric"
-#~ msgstr "Gene_ric"
+#~ msgid "Left indentation"
+#~ msgstr "Left indentation"
 
-#~ msgid "_Gaussian blur"
-#~ msgstr "_Gaussian blur"
+#~ msgid "Right indentation"
+#~ msgstr "Right indentation"
 
-#~ msgid "Gaussian blur along _x"
-#~ msgstr "Gaussian blur along _x"
+#~ msgid "Line space"
+#~ msgstr "Line space"
 
-#~ msgid "Gaussian blur along _y"
-#~ msgstr "Gaussian blur along _y"
+#~ msgid "First line indentation"
+#~ msgstr "First line indentation"
 
-#~ msgid "Gaussian _derivative along x"
-#~ msgstr "Gaussian _derivative along x"
+#~ msgid "Id"
+#~ msgstr "Id"
 
-#~ msgid "Gaussian d_erivative along y"
-#~ msgstr "Gaussian d_erivative along y"
+#~ msgid "Alignment"
+#~ msgstr "Alignment"
 
-#~ msgid "Gaussian _second derivative along x"
-#~ msgstr "Gaussian _second derivative along x"
+#~ msgid "Add style"
+#~ msgstr "Add style"
 
-#~ msgid "Gaussian se_cond derivative along y"
-#~ msgstr "Gaussian se_cond derivative along y"
+#~ msgid "Add text style"
+#~ msgstr "Add text style"
 
-#~ msgid "_Red"
-#~ msgstr "_Red"
+#~ msgid "Add paragraph style"
+#~ msgstr "Add paragraph style"
 
-#~ msgid "_Green"
-#~ msgstr "_Green"
+#~ msgid "Create style"
+#~ msgstr "Create style"
 
-#~ msgid "_Blue"
-#~ msgstr "_Blue"
+#~ msgid "Text style"
+#~ msgstr "Text style"
 
-#~ msgid "_Hue"
-#~ msgstr "_Hue"
+#~ msgid "Colored"
+#~ msgstr "Coloured"
 
-#~ msgid "_Saturation"
-#~ msgstr "_Saturation"
+#~ msgid "Bold"
+#~ msgstr "Bold"
 
-#~ msgid "Pseudo s_aturation"
-#~ msgstr "Pseudo s_aturation"
+#~ msgid "Italics"
+#~ msgstr "Italics"
 
-#~ msgid "_Value"
-#~ msgstr "_Value"
+#~ msgid "Subscript"
+#~ msgstr "Subscript"
 
-#~ msgid "Luminance (_YUV)"
-#~ msgstr "Luminance (_YUV)"
+#~ msgid "Superscript"
+#~ msgstr "Superscript"
 
-#~ msgid "Luminance (HS_L)"
-#~ msgstr "Luminance (HS_L)"
+#~ msgid "Small caps"
+#~ msgstr "Small caps"
 
-#~ msgid "Pseudo l_uminance"
-#~ msgstr "Pseudo l_uminance"
+#~ msgid "Underlined"
+#~ msgstr "Underlined"
 
-#~ msgid "_Saturate"
-#~ msgstr "_Saturate"
+#~ msgid "Font family"
+#~ msgstr "Font family"
 
-#~ msgid "Edge _preserving filter"
-#~ msgstr "Edge _preserving filter"
+#~ msgid "Serif"
+#~ msgstr "Serif"
 
-#~ msgid "_Differential"
-#~ msgstr "_Differential"
+#~ msgid "Fixed width"
+#~ msgstr "Fixed width"
 
-#~ msgid "To _RGB"
-#~ msgstr "To _RGB"
+#~ msgid "Word information"
+#~ msgstr "Word information"
 
-#~ msgid "_Threshold"
-#~ msgstr "_Threshold"
+#~ msgid "Word confidence"
+#~ msgstr "Word confidence"
 
-#~ msgid "_Fisher"
-#~ msgstr "_Fisher"
+#~ msgid "Content"
+#~ msgstr "Content"
 
-#~ msgid "_Entropy"
-#~ msgstr "_Entropy"
+#~ msgid "Word styles"
+#~ msgstr "Word styles"
 
-#~ msgid "_Otsu"
-#~ msgstr "_Otsu"
+#~ msgid "Show/hide _pages"
+#~ msgstr "Show/hide _pages"
 
-#~ msgid "_Niblack"
-#~ msgstr "_Niblack"
+#~ msgid "Show/hide pages"
+#~ msgstr "Show/hide pages"
 
-#~ msgid "_Sauvola"
-#~ msgstr "_Sauvola"
+#~ msgid "Show/hide _spaces"
+#~ msgstr "Show/hide _spaces"
 
-#~ msgid "_k means histogram"
-#~ msgstr "_k means histogram"
+#~ msgid "Show/hide spaces"
+#~ msgstr "Show/hide spaces"
 
-#~ msgid "Local m_in"
-#~ msgstr "Local m_in"
+#~ msgid "Show/hide _text blocks"
+#~ msgstr "Show/hide _text blocks"
 
-#~ msgid "Local m_ax"
-#~ msgstr "Local m_ax"
+#~ msgid "Show/hide text blocks"
+#~ msgstr "Show/hide text blocks"
 
-#~ msgid "_Strokes statistics"
-#~ msgstr "_Strokes statistics"
+#~ msgid "Show/hide text _lines"
+#~ msgstr "Show/hide text _lines"
 
-#~ msgid "_Histogram"
-#~ msgstr "_Histogram"
+#~ msgid "Show/hide text lines"
+#~ msgstr "Show/hide text lines"
 
-#~ msgid "_Radial histogram"
-#~ msgstr "_Radial histogram"
+#~ msgid "Show/hide _words"
+#~ msgstr "Show/hide _words"
 
-#~ msgid "To _gray"
-#~ msgstr "To _grey"
+#~ msgid "Show/hide words"
+#~ msgstr "Show/hide words"
 
-#~ msgid "_Left profile"
-#~ msgstr "_Left profile"
+#~ msgid "_Edit alto"
+#~ msgstr "_Edit alto"
 
-#~ msgid "_Right profile"
-#~ msgstr "_Right profile"
+#~ msgid "Edit alto"
+#~ msgstr "Edit alto"
 
-#~ msgid "_Top profile"
-#~ msgstr "_Top profile"
+#~ msgid "Add word"
+#~ msgstr "Add word"
 
-#~ msgid "_Bottom profile"
-#~ msgstr "_Bottom profile"
+#~ msgid "Delete word"
+#~ msgstr "Delete word"
 
-#~ msgid "_Horizontal projection"
-#~ msgstr "_Horizontal projection"
+#~ msgid "Create page"
+#~ msgstr "Create page"
 
-#~ msgid "_Vertical projection"
-#~ msgstr "_Vertical projection"
+#~ msgid "Page"
+#~ msgstr "Page"
 
-#~ msgid "_Diffuse"
-#~ msgstr "_Diffuse"
+#~ msgid "Delete"
+#~ msgstr "Delete"
 
-#~ msgid "Gradient (_grayscale)"
-#~ msgstr "Gradient (_grayscale)"
+#~ msgid "Cut vertically here"
+#~ msgstr "Cut vertically here"
 
-#~ msgid "Gradient (_RGB)"
-#~ msgstr "Gradient (_RGB)"
+#~ msgid "Create group"
+#~ msgstr "Create group"
 
-#~ msgid "Gradient _module"
-#~ msgstr "Gradient _module"
+#~ msgid "Add to group"
+#~ msgstr "Add to group"
 
-#~ msgid "_Divergence"
-#~ msgstr "_Divergence"
+#~ msgid "Merge group"
+#~ msgstr "Merge group"
 
-#~ msgid "_Laplacian"
-#~ msgstr "_Laplacian"
+#~ msgid "Clear group"
+#~ msgstr "Clear group"
 
-#~ msgid "_Edge"
-#~ msgstr "_Edge"
+#~ msgid "Print space"
+#~ msgstr "Print space"
 
-#~ msgid "_Corner"
-#~ msgstr "_Corner"
+#~ msgid "Cut horizontally here"
+#~ msgstr "Cut horizontally here"
 
-#~ msgid "Kappa _1"
-#~ msgstr "Kappa _1"
+#~ msgid "Text block"
+#~ msgstr "Text block"
 
-#~ msgid "Kappa _2"
-#~ msgstr "Kappa _2"
+#~ msgid "Text line"
+#~ msgstr "Text line"
 
-#~ msgid "_Hessian corner"
-#~ msgstr "_Hessian corner"
+#~ msgid "Edit"
+#~ msgstr "Edit"
 
-#~ msgid "_Isophote curvature"
-#~ msgstr "_Isophote curvature"
+#~ msgid "Word"
+#~ msgstr "Word"
 
-#~ msgid "_Flowline curvature"
-#~ msgstr "_Flowline curvature"
+#~ msgid "No transcription"
+#~ msgstr "No transcription"
 
-#~ msgid "_Gaussian curvature"
-#~ msgstr "_Gaussian curvature"
+#~ msgid "Add text block"
+#~ msgstr "Add text block"
 
-#~ msgid "G_radient curvature"
-#~ msgstr "G_radient curvature"
+#~ msgid "Add print space"
+#~ msgstr "Add print space"
 
-#~ msgid "L_x"
-#~ msgstr "L_x"
+#~ msgid "Modify value"
+#~ msgstr "Modify value"
 
-#~ msgid "L_y"
-#~ msgstr "L_y"
+#~ msgid "Cannot find text style."
+#~ msgstr "Cannot find text style."
 
-#~ msgid "L_xx"
-#~ msgstr "L_xx"
+#~ msgid "Cannot find paragraph style."
+#~ msgstr "Cannot find paragraph style."
 
-#~ msgid "L_xy"
-#~ msgstr "L_xy"
+#~ msgid "Cannot write file."
+#~ msgstr "Cannot write file."
 
-#~ msgid "L_yy"
-#~ msgstr "L_yy"
+#~ msgid "The page has no Id."
+#~ msgstr "The page has no Id."
 
-#~ msgid "L_w"
-#~ msgstr "L_w"
+#~ msgid "The page has no physical image number."
+#~ msgstr "The page has no physical image number."
 
-#~ msgid "L_vv"
-#~ msgstr "L_vv"
+#~ msgid "No page has this id."
+#~ msgstr "No page has this id."
 
-#~ msgid "L_vw"
-#~ msgstr "L_vw"
+#~ msgid "No space has this id in this page."
+#~ msgstr "No space has this id in this page."
 
-#~ msgid "L_ww"
-#~ msgstr "L_ww"
+#~ msgid "Cannot find measurement unit."
+#~ msgstr "Cannot find measurement unit."
 
-#~ msgid "Invalid image file."
-#~ msgstr "Invalid image file."
+#~ msgid "Unhandled font type."
+#~ msgstr "Unhandled font type."
 
-#~ msgid "Select a PNG image to export…"
-#~ msgstr "Select a PNG image to export…"
+#~ msgid "Unhandled font width."
+#~ msgstr "Unhandled font width."
 
-#~ msgid "Testing tool for libcrn functions"
-#~ msgstr "Testing tool for libcrn functions"
+#~ msgid "Invalid paragraph alignment."
+#~ msgstr "Invalid paragraph alignment."
 
-#~ msgid "http://www.corenum.com/knowledge/libcrn.html"
-#~ msgstr "http://www.corenum.com/knowledge/libcrn.html"
+#~ msgid "The page space has no height."
+#~ msgstr "The page space has no height."
 
-#~ msgid "Gaussian blur"
-#~ msgstr "Gaussian blur"
+#~ msgid "The page space has no width."
+#~ msgstr "The page space has no width."
 
-#~ msgid "Sigma"
-#~ msgstr "Sigma"
+#~ msgid "The page space has no vpos."
+#~ msgstr "The page space has no vpos."
 
-#~ msgid "Gaussian blur along x"
-#~ msgstr "Gaussian blur along x"
+#~ msgid "The page space has no hpos."
+#~ msgstr "The page space has no hpos."
 
-#~ msgid "Gaussian blur along y"
-#~ msgstr "Gaussian blur along y"
+#~ msgid "Null charset converter."
+#~ msgstr "Null charset converter."
 
-#~ msgid "Gaussian derivative along x"
-#~ msgstr "Gaussian derivative along x"
+#~ msgid "Subnode not found."
+#~ msgstr "Subnode not found."
 
-#~ msgid "Gaussian derivative along y"
-#~ msgstr "Gaussian derivative along y"
+#~ msgid "Cannot not find id."
+#~ msgstr "Cannot not find id."
 
-#~ msgid "Gaussian second derivative along x"
-#~ msgstr "Gaussian second derivative along x"
+#~ msgid "The line has no height."
+#~ msgstr "The line has no height."
 
-#~ msgid "Gaussian second derivative along y"
-#~ msgstr "Gaussian second derivative along y"
+#~ msgid "The line has no width."
+#~ msgstr "The line has no width."
 
-#~ msgid "Edge preserving filter"
-#~ msgstr "Edge preserving filter"
+#~ msgid "The line has no vpos."
+#~ msgstr "The line has no vpos."
 
-#~ msgid "# iterations"
-#~ msgstr "# iterations"
+#~ msgid "The line has no hpos."
+#~ msgstr "The line has no hpos."
 
-#~ msgid "Maximal distance between colors of a same class"
-#~ msgstr "Maximal distance between colors of a same class"
-
-#~ msgid "Differential"
-#~ msgstr "Differential"
-
-#~ msgid "Threshold"
-#~ msgstr "Threshold"
-
-#~ msgid "Niblack"
-#~ msgstr "Niblack"
-
-#~ msgid "Half window"
-#~ msgstr "Half window"
-
-#~ msgid "k"
-#~ msgstr "k"
-
-#~ msgid "Sauvola"
-#~ msgstr "Sauvola"
-
-#~ msgid "k means histogram"
-#~ msgstr "k means histogram"
-
-#~ msgid "Number of classes"
-#~ msgstr "Number of classes"
-
-#~ msgid "Number of black classes"
-#~ msgstr "Number of black classes"
-
-#~ msgid ""
-#~ "The number of black classes must be lower than the total number of "
-#~ "classes."
-#~ msgstr ""
-#~ "The number of black classes must be lower than the total number of "
-#~ "classes."
-
-#~ msgid "Local min"
-#~ msgstr "Local min"
-
-#~ msgid "Radius"
-#~ msgstr "Radius"
-
-#~ msgid "Local max"
-#~ msgstr "Local max"
-
-#~ msgid "Strokes width: "
-#~ msgstr "Strokes width: "
-
-#~ msgid "Strokes height: "
-#~ msgstr "Strokes height: "
-
-#~ msgid "Number of iterations"
-#~ msgstr "Number of iterations"
-
-#~ msgid "Max divergence to allow modification of a pixel"
-#~ msgstr "Max divergence to allow modification of a pixel"
-
-#~ msgid "Single pages"
-#~ msgstr "Single pages"
-
-#~ msgid "Continuous pages"
-#~ msgstr "Continuous pages"
-
-#~ msgid "Two pages, first on the left"
-#~ msgstr "Two pages, first on the left"
-
-#~ msgid "Tow pages, first on the right"
-#~ msgstr "Tow pages, first on the right"
-
-#~ msgid "Lossy image compression"
-#~ msgstr "Lossy image compression"
-
-#~ msgid "Allow users to copy the content"
-#~ msgstr "Allow users to copy the content"
-
-#~ msgid "Allow users to print the document"
-#~ msgstr "Allow users to print the document"
-
-#~ msgid "Author"
-#~ msgstr "Author"
-
-#~ msgid "Title"
-#~ msgstr "Title"
-
-#~ msgid "Subject"
-#~ msgstr "Subject"
-
-#~ msgid "Keywords"
-#~ msgstr "Keywords"
-
-#~ msgid "Page layout"
-#~ msgstr "Page layout"
-
-#~ msgid "Quality"
-#~ msgstr "Quality"
-
-#~ msgid "Editor's password"
-#~ msgstr "Editor's password"
-
-#~ msgid "User's password"
-#~ msgstr "User's password"
-
-#~ msgid "JPEG quality must be between 0 and 100."
-#~ msgstr "JPEG quality must be between 0 and 100."
-
-#~ msgid "null event."
-#~ msgstr "null event."
-
-#~ msgid "null object"
-#~ msgstr "null object"
-
-#~ msgid "(empty)"
-#~ msgstr "(empty)"
-
-#~ msgid "Filename"
-#~ msgstr "Filename"
-
-#~ msgid "GtkCRN::SelectionBox: Invalid orientation."
-#~ msgstr "GtkCRN::SelectionBox: Invalid orientation."
-
-#~ msgid "Views"
-#~ msgstr "Views"
-
-#~ msgid "Blocks"
-#~ msgstr "Blocks"
-
-#~ msgid "_Views"
-#~ msgstr "_Views"
-
-#~ msgid "_Add Views"
-#~ msgstr "_Add Views"
-
-#~ msgid "Add Views"
-#~ msgstr "Add Views"
-
-#~ msgid "_Refresh Views"
-#~ msgstr "_Refresh Views"
-
-#~ msgid "Refresh Views"
-#~ msgstr "Refresh Views"
-
-#~ msgid "Select _First View"
-#~ msgstr "Select _First View"
-
-#~ msgid "Select First View"
-#~ msgstr "Select First View"
-
-#~ msgid "Select _Previous View"
-#~ msgstr "Select _Previous View"
-
-#~ msgid "Select Previous View"
-#~ msgstr "Select Previous View"
-
-#~ msgid "Select _Next View"
-#~ msgstr "Select _Next View"
-
-#~ msgid "Select Next View"
-#~ msgstr "Select Next View"
-
-#~ msgid "Select _Last View"
-#~ msgstr "Select _Last View"
-
-#~ msgid "Select Last View"
-#~ msgstr "Select Last View"
-
-#~ msgid "Select _All Views"
-#~ msgstr "Select _All Views"
-
-#~ msgid "Select All Views"
-#~ msgstr "Select All Views"
-
-#~ msgid "_Deselect Views"
-#~ msgstr "_Deselect Views"
-
-#~ msgid "Deselect Views"
-#~ msgstr "Deselect Views"
-
-#~ msgid "Select _Even Views"
-#~ msgstr "Select _Even Views"
-
-#~ msgid "Select _Odd Views"
-#~ msgstr "Select _Odd Views"
-
-#~ msgid "_Invert View Selection"
-#~ msgstr "_Invert View Selection"
-
-#~ msgid "Invert View Selection"
-#~ msgstr "Invert View Selection"
-
-#~ msgid "_Remove View Selection"
-#~ msgstr "_Remove View Selection"
-
-#~ msgid "Remove View Selection"
-#~ msgstr "Remove View Selection"
-
-#~ msgid "_Export PDF"
-#~ msgstr "_Export PDF"
-
-#~ msgid "Export PDF"
-#~ msgstr "Export PDF"
-
-#~ msgid "_Add Subblock"
-#~ msgstr "_Add Subblock"
-
-#~ msgid "Add Subblock"
-#~ msgstr "Add Subblock"
-
-#~ msgid "_Remove Subblock"
-#~ msgstr "_Remove Subblock"
-
-#~ msgid "Remove Subblock"
-#~ msgstr "Remove Subblock"
-
-#~ msgid "_Show/Hide Subblocks"
-#~ msgstr "_Show/Hide Subblocks"
-
-#~ msgid "Show/Hide Subblocks"
-#~ msgstr "Show/Hide Subblocks"
-
-#~ msgid "Subblocks _Settings"
-#~ msgstr "Subblocks _Settings"
-
-#~ msgid "Subblocks Settings"
-#~ msgstr "Subblocks Settings"
-
-#~ msgid "Block name"
-#~ msgstr "Block name"
-
-#~ msgid "Coordinates"
-#~ msgstr "Coordinates"
-
-#~ msgid "Inexistent view"
-#~ msgstr "Inexistent view"
-
-#~ msgid ""
-#~ "The document was never saved. It is impossible to generate thumbnails."
-#~ msgstr ""
-#~ "The document was never saved. It is impossible to generate thumbnails."
-
-#~ msgid ""
-#~ "%i error(s) occurred during the generation of the thumbnails. Some images "
-#~ "may be deffective."
-#~ msgstr ""
-#~ "%i error(s) occurred during the generation of the thumbnails. Some images "
-#~ "may be deffective."
-
-#~ msgid "Refresh"
-#~ msgstr "Refresh"
-
-#~ msgid "Loading view"
-#~ msgstr "Loading view"
-
-#~ msgid "Please select views to add"
-#~ msgstr "Please select views to add"
-
-#~ msgid "Add a subblock"
-#~ msgstr "Add a subblock"
-
-#~ msgid "Subblock tree"
-#~ msgstr "Subblock tree"
-
-#~ msgid "New subblock's name"
-#~ msgstr "New subblock's name"
-
-#~ msgid "New subblock"
-#~ msgstr "New subblock"
-
-#~ msgid "Cannot add such selection to the subblock tree."
-#~ msgstr "Cannot add such selection to the subblock tree."
-
-#~ msgid "Configure subblocks display"
-#~ msgstr "Configure subblocks display"
-
-#~ msgid "Frame color"
-#~ msgstr "Frame colour"
-
-#~ msgid "Fill color"
-#~ msgstr "Fill colour"
-
-#~ msgid "Show subblock _labels"
-#~ msgstr "Show subblock _labels"
-
-#~ msgid "Label color"
-#~ msgstr "Label colour"
-
-#~ msgid "Writing image"
-#~ msgstr "Writing image"
-
-#~ msgid "File selection"
-#~ msgstr "File selection"
-
-#~ msgid "unsupported pixel format."
-#~ msgstr "unsupported pixel format."
-
-#~ msgid "Null pixbuf given."
-#~ msgstr "Null pixbuf given."
-
-#~ msgid "_File"
-#~ msgstr "_File"
-
-#~ msgid "File"
-#~ msgstr "File"
-
-#~ msgid "_?"
-#~ msgstr "_?"
-
-#~ msgid "?"
-#~ msgstr "?"
-
-#~ msgid "Are you sure you want to quit?"
-#~ msgstr "Are you sure you want to quit?"
-
-#~ msgid "Advanced details"
-#~ msgstr "Advanced details"
-
-#~ msgid "Unhandled exception caught."
-#~ msgstr "Unhandled exception caught."
-
-#~ msgid "_Background Color…"
-#~ msgstr "_Background Colour…"
-
-#~ msgid "Background Color"
-#~ msgstr "Background Colour"
-
-#~ msgid "Background"
-#~ msgstr "Background"
-
-#~ msgid "_Foreground Color…"
-#~ msgstr "_Foreground Colour…"
-
-#~ msgid "Foreground Color"
-#~ msgstr "Foreground Colour"
-
-#~ msgid "Foreground"
-#~ msgstr "Foreground"
-
-#~ msgid "_Clear"
-#~ msgstr "_Clear"
-
-#~ msgid "Clear"
-#~ msgstr "Clear"
-
-#~ msgid "_Increase Thickness"
-#~ msgstr "_Increase Thickness"
-
-#~ msgid "Increase Thickness"
-#~ msgstr "Increase Thickness"
-
-#~ msgid "_Decrease Thickness"
-#~ msgstr "_Decrease Thickness"
-
-#~ msgid "Decrease Thickness"
-#~ msgstr "Decrease Thickness"
-
-#~ msgid "Set _Thickness"
-#~ msgstr "Set _Thickness"
-
-#~ msgid "Set Thickness"
-#~ msgstr "Set Thickness"
-
-#~ msgid "null or negative zoom value."
-#~ msgstr "null or negative zoom value."
-
-#~ msgid "_Clear User Selection"
-#~ msgstr "_Clear User Selection"
-
-#~ msgid "Clear User Selection"
-#~ msgstr "Clear User Selection"
-
-#~ msgid "Cannot set selection type to Text."
-#~ msgstr "Cannot set selection type to Text."
-
-#~ msgid "Cannot set selection type to Polygon."
-#~ msgstr "Cannot set selection type to Polygon."
-
-#~ msgid "The polygon must have more than two points."
-#~ msgstr "The polygon must have more than two points."
-
-#~ msgid "Overlay not found."
-#~ msgstr "Overlay not found."
-
-#~ msgid "Overlay item not found."
-#~ msgstr "Overlay item not found."
-
-#~ msgid "No selection found."
-#~ msgstr "No selection found."
-
-#~ msgid "The selection is not a rectangle."
-#~ msgstr "The selection is not a rectangle."
-
-#~ msgid "The selection is not a point."
-#~ msgstr "The selection is not a point."
-
-#~ msgid "The selection is not a line."
-#~ msgstr "The selection is not a line."
-
-#~ msgid ""
-#~ "Converts a doxygen XML output to an HTML file showing which methods in "
-#~ "which class throw exceptions."
-#~ msgstr ""
-#~ "Converts a doxygen XML output to an HTML file showing which methods in "
-#~ "which class throw exceptions."
-
-#~ msgid "Usage:"
-#~ msgstr "Usage:"
-
-#~ msgid "<path to doxygen xml output> [<path to doxygen xml output> […] ]"
-#~ msgstr "<path to doxygen xml output> [<path to doxygen xml output> […] ]"
-
-#~ msgid "Usage: "
-#~ msgstr "Usage: "
-
-#~ msgid "\tStokes width: "
-#~ msgstr "\tStokes width: "
-
-#~ msgid "\tStokes height: "
-#~ msgstr "\tStokes height: "
-
-#~ msgid "\tLines height: "
-#~ msgstr "\tLines height: "
-
-#~ msgid " ignored (not a valid image file). ***"
-#~ msgstr " ignored (not a valid image file). ***"
-
-#~ msgid "TESTING FRAMEWORK"
-#~ msgstr "TESTING FRAMEWORK"
-
-#~ msgid "[R]un all enabled tests."
-#~ msgstr "[R]un all enabled tests."
-
-#~ msgid "[E]nable / Disable tests."
-#~ msgstr "[E]nable / Disable tests."
-
-#~ msgid "[A]dd / Remove parameters from parameterized tests."
-#~ msgstr "[A]dd / Remove parameters from parameterized tests."
-
-#~ msgid "[S]ave / Load a configuration file."
-#~ msgstr "[S]ave / Load a configuration file."
-
-#~ msgid "[L]eave the application."
-#~ msgstr "[L]eave the application."
-
-#~ msgid "Enter your choice : "
-#~ msgstr "Enter your choice : "
-
-#~ msgid "Enabling / Disabling Tests"
-#~ msgstr "Enabling / Disabling Tests"
-
-#~ msgid "[E]nable all"
-#~ msgstr "[E]nable all"
-
-#~ msgid "[D]isable all"
-#~ msgstr "[D]isable all"
-
-#~ msgid "[S]witch to tree view"
-#~ msgstr "[S]witch to tree view"
-
-#~ msgid "[R]eturn to previous menu"
-#~ msgstr "[R]eturn to previous menu"
-
-#~ msgid ""
-#~ "Type the number of the test case in which you want to enable / disable "
-#~ "tests : "
-#~ msgstr ""
-#~ "Type the number of the test case in which you want to enable / disable "
-#~ "tests : "
-
-#~ msgid "Enabling / Disabling Tests in "
-#~ msgstr "Enabling / Disabling Tests in "
-
-#~ msgid "Test Name"
-#~ msgstr "Test Name"
-
-#~ msgid "State"
-#~ msgstr "State"
-
-#~ msgid "enabled"
-#~ msgstr "enabled"
-
-#~ msgid "disabled"
-#~ msgstr "disabled"
-
-#~ msgid "[E]nable all tests"
-#~ msgstr "[E]nable all tests"
-
-#~ msgid "[D]isable all tests"
-#~ msgstr "[D]isable all tests"
-
-#~ msgid "Type the number of the test you want to switch enable / disable : "
-#~ msgstr "Type the number of the test you want to switch enable / disable : "
-
-#~ msgid "Adding / Removing parameters"
-#~ msgstr "Adding / Removing parameters"
-
-#~ msgid ""
-#~ "Type the number of the test case in which you want to add / remove "
-#~ "parameters : "
-#~ msgstr ""
-#~ "Type the number of the test case in which you want to add / remove "
-#~ "parameters : "
-
-#~ msgid "Parameter in"
-#~ msgstr "Parameter in"
-
-#~ msgid "Parameter out"
-#~ msgstr "Parameter out"
-
-#~ msgid "[A]dd parameters to the whole test case"
-#~ msgstr "[A]dd parameters to the whole test case"
-
-#~ msgid "[D]elete parameters from the whole test case"
-#~ msgstr "[D]elete parameters from the whole test case"
-
-#~ msgid ""
-#~ "Type the number of the test in which you want to add / remove "
-#~ "parameters : "
-#~ msgstr ""
-#~ "Type the number of the test in which you want to add / remove "
-#~ "parameters : "
-
-#~ msgid "Adding parameter in "
-#~ msgstr "Adding parameter in "
-
-#~ msgid " (Test)"
-#~ msgstr " (Test)"
-
-#~ msgid "(Test Case)"
-#~ msgstr "(Test Case)"
-
-#~ msgid "Test parameters"
-#~ msgstr "Test parameters"
-
-#~ msgid "Shared parameters for the test case"
-#~ msgstr "Shared parameters for the test case"
-
-#~ msgid "Parameter number"
-#~ msgstr "Parameter number"
-
-#~ msgid "Input parameter"
-#~ msgstr "Input parameter"
-
-#~ msgid "Output parameter"
-#~ msgstr "Output parameter"
-
-#~ msgid "Enter the number of the parameters you want to delete : "
-#~ msgstr "Enter the number of the parameters you want to delete : "
-
-#~ msgid "Incorrect number."
-#~ msgstr "Incorrect number."
-
-#~ msgid "Add / Remove parameters in "
-#~ msgstr "Add / Remove parameters in "
-
-#~ msgid "[A]dd new parameters"
-#~ msgstr "[A]dd new parameters"
-
-#~ msgid "[D]elete parameters"
-#~ msgstr "[D]elete parameters"
-
-#~ msgid "Test Case Name"
-#~ msgstr "Test Case Name"
-
-#~ msgid "Tests enabled"
-#~ msgstr "Tests enabled"
-
-#~ msgid "Loading / Saving a configuration file"
-#~ msgstr "Loading / Saving a configuration file"
-
-#~ msgid "[L]oad a configuration file."
-#~ msgstr "[L]oad a configuration file."
-
-#~ msgid "[S]ave a configuration file."
-#~ msgstr "[S]ave a configuration file."
-
-#~ msgid "Enter the path to the configuration file : "
-#~ msgstr "Enter the path to the configuration file : "
-
-#~ msgid "The configuration file was successfully loaded."
-#~ msgstr "The configuration file was successfully loaded."
-
-#~ msgid "An error has occurred during the loading."
-#~ msgstr "An error has occurred during the loading."
-
-#~ msgid "The configuration file was successfully saved."
-#~ msgstr "The configuration file was successfully saved."
-
-#~ msgid "An error has occurred during the saving."
-#~ msgstr "An error has occurred during the saving."
-
-#~ msgid "Press ENTER to continue..."
-#~ msgstr "Press ENTER to continue..."
-
-#~ msgid "Type the "
-#~ msgstr "Type the "
-
-#~ msgid "input"
-#~ msgstr "input"
-
-#~ msgid "output"
-#~ msgstr "output"
-
-#~ msgid " string : "
-#~ msgstr " string : "
-
-#~ msgid "The Test Unit is starting"
-#~ msgstr "The Test Unit is starting"
-
-#~ msgid "The Test Unit is finished"
-#~ msgstr "The Test Unit is finished"
-
-#~ msgid "Result : "
-#~ msgstr "Result : "
-
-#~ msgid " test case passed"
-#~ msgstr " test case passed"
-
-#~ msgid "Ellapsed time : "
-#~ msgstr "Ellapsed time : "
-
-#~ msgid "Starting "
-#~ msgstr "Starting "
-
-#~ msgid " test case."
-#~ msgstr " test case."
-
-#~ msgid "Warning : this test case should pass before : "
-#~ msgstr "Warning : this test case should pass before : "
-
-#~ msgid " Comment : "
-#~ msgstr " Comment : "
-
-#~ msgid " Result : "
-#~ msgstr " Result : "
-
-#~ msgid " test passed"
-#~ msgstr " test passed"
-
-#~ msgid "Ending "
-#~ msgstr "Ending "
-
-#~ msgid "should pass before. "
-#~ msgstr "should pass before. "
-
-#~ msgid "SUCCESS !"
-#~ msgstr "SUCCESS !"
-
-#~ msgid "FAILED !"
-#~ msgstr "FAILED !"
-
-#~ msgid " ellapsed time : "
-#~ msgstr " ellapsed time : "
-
-#~ msgid "Using parameters :"
-#~ msgstr "Using parameters :"
-
-#~ msgid ""
-#~ "The object can't be typed unless it has overloaded the >> method with "
-#~ "cin. (istream & operator >>(istream &in, objectType *obj);"
-#~ msgstr ""
-#~ "The object can't be typed unless it has overloaded the >> method with "
-#~ "cin. (istream & operator >>(istream &in, objectType *obj);"
-
-#~ msgid "Circular dependency between tests"
-#~ msgstr "Circular dependency between tests"
-
-#~ msgid "Expected : "
-#~ msgstr "Expected : "
-
-#~ msgid " was successfully thrown."
-#~ msgstr " was successfully thrown."
-
-#~ msgid "Expected exception "
-#~ msgstr "Expected exception "
-
-#~ msgid " but got another exception."
-#~ msgstr " but got another exception."
-
-#~ msgid " but no exception was thrown."
-#~ msgstr " but no exception was thrown."
-
-#~ msgid "An exception was successfully thrown."
-#~ msgstr "An exception was successfully thrown."
-
-#~ msgid "Expected any exception but none was thrown."
-#~ msgstr "Expected any exception but none was thrown."
-
-#~ msgid "The code was successfully executed without an exception."
-#~ msgstr "The code was successfully executed without an exception."
-
-#~ msgid "Expected no exception but one was thrown."
-#~ msgstr "Expected no exception but one was thrown."
-
-#~ msgid "Expected "
-#~ msgstr "Expected "
-
-#~ msgid " to be true."
-#~ msgstr " to be true."
-
-#~ msgid "Needed '"
-#~ msgstr "Needed '"
-
-#~ msgid "' to be true to continue, stopping test."
-#~ msgstr "' to be true to continue, stopping test."
-
-#~ msgid "Circular dependency between test cases"
-#~ msgstr "Circular dependency between test cases"
-
-#~ msgid "Not a Test Unit configuration file."
-#~ msgstr "Not a Test Unit configuration file."
-
-#~ msgid "Allocation problem."
-#~ msgstr "Allocation problem."
-
-#~ msgid "Testing the crn::Document class."
-#~ msgstr "Testing the crn::Document class."
-
-#~ msgid "Testing the constructors."
-#~ msgstr "Testing the constructors."
-
-#~ msgid "By default, the"
-#~ msgstr "By default, the"
-
-#~ msgid "author"
-#~ msgstr "author"
-
-#~ msgid "should be empty."
-#~ msgstr "should be empty."
-
-#~ msgid "base name"
-#~ msgstr "base name"
-
-#~ msgid "date"
-#~ msgstr "date"
-
-#~ msgid ""
-#~ "Tests that Get and Set methods on author, basename and date are working."
-#~ msgstr ""
-#~ "Tests that Get and Set methods on author, basename and date are working."
-
-#~ msgid "Testing that the AddView method is working."
-#~ msgstr "Testing that the AddView method is working."
-
-#~ msgid "Testing that the RemoveView method is working."
-#~ msgstr "Testing that the RemoveView method is working."
-
-#~ msgid "Shouldn't work with an out-of-bounds index."
-#~ msgstr "Shouldn't work with an out-of-bounds index."
-
-#~ msgid "Shouldn't work with an inexistant name."
-#~ msgstr "Shouldn't work with an inexistant name."
-
-#~ msgid "Testing the GetView method."
-#~ msgstr "Testing the GetView method."
-
-#~ msgid "Shouldn't work with out-of-bounds indexes."
-#~ msgstr "Shouldn't work with out-of-bounds indexes."
-
-#~ msgid "Should throw an exception as the file couldn't be loaded."
-#~ msgstr "Should throw an exception as the file couldn't be loaded."
-
-#~ msgid "The resulting block bounding box is incorrect."
-#~ msgstr "The resulting block bounding box is incorrect."
-
-#~ msgid ""
-#~ "Should have saved the block to an xml file after it has been deleted."
-#~ msgstr ""
-#~ "Should have saved the block to an xml file after it has been deleted."
-
-#~ msgid "Problem while creating a temporary directory: "
-#~ msgstr "Problem while creating a temporary directory: "
-
-#~ msgid "Testing the views iteraotrs."
-#~ msgstr "Testing the views iteraotrs."
-
-#~ msgid "Testing the Load ans Save methods."
-#~ msgstr "Testing the Load ans Save methods."
-
-#~ msgid "Shouldn't have worked with an inexistant file."
-#~ msgstr "Shouldn't have worked with an inexistant file."
-
-#~ msgid "Incorrect number of views."
-#~ msgstr "Incorrect number of views."
-
-#~ msgid "Test image generation problem."
-#~ msgstr "Test image generation problem."
-
-#~ msgid "The test image can't be saved in : "
-#~ msgstr "The test image can't be saved in : "
-
-#~ msgid "The test image can't be loaded using crn::ImageRGB::NewFromFile(...)"
-#~ msgstr ""
-#~ "The test image can't be loaded using crn::ImageRGB::NewFromFile(...)"
-
-#~ msgid "The loaded png image differs from the generated test image."
-#~ msgstr "The loaded png image differs from the generated test image."
-
-#~ msgid ""
-#~ "Loading from an empty file name should throw an ExceptionInvalidArgument."
-#~ msgstr ""
-#~ "Loading from an empty file name should throw an ExceptionInvalidArgument."
-
-#~ msgid "Loading from an inexistant file should throw an ExceptionIO."
-#~ msgstr "Loading from an inexistant file should throw an ExceptionIO."
-
-#~ msgid "Zip creation test case."
-#~ msgstr "Zip creation test case."
-
-#~ msgid "Checks if files are created and read."
-#~ msgstr "Checks if files are created and read."
-
-#~ msgid "Should throw exception when reading non-existing file."
-#~ msgstr "Should throw exception when reading non-existing file."
-
-#~ msgid "This was not a Zip file."
-#~ msgstr "This was not a Zip file."
-
-#~ msgid "File should not be created because the archive was empty."
-#~ msgstr "File should not be created because the archive was empty."
-
-#~ msgid "Should not have overwritten the file."
-#~ msgstr "Should not have overwritten the file."
-
-#~ msgid "Should have overwritten the file."
-#~ msgstr "Should have overwritten the file."
-
-#~ msgid "Zip add/read files"
-#~ msgstr "Zip add/read files"
-
-#~ msgid "Checks the insertion and reading of files"
-#~ msgstr "Checks the insertion and reading of files"
-
-#~ msgid "Should have added file."
-#~ msgstr "Should have added file."
-
-#~ msgid "Should have found the file."
-#~ msgstr "Should have found the file."
-
-#~ msgid "Archive should have been created."
-#~ msgstr "Archive should have been created."
-
-#~ msgid "The file does not exist."
-#~ msgstr "The file does not exist."
-
-#~ msgid "The file should be read."
-#~ msgstr "The file should be read."
-
-#~ msgid "The file was not read correctly."
-#~ msgstr "The file was not read correctly."
-
-#~ msgid "Zip add/read directories"
-#~ msgstr "Zip add/read directories"
-
-#~ msgid "Checks the insertion and reading of directories"
-#~ msgstr "Checks the insertion and reading of directories"
-
-#~ msgid "Directory should have been created."
-#~ msgstr "Directory should have been created."
-
-#~ msgid "Should have found the directory."
-#~ msgstr "Should have found the directory."
-
-#~ msgid "Testing the crn::Block class."
-#~ msgstr "Testing the crn::Block class."
-
-#~ msgid "Tests that all the constructors are working."
-#~ msgstr "Tests that all the constructors are working."
-
-#~ msgid "The top block creation shouldn't have thrown an exception."
-#~ msgstr "The top block creation shouldn't have thrown an exception."
-
-#~ msgid "There was a problem during the block creation."
-#~ msgstr "There was a problem during the block creation."
-
-#~ msgid "The block name isn't correctly initialized"
-#~ msgstr "The block name isn't correctly initialized"
-
-#~ msgid "The parent tree name should be empty for a top block."
-#~ msgstr "The parent tree name should be empty for a top block."
-
-#~ msgid ""
-#~ "Default file name should be empty as the block hasn't loaded any file."
-#~ msgstr ""
-#~ "Default file name should be empty as the block hasn't loaded any file."
-
-#~ msgid "Bounding box isn't good."
-#~ msgstr "Bounding box isn't good."
-
-#~ msgid "The image hasn't been correctly initialized"
-#~ msgstr "The image hasn't been correctly initialized"
-
-#~ msgid ""
-#~ "The creation from a null image pointer should have thrown an exception."
-#~ msgstr ""
-#~ "The creation from a null image pointer should have thrown an exception."
-
-#~ msgid "Pointer should be null."
-#~ msgstr "Pointer should be null."
-
-#~ msgid "The HSV image type should be unsuported and then throw an exception."
-#~ msgstr ""
-#~ "The HSV image type should be unsuported and then throw an exception."
-
-#~ msgid "empty filename and empty xml file name"
-#~ msgstr "empty filename and empty xml file name"
-
-#~ msgid "pointer should be null."
-#~ msgstr "pointer should be null."
-
-#~ msgid "The image hasn't been saved, it's needed for the rest of the test."
-#~ msgstr "The image hasn't been saved, it's needed for the rest of the test."
-
-#~ msgid "good filename but no xml file"
-#~ msgstr "good filename but no xml file"
-
-#~ msgid "Non existing file name, no xml"
-#~ msgstr "Non existing file name, no xml"
-
-#~ msgid "The parent tree name isn't correctly initialized."
-#~ msgstr "The parent tree name isn't correctly initialized."
-
-#~ msgid "The children's parent isn't correct."
-#~ msgstr "The children's parent isn't correct."
-
-#~ msgid "The children's topmost parent isn't correct."
-#~ msgstr "The children's topmost parent isn't correct."
-
-#~ msgid "The children's parent tree name isn't correct."
-#~ msgstr "The children's parent tree name isn't correct."
-
-#~ msgid "The given bounding box is legal, the child should have been created."
-#~ msgstr ""
-#~ "The given bounding box is legal, the child should have been created."
-
-#~ msgid ""
-#~ "The given bounding box was illegal, the child shouldn't have been created."
-#~ msgstr ""
-#~ "The given bounding box was illegal, the child shouldn't have been created."
-
-#~ msgid " tree should exist."
-#~ msgstr " tree should exist."
-
-#~ msgid "Name affectation doesn't work."
-#~ msgstr "Name affectation doesn't work."
-
-#~ msgid "The bounding box hasn't been correctly initialized."
-#~ msgstr "The bounding box hasn't been correctly initialized."
-
-#~ msgid "A child with a defective bounding box shouldn't be added."
-#~ msgstr "A child with a defective bounding box shouldn't be added."
-
-#~ msgid ""
-#~ "The child should be added at the end if the given position isn't valid."
-#~ msgstr ""
-#~ "The child should be added at the end if the given position isn't valid."
-
-#~ msgid "the child should have been correctly added."
-#~ msgstr "the child should have been correctly added."
-
-#~ msgid "Testing the AddChildRelative and AddChildRelativeAt methods."
-#~ msgstr "Testing the AddChildRelative and AddChildRelativeAt methods."
-
-#~ msgid "Shouldn't work with a defective BBox."
-#~ msgstr "Shouldn't work with a defective BBox."
-
-#~ msgid "Previous operation shouldn't have add a child."
-#~ msgstr "Previous operation shouldn't have add a child."
-
-#~ msgid "The overflowing BBox should have been cut down to block dimension."
-#~ msgstr "The overflowing BBox should have been cut down to block dimension."
-
-#~ msgid "Relative BBox"
-#~ msgstr "Relative BBox"
-
-#~ msgid "doesn't have the expected value."
-#~ msgstr "doesn't have the expected value."
-
-#~ msgid "Absolute BBox"
-#~ msgstr "Absolute BBox"
-
-#~ msgid "Child should be added with cut down BBox."
-#~ msgstr "Child should be added with cut down BBox."
-
-#~ msgid "Testing the RemoveChild methods."
-#~ msgstr "Testing the RemoveChild methods."
-
-#~ msgid ""
-#~ "The given tree name doesn't exist, this shouldn't have removed anything."
-#~ msgstr ""
-#~ "The given tree name doesn't exist, this shouldn't have removed anything."
-
-#~ msgid "The child hasn't been removed."
-#~ msgstr "The child hasn't been removed."
-
-#~ msgid "The child should no longer consider his former parent as a parent."
-#~ msgstr "The child should no longer consider his former parent as a parent."
-
-#~ msgid "The child should have been removed."
-#~ msgstr "The child should have been removed."
-
-#~ msgid "The child was already removed."
-#~ msgstr "The child was already removed."
-
-#~ msgid "The given block isn't a child, this shouldn't remove anything"
-#~ msgstr "The given block isn't a child, this shouldn't remove anything"
-
-#~ msgid "Testing the methods GetAbsoluteBBox and SetAbsoluteBBox."
-#~ msgstr "Testing the methods GetAbsoluteBBox and SetAbsoluteBBox."
-
-#~ msgid "The bounding box wasn't initialized correctly."
-#~ msgstr "The bounding box wasn't initialized correctly."
-
-#~ msgid ""
-#~ "Setting the bounding box of the top most parent shouldn't be allowed."
-#~ msgstr ""
-#~ "Setting the bounding box of the top most parent shouldn't be allowed."
-
-#~ msgid "The  bounding box shouldn't have been modified."
-#~ msgstr "The  bounding box shouldn't have been modified."
-
-#~ msgid ""
-#~ "The block isn't the top most parent so the method should have suceeded."
-#~ msgstr ""
-#~ "The block isn't the top most parent so the method should have suceeded."
-
-#~ msgid "The bounding box isn't correctly set."
-#~ msgstr "The bounding box isn't correctly set."
-
-#~ msgid "Child outside new bounding box should have been erased."
-#~ msgstr "Child outside new bounding box should have been erased."
-
-#~ msgid "Testing the tree related methods."
-#~ msgstr "Testing the tree related methods."
-
-#~ msgid "The number of trees isn't correct."
-#~ msgstr "The number of trees isn't correct."
-
-#~ msgid "The tree name differs from the one expected for i = "
-#~ msgstr "The tree name differs from the one expected for i = "
-
-#~ msgid "The tree should exist for i = "
-#~ msgstr "The tree should exist for i = "
-
-#~ msgid "shouldn't return true when the tree doesn't exist."
-#~ msgstr "shouldn't return true when the tree doesn't exist."
-
-#~ msgid "The previous removal shouldn't have changed the number of trees."
-#~ msgstr "The previous removal shouldn't have changed the number of trees."
-
-#~ msgid ""
-#~ "A tree has been deleted so the number of trees should be decremented."
-#~ msgstr ""
-#~ "A tree has been deleted so the number of trees should be decremented."
-
-#~ msgid "This tree should have been deleted."
-#~ msgstr "This tree should have been deleted."
-
-#~ msgid "Returned a null pointer for i = "
-#~ msgstr "Returned a null pointer for i = "
-
-#~ msgid "pointer is null for i = "
-#~ msgstr "pointer is null for i = "
-
-#~ msgid " and j = "
-#~ msgstr " and j = "
-
-#~ msgid "The child name isn't correct for i = "
-#~ msgstr "The child name isn't correct for i = "
-
-#~ msgid "Should return false when called with an inexistant tree name."
-#~ msgstr "Should return false when called with an inexistant tree name."
-
-#~ msgid "Call with inexistant tree shouldn't have modified the value."
-#~ msgstr "Call with inexistant tree shouldn't have modified the value."
-
-#~ msgid "Incorrect mean width."
-#~ msgstr "Incorrect mean width."
-
-#~ msgid "Incorrect mean height."
-#~ msgstr "Incorrect mean height."
-
-#~ msgid "Incorrect mean area."
-#~ msgstr "Incorrect mean area."
-
-#~ msgid "Testing the sortTree method."
-#~ msgstr "Testing the sortTree method."
-
-#~ msgid ""
-#~ "this method should throw an exception when used with a non existing tree."
-#~ msgstr ""
-#~ "this method should throw an exception when used with a non existing tree."
-
-#~ msgid "this was not the expected arrangement, problem at i = "
-#~ msgstr "this was not the expected arrangement, problem at i = "
-
-#~ msgid "Testing the tree filtering methods."
-#~ msgstr "Testing the tree filtering methods."
-
-#~ msgid "Problem with the number of childrens."
-#~ msgstr "Problem with the number of childrens."
-
-#~ msgid "should throw exception when applied to a non existing tree."
-#~ msgstr "should throw exception when applied to a non existing tree."
-
-#~ msgid "No child should have been removed."
-#~ msgstr "No child should have been removed."
-
-#~ msgid "The number of remaining child isn't correct"
-#~ msgstr "The number of remaining child isn't correct"
-
-#~ msgid "Shouldn't work with a non existing tree."
-#~ msgstr "Shouldn't work with a non existing tree."
-
-#~ msgid "Problem with the number of added children."
-#~ msgstr "Problem with the number of added children."
-
-#~ msgid ""
-#~ "The previous operation with null margin shouldn't have removed anything."
-#~ msgstr ""
-#~ "The previous operation with null margin shouldn't have removed anything."
-
-#~ msgid "Testing the children merging methods."
-#~ msgstr "Testing the children merging methods."
-
-#~ msgid "Shouldn't work with an inexistant tree."
-#~ msgstr "Shouldn't work with an inexistant tree."
-
-#~ msgid "Merging a child with itself shouldn't work."
-#~ msgstr "Merging a child with itself shouldn't work."
-
-#~ msgid "Previous operation shouldn't have modified the children number."
-#~ msgstr "Previous operation shouldn't have modified the children number."
-
-#~ msgid "The merged bounding box isn't equal to the one expected."
-#~ msgstr "The merged bounding box isn't equal to the one expected."
-
-#~ msgid "The childrens were not copied during the merging."
-#~ msgstr "The childrens were not copied during the merging."
-
-#~ msgid ""
-#~ "defaultChildrenNbr needs to be greater or equal to 6 in order for this "
-#~ "test to run."
-#~ msgstr ""
-#~ "defaultChildrenNbr needs to be greater or equal to 6 in order for this "
-#~ "test to run."
-
-#~ msgid ""
-#~ "defaultWidth needs to be greater than 36 in order for this test to run."
-#~ msgstr ""
-#~ "defaultWidth needs to be greater than 36 in order for this test to run."
-
-#~ msgid ""
-#~ "defaultHeight needs to be greater or equal to 6 in order for this test to "
-#~ "run."
-#~ msgstr ""
-#~ "defaultHeight needs to be greater or equal to 6 in order for this test to "
-#~ "run."
-
-#~ msgid "Shouldn't work on a inexistant tree."
-#~ msgstr "Shouldn't work on a inexistant tree."
-
-#~ msgid "Shouldn't work with a negative overlap parameter."
-#~ msgstr "Shouldn't work with a negative overlap parameter."
-
-#~ msgid "The number of child isn't correct"
-#~ msgstr "The number of child isn't correct"
-
-#~ msgid "Testing the buffer accessors GetRGB, GetGray, GetBW and GetGradient."
-#~ msgstr ""
-#~ "Testing the buffer accessors GetRGB, GetGray, GetBW and GetGradient."
-
-#~ msgid "The width is incorrect."
-#~ msgstr "The width is incorrect."
-
-#~ msgid "The height is incorrect."
-#~ msgstr "The height is incorrect."
-
-#~ msgid "the returned SImageRGB differs from the one used for creation."
-#~ msgstr "the returned SImageRGB differs from the one used for creation."
-
-#~ msgid "Should be able to get image from the parent block."
-#~ msgstr "Should be able to get image from the parent block."
-
-#~ msgid "the returned SImageGray differs from the one used for creation."
-#~ msgstr "the returned SImageGray differs from the one used for creation."
-
-#~ msgid ""
-#~ "Shouldn't return anything when the block was created with SImageGray and "
-#~ "the method is called with false."
-#~ msgstr ""
-#~ "Shouldn't return anything when the block was created with SImageGray and "
-#~ "the method is called with false."
-
-#~ msgid ""
-#~ "Should return anything when the block was created with SImageGray and the "
-#~ "method is called with false."
-#~ msgstr ""
-#~ "Should return anything when the block was created with SImageGray and the "
-#~ "method is called with false."
-
-#~ msgid "the returned SImageBW differs from the one used for creation."
-#~ msgstr "the returned SImageBW differs from the one used for creation."
-
-#~ msgid ""
-#~ "Shouldn't return anything when the block was created with SImageBW and "
-#~ "the method is called with false."
-#~ msgstr ""
-#~ "Shouldn't return anything when the block was created with SImageBW and "
-#~ "the method is called with false."
-
-#~ msgid "Cannot create block."
-#~ msgstr "Cannot create block."
-
-#~ msgid ""
-#~ "Shouldn't return anything when the block was created with SImageGradient "
-#~ "and the method is called with false."
-#~ msgstr ""
-#~ "Shouldn't return anything when the block was created with SImageGradient "
-#~ "and the method is called with false."
-
-#~ msgid "Problem with negative value of"
-#~ msgstr "Problem with negative value of"
-
-#~ msgid ""
-#~ "Testing the FlushAll, FlushRGB, FlushGray, FlushBW and FlushGradient "
-#~ "methods."
-#~ msgstr ""
-#~ "Testing the FlushAll, FlushRGB, FlushGray, FlushBW and FlushGradient "
-#~ "methods."
-
-#~ msgid "The buffer should have been flushed."
-#~ msgstr "The buffer should have been flushed."
-
-#~ msgid ""
-#~ "Testing the SubstituteRGB, SubstituteGray, SubstituteBW and "
-#~ "SubstituteGradient methods."
-#~ msgstr ""
-#~ "Testing the SubstituteRGB, SubstituteGray, SubstituteBW and "
-#~ "SubstituteGradient methods."
-
-#~ msgid "The test needs to be sure that a buffer already exists."
-#~ msgstr "The test needs to be sure that a buffer already exists."
-
-#~ msgid "Should work with a null pointer."
-#~ msgstr "Should work with a null pointer."
-
-#~ msgid "Shouldn't work with incorect image dimensions."
-#~ msgstr "Shouldn't work with incorect image dimensions."
-
-#~ msgid "The buffer doesn't seem to be substituted."
-#~ msgstr "The buffer doesn't seem to be substituted."
-
-#~ msgid "Testing the ExtractCC method."
-#~ msgstr "Testing the ExtractCC method."
-
-#~ msgid "Should return something."
-#~ msgstr "Should return something."
-
-#~ msgid "The number of connected components isn't correct."
-#~ msgstr "The number of connected components isn't correct."
-
-#~ msgid "Problem with bounding boxes estimation."
-#~ msgstr "Problem with bounding boxes estimation."
-
-#~ msgid "Problem with the returned SImageIntGray."
-#~ msgstr "Problem with the returned SImageIntGray."
-
-#~ msgid ""
-#~ "Connected component bounding box cannot be out of block's bounding box."
-#~ msgstr ""
-#~ "Connected component bounding box cannot be out of block's bounding box."
-
-#~ msgid "Testing the block iterators methods."
-#~ msgstr "Testing the block iterators methods."
-
-#~ msgid "Should return an iterator on the first child block."
-#~ msgstr "Should return an iterator on the first child block."
-
-#~ msgid "The block wasn't modified."
-#~ msgstr "The block wasn't modified."
-
-#~ msgid "Should return an iterator after the last child block."
-#~ msgstr "Should return an iterator after the last child block."
-
-#~ msgid "Testing the pixel iterators methods."
-#~ msgstr "Testing the pixel iterators methods."
-
-#~ msgid "An exception should be thrown when the tree is inexistant."
-#~ msgstr "An exception should be thrown when the tree is inexistant."
-
-#~ msgid "Iterator should be valid."
-#~ msgstr "Iterator should be valid."
-
-#~ msgid "An exception should be throw when the index is invalid."
-#~ msgstr "An exception should be throw when the index is invalid."
-
-#~ msgid "x coordinate seems to be wrong."
-#~ msgstr "x coordinate seems to be wrong."
-
-#~ msgid "y coordinate seems to be wrong."
-#~ msgstr "y coordinate seems to be wrong."
-
-#~ msgid "An exception should be thrown when the index is invalid."
-#~ msgstr "An exception should be thrown when the index is invalid."
-
-#~ msgid "The number of pixels the loop ran through isn't correct."
-#~ msgstr "The number of pixels the loop ran through isn't correct."
-
-#~ msgid "Testing the masked pixel iterators methods."
-#~ msgstr "Testing the masked pixel iterators methods."
-
-#~ msgid "An exception should be thrown when the index is wrong."
-#~ msgstr "An exception should be thrown when the index is wrong."
-
-#~ msgid "Iterator should be valid when the index is valid."
-#~ msgstr "Iterator should be valid when the index is valid."
-
-#~ msgid "Some black pixels were missed."
-#~ msgstr "Some black pixels were missed."
-
-#~ msgid "On child of top most, "
-#~ msgstr "On child of top most, "
-
-#~ msgid "Tests that the Load and Save methods works."
-#~ msgstr "Tests that the Load and Save methods works."
-
-#~ msgid "Should have worked after filename has been set."
-#~ msgstr "Should have worked after filename has been set."
-
-#~ msgid "Tests the destruction of blocks loaded from xml"
-#~ msgstr "Tests the destruction of blocks loaded from xml"
-
-#~ msgid "crn::String class test case."
-#~ msgstr "crn::String class test case."
-
-#~ msgid "Checks that the different ways of creating a String work."
-#~ msgstr "Checks that the different ways of creating a String work."
-
-#~ msgid "Checks that the different comparison operators work."
-#~ msgstr "Checks that the different comparison operators work."
-
-#~ msgid "Testing the informative methods like Size, Length, IsEmpty, etc."
-#~ msgstr "Testing the informative methods like Size, Length, IsEmpty, etc."
-
-#~ msgid "Checks that the different addition operators work."
-#~ msgstr "Checks that the different addition operators work."
-
-#~ msgid "Checks that the different attribution operators work."
-#~ msgstr "Checks that the different attribution operators work."
-
-#~ msgid "Testing the methods modifying the string."
-#~ msgstr "Testing the methods modifying the string."
-
-#~ msgid "Testing methods like Find, FindAnyOf, BackwardFindNotOf, etc."
-#~ msgstr "Testing methods like Find, FindAnyOf, BackwardFindNotOf, etc."
-
-#~ msgid "crn::Path class test case."
-#~ msgstr "crn::Path class test case."
-
-#~ msgid "Checks that the different ways of creating a Path work."
-#~ msgstr "Checks that the different ways of creating a Path work."
-
-#~ msgid "Checks that the different conversions work."
-#~ msgstr "Checks that the different conversions work."
-
-#~ msgid "Checks that the different identifications work."
-#~ msgstr "Checks that the different identifications work."
-
-#~ msgid "Checks that the different search functions work."
-#~ msgstr "Checks that the different search functions work."
-
-#~ msgid "Checks that the different concatenation methods work."
-#~ msgstr "Checks that the different concatenation methods work."
-
-#~ msgid "crn::StringUTF8 class test case."
-#~ msgstr "crn::StringUTF8 class test case."
-
-#~ msgid "Checks that the different ways of creating a StringUTF8 work."
-#~ msgstr "Checks that the different ways of creating a StringUTF8 work."
-
-#~ msgid "Testing Framework"
-#~ msgstr "Testing Framework"
-
-#~ msgid "_Open a configuration file"
-#~ msgstr "_Open a configuration file"
-
-#~ msgid "Open a configuration file"
-#~ msgstr "Open a configuration file"
-
-#~ msgid "_Save a configuration file"
-#~ msgstr "_Save a configuration file"
-
-#~ msgid "Save a configuration file"
-#~ msgstr "Save a configuration file"
-
-#~ msgid "_Run the tests"
-#~ msgstr "_Run the tests"
-
-#~ msgid "Run the tests"
-#~ msgstr "Run the tests"
-
-#~ msgid "Enabled"
-#~ msgstr "Enabled"
-
-#~ msgid "Name"
-#~ msgstr "Name"
-
-#~ msgid "Show failed assertions only"
-#~ msgstr "Show failed assertions only"
-
-#~ msgid "Test name"
-#~ msgstr "Test name"
-
-#~ msgid "File name"
-#~ msgstr "File name"
-
-#~ msgid "Line"
-#~ msgstr "Line"
-
-#~ msgid "Assertion result"
-#~ msgstr "Assertion result"
-
-#~ msgid "User comment"
-#~ msgstr "User comment"
-
-#~ msgid "Load a configuration file"
-#~ msgstr "Load a configuration file"
-
-#~ msgid "Cannot write configuration file."
-#~ msgstr "Cannot write configuration file."
-
-#~ msgid "enabled tests"
-#~ msgstr "enabled tests"
-
-#~ msgid "Description"
-#~ msgstr "Description"
-
-#~ msgid "Depends on"
-#~ msgstr "Depends on"
-
-#~ msgid "Test Case results"
-#~ msgstr "Test Case results"
-
-#~ msgid "tests passed."
-#~ msgstr "tests passed."
-
-#~ msgid "assertions"
-#~ msgstr "assertions"
-
-#~ msgid "Ellapsed time"
-#~ msgstr "Ellapsed time"
-
-#~ msgid "The test case was not run."
-#~ msgstr "The test case was not run."
-
-#~ msgid "There was"
-#~ msgstr "There was"
-
-#~ msgid "failures"
-#~ msgstr "failures"
-
-#~ msgid "failure"
-#~ msgstr "failure"
-
-#~ msgid "Test results"
-#~ msgstr "Test results"
-
-#~ msgid "The test passed"
-#~ msgstr "The test passed"
-
-#~ msgid "The test failed"
-#~ msgstr "The test failed"
-
-#~ msgid "The test was not run."
-#~ msgstr "The test was not run."
-
-#~ msgid "Cannot allocate pixels. Probably wrong image dimensions."
-#~ msgstr "Cannot allocate pixels. Probably wrong image dimensions."
-
-#~ msgid "Moving a "
-#~ msgstr "Moving a "
-
-#~ msgid " in "
-#~ msgstr " in "
-
-#~ msgid "Invalid"
-#~ msgstr "Invalid"
-
-#~ msgid "Source images do not have the same size."
-#~ msgstr "Source images do not have the same size."
-
-#~ msgid "Cannot allocate the pixels."
-#~ msgstr "Cannot allocate the pixels."
-
-#~ msgid "Pixel format is not savable."
-#~ msgstr "Pixel format is not savable."
-
-#~ msgid "Flat image."
-#~ msgstr "Flat image."
-
-#~ msgid "Even matrix dimensions. Nothing will be done."
-#~ msgstr "Even matrix dimensions. Nothing will be done."
-
-#~ msgid "Matrix bigger than the image! Nothing will be done."
-#~ msgstr "Matrix bigger than the image! Nothing will be done."
-
-#~ msgid "Null image."
-#~ msgstr "Null image."
-
-#~ msgid "The composite image is empty."
-#~ msgstr "The composite image is empty."
-
-#~ msgid "Offset out of bounds."
-#~ msgstr "Offset out of bounds."
-
-#~ msgid "Strokes width > 50 or null."
-#~ msgstr "Strokes width > 50 or null."
-
-#~ msgid "Strokes height > 50 or null."
-#~ msgstr "Strokes height > 50 or null."
-
-#~ msgid ""
-#~ "Cannot allocate pixels. Probably wrong image dimensions, or "
-#~ "allocateSize() was not overloaded properly."
-#~ msgstr ""
-#~ "Cannot allocate pixels. Probably wrong image dimensions, or "
-#~ "allocateSize() was not overloaded properly."
-
-#~ msgid ""
-#~ "Cannot allocate pixels. Probably wrong image dimensions, allocateSize() "
-#~ "was not overloaded properly.\n"
-#~ " zone = "
-#~ msgstr ""
-#~ "Cannot allocate pixels. Probably wrong image dimensions, allocateSize() "
-#~ "was not overloaded properly.\n"
-#~ " zone = "
-
-#~ msgid "The source and destination must be different."
-#~ msgstr "The source and destination must be different."
-
-#~ msgid "Incompatible pixel formats"
-#~ msgstr "Incompatible pixel format."
-
-#~ msgid "Images do not have the same size."
-#~ msgstr "Images do not have the same size."
-
-#~ msgid "Cannot convert from term format to source format."
-#~ msgstr "Cannot convert from term format to source format."
-
-#~ msgid "invalid orientation."
-#~ msgstr "invalid orientation."
-
-#~ msgid "Convolution of "
-#~ msgstr "Convolution of "
-
-#~ msgid "Matrix bigger than the image!"
-#~ msgstr "Matrix bigger than the image!"
-
-#~ msgid "Even strelrix dimensions."
-#~ msgstr "Even strelrix dimensions."
-
-#~ msgid "Neighborhood size must be < 7."
-#~ msgstr "Neighbourhood size must be < 7."
-
-#~ msgid "Bad dimension"
-#~ msgstr "Bad dimension"
-
-#~ msgid "Pattern not found"
-#~ msgstr "Pattern not found"
-
-#~ msgid "Index out of bounds"
-#~ msgstr "Index out of bounds"
-
-#~ msgid "The argument is not a vector"
-#~ msgstr "The argument is not a vector."
-
-#~ msgid "The sample is empty."
-#~ msgstr "The sample is empty."
-
-#~ msgid "Null or negative standard deviation."
-#~ msgstr "Null or negative standard deviation."
-
-#~ msgid "crn::Functor class test case."
-#~ msgstr "crn::Functor class test case."
-
-#~ msgid "Checks that the different ways of creating a Functor work."
-#~ msgstr "Checks that the different ways of creating a Functor work."
-
-#~ msgid "The bound object was copied instead of referenced."
-#~ msgstr "The bound object was copied instead of referenced."
-
-#~ msgid "Checks that the different binders work."
-#~ msgstr "Checks that the different binders work."
-
-#~ msgid "The bound argument was copied instead of referenced."
-#~ msgstr "The bound argument was copied instead of referenced."
-
-#~ msgid "Checks that the different return binders work."
-#~ msgstr "Checks that the different return binders work."
-
-#~ msgid "Checks that the destroyer works."
-#~ msgstr "Checks that the destroyer works."
-
-#~ msgid "Null vector."
-#~ msgstr "Null vector."
-
-#~ msgid "null or negative row or column dimensions"
-#~ msgstr "null or negative row or column dimensions"
-
-#~ msgid "null or negative row and column dimensions"
-#~ msgstr "null or negative row and column dimensions"
-
-#~ msgid "Empty matrix."
-#~ msgstr "Empty matrix."
-
-#~ msgid "The argument is not a matrix."
-#~ msgstr "The argument is not a matrix."
-
-#~ msgid "Invalid orientation."
-#~ msgstr "Invalid orientation."
-
-#~ msgid "column index out of range"
-#~ msgstr "column index out of range"
-
-#~ msgid "row index out of range"
-#~ msgstr "row index out of range"
-
-#~ msgid "Wrong matrix dimensions."
-#~ msgstr "Wrong matrix dimensions."
-
-#~ msgid "wrong matrix dimensions"
-#~ msgstr "wrong matrix dimensions"
-
-#~ msgid "The argument is not a square matrix."
-#~ msgstr "The argument is not a square matrix."
-
-#~ msgid "Cannot copy file. Error "
-#~ msgstr "Cannot copy file. Error "
-
-#~ msgid "No image loaded."
-#~ msgstr "No image loaded."
-
-#~ msgid "Image could not be loaded. Error number "
-#~ msgstr "Image could not be loaded. Error number "
-
-#~ msgid "Should return a CRNImageIntGray."
-#~ msgstr "Should return a CRNImageIntGray."
-
-#~ msgid "The data is not a Vector."
-#~ msgstr "The data is not a Vector."
-
-#~ msgid "NULL object"
-#~ msgstr "NULL object"
-
-#~ msgid "NULL pointer."
-#~ msgstr "NULL pointer."
-
-#~ msgid "Testing the crn::WeakPointer templated class."
-#~ msgstr "Testing the crn::WeakPointer templated class."
-
-#~ msgid "Testing the different ways of creating a weak pointer."
-#~ msgstr "Testing the different ways of creating a weak pointer."
-
-#~ msgid ""
-#~ "The default weak pointer constructor didn't initialize a null pointer"
-#~ msgstr ""
-#~ "The default weak pointer constructor didn't initialize a null pointer"
-
-#~ msgid "Shared pointer constructor didn't initialize correctly."
-#~ msgstr "Shared pointer constructor didn't initialize correctly."
-
-#~ msgid "Constructor from foreign shared pointer didn't initialize correctly."
-#~ msgstr ""
-#~ "Constructor from foreign shared pointer didn't initialize correctly."
-
-#~ msgid ""
-#~ "Constructor from foreign shared pointer, inheritance between the 2 types "
-#~ "and casting upwards."
-#~ msgstr ""
-#~ "Constructor from foreign shared pointer, inheritance between the 2 types "
-#~ "and casting upwards."
-
-#~ msgid ""
-#~ "Constructor from foreign shared pointer constructor didn't initialize "
-#~ "correctly."
-#~ msgstr ""
-#~ "Constructor from foreign shared pointer constructor didn't initialize "
-#~ "correctly."
-
-#~ msgid ""
-#~ "Constructor from foreign shared pointer, inheritance between the 2 types "
-#~ "and casting downwards."
-#~ msgstr ""
-#~ "Constructor from foreign shared pointer, inheritance between the 2 types "
-#~ "and casting downwards."
-
-#~ msgid ""
-#~ "The weak pointer copy constructor with manually allocated memory didn't "
-#~ "initialize correctly."
-#~ msgstr ""
-#~ "The weak pointer copy constructor with manually allocated memory didn't "
-#~ "initialize correctly."
-
-#~ msgid ""
-#~ "Weak pointer copy constructor : The dereferenced value does not match the "
-#~ "one used for initialisation."
-#~ msgstr ""
-#~ "Weak pointer copy constructor : The dereferenced value does not match the "
-#~ "one used for initialisation."
-
-#~ msgid "Constructor from foreign weak pointer didn't initialize correctly."
-#~ msgstr "Constructor from foreign weak pointer didn't initialize correctly."
-
-#~ msgid ""
-#~ "Constructor from foreign weak pointer, inheritance between the 2 types "
-#~ "and casting upwards."
-#~ msgstr ""
-#~ "Constructor from foreign weak pointer, inheritance between the 2 types "
-#~ "and casting upwards."
-
-#~ msgid ""
-#~ "Constructor from foreign weak pointer constructor didn't initialize "
-#~ "correctly."
-#~ msgstr ""
-#~ "Constructor from foreign weak pointer constructor didn't initialize "
-#~ "correctly."
-
-#~ msgid ""
-#~ "Constructor from foreign weak pointer, inheritance between the 2 types "
-#~ "and casting downwards."
-#~ msgstr ""
-#~ "Constructor from foreign weak pointer, inheritance between the 2 types "
-#~ "and casting downwards."
-
-#~ msgid "Testing the destruction of weak pointers"
-#~ msgstr "Testing the destruction of weak pointers"
-
-#~ msgid "Allocating problem."
-#~ msgstr "Allocating problem."
-
-#~ msgid "The object has been deleted too early."
-#~ msgstr "The object has been deleted too early."
-
-#~ msgid ""
-#~ "The weak pointer should return null when the GetPointer method is called."
-#~ msgstr ""
-#~ "The weak pointer should return null when the GetPointer method is called."
-
-#~ msgid "The object sould have been deleted."
-#~ msgstr "The object sould have been deleted."
-
-#~ msgid "The object shouldn't have been deleted."
-#~ msgstr "The object shouldn't have been deleted."
-
-#~ msgid "Testing the comparison operators"
-#~ msgstr "Testing the comparison operators"
-
-#~ msgid "Standard shared pointer comparison (with operator == ) failed."
-#~ msgstr "Standard shared pointer comparison (with operator == ) failed."
-
-#~ msgid "Standard weak pointer comparison (with operator < ) failed."
-#~ msgstr "Standard weak pointer comparison (with operator < ) failed."
-
-#~ msgid "Foreign shared pointer comparison (with operator == ) failed."
-#~ msgstr "Foreign shared pointer comparison (with operator == ) failed."
-
-#~ msgid "Foreign weak pointer comparison (with operator == ) failed."
-#~ msgstr "Foreign weak pointer comparison (with operator == ) failed."
-
-#~ msgid "Assignment from weak pointer didn't work."
-#~ msgstr "Assignment from weak pointer didn't work."
-
-#~ msgid "Assignment from foreign weak pointer, casting upward didn't work."
-#~ msgstr "Assignment from foreign weak pointer, casting upward didn't work."
-
-#~ msgid ""
-#~ "Assignment from foreign weak pointer, casting upward : the assignment "
-#~ "didn't work."
-#~ msgstr ""
-#~ "Assignment from foreign weak pointer, casting upward : the assignment "
-#~ "didn't work."
-
-#~ msgid ""
-#~ "Assignment from foreign weak pointer, casting downward allowed didn't "
-#~ "work."
-#~ msgstr ""
-#~ "Assignment from foreign weak pointer, casting downward allowed didn't "
-#~ "work."
-
-#~ msgid ""
-#~ "Assignment from foreign weak pointer, casting downward allowed : the "
-#~ "assignment didn't work."
-#~ msgstr ""
-#~ "Assignment from foreign weak pointer, casting downward allowed : the "
-#~ "assignment didn't work."
-
-#~ msgid ""
-#~ "Assignment from foreign weak pointer, casting downward not allowed should "
-#~ "have failed"
-#~ msgstr ""
-#~ "Assignment from foreign weak pointer, casting downward not allowed should "
-#~ "have failed"
-
-#~ msgid ""
-#~ "Assignment from foreign weak pointer, casting downward not allowed : the "
-#~ "assignment should have failed"
-#~ msgstr ""
-#~ "Assignment from foreign weak pointer, casting downward not allowed : the "
-#~ "assignment should have failed"
-
-#~ msgid "Assignment from shared pointer didn't work."
-#~ msgstr "Assignment from shared pointer didn't work."
-
-#~ msgid "Assignment from foreign shared pointer, casting upward didn't work."
-#~ msgstr "Assignment from foreign shared pointer, casting upward didn't work."
-
-#~ msgid ""
-#~ "Assignment from foreign shared pointer, casting upward : the assignment "
-#~ "didn't work."
-#~ msgstr ""
-#~ "Assignment from foreign shared pointer, casting upward : the assignment "
-#~ "didn't work."
-
-#~ msgid ""
-#~ "Assignment from foreign shared pointer, casting downward allowed didn't "
-#~ "work."
-#~ msgstr ""
-#~ "Assignment from foreign shared pointer, casting downward allowed didn't "
-#~ "work."
-
-#~ msgid ""
-#~ "Assignment from foreign shared pointer, casting downward allowed : the "
-#~ "assignment didn't work."
-#~ msgstr ""
-#~ "Assignment from foreign shared pointer, casting downward allowed : the "
-#~ "assignment didn't work."
-
-#~ msgid ""
-#~ "Assignment from foreign shared pointer, casting downward not allowed "
-#~ "should have failed"
-#~ msgstr ""
-#~ "Assignment from foreign shared pointer, casting downward not allowed "
-#~ "should have failed"
-
-#~ msgid ""
-#~ "Assignment from foreign shared pointer, casting downward not allowed : "
-#~ "the assignment should have failed"
-#~ msgstr ""
-#~ "Assignment from foreign shared pointer, casting downward not allowed : "
-#~ "the assignment should have failed"
-
-#~ msgid "Dereferencing problem"
-#~ msgstr "Dereferencing problem"
-
-#~ msgid "Const dereferencing problem"
-#~ msgstr "Const dereferencing problem"
-
-#~ msgid "Const call method operator -> didn't work."
-#~ msgstr "Const call method operator -> didn't work."
-
-#~ msgid "Call method operator -> didn't work."
-#~ msgstr "Call method operator -> didn't work."
-
-#~ msgid "Type cast didn't work."
-#~ msgstr "Type cast didn't work."
-
-#~ msgid "Const type cast didn't work."
-#~ msgstr "Const type cast didn't work."
-
-#~ msgid "Testing the crn::SharedPointer templated class."
-#~ msgstr "Testing the crn::SharedPointer templated class."
-
-#~ msgid "Testing the different ways of creating a shared pointer."
-#~ msgstr "Testing the different ways of creating a shared pointer."
-
-#~ msgid ""
-#~ "The default shared pointer constructor didn't initialize a null pointer"
-#~ msgstr ""
-#~ "The default shared pointer constructor didn't initialize a null pointer"
-
-#~ msgid ""
-#~ "The plain pointer constructor with no memory allocated didn't initialize "
-#~ "correctly."
-#~ msgstr ""
-#~ "The plain pointer constructor with no memory allocated didn't initialize "
-#~ "correctly."
-
-#~ msgid ""
-#~ "The plain pointer constructor with manually allocated memory didn't "
-#~ "initialize correctly."
-#~ msgstr ""
-#~ "The plain pointer constructor with manually allocated memory didn't "
-#~ "initialize correctly."
-
-#~ msgid ""
-#~ "Plain pointer constructor : The dereferenced value does not match the one "
-#~ "used for initialisation."
-#~ msgstr ""
-#~ "Plain pointer constructor : The dereferenced value does not match the one "
-#~ "used for initialisation."
-
-#~ msgid ""
-#~ "The copy pointer constructor with manually allocated memory didn't "
-#~ "initialize correctly."
-#~ msgstr ""
-#~ "The copy pointer constructor with manually allocated memory didn't "
-#~ "initialize correctly."
-
-#~ msgid ""
-#~ "Copy pointer constructor : The dereferenced value does not match the one "
-#~ "used for initialisation."
-#~ msgstr ""
-#~ "Copy pointer constructor : The dereferenced value does not match the one "
-#~ "used for initialisation."
-
-#~ msgid "Foreign shared pointer constructor didn't initialize correctly."
-#~ msgstr "Foreign shared pointer constructor didn't initialize correctly."
-
-#~ msgid ""
-#~ "Foreign shared pointer constructor, inheritance between the 2 types and "
-#~ "casting upwards."
-#~ msgstr ""
-#~ "Foreign shared pointer constructor, inheritance between the 2 types and "
-#~ "casting upwards."
-
-#~ msgid ""
-#~ "Foreign shared pointer constructor, inheritance between the 2 types and "
-#~ "casting downwards."
-#~ msgstr ""
-#~ "Foreign shared pointer constructor, inheritance between the 2 types and "
-#~ "casting downwards."
-
-#~ msgid "Weak pointer shared pointer constructor didn't initialize correctly."
-#~ msgstr ""
-#~ "Weak pointer shared pointer constructor didn't initialize correctly."
-
-#~ msgid ""
-#~ "Weak pointer shared pointer constructor : The dereferenced value does not "
-#~ "match the one used for initialisation."
-#~ msgstr ""
-#~ "Weak pointer shared pointer constructor : The dereferenced value does not "
-#~ "match the one used for initialisation."
-
-#~ msgid "Testing the destruction of shared pointers."
-#~ msgstr "Testing the destruction of shared pointers."
-
-#~ msgid ""
-#~ "Shared pointers should not allow to create two objects from one single "
-#~ "regular pointer."
-#~ msgstr ""
-#~ "Shared pointers should not allow to create two objects from one single "
-#~ "regular pointer."
-
-#~ msgid "Standard shared pointer comparison (with operator < ) failed."
-#~ msgstr "Standard shared pointer comparison (with operator < ) failed."
-
-#~ msgid ""
-#~ "Standard assignment from plain pointer : original pointer hasn't been "
-#~ "deleted."
-#~ msgstr ""
-#~ "Standard assignment from plain pointer : original pointer hasn't been "
-#~ "deleted."
-
-#~ msgid "Standard assignment from plain pointer : the assignment didn't work."
-#~ msgstr ""
-#~ "Standard assignment from plain pointer : the assignment didn't work."
-
-#~ msgid ""
-#~ "Standard assignment from plain pointer : the returned reference isn't "
-#~ "good."
-#~ msgstr ""
-#~ "Standard assignment from plain pointer : the returned reference isn't "
-#~ "good."
-
-#~ msgid ""
-#~ "Standard assignment from plain pointer : original pointer shouldn't have "
-#~ "been deleted."
-#~ msgstr ""
-#~ "Standard assignment from plain pointer : original pointer shouldn't have "
-#~ "been deleted."
-
-#~ msgid "First pointer should now have been deleted."
-#~ msgstr "First pointer should now have been deleted."
-
-#~ msgid ""
-#~ "Assignment from shared pointer : the first pointer should have been "
-#~ "deleted."
-#~ msgstr ""
-#~ "Assignment from shared pointer : the first pointer should have been "
-#~ "deleted."
-
-#~ msgid "Assignment from foreign plain pointer, casting upward didn't work."
-#~ msgstr "Assignment from foreign plain pointer, casting upward didn't work."
-
-#~ msgid ""
-#~ "Assignment from foreign plain pointer, casting upward : the assignment "
-#~ "didn't work."
-#~ msgstr ""
-#~ "Assignment from foreign plain pointer, casting upward : the assignment "
-#~ "didn't work."
-
-#~ msgid ""
-#~ "Assignment from foreign plain pointer, casting downward allowed didn't "
-#~ "work."
-#~ msgstr ""
-#~ "Assignment from foreign plain pointer, casting downward allowed didn't "
-#~ "work."
-
-#~ msgid ""
-#~ "Assignment from foreign plain pointer, casting downward allowed : the "
-#~ "assignment didn't work."
-#~ msgstr ""
-#~ "Assignment from foreign plain pointer, casting downward allowed : the "
-#~ "assignment didn't work."
-
-#~ msgid ""
-#~ "Assignment from foreign plain pointer, casting downward not allowed "
-#~ "should have failed"
-#~ msgstr ""
-#~ "Assignment from foreign plain pointer, casting downward not allowed "
-#~ "should have failed"
-
-#~ msgid ""
-#~ "Assignment from foreign plain pointer, casting downward not allowed : the "
-#~ "assignment should have failed"
-#~ msgstr ""
-#~ "Assignment from foreign plain pointer, casting downward not allowed : the "
-#~ "assignment should have failed"
-
-#~ msgid ""
-#~ "Imperative assignment from foreign plain pointer, casting upward didn't "
-#~ "work."
-#~ msgstr ""
-#~ "Imperative assignment from foreign plain pointer, casting upward didn't "
-#~ "work."
-
-#~ msgid ""
-#~ "Imperative assignment from foreign plain pointer, casting upward : the "
-#~ "assignment didn't work."
-#~ msgstr ""
-#~ "Imperative assignment from foreign plain pointer, casting upward : the "
-#~ "assignment didn't work."
-
-#~ msgid ""
-#~ "Imperative assignment from foreign plain pointer, casting downward "
-#~ "allowed didn't work."
-#~ msgstr ""
-#~ "Imperative assignment from foreign plain pointer, casting downward "
-#~ "allowed didn't work."
-
-#~ msgid ""
-#~ "Imperative assignment from foreign plain pointer, casting downward "
-#~ "allowed : the assignment didn't work."
-#~ msgstr ""
-#~ "Imperative assignment from foreign plain pointer, casting downward "
-#~ "allowed : the assignment didn't work."
-
-#~ msgid ""
-#~ "Imperative assignment from foreign plain pointer, casting downward not "
-#~ "allowed shouldn't have failed"
-#~ msgstr ""
-#~ "Imperative assignment from foreign plain pointer, casting downward not "
-#~ "allowed shouldn't have failed"
-
-#~ msgid ""
-#~ "Imperative assignment from foreign plain pointer, casting downward not "
-#~ "allowed : the assignment should have worked"
-#~ msgstr ""
-#~ "Imperative assignment from foreign plain pointer, casting downward not "
-#~ "allowed : the assignment should have worked"
-
-#~ msgid ""
-#~ "Imperative assignment from foreign plain pointer, casting downward not "
-#~ "allowed, no inheritance relation, shouldn't have failed"
-#~ msgstr ""
-#~ "Imperative assignment from foreign plain pointer, casting downward not "
-#~ "allowed, no inheritance relation, shouldn't have failed"
-
-#~ msgid ""
-#~ "Imperative assignment from foreign plain pointer, casting downward not "
-#~ "allowed, no inheritance relation, : the assignment should have worked"
-#~ msgstr ""
-#~ "Imperative assignment from foreign plain pointer, casting downward not "
-#~ "allowed, no inheritance relation, : the assignment should have worked"
-
-#~ msgid ""
-#~ "Imperative assignment from foreign shared pointer, casting upward didn't "
-#~ "work."
-#~ msgstr ""
-#~ "Imperative assignment from foreign shared pointer, casting upward didn't "
-#~ "work."
-
-#~ msgid ""
-#~ "Imperative assignment from foreign shared pointer, casting upward : the "
-#~ "assignment didn't work."
-#~ msgstr ""
-#~ "Imperative assignment from foreign shared pointer, casting upward : the "
-#~ "assignment didn't work."
-
-#~ msgid ""
-#~ "Imperative assignment from foreign shared pointer, casting downward "
-#~ "allowed didn't work."
-#~ msgstr ""
-#~ "Imperative assignment from foreign shared pointer, casting downward "
-#~ "allowed didn't work."
-
-#~ msgid ""
-#~ "Imperative assignment from foreign shared pointer, casting downward "
-#~ "allowed : the assignment didn't work."
-#~ msgstr ""
-#~ "Imperative assignment from foreign shared pointer, casting downward "
-#~ "allowed : the assignment didn't work."
-
-#~ msgid ""
-#~ "Imperative assignment from foreign shared pointer, casting downward not "
-#~ "allowed shouldn't have failed"
-#~ msgstr ""
-#~ "Imperative assignment from foreign shared pointer, casting downward not "
-#~ "allowed shouldn't have failed"
-
-#~ msgid ""
-#~ "Imperative assignment from foreign shared pointer, casting downward not "
-#~ "allowed : the assignment should have worked"
-#~ msgstr ""
-#~ "Imperative assignment from foreign shared pointer, casting downward not "
-#~ "allowed : the assignment should have worked"
-
-#~ msgid ""
-#~ "Imperative assignment from foreign shared pointer, casting downward not "
-#~ "allowed, no inheritance relation, shouldn't have failed"
-#~ msgstr ""
-#~ "Imperative assignment from foreign shared pointer, casting downward not "
-#~ "allowed, no inheritance relation, shouldn't have failed"
-
-#~ msgid ""
-#~ "Imperative assignment from foreign shared pointer, casting downward not "
-#~ "allowed, no inheritance relation, : the assignment should have worked"
-#~ msgstr ""
-#~ "Imperative assignment from foreign shared pointer, casting downward not "
-#~ "allowed, no inheritance relation, : the assignment should have worked"
-
-#~ msgid "Cannot deserialize:"
-#~ msgstr "Cannot deserialize:"
-
-#~ msgid "_Skeleton"
-#~ msgstr "_Skeleton"
-
-#~ msgid "Lambda _1"
-#~ msgstr "Lambda _1"
-
-#~ msgid "Lambda _2"
-#~ msgstr "Lambda _2"
-
-#~ msgid "No data. Initialisation problem?"
-#~ msgstr "No data. Initialisation problem?"
-
-#~ msgid "null pixel."
-#~ msgstr "null pixel."
-
-#~ msgid "null pointers shouldn't work."
-#~ msgstr "null pointers shouldn't work."
-
-#~ msgid "Null matrix"
-#~ msgstr "Null matrix"
-
-#~ msgid "null matrix"
-#~ msgstr "null matrix"
-
-#~ msgid "Invalid matrix"
-#~ msgstr "Invalid matrix"
-
-#~ msgid "Null block."
-#~ msgstr "Null block."
-
-#~ msgid "Null mask."
-#~ msgstr "Null mask."
-
-#~ msgid "no histogram to append."
-#~ msgstr "no histogram to append."
-
-#~ msgid "Null data"
-#~ msgstr "Null data"
-
-#~ msgid "Null stroke"
-#~ msgstr "Null stroke"
-
-#~ msgid "No source image."
-#~ msgstr "No source image."
-
-#~ msgid "Null source image."
-#~ msgstr "Null source image."
-
-#~ msgid "No structuring element."
-#~ msgstr "No structuring element."
-
-#~ msgid "Source is NULL!"
-#~ msgstr "Source is NULL!"
-
-#~ msgid "No image to clean."
-#~ msgstr "No image to clean."
-
-#~ msgid "Null pixel."
-#~ msgstr "Null pixel."
-
-#~ msgid "Null image. Nothing will be done."
-#~ msgstr "Null image. Nothing will be done."
-
-#~ msgid "Wrong image dimensions. Nothing will be done."
-#~ msgstr "Wrong image dimensions. Nothing will be done."
-
-#~ msgid "parameters must have the same size."
-#~ msgstr "parameters must have the same size."
-
-#~ msgid "Cannot convert image to a RGB format."
-#~ msgstr "Cannot convert image to a RGB format."
-
-#~ msgid "Null histogram."
-#~ msgstr "Null histogram."
-
-#~ msgid "Unable to extract connected components."
-#~ msgstr "Unable to extract connected components."
-
-#~ msgid "Null or negative step."
-#~ msgstr "Null or negative step."
-
-#~ msgid "Cannot convert factor image to double."
-#~ msgstr "Cannot convert factor image to double."
-
-#~ msgid "Cannot convert image to ImageIntGray."
-#~ msgstr "Cannot convert image to ImageIntGray."
-
-#~ msgid "Even strelrix dimensions. Nothing will be done."
-#~ msgstr "Even strelrix dimensions. Nothing will be done."
-
-#~ msgid "Cannot convert source to gray image."
-#~ msgstr "Cannot convert source to grey image."
-
-#~ msgid "Cannot convert source to RGB image."
-#~ msgstr "Cannot convert source to RGB image."
-
-#~ msgid "Attribute not found."
-#~ msgstr "Attribute not found."
-
-#~ msgid "Not a CRNComplexObject file."
-#~ msgstr "Not a CRNComplexObject file."
-
-#~ msgid "Cannot save xml."
-#~ msgstr "Cannot save xml."
-
-#~ msgid "Cannot save xml in <"
-#~ msgstr "Cannot save xml in <"
-
-#~ msgid "Cannot read file: "
-#~ msgstr "Cannot read file: "
-
-#~ msgid "Cannot create element."
-#~ msgstr "Cannot create file."
-
-#~ msgid "No base directory provided!"
-#~ msgstr "No base directory provided!"
-
-#~ msgid "null or negative size"
-#~ msgstr "null or negative size"
-
-#~ msgid "Null or negative scale."
-#~ msgstr "Null or negative scale."
-
-#~ msgid ""
-#~ "Cannot access to any source or buffer and it was asked not to create any."
-#~ msgstr ""
-#~ "Cannot access to any source or buffer and it was asked not to create any."
-
-#~ msgid "index out of bounds"
-#~ msgstr "index out of bounds"
-
-#~ msgid "null source histogram."
-#~ msgstr "null source histogram."
-
-#~ msgid "Cannot deserialize component.."
-#~ msgstr "Cannot deserialize component.."
-
-#~ msgid "Cannot deserialize object."
-#~ msgstr "Cannot deserialize object."
-
-#~ msgid "Zoom in"
-#~ msgstr "Zoom in"
-
-#~ msgid "Zoom out"
-#~ msgstr "Zoom out"
-
-#~ msgid "Original size"
-#~ msgstr "Original size"
-
-#~ msgid "Sketch spotting"
-#~ msgstr "Sketch spotting"
-
-#~ msgid "Date"
-#~ msgstr "Date"
-
-#~ msgid "Number of views"
-#~ msgstr "Number of views"
-
-#~ msgid "Background color"
-#~ msgstr "Background colour"
-
-#~ msgid "Foreground color"
-#~ msgstr "Foreground colour"
-
-#~ msgid "Line width"
-#~ msgstr "Line width"
-
-#~ msgid "Are you sure you wish to quit?"
-#~ msgstr "Are you sure you wish to quit?"
-
-#~ msgid "Please select the image(s) to add"
-#~ msgstr "Please select the image(s) to add"
-
-#~ msgid "Enter the name of the image to save"
-#~ msgstr "Enter the name of the image to save"
-
-#~ msgid "PNG images"
-#~ msgstr "PNG images"
-
-#~ msgid "Select or enter a tree"
-#~ msgstr "Select or enter a tree"
-
-#~ msgid "View list"
-#~ msgstr "View list"
-
-#~ msgid "Bloc tree"
-#~ msgstr "Bloc tree"
-
-#~ msgid "Save the displayed view to a file"
-#~ msgstr "Save the displayed view to a file"
-
-#~ msgid "Add a new view"
-#~ msgstr "Add a new view"
-
-#~ msgid "Remove selected view"
-#~ msgstr "Remove selected view"
-
-#~ msgid "Add a new subblock"
-#~ msgstr "Add a new subblock"
-
-#~ msgid "Remove selected tree or subblock"
-#~ msgstr "Remove selected tree or subblock"
-
-#~ msgid "Refresh block tree"
-#~ msgstr "Refresh block tree"
-
-#~ msgid "Fit window"
-#~ msgstr "Fit window"
-
-#~ msgid "Null image given."
-#~ msgstr "Null image given."
-
-#~ msgid "GtkCRN is not initialized."
-#~ msgstr "GtkCRN is not initialized."
-
-#~ msgid "_Image"
-#~ msgstr "_Image"
-
-#~ msgid "Convolve _3x3"
-#~ msgstr "Convolve _3x3"
-
-#~ msgid "Convolve _5x5"
-#~ msgstr "Convolve _5x5"
-
-#~ msgid "Dilate 3x3"
-#~ msgstr "Dilate 3x3"
-
-#~ msgid "Dilate 5x5"
-#~ msgstr "Dilate 5x5"
-
-#~ msgid "Erode 3x3"
-#~ msgstr "Erode 3x3"
-
-#~ msgid "Erode 5x5"
-#~ msgstr "Erode 5x5"
-
-#~ msgid "Cann_y"
-#~ msgstr "Cann_y"
-
-#~ msgid "RGB"
-#~ msgstr "RGB"
-
-#~ msgid "Gray"
-#~ msgstr "Grey"
-
-#~ msgid "BW"
-#~ msgstr "BW"
-
-#~ msgid "Images"
-#~ msgstr "Images"
-
-#~ msgid "Please select a PNG file name"
-#~ msgstr "Please select a PNG file name"
-
-#~ msgid "Unknown data format: "
-#~ msgstr "Unknown data format: "
-
-#~ msgid "Convolution"
-#~ msgstr "Convolution"
-
-#~ msgid "Matrix"
-#~ msgstr "Matrix"
-
-#~ msgid "Dilatation"
-#~ msgstr "Dilatation"
-
-#~ msgid "Erosion"
-#~ msgstr "Erosion"
-
-#~ msgid "Binarisation"
-#~ msgstr "Binarisation"
-
-#~ msgid "Number of black classes (< #classes)"
-#~ msgstr "Number of black classes (< #classes)"
-
-#~ msgid ""
-#~ "Mean strokes width: %i\n"
-#~ "Mean strokes height: %i\n"
-#~ "Mean lines height: %i"
-#~ msgstr ""
-#~ "Mean strokes width: %i\n"
-#~ "Mean strokes height: %i\n"
-#~ "Mean lines height: %i"
-
-#~ msgid "Diffusion"
-#~ msgstr "Diffusion"
-
-#~ msgid "Control"
-#~ msgstr "Control"
-
-#~ msgid "Open"
-#~ msgstr "Open"
-
-#~ msgid "Save"
-#~ msgstr "Save"
-
-#~ msgid "Quit"
-#~ msgstr "Quit"
-
-#~ msgid "File Name"
-#~ msgstr "File Name"
-
-#~ msgid "Passed"
-#~ msgstr "Passed"
-
-#~ msgid "Cannot create PDF structure."
-#~ msgstr "Cannot create PDF structure."
-
-#~ msgid "Cannot create PDF page."
-#~ msgstr "Cannot create PDF page."
-
-#~ msgid "Cannot save PDF file."
-#~ msgstr "Cannot save PDF file."
-
-#~ msgid "Cannot convert gradient to the right image format."
-#~ msgstr "Cannot convert gradient to the right image format."
-
-#~ msgid "Cannot open directory "
-#~ msgstr "Cannot open directory "
-
-#~ msgid "cannot open file."
-#~ msgstr "cannot open file."
-
-#~ msgid "This object needs to be loaded from a xml file, enter its path : "
-#~ msgstr "This object needs to be loaded from a xml file, enter its path : "
-
-#~ msgid ""
-#~ "This object can't be loaded from a file and can't be entered by keyboard, "
-#~ "you can't add parameters."
-#~ msgstr ""
-#~ "This object can't be loaded from a file and can't be entered by keyboard, "
-#~ "you can't add parameters."
-
-#~ msgid " parameter : "
-#~ msgstr " parameter : "
-
-#~ msgid "not a compatible type."
-#~ msgstr "not a compatible type."
-
-#~ msgid "invalid size"
-#~ msgstr "invalid size"
-
-#~ msgid "A model data is not of the same class as the sample."
-#~ msgstr "A model data is not of the same class as the sample."
-
-#~ msgid "Cannot read <Verbose> attribute"
-#~ msgstr "Cannot read <Verbose> attribute"
-
-#~ msgid "Cannot read <ConfigurationPath> attribute"
-#~ msgstr "Cannot read <ConfigurationPath> attribute"
-
-#~ msgid "Cannot read <root> element"
-#~ msgstr "Cannot read <root> element"
-
-#~ msgid "TODO"
-#~ msgstr "TODO"
-
-#~ msgid "Cannot find entry point in file "
-#~ msgstr "Cannot find entry point in file "
-
-#~ msgid "The module is of wrong category."
-#~ msgstr "The module is of wrong category."
-
-#~ msgid "Optimization needed: "
-#~ msgstr "Optimization needed: "
-
-#~ msgid "Cannot get b&w image."
-#~ msgstr "Cannot get b&w image."
-
-#~ msgid "No library for image loading found. No image will be saved."
-#~ msgstr "No library for image loading found. No image will be saved."
-
-#~ msgid "Wrong number of classes."
-#~ msgstr "Wrong number of classes."
-
-#~ msgid "Wrong number of black classes."
-#~ msgstr "Wrong number of black classes."
-
-#~ msgid "Area size is null or negative."
-#~ msgstr "Area size is null or negative."
-
-#~ msgid "Null or negative dimension."
-#~ msgstr "Null or negative dimension."
-
-#~ msgid "Null or negative row or column dimensions."
-#~ msgstr "Null or negative row or column dimensions."
-
-#~ msgid "Unable to extract text lines."
-#~ msgstr "Unable to extract text lines."
-
-#~ msgid "No image loading library linked."
-#~ msgstr "No image loading library linked."
-
-#~ msgid "Wrong angle (not in crn::Angle)."
-#~ msgstr "Wrong angle (not in crn::Angle)."
-
-#~ msgid "Loaded configuration file "
-#~ msgstr "Loaded configuration file "
-
-#~ msgid "source exhausted."
-#~ msgstr "source exhausted."
-
-#~ msgid "target exhausted."
-#~ msgstr "target exhausted."
-
-#~ msgid "source illegal."
-#~ msgstr "source illegal."
-
-#~ msgid "[libcrn] %s"
-#~ msgstr "[libcrn] %s"
-
-#~ msgid "Wrong distance. Using d4."
-#~ msgstr "Wrong distance. Using d4."
-
-#~ msgid "The given number is negative, it shouldn't remove anything."
-#~ msgstr "The given number is negative, it shouldn't remove anything."
-
-#~ msgid " : The default scale should be 1.0."
-#~ msgstr " : The default scale should be 1.0."
-
-#~ msgid " : negative scale, the method shouldn't work."
-#~ msgstr " : negative scale, the method shouldn't work."
-
-#~ msgid " : null scale, the method shouldn't work."
-#~ msgstr " : null scale, the method shouldn't work."
-
-#~ msgid " : The scale shouldn't have changed."
-#~ msgstr " : The scale shouldn't have changed."
-
-#~ msgid ""
-#~ " : The previous operation with negative margin shouldn't have removed "
-#~ "anything."
-#~ msgstr ""
-#~ " : The previous operation with negative margin shouldn't have removed "
-#~ "anything."
-
-#~ msgid " : negative indexes shouldn't work."
-#~ msgstr " : negative indexes shouldn't work."
-
-#~ msgid "Testing the GetRGB1, GetGray1, GetBW1, GetGradient1 methods."
-#~ msgstr "Testing the GetRGB1, GetGray1, GetBW1, GetGradient1 methods."
-
-#~ msgid ""
-#~ " : Shouldn't work when called on a block that doesn't have a RGB source."
-#~ msgstr ""
-#~ " : Shouldn't work when called on a block that doesn't have a RGB source."
-
-#~ msgid " : SetScale shouldn't affect RGB1 dimensions."
-#~ msgstr " : SetScale shouldn't affect RGB1 dimensions."
-
-#~ msgid ""
-#~ " : Shouldn't work when called on a block that doesn't have a Gray source."
-#~ msgstr ""
-#~ " : Shouldn't work when called on a block that doesn't have a Gray source."
-
-#~ msgid " : SetScale shouldn't affect Gray1 dimensions."
-#~ msgstr " : SetScale shouldn't affect Gray1 dimensions."
-
-#~ msgid ""
-#~ " : Shouldn't work when called on a block that doesn't have a BW source."
-#~ msgstr ""
-#~ " : Shouldn't work when called on a block that doesn't have a BW source."
-
-#~ msgid " : SetScale shouldn't affect BW1 dimensions."
-#~ msgstr " : SetScale shouldn't affect BW1 dimensions."
-
-#~ msgid ""
-#~ " : Shouldn't work when called on a block that doesn't have a Gradient "
-#~ "source."
-#~ msgstr ""
-#~ " : Shouldn't work when called on a block that doesn't have a Gradient "
-#~ "source."
-
-#~ msgid " : SetScale shouldn't affect Gradient1 dimensions."
-#~ msgstr " : SetScale shouldn't affect Gradient1 dimensions."
-
-#~ msgid "Cannot find points."
-#~ msgstr "Cannot find points."
-
-#~ msgid "A sample is not multiscaled."
-#~ msgstr "A sample is not multiscaled."
-
-#~ msgid "Cannot find value element."
-#~ msgstr "Cannot find value element."
-
-#~ msgid "Cannot get value CDATA."
-#~ msgstr "Cannot get value CDATA."
-
-#~ msgid "Cannot convert value CDATA."
-#~ msgstr "Cannot convert value CDATA."
-
-#~ msgid "Cannot find coeff element."
-#~ msgstr "Cannot find coeff element."
-
-#~ msgid "Cannot get coeff CDATA."
-#~ msgstr "Cannot get coeff CDATA."
-
-#~ msgid "Cannot convert coeff CDATA."
-#~ msgstr "Cannot convert coeff CDATA."
-
-#~ msgid "Cannot create value element."
-#~ msgstr "Cannot create value element."
-
-#~ msgid "Cannot create value CDATA."
-#~ msgstr "Cannot create value CDATA."
-
-#~ msgid "Cannot create value CDATA element."
-#~ msgstr "Cannot create value CDATA element."
-
-#~ msgid "Cannot create coeff element."
-#~ msgstr "Cannot create coeff element."
-
-#~ msgid "Cannot create coeff CDATA."
-#~ msgstr "Cannot create coeff CDATA."
-
-#~ msgid "Cannot create coeff CDATA element."
-#~ msgstr "Cannot create coeff CDATA element."
-
-#~ msgid "Object is NULL."
-#~ msgstr "Object is NULL."
-
-#~ msgid "Object is not a CRNCLASS_DATA."
-#~ msgstr "Object is not a CRNCLASS_DATA."
-
-#~ msgid "The key is already used. Nothing will be done."
-#~ msgstr "The key is already used. Nothing will be done."
-
-#~ msgid "Object does not implement CRNCLASS_VECTOROVERR."
-#~ msgstr "Object does not implement CRNCLASS_VECTOROVERR."
-
-#~ msgid "Object does not implement CRNCLASS_METRIC."
-#~ msgstr "Object does not implement CRNCLASS_METRIC."
-
-#~ msgid "Object does not implement CRNCLASS_CLONABLE."
-#~ msgstr "Object does not implement CRNCLASS_CLONABLE."
-
-#~ msgid "Object does not implement CRNCLASS_FEATURE."
-#~ msgstr "Object does not implement CRNCLASS_FEATURE."
-
-#~ msgid "Vectors do not have the same dimension."
-#~ msgstr "Vectors do not have the same dimension."
-
-#~ msgid "Object does not implement CRNCLASS_FEATUREEXTRACTOR."
-#~ msgstr "Object does not implement CRNCLASS_FEATUREEXTRACTOR."
-
-#, fuzzy
-#~ msgid "Cannot get X CDATA."
-#~ msgstr "Cannot get CDATA."
-
-#, fuzzy
-#~ msgid "Cannot get Y CDATA."
-#~ msgstr "Cannot get CDATA."
-
-#, fuzzy
-#~ msgid "Cannot convert Y CDATA."
-#~ msgstr "Cannot convert CDATA."
-
-#~ msgid "Cannot get gradient image."
-#~ msgstr "Cannot get gradient image."
-
-#~ msgid "Cannot extract gradient."
-#~ msgstr "Cannot extract gradient."
-
-#~ msgid "Null filename given."
-#~ msgstr "Null filename given."
-
-#~ msgid "No query given."
-#~ msgstr "No query given."
-
-#~ msgid "No word retrieval can be performed without an idiom properly set."
-#~ msgstr "No word retrieval can be performed without an idiom properly set."
-
-#~ msgid "Cannot codify query."
-#~ msgstr "Cannot codify query."
-
-#~ msgid "Cannot textify query."
-#~ msgstr "Cannot textify query."
-
-#~ msgid "Cannot extract guides, skipping image "
-#~ msgstr "Cannot extract guides, skipping image "
-
-#~ msgid "Search without a token."
-#~ msgstr "Search without a token."
-
-#~ msgid "Hit without a score."
-#~ msgstr "Hit without a score."
-
-#~ msgid "Hit without a view."
-#~ msgstr "Hit without a view."
-
-#~ msgid "Hit without a ok."
-#~ msgstr "Hit without a ok."
-
-#~ msgid "Hit without a left."
-#~ msgstr "Hit without a left."
-
-#~ msgid "Hit without a top."
-#~ msgstr "Hit without a top."
-
-#~ msgid "Hit without a right."
-#~ msgstr "Hit without a right."
-
-#~ msgid "Hit without a bottom."
-#~ msgstr "Hit without a bottom."
-
-#~ msgid "Cannot save idiom."
-#~ msgstr "Cannot save idiom."
-
-#~ msgid "hits removal."
-#~ msgstr "hits removal."
-
-#~ msgid "search file removal."
-#~ msgstr "search file removal."
-
-#~ msgid "trace file removal."
-#~ msgstr "trace file removal."
-
-#~ msgid "Null query bloc."
-#~ msgstr "Null query bloc."
-
-#~ msgid "Cannot extract gradient image."
-#~ msgstr "Cannot extract gradient image."
-
-#~ msgid "Cannot extract gray image."
-#~ msgstr "Cannot extract grey image."
-
-#~ msgid "Cannot extract gradient curvatures."
-#~ msgstr "Cannot extract gradient curvatures."
-
-#~ msgid "BuffBW is NULL."
-#~ msgstr "BuffBW is NULL."
-
-#~ msgid "Classifier not initialized."
-#~ msgstr "Classifier not initialized."
-
-#~ msgid "Wrong index."
-#~ msgstr "Wrong index."
-
-#~ msgid "New alphabet"
-#~ msgstr "New alphabet"
-
-#~ msgid "Cannot find attribute <Code>"
-#~ msgstr "Cannot find attribute <Code>"
-
-#~ msgid "Cannot find attribute <Diacritical>"
-#~ msgstr "Cannot find attribute <Diacritical>"
-
-#~ msgid "Cannot find attribute <Symbol>"
-#~ msgstr "Cannot find attribute <Symbol>"
-
-#~ msgid "Cannot find attribute <AlphabetAbs>"
-#~ msgstr "Cannot find attribute <AlphabetAbs>"
-
-#~ msgid "Cannot find attribute <Orientation>"
-#~ msgstr "Cannot find attribute <Orientation>"
-
-#~ msgid "Cannot load alphabet."
-#~ msgstr "Cannot load alphabet."
-
-#~ msgid "Cannot load image"
-#~ msgstr "Cannot load image"
-
-#~ msgid "Cannot find attribute <Left>"
-#~ msgstr "Cannot find attribute <Left>"
-
-#~ msgid "Cannot find attribute <Right>"
-#~ msgstr "Cannot find attribute <Right>"
-
-#~ msgid "Cannot find attribute <Top>"
-#~ msgstr "Cannot find attribute <Top>"
-
-#~ msgid "Cannot find attribute <Bottom>"
-#~ msgstr "Cannot find attribute <Bottom>"
-
-#~ msgid "Cannot find attribute <BaseLine>"
-#~ msgstr "Cannot find attribute <BaseLine>"
-
-#~ msgid "Cannot find attribute <LinkLeft>"
-#~ msgstr "Cannot find attribute <LinkLeft>"
-
-#~ msgid "Cannot find attribute <LinkRight>"
-#~ msgstr "Cannot find attribute <LinkRight>"
-
-#~ msgid "Cannot find attribute <Extremum>"
-#~ msgstr "Cannot find attribute <Extremum>"
-
-#~ msgid "Please set an alphabet before."
-#~ msgstr "Please set an alphabet before."
-
-#~ msgid "Please save the alphabet before."
-#~ msgstr "Please save the alphabet before."
-
-#~ msgid "No grapheme given."
-#~ msgstr "No grapheme given."
-
-#~ msgid "Wrong code given"
-#~ msgstr "Wrong code given"
-
-#~ msgid "No alphabet given."
-#~ msgstr "No alphabet given."
-
-#~ msgid "Cannot find attribute <ALphabetAbs>"
-#~ msgstr "Cannot find attribute <ALphabetAbs>"
-
-#~ msgid "No bloc given."
-#~ msgstr "No bloc given."
-
-#~ msgid "Cannot read file"
-#~ msgstr "Cannot read file"
-
-#~ msgid "Cannot find attribute <FontAbs>"
-#~ msgstr "Cannot find attribute <FontAbs>"
-
-#~ msgid "Cannot load font."
-#~ msgstr "Cannot load font."
-
-#~ msgid "Cannot find attribute <GrammarAbs>"
-#~ msgstr "Cannot find attribute <GrammarAbs>"
-
-#~ msgid "Font does not refer to the idiom's alphabet."
-#~ msgstr "Font does not refer to the idiom's alphabet."
-
-#~ msgid "Cannot load grammar."
-#~ msgstr "Cannot load grammar."
-
-#~ msgid "Grammar does not refer to the idiom's alphabet."
-#~ msgstr "Grammar does not refer to the idiom's alphabet."
-
-#~ msgid "No alphabet to save."
-#~ msgstr "No alphabet to save."
-
-#~ msgid "Cannot save alphabet."
-#~ msgstr "Cannot save alphabet."
-
-#~ msgid "No font to save."
-#~ msgstr "No font to save."
-
-#~ msgid "Cannot save font."
-#~ msgstr "Cannot save font."
-
-#~ msgid "Cannot save grammar."
-#~ msgstr "Cannot save grammar."
-
-#~ msgid "Cannot extract Guides."
-#~ msgstr "Cannot extract Guides."
-
-#~ msgid "No Guides."
-#~ msgstr "No Guides."
-
-#~ msgid "Cannot extract ZOIs."
-#~ msgstr "Cannot extract ZOIs."
-
-#~ msgid "Cannot extract gradient of the image."
-#~ msgstr "Cannot extract gradient of the image."
-
-#~ msgid "ZOIs not extracted."
-#~ msgstr "ZOIs not extracted."
-
-#~ msgid "Cannot read attribute 'renderer'."
-#~ msgstr "Cannot read attribute 'renderer'."
-
-#~ msgid "Cannot read class_index."
-#~ msgstr "Cannot read class_index."
-
-#~ msgid "Cannot read cache_index."
-#~ msgstr "Cannot read cache_index."
-
-#~ msgid "Cannot read filename."
-#~ msgstr "Cannot read filename."
-
-#~ msgid "Cannot read cache_value."
-#~ msgstr "Cannot read cache_value."
-
-#~ msgid "No pixel model."
-#~ msgstr "No pixel model."
-
-#~ msgid "Cannot read basename."
-#~ msgstr "Cannot read basename."
-
-#~ msgid "Wrong class id."
-#~ msgstr "Wrong class id."
-
-#~ msgid "Cannot load cached mask."
-#~ msgstr "Cannot load cached mask."
-
-#~ msgid "Cannot load original file."
-#~ msgstr "Cannot load original file."
-
-#~ msgid "No name given"
-#~ msgstr "No name given"
-
-#~ msgid "Cannot find the original gray image"
-#~ msgstr "Cannot find the original grey image"
-
-#~ msgid "Search without a word."
-#~ msgstr "Search without a word."
-
-#~ msgid "Cannot extract gradient of a zoi."
-#~ msgstr "Cannot extract gradient of a zoi."
-
-#~ msgid "No file name given."
-#~ msgstr "No file name given."
-
-#, fuzzy
-#~ msgid "Null parent XML element."
-#~ msgstr "Null XML element given."
-
-#, fuzzy
-#~ msgid "Cannot find the request bloc"
-#~ msgstr "Cannot find attribute <Symbol>"
-
-#~ msgid "Unknown class: "
-#~ msgstr "Unknown class: "
-
-#~ msgid "No key found for data element :"
-#~ msgstr "No key found for data element :"
-
-#~ msgid "Image has no type!"
-#~ msgstr "Image has no type!"
-
-#~ msgid "Division factor is null. Nothing will be done."
-#~ msgstr "Division factor is null. Nothing will be done."
-
-#~ msgid "The source and destination are not of the same type."
-#~ msgstr "The source and destination are not of the same type."
-
-#~ msgid "Cannot access to RGB buffer."
-#~ msgstr "Cannot access to RGB buffer."
-
-#~ msgid "Cannot access to Gray buffer."
-#~ msgstr "Cannot access to Gray buffer."
-
-#~ msgid "Cannot access to BW buffer."
-#~ msgstr "Cannot access to BW buffer."
-
-#~ msgid "Cannot access to Gradient buffer."
-#~ msgstr "Cannot access to Gradient buffer."
-
-#~ msgid "No source given."
-#~ msgstr "No source given."
-
-#~ msgid "No source histogram."
-#~ msgstr "No source histogram."
-
-#~ msgid "No library for image loading found. No image will be created."
-#~ msgstr "No library for image loading found. No image will be created."
-
-#~ msgid "xxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
-#~ msgstr "++++++++++++++++++++++"
+#~ msgid "The block contains no word with this id."
+#~ msgstr "The block contains no word with this id."

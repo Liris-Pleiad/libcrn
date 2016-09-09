@@ -28,7 +28,7 @@
 #include <unordered_map>
 #include <typeinfo>
 #include <typeindex>
-#include <CRNUtils/CRNXml.h>
+#include <CRNXml/CRNXml.h>
 
 /*! \addtogroup base */
 /*@{*/
@@ -62,6 +62,7 @@ namespace crn
 			static Serializer& getInstance();
 			struct serializer
 			{
+				virtual ~serializer() {}
 				virtual void deserialize(Object &obj, xml::Element &el) = 0;
 				virtual xml::Element serialize(const Object &obj, xml::Element &parent) = 0;
 			};
@@ -110,6 +111,7 @@ namespace crn
 			static Cloner& getInstance();
 			struct cloner
 			{
+				virtual ~cloner() {}
 				virtual UObject clone(const Object &o) const = 0;
 			};
 			template<typename T> struct clonerImpl: public cloner
@@ -142,6 +144,7 @@ namespace crn
 			static Ruler& getInstance();
 			struct ruler
 			{
+				virtual ~ruler() {}
 				virtual double distance(const Object &o1, const Object &o2) const = 0;
 			};
 			template<typename T> struct rulerImpl: public ruler

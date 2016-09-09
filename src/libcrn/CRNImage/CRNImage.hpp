@@ -81,6 +81,17 @@ namespace crn
 		pixels(img.begin(), img.end())
 	{ }
 
+	/*! Copy constructor
+	 * \param[in]	img	the image to copy
+	 */
+	template<typename T> Image<T>::Image(const Image<typename BoolNotBool<T>::type> &img):
+		ImageBase(img.GetWidth(), img.GetHeight()),
+		pixels(img.GetWidth() * img.GetHeight())
+	{
+		for (auto tmp : Range(img))
+			pixels[tmp] = img.At(tmp) ? std::numeric_limits<T>::max() : T(0);
+ 	}
+
 	/*! Crop constructor
 	 * \param[in]	img	the image to copy
 	 * \param[in]	bbox	the zone to copy
@@ -93,6 +104,18 @@ namespace crn
 			std::copy_n(img.begin() + bbox.GetLeft() + (y + bbox.GetTop()) * img.GetWidth(), width, pixels.begin() + y * width);
 	}
 
+	/*! Crop constructor
+	 * \param[in]	img	the image to copy
+	 * \param[in]	bbox	the zone to copy
+	 */
+	template<typename T> Image<T>::Image(const Image<typename BoolNotBool<T>::type> &img, const Rect &bbox):
+		ImageBase(bbox.GetWidth(), bbox.GetHeight()),
+		pixels(bbox.GetWidth() * bbox.GetHeight())
+	{
+		FOREACHPIXEL(x, y, *this)
+			At(x, y) = img.At(x + bbox.GetLeft(), y + bbox.GetTop()) ? std::numeric_limits<T>::max() : T(0);
+	}
+
 	/*! Copy operator: pixel values are not cast
 	 * \param[in]	img	the image to copy
 	 * \return	a self reference
@@ -103,6 +126,19 @@ namespace crn
 		height = img.GetHeight();
 		pixels.resize(width * height);
 		std::copy(img.begin(), img.end(), pixels.begin());
+	}
+
+	/*! Copy operator: pixel values are not cast
+	 * \param[in]	img	the image to copy
+	 * \return	a self reference
+	 */
+	template<typename T> Image<T>& Image<T>::operator=(const Image<typename BoolNotBool<T>::type> &img)
+	{
+		width = img.GetWidth();
+		height = img.GetHeight();
+		pixels.resize(width * height);
+		for (auto tmp : Range(img))
+			pixels[tmp] = img.At(tmp) ? std::numeric_limits<T>::max() : T(0);
 	}
 
 	/*! Force copy operator: pixel values are cast

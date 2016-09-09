@@ -22,7 +22,6 @@
 #include <CRNGeometry/CRNPoint2DInt.h>
 #include <CRNData/CRNDataFactory.h>
 #include <CRNException.h>
-#include <CRNUtils/CRNXml.h>
 #include <CRNi18n.h>
 
 using namespace crn;

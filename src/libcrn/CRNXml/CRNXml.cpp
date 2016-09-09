@@ -20,7 +20,7 @@
  */
 
 #include <CRNUtils/CRNCharsetConverter.h>
-#include <CRNUtils/CRNXml.h>
+#include <CRNXml/CRNXml.h>
 #include <3rdParty/tixml2/tinyxml2.h>
 #include <CRNException.h>
 #include <CRNi18n.h>

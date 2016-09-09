@@ -1,0 +1,58 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-09-09 10:24+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: nimrod.cpp:85
+msgid "New project"
+msgstr ""
+
+#: nimrod.cpp:86
+msgid "Read image names in _XML Altos"
+msgstr ""
+
+#: nimrod.cpp:87
+msgid "Match images and XML Altos _filenames"
+msgstr ""
+
+#: nimrod.cpp:88
+msgid "Path to the XML Alto files"
+msgstr ""
+
+#: nimrod.cpp:89
+msgid "Path to the images"
+msgstr ""
+
+#: nimrod.cpp:90
+msgid "_Images are in a different folder"
+msgstr ""
+
+#: nimrod.cpp:91
+msgid "Images path"
+msgstr ""
+
+#: nimrod.cpp:104
+msgid "Project name"
+msgstr ""
+
+#: nimrod.cpp:115
+msgid "XML Altos path"
+msgstr ""
+
+#: nimrod.cpp:154
+msgid "Cannot create project"
+msgstr ""

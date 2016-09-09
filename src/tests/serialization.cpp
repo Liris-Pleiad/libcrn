@@ -22,7 +22,7 @@
 #include "catch.hpp"
 #include <CRNObject.h>
 #include <CRNProtocols.h>
-#include <CRNUtils/CRNXml.h>
+#include <CRNXml/CRNXml.h>
 #include <CRNData/CRNDataFactory.h>
 #include <CRNString.h>
 

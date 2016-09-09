@@ -23,7 +23,7 @@
 #define CRNDATAFACTORY_HEADER
 
 #include <CRNObject.h>
-#include <CRNUtils/CRNXml.h>
+#include <CRNXml/CRNXml.h>
 #include <CRNProtocols.h>
 #include <map>
 

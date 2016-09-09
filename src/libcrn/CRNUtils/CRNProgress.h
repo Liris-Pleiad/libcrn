@@ -22,7 +22,7 @@
 #ifndef CRNPROGRESS_HEADER
 #define CRNPROGRESS_HEADER
 
-#include <CRNComplexObject.h>
+#include <CRNString.h>
 
 namespace crn
 {
@@ -59,6 +59,8 @@ namespace crn
 
 			/*! \brief Sets the type of progress bar */
 			void SetType(Type typ) noexcept { type = typ; }
+
+			void SetName(const crn::String &nam) { name = nam; }
 
 		protected:
 			/*! \brief Displays the progress */

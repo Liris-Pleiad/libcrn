@@ -1,0 +1,764 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-09-09 10:23+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: GdkCRNPixbuf.cpp:117
+msgid "unsupported pixel format."
+msgstr ""
+
+#: GdkCRNPixbuf.cpp:151
+msgid "Null pixbuf given."
+msgstr ""
+
+#: GtkCRNAltoDisplay.cpp:45 GtkCRNAltoImage.cpp:44
+msgid "Show/hide _pages"
+msgstr ""
+
+#: GtkCRNAltoDisplay.cpp:45 GtkCRNAltoImage.cpp:44
+msgid "Show/hide pages"
+msgstr ""
+
+#: GtkCRNAltoDisplay.cpp:46 GtkCRNAltoImage.cpp:45
+msgid "Show/hide _spaces"
+msgstr ""
+
+#: GtkCRNAltoDisplay.cpp:46 GtkCRNAltoImage.cpp:45
+msgid "Show/hide spaces"
+msgstr ""
+
+#: GtkCRNAltoDisplay.cpp:47 GtkCRNAltoImage.cpp:46
+msgid "Show/hide _text blocks"
+msgstr ""
+
+#: GtkCRNAltoDisplay.cpp:47 GtkCRNAltoImage.cpp:46
+msgid "Show/hide text blocks"
+msgstr ""
+
+#: GtkCRNAltoDisplay.cpp:48 GtkCRNAltoImage.cpp:47
+msgid "Show/hide text _lines"
+msgstr ""
+
+#: GtkCRNAltoDisplay.cpp:48 GtkCRNAltoImage.cpp:47
+msgid "Show/hide text lines"
+msgstr ""
+
+#: GtkCRNAltoDisplay.cpp:49 GtkCRNAltoImage.cpp:48
+msgid "Show/hide _words"
+msgstr ""
+
+#: GtkCRNAltoDisplay.cpp:49 GtkCRNAltoImage.cpp:48
+msgid "Show/hide words"
+msgstr ""
+
+#: GtkCRNAltoDisplay.cpp:50 GtkCRNAltoImage.cpp:49
+msgid "_Edit alto"
+msgstr ""
+
+#: GtkCRNAltoDisplay.cpp:50 GtkCRNAltoImage.cpp:49
+msgid "Edit alto"
+msgstr ""
+
+#: GtkCRNAltoDisplay.cpp:227
+msgid "Create page"
+msgstr ""
+
+#: GtkCRNAltoDisplay.cpp:260
+msgid "Page"
+msgstr ""
+
+#: GtkCRNAltoDisplay.cpp:269 GtkCRNAltoDisplay.cpp:312
+#: GtkCRNAltoDisplay.cpp:338 GtkCRNAltoDisplay.cpp:368
+#: GtkCRNAltoDisplay.cpp:403
+msgid "Delete"
+msgstr ""
+
+#: GtkCRNAltoDisplay.cpp:272 GtkCRNAltoDisplay.cpp:314
+#: GtkCRNAltoDisplay.cpp:340 GtkCRNAltoDisplay.cpp:370
+#: GtkCRNAltoDisplay.cpp:405
+msgid "Cut vertically here"
+msgstr ""
+
+#: GtkCRNAltoDisplay.cpp:278
+msgid "Create group"
+msgstr ""
+
+#: GtkCRNAltoDisplay.cpp:282 GtkCRNAltoDisplay.cpp:318
+#: GtkCRNAltoDisplay.cpp:344 GtkCRNAltoDisplay.cpp:374
+#: GtkCRNAltoDisplay.cpp:409
+msgid "Add to group"
+msgstr ""
+
+#: GtkCRNAltoDisplay.cpp:292 GtkCRNAltoDisplay.cpp:320
+#: GtkCRNAltoDisplay.cpp:346 GtkCRNAltoDisplay.cpp:376
+#: GtkCRNAltoDisplay.cpp:411
+msgid "Merge group"
+msgstr ""
+
+#: GtkCRNAltoDisplay.cpp:296 GtkCRNAltoDisplay.cpp:323
+#: GtkCRNAltoDisplay.cpp:349 GtkCRNAltoDisplay.cpp:379
+#: GtkCRNAltoDisplay.cpp:414
+msgid "Clear group"
+msgstr ""
+
+#: GtkCRNAltoDisplay.cpp:303
+msgid "Print space"
+msgstr ""
+
+#: GtkCRNAltoDisplay.cpp:316 GtkCRNAltoDisplay.cpp:342
+#: GtkCRNAltoDisplay.cpp:372 GtkCRNAltoDisplay.cpp:407
+msgid "Cut horizontally here"
+msgstr ""
+
+#: GtkCRNAltoDisplay.cpp:329
+msgid "Text block"
+msgstr ""
+
+#: GtkCRNAltoDisplay.cpp:355
+msgid "Text line"
+msgstr ""
+
+#: GtkCRNAltoDisplay.cpp:364 GtkCRNAltoDisplay.cpp:400
+msgid "Edit"
+msgstr ""
+
+#: GtkCRNAltoDisplay.cpp:385
+msgid "Word"
+msgstr ""
+
+#: GtkCRNAltoDisplay.cpp:389
+msgid "No transcription"
+msgstr ""
+
+#: GtkCRNAltoDisplay.cpp:423 GtkCRNAltoImage.cpp:222
+msgid "Add word"
+msgstr ""
+
+#: GtkCRNAltoDisplay.cpp:428
+msgid "Add text line"
+msgstr ""
+
+#: GtkCRNAltoDisplay.cpp:433
+msgid "Add text block"
+msgstr ""
+
+#: GtkCRNAltoDisplay.cpp:438
+msgid "Add print space"
+msgstr ""
+
+#: GtkCRNAltoDisplay.cpp:459
+msgid "Cannot add page."
+msgstr ""
+
+#: GtkCRNAltoDisplay.cpp:473
+msgid "Cannot remove page."
+msgstr ""
+
+#: GtkCRNAltoImage.cpp:231
+msgid "Delete word"
+msgstr ""
+
+#: GtkCRNAltoParagraphStyleEditor.cpp:29
+msgid "Undefined"
+msgstr ""
+
+#: GtkCRNAltoParagraphStyleEditor.cpp:30
+msgid "Right"
+msgstr ""
+
+#: GtkCRNAltoParagraphStyleEditor.cpp:31
+msgid "Left"
+msgstr ""
+
+#: GtkCRNAltoParagraphStyleEditor.cpp:32
+msgid "Center"
+msgstr ""
+
+#: GtkCRNAltoParagraphStyleEditor.cpp:35
+msgid "Paragraph style"
+msgstr ""
+
+#: GtkCRNAltoParagraphStyleEditor.cpp:38
+msgid "Left indentation"
+msgstr ""
+
+#: GtkCRNAltoParagraphStyleEditor.cpp:39
+msgid "Right indentation"
+msgstr ""
+
+#: GtkCRNAltoParagraphStyleEditor.cpp:40
+msgid "Line space"
+msgstr ""
+
+#: GtkCRNAltoParagraphStyleEditor.cpp:41
+msgid "First line indentation"
+msgstr ""
+
+#: GtkCRNAltoParagraphStyleEditor.cpp:68 GtkCRNAltoTextStyleEditor.cpp:68
+msgid "Id"
+msgstr ""
+
+#: GtkCRNAltoParagraphStyleEditor.cpp:71
+msgid "Alignment"
+msgstr ""
+
+#: GtkCRNAltoStyleButton.cpp:58
+msgid "Style not found."
+msgstr ""
+
+#: GtkCRNAltoStyleRefList.cpp:53
+msgid "Add style"
+msgstr ""
+
+#: GtkCRNAltoStyleRefList.cpp:64
+msgid "Add text style"
+msgstr ""
+
+#: GtkCRNAltoStyleRefList.cpp:68
+msgid "Add paragraph style"
+msgstr ""
+
+#: GtkCRNAltoStyleRefList.cpp:131
+msgid "Create style"
+msgstr ""
+
+#: GtkCRNAltoStyleRefList.cpp:151
+msgid "This id already exists in the document."
+msgstr ""
+
+#: GtkCRNAltoTextLineEditor.cpp:31
+msgid "Text line information"
+msgstr ""
+
+#: GtkCRNAltoTextLineEditor.cpp:34
+msgid "Baseline"
+msgstr ""
+
+#: GtkCRNAltoTextLineEditor.cpp:62
+msgid "Horizontal position"
+msgstr ""
+
+#: GtkCRNAltoTextLineEditor.cpp:66
+msgid "Vertical position"
+msgstr ""
+
+#: GtkCRNAltoTextLineEditor.cpp:70
+msgid "Width"
+msgstr ""
+
+#: GtkCRNAltoTextLineEditor.cpp:74
+msgid "Height"
+msgstr ""
+
+#: GtkCRNAltoTextLineEditor.cpp:96
+msgid "Manually corrected"
+msgstr ""
+
+#: GtkCRNAltoTextLineEditor.cpp:109
+msgid "Line styles"
+msgstr ""
+
+#: GtkCRNAltoTextStyleEditor.cpp:30
+msgid "Text style"
+msgstr ""
+
+#: GtkCRNAltoTextStyleEditor.cpp:35
+msgid "Colored"
+msgstr ""
+
+#: GtkCRNAltoTextStyleEditor.cpp:36 GtkCRNAltoWordEditor.cpp:34
+msgid "Bold"
+msgstr ""
+
+#: GtkCRNAltoTextStyleEditor.cpp:37 GtkCRNAltoWordEditor.cpp:35
+msgid "Italics"
+msgstr ""
+
+#: GtkCRNAltoTextStyleEditor.cpp:38 GtkCRNAltoWordEditor.cpp:36
+msgid "Subscript"
+msgstr ""
+
+#: GtkCRNAltoTextStyleEditor.cpp:39 GtkCRNAltoWordEditor.cpp:37
+msgid "Superscript"
+msgstr ""
+
+#: GtkCRNAltoTextStyleEditor.cpp:40 GtkCRNAltoWordEditor.cpp:38
+msgid "Small caps"
+msgstr ""
+
+#: GtkCRNAltoTextStyleEditor.cpp:41 GtkCRNAltoWordEditor.cpp:39
+msgid "Underlined"
+msgstr ""
+
+#: GtkCRNAltoTextStyleEditor.cpp:71
+msgid "Font family"
+msgstr ""
+
+#: GtkCRNAltoTextStyleEditor.cpp:76
+msgid "Serif"
+msgstr ""
+
+#: GtkCRNAltoTextStyleEditor.cpp:83
+msgid "Fixed width"
+msgstr ""
+
+#: GtkCRNAltoTextStyleEditor.cpp:90
+msgid "Font size"
+msgstr ""
+
+#: GtkCRNAltoWordEditor.cpp:31
+msgid "Word information"
+msgstr ""
+
+#: GtkCRNAltoWordEditor.cpp:33
+msgid "Word confidence"
+msgstr ""
+
+#: GtkCRNAltoWordEditor.cpp:67
+msgid "Content"
+msgstr ""
+
+#: GtkCRNAltoWordEditor.cpp:99
+msgid "Word styles"
+msgstr ""
+
+#: GtkCRNApp.cpp:59
+msgid "_File"
+msgstr ""
+
+#: GtkCRNApp.cpp:59
+msgid "File"
+msgstr ""
+
+#: GtkCRNApp.cpp:61
+msgid "_?"
+msgstr ""
+
+#: GtkCRNApp.cpp:61
+msgid "?"
+msgstr ""
+
+#: GtkCRNApp.cpp:78
+msgid "Are you sure you want to quit?"
+msgstr ""
+
+#: GtkCRNApp.cpp:113 GtkCRNDocument.cpp:609 GtkCRNDocument.cpp:805
+#: GtkCRNDocument.cpp:954 GtkCRNDocument.cpp:1168
+msgid "_Cancel"
+msgstr ""
+
+#: GtkCRNApp.cpp:114 GtkCRNDocument.cpp:806 GtkCRNDocument.cpp:955
+msgid "_OK"
+msgstr ""
+
+#: GtkCRNApp.cpp:169
+msgid "Advanced details"
+msgstr ""
+
+#: GtkCRNApp.cpp:198
+msgid "Unhandled exception caught."
+msgstr ""
+
+#: GtkCRNConfigElement.cpp:38
+msgid "The element was not initialized."
+msgstr ""
+
+#: GtkCRNDocument.cpp:54 GtkCRNDocument.cpp:93
+msgid "Views"
+msgstr ""
+
+#: GtkCRNDocument.cpp:70
+msgid "Blocks"
+msgstr ""
+
+#: GtkCRNDocument.cpp:93
+msgid "_Views"
+msgstr ""
+
+#: GtkCRNDocument.cpp:94
+msgid "_Add Views"
+msgstr ""
+
+#: GtkCRNDocument.cpp:94
+msgid "Add Views"
+msgstr ""
+
+#: GtkCRNDocument.cpp:95
+msgid "_Refresh Views"
+msgstr ""
+
+#: GtkCRNDocument.cpp:95
+msgid "Refresh Views"
+msgstr ""
+
+#: GtkCRNDocument.cpp:96
+msgid "Select _First View"
+msgstr ""
+
+#: GtkCRNDocument.cpp:96
+msgid "Select First View"
+msgstr ""
+
+#: GtkCRNDocument.cpp:97
+msgid "Select _Previous View"
+msgstr ""
+
+#: GtkCRNDocument.cpp:97
+msgid "Select Previous View"
+msgstr ""
+
+#: GtkCRNDocument.cpp:98
+msgid "Select _Next View"
+msgstr ""
+
+#: GtkCRNDocument.cpp:98
+msgid "Select Next View"
+msgstr ""
+
+#: GtkCRNDocument.cpp:99
+msgid "Select _Last View"
+msgstr ""
+
+#: GtkCRNDocument.cpp:99
+msgid "Select Last View"
+msgstr ""
+
+#: GtkCRNDocument.cpp:100
+msgid "Select _All Views"
+msgstr ""
+
+#: GtkCRNDocument.cpp:100
+msgid "Select All Views"
+msgstr ""
+
+#: GtkCRNDocument.cpp:101
+msgid "_Deselect Views"
+msgstr ""
+
+#: GtkCRNDocument.cpp:101
+msgid "Deselect Views"
+msgstr ""
+
+#: GtkCRNDocument.cpp:102
+msgid "Select _Even Views"
+msgstr ""
+
+#: GtkCRNDocument.cpp:103
+msgid "Select _Odd Views"
+msgstr ""
+
+#: GtkCRNDocument.cpp:104
+msgid "_Invert View Selection"
+msgstr ""
+
+#: GtkCRNDocument.cpp:104
+msgid "Invert View Selection"
+msgstr ""
+
+#: GtkCRNDocument.cpp:105
+msgid "_Remove View Selection"
+msgstr ""
+
+#: GtkCRNDocument.cpp:105
+msgid "Remove View Selection"
+msgstr ""
+
+#: GtkCRNDocument.cpp:107
+msgid "_Export PDF"
+msgstr ""
+
+#: GtkCRNDocument.cpp:107 GtkCRNDocument.cpp:1154 GtkCRNDocument.cpp:1188
+msgid "Export PDF"
+msgstr ""
+
+#: GtkCRNDocument.cpp:118
+msgid "_Add Subblock"
+msgstr ""
+
+#: GtkCRNDocument.cpp:118
+msgid "Add Subblock"
+msgstr ""
+
+#: GtkCRNDocument.cpp:119
+msgid "_Remove Subblock"
+msgstr ""
+
+#: GtkCRNDocument.cpp:119
+msgid "Remove Subblock"
+msgstr ""
+
+#: GtkCRNDocument.cpp:120
+msgid "_Show/Hide Subblocks"
+msgstr ""
+
+#: GtkCRNDocument.cpp:120
+msgid "Show/Hide Subblocks"
+msgstr ""
+
+#: GtkCRNDocument.cpp:121
+msgid "Subblocks _Settings"
+msgstr ""
+
+#: GtkCRNDocument.cpp:121
+msgid "Subblocks Settings"
+msgstr ""
+
+#: GtkCRNDocument.cpp:198
+msgid "Block name"
+msgstr ""
+
+#: GtkCRNDocument.cpp:199
+msgid "Coordinates"
+msgstr ""
+
+#: GtkCRNDocument.cpp:299
+msgid "Inexistent view"
+msgstr ""
+
+#: GtkCRNDocument.cpp:320
+msgid "The document was never saved. It is impossible to generate thumbnails."
+msgstr ""
+
+#: GtkCRNDocument.cpp:333
+#, c-format
+msgid ""
+"%i error(s) occurred during the generation of the thumbnails. Some images "
+"may be deffective."
+msgstr ""
+
+#: GtkCRNDocument.cpp:357
+msgid "Refresh"
+msgstr ""
+
+#: GtkCRNDocument.cpp:358
+msgid "Loading view"
+msgstr ""
+
+#: GtkCRNDocument.cpp:597
+msgid "Please select views to add"
+msgstr ""
+
+#: GtkCRNDocument.cpp:610
+msgid "_Add"
+msgstr ""
+
+#: GtkCRNDocument.cpp:802
+msgid "Add a subblock"
+msgstr ""
+
+#: GtkCRNDocument.cpp:816
+msgid "Subblock tree"
+msgstr ""
+
+#: GtkCRNDocument.cpp:817
+msgid "New subblock's name"
+msgstr ""
+
+#: GtkCRNDocument.cpp:849
+msgid "New subblock"
+msgstr ""
+
+#: GtkCRNDocument.cpp:871
+msgid "Cannot add such selection to the subblock tree."
+msgstr ""
+
+#: GtkCRNDocument.cpp:951
+msgid "Configure subblocks display"
+msgstr ""
+
+#: GtkCRNDocument.cpp:966
+msgid "Frame color"
+msgstr ""
+
+#: GtkCRNDocument.cpp:967
+msgid "Fill color"
+msgstr ""
+
+#: GtkCRNDocument.cpp:968
+msgid "Show subblock _labels"
+msgstr ""
+
+#: GtkCRNDocument.cpp:970
+msgid "Label color"
+msgstr ""
+
+#: GtkCRNDocument.cpp:1169
+msgid "_Save"
+msgstr ""
+
+#: GtkCRNDocument.cpp:1189
+msgid "Writing image"
+msgstr ""
+
+#: GtkCRNDrawingPanel.cpp:39
+msgid "_Background Color…"
+msgstr ""
+
+#: GtkCRNDrawingPanel.cpp:39
+msgid "Background Color"
+msgstr ""
+
+#: GtkCRNDrawingPanel.cpp:41
+msgid "Background"
+msgstr ""
+
+#: GtkCRNDrawingPanel.cpp:46
+msgid "_Foreground Color…"
+msgstr ""
+
+#: GtkCRNDrawingPanel.cpp:46
+msgid "Foreground Color"
+msgstr ""
+
+#: GtkCRNDrawingPanel.cpp:48
+msgid "Foreground"
+msgstr ""
+
+#: GtkCRNDrawingPanel.cpp:58
+msgid "Set _Thickness"
+msgstr ""
+
+#: GtkCRNDrawingPanel.cpp:58
+msgid "Set Thickness"
+msgstr ""
+
+#: GtkCRNDrawingPanel.cpp:94 GtkCRNImage.cpp:209
+msgid "null or negative zoom value."
+msgstr ""
+
+#: GtkCRNFileSelecter.cpp:47
+msgid "Filename"
+msgstr ""
+
+#: GtkCRNFileSelecterDialog.cpp:38
+msgid "File selection"
+msgstr ""
+
+#: GtkCRNHelpers.cpp:80
+msgid "not a ToggleAction."
+msgstr ""
+
+#: GtkCRNImage.cpp:143
+msgid "_Clear User Selection"
+msgstr ""
+
+#: GtkCRNImage.cpp:143
+msgid "Clear User Selection"
+msgstr ""
+
+#: GtkCRNImage.cpp:1991
+msgid "Cannot set selection type to Text."
+msgstr ""
+
+#: GtkCRNImage.cpp:1993
+msgid "Cannot set selection type to Polygon."
+msgstr ""
+
+#: GtkCRNImage.cpp:2080 GtkCRNImage.cpp:2098
+msgid "The polygon must have more than two points."
+msgstr ""
+
+#: GtkCRNImage.cpp:2116 GtkCRNImage.cpp:2134 GtkCRNImage.cpp:2151
+msgid "Overlay not found."
+msgstr ""
+
+#: GtkCRNImage.cpp:2119 GtkCRNImage.cpp:2137 GtkCRNImage.cpp:2154
+msgid "Overlay item not found."
+msgstr ""
+
+#: GtkCRNImage.cpp:2222 GtkCRNImage.cpp:2225 GtkCRNImage.cpp:2244
+#: GtkCRNImage.cpp:2247 GtkCRNImage.cpp:2266 GtkCRNImage.cpp:2269
+msgid "No selection found."
+msgstr ""
+
+#: GtkCRNImage.cpp:2232 GtkCRNImage.cpp:2291
+msgid "The selection is not a rectangle."
+msgstr ""
+
+#: GtkCRNImage.cpp:2254 GtkCRNImage.cpp:2308
+msgid "The selection is not a point."
+msgstr ""
+
+#: GtkCRNImage.cpp:2276 GtkCRNImage.cpp:2329
+msgid "The selection is not a line."
+msgstr ""
+
+#: GtkCRNMain.cpp:100
+msgid "Using default language."
+msgstr ""
+
+#: GtkCRNObject.cpp:41
+msgid "null object"
+msgstr ""
+
+#: GtkCRNPDFAttributes.cpp:28
+msgid "Single pages"
+msgstr ""
+
+#: GtkCRNPDFAttributes.cpp:29
+msgid "Continuous pages"
+msgstr ""
+
+#: GtkCRNPDFAttributes.cpp:30
+msgid "Two pages, first on the left"
+msgstr ""
+
+#: GtkCRNPDFAttributes.cpp:31
+msgid "Tow pages, first on the right"
+msgstr ""
+
+#: GtkCRNPDFAttributes.cpp:36
+msgid "Lossy image compression"
+msgstr ""
+
+#: GtkCRNPDFAttributes.cpp:37
+msgid "Allow users to copy the content"
+msgstr ""
+
+#: GtkCRNPDFAttributes.cpp:38
+msgid "Allow users to print the document"
+msgstr ""
+
+#: GtkCRNPDFAttributes.cpp:41 GtkCRNPDFAttributes.cpp:43
+msgid "Author"
+msgstr ""
+
+#: GtkCRNPDFAttributes.cpp:49 GtkCRNPDFAttributes.cpp:52
+msgid "Title"
+msgstr ""
+
+#: GtkCRNPDFAttributes.cpp:236
+msgid "JPEG quality must be between 0 and 100."
+msgstr ""
+
+#: GtkCRNProgressWindow.cpp:40
+msgid "_Close"
+msgstr ""
+
+#: GtkCRNProgressWindow.cpp:115 GtkCRNProgressWindow.cpp:130
+#: GtkCRNSelectionBox.cpp:708 GtkCRNSelectionBox.cpp:724
+#: GtkCRNSelectionBox.cpp:762
+msgid "index out of bounds."
+msgstr ""
+
+#: GtkCRNProp3.cpp:94
+msgid "null event."
+msgstr ""
+
+#: GtkCRNSelectionBox.cpp:63
+msgid "GtkCRN::SelectionBox: Invalid orientation."
+msgstr ""

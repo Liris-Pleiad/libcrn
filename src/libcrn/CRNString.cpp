@@ -27,7 +27,6 @@
 #include <CRNStringUTF8.h>
 #include <CRNMath/CRNProp3.h>
 #include <CRNData/CRNDataFactory.h>
-#include <CRNUtils/CRNXml.h>
 #include <CRNProtocols.h>
 #include <algorithm> // for min & max
 

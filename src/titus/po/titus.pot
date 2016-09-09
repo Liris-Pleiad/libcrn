@@ -1,0 +1,480 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-09-09 10:23+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: titus.cpp:55
+msgid "Please select an image"
+msgstr ""
+
+#: titus.cpp:682
+msgid "_Open image"
+msgstr ""
+
+#: titus.cpp:682
+msgid "Open image"
+msgstr ""
+
+#: titus.cpp:683
+msgid "_Save image"
+msgstr ""
+
+#: titus.cpp:683
+msgid "Save image"
+msgstr ""
+
+#: titus.cpp:687 titus.cpp:707
+msgid "_RGB"
+msgstr ""
+
+#: titus.cpp:687
+msgid "Show RGB image"
+msgstr ""
+
+#: titus.cpp:689 titus.cpp:725
+msgid "_Gray"
+msgstr ""
+
+#: titus.cpp:689
+msgid "Show Gray image"
+msgstr ""
+
+#: titus.cpp:691 titus.cpp:744
+msgid "_BW"
+msgstr ""
+
+#: titus.cpp:691
+msgid "Show BW image"
+msgstr ""
+
+#: titus.cpp:693
+msgid "_Result"
+msgstr ""
+
+#: titus.cpp:693
+msgid "Show result image"
+msgstr ""
+
+#: titus.cpp:697
+msgid "Gene_ric"
+msgstr ""
+
+#: titus.cpp:698
+msgid "_Gaussian blur"
+msgstr ""
+
+#: titus.cpp:699
+msgid "Gaussian blur along _x"
+msgstr ""
+
+#: titus.cpp:700
+msgid "Gaussian blur along _y"
+msgstr ""
+
+#: titus.cpp:701
+msgid "Gaussian _derivative along x"
+msgstr ""
+
+#: titus.cpp:702
+msgid "Gaussian d_erivative along y"
+msgstr ""
+
+#: titus.cpp:703
+msgid "Gaussian _second derivative along x"
+msgstr ""
+
+#: titus.cpp:704
+msgid "Gaussian se_cond derivative along y"
+msgstr ""
+
+#: titus.cpp:708
+msgid "_Red"
+msgstr ""
+
+#: titus.cpp:709
+msgid "_Green"
+msgstr ""
+
+#: titus.cpp:710
+msgid "_Blue"
+msgstr ""
+
+#: titus.cpp:711
+msgid "_Hue"
+msgstr ""
+
+#: titus.cpp:712
+msgid "_Saturation"
+msgstr ""
+
+#: titus.cpp:713
+msgid "Pseudo s_aturation"
+msgstr ""
+
+#: titus.cpp:714
+msgid "_Value"
+msgstr ""
+
+#: titus.cpp:715
+msgid "Luminance (_YUV)"
+msgstr ""
+
+#: titus.cpp:716
+msgid "Luminance (HS_L)"
+msgstr ""
+
+#: titus.cpp:717
+msgid "Pseudo l_uminance"
+msgstr ""
+
+#: titus.cpp:719
+msgid "_Saturate"
+msgstr ""
+
+#: titus.cpp:720
+msgid "Edge _preserving filter"
+msgstr ""
+
+#: titus.cpp:722 titus.cpp:741 titus.cpp:754
+msgid "_Differential"
+msgstr ""
+
+#: titus.cpp:726
+msgid "To _RGB"
+msgstr ""
+
+#: titus.cpp:727
+msgid "_Threshold"
+msgstr ""
+
+#: titus.cpp:728
+msgid "_Fisher"
+msgstr ""
+
+#: titus.cpp:729
+msgid "_Entropy"
+msgstr ""
+
+#: titus.cpp:730
+msgid "_Otsu"
+msgstr ""
+
+#: titus.cpp:731
+msgid "_Niblack"
+msgstr ""
+
+#: titus.cpp:732
+msgid "_Sauvola"
+msgstr ""
+
+#: titus.cpp:733
+msgid "_k means histogram"
+msgstr ""
+
+#: titus.cpp:734
+msgid "Local m_in"
+msgstr ""
+
+#: titus.cpp:735
+msgid "Local m_ax"
+msgstr ""
+
+#: titus.cpp:737
+msgid "_Strokes statistics"
+msgstr ""
+
+#: titus.cpp:738
+msgid "_Histogram"
+msgstr ""
+
+#: titus.cpp:739
+msgid "_Radial histogram"
+msgstr ""
+
+#: titus.cpp:745
+msgid "To _gray"
+msgstr ""
+
+#: titus.cpp:746
+msgid "_Left profile"
+msgstr ""
+
+#: titus.cpp:747
+msgid "_Right profile"
+msgstr ""
+
+#: titus.cpp:748
+msgid "_Top profile"
+msgstr ""
+
+#: titus.cpp:749
+msgid "_Bottom profile"
+msgstr ""
+
+#: titus.cpp:750
+msgid "_Horizontal projection"
+msgstr ""
+
+#: titus.cpp:751
+msgid "_Vertical projection"
+msgstr ""
+
+#: titus.cpp:755
+msgid "_Diffuse"
+msgstr ""
+
+#: titus.cpp:756
+msgid "Gradient (_grayscale)"
+msgstr ""
+
+#: titus.cpp:757
+msgid "Gradient (_RGB)"
+msgstr ""
+
+#: titus.cpp:758
+msgid "Gradient _module"
+msgstr ""
+
+#: titus.cpp:760
+msgid "_Divergence"
+msgstr ""
+
+#: titus.cpp:761
+msgid "_Laplacian"
+msgstr ""
+
+#: titus.cpp:762
+msgid "_Edge"
+msgstr ""
+
+#: titus.cpp:763
+msgid "_Corner"
+msgstr ""
+
+#: titus.cpp:764
+msgid "Kappa _1"
+msgstr ""
+
+#: titus.cpp:765
+msgid "Kappa _2"
+msgstr ""
+
+#: titus.cpp:766
+msgid "_Hessian corner"
+msgstr ""
+
+#: titus.cpp:768
+msgid "_Isophote curvature"
+msgstr ""
+
+#: titus.cpp:769
+msgid "_Flowline curvature"
+msgstr ""
+
+#: titus.cpp:770
+msgid "_Gaussian curvature"
+msgstr ""
+
+#: titus.cpp:771
+msgid "G_radient curvature"
+msgstr ""
+
+#: titus.cpp:773
+msgid "L_x"
+msgstr ""
+
+#: titus.cpp:774
+msgid "L_y"
+msgstr ""
+
+#: titus.cpp:775
+msgid "L_xx"
+msgstr ""
+
+#: titus.cpp:776
+msgid "L_xy"
+msgstr ""
+
+#: titus.cpp:777
+msgid "L_yy"
+msgstr ""
+
+#: titus.cpp:778
+msgid "L_w"
+msgstr ""
+
+#: titus.cpp:779
+msgid "L_vv"
+msgstr ""
+
+#: titus.cpp:780
+msgid "L_vw"
+msgstr ""
+
+#: titus.cpp:781
+msgid "L_ww"
+msgstr ""
+
+#: titus.cpp:933 titus.cpp:1020
+msgid "_Cancel"
+msgstr ""
+
+#: titus.cpp:934
+msgid "_Open"
+msgstr ""
+
+#: titus.cpp:995
+msgid "Invalid image file."
+msgstr ""
+
+#: titus.cpp:1008
+msgid "Select a PNG image to export…"
+msgstr ""
+
+#: titus.cpp:1021
+msgid "_Save"
+msgstr ""
+
+#: titus.cpp:1200
+msgid "Testing tool for libcrn functions"
+msgstr ""
+
+#: titus.cpp:1202
+msgid "http://www.corenum.com/knowledge/libcrn.html"
+msgstr ""
+
+#: titus.cpp:1212
+msgid "Gaussian blur"
+msgstr ""
+
+#: titus.cpp:1214 titus.cpp:1246 titus.cpp:1279 titus.cpp:1313 titus.cpp:1349
+#: titus.cpp:1386 titus.cpp:1422 titus.cpp:1530 titus.cpp:1667
+msgid "Sigma"
+msgstr ""
+
+#: titus.cpp:1244
+msgid "Gaussian blur along x"
+msgstr ""
+
+#: titus.cpp:1277
+msgid "Gaussian blur along y"
+msgstr ""
+
+#: titus.cpp:1311
+msgid "Gaussian derivative along x"
+msgstr ""
+
+#: titus.cpp:1347
+msgid "Gaussian derivative along y"
+msgstr ""
+
+#: titus.cpp:1384
+msgid "Gaussian second derivative along x"
+msgstr ""
+
+#: titus.cpp:1420
+msgid "Gaussian second derivative along y"
+msgstr ""
+
+#: titus.cpp:1515
+msgid "Edge preserving filter"
+msgstr ""
+
+#: titus.cpp:1517
+msgid "# iterations"
+msgstr ""
+
+#: titus.cpp:1519
+msgid "Maximal distance between colors of a same class"
+msgstr ""
+
+#: titus.cpp:1528 titus.cpp:1665 titus.cpp:1723
+msgid "Differential"
+msgstr ""
+
+#: titus.cpp:1548 titus.cpp:1550
+msgid "Threshold"
+msgstr ""
+
+#: titus.cpp:1574
+msgid "Niblack"
+msgstr ""
+
+#: titus.cpp:1576 titus.cpp:1589
+msgid "Half window"
+msgstr ""
+
+#: titus.cpp:1578 titus.cpp:1591
+msgid "k"
+msgstr ""
+
+#: titus.cpp:1587
+msgid "Sauvola"
+msgstr ""
+
+#: titus.cpp:1600
+msgid "k means histogram"
+msgstr ""
+
+#: titus.cpp:1602
+msgid "Number of classes"
+msgstr ""
+
+#: titus.cpp:1604
+msgid "Number of black classes"
+msgstr ""
+
+#: titus.cpp:1614
+msgid ""
+"The number of black classes must be lower than the total number of classes."
+msgstr ""
+
+#: titus.cpp:1620
+msgid "Local min"
+msgstr ""
+
+#: titus.cpp:1622 titus.cpp:1633
+msgid "Radius"
+msgstr ""
+
+#: titus.cpp:1631
+msgid "Local max"
+msgstr ""
+
+#: titus.cpp:1644
+msgid "Strokes width: "
+msgstr ""
+
+#: titus.cpp:1647
+msgid "Strokes height: "
+msgstr ""
+
+#: titus.cpp:1725
+msgid "Number of iterations"
+msgstr ""
+
+#: titus.cpp:1727
+msgid "Max divergence to allow modification of a pixel"
+msgstr ""
+
+#: titus.cpp:1862
+msgid "Cancel"
+msgstr ""
+
+#: titus.cpp:1863
+msgid "OK"
+msgstr ""

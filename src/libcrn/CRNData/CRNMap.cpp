@@ -23,7 +23,6 @@
 #include <CRNException.h>
 #include <CRNData/CRNVector.h>
 #include <CRNData/CRNDataFactory.h>
-#include <CRNUtils/CRNXml.h>
 #include <CRNIO/CRNIO.h>
 #include <CRNi18n.h>
 using namespace crn;

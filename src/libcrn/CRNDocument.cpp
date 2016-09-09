@@ -25,7 +25,7 @@
 #include <CRNConfig.h>
 #include <CRNUtils/CRNAtScopeExit.h>
 #include <CRNUtils/CRNProgress.h>
-#include <CRNUtils/CRNXml.h>
+#include <CRNXml/CRNXml.h>
 #include <CRNIO/CRNIO.h>
 #ifdef CRN_USING_HARU
 #	include <CRNUtils/CRNPDF.h>
@@ -680,7 +680,13 @@ void Document::save(const Path &fname)
  */
 Path Document::GetDefaultDirName()
 {
-	return Path(Config::GetTopDataPath()) + "/documents/";
+	const auto dirname = Config::GetTopDataPath() / "documents";
+	if (!IO::Access(dirname, IO::EXISTS))
+	{
+		try { IO::Mkdir(dirname); }
+		catch (...) {}
+	}
+	return dirname;
 }
 
 /*****************************************************************************/
@@ -692,7 +698,7 @@ Path Document::GetDefaultDirName()
  */
 Path Document::completeFilename(const Path &fn) const
 {
-	return GetDefaultDirName() + fn;
+	return GetDefaultDirName() / fn;
 }
 
 /*! 

@@ -15,12 +15,12 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with libcrn.  If not, see <http://www.gnu.org/licenses/>.
  * 
- * file: CRNComplexObject.h
+ * file: CRNSavable.h
  * \author Yann LEYDIER
  */
 
-#ifndef CRNCOMPLEXOBJECT_HEADER
-#define CRNCOMPLEXOBJECT_HEADER
+#ifndef CRNSAVABLE_HEADER
+#define CRNSAVABLE_HEADER
 
 #include <CRNObject.h>
 #include <map>
@@ -129,9 +129,6 @@ namespace crn
 			virtual void save(const Path &fname);
 			Path filename; /*!< The file name of the object */
 
-		/**************************************************************************/
-		/* Serializable protocol                                                  */
-		/**************************************************************************/
 		public:
 			/*! \brief Initializes some internal data from an XML element. */
 			void deserialize_internal_data(xml::Element &el);

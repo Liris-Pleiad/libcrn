@@ -23,7 +23,6 @@
 #ifndef CRNUNIVARIATEGAUSSIANMIXTURE_HEADER
 #define CRNUNIVARIATEGAUSSIANMIXTURE_HEADER
 
-#include <CRNComplexObject.h>
 #include <vector>
 #include <limits>
 #include <CRNMath/CRNUnivariateGaussianPDF.h>

@@ -24,7 +24,6 @@
 #include <CRNMath/CRNUnivariateGaussianPDF.h>
 #include <CRNMath/CRNMatrixDouble.h>
 #include <CRNData/CRNDataFactory.h>
-#include <CRNUtils/CRNXml.h>
 #include <CRNi18n.h>
 
 #include <math.h>

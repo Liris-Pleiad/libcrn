@@ -22,7 +22,7 @@
 #ifndef CRNVECTOR_HEADER
 #define CRNVECTOR_HEADER
 
-#include <CRNComplexObject.h>
+#include <CRNString.h>
 #include <algorithm>
 #include <cstddef>
 #include <CRNData/CRNVectorPtr.h>

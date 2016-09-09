@@ -25,7 +25,7 @@
 #include <CRNData/CRNReal.h>
 #include <CRNException.h>
 #include <CRNIO/CRNIO.h>
-#include <CRNUtils/CRNXml.h>
+#include <CRNXml/CRNXml.h>
 #include <CRNi18n.h>
 #ifdef _MSC_VER
 #	include <direct.h> // for getcwd
