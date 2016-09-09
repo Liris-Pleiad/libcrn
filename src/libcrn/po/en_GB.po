@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libcrn 3.9\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-05 11:50+0200\n"
+"POT-Creation-Date: 2016-09-09 10:23+0200\n"
 "PO-Revision-Date: 2016-09-05 11:13+0200\n"
 "Last-Translator: Yann LEYDIER <yann@leydier.info>\n"
 "Language-Team: French <>\n"
@@ -17,6 +17,720 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Generator: Gtranslator 2.91.6\n"
+
+#: 3rdParty/unicode/UtfConverter.cpp:95 3rdParty/unicode/UtfConverter.cpp:168
+msgid "UTF not supported."
+msgstr "UTF not supported."
+
+#: CRNAI/CRNAffinityPropagation.cpp:32
+msgid "The damping must be in [0, 1[."
+msgstr "The damping must be in [0, 1[."
+
+#: CRNAI/CRNAffinityPropagation.cpp:34
+msgid "The number of stable iterations to stop must be >1."
+msgstr "The number of stable iterations to stop must be >1."
+
+#: CRNAI/CRNAffinityPropagation.cpp:36
+msgid "The maximal number of iterations must be >1."
+msgstr "The maximal number of iterations must be >1."
+
+#: CRNAI/CRNAffinityPropagation.cpp:181
+msgid "The preference is not the same dimension as the distance matrix."
+msgstr "The preference is not the same dimension as the distance matrix."
+
+#: CRNAI/CRNBipartite.cpp:303
+msgid "empty distance matrix."
+msgstr "empty distance matrix."
+
+#: CRNAI/CRNBipartite.cpp:306
+msgid "the distance matrix is not square."
+msgstr "the distance matrix is not square."
+
+#: CRNAI/CRNGaussianSCHMM.cpp:65
+msgid "Index out of range"
+msgstr "Index out of range"
+
+#: CRNAI/CRNGaussianSCHMM.cpp:106
+msgid "Illegal input vector dimension"
+msgstr "Illegal input vector dimension"
+
+#: CRNAI/CRNOutliers.cpp:34 CRNAI/CRNOutliers.cpp:120
+msgid "The neighborhood must be > 1."
+msgstr "The neighbourhood must be > 1."
+
+#: CRNAI/CRNOutliers.cpp:36 CRNAI/CRNOutliers.cpp:124
+msgid "The neighborhood is greater than the number of elements."
+msgstr "The neighbourhood is greater than the number of elements."
+
+#: CRNAI/CRNOutliers.cpp:111 CRNAI/CRNOutliers.cpp:205
+msgid "The distance matrix is not square."
+msgstr "The distance matrix is not square."
+
+#: CRNAI/CRNOutliers.cpp:122
+msgid "lambda must be > 0."
+msgstr "lambda must be > 0."
+
+#: CRNAI/CRNSpectralClustering.cpp:45 CRNAI/CRNSpectralClustering.cpp:87
+msgid "Neighborhood to compute sigma must be >=1."
+msgstr "Neighborhood to compute sigma must be >=1."
+
+#: CRNAI/CRNSpectralClustering.cpp:48 CRNAI/CRNSpectralClustering.cpp:90
+#: CRNAI/CRNSpectralClustering.cpp:125 CRNAI/CRNSpectralClustering.cpp:152
+msgid "Empty distance matrix."
+msgstr "Empty distance matrix."
+
+#: CRNAI/CRNSpectralClustering.cpp:122
+msgid "Dimension must be >=1."
+msgstr "Dimension must be >=1."
+
+#: CRNAI/CRNSpectralClustering.cpp:149
+msgid "Sigma must be positive."
+msgstr "Sigma must be positive."
+
+#: CRNAI/CRNSpectralClustering.cpp:209
+msgid "Eigenvalues should be in [0, 1]."
+msgstr "Eigenvalues should be in [0, 1]."
+
+#: CRNAI/CRNSpectralClustering.cpp:229
+msgid "Cannot project on less than one coordinate."
+msgstr "Cannot project on less than one coordinate."
+
+#: CRNBlock.cpp:77 CRNBlock.cpp:161
+msgid "NewBlock"
+msgstr "NewBlock"
+
+#: CRNBlock.cpp:80
+msgid "No image."
+msgstr "No image."
+
+#: CRNBlock.cpp:95
+msgid "unsupported image type."
+msgstr "unsupported image type."
+
+#: CRNBlock.cpp:213
+msgid "No parent."
+msgstr "No parent."
+
+#: CRNBlock.cpp:258 CRNBlock.cpp:304
+msgid "this is a topmost block. Its bounding box cannot be changed."
+msgstr "this is a topmost block. Its bounding box cannot be changed."
+
+#: CRNBlock.cpp:261 CRNBlock.cpp:307
+msgid "Uninitialized bounding box."
+msgstr "Uninitialized bounding box."
+
+#: CRNBlock.cpp:266
+msgid "bounding box out of parent's bounding box."
+msgstr "bounding box out of parent's bounding box."
+
+#: CRNBlock.cpp:342 CRNBlock.cpp:360 CRNBlock.cpp:381 CRNBlock.cpp:402
+#: CRNBlock.cpp:1849 CRNBlock.cpp:1880 CRNBlock.cpp:1900 CRNBlock.cpp:1922
+#: CRNBlock.cpp:1947 CRNBlock.cpp:1972 CRNBlock.cpp:1999 CRNBlock.cpp:2038
+#: CRNBlock.cpp:2062 CRNBlock.cpp:2085 CRNBlock.cpp:2117 CRNBlock.cpp:2142
+#: CRNBlock.cpp:2167 CRNBlock.cpp:2191 CRNBlock.cpp:2219 CRNBlock.cpp:2248
+#: CRNBlock.cpp:2283 CRNBlock.cpp:2519 CRNBlock.cpp:2562 CRNBlock.cpp:2604
+#: CRNBlock.cpp:2631 CRNBlock.cpp:2653
+msgid "tree not found."
+msgstr "tree not found."
+
+#: CRNBlock.cpp:434
+msgid "Cannot open image."
+msgstr "Cannot open image."
+
+#: CRNBlock.cpp:552 CRNBlock.cpp:579 CRNBlock.cpp:606 CRNBlock.cpp:641
+#: CRNBlock.cpp:674 CRNBlock.cpp:702 CRNBlock.cpp:730 CRNBlock.cpp:766
+msgid "Uninitialized clipping rectangle."
+msgstr "Uninitialized clipping rectangle."
+
+#: CRNBlock.cpp:557 CRNBlock.cpp:584 CRNBlock.cpp:617 CRNBlock.cpp:652
+#: CRNBlock.cpp:680 CRNBlock.cpp:708 CRNBlock.cpp:742 CRNBlock.cpp:778
+msgid "Clipping rectangle out of bounds."
+msgstr "Clipping rectangle out of bounds."
+
+#: CRNBlock.cpp:913 CRNBlock.cpp:973
+msgid "Cannot access to any source or buffer."
+msgstr "Cannot access to any source or buffer."
+
+#: CRNBlock.cpp:1010 CRNBlock.cpp:1087
+msgid "No filename given."
+msgstr "No filename given."
+
+#: CRNBlock.cpp:1107
+msgid "Saved block do not have the same size."
+msgstr "Saved block do not have the same size."
+
+#: CRNBlock.cpp:1151
+msgid "Wrong content."
+msgstr "Wrong content."
+
+#: CRNBlock.cpp:1447 CRNBlock.cpp:1477 CRNBlock.cpp:1507 CRNBlock.cpp:1537
+#: CRNImage/CRNImageGradient.cpp:40
+msgid "Wrong image dimensions."
+msgstr "Wrong image dimensions."
+
+#: CRNBlock.cpp:1902 CRNBlock.cpp:1927 CRNBlock.cpp:2003 CRNBlock.cpp:2523
+#: CRNBlock.cpp:2566 CRNBlock.cpp:2608 CRNBlock.cpp:2657 CRNDocument.cpp:108
+#: CRNDocument.cpp:150 CRNDocument.cpp:296 CRNDocument.cpp:328
+#: CRNDocument.cpp:597 CRNMath/CRNMultivariateGaussianMixture.cpp:89
+#: CRNMath/CRNMultivariateGaussianMixture.cpp:107
+#: CRNMath/CRNMultivariateGaussianMixture.cpp:125
+#: CRNMath/CRNMultivariateGaussianMixture.cpp:143
+#: CRNMath/CRNMultivariateGaussianMixture.cpp:226
+#: CRNMath/CRNMultivariateGaussianMixture.cpp:256
+#: CRNMath/CRNUnivariateGaussianMixture.cpp:56
+#: CRNMath/CRNUnivariateGaussianMixture.cpp:76
+#: CRNMath/CRNUnivariateGaussianMixture.cpp:96
+#: CRNMath/CRNUnivariateGaussianMixture.cpp:116
+#: CRNMath/CRNUnivariateGaussianMixture.cpp:148
+#: CRNMath/CRNUnivariateGaussianMixture.cpp:256 CRNString.cpp:141
+#: CRNString.cpp:158 CRNString.cpp:205 CRNString.cpp:225 CRNString.cpp:267
+#: CRNString.cpp:291 CRNString.cpp:520 CRNString.cpp:616 CRNString.cpp:636
+#: CRNString.cpp:660 CRNString.cpp:681 CRNString.cpp:702 CRNStringUTF8.cpp:97
+#: CRNStringUTF8.cpp:112 CRNStringUTF8.cpp:148 CRNStringUTF8.cpp:168
+#: CRNStringUTF8.cpp:210 CRNStringUTF8.cpp:234 CRNStringUTF8.cpp:365
+#: CRNStringUTF8.cpp:384 CRNStringUTF8.cpp:403 CRNStringUTF8.cpp:426
+#: CRNStringUTF8.cpp:447 CRNStringUTF8.cpp:468
+msgid "index out of bounds."
+msgstr "index out of bounds."
+
+#: CRNBlock.cpp:1955 CRNBlock.cpp:1980 CRNBlock.cpp:2047
+msgid "block not found."
+msgstr "block not found."
+
+#: CRNBlock.cpp:2223 CRNBlock.cpp:2252
+msgid "ratio is null or negative."
+msgstr "ratio is null or negative."
+
+#: CRNBlock.cpp:2286
+msgid "overlap is negative."
+msgstr "overlap is negative."
+
+#: CRNBlock.cpp:2391 CRNBlock.cpp:2452 CRNBlock.cpp:2696
+msgid "Tree not found."
+msgstr "Tree not found."
+
+#: CRNBlock.cpp:2397
+msgid "Identical indexes."
+msgstr "Identical indexes."
+
+#: CRNBlock.cpp:2403 CRNData/CRNVector.cpp:128 CRNData/CRNVector.cpp:216
+#: CRNDocument.cpp:199
+msgid "Index out of bounds."
+msgstr "Index out of bounds."
+
+#: CRNBlock.cpp:2469
+msgid "Cannot find subblock."
+msgstr "Cannot find subblock."
+
+#: CRNBlock.cpp:2542 CRNBlock.cpp:2582 CRNBlock.cpp:2675
+msgid "null block or block is not a child."
+msgstr "null block or block is not a child."
+
+#: CRNBlock.cpp:2737 CRNGeometry/CRNRect.cpp:246 CRNGeometry/CRNRect.cpp:328
+msgid "Wrong direction."
+msgstr "Wrong direction."
+
+#: CRNConfig.cpp:94
+msgid "Using default language."
+msgstr "British english language selected."
+
+#: CRNData/CRNData.cpp:161
+msgid "the character 'z' is invalid inside an ASCII85 block."
+msgstr "the character 'z' is invalid inside an ASCII85 block."
+
+#: CRNData/CRNData.cpp:171
+msgid "ASCII85 only allows characters '!' to 'u', but found a: "
+msgstr "ASCII85 only allows characters '!' to 'u', but found a: "
+
+#: CRNData/CRNData.cpp:194
+msgid "the last block of ASCII85 data cannot be a single byte."
+msgstr "the last block of ASCII85 data cannot be a single byte."
+
+#: CRNData/CRNDataFactory.cpp:51
+msgid "Null XML element."
+msgstr "Null XML element."
+
+#: CRNData/CRNDataFactory.cpp:56
+msgid "Cannot read element."
+msgstr "Cannot read element."
+
+#: CRNData/CRNDataFactory.cpp:124
+msgid "Unknown type: "
+msgstr "Unknown type: "
+
+#: CRNData/CRNInt.cpp:42 CRNData/CRNMap.cpp:192 CRNData/CRNReal.cpp:45
+#: CRNData/CRNVector.cpp:272
+#: CRNFeature/CRNBlockTreeExtractorTextLinesFromProjection.cpp:284
+#: CRNFeature/CRNBlockTreeExtractorWordsFromProjection.cpp:291
+#: CRNFeature/CRNFeatureExtractorAngleRadialZoning.cpp:197
+#: CRNFeature/CRNFeatureExtractorAngleZoning.cpp:128
+#: CRNFeature/CRNFeatureExtractorOverlappingAngleHistogram.cpp:238
+#: CRNFeature/CRNFeatureExtractorProfile.cpp:167
+#: CRNFeature/CRNFeatureExtractorProjection.cpp:123
+#: CRNGeometry/CRNPoint2DDouble.cpp:43 CRNGeometry/CRNPoint2DInt.cpp:43
+#: CRNGeometry/CRNRect.cpp:555 CRNGeometry/CRNStroke.cpp:68
+#: CRNIO/CRNPath.cpp:567 CRNMath/CRNLinearInterpolation.cpp:75
+#: CRNMath/CRNMatrixDouble.cpp:196 CRNMath/CRNProp3.cpp:194
+#: CRNMath/CRNUnivariateGaussianMixture.cpp:744
+#: CRNMath/CRNUnivariateGaussianPDF.cpp:258
+#: CRNStatistics/CRNHistogram.cpp:1065 CRNStatistics/CRNPCA.cpp:718
+#: CRNString.cpp:743 CRNStringUTF8.cpp:488 CRNUtils/CRNDefaultAction.cpp:52
+#: CRNUtils/CRNPDFAttributes.cpp:40
+msgid "Wrong XML element."
+msgstr "Wrong XML element."
+
+#: CRNData/CRNMap.cpp:107
+msgid "Key not found"
+msgstr "Key not found"
+
+#: CRNData/CRNMap.cpp:125 CRNData/CRNVector.cpp:234
+msgid "Object not found."
+msgstr "Object not found."
+
+#: CRNData/CRNMap.cpp:138
+msgid "Invalid iterator."
+msgstr "Invalid iterator."
+
+#: CRNData/CRNMap.cpp:156
+msgid "First iterator is end()."
+msgstr "First iterator is end()."
+
+#: CRNData/CRNMap.cpp:159
+msgid "First and end iterators are equal."
+msgstr "First and end iterators are equal."
+
+#: CRNData/CRNMap.cpp:174
+msgid "End iterator is before first."
+msgstr "End iterator is before first."
+
+#: CRNData/CRNMap.cpp:207
+msgid "Cannot deserialize: "
+msgstr "Cannot deserialize: "
+
+#: CRNData/CRNMap.cpp:207
+msgid " because "
+msgstr " because "
+
+#: CRNData/CRNMap.cpp:288
+msgid "Cannot find root element."
+msgstr "Cannot find root element."
+
+#: CRNData/CRNVector.cpp:144 CRNData/CRNVector.cpp:182 CRNDocument.cpp:360
+#: CRNDocument.cpp:400
+msgid "bad changeset size."
+msgstr "bad changeset size."
+
+#: CRNData/CRNVector.cpp:154 CRNData/CRNVector.cpp:192 CRNDocument.cpp:370
+#: CRNDocument.cpp:410
+msgid "changeset contains duplicates."
+msgstr "changeset contains duplicates."
+
+#: CRNData/CRNVector.cpp:159 CRNData/CRNVector.cpp:197 CRNDocument.cpp:375
+#: CRNDocument.cpp:415
+msgid "changeset contains values out of bounds."
+msgstr "changeset contains values out of bounds."
+
+#: CRNData/CRNVector.cpp:285
+msgid "Unknown XML element: "
+msgstr "Unknown XML element: "
+
+#: CRNData/CRNVector.cpp:345
+msgid "vectors have different sizes."
+msgstr "vectors have different sizes."
+
+#: CRNDocument.cpp:74 CRNDocument.cpp:106
+msgid "null filename."
+msgstr "null filename."
+
+#: CRNDocument.cpp:135 CRNDocument.cpp:283 CRNDocument.cpp:315
+msgid "filename not found."
+msgstr "filename not found."
+
+#: CRNDocument.cpp:265
+msgid "id not found."
+msgstr "id not found."
+
+#: CRNDocument.cpp:455
+msgid "Not a Document file."
+msgstr "Not a Document file."
+
+#: CRNDocument.cpp:601
+msgid "the document was never saved."
+msgstr "the document was never saved."
+
+#: CRNDocument.cpp:822
+msgid "Null width."
+msgstr "Null width."
+
+#: CRNDocument.cpp:828
+msgid "Null height."
+msgstr "Null height."
+
+#: CRNFeature/CRNFeatureExtractorProfile.cpp:47
+msgid "no direction given."
+msgstr "no direction given."
+
+#: CRNFeature/CRNFeatureExtractorProfile.cpp:49
+#: CRNFeature/CRNFeatureExtractorProjection.cpp:48
+msgid "negative size."
+msgstr "negative size."
+
+#: CRNFeature/CRNFeatureExtractorProfile.cpp:51
+#: CRNFeature/CRNFeatureExtractorProjection.cpp:50
+msgid "negative maximal value."
+msgstr "negative maximal value."
+
+#: CRNFeature/CRNFeatureExtractorProjection.cpp:46
+msgid "no orientation given."
+msgstr "no orientation given."
+
+#: CRNGeometry/CRNRect.cpp:112
+msgid "No orientation given."
+msgstr "No orientation given."
+
+#: CRNGeometry/CRNRect.cpp:226 CRNGeometry/CRNRect.cpp:439
+#: CRNGeometry/CRNRect.cpp:463 CRNGeometry/CRNRect.cpp:601
+msgid "The rectangle isn't initialized."
+msgstr "The rectangle isn't initialized."
+
+#: CRNGeometry/CRNRect.cpp:441 CRNGeometry/CRNRect.cpp:465
+msgid "negative scale."
+msgstr "negative scale."
+
+#: CRNGeometry/CRNStroke.cpp:124 CRNGeometry/CRNStroke.cpp:155
+msgid "Invalid stroke"
+msgstr "Invalid stroke"
+
+#: CRNGeometry/CRNStroke.cpp:161
+msgid "Null step."
+msgstr "Null step."
+
+#: CRNGeometry/CRNStroke.cpp:212 CRNGeometry/CRNStroke.cpp:229
+msgid "index out of range."
+msgstr "index out of range."
+
+#: CRNGeometry/CRNStroke.cpp:248
+msgid "Cannot reach abscissa."
+msgstr "Cannot reach abscissa."
+
+#: CRNImage/CRNImage.cpp:85 CRNImage/CRNImage.cpp:323 CRNIO/CRNTextFile.cpp:55
+msgid "Cannot open file "
+msgstr "Cannot open file "
+
+#: CRNImage/CRNImage.cpp:101
+msgid "Cannot create PNG reader."
+msgstr "Cannot create PNG reader."
+
+#: CRNImage/CRNImage.cpp:108
+msgid "Cannot create PNG info."
+msgstr "Cannot create PNG info."
+
+#: CRNImage/CRNImage.cpp:115
+msgid "Error while reading the PNG file "
+msgstr "Error while reading the PNG file "
+
+#: CRNImage/CRNImage.cpp:332
+msgid "Not a JPEG file."
+msgstr "Not a JPEG file."
+
+#: CRNImage/CRNImage.cpp:357
+msgid "JPEG file contains unnatural bytes per pixel count."
+msgstr "JPEG file contains unnatural bytes per pixel count."
+
+#: CRNImage/CRNImage.cpp:411 CRNImage/CRNImage.cpp:420
+msgid "Cannot convert filename string. "
+msgstr "Cannot convert filename string. "
+
+#: CRNImage/CRNImage.cpp:429
+msgid "Cannot open image. "
+msgstr "Cannot open image. "
+
+#: CRNImage/CRNImage.cpp:482
+msgid "Gdi+ could not load the image."
+msgstr "Gdi+ could not load the image."
+
+#: CRNImage/CRNImage.cpp:488
+msgid "Gdi+ could not load the image correctly. Error number "
+msgstr "Gdi+ could not load the image correctly. Error number "
+
+#: CRNImage/CRNImage.cpp:504 CRNImage/CRNImage.cpp:558
+#: CRNImage/CRNImage.cpp:583
+msgid "Could not lock pixels. Error number "
+msgstr "Could not lock pixels. Error number "
+
+#: CRNImage/CRNImage.cpp:613 CRNImage/CRNImageBW.cpp:279
+#: CRNImage/CRNImageBW.cpp:471 CRNImage/CRNImageGray.cpp:280
+#: CRNImage/CRNImageGray.cpp:472 CRNImage/CRNImageRGB.cpp:289
+#: CRNImage/CRNImageRGB.cpp:484
+msgid "Null file name."
+msgstr "Null file name."
+
+#: CRNImage/CRNImage.cpp:649
+msgid "No decoder could open the file "
+msgstr "No decoder could open the file "
+
+#: CRNImage/CRNImage.cpp:671 CRNImage/CRNImage.cpp:692
+#: CRNImage/CRNImage.cpp:713
+msgid "unknown image format."
+msgstr "unknown image format."
+
+#: CRNImage/CRNImageBW.cpp:70 CRNImage/CRNImageBW.cpp:321
+#: CRNImage/CRNImageGray.cpp:70 CRNImage/CRNImageGray.cpp:322
+#: CRNImage/CRNImageRGB.cpp:73 CRNImage/CRNImageRGB.cpp:331
+msgid "Cannot create file "
+msgstr "Cannot create file "
+
+#: CRNImage/CRNImageBW.cpp:77 CRNImage/CRNImageGray.cpp:77
+#: CRNImage/CRNImageRGB.cpp:80
+msgid "Cannot create the PNG structure."
+msgstr "Cannot create the PNG structure."
+
+#: CRNImage/CRNImageBW.cpp:83 CRNImage/CRNImageGray.cpp:83
+#: CRNImage/CRNImageRGB.cpp:86
+msgid "Cannot create the PNG info."
+msgstr "Cannot create the PNG info."
+
+#: CRNImage/CRNImageBW.cpp:90 CRNImage/CRNImageGray.cpp:90
+#: CRNImage/CRNImageRGB.cpp:93
+msgid "Error while generating the PNG image."
+msgstr "Error while generating the PNG image."
+
+#: CRNImage/CRNImageBW.cpp:157 CRNImage/CRNImageBW.cpp:371
+#: CRNImage/CRNImageGray.cpp:156 CRNImage/CRNImageGray.cpp:372
+#: CRNImage/CRNImageRGB.cpp:168 CRNImage/CRNImageRGB.cpp:385
+msgid "Cannot create temporary buffer."
+msgstr "Cannot create temporary buffer."
+
+#: CRNImage/CRNImageBW.cpp:191 CRNImage/CRNImageBW.cpp:406
+#: CRNImage/CRNImageGray.cpp:190 CRNImage/CRNImageGray.cpp:407
+#: CRNImage/CRNImageRGB.cpp:202 CRNImage/CRNImageRGB.cpp:421
+msgid "Cannot save file. "
+msgstr "Cannot save file. "
+
+#: CRNImage/CRNImageBW.cpp:243 CRNImage/CRNImageBW.cpp:427
+#: CRNImage/CRNImageGray.cpp:242 CRNImage/CRNImageGray.cpp:428
+#: CRNImage/CRNImageRGB.cpp:254 CRNImage/CRNImageRGB.cpp:442
+msgid "Cannot create bitmap"
+msgstr "Cannot create bitmap"
+
+#: CRNImage/CRNImageBW.cpp:308 CRNImage/CRNImageBW.cpp:500
+#: CRNImage/CRNImageGray.cpp:309 CRNImage/CRNImageGray.cpp:501
+#: CRNImage/CRNImageRGB.cpp:318 CRNImage/CRNImageRGB.cpp:513
+msgid ""
+"No library for saving image found or write permissions on the file or "
+"directory are not granted. No image will be saved."
+msgstr ""
+"No library for saving image found or write permissions on the file or "
+"directory are not granted. No image will be saved."
+
+#: CRNImage/CRNImageBW.cpp:332 CRNImage/CRNImageGray.cpp:333
+#: CRNImage/CRNImageRGB.cpp:342
+msgid "Cannot create jpeg file structure."
+msgstr "Cannot create jpeg file structure."
+
+#: CRNImage/CRNImageBW.cpp:801
+msgid "Min neighbors must be < 8."
+msgstr "Min neighbours must be < 8."
+
+#: CRNImage/CRNImageBW.cpp:856
+msgid "matrices of different sizes"
+msgstr "matrices of different sizes"
+
+#: CRNImage/CRNImageBW.cpp:860
+msgid "even matrix dimensions."
+msgstr "even matrix dimensions."
+
+#: CRNImage/CRNImageRGB.cpp:529
+msgid "The number of iterations is null."
+msgstr "The number of iterations is null."
+
+#: CRNIO/CRNConsoleMessenger.cpp:35 CRNIO/CRNFileMessenger.cpp:43
+msgid "DEBUG"
+msgstr "DEBUG"
+
+#: CRNIO/CRNConsoleMessenger.cpp:37 CRNIO/CRNFileMessenger.cpp:45
+msgid "WARNING"
+msgstr "WARNING"
+
+#: CRNIO/CRNConsoleMessenger.cpp:38 CRNIO/CRNFileMessenger.cpp:46
+msgid "ERROR"
+msgstr "ERROR"
+
+#: CRNIO/CRNFileMessenger.cpp:44
+msgid "VERBOSE"
+msgstr "VERBOSE"
+
+#: CRNIO/CRNIO.cpp:150
+msgid "Cannot create directory: "
+msgstr "Cannot create directory: "
+
+#: CRNIO/CRNIO.cpp:182
+msgid "Cannot remove: "
+msgstr "Cannot remove: "
+
+#: CRNIO/CRNIO.cpp:212 CRNIO/CRNIO.cpp:318
+msgid "Cannot open directory: "
+msgstr "Cannot open directory: "
+
+#: CRNIO/CRNIO.cpp:238
+msgid "Cannot remove file: "
+msgstr "Cannot remove file: "
+
+#: CRNIO/CRNIO.cpp:250
+msgid "Cannot remove directory: "
+msgstr "Cannot remove directory: "
+
+#: CRNIO/CRNIO.cpp:266 CRNIO/CRNIO.cpp:298
+msgid "Cannot copy a file over itself."
+msgstr "Cannot copy a file over itself."
+
+#: CRNIO/CRNIO.cpp:277
+msgid "Cannot open source file: "
+msgstr "Cannot open source file: "
+
+#: CRNIO/CRNIO.cpp:280
+msgid "Cannot open destination file: "
+msgstr "Cannot open destination file: "
+
+#: CRNIO/CRNPath.cpp:239 CRNIO/CRNPath.cpp:256
+msgid "the path does not contain a filename."
+msgstr "the path does not contain a filename."
+
+#: CRNIO/CRNTextFile.cpp:91 CRNIO/CRNTextFile.cpp:116
+#: CRNIO/CRNTextFile.cpp:139
+msgid "cannot open file "
+msgstr "cannot open file "
+
+#: CRNIO/CRNZip.cpp:78
+msgid "libzip version is too old to support zip_discard()."
+msgstr "libzip version is too old to support zip_discard()."
+
+#: CRNIO/CRNZip.cpp:156 CRNIO/CRNZip.cpp:219
+msgid "The file already exists."
+msgstr "The file already exists."
+
+#: CRNIO/CRNZip.cpp:158 CRNIO/CRNZip.cpp:221
+msgid "The file is inconsistent."
+msgstr "The file is inconsistent."
+
+#: CRNIO/CRNZip.cpp:161 CRNIO/CRNZip.cpp:224
+msgid "Not enough memory."
+msgstr "Not enough memory."
+
+#: CRNIO/CRNZip.cpp:163 CRNIO/CRNZip.cpp:226
+msgid "This is not a zip file."
+msgstr "This is not a zip file."
+
+#: CRNIO/CRNZip.cpp:166 CRNIO/CRNZip.cpp:229
+msgid "Cannot open file."
+msgstr "Cannot open file."
+
+#: CRNIO/CRNZip.cpp:169 CRNIO/CRNZip.cpp:232
+msgid "Cannot read file."
+msgstr "Cannot read file."
+
+#: CRNIO/CRNZip.cpp:171 CRNIO/CRNZip.cpp:234
+msgid "Unknown zip error."
+msgstr "Unknown zip error."
+
+#: CRNMath/CRNEquationSolver.cpp:50 CRNMath/CRNEquationSolver.cpp:100
+msgid "invalid or incompatible matrix dimensions"
+msgstr "invalid or incompatible matrix dimensions"
+
+#: CRNMath/CRNEquationSolver.cpp:58 CRNMath/CRNEquationSolver.cpp:131
+msgid "Equation has either no solution or an infinity of solutions."
+msgstr "Equation has either no solution or an infinity of solutions."
+
+#: CRNMath/CRNMatrixComplex.cpp:36
+msgid "FFT: signal size is not a power of 2."
+msgstr "FFT: signal size is not a power of 2."
+
+#: CRNMath/CRNMatrixDouble.cpp:65 CRNMath/CRNMatrixDouble.cpp:92
+#: CRNMath/CRNMatrixDouble.cpp:129 CRNMath/CRNMatrixInt.cpp:48
+#: CRNMath/CRNMatrixInt.cpp:120 CRNMath/CRNMatrixInt.cpp:175
+msgid "Negative standard deviation"
+msgstr "Negative standard deviation"
+
+#: CRNMath/CRNMatrixDouble.cpp:176
+msgid "not a column vector."
+msgstr "not a column vector."
+
+#: CRNMath/CRNMatrixDouble.cpp:207 CRNStatistics/CRNHistogram.cpp:1078
+msgid "Cannot convert CDATA."
+msgstr "Cannot convert CDATA."
+
+#: CRNMath/CRNMultivariateGaussianMixture.cpp:165
+#: CRNMath/CRNMultivariateGaussianMixture.cpp:186
+msgid "Incompatible dimensions"
+msgstr "Incompatible dimensions"
+
+#: CRNMath/CRNMultivariateGaussianMixture.cpp:189
+msgid "Invalid index"
+msgstr "Invalid index"
+
+#: CRNMath/CRNMultivariateGaussianMixture.cpp:231
+#: CRNMath/CRNMultivariateGaussianMixture.cpp:261
+msgid "incompatible dimensions."
+msgstr "incompatible dimensions."
+
+#: CRNMath/CRNMultivariateGaussianPDF.cpp:105
+#: CRNMath/CRNMultivariateGaussianPDF.cpp:144
+msgid "incompatible dimensions"
+msgstr "incompatible dimensions"
+
+#: CRNMath/CRNProp3.cpp:59
+msgid "true"
+msgstr "true"
+
+#: CRNMath/CRNProp3.cpp:61
+msgid "false"
+msgstr "false"
+
+#: CRNMath/CRNProp3.cpp:64
+msgid "unknown"
+msgstr "unknown"
+
+#: CRNMath/CRNRealToRealFunction.cpp:182
+msgid "No preimage found."
+msgstr "No preimage found."
+
+#: CRNMath/CRNSquareMatrixDouble.cpp:40 CRNMath/CRNSquareMatrixDouble.cpp:47
+#: CRNMath/CRNSquareMatrixDouble.cpp:54 CRNMath/CRNSquareMatrixDouble.cpp:61
+msgid "the matrix is not square."
+msgstr "the matrix is not square."
+
+#: CRNMath/CRNSquareMatrixDouble.cpp:410 CRNMath/CRNSquareMatrixDouble.cpp:452
+msgid "row or column index out of range"
+msgstr "row or column index out of range"
+
+#: CRNMath/CRNSquareMatrixDouble.cpp:577
+msgid "The matrix cannot be inversed."
+msgstr "The matrix cannot be inversed."
+
+#: CRNMath/CRNSquareMatrixDouble.cpp:641
+msgid "Matrix cannot be inversed. Null pivot at column: "
+msgstr "Matrix cannot be inversed. Null pivot at column: "
+
+#: CRNMath/CRNSquareMatrixDouble.cpp:1048
+msgid "Too many iterations."
+msgstr "Too many iterations."
+
+#: CRNMath/CRNUnivariateGaussianPDF.cpp:74
+msgid "Negative variance."
+msgstr "Negative variance."
+
+#: CRNObject.cpp:47 CRNObject.cpp:58 CRNObject.cpp:92 CRNObject.cpp:103
+#: CRNObject.cpp:121 CRNObject.cpp:131 CRNObject.cpp:150 CRNObject.cpp:161
+msgid "null pointer."
+msgstr "null pointer."
+
+#: CRNSavable.cpp:135
+msgid "No user data to remove."
+msgstr "No user data to remove."
+
+#: CRNSavable.cpp:230
+msgid "Cannot save an object with no filename."
+msgstr "Cannot save an object with no filename."
 
 #: CRNStatistics/CRNHistogram.cpp:125 CRNStatistics/CRNHistogram.cpp:147
 #: CRNStatistics/CRNHistogram.cpp:170
@@ -43,40 +757,13 @@ msgstr "histograms must have same size."
 msgid "Cannot resize histogram with null size."
 msgstr "Cannot resize histogram with null size."
 
-#: CRNStatistics/CRNHistogram.cpp:1065 CRNStatistics/CRNPCA.cpp:718
-#: CRNStringUTF8.cpp:488 CRNString.cpp:743
-#: CRNFeature/CRNBlockTreeExtractorTextLinesFromProjection.cpp:284
-#: CRNFeature/CRNFeatureExtractorAngleRadialZoning.cpp:197
-#: CRNFeature/CRNFeatureExtractorOverlappingAngleHistogram.cpp:238
-#: CRNFeature/CRNBlockTreeExtractorWordsFromProjection.cpp:291
-#: CRNFeature/CRNFeatureExtractorAngleZoning.cpp:128
-#: CRNFeature/CRNFeatureExtractorProfile.cpp:167
-#: CRNFeature/CRNFeatureExtractorProjection.cpp:123 CRNIO/CRNPath.cpp:567
-#: CRNMath/CRNUnivariateGaussianPDF.cpp:258 CRNMath/CRNProp3.cpp:194
-#: CRNMath/CRNMatrixDouble.cpp:196 CRNMath/CRNLinearInterpolation.cpp:75
-#: CRNMath/CRNUnivariateGaussianMixture.cpp:744 CRNData/CRNReal.cpp:45
-#: CRNData/CRNInt.cpp:42 CRNData/CRNMap.cpp:192 CRNData/CRNVector.cpp:272
-#: CRNUtils/CRNPDFAttributes.cpp:40 CRNUtils/CRNDefaultAction.cpp:52
-#: CRNGeometry/CRNPoint2DInt.cpp:43 CRNGeometry/CRNStroke.cpp:68
-#: CRNGeometry/CRNRect.cpp:555 CRNGeometry/CRNPoint2DDouble.cpp:43
-msgid "Wrong XML element."
-msgstr "Wrong XML element."
-
 #: CRNStatistics/CRNHistogram.cpp:1071
 msgid "Cannot get CDATA."
 msgstr "Cannot get CDATA."
 
-#: CRNStatistics/CRNHistogram.cpp:1078 CRNMath/CRNMatrixDouble.cpp:207
-msgid "Cannot convert CDATA."
-msgstr "Cannot convert CDATA."
-
 #: CRNStatistics/CRNHistogram.cpp:1340
 msgid "The histogram is empty."
 msgstr "The histogram is empty."
-
-#: CRNStatistics/CRNStatisticSample.cpp:219
-msgid "Illegal range."
-msgstr "Illegal range."
 
 #: CRNStatistics/CRNPCA.cpp:527 CRNStatistics/CRNPCA.cpp:542
 msgid "Index out of dimension range."
@@ -93,6 +780,94 @@ msgstr "Incompatible output dimensions."
 #: CRNStatistics/CRNPCA.cpp:749
 msgid "Incomplete PCA xml element."
 msgstr "Incomplete PCA xml element."
+
+#: CRNStatistics/CRNStatisticSample.cpp:219
+msgid "Illegal range."
+msgstr "Illegal range."
+
+#: CRNString.cpp:308 CRNStringUTF8.cpp:603
+msgid "Null suffix to search."
+msgstr "Null suffix to search."
+
+#: CRNString.cpp:358
+msgid "Null suffix to delete."
+msgstr "Null suffix to delete."
+
+#: CRNUtils/CRNCharsetConverter.cpp:65
+msgid "Null charset"
+msgstr "Null charset"
+
+#: CRNUtils/CRNCharsetConverter.cpp:81
+msgid "Cannot convert from "
+msgstr "Cannot convert from "
+
+#: CRNUtils/CRNCharsetConverter.cpp:90
+msgid "Cannot convert to "
+msgstr "Cannot convert to "
+
+#: CRNUtils/CRNCharsetConverter.cpp:145
+msgid "Invalid character."
+msgstr "Invalid character."
+
+#: CRNUtils/CRNCharsetConverter.cpp:151
+msgid "Incomplete multibyte character."
+msgstr "Incomplete multibyte character."
+
+#: CRNUtils/CRNCharsetConverter.cpp:210
+msgid "Invalid character in: "
+msgstr "Invalid character in: "
+
+#: CRNUtils/CRNCharsetConverter.cpp:216
+msgid "Incomplete multibyte character in: "
+msgstr "Incomplete multibyte character in: "
+
+#: CRNUtils/CRNConfigElement.cpp:135
+msgid "The element was not initialized."
+msgstr "The element was not initialized."
+
+#: CRNUtils/CRNConfigElement.cpp:154
+msgid "The element is of unknown type."
+msgstr "The element is of unknown type."
+
+#: CRNUtils/CRNConfigurationFile.cpp:114
+msgid "Cannot save configuration file: "
+msgstr "Cannot save configuration file: "
+
+#: CRNUtils/CRNConfigurationFile.cpp:173
+msgid " is not a Path."
+msgstr " is not a Path."
+
+#: CRNUtils/CRNConfigurationFile.cpp:186
+msgid " is not a String."
+msgstr " is not a String."
+
+#: CRNUtils/CRNConfigurationFile.cpp:199
+msgid " is not a StringUTF8."
+msgstr " is not a StringUTF8."
+
+#: CRNUtils/CRNConfigurationFile.cpp:212
+msgid " is not a Prop3."
+msgstr " is not a Prop3."
+
+#: CRNUtils/CRNConfigurationFile.cpp:225
+msgid " is not an int."
+msgstr " is not an int."
+
+#: CRNUtils/CRNConfigurationFile.cpp:238
+msgid " is not a double."
+msgstr " is not a double."
+
+#: CRNUtils/CRNTimer.cpp:94
+msgid "Unused stopwatch."
+msgstr "Unused stopwatch."
+
+#: CRNUtils/CRNTimer.cpp:97
+msgid "Stopwatch: "
+msgstr "Stopwatch: "
+
+#: CRNUtils/CRNTimer.cpp:99
+msgid "Total time: "
+msgstr "Total time: "
 
 #: CRNXml/CRNAlto.cpp:72 CRNXml/CRNAlto.cpp:90 CRNXml/CRNAltoLayout.cpp:101
 #: CRNXml/CRNAltoLayout.cpp:156 CRNXml/CRNAltoLayout.cpp:185
@@ -130,13 +905,14 @@ msgstr "Element not found."
 msgid "The element already has an id."
 msgstr "The element already has an id."
 
-#: CRNXml/CRNAlto.cpp:649 CRNXml/CRNAltoLayout.cpp:39 CRNXml/CRNXml.cpp:396
-#: CRNXml/CRNXml.cpp:449 CRNXml/CRNXml.cpp:505 CRNXml/CRNXml.cpp:526
-#: CRNXml/CRNXml.cpp:1108 CRNXml/CRNXml.cpp:1144 CRNXml/CRNXml.cpp:1163
-#: CRNXml/CRNAltoTextBlock.cpp:585 CRNXml/CRNAltoTextBlock.cpp:599
+#: CRNXml/CRNAlto.cpp:649 CRNXml/CRNAltoLayout.cpp:39
 #: CRNXml/CRNAltoSpace.cpp:40 CRNXml/CRNAltoSpace.cpp:604
 #: CRNXml/CRNAltoSpace.cpp:626 CRNXml/CRNAltoSpace.cpp:759
 #: CRNXml/CRNAltoSpace.cpp:776 CRNXml/CRNAltoSpace.cpp:792
+#: CRNXml/CRNAltoTextBlock.cpp:585 CRNXml/CRNAltoTextBlock.cpp:599
+#: CRNXml/CRNXml.cpp:396 CRNXml/CRNXml.cpp:449 CRNXml/CRNXml.cpp:505
+#: CRNXml/CRNXml.cpp:526 CRNXml/CRNXml.cpp:1108 CRNXml/CRNXml.cpp:1144
+#: CRNXml/CRNXml.cpp:1163
 msgid "Null node."
 msgstr "Null node."
 
@@ -147,6 +923,104 @@ msgstr "Cannot find layout."
 #: CRNXml/CRNAlto.cpp:681
 msgid "Null namespace."
 msgstr "Null namespace."
+
+#: CRNXml/CRNAltoDescription.cpp:45
+msgid "Null image filename."
+msgstr "Null image filename."
+
+#: CRNXml/CRNAltoDescription.cpp:75
+msgid "Invalid measurement unit."
+msgstr "Invalid measurement unit."
+
+#: CRNXml/CRNAltoLayout.cpp:307
+msgid "Invalid page position."
+msgstr "Invalid page position."
+
+#: CRNXml/CRNAltoLayout.cpp:404
+msgid "Negative physical image number."
+msgstr "Negative physical image number."
+
+#: CRNXml/CRNAltoLayout.cpp:473
+msgid "Invalid quality."
+msgstr "Invalid quality."
+
+#: CRNXml/CRNAltoLayout.cpp:543
+msgid "The page accuracy must be in [0, 100]"
+msgstr "The page accuracy must be in [0, 100]"
+
+#: CRNXml/CRNAltoLayout.cpp:562
+msgid "The page confidence must be in [0, 1]"
+msgstr "The page confidence must be in [0, 1]"
+
+#: CRNXml/CRNAltoLayout.cpp:577
+msgid "The page already has a top margin."
+msgstr "The page already has a top margin."
+
+#: CRNXml/CRNAltoLayout.cpp:595
+msgid "The page already has a left margin."
+msgstr "The page already has a left margin."
+
+#: CRNXml/CRNAltoLayout.cpp:613
+msgid "The page already has a right margin."
+msgstr "The page already has a right margin."
+
+#: CRNXml/CRNAltoLayout.cpp:631
+msgid "The page already has a bottom margin."
+msgstr "The page already has a bottom margin."
+
+#: CRNXml/CRNAltoLayout.cpp:649
+msgid "The page already has a print space."
+msgstr "The page already has a print space."
+
+#: CRNXml/CRNAltoSpace.cpp:212
+msgid "The space contains no block with this id."
+msgstr "The space contains no block with this id."
+
+#: CRNXml/CRNAltoSpace.cpp:283
+msgid "The space contains no text block with this id."
+msgstr "The space contains no text block with this id."
+
+#: CRNXml/CRNAltoSpace.cpp:341 CRNXml/CRNAltoSpace.cpp:379
+#: CRNXml/CRNAltoSpace.cpp:443 CRNXml/CRNAltoSpace.cpp:480
+#: CRNXml/CRNAltoSpace.cpp:544 CRNXml/CRNAltoSpace.cpp:581
+msgid "Cannot find block."
+msgstr "Cannot find block."
+
+#: CRNXml/CRNAltoStyles.cpp:85 CRNXml/CRNAltoStyles.cpp:99
+msgid "Text style not found."
+msgstr "Text style not found."
+
+#: CRNXml/CRNAltoStyles.cpp:126 CRNXml/CRNAltoStyles.cpp:140
+msgid "Paragraph style not found."
+msgstr "Paragraph style not found."
+
+#: CRNXml/CRNAltoTextBlock.cpp:113
+msgid "The block contains no text line with this id."
+msgstr "The block contains no text line with this id."
+
+#: CRNXml/CRNAltoTextBlock.cpp:372
+msgid "The baseline is out of the line's bounds"
+msgstr "The baseline is out of the line's bounds"
+
+#: CRNXml/CRNAltoTextBlock.cpp:441
+msgid "The line contains no word with this id."
+msgstr "The line contains no word with this id."
+
+#: CRNXml/CRNAltoTextBlock.cpp:506 CRNXml/CRNAltoTextBlock.cpp:544
+msgid "Cannot find element."
+msgstr "Cannot find element."
+
+#: CRNXml/CRNAltoTextBlock.cpp:570
+msgid "Cannot find word."
+msgstr "Cannot find word."
+
+#: CRNXml/CRNAltoTextBlock.cpp:854
+msgid "Wrong type of substitution."
+msgstr "Wrong type of substitution."
+
+#: CRNXml/CRNAltoTextBlock.cpp:875
+msgid "The word confidence must be in [0, 1]."
+msgstr "The word confidence must be in [0, 1]."
 
 #: CRNXml/CRNAltoWrapper.cpp:35 CRNXml/CRNAltoWrapper.cpp:46
 #: CRNXml/CRNAltoWrapper.cpp:58 CRNXml/CRNAltoWrapper.cpp:71
@@ -189,46 +1063,6 @@ msgstr "No right margin on this page."
 #: CRNXml/CRNAltoWrapper.cpp:1170
 msgid "No print space on this page."
 msgstr "No print space on this page."
-
-#: CRNXml/CRNAltoLayout.cpp:307
-msgid "Invalid page position."
-msgstr "Invalid page position."
-
-#: CRNXml/CRNAltoLayout.cpp:404
-msgid "Negative physical image number."
-msgstr "Negative physical image number."
-
-#: CRNXml/CRNAltoLayout.cpp:473
-msgid "Invalid quality."
-msgstr "Invalid quality."
-
-#: CRNXml/CRNAltoLayout.cpp:543
-msgid "The page accuracy must be in [0, 100]"
-msgstr "The page accuracy must be in [0, 100]"
-
-#: CRNXml/CRNAltoLayout.cpp:562
-msgid "The page confidence must be in [0, 1]"
-msgstr "The page confidence must be in [0, 1]"
-
-#: CRNXml/CRNAltoLayout.cpp:577
-msgid "The page already has a top margin."
-msgstr "The page already has a top margin."
-
-#: CRNXml/CRNAltoLayout.cpp:595
-msgid "The page already has a left margin."
-msgstr "The page already has a left margin."
-
-#: CRNXml/CRNAltoLayout.cpp:613
-msgid "The page already has a right margin."
-msgstr "The page already has a right margin."
-
-#: CRNXml/CRNAltoLayout.cpp:631
-msgid "The page already has a bottom margin."
-msgstr "The page already has a bottom margin."
-
-#: CRNXml/CRNAltoLayout.cpp:649
-msgid "The page already has a print space."
-msgstr "The page already has a print space."
 
 #: CRNXml/CRNXml.cpp:50
 msgid "Cannot find attribute."
@@ -349,837 +1183,6 @@ msgstr "Empty filename."
 #: CRNXml/CRNXml.cpp:1038
 msgid "No element in the XML."
 msgstr "No element in the XML."
-
-#: CRNXml/CRNAltoStyles.cpp:85 CRNXml/CRNAltoStyles.cpp:99
-msgid "Text style not found."
-msgstr "Text style not found."
-
-#: CRNXml/CRNAltoStyles.cpp:126 CRNXml/CRNAltoStyles.cpp:140
-msgid "Paragraph style not found."
-msgstr "Paragraph style not found."
-
-#: CRNXml/CRNAltoTextBlock.cpp:113
-msgid "The block contains no text line with this id."
-msgstr "The block contains no text line with this id."
-
-#: CRNXml/CRNAltoTextBlock.cpp:372
-msgid "The baseline is out of the line's bounds"
-msgstr "The baseline is out of the line's bounds"
-
-#: CRNXml/CRNAltoTextBlock.cpp:441
-msgid "The line contains no word with this id."
-msgstr "The line contains no word with this id."
-
-#: CRNXml/CRNAltoTextBlock.cpp:506 CRNXml/CRNAltoTextBlock.cpp:544
-msgid "Cannot find element."
-msgstr "Cannot find element."
-
-#: CRNXml/CRNAltoTextBlock.cpp:570
-msgid "Cannot find word."
-msgstr "Cannot find word."
-
-#: CRNXml/CRNAltoTextBlock.cpp:854
-msgid "Wrong type of substitution."
-msgstr "Wrong type of substitution."
-
-#: CRNXml/CRNAltoTextBlock.cpp:875
-msgid "The word confidence must be in [0, 1]."
-msgstr "The word confidence must be in [0, 1]."
-
-#: CRNXml/CRNAltoDescription.cpp:45
-msgid "Null image filename."
-msgstr "Null image filename."
-
-#: CRNXml/CRNAltoDescription.cpp:75
-msgid "Invalid measurement unit."
-msgstr "Invalid measurement unit."
-
-#: CRNXml/CRNAltoSpace.cpp:212
-msgid "The space contains no block with this id."
-msgstr "The space contains no block with this id."
-
-#: CRNXml/CRNAltoSpace.cpp:283
-msgid "The space contains no text block with this id."
-msgstr "The space contains no text block with this id."
-
-#: CRNXml/CRNAltoSpace.cpp:341 CRNXml/CRNAltoSpace.cpp:379
-#: CRNXml/CRNAltoSpace.cpp:443 CRNXml/CRNAltoSpace.cpp:480
-#: CRNXml/CRNAltoSpace.cpp:544 CRNXml/CRNAltoSpace.cpp:581
-msgid "Cannot find block."
-msgstr "Cannot find block."
-
-#: CRNAI/CRNAffinityPropagation.cpp:32
-msgid "The damping must be in [0, 1[."
-msgstr "The damping must be in [0, 1[."
-
-#: CRNAI/CRNAffinityPropagation.cpp:34
-msgid "The number of stable iterations to stop must be >1."
-msgstr "The number of stable iterations to stop must be >1."
-
-#: CRNAI/CRNAffinityPropagation.cpp:36
-msgid "The maximal number of iterations must be >1."
-msgstr "The maximal number of iterations must be >1."
-
-#: CRNAI/CRNAffinityPropagation.cpp:181
-msgid "The preference is not the same dimension as the distance matrix."
-msgstr "The preference is not the same dimension as the distance matrix."
-
-#: CRNAI/CRNOutliers.cpp:34 CRNAI/CRNOutliers.cpp:120
-msgid "The neighborhood must be > 1."
-msgstr "The neighbourhood must be > 1."
-
-#: CRNAI/CRNOutliers.cpp:36 CRNAI/CRNOutliers.cpp:124
-msgid "The neighborhood is greater than the number of elements."
-msgstr "The neighbourhood is greater than the number of elements."
-
-#: CRNAI/CRNOutliers.cpp:111 CRNAI/CRNOutliers.cpp:205
-msgid "The distance matrix is not square."
-msgstr "The distance matrix is not square."
-
-#: CRNAI/CRNOutliers.cpp:122
-msgid "lambda must be > 0."
-msgstr "lambda must be > 0."
-
-#: CRNAI/CRNGaussianSCHMM.cpp:65
-msgid "Index out of range"
-msgstr "Index out of range"
-
-#: CRNAI/CRNGaussianSCHMM.cpp:106
-msgid "Illegal input vector dimension"
-msgstr "Illegal input vector dimension"
-
-#: CRNAI/CRNBipartite.cpp:303
-msgid "empty distance matrix."
-msgstr "empty distance matrix."
-
-#: CRNAI/CRNBipartite.cpp:306
-msgid "the distance matrix is not square."
-msgstr "the distance matrix is not square."
-
-#: CRNAI/CRNSpectralClustering.cpp:45 CRNAI/CRNSpectralClustering.cpp:87
-msgid "Neighborhood to compute sigma must be >=1."
-msgstr "Neighborhood to compute sigma must be >=1."
-
-#: CRNAI/CRNSpectralClustering.cpp:48 CRNAI/CRNSpectralClustering.cpp:90
-#: CRNAI/CRNSpectralClustering.cpp:125 CRNAI/CRNSpectralClustering.cpp:152
-msgid "Empty distance matrix."
-msgstr "Empty distance matrix."
-
-#: CRNAI/CRNSpectralClustering.cpp:122
-msgid "Dimension must be >=1."
-msgstr "Dimension must be >=1."
-
-#: CRNAI/CRNSpectralClustering.cpp:149
-msgid "Sigma must be positive."
-msgstr "Sigma must be positive."
-
-#: CRNAI/CRNSpectralClustering.cpp:209
-msgid "Eigenvalues should be in [0, 1]."
-msgstr "Eigenvalues should be in [0, 1]."
-
-#: CRNAI/CRNSpectralClustering.cpp:229
-msgid "Cannot project on less than one coordinate."
-msgstr "Cannot project on less than one coordinate."
-
-#: CRNStringUTF8.cpp:97 CRNStringUTF8.cpp:112 CRNStringUTF8.cpp:148
-#: CRNStringUTF8.cpp:168 CRNStringUTF8.cpp:210 CRNStringUTF8.cpp:234
-#: CRNStringUTF8.cpp:365 CRNStringUTF8.cpp:384 CRNStringUTF8.cpp:403
-#: CRNStringUTF8.cpp:426 CRNStringUTF8.cpp:447 CRNStringUTF8.cpp:468
-#: CRNString.cpp:141 CRNString.cpp:158 CRNString.cpp:205 CRNString.cpp:225
-#: CRNString.cpp:267 CRNString.cpp:291 CRNString.cpp:520 CRNString.cpp:616
-#: CRNString.cpp:636 CRNString.cpp:660 CRNString.cpp:681 CRNString.cpp:702
-#: CRNMath/CRNMultivariateGaussianMixture.cpp:89
-#: CRNMath/CRNMultivariateGaussianMixture.cpp:107
-#: CRNMath/CRNMultivariateGaussianMixture.cpp:125
-#: CRNMath/CRNMultivariateGaussianMixture.cpp:143
-#: CRNMath/CRNMultivariateGaussianMixture.cpp:226
-#: CRNMath/CRNMultivariateGaussianMixture.cpp:256
-#: CRNMath/CRNUnivariateGaussianMixture.cpp:56
-#: CRNMath/CRNUnivariateGaussianMixture.cpp:76
-#: CRNMath/CRNUnivariateGaussianMixture.cpp:96
-#: CRNMath/CRNUnivariateGaussianMixture.cpp:116
-#: CRNMath/CRNUnivariateGaussianMixture.cpp:148
-#: CRNMath/CRNUnivariateGaussianMixture.cpp:256 CRNDocument.cpp:108
-#: CRNDocument.cpp:150 CRNDocument.cpp:296 CRNDocument.cpp:328
-#: CRNDocument.cpp:597 CRNBlock.cpp:1902 CRNBlock.cpp:1927 CRNBlock.cpp:2003
-#: CRNBlock.cpp:2523 CRNBlock.cpp:2566 CRNBlock.cpp:2608 CRNBlock.cpp:2657
-msgid "index out of bounds."
-msgstr "index out of bounds."
-
-#: CRNStringUTF8.cpp:603 CRNString.cpp:308
-msgid "Null suffix to search."
-msgstr "Null suffix to search."
-
-#: CRNObject.cpp:47 CRNObject.cpp:58 CRNObject.cpp:92 CRNObject.cpp:103
-#: CRNObject.cpp:121 CRNObject.cpp:131 CRNObject.cpp:150 CRNObject.cpp:161
-msgid "null pointer."
-msgstr "null pointer."
-
-#: CRNString.cpp:358
-msgid "Null suffix to delete."
-msgstr "Null suffix to delete."
-
-#: CRNFeature/CRNFeatureExtractorProfile.cpp:47
-msgid "no direction given."
-msgstr "no direction given."
-
-#: CRNFeature/CRNFeatureExtractorProfile.cpp:49
-#: CRNFeature/CRNFeatureExtractorProjection.cpp:48
-msgid "negative size."
-msgstr "negative size."
-
-#: CRNFeature/CRNFeatureExtractorProfile.cpp:51
-#: CRNFeature/CRNFeatureExtractorProjection.cpp:50
-msgid "negative maximal value."
-msgstr "negative maximal value."
-
-#: CRNFeature/CRNFeatureExtractorProjection.cpp:46
-msgid "no orientation given."
-msgstr "no orientation given."
-
-#: CRNIO/CRNTextFile.cpp:55 CRNImage/CRNImage.cpp:85 CRNImage/CRNImage.cpp:323
-msgid "Cannot open file "
-msgstr "Cannot open file "
-
-#: CRNIO/CRNTextFile.cpp:91 CRNIO/CRNTextFile.cpp:116
-#: CRNIO/CRNTextFile.cpp:139
-msgid "cannot open file "
-msgstr "cannot open file "
-
-#: CRNIO/CRNConsoleMessenger.cpp:35 CRNIO/CRNFileMessenger.cpp:43
-msgid "DEBUG"
-msgstr "DEBUG"
-
-#: CRNIO/CRNConsoleMessenger.cpp:37 CRNIO/CRNFileMessenger.cpp:45
-msgid "WARNING"
-msgstr "WARNING"
-
-#: CRNIO/CRNConsoleMessenger.cpp:38 CRNIO/CRNFileMessenger.cpp:46
-msgid "ERROR"
-msgstr "ERROR"
-
-#: CRNIO/CRNZip.cpp:78
-msgid "libzip version is too old to support zip_discard()."
-msgstr "libzip version is too old to support zip_discard()."
-
-#: CRNIO/CRNZip.cpp:156 CRNIO/CRNZip.cpp:219
-msgid "The file already exists."
-msgstr "The file already exists."
-
-#: CRNIO/CRNZip.cpp:158 CRNIO/CRNZip.cpp:221
-msgid "The file is inconsistent."
-msgstr "The file is inconsistent."
-
-#: CRNIO/CRNZip.cpp:161 CRNIO/CRNZip.cpp:224
-msgid "Not enough memory."
-msgstr "Not enough memory."
-
-#: CRNIO/CRNZip.cpp:163 CRNIO/CRNZip.cpp:226
-msgid "This is not a zip file."
-msgstr "This is not a zip file."
-
-#: CRNIO/CRNZip.cpp:166 CRNIO/CRNZip.cpp:229
-msgid "Cannot open file."
-msgstr "Cannot open file."
-
-#: CRNIO/CRNZip.cpp:169 CRNIO/CRNZip.cpp:232
-msgid "Cannot read file."
-msgstr "Cannot read file."
-
-#: CRNIO/CRNZip.cpp:171 CRNIO/CRNZip.cpp:234
-msgid "Unknown zip error."
-msgstr "Unknown zip error."
-
-#: CRNIO/CRNFileMessenger.cpp:44
-msgid "VERBOSE"
-msgstr "VERBOSE"
-
-#: CRNIO/CRNPath.cpp:239 CRNIO/CRNPath.cpp:256
-msgid "the path does not contain a filename."
-msgstr "the path does not contain a filename."
-
-#: CRNIO/CRNIO.cpp:150
-msgid "Cannot create directory: "
-msgstr "Cannot create directory: "
-
-#: CRNIO/CRNIO.cpp:182
-msgid "Cannot remove: "
-msgstr "Cannot remove: "
-
-#: CRNIO/CRNIO.cpp:212 CRNIO/CRNIO.cpp:318
-msgid "Cannot open directory: "
-msgstr "Cannot open directory: "
-
-#: CRNIO/CRNIO.cpp:238
-msgid "Cannot remove file: "
-msgstr "Cannot remove file: "
-
-#: CRNIO/CRNIO.cpp:250
-msgid "Cannot remove directory: "
-msgstr "Cannot remove directory: "
-
-#: CRNIO/CRNIO.cpp:266 CRNIO/CRNIO.cpp:298
-msgid "Cannot copy a file over itself."
-msgstr "Cannot copy a file over itself."
-
-#: CRNIO/CRNIO.cpp:277
-msgid "Cannot open source file: "
-msgstr "Cannot open source file: "
-
-#: CRNIO/CRNIO.cpp:280
-msgid "Cannot open destination file: "
-msgstr "Cannot open destination file: "
-
-#: CRNMath/CRNMatrixInt.cpp:48 CRNMath/CRNMatrixInt.cpp:120
-#: CRNMath/CRNMatrixInt.cpp:175 CRNMath/CRNMatrixDouble.cpp:65
-#: CRNMath/CRNMatrixDouble.cpp:92 CRNMath/CRNMatrixDouble.cpp:129
-msgid "Negative standard deviation"
-msgstr "Negative standard deviation"
-
-#: CRNMath/CRNRealToRealFunction.cpp:182
-msgid "No preimage found."
-msgstr "No preimage found."
-
-#: CRNMath/CRNMultivariateGaussianMixture.cpp:165
-#: CRNMath/CRNMultivariateGaussianMixture.cpp:186
-msgid "Incompatible dimensions"
-msgstr "Incompatible dimensions"
-
-#: CRNMath/CRNMultivariateGaussianMixture.cpp:189
-msgid "Invalid index"
-msgstr "Invalid index"
-
-#: CRNMath/CRNMultivariateGaussianMixture.cpp:231
-#: CRNMath/CRNMultivariateGaussianMixture.cpp:261
-msgid "incompatible dimensions."
-msgstr "incompatible dimensions."
-
-#: CRNMath/CRNMultivariateGaussianPDF.cpp:105
-#: CRNMath/CRNMultivariateGaussianPDF.cpp:144
-msgid "incompatible dimensions"
-msgstr "incompatible dimensions"
-
-#: CRNMath/CRNEquationSolver.cpp:50 CRNMath/CRNEquationSolver.cpp:100
-msgid "invalid or incompatible matrix dimensions"
-msgstr "invalid or incompatible matrix dimensions"
-
-#: CRNMath/CRNEquationSolver.cpp:58 CRNMath/CRNEquationSolver.cpp:131
-msgid "Equation has either no solution or an infinity of solutions."
-msgstr "Equation has either no solution or an infinity of solutions."
-
-#: CRNMath/CRNUnivariateGaussianPDF.cpp:74
-msgid "Negative variance."
-msgstr "Negative variance."
-
-#: CRNMath/CRNProp3.cpp:59
-msgid "true"
-msgstr "true"
-
-#: CRNMath/CRNProp3.cpp:61
-msgid "false"
-msgstr "false"
-
-#: CRNMath/CRNProp3.cpp:64
-msgid "unknown"
-msgstr "unknown"
-
-#: CRNMath/CRNMatrixComplex.cpp:36
-msgid "FFT: signal size is not a power of 2."
-msgstr "FFT: signal size is not a power of 2."
-
-#: CRNMath/CRNMatrixDouble.cpp:176
-msgid "not a column vector."
-msgstr "not a column vector."
-
-#: CRNMath/CRNSquareMatrixDouble.cpp:40 CRNMath/CRNSquareMatrixDouble.cpp:47
-#: CRNMath/CRNSquareMatrixDouble.cpp:54 CRNMath/CRNSquareMatrixDouble.cpp:61
-msgid "the matrix is not square."
-msgstr "the matrix is not square."
-
-#: CRNMath/CRNSquareMatrixDouble.cpp:410 CRNMath/CRNSquareMatrixDouble.cpp:452
-msgid "row or column index out of range"
-msgstr "row or column index out of range"
-
-#: CRNMath/CRNSquareMatrixDouble.cpp:577
-msgid "The matrix cannot be inversed."
-msgstr "The matrix cannot be inversed."
-
-#: CRNMath/CRNSquareMatrixDouble.cpp:641
-msgid "Matrix cannot be inversed. Null pivot at column: "
-msgstr "Matrix cannot be inversed. Null pivot at column: "
-
-#: CRNMath/CRNSquareMatrixDouble.cpp:1048
-msgid "Too many iterations."
-msgstr "Too many iterations."
-
-#: 3rdParty/unicode/UtfConverter.cpp:95 3rdParty/unicode/UtfConverter.cpp:168
-msgid "UTF not supported."
-msgstr "UTF not supported."
-
-#: CRNDocument.cpp:74 CRNDocument.cpp:106
-msgid "null filename."
-msgstr "null filename."
-
-#: CRNDocument.cpp:135 CRNDocument.cpp:283 CRNDocument.cpp:315
-msgid "filename not found."
-msgstr "filename not found."
-
-#: CRNDocument.cpp:199 CRNBlock.cpp:2403 CRNData/CRNVector.cpp:128
-#: CRNData/CRNVector.cpp:216
-msgid "Index out of bounds."
-msgstr "Index out of bounds."
-
-#: CRNDocument.cpp:265
-msgid "id not found."
-msgstr "id not found."
-
-#: CRNDocument.cpp:360 CRNDocument.cpp:400 CRNData/CRNVector.cpp:144
-#: CRNData/CRNVector.cpp:182
-msgid "bad changeset size."
-msgstr "bad changeset size."
-
-#: CRNDocument.cpp:370 CRNDocument.cpp:410 CRNData/CRNVector.cpp:154
-#: CRNData/CRNVector.cpp:192
-msgid "changeset contains duplicates."
-msgstr "changeset contains duplicates."
-
-#: CRNDocument.cpp:375 CRNDocument.cpp:415 CRNData/CRNVector.cpp:159
-#: CRNData/CRNVector.cpp:197
-msgid "changeset contains values out of bounds."
-msgstr "changeset contains values out of bounds."
-
-#: CRNDocument.cpp:455
-msgid "Not a Document file."
-msgstr "Not a Document file."
-
-#: CRNDocument.cpp:601
-msgid "the document was never saved."
-msgstr "the document was never saved."
-
-#: CRNDocument.cpp:822
-msgid "Null width."
-msgstr "Null width."
-
-#: CRNDocument.cpp:828
-msgid "Null height."
-msgstr "Null height."
-
-#: CRNSavable.cpp:135
-msgid "No user data to remove."
-msgstr "No user data to remove."
-
-#: CRNSavable.cpp:230
-msgid "Cannot save an object with no filename."
-msgstr "Cannot save an object with no filename."
-
-#: CRNBlock.cpp:77 CRNBlock.cpp:161
-msgid "NewBlock"
-msgstr "NewBlock"
-
-#: CRNBlock.cpp:80
-msgid "No image."
-msgstr "No image."
-
-#: CRNBlock.cpp:95
-msgid "unsupported image type."
-msgstr "unsupported image type."
-
-#: CRNBlock.cpp:213
-msgid "No parent."
-msgstr "No parent."
-
-#: CRNBlock.cpp:258 CRNBlock.cpp:304
-msgid "this is a topmost block. Its bounding box cannot be changed."
-msgstr "this is a topmost block. Its bounding box cannot be changed."
-
-#: CRNBlock.cpp:261 CRNBlock.cpp:307
-msgid "Uninitialized bounding box."
-msgstr "Uninitialized bounding box."
-
-#: CRNBlock.cpp:266
-msgid "bounding box out of parent's bounding box."
-msgstr "bounding box out of parent's bounding box."
-
-#: CRNBlock.cpp:342 CRNBlock.cpp:360 CRNBlock.cpp:381 CRNBlock.cpp:402
-#: CRNBlock.cpp:1849 CRNBlock.cpp:1880 CRNBlock.cpp:1900 CRNBlock.cpp:1922
-#: CRNBlock.cpp:1947 CRNBlock.cpp:1972 CRNBlock.cpp:1999 CRNBlock.cpp:2038
-#: CRNBlock.cpp:2062 CRNBlock.cpp:2085 CRNBlock.cpp:2117 CRNBlock.cpp:2142
-#: CRNBlock.cpp:2167 CRNBlock.cpp:2191 CRNBlock.cpp:2219 CRNBlock.cpp:2248
-#: CRNBlock.cpp:2283 CRNBlock.cpp:2519 CRNBlock.cpp:2562 CRNBlock.cpp:2604
-#: CRNBlock.cpp:2631 CRNBlock.cpp:2653
-msgid "tree not found."
-msgstr "tree not found."
-
-#: CRNBlock.cpp:434
-msgid "Cannot open image."
-msgstr "Cannot open image."
-
-#: CRNBlock.cpp:552 CRNBlock.cpp:579 CRNBlock.cpp:606 CRNBlock.cpp:641
-#: CRNBlock.cpp:674 CRNBlock.cpp:702 CRNBlock.cpp:730 CRNBlock.cpp:766
-msgid "Uninitialized clipping rectangle."
-msgstr "Uninitialized clipping rectangle."
-
-#: CRNBlock.cpp:557 CRNBlock.cpp:584 CRNBlock.cpp:617 CRNBlock.cpp:652
-#: CRNBlock.cpp:680 CRNBlock.cpp:708 CRNBlock.cpp:742 CRNBlock.cpp:778
-msgid "Clipping rectangle out of bounds."
-msgstr "Clipping rectangle out of bounds."
-
-#: CRNBlock.cpp:913 CRNBlock.cpp:973
-msgid "Cannot access to any source or buffer."
-msgstr "Cannot access to any source or buffer."
-
-#: CRNBlock.cpp:1010 CRNBlock.cpp:1087
-msgid "No filename given."
-msgstr "No filename given."
-
-#: CRNBlock.cpp:1107
-msgid "Saved block do not have the same size."
-msgstr "Saved block do not have the same size."
-
-#: CRNBlock.cpp:1151
-msgid "Wrong content."
-msgstr "Wrong content."
-
-#: CRNBlock.cpp:1447 CRNBlock.cpp:1477 CRNBlock.cpp:1507 CRNBlock.cpp:1537
-#: CRNImage/CRNImageGradient.cpp:40
-msgid "Wrong image dimensions."
-msgstr "Wrong image dimensions."
-
-#: CRNBlock.cpp:1955 CRNBlock.cpp:1980 CRNBlock.cpp:2047
-msgid "block not found."
-msgstr "block not found."
-
-#: CRNBlock.cpp:2223 CRNBlock.cpp:2252
-msgid "ratio is null or negative."
-msgstr "ratio is null or negative."
-
-#: CRNBlock.cpp:2286
-msgid "overlap is negative."
-msgstr "overlap is negative."
-
-#: CRNBlock.cpp:2391 CRNBlock.cpp:2452 CRNBlock.cpp:2696
-msgid "Tree not found."
-msgstr "Tree not found."
-
-#: CRNBlock.cpp:2397
-msgid "Identical indexes."
-msgstr "Identical indexes."
-
-#: CRNBlock.cpp:2469
-msgid "Cannot find subblock."
-msgstr "Cannot find subblock."
-
-#: CRNBlock.cpp:2542 CRNBlock.cpp:2582 CRNBlock.cpp:2675
-msgid "null block or block is not a child."
-msgstr "null block or block is not a child."
-
-#: CRNBlock.cpp:2737 CRNGeometry/CRNRect.cpp:246 CRNGeometry/CRNRect.cpp:328
-msgid "Wrong direction."
-msgstr "Wrong direction."
-
-#: CRNData/CRNData.cpp:161
-msgid "the character 'z' is invalid inside an ASCII85 block."
-msgstr "the character 'z' is invalid inside an ASCII85 block."
-
-#: CRNData/CRNData.cpp:171
-msgid "ASCII85 only allows characters '!' to 'u', but found a: "
-msgstr "ASCII85 only allows characters '!' to 'u', but found a: "
-
-#: CRNData/CRNData.cpp:194
-msgid "the last block of ASCII85 data cannot be a single byte."
-msgstr "the last block of ASCII85 data cannot be a single byte."
-
-#: CRNData/CRNMap.cpp:107
-msgid "Key not found"
-msgstr "Key not found"
-
-#: CRNData/CRNMap.cpp:125 CRNData/CRNVector.cpp:234
-msgid "Object not found."
-msgstr "Object not found."
-
-#: CRNData/CRNMap.cpp:138
-msgid "Invalid iterator."
-msgstr "Invalid iterator."
-
-#: CRNData/CRNMap.cpp:156
-msgid "First iterator is end()."
-msgstr "First iterator is end()."
-
-#: CRNData/CRNMap.cpp:159
-msgid "First and end iterators are equal."
-msgstr "First and end iterators are equal."
-
-#: CRNData/CRNMap.cpp:174
-msgid "End iterator is before first."
-msgstr "End iterator is before first."
-
-#: CRNData/CRNMap.cpp:207
-msgid "Cannot deserialize: "
-msgstr "Cannot deserialize: "
-
-#: CRNData/CRNMap.cpp:207
-msgid " because "
-msgstr " because "
-
-#: CRNData/CRNMap.cpp:288
-msgid "Cannot find root element."
-msgstr "Cannot find root element."
-
-#: CRNData/CRNDataFactory.cpp:51
-msgid "Null XML element."
-msgstr "Null XML element."
-
-#: CRNData/CRNDataFactory.cpp:56
-msgid "Cannot read element."
-msgstr "Cannot read element."
-
-#: CRNData/CRNDataFactory.cpp:124
-msgid "Unknown type: "
-msgstr "Unknown type: "
-
-#: CRNData/CRNVector.cpp:285
-msgid "Unknown XML element: "
-msgstr "Unknown XML element: "
-
-#: CRNData/CRNVector.cpp:345
-msgid "vectors have different sizes."
-msgstr "vectors have different sizes."
-
-#: CRNImage/CRNImageRGB.cpp:73 CRNImage/CRNImageRGB.cpp:331
-#: CRNImage/CRNImageGray.cpp:70 CRNImage/CRNImageGray.cpp:322
-#: CRNImage/CRNImageBW.cpp:70 CRNImage/CRNImageBW.cpp:321
-msgid "Cannot create file "
-msgstr "Cannot create file "
-
-#: CRNImage/CRNImageRGB.cpp:80 CRNImage/CRNImageGray.cpp:77
-#: CRNImage/CRNImageBW.cpp:77
-msgid "Cannot create the PNG structure."
-msgstr "Cannot create the PNG structure."
-
-#: CRNImage/CRNImageRGB.cpp:86 CRNImage/CRNImageGray.cpp:83
-#: CRNImage/CRNImageBW.cpp:83
-msgid "Cannot create the PNG info."
-msgstr "Cannot create the PNG info."
-
-#: CRNImage/CRNImageRGB.cpp:93 CRNImage/CRNImageGray.cpp:90
-#: CRNImage/CRNImageBW.cpp:90
-msgid "Error while generating the PNG image."
-msgstr "Error while generating the PNG image."
-
-#: CRNImage/CRNImageRGB.cpp:168 CRNImage/CRNImageRGB.cpp:385
-#: CRNImage/CRNImageGray.cpp:156 CRNImage/CRNImageGray.cpp:372
-#: CRNImage/CRNImageBW.cpp:157 CRNImage/CRNImageBW.cpp:371
-msgid "Cannot create temporary buffer."
-msgstr "Cannot create temporary buffer."
-
-#: CRNImage/CRNImageRGB.cpp:202 CRNImage/CRNImageRGB.cpp:421
-#: CRNImage/CRNImageGray.cpp:190 CRNImage/CRNImageGray.cpp:407
-#: CRNImage/CRNImageBW.cpp:191 CRNImage/CRNImageBW.cpp:406
-msgid "Cannot save file. "
-msgstr "Cannot save file. "
-
-#: CRNImage/CRNImageRGB.cpp:254 CRNImage/CRNImageRGB.cpp:442
-#: CRNImage/CRNImageGray.cpp:242 CRNImage/CRNImageGray.cpp:428
-#: CRNImage/CRNImageBW.cpp:243 CRNImage/CRNImageBW.cpp:427
-msgid "Cannot create bitmap"
-msgstr "Cannot create bitmap"
-
-#: CRNImage/CRNImageRGB.cpp:289 CRNImage/CRNImageRGB.cpp:484
-#: CRNImage/CRNImageGray.cpp:280 CRNImage/CRNImageGray.cpp:472
-#: CRNImage/CRNImage.cpp:613 CRNImage/CRNImageBW.cpp:279
-#: CRNImage/CRNImageBW.cpp:471
-msgid "Null file name."
-msgstr "Null file name."
-
-#: CRNImage/CRNImageRGB.cpp:318 CRNImage/CRNImageRGB.cpp:513
-#: CRNImage/CRNImageGray.cpp:309 CRNImage/CRNImageGray.cpp:501
-#: CRNImage/CRNImageBW.cpp:308 CRNImage/CRNImageBW.cpp:500
-msgid ""
-"No library for saving image found or write permissions on the file or "
-"directory are not granted. No image will be saved."
-msgstr ""
-"No library for saving image found or write permissions on the file or "
-"directory are not granted. No image will be saved."
-
-#: CRNImage/CRNImageRGB.cpp:342 CRNImage/CRNImageGray.cpp:333
-#: CRNImage/CRNImageBW.cpp:332
-msgid "Cannot create jpeg file structure."
-msgstr "Cannot create jpeg file structure."
-
-#: CRNImage/CRNImageRGB.cpp:529
-msgid "The number of iterations is null."
-msgstr "The number of iterations is null."
-
-#: CRNImage/CRNImage.cpp:101
-msgid "Cannot create PNG reader."
-msgstr "Cannot create PNG reader."
-
-#: CRNImage/CRNImage.cpp:108
-msgid "Cannot create PNG info."
-msgstr "Cannot create PNG info."
-
-#: CRNImage/CRNImage.cpp:115
-msgid "Error while reading the PNG file "
-msgstr "Error while reading the PNG file "
-
-#: CRNImage/CRNImage.cpp:332
-msgid "Not a JPEG file."
-msgstr "Not a JPEG file."
-
-#: CRNImage/CRNImage.cpp:357
-msgid "JPEG file contains unnatural bytes per pixel count."
-msgstr "JPEG file contains unnatural bytes per pixel count."
-
-#: CRNImage/CRNImage.cpp:411 CRNImage/CRNImage.cpp:420
-msgid "Cannot convert filename string. "
-msgstr "Cannot convert filename string. "
-
-#: CRNImage/CRNImage.cpp:429
-msgid "Cannot open image. "
-msgstr "Cannot open image. "
-
-#: CRNImage/CRNImage.cpp:482
-msgid "Gdi+ could not load the image."
-msgstr "Gdi+ could not load the image."
-
-#: CRNImage/CRNImage.cpp:488
-msgid "Gdi+ could not load the image correctly. Error number "
-msgstr "Gdi+ could not load the image correctly. Error number "
-
-#: CRNImage/CRNImage.cpp:504 CRNImage/CRNImage.cpp:558
-#: CRNImage/CRNImage.cpp:583
-msgid "Could not lock pixels. Error number "
-msgstr "Could not lock pixels. Error number "
-
-#: CRNImage/CRNImage.cpp:649
-msgid "No decoder could open the file "
-msgstr "No decoder could open the file "
-
-#: CRNImage/CRNImage.cpp:671 CRNImage/CRNImage.cpp:692
-#: CRNImage/CRNImage.cpp:713
-msgid "unknown image format."
-msgstr "unknown image format."
-
-#: CRNImage/CRNImageBW.cpp:801
-msgid "Min neighbors must be < 8."
-msgstr "Min neighbours must be < 8."
-
-#: CRNImage/CRNImageBW.cpp:856
-msgid "matrices of different sizes"
-msgstr "matrices of different sizes"
-
-#: CRNImage/CRNImageBW.cpp:860
-msgid "even matrix dimensions."
-msgstr "even matrix dimensions."
-
-#: CRNUtils/CRNTimer.cpp:94
-msgid "Unused stopwatch."
-msgstr "Unused stopwatch."
-
-#: CRNUtils/CRNTimer.cpp:97
-msgid "Stopwatch: "
-msgstr "Stopwatch: "
-
-#: CRNUtils/CRNTimer.cpp:99
-msgid "Total time: "
-msgstr "Total time: "
-
-#: CRNUtils/CRNConfigurationFile.cpp:114
-msgid "Cannot save configuration file: "
-msgstr "Cannot save configuration file: "
-
-#: CRNUtils/CRNConfigurationFile.cpp:173
-msgid " is not a Path."
-msgstr " is not a Path."
-
-#: CRNUtils/CRNConfigurationFile.cpp:186
-msgid " is not a String."
-msgstr " is not a String."
-
-#: CRNUtils/CRNConfigurationFile.cpp:199
-msgid " is not a StringUTF8."
-msgstr " is not a StringUTF8."
-
-#: CRNUtils/CRNConfigurationFile.cpp:212
-msgid " is not a Prop3."
-msgstr " is not a Prop3."
-
-#: CRNUtils/CRNConfigurationFile.cpp:225
-msgid " is not an int."
-msgstr " is not an int."
-
-#: CRNUtils/CRNConfigurationFile.cpp:238
-msgid " is not a double."
-msgstr " is not a double."
-
-#: CRNUtils/CRNConfigElement.cpp:135
-msgid "The element was not initialized."
-msgstr "The element was not initialized."
-
-#: CRNUtils/CRNConfigElement.cpp:154
-msgid "The element is of unknown type."
-msgstr "The element is of unknown type."
-
-#: CRNUtils/CRNCharsetConverter.cpp:65
-msgid "Null charset"
-msgstr "Null charset"
-
-#: CRNUtils/CRNCharsetConverter.cpp:81
-msgid "Cannot convert from "
-msgstr "Cannot convert from "
-
-#: CRNUtils/CRNCharsetConverter.cpp:90
-msgid "Cannot convert to "
-msgstr "Cannot convert to "
-
-#: CRNUtils/CRNCharsetConverter.cpp:145
-msgid "Invalid character."
-msgstr "Invalid character."
-
-#: CRNUtils/CRNCharsetConverter.cpp:151
-msgid "Incomplete multibyte character."
-msgstr "Incomplete multibyte character."
-
-#: CRNUtils/CRNCharsetConverter.cpp:210
-msgid "Invalid character in: "
-msgstr "Invalid character in: "
-
-#: CRNUtils/CRNCharsetConverter.cpp:216
-msgid "Incomplete multibyte character in: "
-msgstr "Incomplete multibyte character in: "
-
-#: CRNGeometry/CRNStroke.cpp:124 CRNGeometry/CRNStroke.cpp:155
-msgid "Invalid stroke"
-msgstr "Invalid stroke"
-
-#: CRNGeometry/CRNStroke.cpp:161
-msgid "Null step."
-msgstr "Null step."
-
-#: CRNGeometry/CRNStroke.cpp:212 CRNGeometry/CRNStroke.cpp:229
-msgid "index out of range."
-msgstr "index out of range."
-
-#: CRNGeometry/CRNStroke.cpp:248
-msgid "Cannot reach abscissa."
-msgstr "Cannot reach abscissa."
-
-#: CRNGeometry/CRNRect.cpp:112
-msgid "No orientation given."
-msgstr "No orientation given."
-
-#: CRNGeometry/CRNRect.cpp:226 CRNGeometry/CRNRect.cpp:439
-#: CRNGeometry/CRNRect.cpp:463 CRNGeometry/CRNRect.cpp:601
-msgid "The rectangle isn't initialized."
-msgstr "The rectangle isn't initialized."
-
-#: CRNGeometry/CRNRect.cpp:441 CRNGeometry/CRNRect.cpp:465
-msgid "negative scale."
-msgstr "negative scale."
-
-#: CRNConfig.cpp:94
-msgid "Using default language."
-msgstr "British english language selected."
 
 #~ msgid "New project"
 #~ msgstr "New project"

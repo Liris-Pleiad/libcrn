@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libcrn 3.9\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-07 09:22+0200\n"
+"POT-Creation-Date: 2016-09-09 10:23+0200\n"
 "PO-Revision-Date: 2016-09-07 09:43+0200\n"
 "Last-Translator: Yann LEYDIER <yann@leydier.info>\n"
 "Language-Team: French <>\n"
@@ -18,151 +18,13 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Generator: Gtranslator 2.91.6\n"
 
-#: GtkCRNPDFAttributes.cpp:28
-msgid "Single pages"
-msgstr "Pages simples"
+#: GdkCRNPixbuf.cpp:117
+msgid "unsupported pixel format."
+msgstr "le format de l'image n'est pas géré."
 
-#: GtkCRNPDFAttributes.cpp:29
-msgid "Continuous pages"
-msgstr "Pages continues"
-
-#: GtkCRNPDFAttributes.cpp:30
-msgid "Two pages, first on the left"
-msgstr "Deux pages, première à gauche"
-
-#: GtkCRNPDFAttributes.cpp:31
-msgid "Tow pages, first on the right"
-msgstr "Deux pages, première à droite"
-
-#: GtkCRNPDFAttributes.cpp:36
-msgid "Lossy image compression"
-msgstr "Compression d'image avec pertes"
-
-#: GtkCRNPDFAttributes.cpp:37
-msgid "Allow users to copy the content"
-msgstr "Autoriser les utilisateurs à copier le contenu"
-
-#: GtkCRNPDFAttributes.cpp:38
-msgid "Allow users to print the document"
-msgstr "Autoriser les utilisateurs à imprimer le document"
-
-#: GtkCRNPDFAttributes.cpp:41 GtkCRNPDFAttributes.cpp:43
-msgid "Author"
-msgstr "Auteur"
-
-#: GtkCRNPDFAttributes.cpp:49 GtkCRNPDFAttributes.cpp:52
-msgid "Title"
-msgstr "Titre"
-
-#: GtkCRNPDFAttributes.cpp:236
-msgid "JPEG quality must be between 0 and 100."
-msgstr "La qualité de compression JPEG doit se situer entre 0 et 100."
-
-#: GtkCRNProp3.cpp:94
-msgid "null event."
-msgstr "événement nul."
-
-#: GtkCRNProgressWindow.cpp:40
-msgid "_Close"
-msgstr "_Fermer"
-
-#: GtkCRNProgressWindow.cpp:115 GtkCRNProgressWindow.cpp:130
-#: GtkCRNSelectionBox.cpp:708 GtkCRNSelectionBox.cpp:724
-#: GtkCRNSelectionBox.cpp:762
-msgid "index out of bounds."
-msgstr "Index hors limites."
-
-#: GtkCRNAltoTextStyleEditor.cpp:30
-msgid "Text style"
-msgstr "Style de texte"
-
-#: GtkCRNAltoTextStyleEditor.cpp:35
-msgid "Colored"
-msgstr "Coloré"
-
-#: GtkCRNAltoTextStyleEditor.cpp:36 GtkCRNAltoWordEditor.cpp:34
-msgid "Bold"
-msgstr "Gras"
-
-#: GtkCRNAltoTextStyleEditor.cpp:37 GtkCRNAltoWordEditor.cpp:35
-msgid "Italics"
-msgstr "Italiques"
-
-#: GtkCRNAltoTextStyleEditor.cpp:38 GtkCRNAltoWordEditor.cpp:36
-msgid "Subscript"
-msgstr "Indice"
-
-#: GtkCRNAltoTextStyleEditor.cpp:39 GtkCRNAltoWordEditor.cpp:37
-msgid "Superscript"
-msgstr "Exposant"
-
-#: GtkCRNAltoTextStyleEditor.cpp:40 GtkCRNAltoWordEditor.cpp:38
-msgid "Small caps"
-msgstr "Petites majuscules"
-
-#: GtkCRNAltoTextStyleEditor.cpp:41 GtkCRNAltoWordEditor.cpp:39
-msgid "Underlined"
-msgstr "Souligné"
-
-#: GtkCRNAltoTextStyleEditor.cpp:68 GtkCRNAltoParagraphStyleEditor.cpp:68
-msgid "Id"
-msgstr "Identifiant"
-
-#: GtkCRNAltoTextStyleEditor.cpp:71
-msgid "Font family"
-msgstr "Police"
-
-#: GtkCRNAltoTextStyleEditor.cpp:76
-msgid "Serif"
-msgstr "Empattements"
-
-#: GtkCRNAltoTextStyleEditor.cpp:83
-msgid "Fixed width"
-msgstr "Chasse fixe"
-
-#: GtkCRNAltoTextStyleEditor.cpp:90
-msgid "Font size"
-msgstr "Taille de la police"
-
-#: GtkCRNAltoParagraphStyleEditor.cpp:29
-msgid "Undefined"
-msgstr "Non défini"
-
-#: GtkCRNAltoParagraphStyleEditor.cpp:30
-msgid "Right"
-msgstr "Droite"
-
-#: GtkCRNAltoParagraphStyleEditor.cpp:31
-msgid "Left"
-msgstr "Gauche"
-
-#: GtkCRNAltoParagraphStyleEditor.cpp:32
-msgid "Center"
-msgstr "Centré"
-
-#: GtkCRNAltoParagraphStyleEditor.cpp:35
-msgid "Paragraph style"
-msgstr "Style de paragraphe"
-
-#: GtkCRNAltoParagraphStyleEditor.cpp:38
-msgid "Left indentation"
-msgstr "Écart à gauche"
-
-#: GtkCRNAltoParagraphStyleEditor.cpp:39
-msgid "Right indentation"
-msgstr "Écart à droite"
-
-#: GtkCRNAltoParagraphStyleEditor.cpp:40
-msgid "Line space"
-msgstr "Interligne"
-
-#: GtkCRNAltoParagraphStyleEditor.cpp:41
-msgid "First line indentation"
-msgstr "Indentation de la première ligne"
-
-#: GtkCRNAltoParagraphStyleEditor.cpp:71
-msgid "Alignment"
-msgstr "Alignement"
+#: GdkCRNPixbuf.cpp:151
+msgid "Null pixbuf given."
+msgstr "Pixbuf nul."
 
 #: GtkCRNAltoDisplay.cpp:45 GtkCRNAltoImage.cpp:44
 msgid "Show/hide _pages"
@@ -307,6 +169,158 @@ msgstr "Impossible d'ajouter une page."
 msgid "Cannot remove page."
 msgstr "Impossible de supprimer la page."
 
+#: GtkCRNAltoImage.cpp:231
+msgid "Delete word"
+msgstr "Supprimer le mot"
+
+#: GtkCRNAltoParagraphStyleEditor.cpp:29
+msgid "Undefined"
+msgstr "Non défini"
+
+#: GtkCRNAltoParagraphStyleEditor.cpp:30
+msgid "Right"
+msgstr "Droite"
+
+#: GtkCRNAltoParagraphStyleEditor.cpp:31
+msgid "Left"
+msgstr "Gauche"
+
+#: GtkCRNAltoParagraphStyleEditor.cpp:32
+msgid "Center"
+msgstr "Centré"
+
+#: GtkCRNAltoParagraphStyleEditor.cpp:35
+msgid "Paragraph style"
+msgstr "Style de paragraphe"
+
+#: GtkCRNAltoParagraphStyleEditor.cpp:38
+msgid "Left indentation"
+msgstr "Écart à gauche"
+
+#: GtkCRNAltoParagraphStyleEditor.cpp:39
+msgid "Right indentation"
+msgstr "Écart à droite"
+
+#: GtkCRNAltoParagraphStyleEditor.cpp:40
+msgid "Line space"
+msgstr "Interligne"
+
+#: GtkCRNAltoParagraphStyleEditor.cpp:41
+msgid "First line indentation"
+msgstr "Indentation de la première ligne"
+
+#: GtkCRNAltoParagraphStyleEditor.cpp:68 GtkCRNAltoTextStyleEditor.cpp:68
+msgid "Id"
+msgstr "Identifiant"
+
+#: GtkCRNAltoParagraphStyleEditor.cpp:71
+msgid "Alignment"
+msgstr "Alignement"
+
+#: GtkCRNAltoStyleButton.cpp:58
+msgid "Style not found."
+msgstr "Style non trouvé."
+
+#: GtkCRNAltoStyleRefList.cpp:53
+msgid "Add style"
+msgstr "Ajouter un style"
+
+#: GtkCRNAltoStyleRefList.cpp:64
+msgid "Add text style"
+msgstr "Ajouter un style de texte"
+
+#: GtkCRNAltoStyleRefList.cpp:68
+msgid "Add paragraph style"
+msgstr "Ajouter un style de paragraphe"
+
+#: GtkCRNAltoStyleRefList.cpp:131
+msgid "Create style"
+msgstr "Créer un style"
+
+#: GtkCRNAltoStyleRefList.cpp:151
+msgid "This id already exists in the document."
+msgstr "Cet identifiant existe déjà dans le document."
+
+#: GtkCRNAltoTextLineEditor.cpp:31
+msgid "Text line information"
+msgstr "Informations sur la ligne de texte"
+
+#: GtkCRNAltoTextLineEditor.cpp:34
+msgid "Baseline"
+msgstr "Ligne de base"
+
+#: GtkCRNAltoTextLineEditor.cpp:62
+msgid "Horizontal position"
+msgstr "Position horizontale"
+
+#: GtkCRNAltoTextLineEditor.cpp:66
+msgid "Vertical position"
+msgstr "Position verticale"
+
+#: GtkCRNAltoTextLineEditor.cpp:70
+msgid "Width"
+msgstr "Largeur"
+
+#: GtkCRNAltoTextLineEditor.cpp:74
+msgid "Height"
+msgstr "Hauteur"
+
+#: GtkCRNAltoTextLineEditor.cpp:96
+msgid "Manually corrected"
+msgstr "Corrigé manuellement"
+
+#: GtkCRNAltoTextLineEditor.cpp:109
+msgid "Line styles"
+msgstr "Styles de la ligne"
+
+#: GtkCRNAltoTextStyleEditor.cpp:30
+msgid "Text style"
+msgstr "Style de texte"
+
+#: GtkCRNAltoTextStyleEditor.cpp:35
+msgid "Colored"
+msgstr "Coloré"
+
+#: GtkCRNAltoTextStyleEditor.cpp:36 GtkCRNAltoWordEditor.cpp:34
+msgid "Bold"
+msgstr "Gras"
+
+#: GtkCRNAltoTextStyleEditor.cpp:37 GtkCRNAltoWordEditor.cpp:35
+msgid "Italics"
+msgstr "Italiques"
+
+#: GtkCRNAltoTextStyleEditor.cpp:38 GtkCRNAltoWordEditor.cpp:36
+msgid "Subscript"
+msgstr "Indice"
+
+#: GtkCRNAltoTextStyleEditor.cpp:39 GtkCRNAltoWordEditor.cpp:37
+msgid "Superscript"
+msgstr "Exposant"
+
+#: GtkCRNAltoTextStyleEditor.cpp:40 GtkCRNAltoWordEditor.cpp:38
+msgid "Small caps"
+msgstr "Petites majuscules"
+
+#: GtkCRNAltoTextStyleEditor.cpp:41 GtkCRNAltoWordEditor.cpp:39
+msgid "Underlined"
+msgstr "Souligné"
+
+#: GtkCRNAltoTextStyleEditor.cpp:71
+msgid "Font family"
+msgstr "Police"
+
+#: GtkCRNAltoTextStyleEditor.cpp:76
+msgid "Serif"
+msgstr "Empattements"
+
+#: GtkCRNAltoTextStyleEditor.cpp:83
+msgid "Fixed width"
+msgstr "Chasse fixe"
+
+#: GtkCRNAltoTextStyleEditor.cpp:90
+msgid "Font size"
+msgstr "Taille de la police"
+
 #: GtkCRNAltoWordEditor.cpp:31
 msgid "Word information"
 msgstr "Informations sur le mot"
@@ -323,21 +337,46 @@ msgstr "Contenu"
 msgid "Word styles"
 msgstr "Styles du mot"
 
-#: GtkCRNObject.cpp:41
-msgid "null object"
-msgstr "objet nul"
+#: GtkCRNApp.cpp:59
+msgid "_File"
+msgstr "_Fichier"
 
-#: GtkCRNFileSelecter.cpp:47
-msgid "Filename"
-msgstr "Nom de fichier"
+#: GtkCRNApp.cpp:59
+msgid "File"
+msgstr "Fichier"
 
-#: GtkCRNAltoImage.cpp:231
-msgid "Delete word"
-msgstr "Supprimer le mot"
+#: GtkCRNApp.cpp:61
+msgid "_?"
+msgstr "_?"
 
-#: GtkCRNSelectionBox.cpp:63
-msgid "GtkCRN::SelectionBox: Invalid orientation."
-msgstr "GtkCRN::SelectionBox: Orientation non valide."
+#: GtkCRNApp.cpp:61
+msgid "?"
+msgstr "?"
+
+#: GtkCRNApp.cpp:78
+msgid "Are you sure you want to quit?"
+msgstr "Êtes-vous sûr vouloir quitter l'application ?"
+
+#: GtkCRNApp.cpp:113 GtkCRNDocument.cpp:609 GtkCRNDocument.cpp:805
+#: GtkCRNDocument.cpp:954 GtkCRNDocument.cpp:1168
+msgid "_Cancel"
+msgstr "_Annuler"
+
+#: GtkCRNApp.cpp:114 GtkCRNDocument.cpp:806 GtkCRNDocument.cpp:955
+msgid "_OK"
+msgstr "_OK"
+
+#: GtkCRNApp.cpp:169
+msgid "Advanced details"
+msgstr "Détails"
+
+#: GtkCRNApp.cpp:198
+msgid "Unhandled exception caught."
+msgstr "Exception non gérée."
+
+#: GtkCRNConfigElement.cpp:38
+msgid "The element was not initialized."
+msgstr "L'élément n'est pas initialisé."
 
 #: GtkCRNDocument.cpp:54 GtkCRNDocument.cpp:93
 msgid "Views"
@@ -518,11 +557,6 @@ msgstr "Chargement de la vue"
 msgid "Please select views to add"
 msgstr "Veuillez sélectionner les vues à ajouter"
 
-#: GtkCRNDocument.cpp:609 GtkCRNDocument.cpp:805 GtkCRNDocument.cpp:954
-#: GtkCRNDocument.cpp:1168 GtkCRNApp.cpp:113
-msgid "_Cancel"
-msgstr "_Annuler"
-
 #: GtkCRNDocument.cpp:610
 msgid "_Add"
 msgstr "_Ajouter"
@@ -530,10 +564,6 @@ msgstr "_Ajouter"
 #: GtkCRNDocument.cpp:802
 msgid "Add a subblock"
 msgstr "Ajouter un sous-bloc"
-
-#: GtkCRNDocument.cpp:806 GtkCRNDocument.cpp:955 GtkCRNApp.cpp:114
-msgid "_OK"
-msgstr "_OK"
 
 #: GtkCRNDocument.cpp:816
 msgid "Subblock tree"
@@ -579,54 +609,6 @@ msgstr "_Sauvegarder"
 msgid "Writing image"
 msgstr "Écriture de l'image"
 
-#: GtkCRNFileSelecterDialog.cpp:38
-msgid "File selection"
-msgstr "Sélection de fichier"
-
-#: GtkCRNMain.cpp:100
-msgid "Using default language."
-msgstr "Langue française sélectionnée."
-
-#: GdkCRNPixbuf.cpp:117
-msgid "unsupported pixel format."
-msgstr "le format de l'image n'est pas géré."
-
-#: GdkCRNPixbuf.cpp:151
-msgid "Null pixbuf given."
-msgstr "Pixbuf nul."
-
-#: GtkCRNConfigElement.cpp:38
-msgid "The element was not initialized."
-msgstr "L'élément n'est pas initialisé."
-
-#: GtkCRNApp.cpp:59
-msgid "_File"
-msgstr "_Fichier"
-
-#: GtkCRNApp.cpp:59
-msgid "File"
-msgstr "Fichier"
-
-#: GtkCRNApp.cpp:61
-msgid "_?"
-msgstr "_?"
-
-#: GtkCRNApp.cpp:61
-msgid "?"
-msgstr "?"
-
-#: GtkCRNApp.cpp:78
-msgid "Are you sure you want to quit?"
-msgstr "Êtes-vous sûr vouloir quitter l'application ?"
-
-#: GtkCRNApp.cpp:169
-msgid "Advanced details"
-msgstr "Détails"
-
-#: GtkCRNApp.cpp:198
-msgid "Unhandled exception caught."
-msgstr "Exception non gérée."
-
 #: GtkCRNDrawingPanel.cpp:39
 msgid "_Background Color…"
 msgstr "Couleur du _Fond"
@@ -663,61 +645,17 @@ msgstr "Changer l'Épaisseur"
 msgid "null or negative zoom value."
 msgstr "valeur de zoom nulle ou négative."
 
-#: GtkCRNAltoStyleRefList.cpp:53
-msgid "Add style"
-msgstr "Ajouter un style"
+#: GtkCRNFileSelecter.cpp:47
+msgid "Filename"
+msgstr "Nom de fichier"
 
-#: GtkCRNAltoStyleRefList.cpp:64
-msgid "Add text style"
-msgstr "Ajouter un style de texte"
-
-#: GtkCRNAltoStyleRefList.cpp:68
-msgid "Add paragraph style"
-msgstr "Ajouter un style de paragraphe"
-
-#: GtkCRNAltoStyleRefList.cpp:131
-msgid "Create style"
-msgstr "Créer un style"
-
-#: GtkCRNAltoStyleRefList.cpp:151
-msgid "This id already exists in the document."
-msgstr "Cet identifiant existe déjà dans le document."
+#: GtkCRNFileSelecterDialog.cpp:38
+msgid "File selection"
+msgstr "Sélection de fichier"
 
 #: GtkCRNHelpers.cpp:80
 msgid "not a ToggleAction."
 msgstr "ce n'est pas un ToggleAction."
-
-#: GtkCRNAltoTextLineEditor.cpp:31
-msgid "Text line information"
-msgstr "Informations sur la ligne de texte"
-
-#: GtkCRNAltoTextLineEditor.cpp:34
-msgid "Baseline"
-msgstr "Ligne de base"
-
-#: GtkCRNAltoTextLineEditor.cpp:62
-msgid "Horizontal position"
-msgstr "Position horizontale"
-
-#: GtkCRNAltoTextLineEditor.cpp:66
-msgid "Vertical position"
-msgstr "Position verticale"
-
-#: GtkCRNAltoTextLineEditor.cpp:70
-msgid "Width"
-msgstr "Largeur"
-
-#: GtkCRNAltoTextLineEditor.cpp:74
-msgid "Height"
-msgstr "Hauteur"
-
-#: GtkCRNAltoTextLineEditor.cpp:96
-msgid "Manually corrected"
-msgstr "Corrigé manuellement"
-
-#: GtkCRNAltoTextLineEditor.cpp:109
-msgid "Line styles"
-msgstr "Styles de la ligne"
 
 #: GtkCRNImage.cpp:143
 msgid "_Clear User Selection"
@@ -764,6 +702,68 @@ msgstr "La sélection n'est pas un point."
 msgid "The selection is not a line."
 msgstr "La sélection n'est pas une ligne."
 
-#: GtkCRNAltoStyleButton.cpp:58
-msgid "Style not found."
-msgstr "Style non trouvé."
+#: GtkCRNMain.cpp:100
+msgid "Using default language."
+msgstr "Langue française sélectionnée."
+
+#: GtkCRNObject.cpp:41
+msgid "null object"
+msgstr "objet nul"
+
+#: GtkCRNPDFAttributes.cpp:28
+msgid "Single pages"
+msgstr "Pages simples"
+
+#: GtkCRNPDFAttributes.cpp:29
+msgid "Continuous pages"
+msgstr "Pages continues"
+
+#: GtkCRNPDFAttributes.cpp:30
+msgid "Two pages, first on the left"
+msgstr "Deux pages, première à gauche"
+
+#: GtkCRNPDFAttributes.cpp:31
+msgid "Tow pages, first on the right"
+msgstr "Deux pages, première à droite"
+
+#: GtkCRNPDFAttributes.cpp:36
+msgid "Lossy image compression"
+msgstr "Compression d'image avec pertes"
+
+#: GtkCRNPDFAttributes.cpp:37
+msgid "Allow users to copy the content"
+msgstr "Autoriser les utilisateurs à copier le contenu"
+
+#: GtkCRNPDFAttributes.cpp:38
+msgid "Allow users to print the document"
+msgstr "Autoriser les utilisateurs à imprimer le document"
+
+#: GtkCRNPDFAttributes.cpp:41 GtkCRNPDFAttributes.cpp:43
+msgid "Author"
+msgstr "Auteur"
+
+#: GtkCRNPDFAttributes.cpp:49 GtkCRNPDFAttributes.cpp:52
+msgid "Title"
+msgstr "Titre"
+
+#: GtkCRNPDFAttributes.cpp:236
+msgid "JPEG quality must be between 0 and 100."
+msgstr "La qualité de compression JPEG doit se situer entre 0 et 100."
+
+#: GtkCRNProgressWindow.cpp:40
+msgid "_Close"
+msgstr "_Fermer"
+
+#: GtkCRNProgressWindow.cpp:115 GtkCRNProgressWindow.cpp:130
+#: GtkCRNSelectionBox.cpp:708 GtkCRNSelectionBox.cpp:724
+#: GtkCRNSelectionBox.cpp:762
+msgid "index out of bounds."
+msgstr "Index hors limites."
+
+#: GtkCRNProp3.cpp:94
+msgid "null event."
+msgstr "événement nul."
+
+#: GtkCRNSelectionBox.cpp:63
+msgid "GtkCRN::SelectionBox: Invalid orientation."
+msgstr "GtkCRN::SelectionBox: Orientation non valide."
