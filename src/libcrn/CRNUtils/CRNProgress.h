@@ -60,6 +60,8 @@ namespace crn
 			/*! \brief Sets the type of progress bar */
 			void SetType(Type typ) noexcept { type = typ; }
 
+			void SetName(const crn::String &nam) { name = nam; }
+
 		protected:
 			/*! \brief Displays the progress */
 			virtual void display(const String &msg) = 0;
