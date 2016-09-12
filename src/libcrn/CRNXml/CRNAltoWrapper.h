@@ -55,9 +55,9 @@ namespace crn
 				return false; }
 			String view_id;
 			Id page_id;
-			virtual String ToString() const { return view_id + Separator + page_id; }
-			static const crn::String Separator;
-			static const PagePath NullPath;
+			virtual String ToString() const { return view_id + Separator() + page_id; }
+			static const crn::String& Separator();
+			static const PagePath& NullPath();
 		};
 		/*! Path to an alto space
 		 * \ingroup xml
@@ -81,8 +81,8 @@ namespace crn
 				else if ((page_id == other.page_id) && (space_id < other.space_id)) return true;
 				return false; }
 			Id space_id;
-			virtual String ToString() const override { return PagePath::ToString() + Separator + space_id; }
-			static const SpacePath NullPath;
+			virtual String ToString() const override { return PagePath::ToString() + Separator() + space_id; }
+			static const SpacePath& NullPath();
 		};
 		/*! Path to an alto block (text block, illustration, etc.)
 		 * \ingroup xml
@@ -106,8 +106,8 @@ namespace crn
 				else if ((space_id == other.space_id) && (block_id < other.block_id)) return true;
 				return false; }
 			Id block_id;
-			virtual String ToString() const override { return SpacePath::ToString() + Separator + block_id; }
-			static const BlockPath NullPath;
+			virtual String ToString() const override { return SpacePath::ToString() + Separator() + block_id; }
+			static const BlockPath& NullPath();
 		};
 		/*! Path to an alto text line
 		 * \ingroup xml
@@ -131,8 +131,8 @@ namespace crn
 				else if ((block_id == other.block_id) && (textline_id < other.textline_id)) return true;
 				return false; }
 			Id textline_id;
-			virtual String ToString() const override { return BlockPath::ToString() + Separator + textline_id; }
-			static const TextLinePath NullPath;
+			virtual String ToString() const override { return BlockPath::ToString() + Separator() + textline_id; }
+			static const TextLinePath& NullPath();
 		};
 		/*! Path to an alto string
 		 * \ingroup xml
@@ -156,8 +156,8 @@ namespace crn
 				else if ((textline_id == other.textline_id) && (word_id < other.word_id)) return true;
 				return false; }
 			Id word_id;
-			virtual String ToString() const override { return TextLinePath::ToString() + Separator + word_id; }
-			static const WordPath NullPath;
+			virtual String ToString() const override { return TextLinePath::ToString() + Separator() + word_id; }
+			static const WordPath& NullPath();
 		};
 		/*! \brief XML Alto file wrapper to crn::Document
 		 * 
@@ -749,15 +749,15 @@ namespace crn
 				/*! \brief Changes the size of a space and all its parents if needed */
 				void ResizeSpace(const SpacePath &p, const crn::Rect &r, bool erase_oob);
 
-				static const String AltoPathKey; /*!< the key to access the Alto path in a wrapped crn::Document */
-				static const String PageKey; /*!< the key to access the pages in a wrapped crn::Block */
-				static const String SpaceKey; /*!< the key to access the spaces in a wrapped crn::Block */
-				static const String TextBlockKey; /*!< the key to access the text block in a wrapped crn::Block */
-				static const String IllustrationKey; /*!< the key to access the illustrations in a wrapped crn::Block */
-				static const String GraphicalElementKey; /*!< the key to access the graphical elements in a wrapped crn::Block */
-				static const String ComposedBlockKey; /*!< the key to access the composed blocks in a wrapped crn::Block */
-				static const String TextLineKey; /*!< the key to access the text lines in a wrapped crn::Block */
-				static const String WordKey; /*!< the key to access the words in a wrapped crn::Block */
+				static const String& AltoPathKey(); /*!< the key to access the Alto path in a wrapped crn::Document */
+				static const String& PageKey(); /*!< the key to access the pages in a wrapped crn::Block */
+				static const String& SpaceKey(); /*!< the key to access the spaces in a wrapped crn::Block */
+				static const String& TextBlockKey(); /*!< the key to access the text block in a wrapped crn::Block */
+				static const String& IllustrationKey(); /*!< the key to access the illustrations in a wrapped crn::Block */
+				static const String& GraphicalElementKey(); /*!< the key to access the graphical elements in a wrapped crn::Block */
+				static const String& ComposedBlockKey(); /*!< the key to access the composed blocks in a wrapped crn::Block */
+				static const String& TextLineKey(); /*!< the key to access the text lines in a wrapped crn::Block */
+				static const String& WordKey(); /*!< the key to access the words in a wrapped crn::Block */
 
 			private:
 				/*! \brief Creates a wrapper from list of images and Alto paths */

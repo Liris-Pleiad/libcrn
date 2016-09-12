@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libcrn 3.9\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-09 10:23+0200\n"
+"POT-Creation-Date: 2016-09-12 09:47+0200\n"
 "PO-Revision-Date: 2016-09-05 11:13+0200\n"
 "Last-Translator: Yann LEYDIER <yann@leydier.info>\n"
 "Language-Team: French <>\n"
@@ -1022,45 +1022,45 @@ msgstr "Wrong type of substitution."
 msgid "The word confidence must be in [0, 1]."
 msgstr "The word confidence must be in [0, 1]."
 
-#: CRNXml/CRNAltoWrapper.cpp:35 CRNXml/CRNAltoWrapper.cpp:46
-#: CRNXml/CRNAltoWrapper.cpp:58 CRNXml/CRNAltoWrapper.cpp:71
-#: CRNXml/CRNAltoWrapper.cpp:85
+#: CRNXml/CRNAltoWrapper.cpp:39 CRNXml/CRNAltoWrapper.cpp:54
+#: CRNXml/CRNAltoWrapper.cpp:71 CRNXml/CRNAltoWrapper.cpp:88
+#: CRNXml/CRNAltoWrapper.cpp:106
 msgid "Malformed path string."
 msgstr "Malformed path string."
 
-#: CRNXml/CRNAltoWrapper.cpp:222
+#: CRNXml/CRNAltoWrapper.cpp:283
 msgid ": no xml match."
 msgstr ": no xml match."
 
-#: CRNXml/CRNAltoWrapper.cpp:253 CRNXml/CRNAltoWrapper.cpp:281
+#: CRNXml/CRNAltoWrapper.cpp:314 CRNXml/CRNAltoWrapper.cpp:342
 msgid "The document is not associated to any Alto data."
 msgstr "The document is not associated to any Alto data."
 
-#: CRNXml/CRNAltoWrapper.cpp:974 CRNXml/CRNAltoWrapper.cpp:983
-#: CRNXml/CRNAltoWrapper.cpp:989 CRNXml/CRNAltoWrapper.cpp:995
-#: CRNXml/CRNAltoWrapper.cpp:1243 CRNXml/CRNAltoWrapper.cpp:1252
-#: CRNXml/CRNAltoWrapper.cpp:1258 CRNXml/CRNAltoWrapper.cpp:1392
-#: CRNXml/CRNAltoWrapper.cpp:1401 CRNXml/CRNAltoWrapper.cpp:1558
+#: CRNXml/CRNAltoWrapper.cpp:1035 CRNXml/CRNAltoWrapper.cpp:1044
+#: CRNXml/CRNAltoWrapper.cpp:1050 CRNXml/CRNAltoWrapper.cpp:1056
+#: CRNXml/CRNAltoWrapper.cpp:1304 CRNXml/CRNAltoWrapper.cpp:1313
+#: CRNXml/CRNAltoWrapper.cpp:1319 CRNXml/CRNAltoWrapper.cpp:1453
+#: CRNXml/CRNAltoWrapper.cpp:1462 CRNXml/CRNAltoWrapper.cpp:1619
 msgid "Resizing the element would invalidate its content."
 msgstr "Resizing the element would invalidate its content."
 
-#: CRNXml/CRNAltoWrapper.cpp:1070
+#: CRNXml/CRNAltoWrapper.cpp:1131
 msgid "No top margin on this page."
 msgstr "No top margin on this page."
 
-#: CRNXml/CRNAltoWrapper.cpp:1095
+#: CRNXml/CRNAltoWrapper.cpp:1156
 msgid "No left margin on this page."
 msgstr "No left margin on this page."
 
-#: CRNXml/CRNAltoWrapper.cpp:1120
+#: CRNXml/CRNAltoWrapper.cpp:1181
 msgid "No bottom margin on this page."
 msgstr "No bottom margin on this page."
 
-#: CRNXml/CRNAltoWrapper.cpp:1145
+#: CRNXml/CRNAltoWrapper.cpp:1206
 msgid "No right margin on this page."
 msgstr "No right margin on this page."
 
-#: CRNXml/CRNAltoWrapper.cpp:1170
+#: CRNXml/CRNAltoWrapper.cpp:1231
 msgid "No print space on this page."
 msgstr "No print space on this page."
 
