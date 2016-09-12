@@ -26,22 +26,30 @@
 using namespace crn;
 using namespace xml;
 
-const crn::String PagePath::Separator(U" ");
+const crn::String& PagePath::Separator()
+{
+	static const crn::String p(U" ");
+	return p;
+}
 
 PagePath::PagePath(const String &p)
 {
-	std::vector<String> pl(p.Split(Separator));
+	std::vector<String> pl(p.Split(Separator()));
 	if (pl.size() < 2)
 		throw ExceptionInvalidArgument(_("Malformed path string."));
 	view_id = pl[0];
 	page_id = pl[1].CStr();
 }
 
-const PagePath PagePath::NullPath;
+const PagePath& PagePath::NullPath()
+{
+	static const PagePath p;
+	return p;
+}
 
 SpacePath::SpacePath(const String &p)
 {
-	std::vector<String> pl(p.Split(Separator));
+	std::vector<String> pl(p.Split(Separator()));
 	if (pl.size() < 3)
 		throw ExceptionInvalidArgument(_("Malformed path string."));
 	view_id = pl[0];
@@ -49,11 +57,16 @@ SpacePath::SpacePath(const String &p)
 	space_id = pl[2].CStr();
 }
 
-const SpacePath SpacePath::NullPath;
+const SpacePath& SpacePath::NullPath()
+{
+	static const SpacePath p;
+	return p;
+}
+
 
 BlockPath::BlockPath(const String &p)
 {
-	std::vector<String> pl(p.Split(Separator));
+	std::vector<String> pl(p.Split(Separator()));
 	if (pl.size() < 4)
 		throw ExceptionInvalidArgument(_("Malformed path string."));
 	view_id = pl[0];
@@ -62,11 +75,15 @@ BlockPath::BlockPath(const String &p)
 	block_id = pl[3].CStr();
 }
 
-const BlockPath BlockPath::NullPath;
+const BlockPath& BlockPath::NullPath()
+{
+	static const BlockPath p;
+	return p;
+}
 
 TextLinePath::TextLinePath(const String &p)
 {
-	std::vector<String> pl(p.Split(Separator));
+	std::vector<String> pl(p.Split(Separator()));
 	if (pl.size() < 5)
 		throw ExceptionInvalidArgument(_("Malformed path string."));
 	view_id = pl[0];
@@ -76,11 +93,15 @@ TextLinePath::TextLinePath(const String &p)
 	textline_id = pl[4].CStr();
 }
 
-const TextLinePath TextLinePath::NullPath;
+const TextLinePath& TextLinePath::NullPath()
+{
+	static const TextLinePath p;
+	return p;
+}
 
 WordPath::WordPath(const String &p)
 {
-	std::vector<String> pl(p.Split(Separator));
+	std::vector<String> pl(p.Split(Separator()));
 	if (pl.size() < 6)
 		throw ExceptionInvalidArgument(_("Malformed path string."));
 	view_id = pl[0];
@@ -91,17 +112,57 @@ WordPath::WordPath(const String &p)
 	word_id = pl[5].CStr();
 }
 
-const WordPath WordPath::NullPath;
+const WordPath& WordPath::NullPath()
+{
+	static const WordPath p;
+	return p;
+}
 
-const String AltoWrapper::AltoPathKey(U"nimrod::AltoPath");
-const String AltoWrapper::PageKey(U"nimrod::Page");
-const String AltoWrapper::SpaceKey(U"nimrod::Space");
-const String AltoWrapper::TextBlockKey(U"nimrod::TextBlock");
-const String AltoWrapper::IllustrationKey(U"nimrod::Illustration");
-const String AltoWrapper::GraphicalElementKey(U"nimrod::GraphicalElement");
-const String AltoWrapper::ComposedBlockKey(U"nimrod::ComposedBlock");
-const String AltoWrapper::TextLineKey(U"nimrod::TextLine");
-const String AltoWrapper::WordKey(U"nimrod::Word");
+const String& AltoWrapper::AltoPathKey()
+{
+	static const crn::String k(U"nimrod::AltoPath");
+	return k;
+}
+const String& AltoWrapper::PageKey()
+{
+	static const crn::String k(U"nimrod::Page");
+	return k;
+}
+const String& AltoWrapper::SpaceKey()
+{
+	static const crn::String k(U"nimrod::Space");
+	return k;
+}
+const String& AltoWrapper::TextBlockKey()
+{
+	static const crn::String k(U"nimrod::TextBlock");
+	return k;
+}
+const String& AltoWrapper::IllustrationKey()
+{
+	static const crn::String k(U"nimrod::Illustration");
+	return k;
+}
+const String& AltoWrapper::GraphicalElementKey()
+{
+	static const crn::String k(U"nimrod::GraphicalElement");
+	return k;
+}
+const String& AltoWrapper::ComposedBlockKey()
+{
+	static const crn::String k(U"nimrod::ComposedBlock");
+	return k;
+}
+const String& AltoWrapper::TextLineKey()
+{
+	static const crn::String k(U"nimrod::TextLine");
+	return k;
+}
+const String& AltoWrapper::WordKey()
+{
+	static const crn::String k(U"nimrod::Word");
+	return k;
+}
 
 /*! Constructor
  * \param[in]	throw_exceptions	shall an exception be thrown on character encoding conversion error?
@@ -110,7 +171,7 @@ AltoWrapper::AltoWrapper(bool throw_exceptions):
 	doc(std::make_shared<crn::Document>()),
 	throws(throw_exceptions)
 {
-	doc->SetUserData(AltoPathKey, std::make_shared<crn::Map>());
+	doc->SetUserData(AltoPathKey(), std::make_shared<crn::Map>());
 }
 
 struct keepXML
@@ -249,7 +310,7 @@ std::unique_ptr<AltoWrapper> AltoWrapper::NewFromDirs(const crn::Path &image_dir
  */
 std::unique_ptr<AltoWrapper> AltoWrapper::NewFromDocument(const crn::SDocument &document, bool create_altos, bool throw_exceptions)
 {
-	if (!document->IsUserData(AltoPathKey) && !create_altos)
+	if (!document->IsUserData(AltoPathKey()) && !create_altos)
 		throw crn::ExceptionInvalidArgument(_("The document is not associated to any Alto data."));
 
 	UAltoWrapper wrapper(new AltoWrapper(throw_exceptions));
@@ -277,7 +338,7 @@ std::unique_ptr<AltoWrapper> AltoWrapper::NewFromDocument(const crn::Path &docum
 	UAltoWrapper wrapper(new AltoWrapper(throw_exceptions));
 	wrapper->doc->Load(documentname);
 
-	if (!wrapper->doc->IsUserData(AltoPathKey) && !create_altos)
+	if (!wrapper->doc->IsUserData(AltoPathKey()) && !create_altos)
 		throw crn::ExceptionInvalidArgument(_("The document is not associated to any Alto data."));
 
 	if (create_altos)
@@ -352,7 +413,7 @@ const String AltoWrapper::AddView(const Path &imagename, const Path &altoname)
 	}
 	else
 	{
-		SMap altomap(std::static_pointer_cast<Map>(doc->GetUserData(AltoPathKey)));
+		SMap altomap(std::static_pointer_cast<Map>(doc->GetUserData(AltoPathKey())));
 		altomap->Set(vid, Clone(altoname));
 	}
 	if (doc->GetFilename().IsNotEmpty())
@@ -365,16 +426,16 @@ const String AltoWrapper::AddView(const Path &imagename, const Path &altoname)
  */
 void AltoWrapper::Synchronize(bool reset)
 {
-	SMap altomap(std::static_pointer_cast<Map>(doc->GetUserData(AltoPathKey)));
+	SMap altomap(std::static_pointer_cast<Map>(doc->GetUserData(AltoPathKey())));
 	const std::vector<String> vids(doc->GetViewIds());
 	for(const String &id : vids)
 	{
 		SBlock block(doc->GetView(id));
 		// cleanup
-		if (block->HasTree(PageKey))
+		if (block->HasTree(PageKey()))
 		{
 			if (reset)
-				block->RemoveTree(PageKey);
+				block->RemoveTree(PageKey());
 			else 
 				continue;
 		}
@@ -410,7 +471,7 @@ void AltoWrapper::Synchronize(bool reset)
 				pagearea = crn::Rect(refx, 0, refx + pagew, pageh);
 				refx = pagearea.GetRight();
 			}
-			SBlock pageblock(block->AddChildAbsolute(PageKey, pagearea, spage->GetId()));
+			SBlock pageblock(block->AddChildAbsolute(PageKey(), pagearea, spage->GetId()));
 			// spaces
 			std::vector<std::weak_ptr<Alto::Layout::Page::Space> > spaces(spage->GetSpaces());
 			for (const std::weak_ptr<Alto::Layout::Page::Space> space : spaces)
@@ -422,7 +483,7 @@ void AltoWrapper::Synchronize(bool reset)
 				crn::Rect spacearea(spaceh, spacev, spaceh + int(sspace->GetWidth()), spacev + int(sspace->GetHeight()));
 				String sname(sspace->GetName());
 				sname.ToLower();
-				SBlock spaceblock(pageblock->AddChildAbsolute(SpaceKey, spacearea, sname));
+				SBlock spaceblock(pageblock->AddChildAbsolute(SpaceKey(), spacearea, sname));
 				// text blocks
 				std::vector<std::weak_ptr<Alto::Layout::Page::Space::TextBlock> > textblocks(sspace->GetTextBlocks());
 				for (const std::weak_ptr<Alto::Layout::Page::Space::TextBlock> &tb : textblocks)
@@ -432,7 +493,7 @@ void AltoWrapper::Synchronize(bool reset)
 					int tbv = int(stb->GetVPos());
 					int tbh = int(stb->GetHPos());
 					crn::Rect tbarea(tbh, tbv, tbh + int(stb->GetWidth()), tbv + int(stb->GetHeight()));
-					SBlock tbblock(spaceblock->AddChildAbsolute(TextBlockKey, tbarea, stb->GetId()));
+					SBlock tbblock(spaceblock->AddChildAbsolute(TextBlockKey(), tbarea, stb->GetId()));
 					// lines
 					std::vector<std::weak_ptr<Alto::Layout::Page::Space::TextBlock::TextLine> > textlines(stb->GetTextLines());
 					for (const std::weak_ptr<Alto::Layout::Page::Space::TextBlock::TextLine> &tl : textlines)
@@ -442,7 +503,7 @@ void AltoWrapper::Synchronize(bool reset)
 						int tlv = int(stl->GetVPos());
 						int tlh = int(stl->GetHPos());
 						crn::Rect tlarea(tlh, tlv, tlh + int(stl->GetWidth()), tlv + int(stl->GetHeight()));
-						SBlock tlblock(tbblock->AddChildAbsolute(TextLineKey, tlarea, stl->GetId()));
+						SBlock tlblock(tbblock->AddChildAbsolute(TextLineKey(), tlarea, stl->GetId()));
 						// words
 						std::vector<std::weak_ptr<Alto::Layout::Page::Space::TextBlock::TextLine::Word> > words(stl->GetWords());
 						for (const std::weak_ptr<Alto::Layout::Page::Space::TextBlock::TextLine::Word> &word : words)
@@ -456,7 +517,7 @@ void AltoWrapper::Synchronize(bool reset)
 								int ww = int(sword->GetWidth().Get());
 								int wh = sword->GetHeight() ? int(sword->GetHeight().Get()) : tlarea.GetHeight();
 								crn::Rect wordarea(wx, wy, wx + ww, wy + wh);
-								tlblock->AddChildAbsolute(WordKey, wordarea, sword->GetId().Get());
+								tlblock->AddChildAbsolute(WordKey(), wordarea, sword->GetId().Get());
 							}
 						} // words
 					} // lines
@@ -470,7 +531,7 @@ void AltoWrapper::Synchronize(bool reset)
 					int ilv = int(sillus->GetVPos());
 					int ilh = int(sillus->GetHPos());
 					crn::Rect ilarea(ilh, ilv, ilh + int(sillus->GetWidth()), ilv + int(sillus->GetHeight()));
-					spaceblock->AddChildAbsolute(IllustrationKey, ilarea);
+					spaceblock->AddChildAbsolute(IllustrationKey(), ilarea);
 				} // illustrations
 				// illustrations
 				std::vector<std::weak_ptr<Alto::Layout::Page::Space::GraphicalElement> > graphelems(sspace->GetGraphicalElements());
@@ -481,7 +542,7 @@ void AltoWrapper::Synchronize(bool reset)
 					int gev = int(sgel->GetVPos());
 					int geh = int(sgel->GetHPos());
 					crn::Rect gearea(geh, gev, geh + int(sgel->GetWidth()), gev + int(sgel->GetHeight()));
-					spaceblock->AddChildAbsolute(GraphicalElementKey, gearea);
+					spaceblock->AddChildAbsolute(GraphicalElementKey(), gearea);
 				} // illustrations
 				// composed blocks
 				// TODO
@@ -496,13 +557,13 @@ void AltoWrapper::Synchronize(bool reset)
 void AltoWrapper::createAltos()
 {
 	SMap altomap;
-	if (!doc->IsUserData(AltoPathKey))
+	if (!doc->IsUserData(AltoPathKey()))
 	{
 		altomap = std::make_shared<crn::Map>();
-		doc->SetUserData(AltoPathKey, altomap);
+		doc->SetUserData(AltoPathKey(), altomap);
 	}
 	else
-		altomap = std::static_pointer_cast<Map>(doc->GetUserData(AltoPathKey));
+		altomap = std::static_pointer_cast<Map>(doc->GetUserData(AltoPathKey()));
 	const std::vector<String> vids(doc->GetViewIds());
 	for (const String &id : vids)
 	{
@@ -564,7 +625,7 @@ std::shared_ptr<AltoWrapper::ViewLock> AltoWrapper::getLock(const String &view_i
 	std::map<String, std::weak_ptr<ViewLock> >::iterator it(viewLocks.find(view_id));
 	if (it == viewLocks.end())
 	{
-		SCMap altomap(std::static_pointer_cast<const Map>(doc->GetUserData(AltoPathKey)));
+		SCMap altomap(std::static_pointer_cast<const Map>(doc->GetUserData(AltoPathKey())));
 		std::shared_ptr<ViewLock> vl(new ViewLock(doc->GetView(view_id), std::make_shared<Alto>(*std::static_pointer_cast<const Path>(altomap->Get(view_id)), throws))); // may throw
 		//it = viewLocks.insert(std::make_pair(view_id, vl)).first;
 		viewLocks[view_id] = vl;
@@ -574,7 +635,7 @@ std::shared_ptr<AltoWrapper::ViewLock> AltoWrapper::getLock(const String &view_i
 	{
 		if (it->second.expired())
 		{
-			SCMap altomap(std::static_pointer_cast<const Map>(doc->GetUserData(AltoPathKey)));
+			SCMap altomap(std::static_pointer_cast<const Map>(doc->GetUserData(AltoPathKey())));
 			std::shared_ptr<ViewLock> vl(new ViewLock(doc->GetView(view_id), std::make_shared<Alto>(*std::static_pointer_cast<const Path>(altomap->Get(view_id)), throws))); // may throw
 			//it = viewLocks.insert(std::make_pair(view_id, vl)).first;
 			viewLocks[view_id] = vl;
@@ -734,7 +795,7 @@ std::vector<Id> AltoWrapper::View::GetPages()
  */
 AltoWrapper::Page AltoWrapper::View::GetPage(const Id &pageId)
 {
-	SBlock b(lock->GetBlock()->GetChild(PageKey, pageId)); // may throw
+	SBlock b(lock->GetBlock()->GetChild(PageKey(), pageId)); // may throw
 	AltoPage &p(lock->GetAlto()->GetLayout().GetPage(pageId)); // may throw
 	return AltoWrapper::Page(b, p, lock, id);
 }
@@ -763,7 +824,7 @@ AltoWrapper::Page AltoWrapper::View::AddPage(int image_number, int w, int h, Opt
 		}
 		// else considered to be left
 	}
-	auto b = lock->GetBlock()->AddChildAbsolute(PageKey, pagearea, pageId);
+	auto b = lock->GetBlock()->AddChildAbsolute(PageKey(), pagearea, pageId);
 
 	return Page(b, page, lock, id);
 }
@@ -794,7 +855,7 @@ AltoWrapper::Page AltoWrapper::View::AddPageAfter(const Id &pred, int image_numb
 		}
 		// else considered to be left
 	}
-	auto b = lock->GetBlock()->AddChildAbsolute(PageKey, pagearea, pageId);
+	auto b = lock->GetBlock()->AddChildAbsolute(PageKey(), pagearea, pageId);
 
 	return Page(b, page, lock, id);
 }
@@ -825,7 +886,7 @@ AltoWrapper::Page AltoWrapper::View::AddPageBefore(const Id &next, int image_num
 		}
 		// else considered to be left
 	}
-	auto b = lock->GetBlock()->AddChildAbsolute(PageKey, pagearea, pageId);
+	auto b = lock->GetBlock()->AddChildAbsolute(PageKey(), pagearea, pageId);
 
 	return Page(b, page, lock, id);
 }
@@ -837,7 +898,7 @@ AltoWrapper::Page AltoWrapper::View::AddPageBefore(const Id &next, int image_num
 void AltoWrapper::View::RemovePage(const Id &pageId)
 {
 	lock->GetAlto()->GetLayout().RemovePage(pageId);
-	lock->GetBlock()->RemoveChild(PageKey, pageId);
+	lock->GetBlock()->RemoveChild(PageKey(), pageId);
 }
 
 /*! Changes the size of a word and all its parents if needed
@@ -1055,7 +1116,7 @@ AltoWrapper::Space AltoWrapper::Page::GetSpace(const Id &spaceid)
 	AltoSpace &sp(page->GetSpace(spaceid)); // may throw
 	String n(sp.GetName());
 	n.ToLower();
-	SBlock b(block->GetChild(SpaceKey, n)); // may throw
+	SBlock b(block->GetChild(SpaceKey(), n)); // may throw
 	return AltoWrapper::Space(b, sp, lock, path);
 }
 
@@ -1068,7 +1129,7 @@ AltoWrapper::Space AltoWrapper::Page::GetTopMargin()
 	std::weak_ptr<AltoSpace> sp(page->GetTopMargin());
 	if (sp.expired())
 		throw ExceptionNotFound(_("No top margin on this page."));
-	SBlock b(block->GetChild(SpaceKey, U"topmargin")); // may throw
+	SBlock b(block->GetChild(SpaceKey(), U"topmargin")); // may throw
 	return AltoWrapper::Space(b, *sp.lock(), lock, path);
 }
 
@@ -1080,7 +1141,7 @@ AltoWrapper::Space AltoWrapper::Page::GetTopMargin()
 AltoWrapper::Space AltoWrapper::Page::AddTopMargin(const crn::Rect &bbox)
 {
 	AltoSpace &sp(page->AddTopMargin(lock->GetAlto()->CreateId(), bbox.GetLeft(), bbox.GetTop(), bbox.GetWidth(), bbox.GetHeight())); // may throw
-	SBlock b(block->AddChildAbsolute(SpaceKey, bbox, U"topmargin"));
+	SBlock b(block->AddChildAbsolute(SpaceKey(), bbox, U"topmargin"));
 	return AltoWrapper::Space(b, sp, lock, path);
 }
 
@@ -1093,7 +1154,7 @@ AltoWrapper::Space AltoWrapper::Page::GetLeftMargin()
 	std::weak_ptr<AltoSpace> sp(page->GetLeftMargin());
 	if (sp.expired())
 		throw ExceptionNotFound(_("No left margin on this page."));
-	SBlock b(block->GetChild(SpaceKey, U"leftmargin")); // may throw
+	SBlock b(block->GetChild(SpaceKey(), U"leftmargin")); // may throw
 	return AltoWrapper::Space(b, *sp.lock(), lock, path);
 }
 
@@ -1105,7 +1166,7 @@ AltoWrapper::Space AltoWrapper::Page::GetLeftMargin()
 AltoWrapper::Space AltoWrapper::Page::AddLeftMargin(const crn::Rect &bbox)
 {
 	AltoSpace &sp(page->AddLeftMargin(lock->GetAlto()->CreateId(), bbox.GetLeft(), bbox.GetTop(), bbox.GetWidth(), bbox.GetHeight())); // may throw
-	SBlock b(block->AddChildAbsolute(SpaceKey, bbox, U"leftmargin"));
+	SBlock b(block->AddChildAbsolute(SpaceKey(), bbox, U"leftmargin"));
 	return AltoWrapper::Space(b, sp, lock, path);
 }
 
@@ -1118,7 +1179,7 @@ AltoWrapper::Space AltoWrapper::Page::GetBottomMargin()
 	std::weak_ptr<AltoSpace> sp(page->GetBottomMargin());
 	if (sp.expired())
 		throw ExceptionNotFound(_("No bottom margin on this page."));
-	SBlock b(block->GetChild(SpaceKey, U"bottommargin")); // may throw
+	SBlock b(block->GetChild(SpaceKey(), U"bottommargin")); // may throw
 	return AltoWrapper::Space(b, *sp.lock(), lock, path);
 }
 
@@ -1130,7 +1191,7 @@ AltoWrapper::Space AltoWrapper::Page::GetBottomMargin()
 AltoWrapper::Space AltoWrapper::Page::AddBottomMargin(const crn::Rect &bbox)
 {
 	AltoSpace &sp(page->AddBottomMargin(lock->GetAlto()->CreateId(), bbox.GetLeft(), bbox.GetTop(), bbox.GetWidth(), bbox.GetHeight())); // may throw
-	SBlock b(block->AddChildAbsolute(SpaceKey, bbox, U"bottommargin"));
+	SBlock b(block->AddChildAbsolute(SpaceKey(), bbox, U"bottommargin"));
 	return AltoWrapper::Space(b, sp, lock, path);
 }
 
@@ -1143,7 +1204,7 @@ AltoWrapper::Space AltoWrapper::Page::GetRightMargin()
 	std::weak_ptr<AltoSpace> sp(page->GetRightMargin());
 	if (sp.expired())
 		throw ExceptionNotFound(_("No right margin on this page."));
-	SBlock b(block->GetChild(SpaceKey, U"rightmargin")); // may throw
+	SBlock b(block->GetChild(SpaceKey(), U"rightmargin")); // may throw
 	return AltoWrapper::Space(b, *sp.lock(), lock, path);
 }
 
@@ -1155,7 +1216,7 @@ AltoWrapper::Space AltoWrapper::Page::GetRightMargin()
 AltoWrapper::Space AltoWrapper::Page::AddRightMargin(const crn::Rect &bbox)
 {
 	AltoSpace &sp(page->AddRightMargin(lock->GetAlto()->CreateId(), bbox.GetLeft(), bbox.GetTop(), bbox.GetWidth(), bbox.GetHeight())); // may throw
-	SBlock b(block->AddChildAbsolute(SpaceKey, bbox, U"rightmargin"));
+	SBlock b(block->AddChildAbsolute(SpaceKey(), bbox, U"rightmargin"));
 	return AltoWrapper::Space(b, sp, lock, path);
 }
 
@@ -1168,7 +1229,7 @@ AltoWrapper::Space AltoWrapper::Page::GetPrintSpace()
 	std::weak_ptr<AltoSpace> sp(page->GetPrintSpace());
 	if (sp.expired())
 		throw ExceptionNotFound(_("No print space on this page."));
-	SBlock b(block->GetChild(SpaceKey, U"printspace")); // may throw
+	SBlock b(block->GetChild(SpaceKey(), U"printspace")); // may throw
 	return AltoWrapper::Space(b, *sp.lock(), lock, path);
 }
 
@@ -1180,7 +1241,7 @@ AltoWrapper::Space AltoWrapper::Page::GetPrintSpace()
 AltoWrapper::Space AltoWrapper::Page::AddPrintSpace(const crn::Rect &bbox)
 {
 	AltoSpace &sp(page->AddPrintSpace(lock->GetAlto()->CreateId(), bbox.GetLeft(), bbox.GetTop(), bbox.GetWidth(), bbox.GetHeight())); // may throw
-	SBlock b(block->AddChildAbsolute(SpaceKey, bbox, U"printspace"));
+	SBlock b(block->AddChildAbsolute(SpaceKey(), bbox, U"printspace"));
 	return AltoWrapper::Space(b, sp, lock, path);
 }
 
@@ -1191,7 +1252,7 @@ AltoWrapper::Space AltoWrapper::Page::AddPrintSpace(const crn::Rect &bbox)
 void AltoWrapper::Page::RemoveSpace(const Id &sid)
 {
 	page->RemoveSpace(sid);
-	block->RemoveChild(SpaceKey, sid);
+	block->RemoveChild(SpaceKey(), sid);
 }
 
 /*! Adds a copy of another page's content 
@@ -1315,7 +1376,7 @@ std::vector<Id> AltoWrapper::Space::GetTextBlocks() const
 AltoWrapper::TextBlock AltoWrapper::Space::GetTextBlock(const Id &id)
 {
 	AltoTextBlock &tb(space->GetTextBlock(id)); // may throw
-	SBlock b(block->GetChild(TextBlockKey, id)); // may throw
+	SBlock b(block->GetChild(TextBlockKey(), id)); // may throw
 	return AltoWrapper::TextBlock(b, tb, lock, path);
 }
 
@@ -1326,7 +1387,7 @@ AltoWrapper::TextBlock AltoWrapper::Space::GetTextBlock(const Id &id)
 AltoWrapper::TextBlock AltoWrapper::Space::AddTextBlock(const crn::Rect &bbox)
 {
 	AltoTextBlock &tb(space->AddTextBlock(lock->GetAlto()->CreateId(), bbox.GetLeft(), bbox.GetTop(), bbox.GetWidth(), bbox.GetHeight()));
-	SBlock b(block->AddChildAbsolute(TextBlockKey, bbox, tb.GetId()));
+	SBlock b(block->AddChildAbsolute(TextBlockKey(), bbox, tb.GetId()));
 	return AltoWrapper::TextBlock(b, tb, lock, path);
 }
 
@@ -1339,7 +1400,7 @@ AltoWrapper::TextBlock AltoWrapper::Space::AddTextBlock(const crn::Rect &bbox)
 AltoWrapper::TextBlock AltoWrapper::Space::AddTextBlockAfter(const Id &pred, const crn::Rect &bbox)
 {
 	AltoTextBlock &tb(space->AddTextBlockAfter(pred, lock->GetAlto()->CreateId(), bbox.GetLeft(), bbox.GetTop(), bbox.GetWidth(), bbox.GetHeight())); // may throw
-	SBlock b(block->AddChildAbsolute(TextBlockKey, bbox, tb.GetId()));
+	SBlock b(block->AddChildAbsolute(TextBlockKey(), bbox, tb.GetId()));
 	return AltoWrapper::TextBlock(b, tb, lock, path);
 }
 
@@ -1352,7 +1413,7 @@ AltoWrapper::TextBlock AltoWrapper::Space::AddTextBlockAfter(const Id &pred, con
 AltoWrapper::TextBlock AltoWrapper::Space::AddTextBlockBefore(const Id &next, const crn::Rect &bbox)
 {
 	AltoTextBlock &tb(space->AddTextBlockBefore(next, lock->GetAlto()->CreateId(), bbox.GetLeft(), bbox.GetTop(), bbox.GetWidth(), bbox.GetHeight())); // may throw
-	SBlock b(block->AddChildAbsolute(TextBlockKey, bbox, tb.GetId()));
+	SBlock b(block->AddChildAbsolute(TextBlockKey(), bbox, tb.GetId()));
 	return AltoWrapper::TextBlock(b, tb, lock, path);
 }
 
@@ -1363,7 +1424,7 @@ AltoWrapper::TextBlock AltoWrapper::Space::AddTextBlockBefore(const Id &next, co
 void AltoWrapper::Space::RemoveBlock(const Id &bid)
 {
 	space->RemoveBlock(bid);
-	block->RemoveChild(TextBlockKey, bid);
+	block->RemoveChild(TextBlockKey(), bid);
 }
 
 ///////////////////////////////////////////////////////////////////////////////////
@@ -1457,7 +1518,7 @@ std::vector<Id> AltoWrapper::TextBlock::GetTextLines() const
 AltoWrapper::TextLine AltoWrapper::TextBlock::GetTextLine(const Id &id)
 {
 	AltoTextLine &tl(textblock->GetTextLine(id)); // may throw
-	SBlock b(block->GetChild(TextLineKey, id)); // may throw
+	SBlock b(block->GetChild(TextLineKey(), id)); // may throw
 	return AltoWrapper::TextLine(b, tl, lock, path);
 }
 
@@ -1468,7 +1529,7 @@ AltoWrapper::TextLine AltoWrapper::TextBlock::GetTextLine(const Id &id)
 AltoWrapper::TextLine AltoWrapper::TextBlock::AddTextLine(const crn::Rect &bbox)
 {
 	AltoTextLine &tl(textblock->AddTextLine(lock->GetAlto()->CreateId(), bbox.GetLeft(), bbox.GetTop(), bbox.GetWidth(), bbox.GetHeight()));
-	SBlock b(block->AddChildAbsolute(TextLineKey, bbox, tl.GetId()));
+	SBlock b(block->AddChildAbsolute(TextLineKey(), bbox, tl.GetId()));
 	return AltoWrapper::TextLine(b, tl, lock, path);
 }
 
@@ -1481,7 +1542,7 @@ AltoWrapper::TextLine AltoWrapper::TextBlock::AddTextLine(const crn::Rect &bbox)
 AltoWrapper::TextLine AltoWrapper::TextBlock::AddTextLineAfter(const Id &pred, const crn::Rect &bbox)
 {
 	AltoTextLine &tl(textblock->AddTextLineAfter(pred, lock->GetAlto()->CreateId(), bbox.GetLeft(), bbox.GetTop(), bbox.GetWidth(), bbox.GetHeight()));
-	SBlock b(block->AddChildAbsolute(TextLineKey, bbox, tl.GetId()));
+	SBlock b(block->AddChildAbsolute(TextLineKey(), bbox, tl.GetId()));
 	return AltoWrapper::TextLine(b, tl, lock, path);
 }
 
@@ -1494,7 +1555,7 @@ AltoWrapper::TextLine AltoWrapper::TextBlock::AddTextLineAfter(const Id &pred, c
 AltoWrapper::TextLine AltoWrapper::TextBlock::AddTextLineBefore(const Id &next, const crn::Rect &bbox)
 {
 	AltoTextLine &tl(textblock->AddTextLineBefore(next, lock->GetAlto()->CreateId(), bbox.GetLeft(), bbox.GetTop(), bbox.GetWidth(), bbox.GetHeight()));
-	SBlock b(block->AddChildAbsolute(TextLineKey, bbox, tl.GetId()));
+	SBlock b(block->AddChildAbsolute(TextLineKey(), bbox, tl.GetId()));
 	return AltoWrapper::TextLine(b, tl, lock, path);
 }
 
@@ -1505,7 +1566,7 @@ AltoWrapper::TextLine AltoWrapper::TextBlock::AddTextLineBefore(const Id &next, 
 void AltoWrapper::TextBlock::RemoveTextLine(const Id &tid)
 {
 	textblock->RemoveTextLine(tid);
-	block->RemoveChild(TextLineKey, tid);
+	block->RemoveChild(TextLineKey(), tid);
 }
 
 ///////////////////////////////////////////////////////////////////////////////////
@@ -1589,7 +1650,7 @@ std::vector<Id> AltoWrapper::TextLine::GetWords() const
 AltoWrapper::Word AltoWrapper::TextLine::GetWord(const Id &id)
 {
 	AltoWord &word(textline->GetWord(id)); // may throw
-	SBlock b(block->GetChild(WordKey, id)); // may throw
+	SBlock b(block->GetChild(WordKey(), id)); // may throw
 	return AltoWrapper::Word(b, word, lock, path);
 }
 
@@ -1600,7 +1661,7 @@ AltoWrapper::Word AltoWrapper::TextLine::GetWord(const Id &id)
 AltoWrapper::Word AltoWrapper::TextLine::AddWord(const StringUTF8 &text, const crn::Rect &bbox)
 {
 	AltoWord &w(textline->AddWord(lock->GetAlto()->CreateId(), text, bbox.GetLeft(), bbox.GetTop(), bbox.GetWidth(), bbox.GetHeight()));
-	SBlock b(block->AddChildAbsolute(WordKey, bbox, w.GetId().Get()));
+	SBlock b(block->AddChildAbsolute(WordKey(), bbox, w.GetId().Get()));
 	return AltoWrapper::Word(b, w, lock, path);
 }
 
@@ -1613,7 +1674,7 @@ AltoWrapper::Word AltoWrapper::TextLine::AddWord(const StringUTF8 &text, const c
 AltoWrapper::Word AltoWrapper::TextLine::AddWordAfter(const Id &pred, const StringUTF8 &text, const crn::Rect &bbox)
 {
 	AltoWord &w(textline->AddWordAfter(pred, lock->GetAlto()->CreateId(), text, bbox.GetLeft(), bbox.GetTop(), bbox.GetWidth(), bbox.GetHeight()));
-	SBlock b(block->AddChildAbsolute(WordKey, bbox, w.GetId().Get()));
+	SBlock b(block->AddChildAbsolute(WordKey(), bbox, w.GetId().Get()));
 	return AltoWrapper::Word(b, w, lock, path);
 }
 
@@ -1626,7 +1687,7 @@ AltoWrapper::Word AltoWrapper::TextLine::AddWordAfter(const Id &pred, const Stri
 AltoWrapper::Word AltoWrapper::TextLine::AddWordBefore(const Id &next, const StringUTF8 &text, const crn::Rect &bbox)
 {
 	AltoWord &w(textline->AddWordBefore(next, lock->GetAlto()->CreateId(), text, bbox.GetLeft(), bbox.GetTop(), bbox.GetWidth(), bbox.GetHeight()));
-	SBlock b(block->AddChildAbsolute(WordKey, bbox, w.GetId().Get()));
+	SBlock b(block->AddChildAbsolute(WordKey(), bbox, w.GetId().Get()));
 	return AltoWrapper::Word(b, w, lock, path);
 }
 
@@ -1637,7 +1698,7 @@ AltoWrapper::Word AltoWrapper::TextLine::AddWordBefore(const Id &next, const Str
 void AltoWrapper::TextLine::RemoveWord(const Id &wid)
 {
 	textline->RemoveWord(wid);
-	block->RemoveChild(WordKey, wid);
+	block->RemoveChild(WordKey(), wid);
 }
 
 ///////////////////////////////////////////////////////////////////////////////////
