@@ -1,10 +1,17 @@
-# MSVC - KIT VS 2015 x64 - V03
+# MSVC - KIT VS 2015 x64 - V04
 
 if( DEFINED ENV{LIBCRN_DEPS_PATH} )
 	set( MSVC_KIT_ROOT $ENV{LIBCRN_DEPS_PATH} )
 endif()
 if( NOT DEFINED MSVC_KIT_ROOT )
 	message(FATAL_ERROR "MSVC_KIT_ROOT not set.  Please set MSVC_KIT_ROOT.")
+endif()
+
+# important for install (and cpack...)
+if( NOT DEFINED ENV{LIBCRN_DEPS_PATH} )
+	if( DEFINED MSVC_KIT_ROOT )
+		set( ENV{LIBCRN_DEPS_PATH} ${MSVC_KIT_ROOT} )
+	endif()
 endif()
 
 ### mandatory :

@@ -194,7 +194,7 @@ install(FILES "${PROJECT_SOURCE_DIR}/cmake/FindHPDF.cmake" DESTINATION "share/cm
 
 # Dependencies
 if(MSVC)
-	install(FILES "$ENV{LIBCRN_DEPS_PATH}/libiconv-1.14/lib/libiconv.dll" DESTINATION deps COMPONENT bin)
+	#install(FILES "$ENV{LIBCRN_DEPS_PATH}/libiconv-1.14/lib/libiconv.dll" DESTINATION deps COMPONENT bin)
 	set(INSTALL_GTK2 false)
 	set(INSTALL_GTK3 false)
 	set(INSTALL_INTL false)

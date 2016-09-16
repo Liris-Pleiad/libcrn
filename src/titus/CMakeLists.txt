@@ -26,8 +26,29 @@ if (MSVC)
 	add_definitions("/wd4250")
 endif(MSVC)
 
+# For Windows set the .ico file with the .rc file
+if( MSVC )
+	set( resource_files ${resource_files}
+	  "${PROJECT_SOURCE_DIR}/src/titus/titus.rc" )
+endif()
+
+# For Apple set the .icns file containing icons
+if(APPLE)
+	# set how it shows up in the Info.plist file
+	set(MACOSX_BUNDLE_ICON_FILE titus.icns)
+
+	# set where in the bundle to put the icns file
+	set_source_files_properties(
+	  "${PROJECT_SOURCE_DIR}/src/titus/titus.icns"
+	  PROPERTIES MACOSX_PACKAGE_LOCATION Resources)
+
+	# include the icns file in the target
+	set( resource_files ${resource_files}
+	  "${PROJECT_SOURCE_DIR}/src/titus/titus.icns" )
+endif()
+
 if(GTK2_FOUND)
-	add_executable(titus2 ${TITUS_SRC} ${TITUS_HEADER})
+	add_executable(titus2 MACOSX_BUNDLE ${TITUS_SRC} ${TITUS_HEADER} ${resource_files})
 	target_include_directories(titus2 PRIVATE "${PROJECT_BINARY_DIR}/include/libgtkcrnmm2")
 	target_include_directories(titus2 PRIVATE "${GTK2_INCLUDE_DIRS}")
 	target_link_libraries(titus2 gtkcrnmm2)
@@ -39,7 +60,7 @@ if(GTK2_FOUND)
 endif()
 
 if(GTK3_FOUND)
-	add_executable(titus3 ${TITUS_SRC} ${TITUS_HEADER})
+	add_executable(titus3 MACOSX_BUNDLE ${TITUS_SRC} ${TITUS_HEADER} ${resource_files})
 	target_include_directories(titus3 PRIVATE "${PROJECT_BINARY_DIR}/include/libgtkcrnmm3")
 	target_include_directories(titus3 PRIVATE "${GTK3_INCLUDE_DIRS}")
 	target_link_libraries(titus3 gtkcrnmm3)
@@ -52,3 +73,22 @@ endif()
 
 install(FILES "titus.png" DESTINATION ${CRN_DATA_PATH} COMPONENT app)
 
+###############################################################################
+
+if(GTK2_FOUND)
+	set(APP_NAME titus2)
+elseif(GTK3_FOUND)
+	set(APP_NAME titus3)
+endif()
+
+if(APPLE)
+	set(APPS "${CMAKE_INSTALL_PREFIX}/${RUNTIME_INSTALL_PATH}/${APP_NAME}.app")
+endif(APPLE)
+if(WIN32)
+	set(APPS "${CMAKE_INSTALL_PREFIX}/${RUNTIME_INSTALL_PATH}/${APP_NAME}.exe")
+endif(WIN32)
+
+install(CODE "
+    include(BundleUtilities)
+    fixup_bundle(${APPS} \"\" \"\")
+    " COMPONENT Runtime)

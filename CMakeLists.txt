@@ -25,6 +25,7 @@ set(CRN_PACKAGE_VERSION "${CRN_PACKAGE_VERSION_MAJOR}.${CRN_PACKAGE_VERSION_MINO
 message("${PRJ_NAME} ${CRN_PACKAGE_VERSION}")
 
 project(${PRJ_NAME})
+set(CMAKE_INSTALL_PREFIX "${CMAKE_BINARY_DIR}/install_${CRN_PACKAGE_VERSION}")
 
 # set Release as default build target
 if (NOT CMAKE_BUILD_TYPE)
@@ -431,9 +432,17 @@ if(DOXYGEN_FOUND)
 endif(DOXYGEN_FOUND)
 
 ###############################################################################
+# Install and Pack
+###############################################################################
+#include(InstallRequiredSystemLibraries) # -> better : see "include(BundleUtilities)" in "src/titus/CMakeLists.txt" and "src/nimrod/CMakeLists.txt"
+
+###############################################################################
 # Pack
 ###############################################################################
-include(InstallRequiredSystemLibraries)
+set(CPACK_PACKAGE_NAME "libcrn")
+set(CPACK_PACKAGE_VERSION "${CRN_PACKAGE_VERSION_MAJOR}.${CRN_PACKAGE_VERSION_MINOR}.${CRN_PACKAGE_VERSION_PATCH}")
+set(CPACK_PACKAGE_VENDOR "Liris / CNRS")
+
 set(CPACK_PACKAGE_FILE_NAME "libcrn-${CRN_PACKAGE_VERSION_MAJOR}.${CRN_PACKAGE_VERSION_MINOR}.${CRN_PACKAGE_VERSION_PATCH}${CRN_PACK_NAME}")
 set(CPACK_PACKAGE_INSTALL_DIRECTORY "libcrn")
 set(CPACK_PACKAGE_VERSION_MAJOR ${CRN_PACKAGE_VERSION_MAJOR})
@@ -443,6 +452,16 @@ set(CPACK_RESOURCE_FILE_LICENSE  "${CMAKE_CURRENT_SOURCE_DIR}/License.txt")
 if(WIN32)
 	option(CPACK_BINARY_DEB OFF)
 	option(CPACK_BINARY_NSIS ON)
+	set(CPACK_GENERATOR "NSIS64")
+	if(GTK2_FOUND)
+		set(CPACK_NSIS_MENU_LINKS
+			"bin/titus2" "titus2"
+			"bin/nimrod" "nimrod")
+	endif()
+	if(GTK3_FOUND)
+		set(CPACK_NSIS_MENU_LINKS
+			"bin/titus3" "titus3")
+	endif()
 	set(CPACK_NSIS_DISPLAY_NAME "libcrn ${CRN_PACKAGE_VERSION_MAJOR}.${CRN_PACKAGE_VERSION_MINOR}.${CRN_PACKAGE_VERSION_PATCH}")
 	set(CPACK_NSIS_SOURCE_DIR "${PROJECT_SOURCE_DIR}")
 	option(CPACK_BINARY_RPM OFF)
@@ -512,8 +531,8 @@ cpack_add_component(bin
 cpack_add_component(dev
                     DISPLAY_NAME "Development files"
                     DESCRIPTION "Headers and various library-related files"
-										DEPENDS bin)
+                    DEPENDS bin)
 cpack_add_component(app
                     DISPLAY_NAME "Applications"
                     DESCRIPTION "Demonstration applications"
-										DEPENDS bin)
+                    DEPENDS bin)
