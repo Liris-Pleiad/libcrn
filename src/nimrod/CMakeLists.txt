@@ -59,3 +59,18 @@ install(TARGETS nimrod DESTINATION bin COMPONENT app)
 
 #install(FILES "nimrod.png" DESTINATION ${CRN_DATA_PATH} COMPONENT app)
 
+###############################################################################
+
+set(APP_NAME nimrod)
+
+if(APPLE)
+	set(APPS "${CMAKE_INSTALL_PREFIX}/${RUNTIME_INSTALL_PATH}/${APP_NAME}.app")
+endif(APPLE)
+if(WIN32)
+	set(APPS "${CMAKE_INSTALL_PREFIX}/${RUNTIME_INSTALL_PATH}/${APP_NAME}.exe")
+endif(WIN32)
+
+install(CODE "
+    include(BundleUtilities)
+    fixup_bundle(${APPS} \"\" \"\")
+    " COMPONENT Runtime)
