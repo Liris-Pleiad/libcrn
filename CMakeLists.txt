@@ -66,7 +66,9 @@ if(APPLE)
 	set(CRN_PROJECT_BASE "/var")
 	set(CRN_LOCALE_FULL_PATH "${CMAKE_INSTALL_PREFIX}/${CRN_LOCALE_PATH}")
 endif(APPLE)
-# for windows: _MSC_VER
+if(MSVC)
+	#set(CRN_DATA_PATH "bin/${CRN_DATA_PATH}") # MT : just a test...
+endif(MSVC)
 if(ANDROID)
 	set(CRN_CONFIG_FULL_PATH "") # TODO change to the real correct value
 	set(CRN_CONFIG_FULL_PATH "${CMAKE_INSTALL_PREFIX}/${CRN_DATA_PATH}")
