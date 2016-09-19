@@ -81,14 +81,15 @@ elseif(GTK3_FOUND)
 	set(APP_NAME titus3)
 endif()
 
+set(APPS "\${CMAKE_INSTALL_PREFIX}/${RUNTIME_INSTALL_PATH}/${APP_NAME}")
 if(APPLE)
-	set(APPS "${CMAKE_INSTALL_PREFIX}/${RUNTIME_INSTALL_PATH}/${APP_NAME}.app")
+	set(APPS "\${CMAKE_INSTALL_PREFIX}/${RUNTIME_INSTALL_PATH}/${APP_NAME}.app")
 endif(APPLE)
 if(WIN32)
-	set(APPS "${CMAKE_INSTALL_PREFIX}/${RUNTIME_INSTALL_PATH}/${APP_NAME}.exe")
+	set(APPS "\${CMAKE_INSTALL_PREFIX}/${RUNTIME_INSTALL_PATH}/${APP_NAME}.exe")
 endif(WIN32)
 
 install(CODE "
     include(BundleUtilities)
     fixup_bundle(${APPS} \"\" \"\")
-    " COMPONENT Runtime)
+    " COMPONENT app)
