@@ -97,14 +97,14 @@ script:
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew unlink qt; fi # ---> now unlink qt4
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install qt5; fi
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then cd ..; fi
-  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then mkdir build_osx_qt5 && cd build_osx_qt5 && cmake .. $BTYPE -DCRN_DEPENDENCY_GTKMM2=ON -DCRN_DEPENDENCY_GTKMM3=ON -DCRN_DEPENDENCY_PNG=ON -DCRN_DEPENDENCY_JPEG=ON -DCRN_DEPENDENCY_GDKPIXBUF=ON -DCRN_DEPENDENCY_GETTEXT_INTL=OFF -DCRN_DEPENDENCY_ZIP=ON -DCRN_DEPENDENCY_HARUPDF=ON -DCRN_DEPENDENCY_QT4=OFF -DCRN_DEPENDENCY_QT5=ON -DQT5_DIR=/usr/local/opt/qt5; fi
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then mkdir build_osx_qt5 && cd build_osx_qt5 && cmake .. $BTYPE -DCRN_DEPENDENCY_GTKMM2=ON -DCRN_DEPENDENCY_GTKMM3=OFF -DCRN_DEPENDENCY_PNG=ON -DCRN_DEPENDENCY_JPEG=ON -DCRN_DEPENDENCY_GDKPIXBUF=ON -DCRN_DEPENDENCY_GETTEXT_INTL=OFF -DCRN_DEPENDENCY_ZIP=ON -DCRN_DEPENDENCY_HARUPDF=ON -DCRN_DEPENDENCY_QT4=OFF -DCRN_DEPENDENCY_QT5=ON -DQT5_DIR=/usr/local/opt/qt5; fi # update MT 06/10/16 -> temp : disable gtkmm3 because new API !
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then make; fi
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then make test; fi
 #
 # linux only (add qt5 after qt4 in the same job) :
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then if [[ "$DOC" == "false" ]]; then sudo apt-get -y install qtbase5-dev qt5-default; fi; fi # ---> now install qt5
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then if [[ "$DOC" == "false" ]]; then cd ..; fi; fi
-  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then if [[ "$DOC" == "false" ]]; then mkdir build_linux_qt5 && cd build_linux_qt5 && cmake .. $BTYPE -DCRN_DEPENDENCY_GTKMM2=ON -DCRN_DEPENDENCY_GTKMM3=OFF -DCRN_DEPENDENCY_PNG=ON -DCRN_DEPENDENCY_JPEG=ON -DCRN_DEPENDENCY_GDKPIXBUF=ON -DCRN_DEPENDENCY_GETTEXT_INTL=ON -DCRN_DEPENDENCY_ZIP=ON -DCRN_DEPENDENCY_HARUPDF=ON -DCRN_DEPENDENCY_QT4=OFF -DCRN_DEPENDENCY_QT5=ON; fi; fi # update MT 06/10/16 -> temp : disable gtkmm3 because new API !
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then if [[ "$DOC" == "false" ]]; then mkdir build_linux_qt5 && cd build_linux_qt5 && cmake .. $BTYPE -DCRN_DEPENDENCY_GTKMM2=ON -DCRN_DEPENDENCY_GTKMM3=ON -DCRN_DEPENDENCY_PNG=ON -DCRN_DEPENDENCY_JPEG=ON -DCRN_DEPENDENCY_GDKPIXBUF=ON -DCRN_DEPENDENCY_GETTEXT_INTL=ON  -DCRN_DEPENDENCY_ZIP=ON -DCRN_DEPENDENCY_HARUPDF=ON -DCRN_DEPENDENCY_QT4=OFF -DCRN_DEPENDENCY_QT5=ON; fi; fi
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then if [[ "$DOC" == "false" ]]; then make; fi; fi
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then if [[ "$DOC" == "false" ]]; then make test; fi; fi
 #
