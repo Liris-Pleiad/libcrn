@@ -67,11 +67,16 @@ install:
 
 # osx :
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew update; fi
+# ---> because pb with python and opencv...
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then rm '/usr/local/bin/f2py'; fi
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then mv '/usr/local/lib/python2.7' '/usr/local/lib/python2.7.osx'; fi
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install homebrew/python/numpy; fi # numpy is a dependency of opencv...
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install homebrew/science/opencv; fi
+#
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install gtkmm gtkmm3; fi
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install gettext intltool; fi
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install libzip libharu; fi
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install qt; fi
-  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then travis_wait 60 brew install homebrew/science/opencv; fi
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install doxygen graphviz; fi
 #
 # documentation :
