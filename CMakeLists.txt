@@ -67,7 +67,6 @@ if(APPLE)
 	set(CRN_LOCALE_FULL_PATH "${CMAKE_INSTALL_PREFIX}/${CRN_LOCALE_PATH}")
 endif(APPLE)
 if(MSVC)
-	#set(CRN_DATA_PATH "bin/${CRN_DATA_PATH}") # MT : just a test...
 endif(MSVC)
 if(ANDROID)
 	set(CRN_CONFIG_FULL_PATH "") # TODO change to the real correct value
@@ -135,10 +134,12 @@ if(MSVC)
 	set(CMAKE_DEBUG_POSTFIX "-d")
 
 	set(CRN_CONFIG_PATH "")
-	set(CRN_DATA_FULL_PATH "${CRN_DATA_PATH}")
+	#set(CRN_DATA_FULL_PATH "${CRN_DATA_PATH}")
+	set(CRN_DATA_FULL_PATH "../${CRN_DATA_PATH}")
 	set(CRN_PROJECT_BASE "$ENV{Public}/Documents")
 	string(REPLACE "\\" "/" CRN_PROJECT_BASE ${CRN_PROJECT_BASE})
-	set(CRN_LOCALE_FULL_PATH "${CRN_LOCALE_PATH}")
+	#set(CRN_LOCALE_FULL_PATH "${CRN_LOCALE_PATH}")
+	set(CRN_LOCALE_FULL_PATH "../${CRN_LOCALE_PATH}")
 
 	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /MP /D_MBCS") # multi-process build + multibyte C strings
 
@@ -456,13 +457,20 @@ if(WIN32)
 	option(CPACK_BINARY_NSIS ON)
 	set(CPACK_GENERATOR "NSIS64")
 	if(GTK2_FOUND)
-		set(CPACK_NSIS_MENU_LINKS
-			"bin/titus2" "titus2"
-			"bin/nimrod" "nimrod")
+		# simple way
+		#set(CPACK_NSIS_MENU_LINKS
+		#	"bin/titus2" "titus2_sw"
+		#	"bin/nimrod" "nimrod_sw")
+		# with params, here '-foo -bar'
+		#set(CPACK_NSIS_CREATE_ICONS_EXTRA "CreateShortCut '$SMPROGRAMS\\\\$STARTMENU_FOLDER\\\\titus2_p.lnk' '$INSTDIR\\\\bin\\\\titus2.exe' '-foo -bar'")
+		#set(CPACK_NSIS_DELETE_ICONS_EXTRA "Delete '$SMPROGRAMS\\\\$START_MENU\\\\titus2_p.lnk'")
+		# with SetOutPath !
+		set(CPACK_NSIS_EXTRA_INSTALL_COMMANDS "SetOutPath \\\"$INSTDIR\\\\bin\\\"\\nCreateShortCut \\\"$SMPROGRAMS\\\\$STARTMENU_FOLDER\\\\titus2.lnk\\\" \\\"$INSTDIR\\\\bin\\\\titus2.exe\\\"\\nCreateShortCut \\\"$SMPROGRAMS\\\\$STARTMENU_FOLDER\\\\nimrod.lnk\\\" \\\"$INSTDIR\\\\bin\\\\nimrod.exe\\\"")
+		set(CPACK_NSIS_EXTRA_UNINSTALL_COMMANDS "Delete \\\"$SMPROGRAMS\\\\$START_MENU\\\\titus2.lnk\\\"\\nDelete \\\"$SMPROGRAMS\\\\$START_MENU\\\\nimrod.lnk\\\"")
 	endif()
 	if(GTK3_FOUND)
-		set(CPACK_NSIS_MENU_LINKS
-			"bin/titus3" "titus3")
+		set(CPACK_NSIS_EXTRA_INSTALL_COMMANDS "SetOutPath \\\"$INSTDIR\\\\bin\\\"\\nCreateShortCut \\\"$SMPROGRAMS\\\\$STARTMENU_FOLDER\\\\titus3.lnk\\\" \\\"$INSTDIR\\\\bin\\\\titus3.exe\\\"")
+		set(CPACK_NSIS_EXTRA_UNINSTALL_COMMANDS "Delete \\\"$SMPROGRAMS\\\\$START_MENU\\\\titus3.lnk\\\"")
 	endif()
 	set(CPACK_NSIS_DISPLAY_NAME "libcrn ${CRN_PACKAGE_VERSION_MAJOR}.${CRN_PACKAGE_VERSION_MINOR}.${CRN_PACKAGE_VERSION_PATCH}")
 	set(CPACK_NSIS_SOURCE_DIR "${PROJECT_SOURCE_DIR}")
