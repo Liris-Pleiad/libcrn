@@ -249,6 +249,17 @@ Path ConfigurationFile::GetUserDirectory() const
 	crn::Path p(getenv("HOME"));
 	p /= ".config";
 #endif
+	if (!crn::IO::Access(p, crn::IO::EXISTS))
+	{
+		try
+		{
+			crn::IO::Mkdir(p);
+		}
+		catch (...)
+		{
+			return "";
+		}
+	}
 	p /= appname;
 	if (!crn::IO::Access(p, crn::IO::EXISTS))
 	{
