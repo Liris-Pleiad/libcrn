@@ -93,3 +93,9 @@ install(CODE "
     include(BundleUtilities)
     fixup_bundle(${APPS} \"\" \"\")
     " COMPONENT app)
+
+# ---
+
+if(APPLE)
+	INSTALL(DIRECTORY "${CMAKE_INSTALL_PREFIX}/${CRN_DATA_PATH}" DESTINATION "${RUNTIME_INSTALL_PATH}/${APP_NAME}.app/Contents/MacOS/share" COMPONENT app)
+endif(APPLE)
