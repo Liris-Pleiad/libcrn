@@ -30,6 +30,8 @@
 #include <iomanip>
 #include <stdlib.h>
 
+#include <string.h> // MT : because new error with strlen - gcc 6.2.0 - Ubuntu 16.10
+
 /*! \defgroup string Strings 
  * \ingroup	base */
 namespace crn
