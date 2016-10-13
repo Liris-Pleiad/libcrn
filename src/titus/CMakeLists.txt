@@ -89,13 +89,15 @@ if(WIN32)
 	set(APPS "\${CMAKE_INSTALL_PREFIX}/${RUNTIME_INSTALL_PATH}/${APP_NAME}.exe")
 endif(WIN32)
 
-install(CODE "
-    include(BundleUtilities)
-    fixup_bundle(${APPS} \"\" \"\")
-    " COMPONENT app)
+if(NOT UNIX)
+  install(CODE "
+      include(BundleUtilities)
+      fixup_bundle(${APPS} \"\" \"\")
+      " COMPONENT app)
+endif(NOT UNIX)
 
 # ---
 
 if(APPLE)
-	INSTALL(DIRECTORY "${CMAKE_INSTALL_PREFIX}/${CRN_DATA_PATH}" DESTINATION "${RUNTIME_INSTALL_PATH}/${APP_NAME}.app/Contents/MacOS/share" COMPONENT app)
+	INSTALL(DIRECTORY "${CMAKE_INSTALL_PREFIX}/${CRN_DATA_PATH}" DESTINATION "${RUNTIME_INSTALL_PATH}/${APP_NAME}.app/Contents/MacOS/share" COMPONENT app) # '/share' is here hardcoded -> to improve
 endif(APPLE)
