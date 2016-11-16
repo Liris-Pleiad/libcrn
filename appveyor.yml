@@ -84,34 +84,34 @@ before_build:
   - IF %CACHE%==FALSE mkdir %KIT_ROOT%
   - IF %CACHE%==FALSE cd %KIT_ROOT%
 # libiconv
-  - IF %CACHE%==FALSE curl -s -O https://download.gforge.liris.cnrs.fr/meppbin/windows/vs2015/PLEIAD/packages/clean/libiconv-1.14.rar
+  - IF %CACHE%==FALSE curl --connect-timeout 60 --max-time 600 -s -O https://download.gforge.liris.cnrs.fr/meppbin/windows/vs2015/PLEIAD/packages/clean/libiconv-1.14.rar
   - IF %CACHE%==FALSE 7z x libiconv-1.14.rar > nul
 # 3rdparty
-  - IF %CACHE%==FALSE curl -s -O https://download.gforge.liris.cnrs.fr/meppbin/windows/vs2015/PLEIAD/packages/clean/3rdparty.rar
+  - IF %CACHE%==FALSE curl --connect-timeout 60 --max-time 600 -s -O https://download.gforge.liris.cnrs.fr/meppbin/windows/vs2015/PLEIAD/packages/clean/3rdparty.rar
   - IF %CACHE%==FALSE 7z x 3rdparty.rar > nul
 # zip
-  - IF %CACHE%==FALSE curl -s -O https://download.gforge.liris.cnrs.fr/meppbin/windows/vs2015/PLEIAD/packages/clean/libzip-1.1.2.rar
+  - IF %CACHE%==FALSE curl --connect-timeout 60 --max-time 600 -s -O https://download.gforge.liris.cnrs.fr/meppbin/windows/vs2015/PLEIAD/packages/clean/libzip-1.1.2.rar
   - IF %CACHE%==FALSE 7z x libzip-1.1.2.rar > nul
 # haru(pdf)
-  - IF %CACHE%==FALSE curl -s -O https://download.gforge.liris.cnrs.fr/meppbin/windows/vs2015/PLEIAD/packages/clean/libharu-2.3.0.rar
+  - IF %CACHE%==FALSE curl --connect-timeout 60 --max-time 600 -s -O https://download.gforge.liris.cnrs.fr/meppbin/windows/vs2015/PLEIAD/packages/clean/libharu-2.3.0.rar
   - IF %CACHE%==FALSE 7z x libharu-2.3.0.rar > nul
 # bin_gettext
-  - IF %CACHE%==FALSE curl -s -O https://download.gforge.liris.cnrs.fr/meppbin/windows/vs2015/PLEIAD/packages/clean/bin_gettext.rar
+  - IF %CACHE%==FALSE curl --connect-timeout 60 --max-time 600 -s -O https://download.gforge.liris.cnrs.fr/meppbin/windows/vs2015/PLEIAD/packages/clean/bin_gettext.rar
   - IF %CACHE%==FALSE 7z x bin_gettext.rar > nul
 # gtkmm2
-  - IF %CACHE%==FALSE curl -s -O https://download.gforge.liris.cnrs.fr/meppbin/windows/vs2015/PLEIAD/packages/clean/gtkmm2.7z
+  - IF %CACHE%==FALSE curl --connect-timeout 60 --max-time 600 -s -O https://download.gforge.liris.cnrs.fr/meppbin/windows/vs2015/PLEIAD/packages/clean/gtkmm2.7z
   - IF %CACHE%==FALSE 7z x gtkmm2.7z > nul
 # gtkmm3_debug
-  - IF %CACHE%==FALSE curl -s -O https://download.gforge.liris.cnrs.fr/meppbin/windows/vs2015/PLEIAD/packages/clean/gtkmm3_debug.7z
+  - IF %CACHE%==FALSE curl --connect-timeout 60 --max-time 600 -s -O https://download.gforge.liris.cnrs.fr/meppbin/windows/vs2015/PLEIAD/packages/clean/gtkmm3_debug.7z
   - IF %CACHE%==FALSE 7z x gtkmm3_debug.7z > nul
 # gtkmm3_release
-  - IF %CACHE%==FALSE curl -s -O https://download.gforge.liris.cnrs.fr/meppbin/windows/vs2015/PLEIAD/packages/clean/gtkmm3_release.7z
+  - IF %CACHE%==FALSE curl --connect-timeout 60 --max-time 600 -s -O https://download.gforge.liris.cnrs.fr/meppbin/windows/vs2015/PLEIAD/packages/clean/gtkmm3_release.7z
   - IF %CACHE%==FALSE 7z x gtkmm3_release.7z > nul
 # Qt4
-  - IF %CACHE%==FALSE curl -s -O https://download.gforge.liris.cnrs.fr/meppbin/windows/vs2015/MEPP/packages/clean/qt-4.8.7-x64-msvc2015.7z
+  - IF %CACHE%==FALSE curl --connect-timeout 60 --max-time 600 -s -O https://download.gforge.liris.cnrs.fr/meppbin/windows/vs2015/MEPP/packages/clean/qt-4.8.7-x64-msvc2015.7z
   - IF %CACHE%==FALSE 7z x qt-4.8.7-x64-msvc2015.7z > nul
 # OpenCV
-  - IF %CACHE%==FALSE curl -s -O https://download.gforge.liris.cnrs.fr/meppbin/windows/vs2015/PLEIAD/packages/clean/opencv-3.1.0.7z
+  - IF %CACHE%==FALSE curl --connect-timeout 60 --max-time 600 -s -O https://download.gforge.liris.cnrs.fr/meppbin/windows/vs2015/PLEIAD/packages/clean/opencv-3.1.0.7z
   - IF %CACHE%==FALSE 7z x opencv-3.1.0.7z > nul
 #
   - cd %APPVEYOR_BUILD_FOLDER%
