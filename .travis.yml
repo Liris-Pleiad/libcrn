@@ -111,4 +111,5 @@ script:
 # building the documentation
 after_success:
   - if [[ "$DOC" == "true" ]]; then make doc; fi
-  - if [[ "$DOC" == "true" ]]; then rsync -azv --delete --delete-after -e 'ssh -oStrictHostKeyChecking=no -i ../.travis/pleiad' ../doc/html/ mepp@liris.cnrs.fr:/home/mepp/public_html/libcrn/doc/nightly/; fi
+  - if [[ "$DOC" == "true" ]]; then rsync -azv --delete --delete-after -e 'ssh -oStrictHostKeyChecking=no -i ../.travis/pleiad' ../doc/html/ mepp@liris.cnrs.fr:/home/mepp/public_html/libcrn/doc/nightly/; fi # first url (temporary)
+  - if [[ "$DOC" == "true" ]]; then rsync -azv --delete --delete-after -e 'ssh -oStrictHostKeyChecking=no -i ../.travis/pleiad' ../doc/html/ pleiad@liris.cnrs.fr:/home/pleiad/public_html/doc/nightly/; fi # official url
