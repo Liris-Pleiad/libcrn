@@ -76,7 +76,7 @@ install:
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install gtkmm gtkmm3; fi
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install gettext intltool; fi
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install libzip libharu; fi
-  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then travis_wait 90 brew install cartr/qt4/qt; fi
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then travis_wait 180 brew install cartr/qt4/qt; fi # 180 because we want 90 but 2 jobs in // !
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install doxygen graphviz; fi
 #
 # documentation :
