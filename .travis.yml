@@ -22,7 +22,7 @@ env:
   - BTYPE="-DCMAKE_BUILD_TYPE=Release"
 
 # doc
-  - GENDOC="true"
+  - GENDOC="true" # ---> https://liris.cnrs.fr/pleiad/doc/nightly/
 
 #-------------------------------------------------------------------
 # matrix details :

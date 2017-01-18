@@ -15,7 +15,7 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with libcrn.  If not, see <http://www.gnu.org/licenses/>.
  * 
- * file: CRNCV.h
+ * file: crn2opencv2crn.cpp
  * \author Martial Tola, Yann LEYDIER
  */
 

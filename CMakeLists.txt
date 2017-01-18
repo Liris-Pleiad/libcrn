@@ -189,7 +189,7 @@ set(CRN_PROJECT_PATH "${CRN_PROJECT_BASE}/crn")
 # Dependencies
 ###############################################################################
 # Image
-option(CRN_DEPENDENCY_JPEG "Use jpeglib to load and save images." off)
+option(CRN_DEPENDENCY_JPEG "Use libjpeg to load and save images." off)
 option(CRN_DEPENDENCY_GDKPIXBUF "Use GdkPixbuf to load and save images." off)
 if(MSVC)
 	option(CRN_DEPENDENCY_GDIPLUS "Use Gdi+ to load and save images." on)
@@ -201,7 +201,7 @@ endif()
 # Misc
 option(CRN_DEPENDENCY_GETTEXT_INTL "Use Gettext and libintl to translate messages." off)
 option(CRN_DEPENDENCY_ZIP "Use libzip to create archives." off)
-option(CRN_DEPENDENCY_HARUPDF "Use haru to create PDF files." off)
+option(CRN_DEPENDENCY_HARUPDF "Use libHaru to create PDF files." off)
 
 # GUI
 option(CRN_DEPENDENCY_GTKMM2 "Use Gtkmm 2 to build GUIs." off)
@@ -376,13 +376,13 @@ if(CRN_DEPENDENCY_PNG)
 endif(CRN_DEPENDENCY_PNG)
 
 if(CRN_DEPENDENCY_JPEG)
-	# jpeglib
+	# libjpeg
 	find_package(JPEG)
 	if(NOT JPEG_FOUND)
-		message(FATAL_ERROR "Cannot find jpeglib.")
+		message(FATAL_ERROR "Cannot find libjpeg.")
 	endif()
 	set(CRN_USING_LIBJPEG on)
-	message("Using jpeglib")
+	message("Using libjpeg")
 endif(CRN_DEPENDENCY_JPEG)
 
 if(CRN_DEPENDENCY_ZIP)
@@ -397,10 +397,10 @@ endif(CRN_DEPENDENCY_ZIP)
 if(CRN_DEPENDENCY_HARUPDF)
 	find_package(HPDF)
 	if(NOT HPDF_FOUND)
-		message(FATAL_ERROR "Cannot find haru.")
+		message(FATAL_ERROR "Cannot find libHaru.")
 	endif()
 	set(CRN_USING_HARU on)
-	message("Using haru")
+	message("Using libHaru")
 endif(CRN_DEPENDENCY_HARUPDF)
 
 ###############################################################################

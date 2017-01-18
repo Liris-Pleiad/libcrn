@@ -1,0 +1,233 @@
+
+This file describes how to install and compile libcrn on Linux, MacOS and Windows.
+----------------------------------------------------------------------------------
+
+The main dependencies are:
+ - CMake >= 2.8.9 (required)
+ - gettext (required)
+
+ - libiconv (required only for Windows, already in the system on Linux and MacOS)
+
+ - libjpeg (optional, to load and save images)
+ - libpng (optional, to load and save images)
+
+ - libzip (optional, to create archives)
+ - libHaru (optional, to create PDF files)
+
+ - OpenCV (optional, used for 'crn2opencv2crn' demo)
+
+ - Gtkmm 2 or Gtkmm 3 (optional, Gtkmm 2 preferred, used for GUI)
+ - Qt 4 or 5 (optional, but only used for 'future ? GUI')
+
+ - Doxygen and Graphviz (optional, used to generate the documentation)
+
+
+CMake compilation flags summary:
+ - CMAKE_BUILD_TYPE: build type (Release or Debug)
+
+ - CRN_DEPENDENCY_GETTEXT_INTL: use gettext and libintl to translate messages (ON or OFF)
+
+ - CRN_DEPENDENCY_GDIPLUS: --> ONLY FOR Windows <--, use Gdi+ to load and save images (ON or OFF) 
+ - CRN_DEPENDENCY_GDKPIXBUF: use GdkPixbuf to load and save images (ON or OFF)
+ - CRN_DEPENDENCY_JPEG: use libjpeg to load and save images (ON or OFF)
+ - CRN_DEPENDENCY_PNG: use libpng to load and save images (ON or OFF)
+
+ - CRN_DEPENDENCY_ZIP: use libzip to create archives (ON or OFF)
+ - CRN_DEPENDENCY_HARUPDF: use libHaru to create PDF files (ON or OFF)
+
+ - CRN_DEPENDENCY_OPENCV: use OpenCV for 'crn2opencv2crn' demo (ON or OFF)
+
+ - CRN_DEPENDENCY_GTKMM2: use GUI (ON or OFF)
+
+
+1) Linux
+--------
+
+* Install dependencies *
+------------------------
+
+Example on Ubuntu 14.04 amd64:
+
+  # CMake
+  $ sudo aptitude install cmake
+
+  # gettext
+  $ sudo aptitude install gettext
+
+  # libzip
+  $ sudo aptitude install libzip-dev
+
+  # libHaru
+  $ sudo aptitude install libhpdf-dev
+
+  # OpenCV
+  $ sudo aptitude install libopencv-dev
+
+  # Gtkmm 2
+  $ sudo aptitude install libgtkmm-2.4-dev
+
+  # Qt 4
+  $ sudo aptitude install libqt4-dev
+
+  # Doxygen and Graphviz
+  $ sudo aptitude install doxygen graphviz
+
+* Compile *
+-----------
+
+Compile libcrn:
+
+  # get libcrn source code
+  $ git clone https://github.com/Liris-Pleiad/libcrn
+
+  # create build directory 
+  $ cd libcrn && mkdir build && cd build
+
+  # compile with GUI (here with Gtkmm 2), libzip and libHaru
+  $ cmake -DCRN_DEPENDENCY_GTKMM2=ON -DCRN_DEPENDENCY_ZIP=ON -DCRN_DEPENDENCY_HARUPDF=ON -DCMAKE_BUILD_TYPE=Release ..
+  $ make 
+
+  # compile without GUI (default behavior) but with OpenCV demo
+  $ cmake -DCRN_DEPENDENCY_OPENCV=ON -DCMAKE_BUILD_TYPE=Release ..
+  $ make 
+
+  # generate the documentation
+  $ make doc
+
+* Run tests *
+-------------
+
+  $ ctest
+
+
+2) MacOS
+--------
+
+* Install dependencies *
+------------------------
+
+  # install homebrew package manager (see http://brew.sh/), then
+  $ brew update
+
+  # CMake
+  $ brew install cmake
+
+  # gettext
+  $ brew install gettext intltool
+
+  # libzip
+  $ brew install libzip
+
+  # libHaru
+  $ brew install libharu
+
+  # OpenCV
+  $ brew install homebrew/science/opencv
+
+  # Gtkmm 2
+  $ brew install gtkmm
+
+  # Qt 4
+  $ brew install cartr/qt4/qt
+
+  # Doxygen and Graphviz
+  $ brew install doxygen graphviz
+
+* Compile *
+-----------
+
+  # get libcrn source code (see Linux section above)
+
+  # create build directory (see Linux section above)
+
+  # compile with GUI (here with Gtkmm 2), libzip and libHaru (see Linux section above)
+  
+  # compile without GUI (default behavior) but with OpenCV demo (see Linux section above)
+
+  # generate the documentation (see Linux section above)
+
+* Run tests *
+-------------
+
+  $ ctest
+
+
+3) Windows
+----------
+
+* Prerequisites *
+-----------------
+
+ - Update Windows 7/8/8.1/10 (services packs and Windows Update)
+
+ - download and instal Visual Studio Express 2015 from
+
+   https://download.gforge.liris.cnrs.fr/meppbin/windows/vs2015/Visual%20Studio%20Express%202015/Visual%20Studio%20Express%202015%20pour%20Windows%20Desktop.rar
+   (download size 7.4 Go, installation size ~>14 Go)
+
+* Install dependencies *
+------------------------
+
+ - download the 'core' binary kit for VS2015_64 from
+
+   https://download.gforge.liris.cnrs.fr/meppbin/windows/vs2015/PLEIAD/kits/PLEIAD_local_vs2015_64.7z
+   (download size 918 Mo, installation size ~7.4 Go)
+
+ - extract the 'core' binary kit 'PLEIAD_local_vs2015_64.7z'; ensure that the absolute path to the 'local_vs2015_64' directory is short (less than 50 characters) and does NOT contain any whitespace (troubles have been encountered with 'Mes Documents' for example)
+
+ - install CMake 3.4.3 from 'local_vs2015_64\_utils_\cmake-3.4.3-win32-x86.zip'
+
+ - set a new user environment variable 'MSVC_KIT_ROOT' to 'path_to/local_vs2015_64' (beware of the directory separator, it must be '/' here)
+
+ - add ';path_to\local_vs2015_64\_bin_' to the PATH system environment variable, just after the Windows system paths, but before any other path, in order to avoid a library version conflict; beware of the ';' path separator
+
+* Compile *
+-----------
+
+ - get libcrn source code using your favourite Git client (see Linux section above)
+
+ - run CMake GUI
+
+ - choose 'Visual Studio 14 2015 Win64' as the compiler version
+
+ - where is the source code = ".../libcrn"
+
+ - where to build the binaries = ".../libcrn/build"
+
+ - set the CMake compilation flags as needed (see list above)
+
+ - click "Configure"
+
+ - click "Generate"
+
+ - open "libcrn/build/libcrn.sln" solution with MSVC 2015, select 'Release' mode, then generate the 'ALL_BUILD' project
+
+* Run tests *
+-------------
+
+ - open "libcrn/build/MEPP2.sln" solution with MSVC 2015, then generate the 'RUN_TESTS' project
+
+
+4) Documentation
+----------------
+
+The automatically generated documentation is available here: https://liris.cnrs.fr/pleiad/doc/nightly/
+
+
+5) Simple examples and demos
+----------------------------
+
+See './libcrn/src/demos' folder:
+
+ - estimateStrokes.cpp
+ - ocr4dummies.cpp (a quick OCR engine to recognize capital roman letters, to keep the example short, it is designed for old Latin documents that have no spacing between words and have well separated lines of text)
+
+ - crn2opencv2crn.cpp (CRN_DEPENDENCY_OPENCV must be set to ON for this demo)
+
+
+6) Known issues
+---------------
+
+* On Windows, when using CMake with CRN_DEPENDENCY_HARUPDF and CRN_DEPENDENCY_PNG set to ON at the same time, for now you must do 'Configure' 2 times because at the first time you will have a 'false' PNG error: 'Could NOT find PNG'.
+
+* On MacOS, you can't use CMake with CRN_DEPENDENCY_GETTEXT_INTL set to ON because for now gettext is not found.
