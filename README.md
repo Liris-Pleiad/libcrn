@@ -18,7 +18,7 @@ Visual Studio 2015 needed (see INSTALL.txt file).
 For now, only one option between Gtkmm2, Gtkmm3-Release and Gtkmm3-Debug can be chosen at the same time.
 
 ## Linux
-Builds with g++ 4.8 to 6.2 and clang++ 3.6 (see INSTALL.txt file).
+Builds with g++ 4.8 to 6.2 and clang++ 3.6 to 3.8 (see INSTALL.txt file).
 
 ## MacOS
 Dependencies available in Homebrew (see INSTALL.txt file).
@@ -28,18 +28,25 @@ Dependencies available in Homebrew (see INSTALL.txt file).
 ```
 mkdir buildand
 cd buildand
-ANDROID_NDK=absolute_path_to_ndk cmake -DCMAKE_TOOLCHAIN_FILE=../cmake/android/android.toolchain.cmake -DANDROID_NATIVE_API_LEVEL=9 ..
+cmake -DANDROID_NDK=absolute_path_to_ndk -DANDROID_ABI=x86 -DCMAKE_TOOLCHAIN_FILE=../cmake/android/android.toolchain.cmake -DANDROID_NATIVE_API_LEVEL=9 .. (-> here ANDROID_ABI=x86 is an example)
+make
 ```
 ### Run tests
-Launch an emulator.
+Launch an emulator :
 ```
-adb push src/libcrn/libcrn.so /sdcard/
-adb push src/tests/tests /sdcard/
+adb devices (-> list of devices attached)
+emulator -avd Nexus_5X_API_25_x86 -wipe-data -no-boot-anim & (-> here Nexus_5X_API_25_x86 is an example)
+```
+Deploy and test :
+```
+adb push out/libcrn.so /sdcard/
+adb push out/tests /sdcard/
+adb root
 adb shell
 cd /data/local
 cp /sdcard/libcrn.so .
 chmod 751 libcrn.so
-cp /sdcard/tests
+cp /sdcard/tests .
 chmod 751 tests
 LD_LIBRARY_PATH=. ./tests
 ```

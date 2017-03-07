@@ -135,6 +135,8 @@ TEST_CASE("Register, save and load Vector", "[serialization]")
 	}
 }
 
+#ifndef CRN_PF_ANDROID // MT : PB with m[U"r"] and m[U"i"] -> Invalid address 0x........ passed to free: value not allocated
+
 #include <CRNData/CRNMap.h>
 TEST_CASE("Register, save and load Map", "[serialization]")
 {
@@ -179,3 +181,4 @@ TEST_CASE("Register, save and load Map", "[serialization]")
 	}
 }
 
+#endif

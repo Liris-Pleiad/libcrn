@@ -103,7 +103,11 @@ Path ConfigurationFile::Load()
  */
 Path ConfigurationFile::Save()
 {
+#ifdef CRN_PF_ANDROID
+	const auto fname = filename + ".xml"; // MT : temp or good ?
+#else
 	const auto fname = GetUserDirectory() / filename + ".xml";
+#endif
 	try
 	{
 		data.Save(fname);

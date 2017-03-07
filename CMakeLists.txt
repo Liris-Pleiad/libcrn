@@ -75,11 +75,14 @@ endif(APPLE)
 if(MSVC)
 endif(MSVC)
 if(ANDROID)
+	set(CRN_PF_ANDROID ON)
+
 	set(CRN_CONFIG_FULL_PATH "") # TODO change to the real correct value
 	set(CRN_CONFIG_FULL_PATH "${CMAKE_INSTALL_PREFIX}/${CRN_DATA_PATH}") # not used ???
 
-	set(CRN_PROJECT_BASE "/var")
-	set(CRN_LOCALE_FULL_PATH "${CMAKE_INSTALL_PREFIX}/${CRN_LOCALE_PATH}")
+	set(CRN_DATA_FULL_PATH "../${CRN_DATA_PATH}")
+	set(CRN_PROJECT_BASE "/var") # good ?
+	set(CRN_LOCALE_FULL_PATH "../${CRN_LOCALE_PATH}")
 
 	if(NOT ANDROID_NATIVE_API_LEVEL)
 		set(ANDROID_NATIVE_API_LEVEL 9)
@@ -88,7 +91,6 @@ if(ANDROID)
 	if(ANDROID_NATIVE_API_LEVEL LESS 9)
 		message(FATAL_ERROR "Android API level must be >=9.")
 	endif(ANDROID_NATIVE_API_LEVEL LESS 9)
-	set(CRN_PF_ANDROID ON)
 
 	set(ICONV_INCLUDE_DIR "${CMAKE_SOURCE_DIR}/android-deps/include" CACHE PATH "path to iconv")
 	set(ICONV_LIBRARIES "${CMAKE_SOURCE_DIR}/android-deps/lib/${ANDROID_ABI}/libiconv.a" CACHE PATH "path to iconv")
