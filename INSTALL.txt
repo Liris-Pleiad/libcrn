@@ -1,6 +1,6 @@
 
-This file describes how to install and compile libcrn on Linux, MacOS and Windows.
-----------------------------------------------------------------------------------
+This file describes how to install and compile libcrn on Linux, MacOS, Windows and Android.
+-------------------------------------------------------------------------------------------
 
 The main dependencies are:
  - CMake >= 2.8.9 (required)
@@ -78,18 +78,18 @@ Example on Ubuntu 14.04 amd64:
 Compile libcrn:
 
   # get libcrn source code
-  $ git clone https://github.com/Liris-Pleiad/libcrn
+  $ git clone https://github.com/Liris-Pleiad/libcrn.git
 
   # create build directory 
   $ cd libcrn && mkdir build && cd build
 
   # compile with GUI (here with Gtkmm 2), libzip and libHaru
   $ cmake -DCRN_DEPENDENCY_GTKMM2=ON -DCRN_DEPENDENCY_ZIP=ON -DCRN_DEPENDENCY_HARUPDF=ON -DCMAKE_BUILD_TYPE=Release ..
-  $ make 
+  $ make
 
   # compile without GUI (default behavior) but with OpenCV demo
   $ cmake -DCRN_DEPENDENCY_OPENCV=ON -DCMAKE_BUILD_TYPE=Release ..
-  $ make 
+  $ make
 
   # generate the documentation
   $ make doc
@@ -175,7 +175,7 @@ Compile libcrn:
 
  - extract the 'core' binary kit 'PLEIAD_local_vs2015_64.7z'; ensure that the absolute path to the 'local_vs2015_64' directory is short (less than 50 characters) and does NOT contain any whitespace (troubles have been encountered with 'Mes Documents' for example)
 
- - install CMake 3.4.3 from 'local_vs2015_64\_utils_\cmake-3.4.3-win32-x86.zip'
+ - unzip CMake 3.4.3 from 'local_vs2015_64\_utils_\cmake-3.4.3-win32-x86.zip'
 
  - set a new user environment variable 'MSVC_KIT_ROOT' to 'path_to/local_vs2015_64' (beware of the directory separator, it must be '/' here)
 
@@ -184,7 +184,7 @@ Compile libcrn:
 * Compile *
 -----------
 
- - get libcrn source code using your favourite Git client (see Linux section above)
+ - get libcrn source code using your favourite Git client (https://tortoisegit.org/) and this url : https://github.com/Liris-Pleiad/libcrn.git
 
  - run CMake GUI
 
@@ -208,13 +208,81 @@ Compile libcrn:
  - open "libcrn/build/MEPP2.sln" solution with MSVC 2015, then generate the 'RUN_TESTS' project
 
 
-4) Documentation
+4) Android
+----------
+
+* Install dependencies *
+------------------------
+
+  a) from Linux (example on Ubuntu 14.04 amd64):
+
+    # CMake
+    $ sudo aptitude install cmake
+
+  b) from MacOS
+
+    # install homebrew package manager (see http://brew.sh/), then
+    $ brew update
+
+    # CMake
+    $ brew install cmake
+
+  c) from Windows
+
+    # CMake
+    - download and unzip CMake 3.4.3 from https://cmake.org/files/v3.4/cmake-3.4.3-win32-x86.zip
+
+    # Ninja (a 'really good' port of make)
+    - download and unzip Ninja 1.7.2 from https://github.com/ninja-build/ninja/releases/download/v1.7.2/ninja-win.zip
+
+* Compile *
+-----------
+
+  # get libcrn source code (see Linux section above)
+
+  # create build directory (see Linux section above)
+
+  # compile (from Linux or MacOS)
+  $ cmake -DANDROID_NDK=absolute_path_to_ndk -DANDROID_ABI=x86 -DCMAKE_TOOLCHAIN_FILE=../cmake/android/android.toolchain.cmake -DANDROID_NATIVE_API_LEVEL=9 .. (-> here ANDROID_ABI=x86 is an example)
+  $ make
+
+  # compile (from Windows)
+  $ absolute_path_to_cmake\cmake -DANDROID_NDK=absolute_path_to_ndk -DANDROID_ABI=x86 -GNinja -DCMAKE_MAKE_PROGRAM=absolute_path_to_ninja\ninja -DCMAKE_TOOLCHAIN_FILE=../cmake/android/android.toolchain.cmake -DANDROID_NATIVE_API_LEVEL=9 ..  (-> here ANDROID_ABI=x86 is an example)
+  $ absolute_path_to_ninja\ninja
+
+* Run tests *
+-------------
+
+  Launch an emulator:
+  ```
+  $ emulator -list-avds (-> list all available avds)
+  $ emulator -avd Nexus_5X_API_25_x86 -wipe-data -no-boot-anim & (-> here Nexus_5X_API_25_x86 is an example)
+  $ adb devices (-> list of devices attached)
+  ```
+  Deploy and test:
+  ```
+  $ adb push out/libcrn.so /sdcard/
+  $ adb push out/tests /sdcard/
+
+  $ adb root
+  $ adb shell
+
+  $ cd /data/local
+  $ cp /sdcard/libcrn.so .
+  $ chmod 751 libcrn.so
+  $ cp /sdcard/tests .
+  $ chmod 751 tests
+  $ LD_LIBRARY_PATH=. ./tests
+  ```
+
+
+5) Documentation
 ----------------
 
 The automatically generated documentation is available here: https://liris.cnrs.fr/pleiad/doc/nightly/
 
 
-5) Simple examples and demos
+6) Simple examples and demos
 ----------------------------
 
 See './libcrn/src/demos' folder:
@@ -225,7 +293,7 @@ See './libcrn/src/demos' folder:
  - crn2opencv2crn.cpp (CRN_DEPENDENCY_OPENCV must be set to ON for this demo)
 
 
-6) Known issues
+7) Known issues
 ---------------
 
 * On Windows, when using CMake with CRN_DEPENDENCY_HARUPDF and CRN_DEPENDENCY_PNG set to ON at the same time, for now you must do 'Configure' 2 times because at the first time you will have a 'false' PNG error: 'Could NOT find PNG'.
