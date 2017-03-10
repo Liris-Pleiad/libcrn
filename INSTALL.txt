@@ -175,7 +175,7 @@ Compile libcrn:
 
  - extract the 'core' binary kit 'PLEIAD_local_vs2015_64.7z'; ensure that the absolute path to the 'local_vs2015_64' directory is short (less than 50 characters) and does NOT contain any whitespace (troubles have been encountered with 'Mes Documents' for example)
 
- - unzip CMake 3.4.3 from 'local_vs2015_64\_utils_\cmake-3.4.3-win32-x86.zip'
+ - extract CMake 3.4.3 from 'local_vs2015_64\_utils_\cmake-3.4.3-win32-x86.zip'
 
  - set a new user environment variable 'MSVC_KIT_ROOT' to 'path_to/local_vs2015_64' (beware of the directory separator, it must be '/' here)
 
@@ -214,6 +214,12 @@ Compile libcrn:
 * Install dependencies *
 ------------------------
 
+  # Android NDK
+  - download and extract the Android NDK for your platform (Windows, MacOS or Linux) from https://developer.android.com/ndk/downloads
+
+  # (Optional) Android Studio
+  - download and install the Android Studio for your platform (Windows, MacOS or Linux) from https://developer.android.com/studio needed to obtain The Android Emulator (install all features: Android Studio, Android SDK, Android Virtual Device and also Hardware Acceleration)
+
   a) from Linux (example on Ubuntu 14.04 amd64):
 
     # CMake
@@ -230,10 +236,10 @@ Compile libcrn:
   c) from Windows
 
     # CMake
-    - download and unzip CMake 3.4.3 from https://cmake.org/files/v3.4/cmake-3.4.3-win32-x86.zip
+    - download and extract CMake 3.4.3 from https://cmake.org/files/v3.4/cmake-3.4.3-win32-x86.zip
 
     # Ninja (a 'really good' port of make)
-    - download and unzip Ninja 1.7.2 from https://github.com/ninja-build/ninja/releases/download/v1.7.2/ninja-win.zip
+    - download and extract Ninja 1.7.2 from https://github.com/ninja-build/ninja/releases/download/v1.7.2/ninja-win.zip
 
 * Compile *
 -----------
@@ -247,7 +253,7 @@ Compile libcrn:
   $ make
 
   # compile (from Windows)
-  $ absolute_path_to_cmake\cmake -DANDROID_NDK=absolute_path_to_ndk -DANDROID_ABI=x86 -GNinja -DCMAKE_MAKE_PROGRAM=absolute_path_to_ninja\ninja -DCMAKE_TOOLCHAIN_FILE=../cmake/android/android.toolchain.cmake -DANDROID_NATIVE_API_LEVEL=9 ..  (-> here ANDROID_ABI=x86 is an example)
+  $ absolute_path_to_cmake\cmake -DANDROID_NDK=absolute_path_to_ndk -DANDROID_ABI=x86 -GNinja -DCMAKE_MAKE_PROGRAM=absolute_path_to_ninja\ninja -DCMAKE_TOOLCHAIN_FILE=../cmake/android/android.toolchain.cmake -DANDROID_NATIVE_API_LEVEL=9 .. (-> here ANDROID_ABI=x86 is an example)
   $ absolute_path_to_ninja\ninja
 
 * Run tests *
