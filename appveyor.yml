@@ -119,7 +119,7 @@ before_build:
 
 # to run your custom scripts instead of automatic MSBuild
 build_script:
-  - msbuild /m libcrn.sln # /m is ignored ? (but not really important because the VM has only one processor !)
+  - msbuild /m libcrn.sln
 
 # to run your custom scripts instead of automatic tests
 test_script:
