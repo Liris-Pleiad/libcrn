@@ -93,7 +93,7 @@ script:
   - make test
 #
 # osx only (add qt5 after qt4 in the same job) :
-  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew unlink qt; fi # ---> now unlink qt4
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew unlink qt@4; fi # ---> now unlink qt4
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install qt5; fi
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then cd ..; fi
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then mkdir build_osx_qt5 && cd build_osx_qt5 && cmake .. $BTYPE -DCRN_DEPENDENCY_GTKMM2=ON -DCRN_DEPENDENCY_GTKMM3=OFF -DCRN_DEPENDENCY_PNG=ON -DCRN_DEPENDENCY_JPEG=ON -DCRN_DEPENDENCY_GDKPIXBUF=ON -DCRN_DEPENDENCY_GETTEXT_INTL=OFF -DCRN_DEPENDENCY_ZIP=ON -DCRN_DEPENDENCY_HARUPDF=ON -DCRN_DEPENDENCY_QT4=OFF -DCRN_DEPENDENCY_QT5=ON -DQT5_DIR=/usr/local/opt/qt5; fi # update MT 06/10/16 -> temp : disable gtkmm3 because new API !
