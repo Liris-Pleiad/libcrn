@@ -18,7 +18,7 @@ Visual Studio 2015 needed (see INSTALL.txt file).
 For now, only one option between Gtkmm2, Gtkmm3-Release and Gtkmm3-Debug can be chosen at the same time.
 
 ## Linux
-Builds with g++ 4.8 to 6.2 and clang++ 3.6 to 3.8 (see INSTALL.txt file).
+Builds with g++ 4.8 to 6.3 and clang++ 3.6 to 4.0 (see INSTALL.txt file).
 
 ## MacOS
 Dependencies available in Homebrew (see INSTALL.txt file).
