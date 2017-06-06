@@ -205,7 +205,7 @@ Compile libcrn:
 * Run tests *
 -------------
 
- - open "libcrn/build/MEPP2.sln" solution with MSVC 2015, then generate the 'RUN_TESTS' project
+ - open "libcrn/build/libcrn.sln" solution with MSVC 2015, then generate the 'RUN_TESTS' project
 
 
 4) Android
