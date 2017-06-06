@@ -160,7 +160,7 @@ Compile libcrn:
 
  - Update Windows 7/8/8.1/10 (services packs and Windows Update)
 
- - download and instal Visual Studio Express 2015 from
+ - download and install Visual Studio Express 2015 from
 
    https://download.gforge.liris.cnrs.fr/meppbin/windows/vs2015/Visual%20Studio%20Express%202015/Visual%20Studio%20Express%202015%20pour%20Windows%20Desktop.rar
    (download size 7.4 Go, installation size ~>14 Go)
