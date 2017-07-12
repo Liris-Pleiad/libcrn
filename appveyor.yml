@@ -55,9 +55,9 @@ init:
 #  - dir C:\Qt\5.7
   - C:\Qt\5.7\msvc2015_64\bin\qmake --version
   - set PATH=%KIT_ROOT%\gettext;%KIT_ROOT%\libiconv-1.14\lib;%KIT_ROOT%\3rdparty\libpng\lib\Release;%KIT_ROOT%\3rdparty\zlib\lib\Release;%KIT_ROOT%\libzip-1.1.2\lib\Release;%KIT_ROOT%\libharu-2.3.0\lib\Release;%KIT_ROOT%\Qt\qt-4.8.7-x64-msvc2015\bin;%QT5_DIR%\bin;%KIT_ROOT%\opencv-3.1.0\build\x64\vc14\bin;%PATH%
-  - if %B_USE_GTKMM2%==TRUE set PATH=%PATH%;%KIT_ROOT%\gtkmm2\bin
-  - if %B_USE_GTKMM3D%==TRUE set PATH=%PATH%;%KIT_ROOT%\gtkmm3_debug\bin
-  - if %B_USE_GTKMM3R%==TRUE set PATH=%PATH%;%KIT_ROOT%\gtkmm3_release\bin
+  - if %B_USE_GTKMM2%==TRUE set PATH=%KIT_ROOT%\gtkmm2\bin;%PATH%
+  - if %B_USE_GTKMM3D%==TRUE set PATH=%KIT_ROOT%\gtkmm3_debug\bin;%PATH%
+  - if %B_USE_GTKMM3R%==TRUE set PATH=%KIT_ROOT%\gtkmm3_release\bin;%PATH%
   - set APPVEYOR=TRUE
   - set CACHE=FALSE
 
